@@ -1,0 +1,98 @@
+#{$forums} {
+    .wp-editor-wrap {
+        box-sizing: content-box;
+
+        * {
+            box-sizing: content-box;
+        }
+    }
+}
+
+#{$forums} {
+    #bbp-user-wrapper {
+        .bbpc-editor-tinymce {
+            min-width: 0;
+
+            .wp-editor-container {
+                border: 1px solid #E5E5E5;
+            }
+
+            textarea.wp-editor-area {
+                border: 0;
+                width: 100%;
+                background: #FFF;
+            }
+
+            div {
+                float: none;
+                clear: inherit;
+                margin-bottom: 0;
+                width: auto;
+
+                &.wp-media-buttons {
+                    float: left;
+                }
+
+                &.wp-editor-tabs {
+                    float: right;
+                }
+
+                &.quicktags-toolbar {
+                    input {
+                        width: auto !important;
+                        border-radius: 3px !important;
+                        background: #F7F7F7;
+                        border-color: #CCC;
+                        color: #555;
+                        margin: 2px;
+                        padding: 0 8px 1px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#{$buddypress} {
+    #{$forums},
+    .bbpc-editor-tinymce {
+        .wp-switch-editor {
+            background: #EBEBEB;
+            border: 1px solid #E5E5E5;
+            padding: 3px 8px 4px;
+            font-size: 13px;
+            line-height: 19px;
+        }
+
+        textarea.wp-editor-area,
+        textarea.wp-editor-area {
+            border: 0;
+            width: 100%;
+            background: #FFF;
+        }
+
+        .mce-widget button,
+        .mce-widget button {
+            min-width: 0;
+            padding: 2px 3px;
+            line-height: normal;
+            text-align: left;
+        }
+    }
+
+    #{$forums} {
+        .tmce-active .switch-tmce {
+            background: #F5F5F5;
+            border-bottom-color: #F5F5F5;
+            color: #555;
+        }
+    }
+
+    .bbpc-editor-tinymce {
+        .html-active .switch-html {
+            background: #F5F5F5;
+            border-bottom-color: #F5F5F5;
+            color: #555;
+        }
+    }
+}

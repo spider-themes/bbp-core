@@ -1,0 +1,15 @@
+#{$forums} {
+    #bbp-user-wrapper {
+        .bbpc-editor-tinymce {
+            div {
+                &.wp-media-buttons {
+                    float: right;
+                }
+
+                &.wp-editor-tabs {
+                    float: left;
+                }
+            }
+        }
+    }
+}

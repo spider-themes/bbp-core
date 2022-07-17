@@ -1,0 +1,23 @@
+#{$forums} {
+    div,
+    li {
+        &.topic.bbpc-private-topic,
+        &.reply.bbpc-private-reply {
+            background-color: #FFF8F8;
+        }
+
+        &.topic.bbpc-private-topic-locked,
+        &.reply.bbpc-private-reply-locked {
+            background-color: #FEE;
+        }
+
+        &.topic.bbpc-private-topic-locked .bbp-topic-content,
+        &.reply.bbpc-private-reply-locked .bbp-reply-content {
+            font-weight: bold;
+        }
+    }
+
+    .bbpc-private-reply-hidden {
+        display: none;
+    }
+}

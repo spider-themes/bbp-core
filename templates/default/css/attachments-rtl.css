@@ -1,0 +1,23 @@
+.bbpc-attachments ol li.bbpc-attachment-thumb.bbpc-thumb-inline {
+  float: right;
+  margin-left: 10px !important;
+}
+
+.bbpc-attachments-edit .bbpc-attachment select {
+  float: left;
+}
+
+.bbp-form .bbpc-attachments-form .bbpc-attachments-input {
+  border-left: 4px solid transparent;
+  border-radius: 3px 0 0 3px;
+}
+.bbp-form .bbpc-attachments-form .bbpc-attachments-input.bbpc-attachment-added {
+  border-left-color: #46B450;
+}
+.bbp-form .bbpc-attachments-form .bbpc-validation-active .bbpc-attachment-preview {
+  float: right;
+  margin: 0 0 0 10px;
+}
+.bbp-form .bbpc-attachments-form .bbpc-validation-active .bbpc-attachment-control {
+  float: right;
+}

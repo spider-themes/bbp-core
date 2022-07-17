@@ -1,0 +1,190 @@
+#{$forums} {
+    .#{$form} {
+        .#{$attachments}-form-current {
+            .bbpc-attachments {
+                border-top: none;
+                margin-top: 0;
+                padding: 0;
+            }
+        }
+
+        .#{$attachments}-edit {
+            ol {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                li.bbpc-attachment {
+                    margin: 0;
+                    padding: 0;
+                    overflow: auto;
+                    line-height: 32px;
+
+                    .bbpc-icon {
+                        vertical-align: middle;
+                    }
+
+                    select {
+                        margin: 4px 0 0 0;
+                        padding: 3px;
+                        float: right;
+                        height: auto;
+                        font-size: 11px;
+                        box-sizing: border-box;
+                        display: inline-block;
+                        width: auto;
+                    }
+                }
+            }
+        }
+
+        .#{$attachments}-form {
+            &.bbpc-auto-newfile {
+                .bbpc-attachment-add-file {
+                    display: none;
+                }
+            }
+
+            .#{$attachments}-input {
+                padding: 0;
+                margin: .5em 0;
+                border: 0;
+                border-right: 4px solid transparent;
+                border-radius: 3px 0 0 3px;
+
+                &:after {
+                    content: " ";
+                    display: table;
+                    clear: both;
+                }
+
+                input {
+                    margin: 0;
+                }
+
+                &.bbpc-attachment-added {
+                    background-color: #F4FFF4;
+                    border-right-color: #46B450;
+
+                    a {
+                        color: #46B450;
+                    }
+                }
+
+                &.bbpc-attachment-invalid {
+                    background-color: #FFF4F4;
+                    border-right-color: #DC3232;
+
+                    a {
+                        color: #DC3232;
+                    }
+                }
+            }
+
+            .bbpc-validation-disabled {
+                div {
+                    display: none;
+                }
+            }
+
+            .bbpc-validation-active {
+                input {
+                    display: none;
+                }
+
+                .bbpc-attachment-preview {
+                    width: 160px;
+                    height: 38px;
+                    border-radius: 3px;
+                    float: left;
+                    margin: 0 10px 0 0;
+                    background-color: #EEE;
+                    cursor: pointer;
+                    position: relative;
+
+                    span {
+                        background-color: rgba(255, 255, 255, 0.8);
+                        border-radius: 3px;
+                        bottom: 6px;
+                        display: inline-block;
+                        font-size: 12px;
+                        font-weight: bold;
+                        line-height: 24px;
+                        padding: 0 10px;
+                        position: absolute;
+                        left: 6px;
+                        border: 1px solid #999;
+                    }
+
+                    img {
+                        &.bbpc-attached-file {
+                            border: 1px solid #EEE;
+                            border-radius: 3px;
+                            box-shadow: none;
+                            height: 118px;
+                            width: 158px;
+                        }
+                    }
+
+                    p {
+                        &.bbpc-attached-file {
+                            font-size: 2em;
+                            font-weight: bold;
+                            letter-spacing: -2px;
+                            line-height: 1.4em;
+                            margin: 0 0.4em 0 0.3em !important;
+                            text-align: right;
+                            color: #777;
+                            word-wrap: initial;
+                        }
+                    }
+                }
+
+                .bbpc-attachment-control {
+                    line-height: 22px;
+                    float: left;
+                    margin: 5px 0;
+                    width: calc(100% - 170px);
+
+                    input {
+                        font-size: 12px;
+                        height: 22px;
+                        padding: 2px 4px;
+                        width: 100%;
+
+                        box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                    }
+                }
+            }
+
+            .bbpc-attachment-added {
+                .bbpc-attachment-preview {
+                    height: 120px;
+                }
+            }
+        }
+
+        .bbpc-attachment-add-file {
+            background-color: #FEFEFE;
+            border: 1px solid #999;
+            border-radius: 3px;
+            bottom: 6px;
+            display: inline-block;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 24px;
+            padding: 0 1em;
+            margin: .5em 0 0;
+            right: 6px;
+
+            &:before {
+                display: block;
+                clear: both;
+            }
+        }
+    }
+}

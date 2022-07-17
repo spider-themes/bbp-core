@@ -1,0 +1,35 @@
+#{$forums} {
+    .#{$signatures} {
+        border-top: 1px solid #DDD;
+        margin-top: 15px;
+        padding: 5px 0;
+
+        p {
+            margin: 0 0 5px;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    #{$profile} {
+        fieldset {
+            .bbpc-editor-textarea {
+                fieldset {
+                    &.#{$signatures} {
+                        display: inline;
+                        width: 60%;
+
+                        .description,
+                        textarea {
+                            width: 100%;
+                            margin: 10px 0 20px !important;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

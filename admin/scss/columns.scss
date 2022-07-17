@@ -1,0 +1,73 @@
+.wp-list-table {
+    &.users {
+        th {
+            &.column-bbp-topics,
+            &.column-bbp-replies {
+                width: 90px;
+            }
+
+            &.column-bbp-activity {
+                width: 140px;
+            }
+        }
+    }
+
+    &.pages {
+        th,
+        td {
+            &.column-bbpc-forum-subscriptions {
+                width: 40px;
+                text-align: center;
+            }
+        }
+
+        td {
+            &.column-bbpc-forum-subscriptions {
+                a {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    &.posts {
+        th,
+        td {
+            &.column-bbpc-is-private {
+                width: 30px;
+                text-align: center;
+            }
+
+            &.column-bbpc-attachments-count,
+            &.column-bbpc-topic-subscriptions,
+            &.column-bbpc-topic-favorites {
+                width: 40px;
+                text-align: center;
+            }
+        }
+
+        th {
+            &.column-bbpc-is-private {
+                div {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        td {
+            &.column-bbpc-is-private {
+                color: #aa0000;
+                font-size: 1.1em;
+                font-weight: bold;
+            }
+
+            &.column-bbpc-attachments-count,
+            &.column-bbpc-topic-subscriptions,
+            &.column-bbpc-topic-favorites {
+                a {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

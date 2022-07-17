@@ -1,0 +1,45 @@
+.bbpc-widget {
+    /* Info Widgets */
+    .bbpc-widget-the-info-dl {
+        dt {
+            float: right;
+            clear: right;
+        }
+    }
+
+    .bbpc-widget-the-info-list {
+        i.bbpc-icon {
+            float: right;
+            margin-left: 4px;
+        }
+    }
+
+    .bbpc-widget-the-info-table {
+        table {
+            tbody {
+                th {
+                    text-align: right;
+                    padding-right: 0;
+                }
+
+                td {
+                    text-align: left;
+                    padding-left: 0;
+                }
+            }
+
+            i.bbpc-icon {
+                float: right;
+                margin-left: 4px;
+            }
+        }
+    }
+
+    /* Thanks Widget */
+    .bbpc-widget-userthanks-default {
+        img {
+            float: right;
+            margin: 4px 0 0 4px;
+        }
+    }
+}

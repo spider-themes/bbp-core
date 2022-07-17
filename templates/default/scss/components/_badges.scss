@@ -1,0 +1,28 @@
+#{$forums} {
+    .bbpc-badge-new-reply {
+        float: left;
+    }
+
+    .bbpc-badge-new-reply,
+    .bbpc-badge-unread-forum,
+    .bbpc-badge-unread-topic,
+    .bbpc-badge-new-reply-topic,
+    .bbpc-badge-new-posts,
+    .bbpc-badge-new-topic {
+        background: #111;
+        border-radius: 2px;
+        padding: 0 4px 1px;
+        margin: 0 4px 0 0;
+        font-size: 90%;
+        color: #FFF;
+    }
+
+    .bbpc-badge-unread-forum,
+    .bbpc-badge-unread-topic {
+        background: #009;
+    }
+
+    .bbpc-badge-new-reply-topic {
+        background: #090;
+    }
+}

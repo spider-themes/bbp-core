@@ -1,0 +1,25 @@
+#{$forums} {
+    .bbpc-bbcode-quote {
+        padding: 0 0 .5em 1em;
+
+        p {
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        .bbpc-quote-title {
+            font-weight: bold;
+            padding-bottom: 2px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #DDD;
+        }
+
+        &.bbpc-quote-is-private {
+            p {
+                font-weight: bold;
+                color: #800;
+            }
+        }
+    }
+}

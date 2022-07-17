@@ -1,0 +1,28 @@
+body.gd-quantum-theme {
+    #{$forums} {
+        .#{$signature-form} {
+            textarea {
+                margin: 0;
+            }
+        }
+
+        i.bbpc-icon-mark {
+            vertical-align: bottom;
+        }
+    }
+
+    .#{$toolbar} {
+        border-radius: 0;
+        border-width: 2px;
+
+        .bbpc-buttonbar-button {
+            button {
+                &.bbpc-button {
+                    i {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}

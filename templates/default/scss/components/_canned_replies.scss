@@ -1,0 +1,45 @@
+#{$forums} {
+    .bbpc-canned-replies {
+        margin: 5px 0 15px;
+
+        .bbpc-canned-replies-show {
+            font-weight: bold;
+        }
+
+        .bbpc-canned-replies-hide {
+            font-weight: bold;
+            display: none;
+        }
+
+        .bbpc-canned-replies-list,
+        .bbpc-canned-reply-content {
+            display: none;
+        }
+
+        .bbpc-canned-category {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .bbpc-canned-replies-list {
+            legend {
+                .bbpc-canned-replies-hide {
+                    float: right;
+                }
+            }
+
+            ul {
+                margin: 8px 0;
+                padding: 0 0 0 8px;
+
+                &:last-of-type {
+                    margin: 8px 0 0;
+                }
+
+                .bbpc-canned-reply {
+                    list-style: disc inside;
+                }
+            }
+        }
+    }
+}

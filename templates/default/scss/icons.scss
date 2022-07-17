@@ -1,0 +1,47 @@
+@import 'includes/_variables';
+@import 'components/_icons';
+
+.bbpc-image-mark {
+    background: transparent url(icons/bbpc.png);
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+@each $icon, $char in $marks {
+    .bbpc-image-mark.bbpc-image-#{$icon} {
+        background-position: 0 -#{$char}px;
+    }
+}
+
+.bbpc-image-mark.bbpc-image-arrow {
+    margin-left: 4px;
+    margin-right: 0;
+}
+
+.#{$attachments} ol.with-icons {
+    li {
+        list-style: none;
+        padding: 0 0 0 18px;
+
+        &.bbpc-image {
+            a i {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                vertical-align: middle;
+                background: transparent url(icons/bbpc.png) no-repeat;
+            }
+        }
+    }
+}
+
+@each $icon, $char in $files {
+    .#{$attachments} li.bbpc-image.bbpc-image-#{$icon} {
+        a i {
+            background-position: 0 -#{$char}px !important;
+        }
+    }
+}

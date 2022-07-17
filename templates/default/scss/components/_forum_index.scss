@@ -1,0 +1,64 @@
+#{$forums} {
+    .bbpc-forum-index-block {
+        margin: 15px 0 0;
+
+        .bbpc-forums-inner-block {
+            margin: 0 0 15px;
+
+            h4 {
+                background-color: #EEE;
+                color: #111;
+                line-height: 1.5em;
+                margin: 0 0 5px;
+                padding: 5px 10px;
+            }
+
+            p {
+                color: #333;
+                margin: 0 0 10px;
+                line-height: 16px;
+            }
+
+            label {
+                display: inline;
+                line-height: inherit;
+            }
+        }
+
+        .bbpc-front-user {
+            a {
+                color: inherit !important;
+                text-decoration: none;
+                border: 0;
+                box-shadow: none;
+            }
+
+            &.bbpc-user-color-bbp_keymaster {
+                color: #D00;
+            }
+
+            &.bbpc-user-color-bbp_moderator {
+                color: #06C;
+            }
+
+            &.bbpc-user-color-bbp_participant {
+                color: #333;
+            }
+
+            &.bbpc-user-color-bbp_spectator {
+                color: #0D0;
+            }
+
+            &.bbpc-user-color-bbp_blocked {
+                color: #AAA;
+            }
+        }
+
+        .bbp-author-avatar {
+            img {
+                margin: 0 3px -2px 0;
+                float: none;
+            }
+        }
+    }
+}

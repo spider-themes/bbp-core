@@ -1,0 +1,252 @@
+.d4p-content-right {
+    overflow: auto;
+
+    .d4p-options-panel {
+        overflow: unset;
+
+        h5 {
+            cursor: help;
+        }
+    }
+}
+
+.d4p-group-bbcodeslist {
+    .d4p-group-inner {
+        &:first-of-type {
+            text-align: left;
+            font-family: monospace;
+            font-size: 15px;
+            line-height: 25px;
+        }
+
+        &:last-of-type {
+            border-top: 1px solid #DDD;
+        }
+
+        .description {
+            text-align: left;
+        }
+    }
+}
+
+.d4p-page-reported-posts .bulkactions {
+    display: none;
+}
+
+.d4p-navigator .d4p-nav-button ul,
+.d4p-navigator li.d4p-nav-button > a {
+    width: 210px;
+}
+
+.d4p-page-bbcodes {
+    .tablenav {
+        display: none;
+    }
+}
+
+.bbpc-grid-bbcodes {
+    margin-top: 20px;
+
+    th {
+        &.column-title {
+            width: 19%;
+            min-width: 160px;
+        }
+
+        &.column-bbcode {
+            width: 8%;
+            min-width: 120px;
+        }
+
+        &.column-status,
+        &.column-toolbar {
+            width: 8%;
+            min-width: 120px;
+        }
+
+        &.manage-column {
+            white-space: nowrap;
+
+            input[type=checkbox] {
+                margin: 0 8px 0 0;
+                vertical-align: text-bottom;
+            }
+        }
+    }
+}
+
+.bbpc-grid-users {
+    th {
+        &.column-ID {
+            width: 70px;
+        }
+
+        &.column-avatar {
+            width: 60px;
+        }
+
+        &.column-role {
+            width: 120px;
+        }
+
+        &.column-topics,
+        &.column-replies,
+        &.column-role,
+        &.column-date {
+            width: 100px;
+        }
+    }
+
+    td {
+        &.column-avatar img {
+            display: block;
+        }
+    }
+}
+
+.bbpc-grid-errors {
+    th {
+        &.column-id {
+            width: 70px;
+        }
+
+        &.column-date {
+            width: 100px;
+        }
+    }
+}
+
+.bbpc-grid-attachments {
+    th {
+        &.column-id {
+            width: 70px;
+        }
+
+        &.column-date,
+        &.column-thumbnail {
+            width: 100px;
+        }
+    }
+}
+
+.bbpc-grid-report {
+    th {
+        &.column-id {
+            width: 70px;
+        }
+
+        &.column-type {
+            width: 80px;
+        }
+
+        &.column-date {
+            width: 100px;
+        }
+
+        &.column-post {
+            width: 25%;
+        }
+
+        &.column-reporter,
+        &.column-forum {
+            width: 15%;
+        }
+    }
+}
+
+.bbpc-grid-thanks {
+    th {
+        &.column-id {
+            width: 70px;
+        }
+
+        &.column-type {
+            width: 80px;
+        }
+
+        &.column-date {
+            width: 100px;
+        }
+
+        &.column-post {
+            width: 25%;
+        }
+
+        &.column-forum {
+            width: 15%;
+        }
+    }
+
+    td {
+        &.column-from,
+        &.column-to {
+            img {
+                float: left;
+                margin: 0 5px 0 0;
+            }
+
+            div {
+                line-height: 18px;
+            }
+        }
+    }
+}
+
+.bbpc-grid-report tbody tr.bbpc-report-status-deleted {
+    background-color: #FFEAEA;
+}
+
+.bbpc-grid-report tbody tr.bbpc-report-status-closed {
+    background-color: #EAFFEA;
+}
+
+.bbpc-notice-info {
+    background: #FFF;
+    border-left: 4px solid #00A0D2;
+    padding: 12px;
+    margin: 0 0 15px;
+}
+
+.bbpc-notice-info blockquote {
+    margin: 15px 0;
+    padding-left: 5px;
+    border-left: 2px solid #DDD;
+    font-style: italic;
+}
+
+.d4p-front-title h5 {
+    font-weight: 100;
+}
+
+.d4p-whatsnew-heading .button-primary {
+    margin: 1em 0 0;
+    font-size: 150%;
+    padding: .5em 2em;
+    height: auto;
+}
+
+.d4p-setting-info ul {
+    list-style: disc outside;
+    margin-left: 16px;
+}
+
+.d4p-whatsnew-section h3 {
+    line-height: initial;
+}
+
+@media screen and (max-width: 800px) {
+    .fixed .column-forum {
+        display: none;
+    }
+}
+
+.d4p-wizard-finish {
+    .d4p-layout-unit {
+        text-align: center;
+
+        .button-secondary {
+            font-size: 20px;
+            padding: 0 40px 4px;
+        }
+    }
+}

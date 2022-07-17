@@ -1,0 +1,57 @@
+.d4p-group-dashboard-card {
+    .d4p-group-inner label {
+        display: block;
+    }
+}
+
+.d4p-group-dashboard-users {
+    .bbpc-front-user {
+        a {
+            color: inherit !important;
+            text-decoration: none;
+            border: 0;
+            display: inline-block;
+            line-height: 20px;
+            box-shadow: none;
+
+            img {
+                float: left;
+                margin: 3px 3px 0 0;
+            }
+        }
+
+        &.bbpc-user-color-bbp_keymaster {
+            color: #d00;
+        }
+
+        &.bbpc-user-color-bbp_moderator {
+            color: #06c;
+        }
+
+        &.bbpc-user-color-bbp_participant {
+            color: #333;
+        }
+
+        &.bbpc-user-color-bbp_spectator {
+            color: #0d0;
+        }
+
+        &.bbpc-user-color-bbp_blocked {
+            color: #aaa;
+        }
+    }
+}
+
+.d4p-group-dashboard-thanks,
+.d4p-group-dashboard-report {
+    .d4p-group-inner {
+        a {
+            display: inline;
+        }
+
+        ul {
+            list-style: disc outside;
+            margin-left: 1em;
+        }
+    }
+}

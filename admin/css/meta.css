@@ -1,0 +1,53 @@
+#bbpc-meta-forum .d4plib-metabox-wrapper select.widefat {
+  padding: 0 24px 0 8px;
+  width: 100%;
+  max-width: 250px;
+  line-height: 2;
+  height: unset;
+}
+#bbpc-meta-forum .d4plib-metabox-wrapper input[type=number].widefat,
+#bbpc-meta-forum .d4plib-metabox-wrapper input[type=text].widefat {
+  width: 100%;
+  padding: 0 8px;
+  line-height: 2;
+  height: unset;
+}
+#bbpc-meta-forum .d4plib-metabox-wrapper input[type=number].widefat {
+  max-width: 250px;
+}
+#bbpc-meta-forum .d4plib-metabox-wrapper input[type=text].widefat {
+  max-width: 100%;
+}
+#bbpc-meta-forum .d4plib-metabox-wrapper h4 {
+  margin: 0 0 0.25em;
+  font-size: 1.2em;
+}
+#bbpc-meta-forum .d4plib-metabox-wrapper hr {
+  margin: 1em 0;
+}
+#bbpc-meta-forum .d4plib-metabox-wrapper p {
+  margin: 0.25em 0;
+}
+#bbpc-meta-forum .d4plib-metabox-wrapper .wp-tab-panel {
+  padding: 1em;
+}
+
+.bbpc-inner-content p:first-of-type {
+  margin-top: 0;
+}
+.bbpc-inner-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.bbpc-dialog-hidex .ui-dialog-titlebar button {
+  display: none;
+}
+
+.bbpc-modal-dialog .dashicons {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*# sourceMappingURL=meta.css.map */

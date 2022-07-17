@@ -1,0 +1,126 @@
+#{$forums} {
+    .bbpc-attachments-files-container {
+        ol.__files-list {
+            list-style: none;
+            line-height: 1.8;
+            margin: 0;
+
+            li {
+                list-style: none;
+                margin: 0;
+
+                a {
+                    text-decoration: none;
+                    box-shadow: none;
+
+                    img {
+                        display: block;
+                        box-shadow: none;
+                    }
+
+                    .bbpc-icon {
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            &.__without-thumbnails {
+                li.__link {
+                    .__actions {
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            &.__with-thumbnails {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                margin: -15px 0 0 -15px;
+
+                li.__thumb {
+                    flex: 0 0 0;
+
+                    padding: 0;
+                    height: auto;
+                    margin: 15px 0 5px 15px;
+
+                    .__thumb-holder {
+                        background: #EEE;
+                        color: #111;
+                        text-transform: uppercase;
+                        font-size: 2.5em;
+                        display: block;
+                        text-align: center;
+                    }
+
+                    .__actions {
+                        @include clear_fix();
+                    }
+
+                    .__caption {
+                        padding: 0;
+                        margin: 0;
+
+                        p {
+                            &.__text {
+                                margin: 5px 0;
+                                word-wrap: break-word;
+                                word-break: break-all;
+                                line-height: 1.3em;
+                                padding: 0;
+                                font-size: 12px;
+                            }
+                        }
+
+                        img {
+                            margin: 0;
+                        }
+                    }
+                }
+
+                &.__columns-2 {
+                    li.__thumb {
+                        flex: 0 0 calc(50% - 15px);
+                    }
+                }
+
+                &.__columns-3 {
+                    li.__thumb {
+                        flex: 0 0 calc(33.33% - 15px);
+                    }
+                }
+
+                &.__columns-4 {
+                    li.__thumb {
+                        flex: 0 calc(25% - 15px);
+                    }
+                }
+
+                &.__columns-5 {
+                    li.__thumb {
+                        flex: 0 0 calc(20% - 15px);
+                    }
+                }
+
+                &.__columns-6 {
+                    li.__thumb {
+                        flex: 0 0 calc(16.66% - 15px);
+                    }
+                }
+
+                &.__columns-7 {
+                    li.__thumb {
+                        flex: 0 0 calc(14.28% - 15px);
+                    }
+                }
+
+                &.__columns-8 {
+                    li.__thumb {
+                        flex: 0 0 calc(12.5% - 15px);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+@mixin generate-font-icons {bbpcbbpcbbpcbbpcbbpcbbpcbbpc
+    i.#{$font-prefix}-icon {
+        font: normal normal normal $font-size/1 $font-name;
+        font-size: inherit;
+        text-transform: none;
+        display: inline-block;
+        vertical-align: text-bottom;
+        speak: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    @each $icon, $char in $icons {
+        .#{$font-prefix}-icon.#{$font-prefix}-icon-#{$icon} {
+            &:before {
+                content: icon($char);
+            }
+        }
+    }
+
+    /* Full Width */
+    .#{$font-prefix}-fw {
+        width: 1.28571429em;
+        text-align: center;
+    }
+
+    /* Sizes */
+    .#{$font-prefix}-lg {
+        font-size: 1.33333333em;
+        line-height: 0.75em;
+        vertical-align: -15%;
+    }
+
+    @for $i from 2 to 7 {
+        .#{$font-prefix}-#{$i}x {
+            font-size: #{$i}em;
+        }
+    }
+
+    /* Spin */
+    .#{$font-prefix}-spin {
+        -webkit-animation: gdbbx-spin 2s infinite linear;
+        animation: gdbbx-spin 2s infinite linear;
+    }
+
+    @-webkit-keyframes gdbbx-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+
+    @keyframes gdbbx-spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+
+    #{$forums} {
+        i.gdbbx-icon-mark {
+            margin-right: 4px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+        .gdbbx-new-topic-replies i.gdbbx-icon-mark {
+            margin-right: 0;
+            margin-left: 4px;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+/* Accessibility */
+.bbpc-accessibility-show-for-sr {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+/* Few Fixes */
+.bbpc-editor-fix {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 0 0 3px 3px !important;
+    margin-top: 0 !important;
+    width: 100%;
+    resize: vertical;
+}
+
+#{$forums} {
+    .form-allowed-tags code {
+        width: 100%;
+    }
+
+    #bbp-search-results .bbp-topic-title h3 {
+        display: inline;
+    }
+
+    .bbp-reply-content h4.bbp-reply-title {
+        border-bottom: 1px solid #DDD;
+        margin: 0 0 1em;
+        padding: 0 0 0.5em;
+        width: 80%;
+    }
+}

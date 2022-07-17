@@ -1,0 +1,15 @@
+#{$forums} {
+    .bbpc-topic-thumbnail {
+        float: left;
+        margin-right: 10px;
+
+        a {
+            display: block;
+        }
+
+        img {
+            height: 48px;
+            width: auto;
+        }
+    }
+}
