@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -109,7 +109,7 @@ class DisableRSS extends Feature {
 										wp_safe_redirect( bbp_get_forums_url() );
 										exit;
 									case 'parent';
-										$page = bbpc_get_topic_id_from_slug( $query_vars['name'] );
+										$page = gdbbx_get_topic_id_from_slug( $query_vars['name'] );
 
 										if ( $page ) {
 											wp_safe_redirect( get_permalink( $page ) );

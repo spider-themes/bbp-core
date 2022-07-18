@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,7 +25,7 @@ class JournalTopic extends Feature {
 		parent::__construct();
 
 		if ( is_user_logged_in() ) {
-			add_action( 'bbpc_template', array( $this, 'frontend' ) );
+			add_action( 'gdbbx_template', array( $this, 'frontend' ) );
 		}
 	}
 
@@ -50,13 +50,13 @@ class JournalTopic extends Feature {
 			$allowed = $forum_id > 0 && in_array( $forum_id, $this->get( 'allowed_in_forums', array() ) );
 		}
 
-		return apply_filters( 'bbpc_journal_topic_is_forum_allowed', $allowed, $forum_id );
+		return apply_filters( 'gdbbx_journal_topic_is_forum_allowed', $allowed, $forum_id );
 	}
 
 	public function is_journal( $topic_id = 0 ) : bool {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
-		return get_post_meta( $topic_id, '_bbpc_journal_topic', true ) === '1';
+		return get_post_meta( $topic_id, '_gdbbx_journal_topic', true ) === '1';
 	}
 
 	public function frontend() {
@@ -71,8 +71,8 @@ class JournalTopic extends Feature {
 
 		if ( $author > 0 ) {
 			if ( $this->is_user_allowed() && $this->is_forum_allowed( bbp_get_topic_forum_id( $topic_id ) ) ) {
-				if ( isset( $_POST['bbpc_journal_topic'] ) && $_POST['bbpc_journal_topic'] === '1' ) {
-					update_post_meta( $topic_id, '_bbpc_journal_topic', '1' );
+				if ( isset( $_POST['gdbbx_journal_topic'] ) && $_POST['gdbbx_journal_topic'] === '1' ) {
+					update_post_meta( $topic_id, '_gdbbx_journal_topic', '1' );
 				}
 			}
 		}
@@ -83,7 +83,7 @@ class JournalTopic extends Feature {
 			return $retval;
 		}
 
-		$this->forum_id = apply_filters( 'bbpc_journal_topic_prepare_topic_form_forum_id', bbp_get_forum_id() );
+		$this->forum_id = apply_filters( 'gdbbx_journal_topic_prepare_topic_form_forum_id', bbp_get_forum_id() );
 
 		if ( $this->is_user_allowed() && $this->is_forum_allowed( $this->forum_id ) ) {
 			add_action( $this->settings['topic_form_position'], array(
@@ -96,7 +96,7 @@ class JournalTopic extends Feature {
 	}
 
 	public function topic_journal_checkbox() {
-		include( bbpc_get_template_part( 'bbpc-form-topic-journal.php' ) );
+		include( gdbbx_get_template_part( 'gdbbx-form-topic-journal.php' ) );
 	}
 
 	public function prepare_reply_form( $retval ) {
@@ -106,10 +106,10 @@ class JournalTopic extends Feature {
 			$allowed = bbp_get_topic_author_id() == bbp_get_current_user_id();
 
 			if ( ! $allowed && $this->get( 'allowed_for_moderators', false ) ) {
-				$allowed = bbpc_can_user_moderate();
+				$allowed = gdbbx_can_user_moderate();
 			}
 
-			if ( ! $allowed && bbp_is_reply_edit() && bbpc_can_user_moderate() && $this->get( 'edit_for_moderators', false ) ) {
+			if ( ! $allowed && bbp_is_reply_edit() && gdbbx_can_user_moderate() && $this->get( 'edit_for_moderators', false ) ) {
 				$allowed = true;
 			}
 

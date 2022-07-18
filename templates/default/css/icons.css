@@ -1,5 +1,5 @@
-.bbpc-image-mark {
-  background: transparent url(icons/bbpc.png);
+.gdbbx-image-mark {
+  background: transparent url(icons/gdbbx.png);
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -7,117 +7,115 @@
   margin-right: 4px;
 }
 
-.bbpc-image-mark.bbpc-image-lock {
+.gdbbx-image-mark.gdbbx-image-lock {
   background-position: 0 -288px;
 }
 
-.bbpc-image-mark.bbpc-image-reply {
+.gdbbx-image-mark.gdbbx-image-reply {
   background-position: 0 -304px;
 }
 
-.bbpc-image-mark.bbpc-image-stick {
+.gdbbx-image-mark.gdbbx-image-stick {
   background-position: 0 -320px;
 }
 
-.bbpc-image-mark.bbpc-image-private {
+.gdbbx-image-mark.gdbbx-image-private {
   background-position: 0 -336px;
 }
 
-.bbpc-image-mark.bbpc-image-arrow {
+.gdbbx-image-mark.gdbbx-image-arrow {
   background-position: 0 -352px;
 }
 
-.bbpc-image-mark.bbpc-image-close {
+.gdbbx-image-mark.gdbbx-image-close {
   background-position: 0 -368px;
 }
 
-.bbpc-image-mark.bbpc-image-book {
+.gdbbx-image-mark.gdbbx-image-book {
   background-position: 0 -384px;
 }
 
-.bbpc-image-mark.bbpc-image-arrow {
+.gdbbx-image-mark.gdbbx-image-arrow {
   margin-left: 4px;
   margin-right: 0;
 }
 
-.bbpc-attachments ol.with-icons li {
+.gdbbx-attachments ol.with-icons li {
   list-style: none;
   padding: 0 0 0 18px;
 }
-.bbpc-attachments ol.with-icons li.bbpc-image a i {
+.gdbbx-attachments ol.with-icons li.gdbbx-image a i {
   display: inline-block;
   width: 16px;
   height: 16px;
   vertical-align: middle;
-  background: transparent url(icons/bbpc.png) no-repeat;
+  background: transparent url(icons/gdbbx.png) no-repeat;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-ai a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-ai a i {
   background-position: 0 -128px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-archive a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-archive a i {
   background-position: 0 -144px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-audio a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-audio a i {
   background-position: 0 -256px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-code a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-code a i {
   background-position: 0 -32px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-documents a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-documents a i {
   background-position: 0 -240px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-excel a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-excel a i {
   background-position: 0 -64px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-generic a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-generic a i {
   background-position: 0 -16px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-html a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-html a i {
   background-position: 0 -208px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-icon a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-icon a i {
   background-position: 0 -272px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-image a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-image a i {
   background-position: 0 -96px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-pdf a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-pdf a i {
   background-position: 0 -192px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-powerpoint a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-powerpoint a i {
   background-position: 0 -176px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-psd a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-psd a i {
   background-position: 0 -112px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-text a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-text a i {
   background-position: 0 -160px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-video a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-video a i {
   background-position: 0 -224px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-word a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-word a i {
   background-position: 0 -80px !important;
 }
 
-.bbpc-attachments li.bbpc-image.bbpc-image-xml a i {
+.gdbbx-attachments li.gdbbx-image.gdbbx-image-xml a i {
   background-position: 0 -48px !important;
 }
-
-/*# sourceMappingURL=icons.css.map */

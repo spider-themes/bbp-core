@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -24,7 +24,7 @@ class LockForums extends Feature {
 	public function __construct() {
 		parent::__construct();
 
-		add_action( 'bbpc_bbpress_template_first', array( $this, 'loader' ) );
+		add_action( 'gdbbx_bbpress_template_first', array( $this, 'loader' ) );
 	}
 
 	public static function instance() : LockForums {
@@ -51,32 +51,32 @@ class LockForums extends Feature {
 		$topic_id = $topic_id == 0 ? bbp_get_topic_id() : $topic_id;
 		$forum_id = $topic_id > 0 ? bbp_get_topic_forum_id( $topic_id ) : 0;
 
-		$message = $forum_id == 0 ? '' : bbpc_forum( $forum_id )->privacy()->get( 'lock_topic_form_message' );
+		$message = $forum_id == 0 ? '' : gdbbx_forum( $forum_id )->privacy()->get( 'lock_topic_form_message' );
 
 		if ( empty( $message ) ) {
 			$message = $this->settings['topic_form_message'];
 		}
 
-		return apply_filters( 'bbpc_privacy_topic_locked_message', __( $message, "bbp-core" ), $topic_id, $forum_id );
+		return apply_filters( 'gdbbx_privacy_topic_locked_message', __( $message, "bbp-core" ), $topic_id, $forum_id );
 	}
 
 	public function message_reply_form_locked( $topic_id = 0 ) {
 		$topic_id = $topic_id == 0 ? bbp_get_topic_id() : $topic_id;
 		$forum_id = $topic_id > 0 ? bbp_get_topic_forum_id( $topic_id ) : 0;
 
-		$message = $forum_id == 0 ? '' : bbpc_forum( $forum_id )->privacy()->get( 'lock_reply_form_message' );
+		$message = $forum_id == 0 ? '' : gdbbx_forum( $forum_id )->privacy()->get( 'lock_reply_form_message' );
 
 		if ( empty( $message ) ) {
 			$message = $this->settings['topic_form_message'];
 		}
 
-		return apply_filters( 'bbpc_privacy_reply_locked_message', __( $message, "bbp-core" ), $topic_id, $forum_id );
+		return apply_filters( 'gdbbx_privacy_reply_locked_message', __( $message, "bbp-core" ), $topic_id, $forum_id );
 	}
 
 	public function is_topic_locked( $topic_id = 0 ) : bool {
 		$forum_id = $topic_id > 0 ? bbp_get_topic_forum_id( $topic_id ) : 0;
 
-		$forum = bbpc_forum( $forum_id )->privacy()->get( 'lock_topic_form' );
+		$forum = gdbbx_forum( $forum_id )->privacy()->get( 'lock_topic_form' );
 
 		$active = false;
 		if ( $forum == 'default' ) {
@@ -87,13 +87,13 @@ class LockForums extends Feature {
 			$active = false;
 		}
 
-		return (bool) apply_filters( 'bbpc_privacy_is_topic_locked', $active, $topic_id, $forum_id );
+		return (bool) apply_filters( 'gdbbx_privacy_is_topic_locked', $active, $topic_id, $forum_id );
 	}
 
 	public function is_reply_locked( $reply_id = 0 ) : bool {
 		$forum_id = $reply_id > 0 ? bbp_get_reply_forum_id( $reply_id ) : 0;
 
-		$forum = bbpc_forum( $forum_id )->privacy()->get( 'lock_reply_form' );
+		$forum = gdbbx_forum( $forum_id )->privacy()->get( 'lock_reply_form' );
 
 		$active = false;
 		if ( $forum == 'default' ) {
@@ -104,7 +104,7 @@ class LockForums extends Feature {
 			$active = false;
 		}
 
-		return (bool) apply_filters( 'bbpc_privacy_is_reply_locked', $active, $reply_id, $forum_id );
+		return (bool) apply_filters( 'gdbbx_privacy_is_reply_locked', $active, $reply_id, $forum_id );
 	}
 
 	public function forum_lock_topic_form() {
@@ -117,16 +117,16 @@ class LockForums extends Feature {
 
 	public function replace_forum_topic_form( $templates, $slug, $name ) {
 		if ( $slug == 'form' && $name == 'topic' ) {
-			$templates = array( 'bbpc-form-topic-locked.php' );
+			$templates = array( 'gdbbx-form-topic-locked.php' );
 		}
 
 		return $templates;
 	}
 
 	public function replace_forum_reply_form( $templates, $slug, $name ) {
-		if ( bbpc_is_user_allowed_to_topic() ) {
+		if ( gdbbx_is_user_allowed_to_topic() ) {
 			if ( $slug == 'form' && $name == 'reply' ) {
-				$templates = array( 'bbpc-form-reply-locked.php' );
+				$templates = array( 'gdbbx-form-reply-locked.php' );
 			}
 		}
 

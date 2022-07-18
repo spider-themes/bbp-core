@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\BBCodes;
+namespace Dev4Press\Plugin\GDBBX\BBCodes;
 
-use SpiderDevs\Plugin\BBPC\Features\BBCodes;
+use Dev4Press\Plugin\GDBBX\Features\BBCodes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -294,7 +294,7 @@ class Registrator {
 	}
 
 	private function _tag( $tag, $name, $content = null, $atts = array(), $args = array(), $no_class = false ) : string {
-		$standard   = $no_class ? array() : array( 'class' => 'bbpc-bbcode-' . $name );
+		$standard   = $no_class ? array() : array( 'class' => 'gdbbx-bbcode-' . $name );
 		$attributes = $this->_merge( $atts, $args, $standard );
 
 		$render = '<' . $tag;
@@ -560,8 +560,8 @@ class Registrator {
 		$atts  = $this->_atts( 'nfo', $atts );
 		$title = $atts['title'] == '' ? 'NFO' : $atts['title'];
 
-		$render = '<table class="bbpc-bbcode-nfo ' . $atts['class'] . '" style="' . $atts['style'] . '"><tbody><tr><td class="bbpc-bbcode-el-title">' . $title . ':</td></tr>';
-		$render .= '<tr><td class="bbpc-bbcode-el-content"><pre>' . $content . '</pre></td></tr></tbody></table>';
+		$render = '<table class="gdbbx-bbcode-nfo ' . $atts['class'] . '" style="' . $atts['style'] . '"><tbody><tr><td class="gdbbx-bbcode-el-title">' . $title . ':</td></tr>';
+		$render .= '<tr><td class="gdbbx-bbcode-el-content"><pre>' . $content . '</pre></td></tr></tbody></table>';
 
 		return $render;
 	}
@@ -666,11 +666,11 @@ class Registrator {
 			} else if ( $count == - 2 ) {
 				$template = BBCodes::instance()->get( 'hide_content_thanks' );
 
-				$to_hide = ! bbpc_check_if_user_said_thanks_to_topic( $topic, $user );
+				$to_hide = ! gdbbx_check_if_user_said_thanks_to_topic( $topic, $user );
 			} else if ( $count == - 1 ) {
 				$template = BBCodes::instance()->get( 'hide_content_reply' );
 
-				$to_hide = ! bbpc_check_if_user_replied_to_topic( $topic, $user );
+				$to_hide = ! gdbbx_check_if_user_replied_to_topic( $topic, $user );
 			} else if ( $count > 0 ) {
 				$total = bbp_get_user_reply_count_raw( bbp_get_current_user_id() ) +
 				         bbp_get_user_topic_count_raw( bbp_get_current_user_id() );
@@ -690,9 +690,9 @@ class Registrator {
 			$to_hide = true;
 		}
 
-		$render = '<div class="bbpc-bbcode-hide bbpc-hide-' . ( $to_hide ? 'hidden' : 'visible' ) . '">';
-		$render .= '<div class="bbpc-hide-title">' . BBCodes::instance()->get( 'hide_title' ) . '</div>';
-		$render .= '<div class="bbpc-hide-content">';
+		$render = '<div class="gdbbx-bbcode-hide gdbbx-hide-' . ( $to_hide ? 'hidden' : 'visible' ) . '">';
+		$render .= '<div class="gdbbx-hide-title">' . BBCodes::instance()->get( 'hide_title' ) . '</div>';
+		$render .= '<div class="gdbbx-hide-content">';
 
 		if ( $to_hide ) {
 			$render .= do_shortcode( __( $template, "bbp-core" ) );
@@ -955,7 +955,7 @@ class Registrator {
 			return '';
 		}
 
-		$args = array( 'class' => 'bbpc-bbcode-scode', 'raw' => 1 );
+		$args = array( 'class' => 'gdbbx-bbcode-scode', 'raw' => 1 );
 		$data = array();
 
 		$atts = $this->_atts( 'scode', $atts );

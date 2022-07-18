@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class bbpc_core_settings {
+class gdbbx_core_settings {
     private $_inside_content_shortcode = array();
 
     public $info;
@@ -770,10 +770,10 @@ class bbpc_core_settings {
     public $migration = array('attachments', 'buddypress', 'bbpress', 'privacy', 'thanks', 'disable_rss', 'canned', 'report', 'lock');
 
     public function __construct() {
-        $this->info = new bbpc_core_info();
+        $this->info = new gdbbx_core_info();
 
-        add_action('bbpc_plugin_core_ready', array($this, 'init'));
-        add_filter('bbpc_settings_get', array($this, 'override_get'), 10, 3);
+        add_action('gdbbx_plugin_core_ready', array($this, 'init'));
+        add_filter('gdbbx_settings_get', array($this, 'override_get'), 10, 3);
     }
 
     public function __get($name) {
@@ -883,12 +883,12 @@ class bbpc_core_settings {
     }
 
     private function _migrate() {
-        require_once(BBPC_PATH.'core/admin/migrate.php');
-        require_once(BBPC_PATH.'core/admin/install.php');
+        require_once(GDBBX_PATH.'core/admin/migrate.php');
+        require_once(GDBBX_PATH.'core/admin/install.php');
 
-	    bbpc_convert_attachments_assignments();
+	    gdbbx_convert_attachments_assignments();
 
-        if (bbpc_settings_migration()) {
+        if (gdbbx_settings_migration()) {
 	        wp_cache_flush();
 
         	$this->current = array();
@@ -897,9 +897,9 @@ class bbpc_core_settings {
     }
 
     private function _db() {
-        require_once(BBPC_PATH.'core/admin/install.php');
+        require_once(GDBBX_PATH.'core/admin/install.php');
 
-        bbpc_install_database();
+        gdbbx_install_database();
     }
 
     public function init() {
@@ -944,7 +944,7 @@ class bbpc_core_settings {
 		    }
 	    }
 
-	    do_action('bbpc_plugin_settings_loaded');
+	    do_action('gdbbx_plugin_settings_loaded');
     }
 
     public function group($group) {
@@ -969,7 +969,7 @@ class bbpc_core_settings {
         $allowed = false;
         $clean = trim($name, '_');
 
-        if (current_user_can('d4p_bbpt_'.$clean, 'do_not_allow') || current_user_can('bbpc_cap_'.$clean, 'do_not_allow')) {
+        if (current_user_can('d4p_bbpt_'.$clean, 'do_not_allow') || current_user_can('gdbbx_cap_'.$clean, 'do_not_allow')) {
             $allowed = true;
         }
 
@@ -998,7 +998,7 @@ class bbpc_core_settings {
             $allowed = $this->get($name.'_visitor', $group);
         }
 
-        return apply_filters('bbpc_allowed_'.$clean, $allowed);
+        return apply_filters('gdbbx_allowed_'.$clean, $allowed);
     }
 
     public function prefix_get($prefix, $group = 'settings', $get_full_keys = false, $get_defaults = false) : array {
@@ -1045,7 +1045,7 @@ class bbpc_core_settings {
             $exit = $this->settings[$group][$name];
         }
 
-        return apply_filters('bbpc_settings_get', $exit, $name, $group);
+        return apply_filters('gdbbx_settings_get', $exit, $name, $group);
     }
 
     public function set($name, $value, $group = 'settings', $save = false) {
@@ -1241,21 +1241,21 @@ Do not reply to this email!", "Email message override: notify moderators on new 
     }
 
     public function remove_forums_settings() {
-        $sql = "DELETE FROM ".bbpc_db()->wpdb()->postmeta." WHERE meta_key = '_gdbbatt_settings'";
+        $sql = "DELETE FROM ".gdbbx_db()->wpdb()->postmeta." WHERE meta_key = '_gdbbatt_settings'";
 
-        bbpc_db()->query($sql);
+        gdbbx_db()->query($sql);
     }
 
     public function remove_tracking_settings() {
-        $sql = "DELETE FROM ".bbpc_db()->wpdb()->usermeta." WHERE meta_key = '".bbpc_plugin()->user_meta_key_last_activity()."'";
+        $sql = "DELETE FROM ".gdbbx_db()->wpdb()->usermeta." WHERE meta_key = '".gdbbx_plugin()->user_meta_key_last_activity()."'";
 
-        bbpc_db()->query($sql);
+        gdbbx_db()->query($sql);
     }
 
     public function remove_signature_settings() {
-        $sql = "DELETE FROM ".bbpc_db()->wpdb()->usermeta." WHERE meta_key = 'signature'";
+        $sql = "DELETE FROM ".gdbbx_db()->wpdb()->usermeta." WHERE meta_key = 'signature'";
 
-        bbpc_db()->query($sql);
+        gdbbx_db()->query($sql);
     }
 
     public function import_from_object($import, $list = array()) {
@@ -1284,7 +1284,7 @@ Do not reply to this email!", "Email message override: notify moderators on new 
         if ($ctrl && $data && strlen($ctrl) == 64) {
             $ctrl = substr($ctrl, 8, 32);
             $size_import = mb_strlen($data);
-            $ctrl_import = $name === false ? md5($data.$size_import) : md5($data.'bbp-core'.$size_import);
+            $ctrl_import = $name === false ? md5($data.$size_import) : md5($data.'gd-bbpress-toolbox'.$size_import);
 
             if ($ctrl_import === $ctrl) {
                 $data = json_decode($data, true);
@@ -1309,8 +1309,8 @@ Do not reply to this email!", "Email message override: notify moderators on new 
         $size = mb_strlen($encoded);
 
         $export = array(
-            'name' => 'bbp-core',
-            'ctrl' => strtolower(wp_generate_password(8, false)).md5($encoded.'bbp-core'.$size).strtolower(wp_generate_password(24, false)),
+            'name' => 'gd-bbpress-toolbox',
+            'ctrl' => strtolower(wp_generate_password(8, false)).md5($encoded.'gd-bbpress-toolbox'.$size).strtolower(wp_generate_password(24, false)),
             'data' => urlencode(base64_encode(gzcompress($encoded, 9)))
         );
 
@@ -1364,15 +1364,15 @@ Do not reply to this email!", "Email message override: notify moderators on new 
     }
 
     public function get_image_extensions() {
-        return apply_filters('bbpc_attachment_image_extensions', array('svg', 'png', 'gif', 'jpg', 'jpeg', 'jpe', 'bmp'));
+        return apply_filters('gdbbx_attachment_image_extensions', array('svg', 'png', 'gif', 'jpg', 'jpeg', 'jpe', 'bmp'));
     }
 
     public function get_video_extensions() {
-        return apply_filters('bbpc_attachment_video_extensions', wp_get_video_extensions());
+        return apply_filters('gdbbx_attachment_video_extensions', wp_get_video_extensions());
     }
 
     public function get_audio_extensions() {
-        return apply_filters('bbpc_attachment_audio_extensions', wp_get_audio_extensions());
+        return apply_filters('gdbbx_attachment_audio_extensions', wp_get_audio_extensions());
     }
 
 	private function _settings_to_array($list = array()) : array {

@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
-use SpiderDevs\Plugin\BBPC\Database\Posts as PostsDB;
+use Dev4Press\Plugin\GDBBX\Database\Posts as PostsDB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -200,11 +200,11 @@ class Posts {
 
 			if ( $include ) {
 				if ( $item['type'] == 'topic' ) {
-					if ( ! bbpc_is_user_allowed_to_topic( $item['id'], $user_id ) ) {
+					if ( ! gdbbx_is_user_allowed_to_topic( $item['id'], $user_id ) ) {
 						$include = false;
 					}
 				} else if ( $item['type'] == 'reply' ) {
-					if ( ! bbpc_is_user_allowed_to_reply( $item['id'], $user_id ) ) {
+					if ( ! gdbbx_is_user_allowed_to_reply( $item['id'], $user_id ) ) {
 						$include = false;
 					}
 				}

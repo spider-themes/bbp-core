@@ -1,7 +1,7 @@
 #{$forums} {
     .#{$form} {
         .#{$attachments}-form-current {
-            .bbpc-attachments {
+            .gdbbx-attachments {
                 border-top: none;
                 margin-top: 0;
                 padding: 0;
@@ -14,13 +14,13 @@
                 padding: 0;
                 list-style: none;
 
-                li.bbpc-attachment {
+                li.gdbbx-attachment {
                     margin: 0;
                     padding: 0;
                     overflow: auto;
                     line-height: 32px;
 
-                    .bbpc-icon {
+                    .gdbbx-icon {
                         vertical-align: middle;
                     }
 
@@ -39,8 +39,8 @@
         }
 
         .#{$attachments}-form {
-            &.bbpc-auto-newfile {
-                .bbpc-attachment-add-file {
+            &.gdbbx-auto-newfile {
+                .gdbbx-attachment-add-file {
                     display: none;
                 }
             }
@@ -62,7 +62,7 @@
                     margin: 0;
                 }
 
-                &.bbpc-attachment-added {
+                &.gdbbx-attachment-added {
                     background-color: #F4FFF4;
                     border-right-color: #46B450;
 
@@ -71,7 +71,7 @@
                     }
                 }
 
-                &.bbpc-attachment-invalid {
+                &.gdbbx-attachment-invalid {
                     background-color: #FFF4F4;
                     border-right-color: #DC3232;
 
@@ -81,18 +81,18 @@
                 }
             }
 
-            .bbpc-validation-disabled {
+            .gdbbx-validation-disabled {
                 div {
                     display: none;
                 }
             }
 
-            .bbpc-validation-active {
+            .gdbbx-validation-active {
                 input {
                     display: none;
                 }
 
-                .bbpc-attachment-preview {
+                .gdbbx-attachment-preview {
                     width: 160px;
                     height: 38px;
                     border-radius: 3px;
@@ -117,7 +117,7 @@
                     }
 
                     img {
-                        &.bbpc-attached-file {
+                        &.gdbbx-attached-file {
                             border: 1px solid #EEE;
                             border-radius: 3px;
                             box-shadow: none;
@@ -127,7 +127,7 @@
                     }
 
                     p {
-                        &.bbpc-attached-file {
+                        &.gdbbx-attached-file {
                             font-size: 2em;
                             font-weight: bold;
                             letter-spacing: -2px;
@@ -140,7 +140,7 @@
                     }
                 }
 
-                .bbpc-attachment-control {
+                .gdbbx-attachment-control {
                     line-height: 22px;
                     float: left;
                     margin: 5px 0;
@@ -159,14 +159,14 @@
                 }
             }
 
-            .bbpc-attachment-added {
-                .bbpc-attachment-preview {
+            .gdbbx-attachment-added {
+                .gdbbx-attachment-preview {
                     height: 120px;
                 }
             }
         }
 
-        .bbpc-attachment-add-file {
+        .gdbbx-attachment-add-file {
             background-color: #FEFEFE;
             border: 1px solid #999;
             border-radius: 3px;

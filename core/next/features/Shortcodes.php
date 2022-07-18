@@ -1,10 +1,10 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
-use SpiderDevs\Plugin\BBPC\Basic\User;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Basic\User;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -44,22 +44,22 @@ class Shortcodes extends Feature {
 					'autoplay' => false,
 					'loop'     => false
 				),
-				'alias' => array( 'attachment', 'bbpc_attachment' )
+				'alias' => array( 'attachment', 'gdbbx_attachment' )
 			),
 			'quote'         => array(
 				'name'  => __( "Quote", "bbp-core" ),
 				'atts'  => array( 'style' => '', 'class' => '', 'quote' => 0, 'raw' => 0 ),
-				'alias' => array( 'quote', 'bbpc_quote' )
+				'alias' => array( 'quote', 'gdbbx_quote' )
 			),
 			'postquote'     => array(
 				'name'  => __( "Post Quote", "bbp-core" ),
 				'atts'  => array( 'style' => '', 'class' => '', 'quote' => 0, 'raw' => 0 ),
-				'alias' => array( 'postquote', 'bbpc_postquote' )
+				'alias' => array( 'postquote', 'gdbbx_postquote' )
 			),
 			'profile_items' => array(
 				'name'  => __( "Profile Items", "bbp-core" ),
 				'atts'  => array( 'style' => '', 'class' => '', 'user' => 0, 'items' => '' ),
-				'alias' => array( 'bbpc_profile_items' )
+				'alias' => array( 'gdbbx_profile_items' )
 			)
 		);
 
@@ -114,7 +114,7 @@ class Shortcodes extends Feature {
 	}
 
 	private function _tag( $tag, $name, $content = null, $atts = array(), $args = array(), $no_class = false ) : string {
-		$standard   = $no_class ? array() : array( 'class' => 'bbpc-bbcode-' . $name );
+		$standard   = $no_class ? array() : array( 'class' => 'gdbbx-bbcode-' . $name );
 		$attributes = $this->_merge( $atts, $args, $standard );
 
 		$render = '<' . $tag;
@@ -193,23 +193,23 @@ class Shortcodes extends Feature {
 		}
 
 		if ( ! empty( $atts['file'] ) ) {
-			$attachment = bbpc_get_attachment_id_from_name( $atts['file'] );
+			$attachment = gdbbx_get_attachment_id_from_name( $atts['file'] );
 
 			if ( $attachment > 0 ) {
 				$file = get_attached_file( $attachment );
 				$ext  = pathinfo( $file, PATHINFO_EXTENSION );
 
-				if ( function_exists( 'bbpc_attachments' ) ) {
+				if ( function_exists( 'gdbbx_attachments' ) ) {
 					$id = bbp_get_reply_id();
 					$id = $id > 0 ? $id : bbp_get_topic_id();
 					$id = $id > 0 ? $id : get_the_ID();
 
-					bbpc_attachments()->attachment_inserted( $id, $attachment );
+					gdbbx_attachments()->attachment_inserted( $id, $attachment );
 				}
 
 				$ax = get_post( $attachment );
 
-				if ( in_array( $ext, bbpc()->get_image_extensions() ) ) {
+				if ( in_array( $ext, gdbbx()->get_image_extensions() ) ) {
 					$title   = trim( $ax->post_title );
 					$caption = trim( $ax->post_excerpt );
 
@@ -228,7 +228,7 @@ class Shortcodes extends Feature {
 						unset( $atts['align'] );
 					}
 
-					$defaults = apply_filters( 'bbpc_attachment_image_defaults', array(
+					$defaults = apply_filters( 'gdbbx_attachment_image_defaults', array(
 						'a'     => array(
 							'target' => '_blank',
 							'rel'    => '',
@@ -261,9 +261,9 @@ class Shortcodes extends Feature {
 						$_img = $this->_tag( 'a', 'attachment', $this->_tag( 'img', 'attachment-image', null, $atts_img ), $atts_a );
 						$_cap = $this->_tag( 'figcaption', 'caption', $the_caption, array( 'class' => 'wp-caption-text' ), array(), true );
 
-						return $this->_tag( 'figure', 'attachment bbpc-with-caption ' . $the_align, $_img . $_cap, array( 'class' => 'wp-caption' ) );
+						return $this->_tag( 'figure', 'attachment gdbbx-with-caption ' . $the_align, $_img . $_cap, array( 'class' => 'wp-caption' ) );
 					}
-				} else if ( in_array( $ext, bbpc()->get_video_extensions() ) ) {
+				} else if ( in_array( $ext, gdbbx()->get_video_extensions() ) ) {
 					$title   = trim( $ax->post_title );
 					$caption = trim( $ax->post_excerpt );
 
@@ -297,9 +297,9 @@ class Shortcodes extends Feature {
 					} else {
 						$_cap = $this->_tag( 'div', 'caption', $the_caption, array( 'class' => 'wp-caption-text' ), array(), true );
 
-						return $this->_tag( 'div', 'attachment bbpc-with-caption', $the_video . $_cap );
+						return $this->_tag( 'div', 'attachment gdbbx-with-caption', $the_video . $_cap );
 					}
-				} else if ( in_array( $ext, bbpc()->get_audio_extensions() ) ) {
+				} else if ( in_array( $ext, gdbbx()->get_audio_extensions() ) ) {
 					$title   = trim( $ax->post_title );
 					$caption = trim( $ax->post_excerpt );
 
@@ -325,10 +325,10 @@ class Shortcodes extends Feature {
 					} else {
 						$_cap = $this->_tag( 'div', 'caption', $the_caption, array( 'class' => 'wp-caption-text' ), array(), true );
 
-						return $this->_tag( 'div', 'attachment bbpc-with-caption', $the_audio . $_cap );
+						return $this->_tag( 'div', 'attachment gdbbx-with-caption', $the_audio . $_cap );
 					}
 				} else {
-					$defaults = apply_filters( 'bbpc_attachment_file_defaults', array(
+					$defaults = apply_filters( 'gdbbx_attachment_file_defaults', array(
 						'target' => '_blank',
 						'rel'    => '',
 						'style'  => '',
@@ -364,24 +364,24 @@ class Shortcodes extends Feature {
 			if ( bbp_is_topic( $quote ) ) {
 				$url     = get_permalink( $quote );
 				$ath     = $header == 'user' ? bbp_get_topic_author_display_name( $quote ) : '#' . $quote;
-				$private = ! bbpc_is_user_allowed_to_topic( $quote );
+				$private = ! gdbbx_is_user_allowed_to_topic( $quote );
 			} else if ( bbp_is_reply( $quote ) ) {
 				$url     = bbp_get_reply_url( $quote );
 				$ath     = $header == 'user' ? bbp_get_reply_author_display_name( $quote ) : '#' . $quote;
-				$private = ! bbpc_is_user_allowed_to_reply( $quote );
+				$private = ! gdbbx_is_user_allowed_to_reply( $quote );
 			}
 
 			if ( ! empty( $url ) && $header != 'hide' ) {
 				$full  = $header == 'user' ? $ath . ' ' . __( "wrote", "bbp-core" ) : $ath;
-				$title = '<div class="bbpc-quote-title"><a href="' . $url . '">' . $full . ':</a></div>';
+				$title = '<div class="gdbbx-quote-title"><a href="' . $url . '">' . $full . ':</a></div>';
 			}
 
 			if ( $private ) {
 				$content = __( "This quote contains content marked as private.", "bbp-core" );
 
-				$atts['class'] = 'bbpc-quote-is-private';
+				$atts['class'] = 'gdbbx-quote-is-private';
 			} else {
-				bbpc()->set_inside_content_shortcode( $quote );
+				gdbbx()->set_inside_content_shortcode( $quote );
 
 				if ( bbp_is_topic( $quote ) ) {
 					$content = bbp_get_topic_content( $quote );
@@ -389,7 +389,7 @@ class Shortcodes extends Feature {
 					$content = bbp_get_reply_content( $quote );
 				}
 
-				bbpc()->set_inside_content_shortcode( $quote, false );
+				gdbbx()->set_inside_content_shortcode( $quote, false );
 			}
 
 			return $this->_tag( 'blockquote', 'quote', $title . $content, $atts );
@@ -418,23 +418,23 @@ class Shortcodes extends Feature {
 			if ( bbp_is_topic( $id ) ) {
 				$url     = get_permalink( $id );
 				$ath     = $header == 'user' ? bbp_get_topic_author_display_name( $id ) : '#' . $id;
-				$private = ! bbpc_is_user_allowed_to_topic( $id );
+				$private = ! gdbbx_is_user_allowed_to_topic( $id );
 			} else if ( bbp_is_reply( $id ) ) {
 				$url     = bbp_get_reply_url( $id );
 				$ath     = $header == 'user' ? bbp_get_reply_author_display_name( $id ) : '#' . $id;
-				$private = ! bbpc_is_user_allowed_to_reply( $id );
+				$private = ! gdbbx_is_user_allowed_to_reply( $id );
 			}
 
 			if ( ! empty( $url ) ) {
 				$full  = $header == 'user' ? $ath . ' ' . __( "wrote", "bbp-core" ) : $ath;
-				$title = '<div class="bbpc-quote-title"><a href="' . $url . '">' . $full . ':</a></div>';
+				$title = '<div class="gdbbx-quote-title"><a href="' . $url . '">' . $full . ':</a></div>';
 			}
 		}
 
 		if ( $private ) {
 			$content = __( "This quote contains content marked as private.", "bbp-core" );
 
-			$atts['class'] = 'bbpc-quote-is-private';
+			$atts['class'] = 'gdbbx-quote-is-private';
 		}
 
 		return $this->_tag( 'blockquote', 'quote', $title . $content, $atts );

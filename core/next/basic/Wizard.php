@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -195,7 +195,7 @@ class Wizard {
 			'finish'      => array( 'label' => __( "Finish", "bbp-core" ) )
 		);
 
-		$this->setup_panel( bbpc_admin()->panel );
+		$this->setup_panel( gdbbx_admin()->panel );
 	}
 
 	public function setup_panel( $panel ) {
@@ -238,19 +238,19 @@ class Wizard {
 	}
 
 	public function get_form_action() {
-		return 'admin.php?page=bbp-core-wizard&panel=' . $this->next_panel();
+		return 'admin.php?page=gd-bbpress-toolbox-wizard&panel=' . $this->next_panel();
 	}
 
 	public function get_form_nonce() {
-		return wp_create_nonce( 'bbpc-wizard-nonce-' . $this->current_panel() );
+		return wp_create_nonce( 'gdbbx-wizard-nonce-' . $this->current_panel() );
 	}
 
 	public function panel_postback() {
-		$post = $_POST['bbpc']['wizard'];
+		$post = $_POST['gdbbx']['wizard'];
 
 		$this->setup_panel( $post['_page'] );
 
-		if ( wp_verify_nonce( $post['_nonce'], 'bbpc-wizard-nonce-' . $this->current_panel() ) ) {
+		if ( wp_verify_nonce( $post['_nonce'], 'gdbbx-wizard-nonce-' . $this->current_panel() ) ) {
 			$data = isset( $post[ $this->current_panel() ] ) ? (array) $post[ $this->current_panel() ] : array();
 
 			switch ( $this->current_panel() ) {
@@ -271,119 +271,119 @@ class Wizard {
 					break;
 			}
 
-			wp_redirect( 'admin.php?page=bbp-core-wizard&panel=' . $this->next_panel() );
+			wp_redirect( 'admin.php?page=gd-bbpress-toolbox-wizard&panel=' . $this->next_panel() );
 			exit;
 		} else {
-			wp_redirect( 'admin.php?page=bbp-core-wizard&panel=' . $this->current_panel() );
+			wp_redirect( 'admin.php?page=gd-bbpress-toolbox-wizard&panel=' . $this->current_panel() );
 			exit;
 		}
 	}
 
 	private function _copy_settings( $what, $group = 'features' ) {
 		foreach ( $this->_default[ $what ] as $key => $value ) {
-			bbpc()->set( $key, $value, $group );
+			gdbbx()->set( $key, $value, $group );
 		}
 	}
 
 	private function _postback_intro( $data ) {
 		if ( isset( $data['toolbar'] ) && $data['toolbar'] == 'yes' ) {
-			bbpc()->set( 'toolbar', true, 'load' );
+			gdbbx()->set( 'toolbar', true, 'load' );
 
 			$this->_copy_settings( 'toolbar' );
 		} else {
-			bbpc()->set( 'toolbar', false, 'load' );
+			gdbbx()->set( 'toolbar', false, 'load' );
 		}
 
 		if ( isset( $data['signatures'] ) && $data['signatures'] == 'yes' ) {
-			bbpc()->set( 'signatures', true, 'load' );
+			gdbbx()->set( 'signatures', true, 'load' );
 
 			$this->_copy_settings( 'signatures' );
 		} else {
-			bbpc()->set( 'signatures', false, 'load' );
+			gdbbx()->set( 'signatures', false, 'load' );
 		}
 
 		if ( isset( $data['bbcodes'] ) && $data['bbcodes'] == 'yes' ) {
-			bbpc()->set( 'bbcodes', true, 'load' );
+			gdbbx()->set( 'bbcodes', true, 'load' );
 		} else {
-			bbpc()->set( 'bbcodes', false, 'load' );
+			gdbbx()->set( 'bbcodes', false, 'load' );
 		}
 
 		if ( isset( $data['quotes'] ) && $data['quotes'] == 'yes' ) {
-			bbpc()->set( 'quote', true, 'load' );
+			gdbbx()->set( 'quote', true, 'load' );
 
 			$this->_copy_settings( 'quotes' );
 
-			bbpc()->set( 'tweaks__kses_allowed_override', 'expanded', 'features' );
+			gdbbx()->set( 'tweaks__kses_allowed_override', 'expanded', 'features' );
 
 			if ( isset( $data['bbcodes'] ) && $data['bbcodes'] == 'yes' ) {
-				bbpc()->set( 'quote__method', 'bbcode', 'features' );
+				gdbbx()->set( 'quote__method', 'bbcode', 'features' );
 			} else {
-				bbpc()->set( 'quote__method', 'html', 'features' );
+				gdbbx()->set( 'quote__method', 'html', 'features' );
 			}
 		} else {
-			bbpc()->set( 'quote', false, 'load' );
+			gdbbx()->set( 'quote', false, 'load' );
 		}
 
-		bbpc()->save( 'load' );
-		bbpc()->save( 'features' );
-		bbpc()->save( 'tools' );
-		bbpc()->save( 'bbpress' );
+		gdbbx()->save( 'load' );
+		gdbbx()->save( 'features' );
+		gdbbx()->save( 'tools' );
+		gdbbx()->save( 'bbpress' );
 	}
 
 	private function _postback_features( $data ) {
 		if ( isset( $data['canned'] ) && $data['canned'] == 'yes' ) {
-			bbpc()->set( 'canned-replies', true, 'load' );
+			gdbbx()->set( 'canned-replies', true, 'load' );
 
 			$this->_copy_settings( 'canned' );
 		} else {
-			bbpc()->set( 'canned-replies', false, 'load' );
+			gdbbx()->set( 'canned-replies', false, 'load' );
 		}
 
 		if ( isset( $data['thanks'] ) && $data['thanks'] == 'yes' ) {
-			bbpc()->set( 'thanks', true, 'load' );
+			gdbbx()->set( 'thanks', true, 'load' );
 
 			$this->_copy_settings( 'thanks' );
 		} else {
-			bbpc()->set( 'thanks', false, 'load' );
+			gdbbx()->set( 'thanks', false, 'load' );
 		}
 
 		if ( isset( $data['report'] ) && $data['report'] == 'yes' ) {
-			bbpc()->set( 'report', true, 'load' );
+			gdbbx()->set( 'report', true, 'load' );
 
 			$this->_copy_settings( 'report' );
 		} else {
-			bbpc()->set( 'report', false, 'load' );
+			gdbbx()->set( 'report', false, 'load' );
 		}
 
 		if ( isset( $data['private'] ) && $data['private'] == 'yes' ) {
-			bbpc()->set( 'private-topics', true, 'load' );
-			bbpc()->set( 'private-replies', true, 'load' );
+			gdbbx()->set( 'private-topics', true, 'load' );
+			gdbbx()->set( 'private-replies', true, 'load' );
 
 			$this->_copy_settings( 'private' );
 		} else {
-			bbpc()->set( 'private-topics', false, 'load' );
-			bbpc()->set( 'private-replies', false, 'load' );
+			gdbbx()->set( 'private-topics', false, 'load' );
+			gdbbx()->set( 'private-replies', false, 'load' );
 		}
 
 		if ( isset( $data['stats'] ) && $data['stats'] == 'yes' ) {
-			bbpc()->set( 'users-stats', true, 'load' );
+			gdbbx()->set( 'users-stats', true, 'load' );
 
 			$this->_copy_settings( 'stats' );
 
 			if ( isset( $data['thanks'] ) && $data['thanks'] == 'yes' ) {
-				bbpc()->set( 'users-stats__show_thanks_given', true, 'features' );
-				bbpc()->set( 'users-stats__show_thanks_received', true, 'features' );
+				gdbbx()->set( 'users-stats__show_thanks_given', true, 'features' );
+				gdbbx()->set( 'users-stats__show_thanks_received', true, 'features' );
 			}
 		} else {
-			bbpc()->set( 'users-stats', false, 'load' );
+			gdbbx()->set( 'users-stats', false, 'load' );
 		}
 
-		bbpc()->save( 'load' );
-		bbpc()->save( 'features' );
+		gdbbx()->save( 'load' );
+		gdbbx()->save( 'features' );
 	}
 
 	private function _postback_editors( $data ) {
-		bbpc()->set( 'content-editor', true, 'load' );
+		gdbbx()->set( 'content-editor', true, 'load' );
 
 		$this->_copy_settings( 'content_editor' );
 
@@ -392,57 +392,57 @@ class Wizard {
 		if ( isset( $data['replace'] ) && $data['replace'] == 'yes' ) {
 			switch ( $data['editor'] ) {
 				case 'quicktags':
-					bbpc()->set( 'content-editor__topic', 'richarea', 'features' );
-					bbpc()->set( 'content-editor__reply', 'richarea', 'features' );
+					gdbbx()->set( 'content-editor__topic', 'richarea', 'features' );
+					gdbbx()->set( 'content-editor__reply', 'richarea', 'features' );
 					break;
 				case 'bbcodes':
-					bbpc()->set( 'content-editor__topic', 'bbcodes', 'features' );
-					bbpc()->set( 'content-editor__reply', 'bbcodes', 'features' );
+					gdbbx()->set( 'content-editor__topic', 'bbcodes', 'features' );
+					gdbbx()->set( 'content-editor__reply', 'bbcodes', 'features' );
 					break;
 				case 'teeny':
 				case 'tinymce':
 					$update_tinymce_settings = true;
 
-					bbpc()->set( 'content-editor__topic', 'tinymce', 'features' );
-					bbpc()->set( 'content-editor__reply', 'tinymce', 'features' );
-					bbpc()->set( 'content-editor__tinymce_topic_teeny', $data['editor'] == 'teeny', 'features' );
-					bbpc()->set( 'content-editor__tinymce_reply_teeny', $data['editor'] == 'teeny', 'features' );
+					gdbbx()->set( 'content-editor__topic', 'tinymce', 'features' );
+					gdbbx()->set( 'content-editor__reply', 'tinymce', 'features' );
+					gdbbx()->set( 'content-editor__tinymce_topic_teeny', $data['editor'] == 'teeny', 'features' );
+					gdbbx()->set( 'content-editor__tinymce_reply_teeny', $data['editor'] == 'teeny', 'features' );
 					break;
 			}
 		}
 
 		if ( isset( $data['library'] ) && $data['library'] == 'yes' ) {
-			bbpc()->set( 'tweaks__participant_media_library_upload', true, 'features' );
+			gdbbx()->set( 'tweaks__participant_media_library_upload', true, 'features' );
 
 			if ( $update_tinymce_settings ) {
-				bbpc()->set( 'content-editor__tinymce_topic_media_buttons', true, 'features' );
-				bbpc()->set( 'content-editor__tinymce_reply_media_buttons', true, 'features' );
+				gdbbx()->set( 'content-editor__tinymce_topic_media_buttons', true, 'features' );
+				gdbbx()->set( 'content-editor__tinymce_reply_media_buttons', true, 'features' );
 			}
 		} else {
-			bbpc()->set( 'tweaks__participant_media_library_upload', false, 'features' );
+			gdbbx()->set( 'tweaks__participant_media_library_upload', false, 'features' );
 		}
 
-		bbpc()->save( 'features' );
+		gdbbx()->save( 'features' );
 	}
 
 	private function _postback_attachments( $data ) {
 		if ( isset( $data['attach'] ) && $data['attach'] == 'yes' ) {
-			bbpc()->set( 'attachments', true, 'load' );
+			gdbbx()->set( 'attachments', true, 'load' );
 
 			foreach ( $this->_default['attachments'] as $key => $value ) {
-				bbpc()->set( $key, $value, 'features' );
+				gdbbx()->set( $key, $value, 'features' );
 			}
 
 			if ( isset( $data['enhance'] ) && $data['enhance'] == 'yes' ) {
-				bbpc()->set( 'attachments__method', 'enhanced', 'features' );
+				gdbbx()->set( 'attachments__method', 'enhanced', 'features' );
 			} else {
-				bbpc()->set( 'attachments__method', 'classic', 'features' );
+				gdbbx()->set( 'attachments__method', 'classic', 'features' );
 			}
 
 			if ( isset( $data['images'] ) && $data['images'] == 'yes' ) {
-				bbpc()->set( 'attachments__files_list_mode', 'mixed', 'features' );
+				gdbbx()->set( 'attachments__files_list_mode', 'mixed', 'features' );
 			} else {
-				bbpc()->set( 'attachments__files_list_mode', 'list', 'features' );
+				gdbbx()->set( 'attachments__files_list_mode', 'list', 'features' );
 			}
 
 			$mime = isset( $data['mime'] ) ? sanitize_text_field( $data['mime'] ) : 'all';
@@ -460,35 +460,35 @@ class Wizard {
 					break;
 			}
 
-			bbpc()->set( 'attachments__mime_types_list', $value, 'features' );
+			gdbbx()->set( 'attachments__mime_types_list', $value, 'features' );
 		} else {
-			bbpc()->set( 'attachments', true, 'load' );
+			gdbbx()->set( 'attachments', true, 'load' );
 		}
 
-		bbpc()->save( 'load' );
-		bbpc()->save( 'features' );
+		gdbbx()->save( 'load' );
+		gdbbx()->save( 'features' );
 	}
 
 	private function _postback_tracking( $data ) {
 		if ( isset( $data['online'] ) && $data['online'] == 'yes' ) {
-			bbpc()->set( 'active', true, 'online' );
-			bbpc()->set( 'track_users', true, 'online' );
-			bbpc()->set( 'track_guests', true, 'online' );
+			gdbbx()->set( 'active', true, 'online' );
+			gdbbx()->set( 'track_users', true, 'online' );
+			gdbbx()->set( 'track_guests', true, 'online' );
 		} else {
-			bbpc()->set( 'active', false, 'online' );
+			gdbbx()->set( 'active', false, 'online' );
 		}
 
 		if ( isset( $data['activity'] ) && $data['activity'] == 'yes' ) {
 			foreach ( $this->_default['activity'] as $key => $value ) {
-				bbpc()->set( $key, $value, 'tools' );
+				gdbbx()->set( $key, $value, 'tools' );
 			}
 		} else {
 			foreach ( $this->_default['activity_off'] as $key => $value ) {
-				bbpc()->set( $key, $value, 'tools' );
+				gdbbx()->set( $key, $value, 'tools' );
 			}
 		}
 
-		bbpc()->save( 'online' );
-		bbpc()->save( 'tools' );
+		gdbbx()->save( 'online' );
+		gdbbx()->save( 'tools' );
 	}
 }

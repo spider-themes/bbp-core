@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
-use SpiderDevs\Plugin\BBPC\Features\Icons;
+use Dev4Press\Plugin\GDBBX\Features\Icons;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -40,8 +40,8 @@ class Enqueue {
 	public function init() {
 		$this->rtl = is_rtl();
 
-		$this->bulk_js  = bbpc()->get( 'load_bulk_js' );
-		$this->bulk_css = bbpc()->get( 'load_bulk_css' );
+		$this->bulk_js  = gdbbx()->get( 'load_bulk_js' );
+		$this->bulk_css = gdbbx()->get( 'load_bulk_css' );
 	}
 
 	public function locale() {
@@ -53,7 +53,7 @@ class Enqueue {
 			return;
 		}
 
-		if ( apply_filters( 'bbpc_enqueue_files', bbpc()->get( 'load_always' ) || bbpc_is_bbpress() ) ) {
+		if ( apply_filters( 'gdbbx_enqueue_files', gdbbx()->get( 'load_always' ) || gdbbx_is_bbpress() ) ) {
 			$this->core();
 		}
 
@@ -61,40 +61,40 @@ class Enqueue {
 	}
 
 	public function fitvids() {
-		if ( bbpc()->get( 'load_fitvids' ) ) {
+		if ( gdbbx()->get( 'load_fitvids' ) ) {
 			wp_enqueue_script( 'd4plib-fitvids' );
 
-			do_action( 'bbpc_enqueue_done_fitvids' );
+			do_action( 'gdbbx_enqueue_done_fitvids' );
 		}
 	}
 
 	public function tinymce() {
-		wp_enqueue_style( $this->rtl_handle( 'bbpc-front-tinymce' ) );
+		wp_enqueue_style( $this->rtl_handle( 'gdbbx-front-tinymce' ) );
 
-		do_action( 'bbpc_enqueue_done_tinymce' );
+		do_action( 'gdbbx_enqueue_done_tinymce' );
 	}
 
 	public function widgets() {
 		if ( ! $this->bulk_css ) {
-			wp_enqueue_style( $this->rtl_handle( 'bbpc-front-widgets' ) );
+			wp_enqueue_style( $this->rtl_handle( 'gdbbx-front-widgets' ) );
 		} else {
 			$this->core();
 		}
 
-		do_action( 'bbpc_enqueue_done_widgets' );
+		do_action( 'gdbbx_enqueue_done_widgets' );
 	}
 
 	public function toolbar() {
 		if ( ! $this->bulk_css ) {
 			$this->font();
 
-			wp_enqueue_style( $this->rtl_handle( 'bbpc-front-toolbar' ) );
+			wp_enqueue_style( $this->rtl_handle( 'gdbbx-front-toolbar' ) );
 		} else {
 			$this->core();
 		}
 
 		if ( ! $this->bulk_js ) {
-			wp_enqueue_script( 'bbpc-front-toolbar' );
+			wp_enqueue_script( 'gdbbx-front-toolbar' );
 		} else {
 			$this->core();
 		}
@@ -104,30 +104,30 @@ class Enqueue {
 		$this->core();
 
 		if ( ! $this->bulk_css ) {
-			wp_enqueue_style( $this->rtl_handle( 'bbpc-front-attachments' ) );
+			wp_enqueue_style( $this->rtl_handle( 'gdbbx-front-attachments' ) );
 		}
 
 		if ( ! $this->bulk_js ) {
-			wp_enqueue_script( 'bbpc-front-attachments' );
+			wp_enqueue_script( 'gdbbx-front-attachments' );
 		}
 
-		do_action( 'bbpc_enqueue_done_attachments' );
+		do_action( 'gdbbx_enqueue_done_attachments' );
 	}
 
 	public function icons() {
 		if ( Icons::instance()->settings['mode'] == 'images' ) {
-			wp_enqueue_style( 'bbpc-image-icons' );
+			wp_enqueue_style( 'gdbbx-image-icons' );
 
-			do_action( 'bbpc_enqueue_done_icons' );
+			do_action( 'gdbbx_enqueue_done_icons' );
 		}
 	}
 
 	public function font() {
 		if ( ! $this->bulk_css ) {
-			wp_enqueue_style( 'bbpc-font-icons' );
+			wp_enqueue_style( 'gdbbx-font-icons' );
 		}
 
-		do_action( 'bbpc_enqueue_done_font' );
+		do_action( 'gdbbx_enqueue_done_font' );
 	}
 
 	public function schedule() {
@@ -136,7 +136,7 @@ class Enqueue {
 		wp_enqueue_style( 'd4plib3-flatpickr' );
 		wp_enqueue_script( $this->flatpickr['load'] );
 
-		do_action( 'bbpc_enqueue_done_schedule' );
+		do_action( 'gdbbx_enqueue_done_schedule' );
 	}
 
 	public function core() {
@@ -146,18 +146,18 @@ class Enqueue {
 			$this->font();
 
 			if ( $this->bulk_css ) {
-				wp_enqueue_style( $this->rtl_handle( 'bbpc-toolbox' ) );
+				wp_enqueue_style( $this->rtl_handle( 'gdbbx-toolbox' ) );
 			} else {
-				wp_enqueue_style( $this->rtl_handle( 'bbpc-front-features' ) );
+				wp_enqueue_style( $this->rtl_handle( 'gdbbx-front-features' ) );
 			}
 
 			if ( $this->bulk_js ) {
-				wp_enqueue_script( 'bbpc-toolbox' );
+				wp_enqueue_script( 'gdbbx-toolbox' );
 			} else {
-				wp_enqueue_script( 'bbpc-front-features' );
+				wp_enqueue_script( 'gdbbx-front-features' );
 			}
 
-			do_action( 'bbpc_enqueue_done_core' );
+			do_action( 'gdbbx_enqueue_done_core' );
 
 			$this->register_settings();
 
@@ -178,9 +178,9 @@ class Enqueue {
 	}
 
 	public function file( $type, $name, $path ) : string {
-		$get = BBPC_URL . 'templates/default/' . $path . '/' . $name;
+		$get = GDBBX_URL . 'templates/default/' . $path . '/' . $name;
 
-		if ( ! bbpc_plugin()->debug ) {
+		if ( ! gdbbx_plugin()->debug ) {
 			$get .= '.min';
 		}
 
@@ -190,46 +190,46 @@ class Enqueue {
 	}
 
 	public function register_styles() {
-		$_font_embedded = bbpc()->get( 'font_icons_embedded' );
+		$_font_embedded = gdbbx()->get( 'font_icons_embedded' );
 		$_font_name     = $_font_embedded ? 'font-embed' : 'font';
 		$_bulk_name     = $_font_embedded ? 'toolbox-embed' : 'toolbox';
 
-		wp_register_style( 'bbpc-toolbox', $this->file( 'css', $_bulk_name, 'css' ), array(), bbpc()->file_version() );
-		wp_register_style( 'bbpc-toolbox-rtl', $this->file( 'css', 'toolbox-rtl', 'css' ), array( 'bbpc-toolbox' ), bbpc()->file_version() );
+		wp_register_style( 'gdbbx-toolbox', $this->file( 'css', $_bulk_name, 'css' ), array(), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-toolbox-rtl', $this->file( 'css', 'toolbox-rtl', 'css' ), array( 'gdbbx-toolbox' ), gdbbx()->file_version() );
 
-		wp_register_style( 'bbpc-font-icons', $this->file( 'css', $_font_name, 'css' ), array(), bbpc()->file_version() );
-		wp_register_style( 'bbpc-image-icons', $this->file( 'css', 'icons', 'css' ), array(), bbpc()->file_version() );
+		wp_register_style( 'gdbbx-font-icons', $this->file( 'css', $_font_name, 'css' ), array(), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-image-icons', $this->file( 'css', 'icons', 'css' ), array(), gdbbx()->file_version() );
 
-		wp_register_style( 'bbpc-front-widgets', $this->file( 'css', 'widgets', 'css' ), array(), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-widgets-rtl', $this->file( 'css', 'widgets-rtl', 'css' ), array( 'bbpc-front-widgets' ), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-toolbar', $this->file( 'css', 'toolbar', 'css' ), array( 'bbpc-font-icons' ), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-toolbar-rtl', $this->file( 'css', 'toolbar-rtl', 'css' ), array( 'bbpc-front-toolbar' ), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-tinymce', $this->file( 'css', 'tinymce', 'css' ), array(), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-tinymce-rtl', $this->file( 'css', 'tinymce-rtl', 'css' ), array( 'bbpc-front-tinymce' ), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-features', $this->file( 'css', 'features', 'css' ), array( 'bbpc-font-icons' ), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-features-rtl', $this->file( 'css', 'features-rtl', 'css' ), array( 'bbpc-front-features' ), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-attachments', $this->file( 'css', 'attachments', 'css' ), array(), bbpc()->file_version() );
-		wp_register_style( 'bbpc-front-attachments-rtl', $this->file( 'css', 'attachments-rtl', 'css' ), array( 'bbpc-front-attachments' ), bbpc()->file_version() );
+		wp_register_style( 'gdbbx-front-widgets', $this->file( 'css', 'widgets', 'css' ), array(), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-widgets-rtl', $this->file( 'css', 'widgets-rtl', 'css' ), array( 'gdbbx-front-widgets' ), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-toolbar', $this->file( 'css', 'toolbar', 'css' ), array( 'gdbbx-font-icons' ), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-toolbar-rtl', $this->file( 'css', 'toolbar-rtl', 'css' ), array( 'gdbbx-front-toolbar' ), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-tinymce', $this->file( 'css', 'tinymce', 'css' ), array(), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-tinymce-rtl', $this->file( 'css', 'tinymce-rtl', 'css' ), array( 'gdbbx-front-tinymce' ), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-features', $this->file( 'css', 'features', 'css' ), array( 'gdbbx-font-icons' ), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-features-rtl', $this->file( 'css', 'features-rtl', 'css' ), array( 'gdbbx-front-features' ), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-attachments', $this->file( 'css', 'attachments', 'css' ), array(), gdbbx()->file_version() );
+		wp_register_style( 'gdbbx-front-attachments-rtl', $this->file( 'css', 'attachments-rtl', 'css' ), array( 'gdbbx-front-attachments' ), gdbbx()->file_version() );
 
-		wp_register_style( 'd4plib3-flatpickr', BBPC_URL . 'd4pjs/flatpickr/flatpickr.min.css', array(), '4.6.3' );
+		wp_register_style( 'd4plib3-flatpickr', GDBBX_URL . 'd4pjs/flatpickr/flatpickr.min.css', array(), '4.6.3' );
 	}
 
 	public function register_scripts() {
-		wp_register_script( 'd4plib-fitvids', BBPC_URL . 'd4pjs/fitvids/jquery.fitvids' . ( bbpc_plugin()->debug ? '' : '.min' ) . '.js', array( 'jquery' ), bbpc()->file_version(), true );
+		wp_register_script( 'd4plib-fitvids', GDBBX_URL . 'd4pjs/fitvids/jquery.fitvids' . ( gdbbx_plugin()->debug ? '' : '.min' ) . '.js', array( 'jquery' ), gdbbx()->file_version(), true );
 
-		wp_register_script( 'bbpc-toolbox', $this->file( 'js', 'toolbox', 'js' ), array( 'jquery' ), bbpc()->file_version(), true );
+		wp_register_script( 'gdbbx-toolbox', $this->file( 'js', 'toolbox', 'js' ), array( 'jquery' ), gdbbx()->file_version(), true );
 
-		wp_register_script( 'bbpc-front-features', $this->file( 'js', 'features', 'js' ), array( 'jquery' ), bbpc()->file_version(), true );
-		wp_register_script( 'bbpc-front-toolbar', $this->file( 'js', 'toolbar', 'js' ), array(
+		wp_register_script( 'gdbbx-front-features', $this->file( 'js', 'features', 'js' ), array( 'jquery' ), gdbbx()->file_version(), true );
+		wp_register_script( 'gdbbx-front-toolbar', $this->file( 'js', 'toolbar', 'js' ), array(
 			'jquery',
-			'bbpc-front-features'
-		), bbpc()->file_version(), true );
-		wp_register_script( 'bbpc-front-attachments', $this->file( 'js', 'attachments', 'js' ), array(
+			'gdbbx-front-features'
+		), gdbbx()->file_version(), true );
+		wp_register_script( 'gdbbx-front-attachments', $this->file( 'js', 'attachments', 'js' ), array(
 			'jquery',
-			'bbpc-front-features'
-		), bbpc()->file_version(), true );
+			'gdbbx-front-features'
+		), gdbbx()->file_version(), true );
 
-		wp_register_script( 'd4plib3-flatpickr', BBPC_URL . 'd4pjs/flatpickr/flatpickr.min.js', array( 'jquery' ), '4.6.3', true );
+		wp_register_script( 'd4plib3-flatpickr', GDBBX_URL . 'd4pjs/flatpickr/flatpickr.min.js', array( 'jquery' ), '4.6.3', true );
 
 		$locale = $this->locale();
 
@@ -237,7 +237,7 @@ class Enqueue {
 			$code = strtolower( substr( $locale, 0, 2 ) );
 
 			if ( in_array( $code, array( 'de', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt', 'ru', 'sr' ) ) ) {
-				wp_register_script( 'd4plib3-flatpickr-' . $code, BBPC_URL . 'd4pjs/flatpickr/l10n/' . $code . '.js', array( 'd4plib3-flatpickr' ), '4.6.3', true );
+				wp_register_script( 'd4plib3-flatpickr-' . $code, GDBBX_URL . 'd4pjs/flatpickr/l10n/' . $code . '.js', array( 'd4plib3-flatpickr' ), '4.6.3', true );
 
 				$this->flatpickr['code'] = $code;
 				$this->flatpickr['load'] = 'd4plib3-flatpickr-' . $code;
@@ -250,12 +250,12 @@ class Enqueue {
 			return;
 		}
 
-		$handle = $this->bulk_js ? 'bbpc-toolbox' : 'bbpc-front-features';
-		$values = apply_filters( 'bbpc_script_values', array(
+		$handle = $this->bulk_js ? 'gdbbx-toolbox' : 'gdbbx-front-features';
+		$values = apply_filters( 'gdbbx_script_values', array(
 			'url'              => admin_url( 'admin-ajax.php' ),
 			'now'              => time(),
 			'wp_editor'        => bbp_use_wp_editor(),
-			'last_cookie'      => bbpc()->session_cookie_expiration(),
+			'last_cookie'      => gdbbx()->session_cookie_expiration(),
 			'flatpickr_locale' => $this->flatpickr['code'],
 			'load'             => array(),
 			'text'             => array(
@@ -263,7 +263,7 @@ class Enqueue {
 			)
 		) );
 
-		wp_localize_script( $handle, 'bbpc_data', $values );
+		wp_localize_script( $handle, 'gdbbx_data', $values );
 
 		$this->settings_loaded = true;
 	}

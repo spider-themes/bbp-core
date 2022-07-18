@@ -1,11 +1,11 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\BB;
-use SpiderDevs\Plugin\BBPC\BBCodes\Registrator;
-use SpiderDevs\Plugin\BBPC\BBCodes\Source;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\BB;
+use Dev4Press\Plugin\GDBBX\BBCodes\Registrator;
+use Dev4Press\Plugin\GDBBX\BBCodes\Source;
 use WP_Post;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -59,7 +59,7 @@ class BBCodes extends Feature {
 	}
 
 	public function load() {
-		add_filter( 'bbpc_script_values', array( $this, 'script_values' ) );
+		add_filter( 'gdbbx_script_values', array( $this, 'script_values' ) );
 	}
 
 	public function core() {
@@ -114,16 +114,16 @@ class BBCodes extends Feature {
 
 	public function show_notice() {
 		$messages = array(
-			apply_filters( 'bbpc_notice_bbcodes_message_format', __( "You can use BBCodes to format your content.", "bbp-core" ) )
+			apply_filters( 'gdbbx_notice_bbcodes_message_format', __( "You can use BBCodes to format your content.", "bbp-core" ) )
 		);
 
 		if ( count( $this->_active ) != count( $this->_allowed ) ) {
-			$messages[] = apply_filters( 'bbpc_notice_bbcodes_message_advanced', __( "Your account can't use all available BBCodes, they will be stripped before saving.", "bbp-core" ) );
+			$messages[] = apply_filters( 'gdbbx_notice_bbcodes_message_advanced', __( "Your account can't use all available BBCodes, they will be stripped before saving.", "bbp-core" ) );
 		}
 
 		$notice = '<div class="bbp-template-notice"><p>' . join( '<br/>', $messages ) . '</p></div>';
 
-		echo apply_filters( 'bbpc_notice_bbcodes_status', $notice, $messages );
+		echo apply_filters( 'gdbbx_notice_bbcodes_status', $notice, $messages );
 	}
 
 	public function content_strip_on_save( $reply_data ) {
@@ -141,7 +141,7 @@ class BBCodes extends Feature {
 	}
 
 	public function render( $bbcode, $atts, $content = null ) : string {
-		if ( method_exists( bbpc_module_bbcodes(), 'shortcode_' . $bbcode ) ) {
+		if ( method_exists( gdbbx_module_bbcodes(), 'shortcode_' . $bbcode ) ) {
 			return Registrator::instance()->{'shortcode_' . $bbcode}( $atts, $content );
 		}
 
@@ -201,16 +201,16 @@ class BBCodes extends Feature {
 
 		$scope = $post instanceof WP_Post && BB::i()->is_bbpress_post_type( $post->post_type );
 
-		return apply_filters( 'bbpc_bbcode_in_valid_scope', $scope, $tag );
+		return apply_filters( 'gdbbx_bbcode_in_valid_scope', $scope, $tag );
 	}
 
 	private function _prepare() {
-		$raw = bbpc()->group_get( 'bbcodes' );
+		$raw = gdbbx()->group_get( 'bbcodes' );
 
 		if ( is_user_logged_in() ) {
 			global $current_user;
 
-			$valid = bbpc_list_user_roles();
+			$valid = gdbbx_list_user_roles();
 
 			if ( is_array( $current_user->roles ) ) {
 				$matched = array_intersect( $current_user->roles, $valid );
@@ -253,7 +253,7 @@ class BBCodes extends Feature {
 	}
 
 	private function _run() {
-		add_action( 'bbpc_core', array( $this, 'core' ) );
-		add_action( 'bbpc_template', array( $this, 'load' ) );
+		add_action( 'gdbbx_core', array( $this, 'core' ) );
+		add_action( 'gdbbx_template', array( $this, 'load' ) );
 	}
 }

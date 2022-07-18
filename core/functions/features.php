@@ -1,14 +1,14 @@
 <?php
 
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
-use SpiderDevs\Plugin\BBPC\Basic\Posts;
-use SpiderDevs\Plugin\BBPC\Features\BBCodes;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Basic\Posts;
+use Dev4Press\Plugin\GDBBX\Features\BBCodes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function bbpc_get_template_part( $name ) {
+function gdbbx_get_template_part( $name ) {
 	$stack = bbp_get_template_stack();
 
 	$found = false;
@@ -20,18 +20,18 @@ function bbpc_get_template_part( $name ) {
 	}
 
 	if ( $found === false ) {
-		$found = BBPC_PATH . 'templates/default/widgets/' . $name;
+		$found = GDBBX_PATH . 'templates/default/widgets/' . $name;
 
 		if ( ! file_exists( $found ) ) {
-			$found = BBPC_PATH . 'templates/default/bbpress/' . $name;
+			$found = GDBBX_PATH . 'templates/default/bbpress/' . $name;
 		}
 	}
 
 	return $found;
 }
 
-function bbpc_get_user_roles() : array {
-	$roles = [];
+function gdbbx_get_user_roles() : array {
+	$roles = array();
 
 	$dynamic_roles = bbp_get_dynamic_roles();
 
@@ -42,21 +42,19 @@ function bbpc_get_user_roles() : array {
 	return $roles;
 }
 
-function bbpc_list_user_roles() : array {
+function gdbbx_list_user_roles() : array {
 	$dynamic_roles = bbp_get_dynamic_roles();
 
 	return array_keys( $dynamic_roles );
 }
 
-function bbpc_get_new_topics( $timestamp, $offset = 0, $limit = 1000 ) : array {
-	$topics = [];
-	$list   = Posts::instance()->get_new_posts(
-		[
-			'timestamp' => $timestamp,
-			'offset'    => $offset,
-			'limit'     => $limit,
-		]
-	);
+function gdbbx_get_new_topics( $timestamp, $offset = 0, $limit = 1000 ) : array {
+	$topics = array();
+	$list   = Posts::instance()->get_new_posts( array(
+		'timestamp' => $timestamp,
+		'offset'    => $offset,
+		'limit'     => $limit
+	) );
 
 	foreach ( $list as $item ) {
 		$topics[] = $item['type'] == bbp_get_topic_post_type() ? $item['id'] : $item['parent'];
@@ -65,31 +63,28 @@ function bbpc_get_new_topics( $timestamp, $offset = 0, $limit = 1000 ) : array {
 	return $topics;
 }
 
-function bbpc_get_post_attachments( $post_id ) : array {
-	$ids = bbpc_cache()->attachments_get_attachments_ids( $post_id );
+function gdbbx_get_post_attachments( $post_id ) : array {
+	$ids = gdbbx_cache()->attachments_get_attachments_ids( $post_id );
 
 	if ( empty( $ids ) ) {
-		return [];
+		return array();
 	}
 
-	$args = apply_filters(
-		'bbpc_get_post_attachments_args',
-		[
-			'post_type'           => 'attachment',
-			'numberposts'         => - 1,
-			'post_status'         => null,
-			'post__in'            => $ids,
-			'orderby'             => 'ID',
-			'order'               => 'ASC',
-			'ignore_sticky_posts' => true,
-		]
-	);
+	$args = apply_filters( 'gdbbx_get_post_attachments_args', array(
+		'post_type'           => 'attachment',
+		'numberposts'         => - 1,
+		'post_status'         => null,
+		'post__in'            => $ids,
+		'orderby'             => 'ID',
+		'order'               => 'ASC',
+		'ignore_sticky_posts' => true
+	) );
 
 	return get_posts( $args );
 }
 
-function bbpc_default_forum_settings() : array {
-	return [
+function gdbbx_default_forum_settings() : array {
+	return array(
 		'attachments_status'                   => 'inherit',
 		'attachments_hide_from_visitors'       => 'inherit',
 		'attachments_preview_for_visitors'     => 'inherit',
@@ -100,7 +95,7 @@ function bbpc_default_forum_settings() : array {
 		'attachments_max_to_upload_override'   => 'inherit',
 		'attachments_max_to_upload'            => 4,
 		'attachments_mime_types_list_override' => 'inherit',
-		'attachments_mime_types_list'          => [],
+		'attachments_mime_types_list'          => array(),
 		'topic_auto_close_after_active'        => 'inherit',
 		'topic_auto_close_after_notice'        => 'inherit',
 		'topic_auto_close_after_days'          => '',
@@ -109,14 +104,14 @@ function bbpc_default_forum_settings() : array {
 		'privacy_lock_reply_form'              => 'inherit',
 		'privacy_lock_reply_form_message'      => '',
 		'privacy_enable_topic_private'         => 'inherit',
-		'privacy_enable_reply_private'         => 'inherit',
-	];
+		'privacy_enable_reply_private'         => 'inherit'
+	);
 }
 
-function bbpc_get_online_users_list( $limit = 0, $avatar = true, $show = 'profile_link', $before = '<span class="bbpc-online-user">', $after = '</span>' ) : array {
-	$online = bbpc_module_online()->online();
+function gdbbx_get_online_users_list( $limit = 0, $avatar = true, $show = 'profile_link', $before = '<span class="gdbbx-online-user">', $after = '</span>' ) : array {
+	$online = gdbbx_module_online()->online();
 
-	$_users = [];
+	$_users = array();
 	foreach ( $online['roles'] as $role => $users ) {
 		if ( ! empty( $users ) && $limit > 0 ) {
 			$users = array_slice( $users, 0, $limit );
@@ -147,8 +142,8 @@ function bbpc_get_online_users_list( $limit = 0, $avatar = true, $show = 'profil
 	return $_users;
 }
 
-function bbpc_update_shorthand_bbcodes( $content ) {
-	$bbcodes = [
+function gdbbx_update_shorthand_bbcodes( $content ) {
+	$bbcodes = array(
 		'quote',
 		'topic',
 		'reply',
@@ -162,8 +157,8 @@ function bbpc_update_shorthand_bbcodes( $content ) {
 		'img',
 		'embed',
 		'youtube',
-		'vimeo',
-	];
+		'vimeo'
+	);
 
 	foreach ( $bbcodes as $bbc ) {
 		if ( strpos( $content, '[' . $bbc . '=' ) !== false ) {
@@ -174,16 +169,16 @@ function bbpc_update_shorthand_bbcodes( $content ) {
 	return $content;
 }
 
-function bbpc_get_forum_children_ids( $forum_id ) {
-	bbpc_cache()->tracking_run_bulk_forums();
+function gdbbx_get_forum_children_ids( $forum_id ) {
+	gdbbx_cache()->tracking_run_bulk_forums();
 
-	$ids = bbpc_cache()->get( 'forums-parent-child', $forum_id, [] );
+	$ids = gdbbx_cache()->get( 'forums-parent-child', $forum_id, array() );
 
 	if ( ! empty( $ids ) ) {
-		$children = [];
+		$children = array();
 
 		foreach ( $ids as $id ) {
-			if ( $list = bbpc_get_forum_children_ids( $id ) ) {
+			if ( $list = gdbbx_get_forum_children_ids( $id ) ) {
 				$children = array_merge( $children, $list );
 			}
 		}
@@ -194,58 +189,54 @@ function bbpc_get_forum_children_ids( $forum_id ) {
 	return $ids;
 }
 
-function bbpc_get_keymasters() : array {
-	$users = get_users(
-		[
-			'role__in' => bbp_get_keymaster_role(),
-		]
-	);
+function gdbbx_get_keymasters() : array {
+	$users = get_users( array(
+		'role__in' => bbp_get_keymaster_role()
+	) );
 
-	return (array) apply_filters( 'bbpc_get_keymasters', $users );
+	return (array) apply_filters( 'gdbbx_get_keymasters', $users );
 }
 
-function bbpc_get_moderators() : array {
-	$users = get_users(
-		[
-			'role__in' => bbp_get_moderator_role(),
-		]
-	);
+function gdbbx_get_moderators() : array {
+	$users = get_users( array(
+		'role__in' => bbp_get_moderator_role()
+	) );
 
-	return (array) apply_filters( 'bbpc_get_moderators', $users );
+	return (array) apply_filters( 'gdbbx_get_moderators', $users );
 }
 
-function bbpc_get_attachment_id_from_name( $file ) : int {
+function gdbbx_get_attachment_id_from_name( $file ) : int {
 	if ( empty( $file ) ) {
 		return 0;
-	} elseif ( is_numeric( $file ) ) {
+	} else if ( is_numeric( $file ) ) {
 		return absint( $file );
 	} else {
 		$file = strtolower( sanitize_file_name( $file ) );
 
-		$id = bbpc_db()->get_attachment_id_from_name( $file );
+		$id = gdbbx_db()->get_attachment_id_from_name( $file );
 
 		if ( $id > 0 ) {
 			return $id;
 		}
 
-		return bbpc_db()->get_attachment_id_from_name_alt( $file );
+		return gdbbx_db()->get_attachment_id_from_name_alt( $file );
 	}
 }
 
-function bbpc_topic_thread_has_attachments( $topic_id ) : bool {
-	return bbpc_cache()->attachments_has_topic_attachments( $topic_id ) > 0;
+function gdbbx_topic_thread_has_attachments( $topic_id ) : bool {
+	return gdbbx_cache()->attachments_has_topic_attachments( $topic_id ) > 0;
 }
 
-function bbpc_topic_thread_get_attachments( $topic_id ) : array {
-	return bbpc_db()->get_topic_thread_attachments_ids( $topic_id );
+function gdbbx_topic_thread_get_attachments( $topic_id ) : array {
+	return gdbbx_db()->get_topic_thread_attachments_ids( $topic_id );
 }
 
-function bbpc_render_select_dropdown( $values, $selected, $args = [] ) {
-	$defaults = [
+function gdbbx_render_select_dropdown( $values, $selected, $args = array() ) {
+	$defaults = array(
 		'id'    => '',
 		'name'  => '',
-		'class' => 'bbp_dropdown',
-	];
+		'class' => 'bbp_dropdown'
+	);
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -258,10 +249,10 @@ function bbpc_render_select_dropdown( $values, $selected, $args = [] ) {
 	echo '</select>';
 }
 
-function bbpc_get_wordpress_user_roles() : array {
+function gdbbx_get_wordpress_user_roles() : array {
 	global $wp_roles;
 
-	$roles = [];
+	$roles = array();
 
 	foreach ( $wp_roles->role_names as $role => $title ) {
 		$roles[ $role ] = $title;
@@ -270,7 +261,7 @@ function bbpc_get_wordpress_user_roles() : array {
 	return $roles;
 }
 
-function bbpc_render_the_bbcode( $name, $atts, $content = null ) : string {
+function gdbbx_render_the_bbcode( $name, $atts, $content = null ) : string {
 	if ( ! Plugin::instance()->is_enabled( 'bbcodes' ) ) {
 		return '';
 	}

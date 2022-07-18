@@ -1,8 +1,8 @@
 .#{$attachments} {
     ol {
         li {
-            &.bbpc-attachment-thumb {
-                &.bbpc-thumb-inline {
+            &.gdbbx-attachment-thumb {
+                &.gdbbx-thumb-inline {
                     float: right;
                     margin-left: 10px !important;
                 }
@@ -12,7 +12,7 @@
 }
 
 .#{$attachments}-edit {
-    .bbpc-attachment {
+    .gdbbx-attachment {
         select {
             float: left;
         }
@@ -25,18 +25,18 @@
             border-left: 4px solid transparent;
             border-radius: 3px 0 0 3px;
 
-            &.bbpc-attachment-added {
+            &.gdbbx-attachment-added {
                 border-left-color: #46B450;
             }
         }
 
-        .bbpc-validation-active {
-            .bbpc-attachment-preview {
+        .gdbbx-validation-active {
+            .gdbbx-attachment-preview {
                 float: right;
                 margin: 0 0 0 10px;
             }
 
-            .bbpc-attachment-control {
+            .gdbbx-attachment-control {
                 float: right;
             }
         }

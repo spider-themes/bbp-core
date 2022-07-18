@@ -29,27 +29,27 @@
   margin: unset;
 }
 
-.bbpc-feature-more-control,
-.bbpc-features-bulk-control {
+.gdbbx-feature-more-control,
+.gdbbx-features-bulk-control {
   text-align: center;
   margin: 15px 0 0;
   border-top: 1px dotted #cccccc;
   padding: 15px 0 0;
 }
-.bbpc-feature-more-control button,
-.bbpc-features-bulk-control button {
+.gdbbx-feature-more-control button,
+.gdbbx-features-bulk-control button {
   width: 100%;
 }
-.bbpc-feature-more-control .bbpc-inner-ctrl-options,
-.bbpc-features-bulk-control .bbpc-inner-ctrl-options {
+.gdbbx-feature-more-control .gdbbx-inner-ctrl-options,
+.gdbbx-features-bulk-control .gdbbx-inner-ctrl-options {
   display: none;
   padding: 10px;
   margin-top: 10px;
   background: #fff;
   border-radius: 5px;
 }
-.bbpc-feature-more-control .bbpc-inner-ctrl-options .button-primary,
-.bbpc-features-bulk-control .bbpc-inner-ctrl-options .button-primary {
+.gdbbx-feature-more-control .gdbbx-inner-ctrl-options .button-primary,
+.gdbbx-features-bulk-control .gdbbx-inner-ctrl-options .button-primary {
   width: 100%;
   display: block;
   margin: 5px 0 0;
@@ -57,13 +57,11 @@
   font-weight: bold;
 }
 
-.bbpc-content-editor-reply,
-.bbpc-content-editor-topic {
+.gdbbx-content-editor-reply,
+.gdbbx-content-editor-topic {
   display: none;
 }
-.bbpc-content-editor-reply.bbpc-select-type-show,
-.bbpc-content-editor-topic.bbpc-select-type-show {
+.gdbbx-content-editor-reply.gdbbx-select-type-show,
+.gdbbx-content-editor-topic.gdbbx-select-type-show {
   display: table-row;
 }
-
-/*# sourceMappingURL=features.css.map */

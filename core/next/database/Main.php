@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Database;
+namespace Dev4Press\Plugin\GDBBX\Database;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -185,7 +185,7 @@ class Main extends Core {
 
 		$out = array( 'users' => 0, 'guests' => 0, 'roles' => array() );
 
-		$roles = bbpc_get_user_roles();
+		$roles = gdbbx_get_user_roles();
 		foreach ( array_keys( $roles ) as $role ) {
 			$out['roles'][ $role ] = 0;
 		}
@@ -213,7 +213,7 @@ class Main extends Core {
 
 		$out = array();
 
-		$roles = bbpc_get_user_roles();
+		$roles = gdbbx_get_user_roles();
 		foreach ( array_keys( $roles ) as $role ) {
 			$out[ $role ] = array();
 		}
@@ -223,7 +223,7 @@ class Main extends Core {
 				$user_id                  = absint( $row->user_key );
 				$out[ $row->user_role ][] = $user_id;
 
-				bbpc_cache()->set( 'user-is-online', $user_id, true );
+				gdbbx_cache()->set( 'user-is-online', $user_id, true );
 			}
 		}
 
@@ -280,7 +280,7 @@ class Main extends Core {
 	}
 
 	public function get_topics_count_since( $timestamp, $gmt = true ) {
-		$timestamp = $gmt ? bbpc_plugin()->datetime()->timestamp_gmt_to_local( $timestamp ) : $timestamp;
+		$timestamp = $gmt ? gdbbx_plugin()->datetime()->timestamp_gmt_to_local( $timestamp ) : $timestamp;
 		$from      = date( 'Y-m-d H:i:s', $timestamp );
 
 		$sql = "SELECT COUNT(*) FROM " . $this->wpdb()->posts . "
@@ -291,7 +291,7 @@ class Main extends Core {
 	}
 
 	public function get_replies_count_since( $timestamp, $gmt = true ) {
-		$timestamp = $gmt ? bbpc_plugin()->datetime()->timestamp_gmt_to_local( $timestamp ) : $timestamp;
+		$timestamp = $gmt ? gdbbx_plugin()->datetime()->timestamp_gmt_to_local( $timestamp ) : $timestamp;
 		$from      = date( 'Y-m-d H:i:s', $timestamp );
 
 		$sql = "SELECT COUNT(*) FROM " . $this->wpdb()->posts . "
@@ -302,7 +302,7 @@ class Main extends Core {
 	}
 
 	public function track_topic_visit( $user_id, $topic_id, $forum_id, $reply_id ) {
-		$previous = bbpc_cache()->tracking_topic_last_visit( $topic_id, $user_id );
+		$previous = gdbbx_cache()->tracking_topic_last_visit( $topic_id, $user_id );
 
 		$latest = $this->datetime();
 
@@ -373,7 +373,7 @@ class Main extends Core {
 
 		$sql = "SELECT user_id, CAST(meta_value AS UNSIGNED) as last_active
                 FROM " . $this->wpdb()->usermeta . "
-                WHERE meta_key = '" . bbpc_plugin()->user_meta_key_last_activity() . "'
+                WHERE meta_key = '" . gdbbx_plugin()->user_meta_key_last_activity() . "'
                 AND CAST(meta_value AS UNSIGNED) > " . $min . "
                 ORDER BY last_active DESC";
 
@@ -614,7 +614,7 @@ class Main extends Core {
 	public function get_id_from_slug( $slug, $post_type ) {
 		$sql = "SELECT ID FROM " . $this->wpdb()->posts . " WHERE post_name = '$slug' AND post_type = '$post_type'";
 
-		$pages = bbpc_db()->get_results( $sql );
+		$pages = gdbbx_db()->get_results( $sql );
 
 		if ( count( $pages ) == 1 ) {
 			return $pages[0]->ID;

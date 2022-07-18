@@ -44,7 +44,7 @@
     }
 }
 
-.bbpc-grid-bbcodes {
+.gdbbx-grid-bbcodes {
     margin-top: 20px;
 
     th {
@@ -75,7 +75,7 @@
     }
 }
 
-.bbpc-grid-users {
+.gdbbx-grid-users {
     th {
         &.column-ID {
             width: 70px;
@@ -104,7 +104,7 @@
     }
 }
 
-.bbpc-grid-errors {
+.gdbbx-grid-errors {
     th {
         &.column-id {
             width: 70px;
@@ -116,7 +116,7 @@
     }
 }
 
-.bbpc-grid-attachments {
+.gdbbx-grid-attachments {
     th {
         &.column-id {
             width: 70px;
@@ -129,7 +129,7 @@
     }
 }
 
-.bbpc-grid-report {
+.gdbbx-grid-report {
     th {
         &.column-id {
             width: 70px;
@@ -154,7 +154,7 @@
     }
 }
 
-.bbpc-grid-thanks {
+.gdbbx-grid-thanks {
     th {
         &.column-id {
             width: 70px;
@@ -192,22 +192,22 @@
     }
 }
 
-.bbpc-grid-report tbody tr.bbpc-report-status-deleted {
+.gdbbx-grid-report tbody tr.gdbbx-report-status-deleted {
     background-color: #FFEAEA;
 }
 
-.bbpc-grid-report tbody tr.bbpc-report-status-closed {
+.gdbbx-grid-report tbody tr.gdbbx-report-status-closed {
     background-color: #EAFFEA;
 }
 
-.bbpc-notice-info {
+.gdbbx-notice-info {
     background: #FFF;
     border-left: 4px solid #00A0D2;
     padding: 12px;
     margin: 0 0 15px;
 }
 
-.bbpc-notice-info blockquote {
+.gdbbx-notice-info blockquote {
     margin: 15px 0;
     padding-left: 5px;
     border-left: 2px solid #DDD;

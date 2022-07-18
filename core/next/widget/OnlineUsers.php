@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class OnlineUsers extends Widget {
 	public $widget_base = 'd4p_bbw_onlineusers';
-	public $widget_class = 'bbpc-widget bbpc-widget-onlineusers';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-onlineusers';
 
 	public $defaults = array(
 		'title'             => 'Users Online',
-		'template'          => 'bbpc-widget-onlineusers.php',
+		'template'          => 'gdbbx-widget-onlineusers.php',
 		'show_users'        => 'profile_link',
 		'show_users_avatar' => true,
 		'show_users_list'   => true,
@@ -24,7 +24,7 @@ class OnlineUsers extends Widget {
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "Online Users", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "Online Users", "bbp-core" );
 		$this->widget_description = __( "List of current online users.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -55,8 +55,8 @@ class OnlineUsers extends Widget {
 	}
 
 	public function the_render( $instance, $results = false ) {
-		$template = apply_filters( 'bbpc-widget-onlineusers-template', $instance['template'], $results, $this );
+		$template = apply_filters( 'gdbbx-widget-onlineusers-template', $instance['template'], $results, $this );
 
-		include( bbpc_get_template_part( $template ) );
+		include( gdbbx_get_template_part( $template ) );
 	}
 }

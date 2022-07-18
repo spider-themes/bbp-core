@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
-use SpiderDevs\Plugin\BBPC\Attachments\Topic;
+use Dev4Press\Plugin\GDBBX\Attachments\Topic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,13 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class AJAX {
 	public function __construct() {
-		add_action( 'wp_ajax_bbpc_report_post', array( $this, 'report_post' ) );
-		add_action( 'wp_ajax_bbpc_say_thanks', array( $this, 'say_thanks' ) );
-		add_action( 'wp_ajax_bbpc_attachments_thread', array( $this, 'attachments_thread' ) );
+		add_action( 'wp_ajax_gdbbx_report_post', array( $this, 'report_post' ) );
+		add_action( 'wp_ajax_gdbbx_say_thanks', array( $this, 'say_thanks' ) );
+		add_action( 'wp_ajax_gdbbx_attachments_thread', array( $this, 'attachments_thread' ) );
 
-		add_action( 'wp_ajax_bbpc_attachment_detach', array( $this, 'attachment_detach' ) );
-		add_action( 'wp_ajax_bbpc_attachment_delete', array( $this, 'attachment_delete' ) );
-		add_action( 'wp_ajax_bbpc_attachment_attach', array( $this, 'attachment_attach' ) );
+		add_action( 'wp_ajax_gdbbx_attachment_detach', array( $this, 'attachment_detach' ) );
+		add_action( 'wp_ajax_gdbbx_attachment_delete', array( $this, 'attachment_delete' ) );
+		add_action( 'wp_ajax_gdbbx_attachment_attach', array( $this, 'attachment_attach' ) );
 	}
 
 	public static function instance() : AJAX {
@@ -37,8 +37,8 @@ class AJAX {
 		$post_id = absint( $_REQUEST['post'] );
 		$user_id = bbp_get_current_user_id();
 
-		if ( wp_verify_nonce( $nonce, 'bbpc-report-' . $post_id ) !== false ) {
-			bbpc_report()->report( $post_id, $user_id, $report );
+		if ( wp_verify_nonce( $nonce, 'gdbbx-report-' . $post_id ) !== false ) {
+			gdbbx_report()->report( $post_id, $user_id, $report );
 		}
 	}
 
@@ -48,12 +48,12 @@ class AJAX {
 		$post_id = absint( $_REQUEST['id'] );
 		$user_id = bbp_get_current_user_id();
 
-		if ( wp_verify_nonce( $nonce, 'bbpc-thanks-' . $post_id ) !== false ) {
-			bbpc_say_thanks()->save_thanks( $action, $post_id, $user_id );
+		if ( wp_verify_nonce( $nonce, 'gdbbx-thanks-' . $post_id ) !== false ) {
+			gdbbx_say_thanks()->save_thanks( $action, $post_id, $user_id );
 
 			$type = bbp_is_reply( $post_id ) ? 'reply' : 'topic';
 
-			$render = bbpc_say_thanks()->display_ajax( $post_id, $type );
+			$render = gdbbx_say_thanks()->display_ajax( $post_id, $type );
 
 			die( $render );
 		}
@@ -66,7 +66,7 @@ class AJAX {
 
 		$render = '';
 
-		if ( wp_verify_nonce( $nonce, 'bbpc-attachments-thread-' . $topic ) !== false ) {
+		if ( wp_verify_nonce( $nonce, 'gdbbx-attachments-thread-' . $topic ) !== false ) {
 			$render = Topic::instance()->files( $topic, $page );
 		}
 
@@ -80,12 +80,12 @@ class AJAX {
 
 		$result = array( 'status' => 'ok' );
 
-		if ( wp_verify_nonce( $nonce, 'bbpc-det-' . $post . '-' . $id ) !== false ) {
-			bbpc_db()->detach_attachment( $post, $id );
+		if ( wp_verify_nonce( $nonce, 'gdbbx-det-' . $post . '-' . $id ) !== false ) {
+			gdbbx_db()->detach_attachment( $post, $id );
 
 			$topic_id = bbp_is_topic( $post ) ? $post : bbp_get_reply_topic_id( $post );
 
-			bbpc_db()->update_topic_attachments_count( $topic_id );
+			gdbbx_db()->update_topic_attachments_count( $topic_id );
 		} else {
 			$result['status'] = 'error';
 		}
@@ -100,12 +100,12 @@ class AJAX {
 
 		$result = array( 'status' => 'ok' );
 
-		if ( wp_verify_nonce( $nonce, 'bbpc-del-' . $post . '-' . $id ) !== false ) {
-			bbpc_db()->delete_attachment( $post, $id );
+		if ( wp_verify_nonce( $nonce, 'gdbbx-del-' . $post . '-' . $id ) !== false ) {
+			gdbbx_db()->delete_attachment( $post, $id );
 
 			$topic_id = bbp_is_topic( $post ) ? $post : bbp_get_reply_topic_id( $post );
 
-			bbpc_db()->update_topic_attachments_count( $topic_id );
+			gdbbx_db()->update_topic_attachments_count( $topic_id );
 		} else {
 			$result['status'] = 'error';
 		}
@@ -118,8 +118,8 @@ class AJAX {
 		$post  = absint( $_REQUEST['post'] );
 		$ids   = (array) $_REQUEST['id'];
 
-		if ( $post > 0 && wp_verify_nonce( $nonce, 'bbpc-att-' . $post ) !== false ) {
-			require_once( BBPC_PATH . 'core/functions/admin.php' );
+		if ( $post > 0 && wp_verify_nonce( $nonce, 'gdbbx-att-' . $post ) !== false ) {
+			require_once( GDBBX_PATH . 'core/functions/admin.php' );
 
 			$result = '';
 			$added  = 0;
@@ -127,10 +127,10 @@ class AJAX {
 			foreach ( $ids as $id ) {
 				$id = absint( $id );
 
-				if ( $id > 0 && bbpc_db()->is_assign_attachment_possible( $post, $id ) ) {
-					bbpc_db()->assign_attachment( $post, $id );
+				if ( $id > 0 && gdbbx_db()->is_assign_attachment_possible( $post, $id ) ) {
+					gdbbx_db()->assign_attachment( $post, $id );
 
-					$result .= bbpc_admin_render_attachment_for_metabox( $post, $id );
+					$result .= gdbbx_admin_render_attachment_for_metabox( $post, $id );
 
 					$added ++;
 				}
@@ -139,7 +139,7 @@ class AJAX {
 			if ( $added > 0 ) {
 				$topic_id = bbp_is_topic( $post ) ? $post : bbp_get_reply_topic_id( $post );
 
-				bbpc_db()->update_topic_attachments_count( $topic_id );
+				gdbbx_db()->update_topic_attachments_count( $topic_id );
 
 				die( $result );
 			}

@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Base;
+namespace Dev4Press\Plugin\GDBBX\Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,7 +13,7 @@ abstract class Feature {
 
 	public function __construct() {
 		if ( $this->has_settings ) {
-			$this->settings = bbpc()->prefix_get( $this->feature_name . '__', 'features' );
+			$this->settings = gdbbx()->prefix_get( $this->feature_name . '__', 'features' );
 		}
 	}
 
@@ -31,7 +31,7 @@ abstract class Feature {
 		$prefix = empty( $prefix ) ? '' : $prefix . '_';
 		$name   = empty( $name ) ? $this->feature_name : $name;
 
-		if ( current_user_can( 'bbpc_feature_' . $name ) ) {
+		if ( current_user_can( 'gdbbx_feature_' . $name ) ) {
 			$allowed = true;
 		}
 
@@ -60,6 +60,6 @@ abstract class Feature {
 			$allowed = $this->settings[ $prefix . 'visitor' ];
 		}
 
-		return apply_filters( 'bbpc_feature_allowed_' . $name, $allowed, $this->settings );
+		return apply_filters( 'gdbbx_feature_allowed_' . $name, $allowed, $this->settings );
 	}
 }

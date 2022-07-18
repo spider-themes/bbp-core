@@ -10,7 +10,7 @@
 
 #{$forums} {
     #bbp-user-wrapper {
-        .bbpc-editor-tinymce {
+        .gdbbx-editor-tinymce {
             min-width: 0;
 
             .wp-editor-container {
@@ -55,7 +55,7 @@
 
 #{$buddypress} {
     #{$forums},
-    .bbpc-editor-tinymce {
+    .gdbbx-editor-tinymce {
         .wp-switch-editor {
             background: #EBEBEB;
             border: 1px solid #E5E5E5;
@@ -88,7 +88,7 @@
         }
     }
 
-    .bbpc-editor-tinymce {
+    .gdbbx-editor-tinymce {
         .html-active .switch-html {
             background: #F5F5F5;
             border-bottom-color: #F5F5F5;

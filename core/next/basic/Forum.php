@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -54,15 +54,15 @@ class Forum {
 		$this->_forum = $id;
 
 		if ( ! isset( self::$forums[ $id ] ) && $id > 0 ) {
-			$meta                = get_post_meta( $id, '_bbpc_settings', true );
-			self::$forums[ $id ] = wp_parse_args( $meta, bbpc_default_forum_settings() );
+			$meta                = get_post_meta( $id, '_gdbbx_settings', true );
+			self::$forums[ $id ] = wp_parse_args( $meta, gdbbx_default_forum_settings() );
 
 			$list = get_post_ancestors( $id );
 
 			foreach ( $list as $anc ) {
 				if ( ! isset( self::$forums[ $anc ] ) ) {
-					$meta                 = get_post_meta( $anc, '_bbpc_settings', true );
-					self::$forums[ $anc ] = wp_parse_args( $meta, bbpc_default_forum_settings() );
+					$meta                 = get_post_meta( $anc, '_gdbbx_settings', true );
+					self::$forums[ $anc ] = wp_parse_args( $meta, gdbbx_default_forum_settings() );
 				}
 			}
 

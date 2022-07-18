@@ -25,27 +25,26 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! class_exists( 'd4p_errors' ) ) {
-	class d4p_errors extends WP_Error {
-		public function has_errors() {
-			return ! empty( $this->errors );
-		}
+if (!class_exists('d4p_errors')) {
+    class d4p_errors extends WP_Error {
+        public function has_errors() {
+            return !empty($this->errors);
+        }
 
-		public function merge_errors( $errors ) {
-			$this->errors = array_merge( $this->errors, $errors );
-		}
+        public function merge_errors($errors) {
+            $this->errors = array_merge($this->errors, $errors);
+        }
 
-		public function merge_errors_data( $error_data ) {
-			$this->error_data = array_merge( $this->error_data, $error_data );
-		}
-	}
+        public function merge_errors_data($error_data) {
+            $this->error_data = array_merge($this->error_data, $error_data);
+        }
+    }
 }
 
-if ( ! function_exists( 'd4p_is_wp_error' ) ) {
-	function d4p_is_wp_error( $thing ) {
-		return ( $thing instanceof WP_Error ) || ( $thing instanceof d4p_errors );
-	}
+if (!function_exists('d4p_is_wp_error')) {
+    function d4p_is_wp_error($thing) {
+        return ($thing instanceof WP_Error) || ($thing instanceof d4p_errors);
+    }
 }

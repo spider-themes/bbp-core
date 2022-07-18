@@ -1,8 +1,8 @@
-.bbpc-widget {
+.gdbbx-widget {
     clear: both;
 
     /* Info Widgets */
-    .bbpc-widget-the-info-dl {
+    .gdbbx-widget-the-info-dl {
         width: 100%;
         line-height: 1.9;
         font-size: 13px;
@@ -41,7 +41,7 @@
         }
     }
 
-    .bbpc-widget-the-info-list {
+    .gdbbx-widget-the-info-list {
         width: 100%;
         line-height: 1.9;
         font-size: 13px;
@@ -53,7 +53,7 @@
             font-size: inherit;
         }
 
-        i.bbpc-icon {
+        i.gdbbx-icon {
             float: left;
             vertical-align: middle;
             margin-right: 4px;
@@ -61,7 +61,7 @@
         }
     }
 
-    .bbpc-widget-the-info-table {
+    .gdbbx-widget-the-info-table {
         table {
             width: 100%;
             line-height: 1.5;
@@ -94,7 +94,7 @@
                 }
             }
 
-            i.bbpc-icon {
+            i.gdbbx-icon {
                 float: left;
                 vertical-align: middle;
                 margin-right: 4px;
@@ -104,12 +104,12 @@
     }
 
     /* Profile Widget */
-    .bbpc-widget-the-profile-default {
+    .gdbbx-widget-the-profile-default {
         a {
             text-decoration: none;
         }
 
-        h3.bbpc-widget-profile-title {
+        h3.gdbbx-widget-profile-title {
             font-size: 1.4em;
             background-color: #FAFAFA;
             color: #333;
@@ -122,7 +122,7 @@
             }
         }
 
-        .bbpc-widget-profile {
+        .gdbbx-widget-profile {
             display: table;
 
             > div {
@@ -167,12 +167,12 @@
         }
     }
 
-    .bbpc-widget-the-profile-enhanced {
+    .gdbbx-widget-the-profile-enhanced {
         a {
             text-decoration: none;
         }
 
-        h3.bbpc-widget-profile-title {
+        h3.gdbbx-widget-profile-title {
             font-size: 1.3em;
             line-height: 1.5;
             color: #333;
@@ -185,7 +185,7 @@
             }
         }
 
-        .bbpc-widget-profile {
+        .gdbbx-widget-profile {
             text-align: center;
 
             .__profile-links {
@@ -220,7 +220,7 @@
     }
 
     /* Thanks Widget */
-    .bbpc-widget-userthanks-default {
+    .gdbbx-widget-userthanks-default {
         line-height: 24px;
 
         img {
@@ -230,11 +230,11 @@
     }
 
     /* New Posts Widget */
-    .bbpc-widget-newpost-default {
+    .gdbbx-widget-newpost-default {
         font-size: 14px;
 
-        .bbpc-post-inner {
-            h4.bbpc-title {
+        .gdbbx-post-inner {
+            h4.gdbbx-title {
                 margin: 0 0 .5em;
                 font-size: 1.2em;
 
@@ -243,7 +243,7 @@
                 }
             }
 
-            .bbpc-post-meta {
+            .gdbbx-post-meta {
                 img {
                     vertical-align: text-bottom;
                     margin-right: 2px;
@@ -253,10 +253,10 @@
     }
 
     /* Online Status Widget */
-    .bbpc-online-status {
+    .gdbbx-online-status {
         font-size: 14px;
 
-        .bbpc-online-user {
+        .gdbbx-online-user {
             display: inline-block;
             font-size: 14px;
             line-height: 20px;
@@ -266,7 +266,7 @@
             margin-bottom: 0;
         }
 
-        .bbpc-online-user {
+        .gdbbx-online-user {
             img {
                 display: inline-block;
                 vertical-align: -3px;

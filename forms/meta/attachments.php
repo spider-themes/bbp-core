@@ -2,56 +2,46 @@
 
 global $post_ID;
 
-$tabs = apply_filters(
-	'bbpc_admin_toolbox_meta',
-	[
-		'files'  => [
-			'label' => __( 'Files', 'bbp-core' ),
-			'icon'  => 'media-default',
-		],
-		'errors' => [
-			'label' => __( 'Errors', 'bbp-core' ),
-			'icon'  => 'warning',
-		],
-	]
-);
+$tabs = apply_filters('gdbbx_admin_toolbox_meta', array(
+    'files' => array('label' => __("Files", "bbp-core"), 'icon' => 'media-default'),
+    'errors' => array('label' => __("Errors", "bbp-core"), 'icon' => 'warning')
+));
 
 ?>
 <div class="d4plib-metabox-wrapper">
-	<input type="hidden" name="bbpc_topic_attachments" value="edit" />
+    <input type="hidden" name="gdbbx_topic_attachments" value="edit" />
 
-	<ul class="wp-tab-bar">
-		<?php
+    <ul class="wp-tab-bar">
+        <?php
 
-		$active = true;
-		foreach ( $tabs as $tab => $obj ) {
-			$label = $obj['label'];
-			$icon  = $obj['icon'];
+        $active = true;
+        foreach ($tabs as $tab => $obj) {
+            $label = $obj['label'];
+            $icon = $obj['icon'];
 
-			echo '<li class="' . ( $active ? 'wp-tab-active' : '' ) . '"><a href="#bbpc-meta-' . $tab . '">';
-			echo '<span aria-hidden="true" aria-labelledby="bbpc-topic-attachments-metatab-' . $tab . '" class="dashicons dashicons-' . $icon . '" title="' . $label . '"></span>';
-			echo '<span id="bbpc-topic-attachments-metatab-' . $tab . '" class="d4plib-metatab-label">' . $label . '</span>';
-			echo '</a></li>';
+            echo '<li class="'.($active ? 'wp-tab-active' : '').'"><a href="#gdbbx-meta-'.$tab.'">';
+            echo '<span aria-hidden="true" aria-labelledby="gdbbx-topic-attachments-metatab-'.$tab.'" class="dashicons dashicons-'.$icon.'" title="'.$label.'"></span>';
+            echo '<span id="gdbbx-topic-attachments-metatab-'.$tab.'" class="d4plib-metatab-label">'.$label.'</span>';
+            echo '</a></li>';
 
-			$active = false;
-		}
+            $active = false;
+        }
 
-		?>
-	</ul>
-	<?php
+        ?>
+    </ul>
+    <?php
 
-	$active = true;
-	foreach ( $tabs as $tab => $label ) {
-		echo '<div id="bbpc-meta-' . $tab . '" class="wp-tab-panel ' . ( $active ? 'tabs-panel-active' : 'tabs-panel-inactive' ) . '">';
+    $active = true;
+    foreach ($tabs as $tab => $label) {
+        echo '<div id="gdbbx-meta-'.$tab.'" class="wp-tab-panel '.($active ? 'tabs-panel-active' : 'tabs-panel-inactive').'">';
 
-		do_action( 'bbpc_admin_toolbox_topic_attachments_meta_content_' . $tab, $post_ID );
+        do_action('gdbbx_admin_toolbox_topic_attachments_meta_content_'.$tab, $post_ID);
 
-		echo '</div>';
+        echo '</div>';
 
-		$active = false;
-	}
+        $active = false;
+    }
 
-	?>
+    ?>
 </div>
-<?php
-require_once BBPC_PATH . 'forms/dialogs/metabox.php';
+<?php require_once(GDBBX_PATH.'forms/dialogs/metabox.php');

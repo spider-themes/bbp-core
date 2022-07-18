@@ -1,23 +1,23 @@
-.bbpc-attachments ol li.bbpc-attachment-thumb.bbpc-thumb-inline {
+.gdbbx-attachments ol li.gdbbx-attachment-thumb.gdbbx-thumb-inline {
   float: right;
   margin-left: 10px !important;
 }
 
-.bbpc-attachments-edit .bbpc-attachment select {
+.gdbbx-attachments-edit .gdbbx-attachment select {
   float: left;
 }
 
-.bbp-form .bbpc-attachments-form .bbpc-attachments-input {
+.bbp-form .gdbbx-attachments-form .gdbbx-attachments-input {
   border-left: 4px solid transparent;
   border-radius: 3px 0 0 3px;
 }
-.bbp-form .bbpc-attachments-form .bbpc-attachments-input.bbpc-attachment-added {
+.bbp-form .gdbbx-attachments-form .gdbbx-attachments-input.gdbbx-attachment-added {
   border-left-color: #46B450;
 }
-.bbp-form .bbpc-attachments-form .bbpc-validation-active .bbpc-attachment-preview {
+.bbp-form .gdbbx-attachments-form .gdbbx-validation-active .gdbbx-attachment-preview {
   float: right;
   margin: 0 0 0 10px;
 }
-.bbp-form .bbpc-attachments-form .bbpc-validation-active .bbpc-attachment-control {
+.bbp-form .gdbbx-attachments-form .gdbbx-validation-active .gdbbx-attachment-control {
   float: right;
 }

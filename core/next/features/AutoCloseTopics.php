@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,11 +36,11 @@ class AutoCloseTopics extends Feature {
 		parent::__construct();
 
 		if ( is_user_logged_in() ) {
-			add_action( 'bbpc_template', array( $this, 'loader' ) );
+			add_action( 'gdbbx_template', array( $this, 'loader' ) );
 		}
 
-		add_action( 'bbpc_daily_maintenance_job', array( $this, 'job' ) );
-		add_action( 'bbpc_cron_auto_close_topics', array( $this, 'auto_close_topics' ) );
+		add_action( 'gdbbx_daily_maintenance_job', array( $this, 'job' ) );
+		add_action( 'gdbbx_cron_auto_close_topics', array( $this, 'auto_close_topics' ) );
 		add_action( 'bbp_theme_before_reply_form_notices', array( $this, 'closing_notice' ) );
 
 		if ( $this->settings['notify_author'] ) {
@@ -94,7 +94,7 @@ class AutoCloseTopics extends Feature {
 	}
 
 	public static function minimum_days_allowed() {
-		return apply_filters( 'bbpc_auto_close_topic_minimum_days_allowed', 7 );
+		return apply_filters( 'gdbbx_auto_close_topic_minimum_days_allowed', 7 );
 	}
 
 	public function topic_save( $topic_id ) {
@@ -106,9 +106,9 @@ class AutoCloseTopics extends Feature {
 	}
 
 	public function clear_auto_close_skip() {
-		$sql = "DELETE FROM " . bbpc_db()->wpdb()->postmeta . " WHERE meta_key = '_bbpc_auto_close_skip'";
+		$sql = "DELETE FROM " . gdbbx_db()->wpdb()->postmeta . " WHERE meta_key = '_gdbbx_auto_close_skip'";
 
-		bbpc_db()->query( $sql );
+		gdbbx_db()->query( $sql );
 	}
 
 	public function run_auto_close() {
@@ -118,8 +118,8 @@ class AutoCloseTopics extends Feature {
 
 		$sql = $this->build_auto_close_query();
 
-		$raw   = bbpc_db()->get_results( $sql );
-		$total = bbpc_db()->get_found_rows();
+		$raw   = gdbbx_db()->get_results( $sql );
+		$total = gdbbx_db()->get_found_rows();
 
 		$forums = array();
 
@@ -136,26 +136,26 @@ class AutoCloseTopics extends Feature {
 				$done = bbp_close_topic( $row->topic_id );
 
 				if ( ! is_wp_error( $done ) ) {
-					update_post_meta( $row->topic_id, '_bbpc_auto_closed', time() );
+					update_post_meta( $row->topic_id, '_gdbbx_auto_closed', time() );
 
 					if ( $notify ) {
 						$this->send_notifications( $row->topic_id );
 					}
 				}
 			} else {
-				update_post_meta( $row->topic_id, '_bbpc_auto_close_skip', time() );
+				update_post_meta( $row->topic_id, '_gdbbx_auto_close_skip', time() );
 			}
 		}
 
 		if ( $total > count( $raw ) ) {
-			wp_schedule_single_event( time() + 5, 'bbpc_cron_auto_close_topics' );
+			wp_schedule_single_event( time() + 5, 'gdbbx_cron_auto_close_topics' );
 		} else {
 			$this->clear_auto_close_skip();
 		}
 	}
 
 	public function auto_close_forum_rule( $forum_id ) : array {
-		$_meta = bbpc_forum( $forum_id )->topic_auto_close()->all();
+		$_meta = gdbbx_forum( $forum_id )->topic_auto_close()->all();
 
 		if ( ! isset( $_meta['active'] ) || $_meta['active'] == 'default' || empty( $_meta['active'] ) ) {
 			$_meta['active'] = $this->settings['active'];
@@ -187,8 +187,8 @@ class AutoCloseTopics extends Feature {
 	}
 
 	public function process_auto_close_rule( $meta, $topic_id = 0 ) {
-		$_meta_modify = get_post_meta( $topic_id, '_bbpc_modify_auto_close', true );
-		$_meta_days   = get_post_meta( $topic_id, '_bbpc_modify_auto_close_days', true );
+		$_meta_modify = get_post_meta( $topic_id, '_gdbbx_modify_auto_close', true );
+		$_meta_days   = get_post_meta( $topic_id, '_gdbbx_modify_auto_close_days', true );
 
 		if ( $_meta_modify !== false && ! empty( $_meta_modify ) ) {
 			$meta['active'] = $_meta_modify == 'yes';
@@ -211,7 +211,7 @@ class AutoCloseTopics extends Feature {
 			$message = sprintf( _n( "This topic will close <strong>%s day</strong> after the last reply.", "This topic will close <strong>%s days</strong> after the last reply.", $days, "bbp-core" ), $days );
 			$notice  = '<div class="bbp-template-notice info"><p>' . $message . '</p></div>';
 
-			echo apply_filters( 'bbpc_auto_close_topic_notice', $notice, $message, $days );
+			echo apply_filters( 'gdbbx_auto_close_topic_notice', $notice, $message, $days );
 		}
 	}
 
@@ -226,7 +226,7 @@ class AutoCloseTopics extends Feature {
 			return false;
 		}
 
-		$output   = bbpc_mailer()->get_topic_author_and_subscribers( $topic_id, 'bbp_topic_auto_close_user_ids', $_send_to_author, $_send_to_subscribers, 'topic-auto-closed-notification' );
+		$output   = gdbbx_mailer()->get_topic_author_and_subscribers( $topic_id, 'bbp_topic_auto_close_user_ids', $_send_to_author, $_send_to_subscribers, 'topic-auto-closed-notification' );
 		$user_ids = $output['user_ids'] ?? array();
 		$emails   = $output['emails'] ?? array();
 
@@ -235,7 +235,7 @@ class AutoCloseTopics extends Feature {
 		}
 
 		$topic_url  = bbp_get_topic_permalink( $topic_id );
-		$topic_data = bbpc_mailer()->get_topic_content( $topic_id );
+		$topic_data = gdbbx_mailer()->get_topic_content( $topic_id );
 
 		/**
 		 * @var string $blog_name
@@ -330,13 +330,13 @@ Do not reply to this email!", "Email message: notify on topic auto close", "bbp-
 	}
 
 	public function load_modify_fieldset() {
-		include( bbpc_get_template_part( 'bbpc-form-auto-close.php' ) );
+		include( gdbbx_get_template_part( 'gdbbx-form-auto-close.php' ) );
 
 		Enqueue::instance()->core();
 	}
 
 	private function mod_form_include( $author, $form ) {
-		$moderator = bbpc_can_user_moderate();
+		$moderator = gdbbx_can_user_moderate();
 
 		if ( ( $this->settings['modify_author'] && $author ) || ( $this->settings['modify_moderators'] && $moderator ) ) {
 			if ( $form == 'topic' ) {
@@ -348,27 +348,27 @@ Do not reply to this email!", "Email message: notify on topic auto close", "bbp-
 	}
 
 	private function save_topic_settings( $topic_id ) {
-		$_topic_modify = isset( $_POST['bbpc_auto_close_modify'] ) ? d4p_sanitize_slug( $_POST['bbpc_auto_close_modify'] ) : 'auto';
-		$_topic_days   = isset( $_POST['bbpc_auto_close_days'] ) ? absint( $_POST['bbpc_auto_close_days'] ) : 0;
+		$_topic_modify = isset( $_POST['gdbbx_auto_close_modify'] ) ? d4p_sanitize_slug( $_POST['gdbbx_auto_close_modify'] ) : 'auto';
+		$_topic_days   = isset( $_POST['gdbbx_auto_close_days'] ) ? absint( $_POST['gdbbx_auto_close_days'] ) : 0;
 
 		if ( in_array( $_topic_modify, array( 'yes', 'no' ) ) ) {
-			update_post_meta( $topic_id, '_bbpc_modify_auto_close', $_topic_modify );
+			update_post_meta( $topic_id, '_gdbbx_modify_auto_close', $_topic_modify );
 		} else {
-			delete_post_meta( $topic_id, '_bbpc_modify_auto_close' );
+			delete_post_meta( $topic_id, '_gdbbx_modify_auto_close' );
 		}
 
 		if ( $_topic_days >= self::minimum_days_allowed() ) {
-			update_post_meta( $topic_id, '_bbpc_modify_auto_close_days', $_topic_days );
+			update_post_meta( $topic_id, '_gdbbx_modify_auto_close_days', $_topic_days );
 		} else {
-			delete_post_meta( $topic_id, '_bbpc_modify_auto_close_days' );
+			delete_post_meta( $topic_id, '_gdbbx_modify_auto_close_days' );
 		}
 	}
 
 	private function build_auto_close_query() : string {
 		return "SELECT SQL_CALC_FOUND_ROWS p.ID AS topic_id, p.post_parent as forum_id, DATEDIFF(CURDATE(), CAST(ma.meta_value AS DATETIME)) AS last_active
-                FROM " . bbpc_db()->wpdb()->posts . " p
-                INNER JOIN " . bbpc_db()->wpdb()->postmeta . " ma ON ma.post_id = p.ID AND ma.meta_key = '_bbp_last_active_time'
-                LEFT JOIN " . bbpc_db()->wpdb()->postmeta . " mx ON mx.post_id = p.ID AND mx.meta_key = '_bbpc_auto_close_skip'
+                FROM " . gdbbx_db()->wpdb()->posts . " p
+                INNER JOIN " . gdbbx_db()->wpdb()->postmeta . " ma ON ma.post_id = p.ID AND ma.meta_key = '_bbp_last_active_time'
+                LEFT JOIN " . gdbbx_db()->wpdb()->postmeta . " mx ON mx.post_id = p.ID AND mx.meta_key = '_gdbbx_auto_close_skip'
                 WHERE p.post_type = '" . bbp_get_topic_post_type() . "' AND p.post_status = 'publish' AND mx.meta_value IS NULL
                 AND CAST(ma.meta_value AS DATETIME) < DATE_SUB(CURDATE(), INTERVAL " . self::minimum_days_allowed() . " DAY)
                 ORDER BY topic_id ASC LIMIT " . $this->limit;

@@ -1,10 +1,10 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Attachments;
+namespace Dev4Press\Plugin\GDBBX\Attachments;
 
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
-use SpiderDevs\Plugin\BBPC\Features\Attachments;
-use SpiderDevs\Plugin\BBPC\Features\Icons;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Features\Attachments;
+use Dev4Press\Plugin\GDBBX\Features\Icons;
 use WP_Post;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,12 +30,12 @@ class Display {
 
 	public function __construct() {
 		$this->type         = Icons::instance()->mode();
-		$this->icons        = bbpc_attachments()->get( 'attachment_icons' );
-		$this->mode         = bbpc_attachments()->get( 'files_list_mode' );
-		$this->skip_missing = bbpc_attachments()->get( 'file_skip_missing' );
-		$this->download     = bbpc_attachments()->get( 'download_link_attribute' ) ? ' download' : '';
-		$this->deletion     = bbpc_attachments()->get( 'delete_method' ) == 'default';
-		$this->columns      = bbpc_attachments()->get( 'image_thumbnail_columns' );
+		$this->icons        = gdbbx_attachments()->get( 'attachment_icons' );
+		$this->mode         = gdbbx_attachments()->get( 'files_list_mode' );
+		$this->skip_missing = gdbbx_attachments()->get( 'file_skip_missing' );
+		$this->download     = gdbbx_attachments()->get( 'download_link_attribute' ) ? ' download' : '';
+		$this->deletion     = gdbbx_attachments()->get( 'delete_method' ) == 'default';
+		$this->columns      = gdbbx_attachments()->get( 'image_thumbnail_columns' );
 	}
 
 	public static function instance() : Display {
@@ -49,16 +49,16 @@ class Display {
 	}
 
 	public function run() {
-		$visible = bbpc_attachments()->allowed( 'files_list', 'attachments_files_list' );
-		$visible = apply_filters( 'bbpc_attachment_show_files_list', $visible );
+		$visible = gdbbx_attachments()->allowed( 'files_list', 'attachments_files_list' );
+		$visible = apply_filters( 'gdbbx_attachment_show_files_list', $visible );
 
 		if ( $visible && ! $this->enabled ) {
 			$this->enabled = true;
 
-			if ( bbpc_attachments()->get( 'files_list_position' ) == 'content' ) {
+			if ( gdbbx_attachments()->get( 'files_list_position' ) == 'content' ) {
 				add_filter( 'bbp_get_reply_content', array( $this, 'embed_attachments' ), 100, 2 );
 				add_filter( 'bbp_get_topic_content', array( $this, 'embed_attachments' ), 100, 2 );
-			} else if ( bbpc_attachments()->get( 'files_list_position' ) == 'after' ) {
+			} else if ( gdbbx_attachments()->get( 'files_list_position' ) == 'after' ) {
 				add_action( 'bbp_theme_after_topic_content', array( $this, 'after_attachments' ), 20 );
 				add_action( 'bbp_theme_after_reply_content', array( $this, 'after_attachments' ), 20 );
 			}
@@ -83,20 +83,20 @@ class Display {
 	}
 
 	public function embed_attachments( $content, $id ) {
-		if ( bbpc()->is_inside_content_shortcode( $id ) ) {
+		if ( gdbbx()->is_inside_content_shortcode( $id ) ) {
 			return $content;
 		}
 
-		if ( bbpc_is_feed() ) {
+		if ( gdbbx_is_feed() ) {
 			return $content;
 		}
 
-		if ( bbpc_cache()->attachments_has_attachments( $id ) || bbpc_cache()->attachments_has_attachments_errors( $id ) ) {
-			if ( bbpc_cache()->attachments_has_attachments( $id ) ) {
+		if ( gdbbx_cache()->attachments_has_attachments( $id ) || gdbbx_cache()->attachments_has_attachments_errors( $id ) ) {
+			if ( gdbbx_cache()->attachments_has_attachments( $id ) ) {
 				$content .= $this->attachments( $id );
 			}
 
-			if ( bbpc_cache()->attachments_has_attachments_errors( $id ) ) {
+			if ( gdbbx_cache()->attachments_has_attachments_errors( $id ) ) {
 				$content .= $this->errors( $id );
 			}
 		}
@@ -109,10 +109,10 @@ class Display {
 		$this->post      = get_post( $this->id );
 		$this->author_id = $this->post->post_author;
 
-		$this->attachments_all = bbpc_get_post_attachments( $id );
+		$this->attachments_all = gdbbx_get_post_attachments( $id );
 
-		if ( bbpc_attachments()->get( 'hide_attachments_when_in_content', false ) ) {
-			$inserted = bbpc_attachments()->get_inserted_attachments( $id );
+		if ( gdbbx_attachments()->get( 'hide_attachments_when_in_content', false ) ) {
+			$inserted = gdbbx_attachments()->get_inserted_attachments( $id );
 
 			$this->attachments = array();
 
@@ -129,7 +129,7 @@ class Display {
 		$bulk    = $this->_bulk();
 
 		if ( ! empty( $this->attachments ) || ! empty( $bulk ) ) {
-			$content .= '<div class="bbpc-attachments">';
+			$content .= '<div class="gdbbx-attachments">';
 			$content .= '<h6 class="__title">' . __( "Attachments", "bbp-core" ) . ':</h6>';
 
 			if ( $this->_hidden() ) {
@@ -158,7 +158,7 @@ class Display {
 
 		$content = '';
 
-		if ( ( bbpc_attachments()->get( 'errors_visible_to_author' ) == 1 && $this->author_id == $user_ID ) || ( bbpc_attachments()->get( 'errors_visible_to_admins' ) == 1 && d4p_is_current_user_admin() ) || ( bbpc_attachments()->get( 'errors_visible_to_moderators' ) == 1 && bbpc_is_current_user_bbp_moderator() ) ) {
+		if ( ( gdbbx_attachments()->get( 'errors_visible_to_author' ) == 1 && $this->author_id == $user_ID ) || ( gdbbx_attachments()->get( 'errors_visible_to_admins' ) == 1 && d4p_is_current_user_admin() ) || ( gdbbx_attachments()->get( 'errors_visible_to_moderators' ) == 1 && gdbbx_is_current_user_bbp_moderator() ) ) {
 			$content .= $this->_errors();
 		}
 
@@ -171,14 +171,14 @@ class Display {
 		$bulk = '';
 
 		if ( count( $this->attachments_all ) > 1 ) {
-			if ( bbpc_attachments()->get( 'bulk_download' ) && bbpc_attachments()->allowed( 'bulk_download', 'attachments_bulk_download' ) ) {
-				$do = ! bbpc_attachments()->get( 'bulk_download_listed' ) || ! empty( $this->attachments );
+			if ( gdbbx_attachments()->get( 'bulk_download' ) && gdbbx_attachments()->allowed( 'bulk_download', 'attachments_bulk_download' ) ) {
+				$do = ! gdbbx_attachments()->get( 'bulk_download_listed' ) || ! empty( $this->attachments );
 
 				if ( $do ) {
 					$topic_id = bbp_get_topic_id();
 
 					$url = get_permalink( $topic_id );
-					$url = add_query_arg( 'bbpc-bulk-download', $this->id, $url );
+					$url = add_query_arg( 'gdbbx-bulk-download', $this->id, $url );
 
 					$bulk .= '<div class="__bulk">';
 					$bulk .= '<a href="' . $url . '">' . __( "Download All Files", "bbp-core" ) . '</a>';
@@ -196,7 +196,7 @@ class Display {
 		$errors = get_post_meta( $this->id, '_bbp_attachment_upload_error' );
 
 		if ( ! empty( $errors ) ) {
-			$content .= '<div class="bbpc-attachments-errors">';
+			$content .= '<div class="gdbbx-attachments-errors">';
 			$content .= '<h6 class="__title">' . __( "Upload Errors", "bbp-core" ) . ':</h6>';
 			$content .= '<ol class="__errors-list">';
 
@@ -212,7 +212,7 @@ class Display {
 
 	private function _hidden() : bool {
 		if ( ! is_user_logged_in() ) {
-			return bbpc_attachments()->is_hidden_from_visitors() || bbpc_attachments()->is_preview_for_visitors();
+			return gdbbx_attachments()->is_hidden_from_visitors() || gdbbx_attachments()->is_preview_for_visitors();
 		}
 
 		return false;
@@ -221,13 +221,13 @@ class Display {
 	private function _visitor() : string {
 		$content = '';
 
-		if ( ! bbpc_attachments()->is_hidden_from_visitors() && bbpc_attachments()->is_preview_for_visitors() ) {
+		if ( ! gdbbx_attachments()->is_hidden_from_visitors() && gdbbx_attachments()->is_preview_for_visitors() ) {
 			$content .= $this->_user( true );
 		}
 
 		$message = sprintf( __( "You must be <a href='%s'>logged in</a> to access attached files.", "bbp-core" ), wp_login_url( get_permalink() ) );
 
-		$content .= apply_filters( 'bbpc_notice_attachments_visitor', '<div class="bbpc-attachments-login-message bbp-template-notice"><p>' . $message . '</p></div>', $message );
+		$content .= apply_filters( 'gdbbx_notice_attachments_visitor', '<div class="gdbbx-attachments-login-message bbp-template-notice"><p>' . $message . '</p></div>', $message );
 
 		return $content;
 	}
@@ -260,16 +260,16 @@ class Display {
 		$content = '';
 
 		if ( ! empty( $files['img'] ) ) {
-			$files['img'] = apply_filters( 'bbpc_attachments_display_user_list_images', $files['img'] );
-			$content      .= '<div class="bbpc-attachments-files-container">';
+			$files['img'] = apply_filters( 'gdbbx_attachments_display_user_list_images', $files['img'] );
+			$content      .= '<div class="gdbbx-attachments-files-container">';
 			$content      .= '<ol class="__files-list __with-thumbnails __columns-' . $this->columns . '">' . join( '', $files['img'] ) . '</ol>';
 			$content      .= '</div>';
 		}
 
 		if ( ! empty( $files['lst'] ) ) {
 			$list_class   = $this->type == 'images' ? '__with-icons' : '__with-font-icons';
-			$files['lst'] = apply_filters( 'bbpc_attachments_display_user_list_files', $files['lst'] );
-			$content      .= '<div class="bbpc-attachments-files-container">';
+			$files['lst'] = apply_filters( 'gdbbx_attachments_display_user_list_files', $files['lst'] );
+			$content      .= '<div class="gdbbx-attachments-files-container">';
 			$content      .= '<ol class="__files-list __without-thumbnails ' . $list_class . '">' . join( '', $files['lst'] ) . '</ol>';
 			$content      .= '</div>';
 		}
@@ -286,13 +286,13 @@ class Display {
 		$allow = Attachments::instance()->get_deletion_status( $author );
 
 		if ( $allow == 'delete' || $allow == 'both' ) {
-			$_url      = add_query_arg( '_wpnonce', wp_create_nonce( 'bbpc-attachment-delete-' . $post . '-' . $file ), $action_url );
-			$actions[] = '<a class="bbpc-attachment-confirm" href="' . esc_url( add_query_arg( 'bbpc-action', 'delete', $_url ) ) . '">' . __( "delete", "bbp-core" ) . '</a>';
+			$_url      = add_query_arg( '_wpnonce', wp_create_nonce( 'gdbbx-attachment-delete-' . $post . '-' . $file ), $action_url );
+			$actions[] = '<a class="gdbbx-attachment-confirm" href="' . esc_url( add_query_arg( 'gdbbx-action', 'delete', $_url ) ) . '">' . __( "delete", "bbp-core" ) . '</a>';
 		}
 
 		if ( $allow == 'detach' || $allow == 'both' ) {
-			$_url      = add_query_arg( '_wpnonce', wp_create_nonce( 'bbpc-attachment-detach-' . $post . '-' . $file ), $action_url );
-			$actions[] = '<a class="bbpc-attachment-confirm" href="' . esc_url( add_query_arg( 'bbpc-action', 'detach', $_url ) ) . '">' . __( "detach", "bbp-core" ) . '</a>';
+			$_url      = add_query_arg( '_wpnonce', wp_create_nonce( 'gdbbx-attachment-detach-' . $post . '-' . $file ), $action_url );
+			$actions[] = '<a class="gdbbx-attachment-confirm" href="' . esc_url( add_query_arg( 'gdbbx-action', 'detach', $_url ) ) . '">' . __( "detach", "bbp-core" ) . '</a>';
 		}
 
 		return $actions;
@@ -312,9 +312,9 @@ class Display {
 		$ext      = pathinfo( $file, PATHINFO_EXTENSION );
 		$filename = pathinfo( $file, PATHINFO_BASENAME );
 		$url      = wp_get_attachment_url( $attachment->ID );
-		$caption  = bbpc_attachments()->get( 'image_thumbnail_caption' );
+		$caption  = gdbbx_attachments()->get( 'image_thumbnail_caption' );
 		$title    = $attachment->post_excerpt != '' ? $attachment->post_excerpt : $filename;
-		$target   = bbpc_attachments()->get( 'file_target_blank' ) ? '_blank' : '_self';
+		$target   = gdbbx_attachments()->get( 'file_target_blank' ) ? '_blank' : '_self';
 
 		$link_rel   = '';
 		$link_class = array(
@@ -322,28 +322,28 @@ class Display {
 		);
 
 		$item_classes = array(
-			'bbpc-attachment',
-			'bbpc-attachment-' . $ext,
+			'gdbbx-attachment',
+			'gdbbx-attachment-' . $ext,
 			'__thumb'
 		);
 
 		if ( Attachments::instance()->is_thumbnail_type( $ext ) ) {
-			$html = wp_get_attachment_image( $attachment->ID, 'bbpc-thumb' );
+			$html = wp_get_attachment_image( $attachment->ID, 'gdbbx-thumb' );
 		}
 
 		if ( empty( $html ) ) {
-			$size = bbpc_attachments()->get( 'image_thumbnail_size' );
+			$size = gdbbx_attachments()->get( 'image_thumbnail_size' );
 			$size = explode( 'x', $size );
 
 			$html = '<span style="width: ' . $size[0] . 'px; height: ' . $size[1] . 'px; line-height: ' . $size[1] . 'px;" class="__thumb-holder">' . $ext . '</span>';
 		} else {
-			$_class = bbpc_attachments()->get( 'image_thumbnail_css' );
+			$_class = gdbbx_attachments()->get( 'image_thumbnail_css' );
 
 			if ( ! empty( $_class ) ) {
 				$link_class[] = $_class;
 			}
 
-			$link_rel = apply_filters( 'bbpc_image_thumbnail_rel', bbpc_attachments()->get( 'image_thumbnail_rel' ), $attachment, $ext );
+			$link_rel = apply_filters( 'gdbbx_image_thumbnail_rel', gdbbx_attachments()->get( 'image_thumbnail_rel' ), $attachment, $ext );
 
 			if ( ! empty( $link_rel ) ) {
 				$link_rel = ' rel="' . $link_rel . '"';
@@ -353,9 +353,9 @@ class Display {
 			}
 		}
 
-		$item_classes = apply_filters( 'bbpc_attachments_display_user_file_classes', $item_classes, $attachment );
+		$item_classes = apply_filters( 'gdbbx_attachments_display_user_file_classes', $item_classes, $attachment );
 
-		$item = '<li id="bbpc-attachment-id-' . $attachment->ID . '" class="' . join( ' ', $item_classes ) . '">';
+		$item = '<li id="gdbbx-attachment-id-' . $attachment->ID . '" class="' . join( ' ', $item_classes ) . '">';
 
 		if ( $caption ) {
 			$item .= '<div class="__caption">';
@@ -389,9 +389,9 @@ class Display {
 		$ext      = pathinfo( $file, PATHINFO_EXTENSION );
 		$filename = pathinfo( $file, PATHINFO_BASENAME );
 		$url      = wp_get_attachment_url( $attachment->ID );
-		$caption  = bbpc_attachments()->get( 'image_thumbnail_caption' );
+		$caption  = gdbbx_attachments()->get( 'image_thumbnail_caption' );
 		$title    = $attachment->post_excerpt != '' ? $attachment->post_excerpt : ( empty( $caption ) ? $filename : $caption );
-		$target   = bbpc_attachments()->get( 'file_target_blank' ) ? '_blank' : '_self';
+		$target   = gdbbx_attachments()->get( 'file_target_blank' ) ? '_blank' : '_self';
 
 		$link_rel   = '';
 		$link_class = array(
@@ -399,25 +399,25 @@ class Display {
 		);
 
 		$item_classes = array(
-			'bbpc-attachment',
-			'bbpc-attachment-' . $ext,
+			'gdbbx-attachment',
+			'gdbbx-attachment-' . $ext,
 			'__link'
 		);
 
 		$html = $filename;
 
 		if ( $this->icons && $this->type == 'images' ) {
-			$item_classes[] = 'bbpc-image';
-			$item_classes[] = 'bbpc-image-' . Attachments::instance()->icon( $ext );
+			$item_classes[] = 'gdbbx-image';
+			$item_classes[] = 'gdbbx-image-' . Attachments::instance()->icon( $ext );
 		}
 
 		if ( $this->icons && $this->type == 'font' ) {
 			$html = Attachments::instance()->render_attachment_icon( $ext ) . $html;
 		}
 
-		$item_classes = apply_filters( 'bbpc_attachments_display_user_file_classes', $item_classes, $attachment );
+		$item_classes = apply_filters( 'gdbbx_attachments_display_user_file_classes', $item_classes, $attachment );
 
-		$item = '<li id="bbpc-attachment-id-' . $attachment->ID . '" class="' . join( ' ', $item_classes ) . '">';
+		$item = '<li id="gdbbx-attachment-id-' . $attachment->ID . '" class="' . join( ' ', $item_classes ) . '">';
 
 		if ( $preview ) {
 			$item .= $html;

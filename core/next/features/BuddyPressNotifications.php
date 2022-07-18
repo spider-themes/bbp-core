@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,11 +22,11 @@ class BuddyPressNotifications extends Feature {
 		add_filter( 'bp_notifications_get_notifications_for_user', array( $this, 'the_handler' ), 10, 8 );
 
 		if ( $this->get( 'thanks_received', 'buddypress' ) ) {
-			add_action( 'bbpc_say_thanks_saved', array( $this, 'notify_on_thanks' ), 10, 3 );
+			add_action( 'gdbbx_say_thanks_saved', array( $this, 'notify_on_thanks' ), 10, 3 );
 		}
 
 		if ( $this->get( 'post_reported', 'buddypress' ) ) {
-			add_action( 'bbpc_post_reported', array( $this, 'notify_on_report' ), 10, 3 );
+			add_action( 'gdbbx_post_reported', array( $this, 'notify_on_report' ), 10, 3 );
 		}
 	}
 
@@ -45,23 +45,23 @@ class BuddyPressNotifications extends Feature {
 			$component_names = array();
 		}
 
-		array_push( $component_names, 'bbpc' );
+		array_push( $component_names, 'gdbbx' );
 
 		return $component_names;
 	}
 
 	public function the_handler( $action, $item_id, $secondary_item_id, $total_items, $format, $component_action_name, $component_name, $id ) {
-		if ( $component_action_name === 'bbpc_thanks_received' ) {
+		if ( $component_action_name === 'gdbbx_thanks_received' ) {
 			$url   = bbp_is_topic( $item_id ) ? bbp_get_topic_permalink( $item_id ) : bbp_get_reply_url( $item_id );
-			$title = bbp_is_topic( $item_id ) ? bbp_get_topic_title( $item_id ) : bbpc_get_reply_title( $item_id );
+			$title = bbp_is_topic( $item_id ) ? bbp_get_topic_title( $item_id ) : gdbbx_get_reply_title( $item_id );
 
 			$total_items = absint( $total_items );
 
 			if ( $total_items > 1 ) {
-				$filter = 'bbpc_multiple_new_thanks_notification';
+				$filter = 'gdbbx_multiple_new_thanks_notification';
 				$text   = sprintf( esc_html_x( "You have received %d new thanks", "BuddyPress Notification message", "bbp-core" ), $total_items );
 			} else {
-				$filter = 'bbpc_single_new_thanks_notification';
+				$filter = 'gdbbx_single_new_thanks_notification';
 				$text   = ! empty( $secondary_item_id )
 					? sprintf( esc_html_x( "You have received new thanks for '%s' from %s", "BuddyPress Notification message", "bbp-core" ), $title, bp_core_get_user_displayname( $secondary_item_id ) )
 					: sprintf( esc_html_x( "You have received new thanks for '%s'", "BuddyPress Notification message", "bbp-core" ), $title );
@@ -75,17 +75,17 @@ class BuddyPressNotifications extends Feature {
 					'link' => $url
 				), $item_id, $secondary_item_id, $total_items, $text, $url );
 			}
-		} else if ( $component_action_name === 'bbpc_post_reported' ) {
+		} else if ( $component_action_name === 'gdbbx_post_reported' ) {
 			$url   = bbp_is_topic( $item_id ) ? bbp_get_topic_permalink( $item_id ) : bbp_get_reply_url( $item_id );
-			$title = bbp_is_topic( $item_id ) ? bbp_get_topic_title( $item_id ) : bbpc_get_reply_title( $item_id );
+			$title = bbp_is_topic( $item_id ) ? bbp_get_topic_title( $item_id ) : gdbbx_get_reply_title( $item_id );
 
 			$total_items = absint( $total_items );
 
 			if ( $total_items > 1 ) {
-				$filter = 'bbpc_multiple_new_report_notification';
+				$filter = 'gdbbx_multiple_new_report_notification';
 				$text   = sprintf( esc_html_x( "%d forum posts reported", "BuddyPress Notification message", "bbp-core" ), $total_items );
 			} else {
-				$filter = 'bbpc_single_new_report_notification';
+				$filter = 'gdbbx_single_new_report_notification';
 				$text   = ! empty( $secondary_item_id )
 					? sprintf( esc_html_x( "Forum post '%s' reported by %s", "BuddyPress Notification message", "bbp-core" ), $title, bp_core_get_user_displayname( $secondary_item_id ) )
 					: sprintf( esc_html_x( "Forum post '%s' reported", "BuddyPress Notification message", "bbp-core" ), $title );
@@ -109,7 +109,7 @@ class BuddyPressNotifications extends Feature {
 			return;
 		}
 
-		$users = array_merge( bbpc_get_keymasters(), bbpc_get_moderators() );
+		$users = array_merge( gdbbx_get_keymasters(), gdbbx_get_moderators() );
 
 		$author_id = 0;
 
@@ -122,8 +122,8 @@ class BuddyPressNotifications extends Feature {
 		$args = array(
 			'item_id'           => $post_id,
 			'secondary_item_id' => $author_id,
-			'component_name'    => 'bbpc',
-			'component_action'  => 'bbpc_post_reported',
+			'component_name'    => 'gdbbx',
+			'component_action'  => 'gdbbx_post_reported',
 			'date_notified'     => bp_core_current_time(),
 			'is_new'            => 1
 		);
@@ -155,8 +155,8 @@ class BuddyPressNotifications extends Feature {
 				'user_id'           => $author_id,
 				'item_id'           => $post_id,
 				'secondary_item_id' => $user_id,
-				'component_name'    => 'bbpc',
-				'component_action'  => 'bbpc_thanks_received',
+				'component_name'    => 'gdbbx',
+				'component_action'  => 'gdbbx_thanks_received',
 				'date_notified'     => bp_core_current_time(),
 				'is_new'            => 1
 			);

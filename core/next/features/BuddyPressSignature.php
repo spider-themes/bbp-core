@@ -1,10 +1,10 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
 use BP_XProfile_Group;
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -55,9 +55,9 @@ class BuddyPressSignature extends Feature {
 	}
 
 	public function get_field_types( $types ) {
-		require_once( BBPC_PATH . 'core/buddypress/signature.php' );
+		require_once( GDBBX_PATH . 'core/buddypress/signature.php' );
 
-		$types['signature_textarea'] = 'BBPC_XProfile_Field_Type_Signature_Text_Area';
+		$types['signature_textarea'] = 'GDBBX_XProfile_Field_Type_Signature_Text_Area';
 
 		return $types;
 	}
@@ -105,8 +105,8 @@ class BuddyPressSignature extends Feature {
 			xprofile_delete_field( $field_id );
 		}
 
-		bbpc()->set( 'buddypress-signature__xfield_id', 0, 'features' );
-		bbpc()->set( 'buddypress-signature__xfield_del', false, 'features', true );
+		gdbbx()->set( 'buddypress-signature__xfield_id', 0, 'features' );
+		gdbbx()->set( 'buddypress-signature__xfield_del', false, 'features', true );
 
 		wp_redirect_self();
 		exit;
@@ -126,10 +126,10 @@ class BuddyPressSignature extends Feature {
 				'can_delete'     => true
 			) );
 
-			bbpc()->set( 'buddypress-signature__xfield_id', $field_id, 'features' );
+			gdbbx()->set( 'buddypress-signature__xfield_id', $field_id, 'features' );
 		}
 
-		bbpc()->set( 'buddypress-signature__xfield_add', false, 'features', true );
+		gdbbx()->set( 'buddypress-signature__xfield_add', false, 'features', true );
 
 		wp_redirect_self();
 		exit;
@@ -139,13 +139,13 @@ class BuddyPressSignature extends Feature {
 		if ( $this->xprofile_enabled() && $field->field_id == $this->get( 'xfield_id' ) ) {
 			$user_id = $field->user_id;
 
-			bbpc_update_raw_user_signature( $user_id, '' );
+			gdbbx_update_raw_user_signature( $user_id, '' );
 		}
 	}
 
 	public function xprofile_get_field_data( $value, $field_id, $user_id ) {
 		if ( $this->xprofile_enabled() && $field_id == $this->get( 'xfield_id' ) ) {
-			$value = bbpc_get_raw_user_signature( $user_id );
+			$value = gdbbx_get_raw_user_signature( $user_id );
 		}
 
 		return $value;
@@ -157,7 +157,7 @@ class BuddyPressSignature extends Feature {
 				$user_id   = $field->user_id;
 				$signature = $field->value;
 
-				bbpc_update_raw_user_signature( $user_id, $signature );
+				gdbbx_update_raw_user_signature( $user_id, $signature );
 			}
 		}
 	}

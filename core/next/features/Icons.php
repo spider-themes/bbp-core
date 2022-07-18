@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -50,14 +50,14 @@ class Icons extends Feature {
 		$forum_id = bbp_get_forum_id();
 
 		if ( $this->settings['forums_mark_closed_forum'] && bbp_is_forum_closed( $forum_id ) ) {
-			echo bbpc_signs()->closed_forum();
+			echo gdbbx_signs()->closed_forum();
 		}
 
 		if ( $this->settings['forums_mark_visibility_forum'] && ! bbp_is_forum_public( $forum_id ) ) {
 			if ( bbp_is_forum_private( $forum_id ) ) {
-				echo bbpc_signs()->private_forum();
+				echo gdbbx_signs()->private_forum();
 			} else if ( bbp_is_forum_hidden( $forum_id ) ) {
-				echo bbpc_signs()->hidden_forum();
+				echo gdbbx_signs()->hidden_forum();
 			}
 		}
 	}
@@ -65,38 +65,38 @@ class Icons extends Feature {
 	public function show_topics_icon_marks() {
 		$topic_id = bbp_get_topic_id();
 
-		if ( $this->settings['private_topics_icon'] && Plugin::instance()->is_enabled( 'private-topics' ) && bbpc_private_topics()->is_private( $topic_id ) ) {
-			echo bbpc_signs()->private_topic();
-		} else if ( $this->settings['private_replies_icon'] && Plugin::instance()->is_enabled( 'private-replies' ) && bbpc_private_replies()->has_private_replies( $topic_id ) ) {
-			echo bbpc_signs()->private_replies();
+		if ( $this->settings['private_topics_icon'] && Plugin::instance()->is_enabled( 'private-topics' ) && gdbbx_private_topics()->is_private( $topic_id ) ) {
+			echo gdbbx_signs()->private_topic();
+		} else if ( $this->settings['private_replies_icon'] && Plugin::instance()->is_enabled( 'private-replies' ) && gdbbx_private_replies()->has_private_replies( $topic_id ) ) {
+			echo gdbbx_signs()->private_replies();
 		}
 
 		if ( $this->settings['forum_mark_journal'] && Plugin::instance()->is_enabled( 'journal-topic' ) && JournalTopic::instance()->is_journal( $topic_id ) ) {
-			echo bbpc_signs()->journal_topic();
+			echo gdbbx_signs()->journal_topic();
 		}
 
-		if ( $this->settings['forum_mark_attachments'] && bbpc_cache()->attachments_has_topic_attachments( $topic_id ) ) {
-			$attachments = bbpc_cache()->attachments_count_topic_attachments( $topic_id );
-			echo bbpc_signs()->attachments( $attachments );
+		if ( $this->settings['forum_mark_attachments'] && gdbbx_cache()->attachments_has_topic_attachments( $topic_id ) ) {
+			$attachments = gdbbx_cache()->attachments_count_topic_attachments( $topic_id );
+			echo gdbbx_signs()->attachments( $attachments );
 		}
 
 		if ( $this->settings['forum_mark_closed'] && bbp_is_topic_closed( $topic_id ) ) {
-			echo bbpc_signs()->closed_topic();
+			echo gdbbx_signs()->closed_topic();
 		}
 
 		if ( Plugin::instance()->is_enabled( 'lock-topics' ) ) {
 			if ( $this->settings['forum_mark_lock'] && LockTopics::instance()->is_topic_temp_locked( $topic_id ) ) {
-				echo bbpc_signs()->locked_topic();
+				echo gdbbx_signs()->locked_topic();
 			}
 		}
 
 		if ( $this->settings['forum_mark_stick'] && bbp_is_topic_sticky( $topic_id ) ) {
-			echo bbpc_signs()->sticky_topic();
+			echo gdbbx_signs()->sticky_topic();
 		}
 
 		if ( is_user_logged_in() && $this->settings['forum_mark_replied'] ) {
-			if ( bbpc_cache()->userreplied_user_replied( $topic_id ) ) {
-				echo bbpc_signs()->replied_to_topic();
+			if ( gdbbx_cache()->userreplied_user_replied( $topic_id ) ) {
+				echo gdbbx_signs()->replied_to_topic();
 			}
 		}
 	}

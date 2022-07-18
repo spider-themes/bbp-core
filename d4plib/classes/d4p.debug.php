@@ -25,96 +25,95 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! class_exists( 'd4p_debug' ) ) {
-	class d4p_debug {
-		static function error_log( $log, $title = '' ) {
-			if ( true === WP_DEBUG ) {
-				$print = '';
+if (!class_exists('d4p_debug')) {
+    class d4p_debug {
+        static function error_log($log, $title = '') {
+            if (true === WP_DEBUG) {
+                $print = '';
 
-				if ( $title != '' ) {
-					$print .= '<<<< ' . $title . "\r\n";
-				}
+                if ($title != '') {
+                    $print.= '<<<< '.$title."\r\n";
+                }
 
-				$print .= print_r( $log, true );
+                $print.= print_r($log, true);
+                
+                error_log($print);
+            }
+        }
 
-				error_log( $print );
-			}
-		}
+        static function print_r($obj, $pre = true, $title = '', $before = '', $after = '') {
+            echo $before.D4P_EOL;
 
-		static function print_r( $obj, $pre = true, $title = '', $before = '', $after = '' ) {
-			echo $before . D4P_EOL;
+            if ($pre) {
+                echo '<pre style="text-align: left; font-family: monospace; padding: 5px; font-size: 12px; background: #fff; border: 1px solid #000; color: #000;">';
 
-			if ( $pre ) {
-				echo '<pre style="text-align: left; font-family: monospace; padding: 5px; font-size: 12px; background: #fff; border: 1px solid #000; color: #000;">';
+                if ($title != '') {
+                    echo '&gt;&gt;&gt;&gt;&nbsp;<strong>'.$title.'</strong>&nbsp;&lt;&lt;&lt;&lt;&lt;<br/><br/>';
+                }
+            } else {
+                if ($title != '') {
+                    echo "<<<< ".$title." >>>>\r\n\r\n";
+                }
+            }
 
-				if ( $title != '' ) {
-					echo '&gt;&gt;&gt;&gt;&nbsp;<strong>' . $title . '</strong>&nbsp;&lt;&lt;&lt;&lt;&lt;<br/><br/>';
-				}
-			} else {
-				if ( $title != '' ) {
-					echo '<<<< ' . $title . " >>>>\r\n\r\n";
-				}
-			}
+            print_r($obj);
 
-			print_r( $obj );
+            if ($pre) {
+                echo '</pre>';
+            }
 
-			if ( $pre ) {
-				echo '</pre>';
-			}
+            echo $after.D4P_EOL;
+        }
+        
+        static function print_hooks($filter = false, $destination = 'print') {
+            global $wp_filter;
 
-			echo $after . D4P_EOL;
-		}
+            $skip = empty($filter);
 
-		static function print_hooks( $filter = false, $destination = 'print' ) {
-			global $wp_filter;
+            foreach ($wp_filter as $tag => $hook) {
+                if ($skip || false !== strpos($tag, $filter)) {
+                    self::print_hook($tag, $hook, $destination);
+                }
+            }
+        }
 
-			$skip = empty( $filter );
+        static function print_hook($tag, $hook, $destination = 'print') {
+            ksort($hook);
 
-			foreach ( $wp_filter as $tag => $hook ) {
-				if ( $skip || false !== strpos( $tag, $filter ) ) {
-					self::print_hook( $tag, $hook, $destination );
-				}
-			}
-		}
+            $print = array();
 
-		static function print_hook( $tag, $hook, $destination = 'print' ) {
-			ksort( $hook );
+            foreach ($hook as $priority => $functions) {
+                foreach ($functions as $function) {
+                    $line = $priority.' : ';
 
-			$print = [];
+                    $callback = $function['function'];
 
-			foreach ( $hook as $priority => $functions ) {
-				foreach ( $functions as $function ) {
-					$line = $priority . ' : ';
+                    if (is_string($callback)) {
+                        $line.= $callback;
+                    } elseif (is_a($callback, 'Closure')) {
+                        $closure = new ReflectionFunction($callback);
+                        $line.= 'closure from '.$closure->getFileName(). '::'.$closure->getStartLine();
+                    } elseif (is_string($callback[0])) {
+                        $line.= $callback[0].'::'.$callback[1];
+                    } elseif (is_object( $callback[0])) {
+                        $line.= get_class($callback[0]).'->'.$callback[1];
+                    }
 
-					$callback = $function['function'];
+                    if ($function['accepted_args'] == 1) {
+                        $line.= " ({$function['accepted_args']})";
+                    }
 
-					if ( is_string( $callback ) ) {
-						$line .= $callback;
-					} elseif ( is_a( $callback, 'Closure' ) ) {
-						$closure = new ReflectionFunction( $callback );
-						$line   .= 'closure from ' . $closure->getFileName() . '::' . $closure->getStartLine();
-					} elseif ( is_string( $callback[0] ) ) {
-						$line .= $callback[0] . '::' . $callback[1];
-					} elseif ( is_object( $callback[0] ) ) {
-						$line .= get_class( $callback[0] ) . '->' . $callback[1];
-					}
+                    $print[] = $line;
+                }
+            }
 
-					if ( $function['accepted_args'] == 1 ) {
-						$line .= " ({$function['accepted_args']})";
-					}
-
-					$print[] = $line;
-				}
-			}
-
-			if ( $destination == 'log' ) {
-				self::error_log( $print, $tag );
-			} else {
-				self::print_r( $print, true, $tag );
-			}
-		}
-	}
+            if ($destination == 'log') {
+                self::error_log($print, $tag);
+            } else {
+                self::print_r($print, true, $tag);
+            }
+        }
+    }
 }

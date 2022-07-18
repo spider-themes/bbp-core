@@ -1,42 +1,42 @@
 #{$forums} {
-    .bbp-topic-content .bbpc-bbcode-heading,
-    .bbp-reply-content .bbpc-bbcode-heading {
+    .bbp-topic-content .gdbbx-bbcode-heading,
+    .bbp-reply-content .gdbbx-bbcode-heading {
         margin: .5em 0;
     }
 
-    .bbp-topic-content .bbpc-bbcode-heading:first-of-type,
-    .bbp-reply-content .bbpc-bbcode-heading:first-of-type {
+    .bbp-topic-content .gdbbx-bbcode-heading:first-of-type,
+    .bbp-reply-content .gdbbx-bbcode-heading:first-of-type {
         margin-top: 0;
     }
 
     .syntaxhighlighter {
-        .bbpc-bbcode-scode {
+        .gdbbx-bbcode-scode {
             padding: 1em 0;
             border: 1px solid #DDD;
         }
     }
 
-    .bbpc-bbcode-spoiler {
+    .gdbbx-bbcode-spoiler {
         padding: 0 5px;
     }
 
-    .bbpc-bbcode-hr {
+    .gdbbx-bbcode-hr {
         clear: none;
         margin: 1em 0;
     }
 
     table {
-        &.bbpc-bbcode-nfo {
+        &.gdbbx-bbcode-nfo {
             border: 1px solid #222;
 
             td {
-                &.bbpc-bbcode-el-title {
+                &.gdbbx-bbcode-el-title {
                     background: #222;
                     color: #FFF;
                     border: none;
                 }
 
-                &.bbpc-bbcode-el-content {
+                &.gdbbx-bbcode-el-content {
                     padding: 0;
 
                     pre {
@@ -53,29 +53,29 @@
         }
     }
 
-    .bbpc-bbcode-hide {
+    .gdbbx-bbcode-hide {
         margin: 6px 0 12px;
         border: 1px solid #CCC;
 
-        &.bbpc-hide-hidden {
-            .bbpc-hide-title {
+        &.gdbbx-hide-hidden {
+            .gdbbx-hide-title {
                 color: #C00;
             }
         }
 
-        .bbpc-hide-title {
+        .gdbbx-hide-title {
             padding: 4px 8px;
             font-weight: bold;
             background-color: #CCC;
         }
 
-        .bbpc-hide-content {
+        .gdbbx-hide-content {
             padding: 4px 8px;
             background-color: #FDFDFD;
         }
     }
 
-    .bbpc-bbcode-attachment {
+    .gdbbx-bbcode-attachment {
         > br {
             display: none;
         }

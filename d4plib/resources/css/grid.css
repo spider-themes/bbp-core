@@ -86,28 +86,28 @@
 @media screen and (max-width: 568px) {
   /* Stack anything that isn’t full-width on smaller screens */
   .d4p-layout-grid .d4p-layout-unit {
-	width: 100% !important;
-	padding-left: 20px;
-	padding-right: 20px;
+    width: 100% !important;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .d4p-layout-unit .d4p-layout-grid .d4p-layout-unit {
-	padding-left: 0px;
-	padding-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   /* Sometimes, you just want to be different on small screens */
   .center-on-mobiles {
-	text-align: center !important;
+    text-align: center !important;
   }
   .hide-on-mobiles {
-	display: none !important;
+    display: none !important;
   }
 }
 
 /* Expand the wrap a bit further on larger screens */
 @media screen and (min-width: 1180px) {
   .wider .d4p-layout-grid {
-	max-width: 1180px;
-	margin: 0 auto;
+    max-width: 1180px;
+    margin: 0 auto;
   }
 }

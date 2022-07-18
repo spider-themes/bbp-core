@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,14 +33,14 @@ class AdminWidgets extends Feature {
 
 	public function dashboard_widgets() {
 		if ( $this->settings['activity'] ) {
-			wp_add_dashboard_widget( 'bbpc-dashboard-activity', __( "Latest Forum Topics and Replies", "bbp-core" ), array(
+			wp_add_dashboard_widget( 'gdbbx-dashboard-activity', __( "Latest Forum Topics and Replies", "bbp-core" ), array(
 				$this,
 				'widget_latest_activity'
 			) );
 		}
 
 		if ( $this->settings['online'] ) {
-			wp_add_dashboard_widget( 'bbpc-dashboard-users', __( "Online Users in the Forums", "bbp-core" ), array(
+			wp_add_dashboard_widget( 'gdbbx-dashboard-users', __( "Online Users in the Forums", "bbp-core" ), array(
 				$this,
 				'widget_online_users'
 			) );
@@ -48,10 +48,10 @@ class AdminWidgets extends Feature {
 	}
 
 	public function widget_latest_activity() {
-		include( BBPC_PATH . 'forms/meta/dashboard.activity.php' );
+		include( GDBBX_PATH . 'forms/meta/dashboard.activity.php' );
 	}
 
 	public function widget_online_users() {
-		include( BBPC_PATH . 'forms/meta/dashboard.online.php' );
+		include( GDBBX_PATH . 'forms/meta/dashboard.online.php' );
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Database;
+namespace Dev4Press\Plugin\GDBBX\Database;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

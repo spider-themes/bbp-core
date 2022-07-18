@@ -1,18 +1,18 @@
-<div class="bbpc-canned-replies">
-	<a role="button" href="#" class="bbpc-canned-replies-show"><?php _e( 'Show Canned Replies List', 'bbp-core' ); ?></a>
-	<a role="button" href="#" class="bbpc-canned-replies-hide"><?php _e( 'Hide Canned Replies List', 'bbp-core' ); ?></a>
+<div class="gdbbx-canned-replies">
+    <a role="button" href="#" class="gdbbx-canned-replies-show"><?php _e( "Show Canned Replies List", "bbp-core" ); ?></a>
+    <a role="button" href="#" class="gdbbx-canned-replies-hide"><?php _e( "Hide Canned Replies List", "bbp-core" ); ?></a>
 
-	<fieldset class="bbp-form bbpc-canned-replies-list">
-		<legend>
-			<label><?php _e( 'Canned Replies', 'bbp-core' ); ?>:</label>
-		</legend>
+    <fieldset class="bbp-form gdbbx-canned-replies-list">
+        <legend>
+            <label><?php _e( "Canned Replies", "bbp-core" ); ?>:</label>
+        </legend>
 
 		<?php
 
-		$categories = bbpc_canned_replies()->categories();
+		$categories = gdbbx_canned_replies()->categories();
 
 		if ( empty( $categories ) ) {
-			$replies = bbpc_canned_replies()->replies();
+			$replies = gdbbx_canned_replies()->replies();
 
 			if ( $replies->have_posts() ) {
 				echo '<ul>';
@@ -20,38 +20,38 @@
 				while ( $replies->have_posts() ) {
 					$replies->the_post();
 
-					include bbpc_get_template_part( 'bbpc-single-canned-reply.php' );
+					include( gdbbx_get_template_part( 'gdbbx-single-canned-reply.php' ) );
 				}
 
 				echo '</ul>';
 			}
 		} else {
-			$replies = bbpc_canned_replies()->replies( - 1 );
+			$replies = gdbbx_canned_replies()->replies( - 1 );
 
 			if ( $replies->have_posts() ) {
-				echo '<h4 class="bbpc-canned-category">' . __( 'Uncategorized', 'bbp-core' ) . '</h4>';
+				echo '<h4 class="gdbbx-canned-category">' . __( "Uncategorized", "bbp-core" ) . '</h4>';
 				echo '<ul>';
 
 				while ( $replies->have_posts() ) {
 					$replies->the_post();
 
-					include bbpc_get_template_part( 'bbpc-single-canned-reply.php' );
+					include( gdbbx_get_template_part( 'gdbbx-single-canned-reply.php' ) );
 				}
 
 				echo '</ul>';
 			}
 
 			foreach ( $categories as $cat ) {
-				$replies = bbpc_canned_replies()->replies( $cat->term_id );
+				$replies = gdbbx_canned_replies()->replies( $cat->term_id );
 
 				if ( $replies->have_posts() ) {
-					echo '<h4 class="bbpc-canned-category">' . $cat->name . '</h4>';
+					echo '<h4 class="gdbbx-canned-category">' . $cat->name . '</h4>';
 					echo '<ul>';
 
 					while ( $replies->have_posts() ) {
 						$replies->the_post();
 
-						include bbpc_get_template_part( 'bbpc-single-canned-reply.php' );
+						include( gdbbx_get_template_part( 'gdbbx-single-canned-reply.php' ) );
 					}
 
 					echo '</ul>';
@@ -62,5 +62,5 @@
 		wp_reset_postdata();
 
 		?>
-	</fieldset>
+    </fieldset>
 </div>

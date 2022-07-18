@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
-use SpiderDevs\Plugin\BBPC\Basic\Statistics as Stats;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Basic\Statistics as Stats;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,16 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Statistics extends Widget {
 	public $widget_base = 'd4p_bbw_statistics';
-	public $widget_class = 'bbpc-widget bbpc-widget-statistics';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-statistics';
 
 	public $defaults = array(
 		'title'    => 'Forum Statistics',
-		'template' => 'bbpc-widget-statistics-list.php',
+		'template' => 'gdbbx-widget-statistics-list.php',
 		'stats'    => array()
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "Statistics", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "Statistics", "bbp-core" );
 		$this->widget_description = __( "Forum statistics information.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -61,8 +61,8 @@ class Statistics extends Widget {
 			$instance['stats'] = array_keys( $elements );
 		}
 
-		$template = apply_filters( 'bbpc-widget-statistics-template', $instance['template'], $results, $this );
+		$template = apply_filters( 'gdbbx-widget-statistics-template', $instance['template'], $results, $this );
 
-		include( bbpc_get_template_part( $template ) );
+		include( gdbbx_get_template_part( $template ) );
 	}
 }

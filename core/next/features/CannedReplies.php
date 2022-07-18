@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
 use WP_Query;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,9 +25,9 @@ class CannedReplies extends Feature {
 	public function __construct() {
 		parent::__construct();
 
-		add_action( 'bbpc_init', array( $this, 'init' ) );
+		add_action( 'gdbbx_init', array( $this, 'init' ) );
 
-		add_filter( 'bbpc_script_values', array( $this, 'script_values' ) );
+		add_filter( 'gdbbx_script_values', array( $this, 'script_values' ) );
 		add_action( 'bbp_theme_before_reply_form_content', array( $this, 'form' ) );
 	}
 
@@ -43,7 +43,7 @@ class CannedReplies extends Feature {
 
 	public function script_values( $values ) {
 		$values['load'][]         = 'canned_replies';
-		$values['canned_replies'] = apply_filters( 'bbpc_canned_replies_script_values', array(
+		$values['canned_replies'] = apply_filters( 'gdbbx_canned_replies_script_values', array(
 			'auto_close_on_insert' => $this->settings['auto_close_on_insert']
 		) );
 
@@ -52,7 +52,7 @@ class CannedReplies extends Feature {
 
 	public function form() {
 		if ( current_user_can( 'moderate' ) || is_super_admin() || $this->allowed( 'canned' ) ) {
-			include( bbpc_get_template_part( 'bbpc-list-canned-replies.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-list-canned-replies.php' ) );
 
 			Enqueue::instance()->core();
 		}
@@ -148,7 +148,7 @@ class CannedReplies extends Feature {
 			'show_in_nav_menus' => false
 		);
 
-		$data = apply_filters( 'bbpc_registration_canned_replies_category', $reg );
+		$data = apply_filters( 'gdbbx_registration_canned_replies_category', $reg );
 
 		register_taxonomy( 'bbx_canned_category', array( 'bbx_canned_reply' ), $data );
 	}
@@ -165,7 +165,7 @@ class CannedReplies extends Feature {
 			'hierarchical'        => false,
 			'public'              => false,
 			'rewrite'             => false,
-			'show_in_menu'        => 'bbp-core-front',
+			'show_in_menu'        => 'gd-bbpress-toolbox-front',
 			'show_in_admin_bar'   => false,
 			'has_archive'         => false,
 			'query_var'           => true,
@@ -176,7 +176,7 @@ class CannedReplies extends Feature {
 			'_edit_link'          => 'post.php?post=%d'
 		);
 
-		$data = apply_filters( 'bbpc_registration_canned_replies_post_type', $reg );
+		$data = apply_filters( 'gdbbx_registration_canned_replies_post_type', $reg );
 
 		register_post_type( 'bbx_canned_reply', $data );
 	}
@@ -209,7 +209,7 @@ class CannedReplies extends Feature {
 			);
 		}
 
-		$args = apply_filters( 'bbpc_get_canned_replies_query', $args );
+		$args = apply_filters( 'gdbbx_get_canned_replies_query', $args );
 
 		return new WP_Query( $args );
 	}

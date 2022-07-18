@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Database;
+namespace Dev4Press\Plugin\GDBBX\Database;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -143,7 +143,7 @@ class Bulk extends Core {
 		foreach ( $items as $id => $raw ) {
 			$item = array( 'users' => 0, 'guests' => 0, 'roles' => array() );
 
-			$roles = bbpc_get_user_roles();
+			$roles = gdbbx_get_user_roles();
 			foreach ( array_keys( $roles ) as $role ) {
 				$item['roles'][ $role ] = 0;
 			}
@@ -300,7 +300,7 @@ class Bulk extends Core {
 			bbp_get_forum_post_type()
 		);
 
-		$raw = d4p_transient_sql_query( $query, bbpc_plugin()->get_transient_key( 'forums_children_ids' ), 'results' );
+		$raw = d4p_transient_sql_query( $query, gdbbx_plugin()->get_transient_key( 'forums_children_ids' ), 'results' );
 
 		return wp_list_pluck( $raw, 'post_parent', 'ID' );
 	}

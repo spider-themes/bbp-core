@@ -1,12 +1,12 @@
-<div class="bbpc-widget-the-info-dl">
-	<dl>
-		<?php
+<div class="gdbbx-widget-the-info-dl">
+    <dl>
+        <?php
 
-		foreach ( $instance['stats'] as $stat ) {
-			echo '<dt class="bbpc-stat-' . $stat . ' bbpc-stat-item-label">' . $elements[ $stat ] . '</dt>';
-			echo '<dd class="bbpc-stat-' . $stat . ' bbpc-stat-item-value">' . $statistics[ $stat ] . '</dd>';
-		}
+        foreach ($instance['stats'] as $stat) {
+            echo '<dt class="gdbbx-stat-'.$stat.' gdbbx-stat-item-label">'.$elements[$stat].'</dt>';
+            echo '<dd class="gdbbx-stat-'.$stat.' gdbbx-stat-item-value">'.$statistics[$stat].'</dd>';
+        }
 
-		?>
-	</dl>
+        ?>
+    </dl>
 </div>

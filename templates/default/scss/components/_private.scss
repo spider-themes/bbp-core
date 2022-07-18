@@ -1,23 +1,23 @@
 #{$forums} {
     div,
     li {
-        &.topic.bbpc-private-topic,
-        &.reply.bbpc-private-reply {
+        &.topic.gdbbx-private-topic,
+        &.reply.gdbbx-private-reply {
             background-color: #FFF8F8;
         }
 
-        &.topic.bbpc-private-topic-locked,
-        &.reply.bbpc-private-reply-locked {
+        &.topic.gdbbx-private-topic-locked,
+        &.reply.gdbbx-private-reply-locked {
             background-color: #FEE;
         }
 
-        &.topic.bbpc-private-topic-locked .bbp-topic-content,
-        &.reply.bbpc-private-reply-locked .bbp-reply-content {
+        &.topic.gdbbx-private-topic-locked .bbp-topic-content,
+        &.reply.gdbbx-private-reply-locked .bbp-reply-content {
             font-weight: bold;
         }
     }
 
-    .bbpc-private-reply-hidden {
+    .gdbbx-private-reply-hidden {
         display: none;
     }
 }

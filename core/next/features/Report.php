@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,14 +33,14 @@ class Report extends Feature {
 		$this->feature_allowed = $this->allowed( 'allow' );
 
 		if ( $this->feature_allowed ) {
-			add_action( 'bbpc_template_before_replies_loop', array( $this, 'before_replies_loop' ), 10, 2 );
+			add_action( 'gdbbx_template_before_replies_loop', array( $this, 'before_replies_loop' ), 10, 2 );
 
-			add_filter( 'bbpc_script_values', array( $this, 'script_values' ) );
+			add_filter( 'gdbbx_script_values', array( $this, 'script_values' ) );
 
 			if ( $this->settings['show_report_status'] ) {
 				$mods_only = $this->settings['show_report_status_to_moderators_only'];
 
-				if ( ! $mods_only || ( $mods_only && bbpc_can_user_moderate() ) ) {
+				if ( ! $mods_only || ( $mods_only && gdbbx_can_user_moderate() ) ) {
 					add_action( 'bbp_theme_after_topic_content', array( $this, 'report_status' ), 200 );
 					add_action( 'bbp_theme_after_reply_content', array( $this, 'report_status' ), 200 );
 				}
@@ -59,12 +59,12 @@ class Report extends Feature {
 	}
 
 	public function before_replies_loop( $posts, $users ) {
-		bbpc_cache()->report_run_bulk_list( $posts );
+		gdbbx_cache()->report_run_bulk_list( $posts );
 	}
 
 	public function script_values( $values ) {
 		$values['load'][] = 'report';
-		$values['report'] = apply_filters( 'bbpc_report_script_values', array(
+		$values['report'] = apply_filters( 'gdbbx_report_script_values', array(
 			'alert'   => _x( "Report message is required.", "Report Form", "bbp-core" ),
 			'after'   => _x( "Reported", "Report Form", "bbp-core" ),
 			'confirm' => _x( "Are you sure you want to report this post?", "Report Form", "bbp-core" ),
@@ -83,30 +83,30 @@ class Report extends Feature {
 			$post_id = bbp_get_topic_id();
 		}
 
-		if ( bbpc_cache()->report_is_reported( $post_id ) ) {
+		if ( gdbbx_cache()->report_is_reported( $post_id ) ) {
 			$message = bbp_is_topic( $post_id )
 				?
 				__( "This topic has been reported.", "bbp-core" )
 				:
 				__( "This reply has been reported.", "bbp-core" );
 
-			$notice = '<div class="bbpc-report-notice bbp-template-notice error"><p>' . $message . '</p></div>';
+			$notice = '<div class="gdbbx-report-notice bbp-template-notice error"><p>' . $message . '</p></div>';
 
-			echo apply_filters( 'bbpc_notice_report_status', $notice, $message, $post_id );
+			echo apply_filters( 'gdbbx_notice_report_status', $notice, $message, $post_id );
 		}
 	}
 
 	public function get_report_link( $id ) {
-		$show = apply_filters( 'bbpc_report_show_link', true, $id );
+		$show = apply_filters( 'gdbbx_report_show_link', true, $id );
 		$link = false;
 
 		if ( $this->feature_allowed && $show ) {
-			if ( ! bbpc_cache()->report_user_reported( $id, bbp_get_current_user_id() ) ) {
-				$nonce     = wp_create_nonce( 'bbpc-report-' . $id );
+			if ( ! gdbbx_cache()->report_user_reported( $id, bbp_get_current_user_id() ) ) {
+				$nonce     = wp_create_nonce( 'gdbbx-report-' . $id );
 				$type      = bbp_is_reply( $id ) ? 'reply' : 'topic';
 				$post_type = bbp_is_reply( $id ) ? bbp_get_reply_post_type() : bbp_get_topic_post_type();
 
-				$link = '<a role="button" href="#" data-nonce="' . $nonce . '" data-type="' . $type . '" data-post-type="' . $post_type . '" data-id="' . $id . '" class="bbpc-link-report bbpc-link-report-' . $id . '">' . $this->_string( 'report' ) . '</a>';
+				$link = '<a role="button" href="#" data-nonce="' . $nonce . '" data-type="' . $type . '" data-post-type="' . $post_type . '" data-id="' . $id . '" class="gdbbx-link-report gdbbx-link-report-' . $id . '">' . $this->_string( 'report' ) . '</a>';
 			} else {
 				$link = '<span>' . $this->_string( 'reported' ) . '</span>';
 			}
@@ -122,19 +122,19 @@ class Report extends Feature {
 	}
 
 	public function embed_form() {
-		$path = bbpc_get_template_part( 'bbpc-form-report-post.php' );
-		$form = apply_filters( 'bbpc_report_form_file', $path );
+		$path = gdbbx_get_template_part( 'gdbbx-form-report-post.php' );
+		$form = apply_filters( 'gdbbx_report_form_file', $path );
 
 		include_once( $form );
 	}
 
 	public function report( $post_id, $user_id, $report ) {
-		if ( ! bbpc_db()->report_given( $post_id, $user_id ) ) {
-			bbpc_db()->report_add( $post_id, $user_id, $report );
+		if ( ! gdbbx_db()->report_given( $post_id, $user_id ) ) {
+			gdbbx_db()->report_add( $post_id, $user_id, $report );
 
 			$this->notify( $user_id, $post_id, $report );
 
-			do_action( 'bbpc_post_reported', $post_id, $user_id, $report );
+			do_action( 'gdbbx_post_reported', $post_id, $user_id, $report );
 		}
 	}
 
@@ -153,7 +153,7 @@ class Report extends Feature {
 				'REPORT_TITLE'   => wp_kses( $_title, array() ),
 				'REPORT_LINK'    => $_url,
 				'REPORT_CONTENT' => $report,
-				'REPORTS_LIST'   => admin_url( 'admin.php?page=bbp-core-reported-posts' ),
+				'REPORTS_LIST'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-reported-posts' ),
 				'FORUM_TITLE'    => strip_tags( bbp_get_forum_title( $_forum ) )
 			);
 
@@ -179,7 +179,7 @@ class Report extends Feature {
 				$users = array_merge( $users, get_users( array( 'role' => bbp_get_moderator_role() ) ) );
 			}
 
-			$users = apply_filters( 'bbpc_report_notification_emails', $users, $user_id, $post_id, $report );
+			$users = apply_filters( 'gdbbx_report_notification_emails', $users, $user_id, $post_id, $report );
 
 			foreach ( $users as $user ) {
 				wp_mail( $user->user_email, $subject, $content );
@@ -191,9 +191,9 @@ class Report extends Feature {
 		switch ( $name ) {
 			default:
 			case 'report':
-				return apply_filters( 'bbpc_report_string_report', __( "Report", "bbp-core" ) );
+				return apply_filters( 'gdbbx_report_string_report', __( "Report", "bbp-core" ) );
 			case 'reported':
-				return apply_filters( 'bbpc_report_string_reported', __( "Reported", "bbp-core" ) );
+				return apply_filters( 'gdbbx_report_string_reported', __( "Reported", "bbp-core" ) );
 		}
 	}
 }

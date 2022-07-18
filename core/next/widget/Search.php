@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Search extends Widget {
 	public $widget_base = 'd4p_bbw_search';
-	public $widget_class = 'bbpc-widget bbpc-widget-search';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-search';
 
 	public $forum_id = 0;
 
@@ -21,7 +21,7 @@ class Search extends Widget {
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "Search", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "Search", "bbp-core" );
 		$this->widget_description = __( "Expanded search widget.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -43,7 +43,7 @@ class Search extends Widget {
 	}
 
 	public function form_unique_id( $instance ) {
-		return 'bbpc-search-form-' . $this->number;
+		return 'gdbbx-search-form-' . $this->number;
 	}
 
 	public function title( $instance ) : string {
@@ -64,8 +64,8 @@ class Search extends Widget {
 	}
 
 	public function the_render( $instance, $results = false ) {
-		$template = apply_filters( 'bbpc-widget-search-template', 'bbpc-widget-search.php', $this );
+		$template = apply_filters( 'gdbbx-widget-search-template', 'gdbbx-widget-search.php', $this );
 
-		include( bbpc_get_template_part( $template ) );
+		include( gdbbx_get_template_part( $template ) );
 	}
 }

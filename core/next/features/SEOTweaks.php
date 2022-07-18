@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -58,12 +58,12 @@ class SEOTweaks extends Feature {
 
 		if ( isset( $post->ID ) && $post->ID > 0 ) {
 			if ( bbp_is_topic( $post->ID ) ) {
-				if ( $this->settings['noindex_private_topic'] && bbpc_is_topic_private( $post->ID ) ) {
-					bbpc_no_robots();
+				if ( $this->settings['noindex_private_topic'] && gdbbx_is_topic_private( $post->ID ) ) {
+					gdbbx_no_robots();
 				}
 			} else if ( bbp_is_reply( $post->ID ) ) {
-				if ( $this->settings['noindex_private_reply'] && bbpc_is_reply_private( $post->ID ) ) {
-					bbpc_no_robots();
+				if ( $this->settings['noindex_private_reply'] && gdbbx_is_reply_private( $post->ID ) ) {
+					gdbbx_no_robots();
 				}
 			}
 		}

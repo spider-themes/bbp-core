@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,7 +13,7 @@ class Roles {
 	public function __construct() {
 		add_filter( 'init', array( $this, 'init_capabilities' ) );
 		add_filter( 'bbp_get_caps_for_role', array( $this, 'get_caps_for_role' ), 10, 2 );
-		add_action( 'bbpc_plugin_settings_loaded', array( $this, 'settings_loaded' ) );
+		add_action( 'gdbbx_plugin_settings_loaded', array( $this, 'settings_loaded' ) );
 	}
 
 	public static function instance() : Roles {
@@ -28,16 +28,16 @@ class Roles {
 
 	public function get_caps_for_role( $caps, $role ) {
 		if ( $role == bbp_get_keymaster_role() ) {
-			$caps['bbpc_standard'] = true;
+			$caps['gdbbx_standard'] = true;
 		}
 
 		switch ( $role ) {
 			case bbp_get_keymaster_role():
 			case bbp_get_moderator_role():
-				$caps['bbpc_moderation']             = true;
-				$caps['bbpc_moderation_users']       = true;
-				$caps['bbpc_moderation_report']      = true;
-				$caps['bbpc_moderation_attachments'] = true;
+				$caps['gdbbx_moderation']             = true;
+				$caps['gdbbx_moderation_users']       = true;
+				$caps['gdbbx_moderation_report']      = true;
+				$caps['gdbbx_moderation_attachments'] = true;
 				break;
 		}
 
@@ -45,7 +45,7 @@ class Roles {
 	}
 
 	public function settings_loaded() {
-		$this->media_button = bbpc()->get( 'tweaks__participant_media_library_upload', 'features' );
+		$this->media_button = gdbbx()->get( 'tweaks__participant_media_library_upload', 'features' );
 
 		if ( $this->media_button ) {
 			add_action( 'bbp_after_setup_theme', array( $this, 'dynamic_roles_media_upload' ) );
@@ -124,13 +124,13 @@ class Roles {
 		$role = get_role( 'administrator' );
 
 		if ( ! is_null( $role ) ) {
-			$role->add_cap( 'bbpc_standard' );
-			$role->add_cap( 'bbpc_moderation' );
-			$role->add_cap( 'bbpc_moderation_users' );
-			$role->add_cap( 'bbpc_moderation_report' );
-			$role->add_cap( 'bbpc_moderation_attachments' );
+			$role->add_cap( 'gdbbx_standard' );
+			$role->add_cap( 'gdbbx_moderation' );
+			$role->add_cap( 'gdbbx_moderation_users' );
+			$role->add_cap( 'gdbbx_moderation_report' );
+			$role->add_cap( 'gdbbx_moderation_attachments' );
 		}
 
-		define( 'BBPC_CAP', $this->cap );
+		define( 'GDBBX_CAP', $this->cap );
 	}
 }

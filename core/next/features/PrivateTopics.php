@@ -1,10 +1,10 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\BB;
-use SpiderDevs\Plugin\BBPC\Manager\PrivateTopics as PrivateTopicsManager;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\BB;
+use Dev4Press\Plugin\GDBBX\Manager\PrivateTopics as PrivateTopicsManager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -27,11 +27,11 @@ class PrivateTopics extends Feature {
 	public function __construct() {
 		parent::__construct();
 
-		add_action( 'bbpc_bbpress_request_first', array( $this, 'request' ) );
-		add_action( 'bbpc_bbpress_template_first', array( $this, 'loader' ) );
+		add_action( 'gdbbx_bbpress_request_first', array( $this, 'request' ) );
+		add_action( 'gdbbx_bbpress_template_first', array( $this, 'loader' ) );
 
-		add_action( 'bbpc_core', array( $this, 'ready' ) );
-		add_action( 'bbpc_feed', array( $this, 'loader_for_feed' ) );
+		add_action( 'gdbbx_core', array( $this, 'ready' ) );
+		add_action( 'gdbbx_feed', array( $this, 'loader_for_feed' ) );
 	}
 
 	public static function instance() : PrivateTopics {
@@ -86,7 +86,7 @@ class PrivateTopics extends Feature {
 	}
 
 	public function loader_for_feed() {
-		add_filter( 'bbpc_privacy_is_enabled_topic_private', array( $this, 'feed_override_no_forum' ), 10, 2 );
+		add_filter( 'gdbbx_privacy_is_enabled_topic_private', array( $this, 'feed_override_no_forum' ), 10, 2 );
 
 		$this->topics = $this->is_enabled_topic_private();
 
@@ -107,7 +107,7 @@ class PrivateTopics extends Feature {
 
 	public function is_enabled_topic_private() : bool {
 		$forum_id = BB::i()->get_forum_id();
-		$forum    = bbpc_forum( $forum_id )->privacy()->get( 'enable_topic_private' );
+		$forum    = gdbbx_forum( $forum_id )->privacy()->get( 'enable_topic_private' );
 
 		$active = false;
 		if ( $forum == 'default' || $forum == 'yes' ) {
@@ -116,12 +116,12 @@ class PrivateTopics extends Feature {
 			$active = false;
 		}
 
-		return (bool) apply_filters( 'bbpc_privacy_is_enabled_topic_private', $active, $forum_id );
+		return (bool) apply_filters( 'gdbbx_privacy_is_enabled_topic_private', $active, $forum_id );
 	}
 
 	public function topic_activity_stream( $content ) {
 		if ( $this->is_private( $this->topic_id ) ) {
-			$content = apply_filters( 'bbpc_private_topics_is_private_text_for_activity_stream', __( "Topic is marked as private.", "bbp-core" ) );
+			$content = apply_filters( 'gdbbx_private_topics_is_private_text_for_activity_stream', __( "Topic is marked as private.", "bbp-core" ) );
 		}
 
 		return $content;
@@ -141,7 +141,7 @@ class PrivateTopics extends Feature {
 
 	public function topic_description( $retstr, $r ) {
 		if ( ! $this->is_user_allowed( $r['topic_id'] ) ) {
-			$retstr = $r['before'] . apply_filters( 'bbpc_private_topics_is_private_text_for_description', __( "This topic is marked as private", "bbp-core" ) ) . $r['after'];
+			$retstr = $r['before'] . apply_filters( 'gdbbx_private_topics_is_private_text_for_description', __( "This topic is marked as private", "bbp-core" ) ) . $r['after'];
 		}
 
 		return $retstr;
@@ -160,10 +160,10 @@ class PrivateTopics extends Feature {
 
 	public function topic_post_class( $classes, $topic_id ) {
 		if ( $this->is_private( $topic_id ) ) {
-			$classes[] = 'bbpc-private-topic';
+			$classes[] = 'gdbbx-private-topic';
 
 			if ( ! $this->is_user_allowed( $topic_id ) ) {
-				$classes[] = 'bbpc-private-topic-locked';
+				$classes[] = 'gdbbx-private-topic-locked';
 			}
 		}
 
@@ -213,11 +213,11 @@ class PrivateTopics extends Feature {
 			}
 
 			if ( ! $allowed && $this->settings['moderators_can_read'] ) {
-				$allowed = bbpc_can_user_moderate();
+				$allowed = gdbbx_can_user_moderate();
 			}
 		}
 
-		return (bool) apply_filters( 'bbpc_private_is_user_allowed_to_topic', $allowed, $private, $topic_id, $user_id );
+		return (bool) apply_filters( 'gdbbx_private_is_user_allowed_to_topic', $allowed, $private, $topic_id, $user_id );
 	}
 
 	public function topic_reply_form( $retval ) : bool {
@@ -230,7 +230,7 @@ class PrivateTopics extends Feature {
 
 	public function topic_hiding( $content, $topic_id ) {
 		if ( ! $this->is_user_allowed( $topic_id ) ) {
-			$content = apply_filters( 'bbpc_private_topics_is_private_text', __( "This topic has been marked as private.", "bbp-core" ) );
+			$content = apply_filters( 'gdbbx_private_topics_is_private_text', __( "This topic has been marked as private.", "bbp-core" ) );
 		}
 
 		return $content;
@@ -253,7 +253,7 @@ class PrivateTopics extends Feature {
 	public function topic_save( $topic_id = 0 ) {
 		$this->topic_id = $topic_id;
 
-		if ( isset( $_POST['bbpc_private_topic'] ) ) {
+		if ( isset( $_POST['gdbbx_private_topic'] ) ) {
 			update_post_meta( $topic_id, '_bbp_topic_is_private', '1' );
 		} else {
 			delete_post_meta( $topic_id, '_bbp_topic_is_private' );
@@ -272,13 +272,13 @@ class PrivateTopics extends Feature {
 		$edit   = bbp_is_topic_edit();
 		$status = $edit ? $this->is_private() : ( $this->settings['default'] == "checked" );
 
-		$label = apply_filters( 'bbpc_private_topic_checkbox_label', __( "Set this as private topic", "bbp-core" ) );
+		$label = apply_filters( 'gdbbx_private_topic_checkbox_label', __( "Set this as private topic", "bbp-core" ) );
 
 		?>
 
         <p>
-            <input name="bbpc_private_topic" id="bbpc_private_topic" type="checkbox"<?php checked( '1', $status ); ?> value="1"/>
-            <label for="bbpc_private_topic"><?php echo $label; ?></label>
+            <input name="gdbbx_private_topic" id="gdbbx_private_topic" type="checkbox"<?php checked( '1', $status ); ?> value="1"/>
+            <label for="gdbbx_private_topic"><?php echo $label; ?></label>
         </p>
 
 		<?php
@@ -289,8 +289,8 @@ class PrivateTopics extends Feature {
 			$topic_id = bbp_get_topic_id();
 		}
 
-		$status = bbpc_cache()->private_post( $topic_id );
+		$status = gdbbx_cache()->private_post( $topic_id );
 
-		return (bool) apply_filters( 'bbpc_is_topic_private', $status, $topic_id );
+		return (bool) apply_filters( 'gdbbx_is_topic_private', $status, $topic_id );
 	}
 }

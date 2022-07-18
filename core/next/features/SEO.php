@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -117,8 +117,8 @@ class SEO extends Feature {
 			}
 		}
 
-		if ( apply_filters( 'bbpc_plugin_meta_generator', true ) ) {
-			echo '<meta name="generator" content="BBP Core ' . bbpc()->info_version . ', Build ' . bbpc()->info_build . '" />' . D4P_EOL;
+		if ( apply_filters( 'gdbbx_plugin_meta_generator', true ) ) {
+			echo '<meta name="generator" content="GD bbPress Toolbox Pro ' . gdbbx()->info_version . ', Build ' . gdbbx()->info_build . '" />' . D4P_EOL;
 		}
 	}
 
@@ -174,10 +174,10 @@ class SEO extends Feature {
 		$post = get_post();
 
 		if ( $excerpt == '' && isset( $post->post_type ) && $post->post_type == bbp_get_topic_post_type() ) {
-			bbpc_signature_display_disable();
-			bbpc_attachments_display_disable();
+			gdbbx_signature_display_disable();
+			gdbbx_attachments_display_disable();
 
-			if ( bbpc_is_topic_private( $post->ID ) && $this->get( 'private_topic_excerpt_replace' ) ) {
+			if ( gdbbx_is_topic_private( $post->ID ) && $this->get( 'private_topic_excerpt_replace' ) ) {
 				$excerpt = __( $this->get( 'private_topic_excerpt_text' ), "bbp-core" );
 
 				$excerpt = d4p_replace_tags_in_content( $excerpt, array(
@@ -187,8 +187,8 @@ class SEO extends Feature {
 				$excerpt = bbp_get_topic_excerpt( 0, $this->get( 'override_topic_length' ) );
 			}
 
-			bbpc_attachments_display_enable();
-			bbpc_signature_display_enable();
+			gdbbx_attachments_display_enable();
+			gdbbx_signature_display_enable();
 		}
 
 		return $excerpt;
@@ -198,10 +198,10 @@ class SEO extends Feature {
 		$post = get_post();
 
 		if ( $excerpt == '' && isset( $post->post_type ) && $post->post_type == bbp_get_reply_post_type() ) {
-			bbpc_signature_display_disable();
-			bbpc_attachments_display_disable();
+			gdbbx_signature_display_disable();
+			gdbbx_attachments_display_disable();
 
-			if ( bbpc_is_reply_private( $post->ID ) && $this->get( 'private_reply_excerpt_replace' ) ) {
+			if ( gdbbx_is_reply_private( $post->ID ) && $this->get( 'private_reply_excerpt_replace' ) ) {
 				$excerpt = __( $this->get( 'private_reply_excerpt_text' ), "bbp-core" );
 
 				$excerpt = d4p_replace_tags_in_content( $excerpt, array(
@@ -211,8 +211,8 @@ class SEO extends Feature {
 				$excerpt = bbp_get_reply_excerpt( 0, $this->get( 'override_reply_length' ) );
 			}
 
-			bbpc_attachments_display_enable();
-			bbpc_signature_display_enable();
+			gdbbx_attachments_display_enable();
+			gdbbx_signature_display_enable();
 		}
 
 		return $excerpt;

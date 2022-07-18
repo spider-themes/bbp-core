@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
-"Project-Id-Version: BBP Core\n"
+"Project-Id-Version: GD bbPress Toolbox Pro\n"
 "POT-Creation-Date: 12/21/2021 05:07:34 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,10 +19,10 @@ msgstr[1] ""
 
 #: core/next/basic/User.php:128
 #: core/next/basic/User.php:137
-#: templates/default/bbpress/bbpc-user-thanks.php:11
-#: templates/default/bbpress/bbpc-user-thanks.php:15
-#: templates/quantum/bbpress/bbpc-user-thanks.php:11
-#: templates/quantum/bbpress/bbpc-user-thanks.php:15
+#: templates/default/bbpress/gdbbx-user-thanks.php:11
+#: templates/default/bbpress/gdbbx-user-thanks.php:15
+#: templates/quantum/bbpress/gdbbx-user-thanks.php:11
+#: templates/quantum/bbpress/gdbbx-user-thanks.php:15
 msgid "%s time"
 msgid_plural "%s times"
 msgstr[0] ""
@@ -128,24 +128,24 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: forms/meta/dashboard.online.php:4
-#: templates/default/bbpress/bbpc-forums-statistics.php:24
-#: templates/default/widgets/bbpc-widget-onlineusers.php:4
+#: templates/default/bbpress/gdbbx-forums-statistics.php:24
+#: templates/default/widgets/gdbbx-widget-onlineusers.php:4
 msgid "There is <strong>%s</strong> user online"
 msgid_plural "There are <strong>%s</strong> users online"
 msgstr[0] ""
 msgstr[1] ""
 
 #: forms/meta/dashboard.online.php:5
-#: templates/default/bbpress/bbpc-forums-statistics.php:25
-#: templates/default/widgets/bbpc-widget-onlineusers.php:5
+#: templates/default/bbpress/gdbbx-forums-statistics.php:25
+#: templates/default/widgets/gdbbx-widget-onlineusers.php:5
 msgid "<strong>%s</strong> registered"
 msgid_plural "<strong>%s</strong> registered"
 msgstr[0] ""
 msgstr[1] ""
 
 #: forms/meta/dashboard.online.php:6
-#: templates/default/bbpress/bbpc-forums-statistics.php:26
-#: templates/default/widgets/bbpc-widget-onlineusers.php:6
+#: templates/default/bbpress/gdbbx-forums-statistics.php:26
+#: templates/default/widgets/gdbbx-widget-onlineusers.php:6
 msgid "<strong>%s</strong> guest"
 msgid_plural "<strong>%s</strong> guests"
 msgstr[0] ""
@@ -172,34 +172,34 @@ msgid_plural "%s guests"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/default/bbpress/bbpc-forums-welcome.php:19
+#: templates/default/bbpress/gdbbx-forums-welcome.php:19
 msgctxt "Forums Welcome Block"
 msgid "%s new topic"
 msgid_plural "%s new topics"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/default/bbpress/bbpc-forums-welcome.php:20
+#: templates/default/bbpress/gdbbx-forums-welcome.php:20
 msgctxt "Forums Welcome Block"
 msgid "%s new reply"
 msgid_plural "%s new replies"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/default/bbpress/bbpc-thanks-list.php:9
+#: templates/default/bbpress/gdbbx-thanks-list.php:9
 msgid "%s user thanked author for this post."
 msgid_plural "%s users thanked author for this post."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/default/bbpress/bbpc-thread-attachments.php:11
+#: templates/default/bbpress/gdbbx-thread-attachments.php:11
 msgid "%s File"
 msgid_plural "%s Files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/default/widgets/bbpc-widget-usersthanks-lite.php:5
-#: templates/default/widgets/bbpc-widget-usersthanks.php:5
+#: templates/default/widgets/gdbbx-widget-usersthanks-lite.php:5
+#: templates/default/widgets/gdbbx-widget-usersthanks.php:5
 msgid "%s thanks"
 msgid_plural "%s thanks"
 msgstr[0] ""
@@ -338,7 +338,7 @@ msgstr ""
 #: forms/attachments.php:22
 #: forms/errors.php:22
 #: forms/users.php:28
-#: templates/default/widgets/bbpc-widget-search.php:8
+#: templates/default/widgets/gdbbx-widget-search.php:8
 msgid "Search"
 msgstr ""
 
@@ -771,14 +771,14 @@ msgid "Signatures module is disabled. If you don't use this field, remove it fro
 msgstr ""
 
 #: core/buddypress/signature.php:101
-msgid "Extended Profiles support in BBP Core is disabled. You should remove this field."
+msgid "Extended Profiles support in GD bbPress Toolbox Pro is disabled. You should remove this field."
 msgstr ""
 
 #: core/buddypress/signature.php:14
 #: core/grids/users.php:100
 #: forms/profile/signature.php:4
-#: templates/default/bbpress/bbpc-form-signature-bbpress.php:6
-#: templates/quantum/bbpress/bbpc-form-signature-bbpress.php:5
+#: templates/default/bbpress/gdbbx-form-signature-bbpress.php:6
+#: templates/quantum/bbpress/gdbbx-form-signature-bbpress.php:5
 msgid "Signature"
 msgstr ""
 
@@ -1027,7 +1027,7 @@ msgstr ""
 #: core/next/admin/Features.php:2410
 #: core/next/bbcodes/Registrator.php:159
 #: core/next/bbcodes/Toolbar.php:148
-#: templates/quantum/bbpress/bbpc-list-canned-replies.php:6
+#: templates/quantum/bbpress/gdbbx-list-canned-replies.php:6
 msgid "Hide"
 msgstr ""
 
@@ -1049,7 +1049,7 @@ msgstr ""
 #: core/next/admin/Features.php:1149
 #: core/next/bbcodes/Toolbar.php:158
 #: core/next/features/Toolbar.php:151
-#: templates/default/bbpress/bbpc-dashboard-activity-post.php:7
+#: templates/default/bbpress/gdbbx-dashboard-activity-post.php:7
 msgid "Topic"
 msgstr ""
 
@@ -1062,7 +1062,7 @@ msgstr ""
 #: core/next/admin/Features.php:1161
 #: core/next/bbcodes/Toolbar.php:163
 #: core/next/features/Toolbar.php:157
-#: templates/default/bbpress/bbpc-dashboard-activity-post.php:16
+#: templates/default/bbpress/gdbbx-dashboard-activity-post.php:16
 msgid "Reply"
 msgstr ""
 
@@ -1358,7 +1358,7 @@ msgstr ""
 
 #: core/grids/reports.php:142
 #: forms/meta/navmenu.extras.php:6
-#: templates/default/widgets/bbpc-widget-userprofile.php:33
+#: templates/default/widgets/gdbbx-widget-userprofile.php:33
 msgid "Profile"
 msgstr ""
 
@@ -1672,7 +1672,7 @@ msgstr ""
 #: forms/dashboard/basic.php:54
 #: forms/meta/forum.php:24
 #: forms/front.php:37
-#: templates/default/bbpress/bbpc-form-attachment.php:1
+#: templates/default/bbpress/gdbbx-form-attachment.php:1
 msgid "Attachments"
 msgstr ""
 
@@ -1797,8 +1797,8 @@ msgstr ""
 #: core/next/features/Toolbar.php:253
 #: forms/dashboard/basic.php:45
 #: forms/shared/top.php:12
-#: templates/default/bbpress/bbpc-list-canned-replies.php:6
-#: templates/quantum/bbpress/bbpc-list-canned-replies.php:5
+#: templates/default/bbpress/gdbbx-list-canned-replies.php:6
+#: templates/quantum/bbpress/gdbbx-list-canned-replies.php:5
 msgid "Canned Replies"
 msgstr ""
 
@@ -2338,7 +2338,7 @@ msgstr ""
 
 #: core/next/admin/Features.php:458
 #: core/next/admin/Features.php:478
-msgid "BBP Core doesn't implement the TinyMCE editor, it only enables it and it can set publicly available options. TinyMCE is implemented by WordPress and options to enable it are hidden in bbPress. BBP Core has no control over the TinyMCE editor. To learn more about it, check out the article linked below."
+msgid "GD bbPress Toolbox Pro doesn't implement the TinyMCE editor, it only enables it and it can set publicly available options. TinyMCE is implemented by WordPress and options to enable it are hidden in bbPress. GD bbPress Toolbox Pro has no control over the TinyMCE editor. To learn more about it, check out the article linked below."
 msgstr ""
 
 #: core/next/admin/Features.php:459
@@ -5865,7 +5865,7 @@ msgid "Found a bug?"
 msgstr ""
 
 #: core/next/admin/Help.php:58
-msgid "If you find a bug in BBP Core, you can report it in the support forum."
+msgid "If you find a bug in GD bbPress Toolbox Pro, you can report it in the support forum."
 msgstr ""
 
 #: core/next/admin/Help.php:59
@@ -5903,7 +5903,7 @@ msgid "It is recommended to enable this feature only for keymasters and moderato
 msgstr ""
 
 #: core/next/admin/MetaBoxes.php:111
-msgid "BBP Core"
+msgid "GD bbPress Toolbox"
 msgstr ""
 
 #: core/next/admin/MetaBoxes.php:115
@@ -6084,11 +6084,11 @@ msgid "bbPress Topic Views"
 msgstr ""
 
 #: core/next/basic/Plugin.php:323
-msgid "BBP Core requires WordPress 5.3 or newer. Plugin will now be disabled. To use this plugin, upgrade WordPress to 5.1 or newer version."
+msgid "GD bbPress Toolbox Pro requires WordPress 5.3 or newer. Plugin will now be disabled. To use this plugin, upgrade WordPress to 5.1 or newer version."
 msgstr ""
 
 #: core/next/basic/Plugin.php:335
-msgid "BBP Core requires bbPress plugin for WordPress version 2.6.2 or newer. Plugin will now be disabled. To use this plugin, make sure you are using bbPress 2.6.2 or newer version."
+msgid "GD bbPress Toolbox Pro requires bbPress plugin for WordPress version 2.6.2 or newer. Plugin will now be disabled. To use this plugin, make sure you are using bbPress 2.6.2 or newer version."
 msgstr ""
 
 #: core/next/basic/Requests.php:35
@@ -6260,14 +6260,14 @@ msgid "Offline"
 msgstr ""
 
 #: core/next/basic/User.php:128
-#: templates/default/bbpress/bbpc-user-thanks.php:10
-#: templates/quantum/bbpress/bbpc-user-thanks.php:10
+#: templates/default/bbpress/gdbbx-user-thanks.php:10
+#: templates/quantum/bbpress/gdbbx-user-thanks.php:10
 msgid "Has thanked"
 msgstr ""
 
 #: core/next/basic/User.php:137
-#: templates/default/bbpress/bbpc-user-thanks.php:14
-#: templates/quantum/bbpress/bbpc-user-thanks.php:14
+#: templates/default/bbpress/gdbbx-user-thanks.php:14
+#: templates/quantum/bbpress/gdbbx-user-thanks.php:14
 msgid "Been thanked"
 msgstr ""
 
@@ -6479,7 +6479,7 @@ msgid "Post Report"
 msgstr ""
 
 #: core/next/features/BuddyPressSignature.php:122
-#: templates/default/bbpress/bbpc-form-signature-generic.php:1
+#: templates/default/bbpress/gdbbx-form-signature-generic.php:1
 msgid "Forum Signature"
 msgstr ""
 
@@ -7337,7 +7337,7 @@ msgid "No users found"
 msgstr ""
 
 #: core/admin.php:94
-msgid "BBP Core detected that following plugins are still active: %s. They need to be disabled before you can use BBP Core."
+msgid "GD bbPress Toolbox Pro detected that following plugins are still active: %s. They need to be disabled before you can use GD bbPress Toolbox."
 msgstr ""
 
 #: core/admin.php:96
@@ -7345,7 +7345,7 @@ msgid "You can <a href='%s'>open plugins page</a> to disable them manually, or <
 msgstr ""
 
 #: core/admin.php:104
-msgid "BBP Core is updated, and you need to review the update process."
+msgid "GD bbPress Toolbox Pro is updated, and you need to review the update process."
 msgstr ""
 
 #: core/admin.php:105
@@ -7354,7 +7354,7 @@ msgid "Click Here"
 msgstr ""
 
 #: core/admin.php:113
-msgid "BBP Core is activated and it needs to finish installation."
+msgid "GD bbPress Toolbox Pro is activated and it needs to finish installation."
 msgstr ""
 
 #: core/admin.php:121
@@ -7708,7 +7708,7 @@ msgid "Dev4Press"
 msgstr ""
 
 #: forms/about/header.php:21
-msgid "Welcome to BBP Core&nbsp;%s"
+msgid "Welcome to GD bbPress Toolbox&nbsp;%s"
 msgstr ""
 
 #: forms/about/header.php:27
@@ -7744,7 +7744,7 @@ msgid "Knowledge Base and Support Forums"
 msgstr ""
 
 #: forms/about/info.php:40
-#: templates/default/widgets/bbpc-widget-userprofile.php:45
+#: templates/default/widgets/gdbbx-widget-userprofile.php:45
 msgid "Important Links"
 msgstr ""
 
@@ -7904,12 +7904,12 @@ msgid "All Users"
 msgstr ""
 
 #: forms/dashboard/users.php:39
-#: templates/default/widgets/bbpc-widget-onlineusers.php:60
+#: templates/default/widgets/gdbbx-widget-onlineusers.php:60
 msgid "Most users ever online was <strong>%s</strong> on %s."
 msgstr ""
 
 #: forms/dashboard/users.php:50
-#: templates/default/bbpress/bbpc-forums-statistics.php:48
+#: templates/default/bbpress/gdbbx-forums-statistics.php:48
 msgid "Legend"
 msgstr ""
 
@@ -8153,16 +8153,16 @@ msgid "Registered Views"
 msgstr ""
 
 #: forms/profile/signature.php:0
-#: templates/default/bbpress/bbpc-form-signature-bbpress.php:0
-#: templates/default/bbpress/bbpc-form-signature-bbpress.php:2
-#: templates/quantum/bbpress/bbpc-form-signature-bbpress.php:1
+#: templates/default/bbpress/gdbbx-form-signature-bbpress.php:0
+#: templates/default/bbpress/gdbbx-form-signature-bbpress.php:2
+#: templates/quantum/bbpress/gdbbx-form-signature-bbpress.php:1
 msgid "Your Forum Signature"
 msgstr ""
 
 #: forms/profile/signature.php:0
-#: templates/default/bbpress/bbpc-form-signature-bbpress.php:0
-#: templates/default/bbpress/bbpc-form-signature-bbpress.php:2
-#: templates/quantum/bbpress/bbpc-form-signature-bbpress.php:1
+#: templates/default/bbpress/gdbbx-form-signature-bbpress.php:0
+#: templates/default/bbpress/gdbbx-form-signature-bbpress.php:2
+#: templates/quantum/bbpress/gdbbx-form-signature-bbpress.php:1
 msgid "User Forum Signature"
 msgstr ""
 
@@ -9050,7 +9050,7 @@ msgid "Additional CSS Class"
 msgstr ""
 
 #: forms/wizard/attachments.php:2
-msgid "Attachments are one of the most complex features in BBP Core, and there are many ways they can be configured and used."
+msgid "Attachments are one of the most complex features in GD bbPress Toolbox Pro, and there are many ways they can be configured and used."
 msgstr ""
 
 #: forms/wizard/attachments.php:7
@@ -9102,7 +9102,7 @@ msgid "Images, video and audio files"
 msgstr ""
 
 #: forms/wizard/editors.php:2
-msgid "You can easily replace default, basic editor used for topics and replies with one of the additional editors supported by bbPress and BBP Core."
+msgid "You can easily replace default, basic editor used for topics and replies with one of the additional editors supported by bbPress and GD bbPress Toolbox Pro."
 msgstr ""
 
 #: forms/wizard/editors.php:7
@@ -9210,7 +9210,7 @@ msgid "Save and Continue"
 msgstr ""
 
 #: forms/wizard/intro.php:2
-msgid "Welcome to the setup wizard for BBP Core plugin! Here you can quickly set up the plugin, and if you need to adjust all the plugin features in more detail, you can do that later through various plugin panels."
+msgid "Welcome to the setup wizard for GD bbPress Toolbox Pro plugin! Here you can quickly set up the plugin, and if you need to adjust all the plugin features in more detail, you can do that later through various plugin panels."
 msgstr ""
 
 #: forms/wizard/intro.php:5
@@ -9226,7 +9226,7 @@ msgid "Do you want to add Forums menu into WordPress toolbar?"
 msgstr ""
 
 #: forms/wizard/intro.php:15
-msgid "This toolbar contains links for quick access to all the forums, topic views, bbPress settings and BBP Core settings."
+msgid "This toolbar contains links for quick access to all the forums, topic views, bbPress settings and GD bbPress Toolbox Pro settings."
 msgstr ""
 
 #: forms/wizard/intro.php:28
@@ -9601,271 +9601,271 @@ msgstr ""
 msgid "Topic has new replies"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-dashboard-activity-post.php:27
+#: templates/default/bbpress/gdbbx-dashboard-activity-post.php:27
 msgid "by"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-dashboard-activity-post.php:26
+#: templates/default/bbpress/gdbbx-dashboard-activity-post.php:26
 msgid "%s ago"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-attachment-edit.php:6
+#: templates/default/bbpress/gdbbx-form-attachment-edit.php:6
 msgid "Current Attachments"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-attachment.php:8
-#: templates/default/bbpress/bbpc-form-attachment.php:11
+#: templates/default/bbpress/gdbbx-form-attachment.php:8
+#: templates/default/bbpress/gdbbx-form-attachment.php:11
 msgid "Select File"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-attachment.php:15
+#: templates/default/bbpress/gdbbx-form-attachment.php:15
 msgid "Add another file"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-auto-close.php:31
+#: templates/default/bbpress/gdbbx-form-auto-close.php:31
 msgid "Topic auto close terms"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-auto-close.php:33
+#: templates/default/bbpress/gdbbx-form-auto-close.php:33
 msgid "Auto closing rule"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-auto-close.php:41
+#: templates/default/bbpress/gdbbx-form-auto-close.php:41
 msgid "Auto closing days"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-auto-close.php:44
+#: templates/default/bbpress/gdbbx-form-auto-close.php:44
 msgid "Use 0 to inhert the value from forum or global settings."
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-auto-close.php:24
+#: templates/default/bbpress/gdbbx-form-auto-close.php:24
 msgid "Inherit auto close action for this topic"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-auto-close.php:25
+#: templates/default/bbpress/gdbbx-form-auto-close.php:25
 msgid "Auto close this topic"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-auto-close.php:26
+#: templates/default/bbpress/gdbbx-form-auto-close.php:26
 msgid "Do not auto close this topic"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-notify-on-reply-edit.php:1
-#: templates/default/bbpress/bbpc-form-notify-on-topic-edit.php:1
+#: templates/default/bbpress/gdbbx-form-notify-on-reply-edit.php:1
+#: templates/default/bbpress/gdbbx-form-notify-on-topic-edit.php:1
 msgid "On edit notifications"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-notify-on-reply-edit.php:5
-#: templates/default/bbpress/bbpc-form-notify-on-topic-edit.php:5
+#: templates/default/bbpress/gdbbx-form-notify-on-reply-edit.php:5
+#: templates/default/bbpress/gdbbx-form-notify-on-topic-edit.php:5
 msgid "Notify topic author"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-notify-on-reply-edit.php:11
+#: templates/default/bbpress/gdbbx-form-notify-on-reply-edit.php:11
 msgid "Notify reply author"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-notify-on-reply-edit.php:16
-#: templates/default/bbpress/bbpc-form-notify-on-topic-edit.php:10
+#: templates/default/bbpress/gdbbx-form-notify-on-reply-edit.php:16
+#: templates/default/bbpress/gdbbx-form-notify-on-topic-edit.php:10
 msgid "Notify topic subscribers"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-reply-post-anonymously.php:4
+#: templates/default/bbpress/gdbbx-form-reply-post-anonymously.php:4
 msgid "Post reply anonymously"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-report-post.php:4
-#: templates/quantum/bbpress/bbpc-form-report-post.php:7
+#: templates/default/bbpress/gdbbx-form-report-post.php:4
+#: templates/quantum/bbpress/gdbbx-form-report-post.php:7
 msgid "Report Message"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-report-post.php:7
-#: templates/quantum/bbpress/bbpc-form-report-post.php:10
+#: templates/default/bbpress/gdbbx-form-report-post.php:7
+#: templates/quantum/bbpress/gdbbx-form-report-post.php:10
 msgid "Use this only to report spam, harassment, fighting, or rude content."
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-report-post.php:8
-#: templates/quantum/bbpress/bbpc-form-report-post.php:11
+#: templates/default/bbpress/gdbbx-form-report-post.php:8
+#: templates/quantum/bbpress/gdbbx-form-report-post.php:11
 msgid "Send Report"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-report-post.php:9
-#: templates/quantum/bbpress/bbpc-form-report-post.php:12
+#: templates/default/bbpress/gdbbx-form-report-post.php:9
+#: templates/quantum/bbpress/gdbbx-form-report-post.php:12
 msgid "Cancel"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-report-post.php:12
-#: templates/quantum/bbpress/bbpc-form-report-post.php:15
+#: templates/default/bbpress/gdbbx-form-report-post.php:12
+#: templates/quantum/bbpress/gdbbx-form-report-post.php:15
 msgid "Please wait, sending report."
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-report-post.php:15
-#: templates/quantum/bbpress/bbpc-form-report-post.php:18
+#: templates/default/bbpress/gdbbx-form-report-post.php:15
+#: templates/quantum/bbpress/gdbbx-form-report-post.php:18
 msgid "Thank you, your report has been sent."
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-scheduler.php:19
+#: templates/default/bbpress/gdbbx-form-scheduler.php:19
 msgid "Schedule the topic publishing"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-scheduler.php:21
+#: templates/default/bbpress/gdbbx-form-scheduler.php:21
 msgid "When to publish the topic"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-scheduler.php:29
+#: templates/default/bbpress/gdbbx-form-scheduler.php:29
 msgid "Publish on date"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-scheduler.php:13
+#: templates/default/bbpress/gdbbx-form-scheduler.php:13
 msgid "Publish the topic now"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-scheduler.php:14
+#: templates/default/bbpress/gdbbx-form-scheduler.php:14
 msgid "Schedule the topic for future publish"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-signature-bbpress.php:17
-#: templates/default/bbpress/bbpc-form-signature-generic.php:12
-#: templates/quantum/bbpress/bbpc-form-signature-bbpress.php:15
+#: templates/default/bbpress/gdbbx-form-signature-bbpress.php:17
+#: templates/default/bbpress/gdbbx-form-signature-generic.php:12
+#: templates/quantum/bbpress/gdbbx-form-signature-bbpress.php:15
 msgid "Signature length is limited to %s characters."
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-topic-journal.php:2
+#: templates/default/bbpress/gdbbx-form-topic-journal.php:2
 msgid "Make this a Journal Topic"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-form-topic-post-anonymously.php:4
+#: templates/default/bbpress/gdbbx-form-topic-post-anonymously.php:4
 msgid "Post topic anonymously"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:18
+#: templates/default/bbpress/gdbbx-forums-statistics.php:18
 msgid "Who is online"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:63
+#: templates/default/bbpress/gdbbx-forums-statistics.php:63
 msgid "Forum Statistics"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:69
+#: templates/default/bbpress/gdbbx-forums-statistics.php:69
 msgid "Total forums"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:71
+#: templates/default/bbpress/gdbbx-forums-statistics.php:71
 msgid "Total posts"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:73
+#: templates/default/bbpress/gdbbx-forums-statistics.php:73
 msgid "Total topics"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:75
+#: templates/default/bbpress/gdbbx-forums-statistics.php:75
 msgid "Total users"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:36
+#: templates/default/bbpress/gdbbx-forums-statistics.php:36
 msgid "Most users ever online was <strong>%s</strong> on %s"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-statistics.php:83
+#: templates/default/bbpress/gdbbx-forums-statistics.php:83
 msgid "Our newest member is"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-welcome.php:6
+#: templates/default/bbpress/gdbbx-forums-welcome.php:6
 msgid "Welcome back"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-welcome.php:8
+#: templates/default/bbpress/gdbbx-forums-welcome.php:8
 msgid "Welcome"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-forums-welcome.php:18
+#: templates/default/bbpress/gdbbx-forums-welcome.php:18
 msgid "There have been %s and %s since your last visit at %s on %s."
 msgstr ""
 
-#: templates/default/bbpress/bbpc-list-canned-replies.php:1
-#: templates/quantum/bbpress/bbpc-list-canned-replies.php:1
+#: templates/default/bbpress/gdbbx-list-canned-replies.php:1
+#: templates/quantum/bbpress/gdbbx-list-canned-replies.php:1
 msgid "Show Canned Replies List"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-list-canned-replies.php:2
+#: templates/default/bbpress/gdbbx-list-canned-replies.php:2
 msgid "Hide Canned Replies List"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-list-canned-replies.php:31
-#: templates/quantum/bbpress/bbpc-list-canned-replies.php:32
+#: templates/default/bbpress/gdbbx-list-canned-replies.php:31
+#: templates/quantum/bbpress/gdbbx-list-canned-replies.php:32
 msgid "Uncategorized"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-thanks-list.php:7
+#: templates/default/bbpress/gdbbx-thanks-list.php:7
 msgid "Total of %s users thanked author for this post. Here are last %s listed."
 msgstr ""
 
-#: templates/default/bbpress/bbpc-thread-attachments.php:10
+#: templates/default/bbpress/gdbbx-thread-attachments.php:10
 msgid "Show all the attachments in this thread"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-thread-attachments.php:15
+#: templates/default/bbpress/gdbbx-thread-attachments.php:15
 msgid "All the attachments for the thread"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-user-extra.php:1
-#: templates/quantum/bbpress/bbpc-user-extra.php:1
+#: templates/default/bbpress/gdbbx-user-extra.php:1
+#: templates/quantum/bbpress/gdbbx-user-extra.php:1
 msgid "Subscriptions and Favorites"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-user-extra.php:3
-#: templates/quantum/bbpress/bbpc-user-extra.php:3
+#: templates/default/bbpress/gdbbx-user-extra.php:3
+#: templates/quantum/bbpress/gdbbx-user-extra.php:3
 msgid "Forums Subscriptions: %s"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-user-extra.php:7
-#: templates/quantum/bbpress/bbpc-user-extra.php:7
+#: templates/default/bbpress/gdbbx-user-extra.php:7
+#: templates/quantum/bbpress/gdbbx-user-extra.php:7
 msgid "Topics Subscriptions: %s"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-user-extra.php:11
-#: templates/quantum/bbpress/bbpc-user-extra.php:11
+#: templates/default/bbpress/gdbbx-user-extra.php:11
+#: templates/quantum/bbpress/gdbbx-user-extra.php:11
 msgid "Favorite Topics: %s"
 msgstr ""
 
-#: templates/default/bbpress/bbpc-user-thanks.php:7
-#: templates/quantum/bbpress/bbpc-user-thanks.php:7
+#: templates/default/bbpress/gdbbx-user-thanks.php:7
+#: templates/quantum/bbpress/gdbbx-user-thanks.php:7
 msgid "Thanks Counts"
 msgstr ""
 
-#: templates/default/widgets/bbpc-widget-newposts.php:34
+#: templates/default/widgets/gdbbx-widget-newposts.php:34
 msgctxt "New posts widget forum"
 msgid "Forum: %s"
 msgstr ""
 
-#: templates/default/widgets/bbpc-widget-newposts.php:53
+#: templates/default/widgets/gdbbx-widget-newposts.php:53
 msgctxt "New posts widget author"
 msgid "by %s"
 msgstr ""
 
-#: templates/default/widgets/bbpc-widget-onlineusers.php:44
+#: templates/default/widgets/gdbbx-widget-onlineusers.php:44
 msgid "Users online"
 msgstr ""
 
-#: templates/default/widgets/bbpc-widget-search.php:6
+#: templates/default/widgets/gdbbx-widget-search.php:6
 msgid "Search for:"
 msgstr ""
 
-#: templates/default/widgets/bbpc-widget-userprofile-enhanced.php:55
-#: templates/default/widgets/bbpc-widget-userprofile.php:59
+#: templates/default/widgets/gdbbx-widget-userprofile-enhanced.php:55
+#: templates/default/widgets/gdbbx-widget-userprofile.php:59
 msgid "Login and Registration"
 msgstr ""
 
-#: templates/default/widgets/bbpc-widget-userprofile-enhanced.php:21
-#: templates/default/widgets/bbpc-widget-userprofile.php:19
+#: templates/default/widgets/gdbbx-widget-userprofile-enhanced.php:21
+#: templates/default/widgets/gdbbx-widget-userprofile.php:19
 msgid "edit profile"
 msgstr ""
 
-#: templates/default/widgets/bbpc-widget-userprofile-enhanced.php:25
-#: templates/default/widgets/bbpc-widget-userprofile.php:25
+#: templates/default/widgets/gdbbx-widget-userprofile-enhanced.php:25
+#: templates/default/widgets/gdbbx-widget-userprofile.php:25
 msgid "log out"
 msgstr ""
 
-#: templates/quantum/bbpress/bbpc-form-report-post.php:3
+#: templates/quantum/bbpress/gdbbx-form-report-post.php:3
 msgid "Report This Post"
 msgstr ""
 

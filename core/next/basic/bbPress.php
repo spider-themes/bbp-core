@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -45,7 +45,7 @@ class bbPress {
 			}
 		}
 
-		do_action( 'bbpc_template_before_replies_loop', $this->loop_posts, $this->loop_users );
+		do_action( 'gdbbx_template_before_replies_loop', $this->loop_posts, $this->loop_users );
 	}
 
 	public function before_topics_loop() {
@@ -57,7 +57,7 @@ class bbPress {
 			}
 		}
 
-		do_action( 'bbpc_template_before_topics_loop', $this->loop_posts, $this->loop_users );
+		do_action( 'gdbbx_template_before_topics_loop', $this->loop_posts, $this->loop_users );
 	}
 
 	public function before_forums_loop() {
@@ -67,7 +67,7 @@ class bbPress {
 
 		$this->loop_forums = array_unique( $this->loop_forums );
 
-		do_action( 'bbpc_template_before_forums_loop', $this->loop_forums );
+		do_action( 'gdbbx_template_before_forums_loop', $this->loop_forums );
 	}
 
 	public function forum_get_subforums( $sub ) {
@@ -77,18 +77,18 @@ class bbPress {
 
 		$this->loop_forums = array_unique( $this->loop_forums );
 
-		do_action( 'bbpc_template_before_subforums_loop', $this->loop_forums );
+		do_action( 'gdbbx_template_before_subforums_loop', $this->loop_forums );
 
 		return $sub;
 	}
 
 	public function template_stack( $stack ) {
 		if ( $this->theme_package == 'quantum' ) {
-			$stack[] = BBPC_PATH . 'templates/quantum/bbpress';
+			$stack[] = GDBBX_PATH . 'templates/quantum/bbpress';
 		}
 
-		$stack[] = BBPC_PATH . 'templates/default/bbpress';
-		$stack[] = BBPC_PATH . 'templates/default/widgets';
+		$stack[] = GDBBX_PATH . 'templates/default/bbpress';
+		$stack[] = GDBBX_PATH . 'templates/default/widgets';
 
 		return $stack;
 	}

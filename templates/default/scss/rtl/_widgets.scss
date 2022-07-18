@@ -1,20 +1,20 @@
-.bbpc-widget {
+.gdbbx-widget {
     /* Info Widgets */
-    .bbpc-widget-the-info-dl {
+    .gdbbx-widget-the-info-dl {
         dt {
             float: right;
             clear: right;
         }
     }
 
-    .bbpc-widget-the-info-list {
-        i.bbpc-icon {
+    .gdbbx-widget-the-info-list {
+        i.gdbbx-icon {
             float: right;
             margin-left: 4px;
         }
     }
 
-    .bbpc-widget-the-info-table {
+    .gdbbx-widget-the-info-table {
         table {
             tbody {
                 th {
@@ -28,7 +28,7 @@
                 }
             }
 
-            i.bbpc-icon {
+            i.gdbbx-icon {
                 float: right;
                 margin-left: 4px;
             }
@@ -36,7 +36,7 @@
     }
 
     /* Thanks Widget */
-    .bbpc-widget-userthanks-default {
+    .gdbbx-widget-userthanks-default {
         img {
             float: right;
             margin: 4px 0 0 4px;

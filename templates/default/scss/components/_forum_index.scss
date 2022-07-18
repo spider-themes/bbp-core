@@ -1,8 +1,8 @@
 #{$forums} {
-    .bbpc-forum-index-block {
+    .gdbbx-forum-index-block {
         margin: 15px 0 0;
 
-        .bbpc-forums-inner-block {
+        .gdbbx-forums-inner-block {
             margin: 0 0 15px;
 
             h4 {
@@ -25,7 +25,7 @@
             }
         }
 
-        .bbpc-front-user {
+        .gdbbx-front-user {
             a {
                 color: inherit !important;
                 text-decoration: none;
@@ -33,23 +33,23 @@
                 box-shadow: none;
             }
 
-            &.bbpc-user-color-bbp_keymaster {
+            &.gdbbx-user-color-bbp_keymaster {
                 color: #D00;
             }
 
-            &.bbpc-user-color-bbp_moderator {
+            &.gdbbx-user-color-bbp_moderator {
                 color: #06C;
             }
 
-            &.bbpc-user-color-bbp_participant {
+            &.gdbbx-user-color-bbp_participant {
                 color: #333;
             }
 
-            &.bbpc-user-color-bbp_spectator {
+            &.gdbbx-user-color-bbp_spectator {
                 color: #0D0;
             }
 
-            &.bbpc-user-color-bbp_blocked {
+            &.gdbbx-user-color-bbp_blocked {
                 color: #AAA;
             }
         }

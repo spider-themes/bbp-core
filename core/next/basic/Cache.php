@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 use d4p_cache_core;
 
@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Cache extends d4p_cache_core {
-	public $store = 'bbpc';
+	public $store = 'gdbbx';
 
 	private $_forum_children_ids_run = false;
 
@@ -24,7 +24,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function private_run_count_topic_replies( $posts ) {
-		$raw = bbpc_db_bulk()->count_private_replies_in_topic( $posts );
+		$raw = gdbbx_db_bulk()->count_private_replies_in_topic( $posts );
 
 		foreach ( $raw as $topic => $count ) {
 			$this->set( 'topic-private-replies', $topic, absint( $count ) );
@@ -46,7 +46,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function tracking_forums_user_activity( $user_id ) {
-		$list = bbpc_db_cache()->tracking_forums_user_tracking( $user_id );
+		$list = gdbbx_db_cache()->tracking_forums_user_tracking( $user_id );
 
 		foreach ( $list as $forum => $data ) {
 			$this->set( 'forums-user-latest-activity', $forum, $data );
@@ -68,7 +68,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function tracking_forums_activity() {
-		$list = bbpc_db_cache()->tracking_forums_activity();
+		$list = gdbbx_db_cache()->tracking_forums_activity();
 
 		foreach ( $list as $forum => $data ) {
 			$this->set( 'forums-latest-activity', $forum, $data );
@@ -87,7 +87,7 @@ class Cache extends d4p_cache_core {
 		}
 
 		if ( ! $this->in( 'topic-tracking', $topic_id ) ) {
-			$latest = bbpc_db_cache()->get_topic_last_visit( $user_id, $topic_id );
+			$latest = gdbbx_db_cache()->get_topic_last_visit( $user_id, $topic_id );
 			$this->set( 'topic-tracking', $topic_id, $latest );
 		}
 
@@ -96,7 +96,7 @@ class Cache extends d4p_cache_core {
 
 	public function tracking_run_bulk_forums() {
 		if ( $this->_forum_children_ids_run === false ) {
-			$list = bbpc_db_bulk()->find_forum_children_ids();
+			$list = gdbbx_db_bulk()->find_forum_children_ids();
 
 			$output = array();
 
@@ -123,7 +123,7 @@ class Cache extends d4p_cache_core {
 			$user_id = bbp_get_current_user_id();
 		}
 
-		$raw = bbpc_db_bulk()->list_topics_last_visit( $posts, $user_id );
+		$raw = gdbbx_db_bulk()->list_topics_last_visit( $posts, $user_id );
 
 		foreach ( $raw as $post_id => $track ) {
 			$this->set( 'topic-tracking', $post_id, $track );
@@ -145,7 +145,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function private_run_bulk_posts( $posts ) {
-		$raw = bbpc_db_bulk()->list_private_posts( $posts );
+		$raw = gdbbx_db_bulk()->list_private_posts( $posts );
 
 		foreach ( $raw as $post_id ) {
 			$this->set( 'post-private', $post_id, true );
@@ -175,7 +175,7 @@ class Cache extends d4p_cache_core {
 			$user_id = bbp_get_current_user_id();
 		}
 
-		$raw = bbpc_db_bulk()->user_replied_to_topics( $posts, $user_id );
+		$raw = gdbbx_db_bulk()->user_replied_to_topics( $posts, $user_id );
 
 		foreach ( $raw as $post_id ) {
 			$this->set( 'user-replied', $post_id, true );
@@ -206,7 +206,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function userstats_run_bulk_counts( $users ) {
-		$raw = bbpc_db_bulk()->count_all_topics_replies( $users );
+		$raw = gdbbx_db_bulk()->count_all_topics_replies( $users );
 
 		foreach ( $raw as $user_id => $counts ) {
 			$this->set( 'user-posts-count', $user_id, $counts );
@@ -231,7 +231,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function userstats_run_bulk_online( $users ) {
-		$raw = bbpc_db_bulk()->users_online_status( $users );
+		$raw = gdbbx_db_bulk()->users_online_status( $users );
 
 		foreach ( $raw as $user_id ) {
 			$this->set( 'user-is-online', $user_id, true );
@@ -257,7 +257,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function online_run_bulk_scope( $content, $ids ) {
-		$raw = bbpc_db_bulk()->content_online_status( $content, $ids );
+		$raw = gdbbx_db_bulk()->content_online_status( $content, $ids );
 
 		foreach ( $raw as $id => $item ) {
 			$this->set( $content . '-online-item', $id, $item );
@@ -309,7 +309,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function attachments_errors_run_bulk_counts( $posts ) {
-		$raw = bbpc_db_bulk()->get_attachments_errors_ids( $posts );
+		$raw = gdbbx_db_bulk()->get_attachments_errors_ids( $posts );
 
 		foreach ( $raw as $post_id ) {
 			$this->set( 'attachments-errors', $post_id, true );
@@ -323,7 +323,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function attachments_run_bulk_counts( $posts ) {
-		$raw = bbpc_db_bulk()->get_attachments_ids( $posts );
+		$raw = gdbbx_db_bulk()->get_attachments_ids( $posts );
 
 		foreach ( $raw as $post_id => $ids ) {
 			$this->set( 'attachments-count', $post_id, count( $ids ) );
@@ -357,7 +357,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function attachments_run_bulk_topics_counts( $posts ) {
-		$raw = bbpc_db_bulk()->count_topic_attachments( $posts );
+		$raw = gdbbx_db_bulk()->count_topic_attachments( $posts );
 
 		foreach ( $raw as $post_id => $count ) {
 			$this->set( 'attachments-topic-count', $post_id, $count );
@@ -376,7 +376,7 @@ class Cache extends d4p_cache_core {
 		}
 
 		if ( ! $this->in( 'report-list', $post_id ) ) {
-			$users = bbpc_db_cache()->reported( $post_id );
+			$users = gdbbx_db_cache()->reported( $post_id );
 			$this->set( 'report-list', $post_id, $users );
 		}
 
@@ -387,7 +387,7 @@ class Cache extends d4p_cache_core {
 
 	public function report_is_reported( $post_id ) {
 		if ( ! $this->in( 'report-list', $post_id ) ) {
-			$users = bbpc_db_cache()->reported( $post_id );
+			$users = gdbbx_db_cache()->reported( $post_id );
 			$this->set( 'report-list', $post_id, $users );
 		}
 
@@ -397,7 +397,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function report_run_bulk_list( $posts ) {
-		$raw = bbpc_db_bulk()->reported( $posts );
+		$raw = gdbbx_db_bulk()->reported( $posts );
 
 		foreach ( $raw as $post_id => $users ) {
 			$this->set( 'report-list', $post_id, $users );
@@ -412,7 +412,7 @@ class Cache extends d4p_cache_core {
 
 	public function thanks_get_list( $post_id ) {
 		if ( ! $this->in( 'thanks-list', $post_id ) ) {
-			$thanks = bbpc_db_cache()->thanks_list( $post_id );
+			$thanks = gdbbx_db_cache()->thanks_list( $post_id );
 			$this->set( 'thanks-list', $post_id, $thanks );
 		}
 
@@ -420,7 +420,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function thanks_run_bulk_list( $posts ) {
-		$raw = bbpc_db_bulk()->thanks_list( $posts );
+		$raw = gdbbx_db_bulk()->thanks_list( $posts );
 
 		foreach ( $raw as $post_id => $users ) {
 			$this->set( 'thanks-list', $post_id, $users );
@@ -439,7 +439,7 @@ class Cache extends d4p_cache_core {
 		}
 
 		if ( ! $this->in( 'thanks-thread-' . absint( $post_id ), $user_id ) ) {
-			$thanks = bbpc_db_cache()->thanks_given( $post_id, $user_id );
+			$thanks = gdbbx_db_cache()->thanks_given( $post_id, $user_id );
 			$this->set( 'thanks-thread-' . absint( $post_id ), $user_id, $thanks );
 		}
 
@@ -451,7 +451,7 @@ class Cache extends d4p_cache_core {
 			$user_id = bbp_get_current_user_id();
 		}
 
-		$raw = bbpc_db_bulk()->thanks_given( $posts, $user_id );
+		$raw = gdbbx_db_bulk()->thanks_given( $posts, $user_id );
 
 		foreach ( $raw as $row ) {
 			$this->set( 'thanks-thread-' . absint( $row->post_id ), $user_id, true );
@@ -470,7 +470,7 @@ class Cache extends d4p_cache_core {
 		}
 
 		if ( ! $this->in( 'thanks-given', absint( $user_id ) ) ) {
-			$thanks = bbpc_db_cache()->count_all_thanks_given( $user_id );
+			$thanks = gdbbx_db_cache()->count_all_thanks_given( $user_id );
 			$this->set( 'thanks-given', absint( $user_id ), absint( $thanks ) );
 		}
 
@@ -483,7 +483,7 @@ class Cache extends d4p_cache_core {
 		}
 
 		if ( ! $this->in( 'thanks-received', absint( $user_id ) ) ) {
-			$thanks = bbpc_db_cache()->count_all_thanks_received( $user_id );
+			$thanks = gdbbx_db_cache()->count_all_thanks_received( $user_id );
 			$this->set( 'thanks-received', absint( $user_id ), absint( $thanks ) );
 		}
 
@@ -491,7 +491,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function thanks_run_bulk_count_given( $users ) {
-		$raw = bbpc_db_bulk()->count_all_thanks_given( $users );
+		$raw = gdbbx_db_bulk()->count_all_thanks_given( $users );
 
 		foreach ( $raw as $row ) {
 			$this->set( 'thanks-given', absint( $row->user_id ), absint( $row->thanks ) );
@@ -505,7 +505,7 @@ class Cache extends d4p_cache_core {
 	}
 
 	public function thanks_run_bulk_count_received( $users ) {
-		$raw = bbpc_db_bulk()->count_all_thanks_received( $users );
+		$raw = gdbbx_db_bulk()->count_all_thanks_received( $users );
 
 		foreach ( $raw as $row ) {
 			$this->set( 'thanks-received', absint( $row->user_id ), absint( $row->thanks ) );

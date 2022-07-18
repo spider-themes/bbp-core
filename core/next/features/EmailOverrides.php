@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -114,16 +114,16 @@ class EmailOverrides extends Feature {
 		if ( ! empty( $start ) ) {
 			$topic_id = bbp_get_reply_topic_id( $reply_id );
 
-			$tags = apply_filters( 'bbpc_tags_subscription_reply_edit_mail_message', array(
+			$tags = apply_filters( 'gdbbx_tags_subscription_reply_edit_mail_message', array(
 				'BLOG_NAME'     => get_option( 'blogname' ),
 				'FORUM_TITLE'   => bbp_get_forum_title( bbp_get_topic_forum_id( $topic_id ) ),
 				'TOPIC_TITLE'   => bbp_get_topic_title( $topic_id ),
-				'REPLY_TITLE'   => bbpc_get_reply_title( $reply_id ),
+				'REPLY_TITLE'   => gdbbx_get_reply_title( $reply_id ),
 				'REPLY_LINK'    => bbp_get_reply_url( $reply_id ),
-				'REPLY_EDITOR'  => bbpc_get_user_display_name(),
+				'REPLY_EDITOR'  => gdbbx_get_user_display_name(),
 				'REPLY_AUTHOR'  => bbp_get_reply_author_display_name( $reply_id ),
 				'REPLY_CONTENT' => bbp_get_reply_content( $reply_id ),
-				'REPLY_EDIT'    => bbpc_mailer()->reply_revision_log( $reply_id )
+				'REPLY_EDIT'    => gdbbx_mailer()->reply_revision_log( $reply_id )
 			), $reply_id );
 
 			if ( $this->get( 'notify_subscribers_reply_edit_shortcodes' ) ) {
@@ -132,7 +132,7 @@ class EmailOverrides extends Feature {
 			}
 
 			$message = d4p_replace_tags_in_content( $start, $tags );
-			$message = bbpc_email_clean_content( $message );
+			$message = gdbbx_email_clean_content( $message );
 		}
 
 		return $message;
@@ -144,14 +144,14 @@ class EmailOverrides extends Feature {
 		if ( ! empty( $start ) ) {
 			$topic_id = bbp_get_reply_topic_id( $reply_id );
 
-			$tags = apply_filters( 'bbpc_tags_subscription_reply_edit_mail_title', array(
+			$tags = apply_filters( 'gdbbx_tags_subscription_reply_edit_mail_title', array(
 				'BLOG_NAME'   => get_option( 'blogname' ),
 				'TOPIC_TITLE' => strip_tags( bbp_get_topic_title( $topic_id ) ),
-				'REPLY_TITLE' => strip_tags( bbpc_get_reply_title( $reply_id ) )
+				'REPLY_TITLE' => strip_tags( gdbbx_get_reply_title( $reply_id ) )
 			), $reply_id );
 
 			$title = d4p_replace_tags_in_content( $start, $tags );
-			$title = bbpc_email_clean_content( $title, apply_filters( 'bbpc_cleanup_subscription_reply_edit_mail_title_strip_tags', true ) );
+			$title = gdbbx_email_clean_content( $title, apply_filters( 'gdbbx_cleanup_subscription_reply_edit_mail_title_strip_tags', true ) );
 		}
 
 		return $title;
@@ -161,15 +161,15 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_subscribers_edit_content' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_subscription_topic_edit_mail_message', array(
+			$tags = apply_filters( 'gdbbx_tags_subscription_topic_edit_mail_message', array(
 				'BLOG_NAME'     => get_option( 'blogname' ),
 				'FORUM_TITLE'   => bbp_get_forum_title( bbp_get_topic_forum_id( $topic_id ) ),
 				'TOPIC_TITLE'   => bbp_get_topic_title( $topic_id ),
 				'TOPIC_LINK'    => get_permalink( $topic_id ),
-				'TOPIC_EDITOR'  => bbpc_get_user_display_name(),
+				'TOPIC_EDITOR'  => gdbbx_get_user_display_name(),
 				'TOPIC_AUTHOR'  => bbp_get_topic_author_display_name( $topic_id ),
 				'TOPIC_CONTENT' => bbp_get_topic_content( $topic_id ),
-				'TOPIC_EDIT'    => bbpc_mailer()->topic_revision_log( $topic_id )
+				'TOPIC_EDIT'    => gdbbx_mailer()->topic_revision_log( $topic_id )
 			), $topic_id );
 
 			if ( $this->get( 'notify_subscribers_edit_shortcodes' ) ) {
@@ -178,7 +178,7 @@ class EmailOverrides extends Feature {
 			}
 
 			$message = d4p_replace_tags_in_content( $start, $tags );
-			$message = bbpc_email_clean_content( $message, apply_filters( 'bbpc_cleanup_subscription_topic_edit_mail_message_strip_tags', false ) );
+			$message = gdbbx_email_clean_content( $message, apply_filters( 'gdbbx_cleanup_subscription_topic_edit_mail_message_strip_tags', false ) );
 		}
 
 		return $message;
@@ -195,7 +195,7 @@ class EmailOverrides extends Feature {
 			), $topic_id );
 
 			$title = d4p_replace_tags_in_content( $start, $tags );
-			$title = bbpc_email_clean_content( $title );
+			$title = gdbbx_email_clean_content( $title );
 		}
 
 		return $title;
@@ -205,7 +205,7 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_subscribers_override_content' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = $tags = apply_filters( 'bbpc_tags_subscription_mail_message', array(
+			$tags = $tags = apply_filters( 'gdbbx_tags_subscription_mail_message', array(
 				'BLOG_NAME'     => get_option( 'blogname' ),
 				'FORUM_TITLE'   => bbp_get_forum_title( bbp_get_topic_forum_id( $topic_id ) ),
 				'TOPIC_TITLE'   => bbp_get_topic_title( $topic_id ),
@@ -214,7 +214,7 @@ class EmailOverrides extends Feature {
 				'REPLY_LINK'    => bbp_get_reply_url( $reply_id ),
 				'REPLY_AUTHOR'  => bbp_get_reply_author_display_name( $reply_id ),
 				'REPLY_CONTENT' => bbp_get_reply_content( $reply_id ),
-				'REPLY_TITLE'   => bbpc_get_reply_title( $reply_id )
+				'REPLY_TITLE'   => gdbbx_get_reply_title( $reply_id )
 			), $reply_id, $topic_id );
 
 			if ( $this->get( 'notify_subscribers_override_shortcodes' ) ) {
@@ -223,7 +223,7 @@ class EmailOverrides extends Feature {
 			}
 
 			$message = d4p_replace_tags_in_content( $start, $tags );
-			$message = bbpc_email_clean_content( $message, apply_filters( 'bbpc_cleanup_subscription_mail_message_strip_tags', true ) );
+			$message = gdbbx_email_clean_content( $message, apply_filters( 'gdbbx_cleanup_subscription_mail_message_strip_tags', true ) );
 		}
 
 		return $message;
@@ -233,14 +233,14 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_subscribers_override_subject' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_subscription_topic_edit_mail_title', array(
+			$tags = apply_filters( 'gdbbx_tags_subscription_topic_edit_mail_title', array(
 				'BLOG_NAME'   => get_option( 'blogname' ),
 				'TOPIC_TITLE' => strip_tags( bbp_get_topic_title( $topic_id ) ),
 				'FORUM_TITLE' => bbp_get_forum_title( bbp_get_topic_forum_id( $topic_id ) )
 			), $reply_id, $topic_id );
 
 			$title = d4p_replace_tags_in_content( $start, $tags );
-			$title = bbpc_email_clean_content( $title );
+			$title = gdbbx_email_clean_content( $title );
 		}
 
 		return $title;
@@ -250,7 +250,7 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_subscribers_forum_override_content' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_subscription_forum_mail_message', array(
+			$tags = apply_filters( 'gdbbx_tags_subscription_forum_mail_message', array(
 				'BLOG_NAME'     => get_option( 'blogname' ),
 				'TOPIC_TITLE'   => bbp_get_topic_title( $topic_id ),
 				'TOPIC_LINK'    => get_permalink( $topic_id ),
@@ -266,7 +266,7 @@ class EmailOverrides extends Feature {
 			}
 
 			$message = d4p_replace_tags_in_content( $start, $tags );
-			$message = bbpc_email_clean_content( $message, apply_filters( 'bbpc_cleanup_subscription_forum_mail_message_strip_tags', true ) );
+			$message = gdbbx_email_clean_content( $message, apply_filters( 'gdbbx_cleanup_subscription_forum_mail_message_strip_tags', true ) );
 		}
 
 		return $message;
@@ -276,14 +276,14 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_subscribers_forum_override_subject' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_subscription_forum_mail_title', array(
+			$tags = apply_filters( 'gdbbx_tags_subscription_forum_mail_title', array(
 				'BLOG_NAME'   => get_option( 'blogname' ),
 				'TOPIC_TITLE' => strip_tags( bbp_get_topic_title( $topic_id ) ),
 				'FORUM_TITLE' => strip_tags( bbp_get_forum_title( $forum_id ) )
 			), $topic_id, $forum_id );
 
 			$title = d4p_replace_tags_in_content( $start, $tags );
-			$title = bbpc_email_clean_content( $title );
+			$title = gdbbx_email_clean_content( $title );
 		}
 
 		return $title;
@@ -293,7 +293,7 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_moderators_topic_content' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_new_topic_moderators_mail_message', array(
+			$tags = apply_filters( 'gdbbx_tags_new_topic_moderators_mail_message', array(
 				'BLOG_NAME'     => get_option( 'blogname' ),
 				'TOPIC_TITLE'   => strip_tags( bbp_get_topic_title( $topic_id ) ),
 				'TOPIC_LINK'    => get_permalink( $topic_id ),
@@ -309,7 +309,7 @@ class EmailOverrides extends Feature {
 			}
 
 			$message = d4p_replace_tags_in_content( $start, $tags );
-			$message = bbpc_email_clean_content( $message, apply_filters( 'bbpc_cleanup_new_topic_moderators_mail_message_strip_tags', true ) );
+			$message = gdbbx_email_clean_content( $message, apply_filters( 'gdbbx_cleanup_new_topic_moderators_mail_message_strip_tags', true ) );
 		}
 
 		return $message;
@@ -319,14 +319,14 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_moderators_topic_subject' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_new_topic_moderators_mail_title', array(
+			$tags = apply_filters( 'gdbbx_tags_new_topic_moderators_mail_title', array(
 				'BLOG_NAME'   => get_option( 'blogname' ),
 				'TOPIC_TITLE' => strip_tags( bbp_get_topic_title( $topic_id ) ),
 				'FORUM_TITLE' => strip_tags( bbp_get_forum_title( $forum_id ) )
 			), $topic_id, $forum_id );
 
 			$title = d4p_replace_tags_in_content( $start, $tags );
-			$title = bbpc_email_clean_content( $title );
+			$title = gdbbx_email_clean_content( $title );
 		}
 
 		return $title;
@@ -336,9 +336,9 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_moderators_reply_content' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_new_reply_moderators_mail_message', array(
+			$tags = apply_filters( 'gdbbx_tags_new_reply_moderators_mail_message', array(
 				'BLOG_NAME'     => get_option( 'blogname' ),
-				'REPLY_TITLE'   => strip_tags( bbpc_get_reply_title( $reply_id ) ),
+				'REPLY_TITLE'   => strip_tags( gdbbx_get_reply_title( $reply_id ) ),
 				'REPLY_LINK'    => bbp_get_reply_url( $reply_id ),
 				'REPLY_AUTHOR'  => bbp_get_reply_author_display_name( $reply_id ),
 				'TOPIC_TITLE'   => strip_tags( bbp_get_topic_title( $topic_id ) ),
@@ -354,7 +354,7 @@ class EmailOverrides extends Feature {
 			}
 
 			$message = d4p_replace_tags_in_content( $start, $tags );
-			$message = bbpc_email_clean_content( $message, apply_filters( 'bbpc_cleanup_new_reply_moderators_mail_message_strip_tags', true ) );
+			$message = gdbbx_email_clean_content( $message, apply_filters( 'gdbbx_cleanup_new_reply_moderators_mail_message_strip_tags', true ) );
 		}
 
 		return $message;
@@ -364,15 +364,15 @@ class EmailOverrides extends Feature {
 		$start = trim( $this->get( 'notify_moderators_reply_subject' ) );
 
 		if ( ! empty( $start ) ) {
-			$tags = apply_filters( 'bbpc_tags_new_reply_moderators_mail_title', array(
+			$tags = apply_filters( 'gdbbx_tags_new_reply_moderators_mail_title', array(
 				'BLOG_NAME'   => get_option( 'blogname' ),
-				'REPLY_TITLE' => strip_tags( bbpc_get_reply_title( $reply_id ) ),
+				'REPLY_TITLE' => strip_tags( gdbbx_get_reply_title( $reply_id ) ),
 				'TOPIC_TITLE' => strip_tags( bbp_get_topic_title( $topic_id ) ),
 				'FORUM_TITLE' => strip_tags( bbp_get_forum_title( $forum_id ) )
 			), $topic_id, $forum_id );
 
 			$title = d4p_replace_tags_in_content( $start, $tags );
-			$title = bbpc_email_clean_content( $title );
+			$title = gdbbx_email_clean_content( $title );
 		}
 
 		return $title;

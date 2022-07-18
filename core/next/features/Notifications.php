@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -59,13 +59,13 @@ class Notifications extends Feature {
 
 	public function topic_notify_on_update_checkbox() {
 		if ( bbp_is_topic_edit() ) {
-			include( bbpc_get_template_part( 'bbpc-form-notify-on-topic-edit.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-form-notify-on-topic-edit.php' ) );
 		}
 	}
 
 	public function reply_notify_on_update_checkbox() {
 		if ( bbp_is_reply_edit() ) {
-			include( bbpc_get_template_part( 'bbpc-form-notify-on-reply-edit.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-form-notify-on-reply-edit.php' ) );
 		}
 	}
 
@@ -81,19 +81,19 @@ class Notifications extends Feature {
 			return;
 		}
 
-		$_send_to_author       = isset( $_POST['bbpc_notify_on_edit_author'] ) && $_POST['bbpc_notify_on_edit_author'] == 1;
-		$_send_to_topic_author = isset( $_POST['bbpc_notify_on_edit_topic_author'] ) && $_POST['bbpc_notify_on_edit_topic_author'] == 1;
-		$_send_to_subscribers  = isset( $_POST['bbpc_notify_on_edit_subscribers'] ) && $_POST['bbpc_notify_on_edit_subscribers'] == 1;
+		$_send_to_author       = isset( $_POST['gdbbx_notify_on_edit_author'] ) && $_POST['gdbbx_notify_on_edit_author'] == 1;
+		$_send_to_topic_author = isset( $_POST['gdbbx_notify_on_edit_topic_author'] ) && $_POST['gdbbx_notify_on_edit_topic_author'] == 1;
+		$_send_to_subscribers  = isset( $_POST['gdbbx_notify_on_edit_subscribers'] ) && $_POST['gdbbx_notify_on_edit_subscribers'] == 1;
 
 		if ( $_send_to_topic_author === false && $_send_to_author === false && $_send_to_subscribers === false ) {
 			return;
 		}
 
-		$reply_editor_name = bbpc_get_user_display_name();
+		$reply_editor_name = gdbbx_get_user_display_name();
 
 		$reply_url  = bbp_get_reply_url( $reply_id );
 		$topic_url  = bbp_get_topic_permalink( $topic_id );
-		$reply_data = bbpc_mailer()->get_reply_content( $reply_id, $topic_id );
+		$reply_data = gdbbx_mailer()->get_reply_content( $reply_id, $topic_id );
 
 		/**
 		 * @var string $blog_name
@@ -207,14 +207,14 @@ Login and visit the topic or your profile page to unsubscribe from these emails.
 			return;
 		}
 
-		$_send_to_author      = isset( $_POST['bbpc_notify_on_edit_author'] ) && $_POST['bbpc_notify_on_edit_author'] == 1;
-		$_send_to_subscribers = isset( $_POST['bbpc_notify_on_edit_subscribers'] ) && $_POST['bbpc_notify_on_edit_subscribers'] == 1;
+		$_send_to_author      = isset( $_POST['gdbbx_notify_on_edit_author'] ) && $_POST['gdbbx_notify_on_edit_author'] == 1;
+		$_send_to_subscribers = isset( $_POST['gdbbx_notify_on_edit_subscribers'] ) && $_POST['gdbbx_notify_on_edit_subscribers'] == 1;
 
 		if ( $_send_to_author === false && $_send_to_subscribers === false ) {
 			return;
 		}
 
-		$output   = bbpc_mailer()->get_topic_author_and_subscribers( $topic_id, 'bbp_topic_edit_subscription_user_ids', $_send_to_author, $_send_to_subscribers );
+		$output   = gdbbx_mailer()->get_topic_author_and_subscribers( $topic_id, 'bbp_topic_edit_subscription_user_ids', $_send_to_author, $_send_to_subscribers );
 		$user_ids = isset( $output['user_ids'] ) ? $output['user_ids'] : array();
 		$emails   = isset( $output['emails'] ) ? $output['emails'] : array();
 
@@ -222,10 +222,10 @@ Login and visit the topic or your profile page to unsubscribe from these emails.
 			return;
 		}
 
-		$topic_editor_name = bbpc_get_user_display_name();
+		$topic_editor_name = gdbbx_get_user_display_name();
 
 		$topic_url  = bbp_get_topic_permalink( $topic_id );
-		$topic_data = bbpc_mailer()->get_topic_content( $topic_id );
+		$topic_data = gdbbx_mailer()->get_topic_content( $topic_id );
 
 		/**
 		 * @var string $blog_name
@@ -305,7 +305,7 @@ Login and visit the topic or your profile page to unsubscribe from these emails.
 		$topic_author_name = bbp_get_topic_author_display_name( $topic_id );
 
 		$topic_url  = bbp_get_topic_permalink( $topic_id );
-		$topic_data = bbpc_mailer()->get_topic_content( $topic_id );
+		$topic_data = gdbbx_mailer()->get_topic_content( $topic_id );
 
 		/**
 		 * @var string $blog_name
@@ -362,11 +362,11 @@ This email is sent to keymasters and moderators when new topic is created.", "Em
 		$subscribers   = bbp_get_forum_subscribers( $forum_id );
 
 		if ( $this->get( 'new_topic_keymaster', false ) ) {
-			$users_lists = array_merge( $users_lists, bbpc_get_keymasters() );
+			$users_lists = array_merge( $users_lists, gdbbx_get_keymasters() );
 		}
 
 		if ( $this->get( 'new_topic_moderator', false ) ) {
-			$users_lists = array_merge( $users_lists, bbpc_get_moderators() );
+			$users_lists = array_merge( $users_lists, gdbbx_get_moderators() );
 		}
 
 		foreach ( $users_lists as $user ) {
@@ -412,7 +412,7 @@ This email is sent to keymasters and moderators when new topic is created.", "Em
 
 		$reply_url  = bbp_get_reply_url( $reply_id );
 		$topic_url  = bbp_get_topic_permalink( $topic_id );
-		$topic_data = bbpc_mailer()->get_reply_content( $reply_id, $topic_id );
+		$topic_data = gdbbx_mailer()->get_reply_content( $reply_id, $topic_id );
 
 		/**
 		 * @var string $blog_name
@@ -471,11 +471,11 @@ This email is sent to keymasters and moderators when new topic is created.", "Em
 		$subscribers   = bbp_get_topic_subscribers( $topic_id );
 
 		if ( $this->get( 'new_reply_keymaster', false ) ) {
-			$users_lists = array_merge( $users_lists, bbpc_get_keymasters() );
+			$users_lists = array_merge( $users_lists, gdbbx_get_keymasters() );
 		}
 
 		if ( $this->get( 'new_reply_moderator', false ) ) {
-			$users_lists = array_merge( $users_lists, bbpc_get_moderators() );
+			$users_lists = array_merge( $users_lists, gdbbx_get_moderators() );
 		}
 
 		foreach ( $users_lists as $user ) {

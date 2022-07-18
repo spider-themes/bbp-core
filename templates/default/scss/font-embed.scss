@@ -6,14 +6,14 @@
 
 @font-face {
     font-family: $font-name;
-    src: url('fonts/bbpc.eot?#{$font-version}');
-    src: url('fonts/bbpc.eot?#{$font-version}#iefix') format('embedded-opentype'),
+    src: url('fonts/gdbbx.eot?#{$font-version}');
+    src: url('fonts/gdbbx.eot?#{$font-version}#iefix') format('embedded-opentype'),
     url('data:application/font-woff2;charset=utf-8;base64,#{$font_woff2}') format('woff2'),
     url('data:application/font-woff;charset=utf-8;base64,#{$font_woff}') format('woff'),
-    url('fonts/bbpc.woff2?#{$font-version}') format('woff2'),
-    url('fonts/bbpc.woff?#{$font-version}#bbpc') format('woff'),
-    url('fonts/bbpc.ttf?#{$font-version}') format('truetype'),
-    url('fonts/bbpc.svg?#{$font-version}#bbpc') format('svg');
+    url('fonts/gdbbx.woff2?#{$font-version}') format('woff2'),
+    url('fonts/gdbbx.woff?#{$font-version}#gdbbx') format('woff'),
+    url('fonts/gdbbx.ttf?#{$font-version}') format('truetype'),
+    url('fonts/gdbbx.svg?#{$font-version}#gdbbx') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

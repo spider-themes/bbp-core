@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\bbPress;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\bbPress;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,7 +22,7 @@ class UserSettings extends Feature {
 		add_action( 'personal_options_update', array( $this, 'update' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'update' ) );
 
-		$this->groups = apply_filters( 'bbpc_user_settings_groups', array(
+		$this->groups = apply_filters( 'gdbbx_user_settings_groups', array(
 			'settings'      => array(
 				'label' => __( "Settings", "bbp-core" )
 			),
@@ -108,19 +108,19 @@ class UserSettings extends Feature {
 			return;
 		}
 
-		$group_title = apply_filters( 'bbpc_user_settings_fieldset_legend', $this->groups[ $group ]['label'] );
+		$group_title = apply_filters( 'gdbbx_user_settings_fieldset_legend', $this->groups[ $group ]['label'] );
 
 		if ( bbPress::instance()->theme_package == 'default' ) {
 			echo '<h2 class="entry-title">' . $group_title . '</h2>';
 		}
 
-		echo '<fieldset class="bbp-form bbpc-user-settings">';
+		echo '<fieldset class="bbp-form gdbbx-user-settings">';
 		echo '<legend>' . $group_title . '</legend>';
 
 		foreach ( $list as $key => $obj ) {
-			$value = bbpc_user( $user_id )->get( $obj->name );
+			$value = gdbbx_user( $user_id )->get( $obj->name );
 
-			echo '<div class="bbpc-user-settings-' . $obj->type . '">';
+			echo '<div class="gdbbx-user-settings-' . $obj->type . '">';
 
 			if ( $obj->type == 'checkbox' ) {
 				echo '<label>';
@@ -167,7 +167,7 @@ class UserSettings extends Feature {
 			return;
 		}
 
-		$global = apply_filters( 'bbpc_user_settings_are_global', false );
+		$global = apply_filters( 'gdbbx_user_settings_are_global', false );
 
 		foreach ( $this->registered as $key => $obj ) {
 			$value = null;
@@ -189,7 +189,7 @@ class UserSettings extends Feature {
 							break;
 					}
 
-					$value = apply_filters( 'bbpc_user_settings_save_' . $key, $value, $raw );
+					$value = apply_filters( 'gdbbx_user_settings_save_' . $key, $value, $raw );
 				}
 			}
 

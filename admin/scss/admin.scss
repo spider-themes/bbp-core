@@ -1,4 +1,4 @@
-ul.bbpc-latest-activity {
+ul.gdbbx-latest-activity {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ ul.bbpc-latest-activity {
             border-bottom: 0;
         }
 
-        .bbpc-post-author {
+        .gdbbx-post-author {
             float: right;
 
             img {
@@ -23,14 +23,14 @@ ul.bbpc-latest-activity {
             }
         }
 
-        .bbpc-post-type {
+        .gdbbx-post-type {
             font-weight: bold;
         }
     }
 }
 
-.bbpc-online-status {
-    .bbpc-online-user {
+.gdbbx-online-status {
+    .gdbbx-online-user {
         img {
             vertical-align: top;
             margin: 2px 0 0 0;

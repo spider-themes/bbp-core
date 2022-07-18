@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,7 +20,7 @@ class ScheduleTopic extends Feature {
 	public function __construct() {
 		parent::__construct();
 
-		add_action( 'bbpc_template', array( $this, 'loader' ) );
+		add_action( 'gdbbx_template', array( $this, 'loader' ) );
 	}
 
 	public static function instance() : ScheduleTopic {
@@ -37,7 +37,7 @@ class ScheduleTopic extends Feature {
 		if ( $this->allowed( 'allow' ) ) {
 			add_action( 'bbp_new_topic_pre_insert', array( $this, 'topic_pre_insert' ) );
 
-			add_filter( 'bbpc_script_values', array( $this, 'script_values' ) );
+			add_filter( 'gdbbx_script_values', array( $this, 'script_values' ) );
 			add_action( $this->settings['form_location'], array( $this, 'load_fieldset' ) );
 		}
 	}
@@ -56,7 +56,7 @@ class ScheduleTopic extends Feature {
 		}
 
 		if ( $load ) {
-			include( bbpc_get_template_part( 'bbpc-form-scheduler.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-form-scheduler.php' ) );
 
 			Enqueue::instance()->schedule();
 		}
@@ -66,12 +66,12 @@ class ScheduleTopic extends Feature {
 		$topic_id     = bbp_get_topic_id( $topic_id );
 		$topic_status = ( bbp_get_topic_status( $topic_id ) === 'future' );
 
-		return (bool) apply_filters( 'bbpc_is_topic_scheduled', $topic_status, $topic_id );
+		return (bool) apply_filters( 'gdbbx_is_topic_scheduled', $topic_status, $topic_id );
 	}
 
 	public function topic_pre_insert( $post ) {
-		if ( isset( $_REQUEST['bbpc_schedule_when'] ) && d4p_sanitize_slug( $_REQUEST['bbpc_schedule_when'] ) === 'future' ) {
-			$datetime = isset( $_REQUEST['bbpc_schedule_datetime'] ) ? d4p_sanitize_basic( $_REQUEST['bbpc_schedule_datetime'] ) : '';
+		if ( isset( $_REQUEST['gdbbx_schedule_when'] ) && d4p_sanitize_slug( $_REQUEST['gdbbx_schedule_when'] ) === 'future' ) {
+			$datetime = isset( $_REQUEST['gdbbx_schedule_datetime'] ) ? d4p_sanitize_basic( $_REQUEST['gdbbx_schedule_datetime'] ) : '';
 
 			if ( ! empty( $datetime ) ) {
 				$timestamp = strtotime( $datetime );

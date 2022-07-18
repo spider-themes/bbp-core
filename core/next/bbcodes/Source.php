@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\BBCodes;
+namespace Dev4Press\Plugin\GDBBX\BBCodes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -114,11 +114,11 @@ class Source {
 
 	public function enqueue() {
 		if ( ! $this->enqueued ) {
-			$theme = strtolower( bbpc()->get( 'bbcodes_scode_enlighter', 'tools' ) );
+			$theme = strtolower( gdbbx()->get( 'bbcodes_scode_enlighter', 'tools' ) );
 
-			wp_enqueue_style( 'bbpc-enlighter', BBPC_URL . 'd4pjs/enlighter/enlighterjs.min.css', array(), bbpc()->info_version );
-			wp_enqueue_style( 'bbpc-enlighter-theme', BBPC_URL . 'd4pjs/enlighter/enlighterjs.' . $theme . '.min.css', array(), bbpc()->info_version );
-			wp_enqueue_script( 'bbpc-enlighter', BBPC_URL . 'd4pjs/enlighter/enlighterjs.min.js', array(), bbpc()->info_version );
+			wp_enqueue_style( 'gdbbx-enlighter', GDBBX_URL . 'd4pjs/enlighter/enlighterjs.min.css', array(), gdbbx()->info_version );
+			wp_enqueue_style( 'gdbbx-enlighter-theme', GDBBX_URL . 'd4pjs/enlighter/enlighterjs.' . $theme . '.min.css', array(), gdbbx()->info_version );
+			wp_enqueue_script( 'gdbbx-enlighter', GDBBX_URL . 'd4pjs/enlighter/enlighterjs.min.js', array(), gdbbx()->info_version );
 		}
 	}
 
@@ -152,15 +152,15 @@ class Source {
 	}
 
 	public function kses_before( $matches ) : string {
-		$replaced_code = str_replace( '<', '%%BBPCLT%%', $matches[2] );
-		$replaced_code = str_replace( '>', '%%BBPCRT%%', $replaced_code );
+		$replaced_code = str_replace( '<', '%%GDBBXLT%%', $matches[2] );
+		$replaced_code = str_replace( '>', '%%GDBBXRT%%', $replaced_code );
 
 		return $matches[1] . $replaced_code . $matches[3];
 	}
 
 	public function kses_after( $matches ) : string {
-		$replaced_code = str_replace( '%%BBPCLT%%', '<', $matches[2] );
-		$replaced_code = str_replace( '%%BBPCRT%%', '>', $replaced_code );
+		$replaced_code = str_replace( '%%GDBBXLT%%', '<', $matches[2] );
+		$replaced_code = str_replace( '%%GDBBXRT%%', '>', $replaced_code );
 
 		return $matches[1] . $replaced_code . $matches[3];
 	}

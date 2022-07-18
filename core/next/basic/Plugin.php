@@ -1,63 +1,63 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 use d4p_core_four;
 use d4p_datetime_core;
-use SpiderDevs\Plugin\BBPC\Features\AdminAccess;
-use SpiderDevs\Plugin\BBPC\Features\AdminColumns;
-use SpiderDevs\Plugin\BBPC\Features\AdminWidgets;
-use SpiderDevs\Plugin\BBPC\Features\Attachments;
-use SpiderDevs\Plugin\BBPC\Features\AutoCloseTopics;
-use SpiderDevs\Plugin\BBPC\Features\BBCodes;
-use SpiderDevs\Plugin\BBPC\Features\BuddyPressNotifications;
-use SpiderDevs\Plugin\BBPC\Features\BuddyPressSignature;
-use SpiderDevs\Plugin\BBPC\Features\BuddyPressTweaks;
-use SpiderDevs\Plugin\BBPC\Features\CannedReplies;
-use SpiderDevs\Plugin\BBPC\Features\Clickable;
-use SpiderDevs\Plugin\BBPC\Features\CloseTopicControl;
-use SpiderDevs\Plugin\BBPC\Features\ContentEditor;
-use SpiderDevs\Plugin\BBPC\Features\CustomViews;
-use SpiderDevs\Plugin\BBPC\Features\DisableRSS;
-use SpiderDevs\Plugin\BBPC\Features\EmailOverrides;
-use SpiderDevs\Plugin\BBPC\Features\EmailSender;
-use SpiderDevs\Plugin\BBPC\Features\FooterActions;
-use SpiderDevs\Plugin\BBPC\Features\ForumIndex;
-use SpiderDevs\Plugin\BBPC\Features\Icons;
-use SpiderDevs\Plugin\BBPC\Features\JournalTopic;
-use SpiderDevs\Plugin\BBPC\Features\LockForums;
-use SpiderDevs\Plugin\BBPC\Features\LockTopics;
-use SpiderDevs\Plugin\BBPC\Features\MIMETypes;
-use SpiderDevs\Plugin\BBPC\Features\Notifications;
-use SpiderDevs\Plugin\BBPC\Features\Objects;
-use SpiderDevs\Plugin\BBPC\Features\PostAnonymously;
-use SpiderDevs\Plugin\BBPC\Features\Privacy;
-use SpiderDevs\Plugin\BBPC\Features\PrivateReplies;
-use SpiderDevs\Plugin\BBPC\Features\PrivateTopics;
-use SpiderDevs\Plugin\BBPC\Features\Profiles;
-use SpiderDevs\Plugin\BBPC\Features\ProtectRevisions;
-use SpiderDevs\Plugin\BBPC\Features\Publish;
-use SpiderDevs\Plugin\BBPC\Features\Quote;
-use SpiderDevs\Plugin\BBPC\Features\Replies;
-use SpiderDevs\Plugin\BBPC\Features\ReplyActions;
-use SpiderDevs\Plugin\BBPC\Features\Report;
-use SpiderDevs\Plugin\BBPC\Features\Rewriter;
-use SpiderDevs\Plugin\BBPC\Features\ScheduleTopic;
-use SpiderDevs\Plugin\BBPC\Features\SEO;
-use SpiderDevs\Plugin\BBPC\Features\SEOTweaks;
-use SpiderDevs\Plugin\BBPC\Features\Shortcodes;
-use SpiderDevs\Plugin\BBPC\Features\Signatures;
-use SpiderDevs\Plugin\BBPC\Features\Snippets;
-use SpiderDevs\Plugin\BBPC\Features\Thanks;
-use SpiderDevs\Plugin\BBPC\Features\Toolbar;
-use SpiderDevs\Plugin\BBPC\Features\TopicActions;
-use SpiderDevs\Plugin\BBPC\Features\Topics;
-use SpiderDevs\Plugin\BBPC\Features\Tweaks;
-use SpiderDevs\Plugin\BBPC\Features\UserSettings;
-use SpiderDevs\Plugin\BBPC\Features\UsersStats;
-use SpiderDevs\Plugin\BBPC\Features\VisitorsRedirect;
-use bbpc_mod_online;
-use bbpc_mod_tracking;
+use Dev4Press\Plugin\GDBBX\Features\AdminAccess;
+use Dev4Press\Plugin\GDBBX\Features\AdminColumns;
+use Dev4Press\Plugin\GDBBX\Features\AdminWidgets;
+use Dev4Press\Plugin\GDBBX\Features\Attachments;
+use Dev4Press\Plugin\GDBBX\Features\AutoCloseTopics;
+use Dev4Press\Plugin\GDBBX\Features\BBCodes;
+use Dev4Press\Plugin\GDBBX\Features\BuddyPressNotifications;
+use Dev4Press\Plugin\GDBBX\Features\BuddyPressSignature;
+use Dev4Press\Plugin\GDBBX\Features\BuddyPressTweaks;
+use Dev4Press\Plugin\GDBBX\Features\CannedReplies;
+use Dev4Press\Plugin\GDBBX\Features\Clickable;
+use Dev4Press\Plugin\GDBBX\Features\CloseTopicControl;
+use Dev4Press\Plugin\GDBBX\Features\ContentEditor;
+use Dev4Press\Plugin\GDBBX\Features\CustomViews;
+use Dev4Press\Plugin\GDBBX\Features\DisableRSS;
+use Dev4Press\Plugin\GDBBX\Features\EmailOverrides;
+use Dev4Press\Plugin\GDBBX\Features\EmailSender;
+use Dev4Press\Plugin\GDBBX\Features\FooterActions;
+use Dev4Press\Plugin\GDBBX\Features\ForumIndex;
+use Dev4Press\Plugin\GDBBX\Features\Icons;
+use Dev4Press\Plugin\GDBBX\Features\JournalTopic;
+use Dev4Press\Plugin\GDBBX\Features\LockForums;
+use Dev4Press\Plugin\GDBBX\Features\LockTopics;
+use Dev4Press\Plugin\GDBBX\Features\MIMETypes;
+use Dev4Press\Plugin\GDBBX\Features\Notifications;
+use Dev4Press\Plugin\GDBBX\Features\Objects;
+use Dev4Press\Plugin\GDBBX\Features\PostAnonymously;
+use Dev4Press\Plugin\GDBBX\Features\Privacy;
+use Dev4Press\Plugin\GDBBX\Features\PrivateReplies;
+use Dev4Press\Plugin\GDBBX\Features\PrivateTopics;
+use Dev4Press\Plugin\GDBBX\Features\Profiles;
+use Dev4Press\Plugin\GDBBX\Features\ProtectRevisions;
+use Dev4Press\Plugin\GDBBX\Features\Publish;
+use Dev4Press\Plugin\GDBBX\Features\Quote;
+use Dev4Press\Plugin\GDBBX\Features\Replies;
+use Dev4Press\Plugin\GDBBX\Features\ReplyActions;
+use Dev4Press\Plugin\GDBBX\Features\Report;
+use Dev4Press\Plugin\GDBBX\Features\Rewriter;
+use Dev4Press\Plugin\GDBBX\Features\ScheduleTopic;
+use Dev4Press\Plugin\GDBBX\Features\SEO;
+use Dev4Press\Plugin\GDBBX\Features\SEOTweaks;
+use Dev4Press\Plugin\GDBBX\Features\Shortcodes;
+use Dev4Press\Plugin\GDBBX\Features\Signatures;
+use Dev4Press\Plugin\GDBBX\Features\Snippets;
+use Dev4Press\Plugin\GDBBX\Features\Thanks;
+use Dev4Press\Plugin\GDBBX\Features\Toolbar;
+use Dev4Press\Plugin\GDBBX\Features\TopicActions;
+use Dev4Press\Plugin\GDBBX\Features\Topics;
+use Dev4Press\Plugin\GDBBX\Features\Tweaks;
+use Dev4Press\Plugin\GDBBX\Features\UserSettings;
+use Dev4Press\Plugin\GDBBX\Features\UsersStats;
+use Dev4Press\Plugin\GDBBX\Features\VisitorsRedirect;
+use gdbbx_mod_online;
+use gdbbx_mod_tracking;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -97,19 +97,19 @@ class Plugin {
 	}
 
 	private function run() {
-		bbpc_roles();
+		gdbbx_roles();
 
 		add_action( 'plugins_loaded', array( $this, 'core' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme' ) );
 
-		add_action( 'bbpc_cron_daily_maintenance_job', array( $this, 'daily_maintenance_job' ) );
-		add_action( 'bbpc_clear_bulk_directory', array( $this, 'clear_bulk_directory' ) );
+		add_action( 'gdbbx_cron_daily_maintenance_job', array( $this, 'daily_maintenance_job' ) );
+		add_action( 'gdbbx_clear_bulk_directory', array( $this, 'clear_bulk_directory' ) );
 
 		add_filter( 'bbp_get_template_part', array( $this, 'template_part_first' ), 0 );
 		add_action( 'bbp_post_request', array( $this, 'request_first' ), 0 );
 
 		add_action( 'template_redirect', array( $this, 'template_redirect' ), 7 );
-		add_action( 'bbpc_plugin_settings_loaded', array( $this, 'early' ) );
+		add_action( 'gdbbx_plugin_settings_loaded', array( $this, 'early' ) );
 	}
 
 	/** @return d4p_datetime_core */
@@ -125,16 +125,16 @@ class Plugin {
 		global $wp_version;
 
 		$version = substr( str_replace( '.', '', $wp_version ), 0, 2 );
-		define( 'BBPC_WPV', intval( $version ) );
+		define( 'GDBBX_WPV', intval( $version ) );
 
 		$this->debug      = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
-		$this->buddypress = bbpc_has_buddypress();
+		$this->buddypress = gdbbx_has_buddypress();
 
-		if ( BBPC_WPV < 53 ) {
+		if ( GDBBX_WPV < 53 ) {
 			add_action( 'admin_notices', array( $this, 'system_requirements_problem' ) );
 		}
 
-		if ( bbpc_has_bbpress() ) {
+		if ( gdbbx_has_bbpress() ) {
 			$this->translations();
 			$this->cron();
 
@@ -144,18 +144,18 @@ class Plugin {
 
 			add_action( 'bbp_ready', array( $this, 'ready' ) );
 
-			do_action( 'bbpc_plugin_core_ready' );
+			do_action( 'gdbbx_plugin_core_ready' );
 		} else {
 			add_action( 'admin_notices', array( $this, 'bbpress_requirements_problem' ) );
 		}
 	}
 
 	public function early() {
-		if ( ! bbpc_has_bbpress() ) {
+		if ( ! gdbbx_has_bbpress() ) {
 			return;
 		}
 
-		$this->load = bbpc()->group_get( 'load' );
+		$this->load = gdbbx()->group_get( 'load' );
 
 		$this->run_early();
 	}
@@ -187,26 +187,26 @@ class Plugin {
 	}
 
 	public function init() {
-		do_action( 'bbpc_init' );
+		do_action( 'gdbbx_init' );
 	}
 
 	public function feed() {
 		$this->is_feed = true;
 
-		do_action( 'bbpc_feed' );
+		do_action( 'gdbbx_feed' );
 	}
 
 	public function ready() {
-		do_action( 'bbpc_core' );
+		do_action( 'gdbbx_core' );
 	}
 
 	public function template_redirect() {
-		do_action( 'bbpc_template' );
+		do_action( 'gdbbx_template' );
 	}
 
 	public function request_first() {
 		if ( ! $this->_first_request ) {
-			do_action( 'bbpc_bbpress_request_first' );
+			do_action( 'gdbbx_bbpress_request_first' );
 
 			$this->_first_request = true;
 		}
@@ -216,7 +216,7 @@ class Plugin {
 
 	public function template_part_first( $templates ) {
 		if ( ! $this->_first_template ) {
-			do_action( 'bbpc_bbpress_template_first' );
+			do_action( 'gdbbx_bbpress_template_first' );
 
 			$this->_first_template = true;
 		}
@@ -228,29 +228,29 @@ class Plugin {
 
 	public function modules() {
 		if ( ! D4P_CRON ) {
-			require_once( BBPC_PATH . 'modules/features/mod.tracking.php' );
-			$this->modules['tracking'] = new bbpc_mod_tracking();
+			require_once( GDBBX_PATH . 'modules/features/mod.tracking.php' );
+			$this->modules['tracking'] = new gdbbx_mod_tracking();
 
-			require_once( BBPC_PATH . 'modules/features/mod.online.php' );
-			$this->modules['online'] = new bbpc_mod_online();
+			require_once( GDBBX_PATH . 'modules/features/mod.online.php' );
+			$this->modules['online'] = new gdbbx_mod_online();
 		}
 	}
 
 	public function theme() {
-		require_once( BBPC_PATH . 'core/functions/theme.php' );
+		require_once( GDBBX_PATH . 'core/functions/theme.php' );
 	}
 
 	public function cron() {
-		if ( ! wp_next_scheduled( 'bbpc_cron_daily_maintenance_job' ) ) {
-			$cron_hour = apply_filters( 'bbpc_cron_daily_maintenance_job_hour', 8 );
+		if ( ! wp_next_scheduled( 'gdbbx_cron_daily_maintenance_job' ) ) {
+			$cron_hour = apply_filters( 'gdbbx_cron_daily_maintenance_job_hour', 8 );
 			$cron_time = mktime( $cron_hour, 5, 0, date( 'm' ), date( 'd' ), date( 'Y' ) );
 
-			wp_schedule_event( $cron_time, 'daily', 'bbpc_cron_daily_maintenance_job' );
+			wp_schedule_event( $cron_time, 'daily', 'gdbbx_cron_daily_maintenance_job' );
 		}
 	}
 
 	public function translations() {
-		load_plugin_textdomain( 'bbp-core', false, 'gd-bbpress-toolbox/languages' );
+		load_plugin_textdomain( 'gd-bbpress-toolbox', false, 'gd-bbpress-toolbox/languages' );
 		load_plugin_textdomain( 'd4plib', false, 'gd-bbpress-toolbox/d4plib/languages' );
 	}
 
@@ -258,7 +258,7 @@ class Plugin {
 		$dir = wp_upload_dir();
 
 		if ( $dir['error'] === false ) {
-			$file_path = trailingslashit( $dir['basedir'] ) . 'bbpc/';
+			$file_path = trailingslashit( $dir['basedir'] ) . 'gdbbx/';
 
 			$proceed = true;
 			if ( ! file_exists( $file_path ) ) {
@@ -266,7 +266,7 @@ class Plugin {
 			}
 
 			if ( $proceed ) {
-				$age = apply_filters( 'bbpc_bulk_download_cleanup_age', 1800 );
+				$age = apply_filters( 'gdbbx_bulk_download_cleanup_age', 1800 );
 
 				$files = d4p_scan_dir( $file_path, 'files', array( 'bbx' ) );
 
@@ -286,17 +286,17 @@ class Plugin {
 	}
 
 	public function daily_maintenance_job() {
-		do_action( 'bbpc_daily_maintenance_job' );
+		do_action( 'gdbbx_daily_maintenance_job' );
 	}
 
 	public function get_transient_key( $name ) : string {
-		$version = absint( str_replace( '.', '', bbpc()->info_version ) );
+		$version = absint( str_replace( '.', '', gdbbx()->info_version ) );
 
-		return 'bbpc_v' . $version . '_' . $name;
+		return 'gdbbx_v' . $version . '_' . $name;
 	}
 
 	public function user_meta_key_last_activity() : string {
-		return bbpc_db()->prefix() . 'bbp_last_activity';
+		return gdbbx_db()->prefix() . 'bbp_last_activity';
 	}
 
 	public function get_user_last_activity( $user_id ) : int {
@@ -321,7 +321,7 @@ class Plugin {
 		?>
 
         <div class="notice notice-error">
-            <p><?php _e( "BBP Core requires WordPress 5.3 or newer. Plugin will now be disabled. To use this plugin, upgrade WordPress to 5.1 or newer version.", "bbp-core" ); ?></p>
+            <p><?php _e( "GD bbPress Toolbox Pro requires WordPress 5.3 or newer. Plugin will now be disabled. To use this plugin, upgrade WordPress to 5.1 or newer version.", "bbp-core" ); ?></p>
         </div>
 
 		<?php
@@ -333,7 +333,7 @@ class Plugin {
 		?>
 
         <div class="notice notice-error">
-            <p><?php _e( "BBP Core requires bbPress plugin for WordPress version 2.6.2 or newer. Plugin will now be disabled. To use this plugin, make sure you are using bbPress 2.6.2 or newer version.", "bbp-core" ); ?></p>
+            <p><?php _e( "GD bbPress Toolbox Pro requires bbPress plugin for WordPress version 2.6.2 or newer. Plugin will now be disabled. To use this plugin, make sure you are using bbPress 2.6.2 or newer version.", "bbp-core" ); ?></p>
         </div>
 
 		<?php
@@ -345,9 +345,9 @@ class Plugin {
 		d4p_includes( array(
 			array( 'name' => 'ip', 'directory' => 'classes' ),
 			array( 'name' => 'four', 'directory' => 'classes' )
-		), BBPC_D4PLIB );
+		), GDBBX_D4PLIB );
 
-		$four = new d4p_core_four( 'plugin', 'bbp-core', bbpc()->info_version, bbpc()->info_build );
+		$four = new d4p_core_four( 'plugin', 'gd-bbpress-toolbox', gdbbx()->info_version, gdbbx()->info_build );
 		$four->ad();
 
 		return $four->ad_render( $panel );
@@ -503,7 +503,7 @@ class Plugin {
 			AdminAccess::instance();
 		}
 
-		if ( bbpc_can_user_moderate() ) {
+		if ( gdbbx_can_user_moderate() ) {
 			if ( $this->load['admin-widgets'] ) {
 				AdminWidgets::instance();
 			}

@@ -1,40 +1,39 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-$panels = [];
+$panels = array();
 
-require BBPC_PATH . 'forms/shared/top.php';
+include(GDBBX_PATH.'forms/shared/top.php');
 
 ?>
 
 <div class="d4p-content-right d4p-content-full">
-	<?php
+    <?php
 
-	require_once BBPC_PATH . 'core/grids/users.php';
+    require_once(GDBBX_PATH.'core/grids/users.php');
 
-	$_grid = new bbpc_grid_users();
-	$_grid->prepare_items();
-	$_grid->views();
+    $_grid = new gdbbx_grid_users();
+    $_grid->prepare_items();
+    $_grid->views();
 
-	?>
+    ?>
 
-	<form method="get" action="">
-		<input type="hidden" name="page" value="bbp-core-users" />
-		<input type="hidden" name="bbpc_handler" value="getback" />
-		<input type="hidden" name="view" value="<?php echo $_grid->current_view; ?>" />
+    <form method="get" action="">
+        <input type="hidden" name="page" value="gd-bbpress-toolbox-users" />
+        <input type="hidden" name="gdbbx_handler" value="getback" />
+        <input type="hidden" name="view" value="<?php echo $_grid->current_view; ?>" />
 
-		<?php
+        <?php 
 
-		$_grid->search_box( __( 'Search', 'bbp-core' ), 'user' );
+        $_grid->search_box(__("Search", "bbp-core"), 'user');
 
-		$_grid->display();
+        $_grid->display();
 
-		?>
-	</form>
+        ?>
+    </form>
 </div>
 
-<?php
+<?php 
 
-require BBPC_PATH . 'forms/shared/bottom.php';
+include(GDBBX_PATH.'forms/shared/bottom.php');

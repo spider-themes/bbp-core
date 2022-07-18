@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -107,15 +107,15 @@ class Topics extends Feature {
 	}
 
 	public function show_thumbnail() {
-		$img = bbpc_get_topic_thumbnail();
+		$img = gdbbx_get_topic_thumbnail();
 
 		if ( $img != '' ) {
-			echo '<div class="bbpc-topic-thumbnail"><a href="' . bbp_get_topic_permalink() . '"><img src="' . $img . '" alt="' . bbp_get_topic_title() . '" /></a></div>';
+			echo '<div class="gdbbx-topic-thumbnail"><a href="' . bbp_get_topic_permalink() . '"><img src="' . $img . '" alt="' . bbp_get_topic_title() . '" /></a></div>';
 		}
 	}
 
 	public function show_lead_topic() {
-		if ( ! bbpc_is_feed() ) {
+		if ( ! gdbbx_is_feed() ) {
 			add_filter( 'bbp_show_lead_topic', '__return_true', 10000 );
 		}
 	}

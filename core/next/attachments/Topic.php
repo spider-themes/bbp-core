@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Attachments;
+namespace Dev4Press\Plugin\GDBBX\Attachments;
 
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
-use SpiderDevs\Plugin\BBPC\Features\Icons;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Features\Icons;
 use WP_Query;
 
 class Topic {
@@ -32,8 +32,8 @@ class Topic {
 	}
 
 	public function run() {
-		$action   = apply_filters( 'bbpc_attachments_topic_thread_list_action', bbpc_attachments()->get( 'topic_thread_list_action' ) );
-		$priority = apply_filters( 'bbpc_attachments_topic_thread_list_priority', 10 );
+		$action   = apply_filters( 'gdbbx_attachments_topic_thread_list_action', gdbbx_attachments()->get( 'topic_thread_list_action' ) );
+		$priority = apply_filters( 'gdbbx_attachments_topic_thread_list_priority', 10 );
 
 		if ( $action !== 'skip' ) {
 			add_action( $action, array( $this, 'display' ), $priority );
@@ -41,15 +41,15 @@ class Topic {
 	}
 
 	public function display() {
-		$this->total = bbpc_cache()->attachments_count_topic_attachments( bbp_get_topic_id() );
+		$this->total = gdbbx_cache()->attachments_count_topic_attachments( bbp_get_topic_id() );
 
 		if ( $this->total > 0 ) {
 			$this->topic_id = bbp_get_topic_id();
-			$this->format   = bbpc_attachments()->get( 'topic_thread_list_format' );
-			$this->items    = bbpc_attachments()->get( 'topic_thread_list_items' );
-			$this->nonce    = wp_create_nonce( 'bbpc-attachments-thread-' . $this->topic_id );
+			$this->format   = gdbbx_attachments()->get( 'topic_thread_list_format' );
+			$this->items    = gdbbx_attachments()->get( 'topic_thread_list_items' );
+			$this->nonce    = wp_create_nonce( 'gdbbx-attachments-thread-' . $this->topic_id );
 
-			include( bbpc_get_template_part( 'bbpc-thread-attachments.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-thread-attachments.php' ) );
 
 			Enqueue::instance()->attachments();
 		}
@@ -58,17 +58,17 @@ class Topic {
 	public function placeholders() : string {
 		$pages  = ceil( $this->total / $this->items );
 		$render = array(
-			'<div class="bbpc-attachments-thread-pages" data-pages="' . $pages . '">'
+			'<div class="gdbbx-attachments-thread-pages" data-pages="' . $pages . '">'
 		);
 
 		for ( $i = 0; $i < $pages; $i ++ ) {
-			$render[] = '<div style="display: none" class="bbpc-attachments-thread-page bbpc-attachments-thread-page-' . ( $i + 1 ) . ' bbpc-attachments-thread-empty" data-page="' . ( $i + 1 ) . '"></div>';
+			$render[] = '<div style="display: none" class="gdbbx-attachments-thread-page gdbbx-attachments-thread-page-' . ( $i + 1 ) . ' gdbbx-attachments-thread-empty" data-page="' . ( $i + 1 ) . '"></div>';
 		}
 
 		$render[] = '</div>';
 
 		if ( $pages > 1 ) {
-			$render[] = '<div style="display: none" class="bbpc-attachments-thread-pager bbpc-thread-current-first">';
+			$render[] = '<div style="display: none" class="gdbbx-attachments-thread-pager gdbbx-thread-current-first">';
 			$render[] = '<span class="__prev">' . __( "Previous", "bbp-core" ) . '</span>';
 			$render[] = '<span class="__current">1</span>';
 			$render[] = '<span class="__next">' . __( "Next", "bbp-core" ) . '</span>';
@@ -81,11 +81,11 @@ class Topic {
 	public function files( $topic, $page = 1 ) : string {
 		$this->topic_id = $topic;
 
-		$this->format   = bbpc_attachments()->get( 'topic_thread_list_format' );
-		$this->items    = bbpc_attachments()->get( 'topic_thread_list_items' );
-		$this->columns  = bbpc_attachments()->get( 'topic_thread_list_columns' );
-		$this->download = bbpc_attachments()->get( 'download_link_attribute' ) ? ' download' : '';
-		$this->icons    = bbpc_attachments()->get( 'attachment_icons' );
+		$this->format   = gdbbx_attachments()->get( 'topic_thread_list_format' );
+		$this->items    = gdbbx_attachments()->get( 'topic_thread_list_items' );
+		$this->columns  = gdbbx_attachments()->get( 'topic_thread_list_columns' );
+		$this->download = gdbbx_attachments()->get( 'download_link_attribute' ) ? ' download' : '';
+		$this->icons    = gdbbx_attachments()->get( 'attachment_icons' );
 		$this->type     = Icons::instance()->mode();
 
 		$render = '';
@@ -118,7 +118,7 @@ class Topic {
 				$items[] = Display::instance()->render_file_as_thumbnail( $post, $file, $this->topic_id, false );
 			}
 
-			$render = '<div class="bbpc-attachments-files-container">';
+			$render = '<div class="gdbbx-attachments-files-container">';
 			$render .= '<ol class="__files-list __with-thumbnails __columns-' . $this->columns . '">' . join( '', $items ) . '</ol>';
 			$render .= '</div>';
 
@@ -150,7 +150,7 @@ class Topic {
 		if ( ! empty( $items ) ) {
 			$list_class = $this->type == 'images' ? '__with-icons' : '__with-font-icons';
 
-			$render = '<div class="bbpc-attachments-files-container">';
+			$render = '<div class="gdbbx-attachments-files-container">';
 			$render .= '<ol class="__files-list __without-thumbnails ' . $list_class . '">' . join( '', $items ) . '</ol>';
 			$render .= '</div>';
 
@@ -161,9 +161,9 @@ class Topic {
 	}
 
 	protected function query( $topic, $posts_per_page, $page ) : WP_Query {
-		$ids = bbpc_db()->get_attachments_for_topic_thread( $topic );
+		$ids = gdbbx_db()->get_attachments_for_topic_thread( $topic );
 
-		$args = apply_filters( 'bbpc_get_post_attachments_thread_args', array(
+		$args = apply_filters( 'gdbbx_get_post_attachments_thread_args', array(
 			'post_type'              => 'attachment',
 			'post_status'            => 'inherit',
 			'posts_per_page'         => $posts_per_page,

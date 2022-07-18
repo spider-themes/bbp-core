@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
-use SpiderDevs\Plugin\BBPC\Basic\Posts;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Basic\Posts;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,11 +13,11 @@ class NewPosts extends Widget {
 	public $results_cachable = true;
 
 	public $widget_base = 'd4p_bbw_newposts';
-	public $widget_class = 'bbpc-widget bbpc-widget-newposts';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-newposts';
 
 	public $defaults = array(
 		'title'                 => 'New Posts',
-		'template'              => 'bbpc-widget-newposts.php',
+		'template'              => 'gdbbx-widget-newposts.php',
 		'period'                => 'last_day',
 		'scope'                 => 'topic,reply',
 		'display_thumbnail'     => 'no',
@@ -36,7 +36,7 @@ class NewPosts extends Widget {
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "New Posts", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "New Posts", "bbp-core" );
 		$this->widget_description = __( "New topics or topics with new replies.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -139,7 +139,7 @@ class NewPosts extends Widget {
 
 	public function the_render( $instance, $results = false ) {
 		if ( empty( $results ) ) {
-			echo '<span class="bbpc-no-topics">' . __( "No topics found", "bbp-core" ) . '</span>';
+			echo '<span class="gdbbx-no-topics">' . __( "No topics found", "bbp-core" ) . '</span>';
 		} else {
 			echo '<ul>' . D4P_EOL;
 
@@ -151,8 +151,8 @@ class NewPosts extends Widget {
 			$show_tags      = isset( $instance['display_tags'] ) && $instance['display_tags'] == 'yes';
 			$show_forum     = isset( $instance['display_forum'] ) && $instance['display_forum'] == 'yes';
 
-			$template = apply_filters( 'bbpc-widget-newposts-template', $instance['template'], $results, $this );
-			$path     = bbpc_get_template_part( $template );
+			$template = apply_filters( 'gdbbx-widget-newposts-template', $instance['template'], $results, $this );
+			$path     = gdbbx_get_template_part( $template );
 
 			foreach ( $results as $post ) {
 				include( $path );

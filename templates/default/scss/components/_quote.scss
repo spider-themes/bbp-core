@@ -1,5 +1,5 @@
 #{$forums} {
-    .bbpc-bbcode-quote {
+    .gdbbx-bbcode-quote {
         padding: 0 0 .5em 1em;
 
         p {
@@ -8,14 +8,14 @@
             }
         }
 
-        .bbpc-quote-title {
+        .gdbbx-quote-title {
             font-weight: bold;
             padding-bottom: 2px;
             margin-bottom: 5px;
             border-bottom: 1px solid #DDD;
         }
 
-        &.bbpc-quote-is-private {
+        &.gdbbx-quote-is-private {
             p {
                 font-weight: bold;
                 color: #800;

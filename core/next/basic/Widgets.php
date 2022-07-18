@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,7 +20,7 @@ class Widgets {
 	);
 
 	public function __construct() {
-		add_action( 'bbpc_init', array( $this, 'disable' ) );
+		add_action( 'gdbbx_init', array( $this, 'disable' ) );
 		add_action( 'widgets_init', array( $this, 'init' ) );
 	}
 
@@ -35,34 +35,34 @@ class Widgets {
 	}
 
 	public function disable() {
-		if ( bbpc()->get( 'default_disable_recenttopics', 'widgets' ) ) {
+		if ( gdbbx()->get( 'default_disable_recenttopics', 'widgets' ) ) {
 			remove_action( 'bbp_widgets_init', array( 'BBP_Topics_Widget', 'register_widget' ) );
 		}
 
-		if ( bbpc()->get( 'default_disable_recentreplies', 'widgets' ) ) {
+		if ( gdbbx()->get( 'default_disable_recentreplies', 'widgets' ) ) {
 			remove_action( 'bbp_widgets_init', array( 'BBP_Replies_Widget', 'register_widget' ) );
 		}
 
-		if ( bbpc()->get( 'default_disable_topicviewslist', 'widgets' ) ) {
+		if ( gdbbx()->get( 'default_disable_topicviewslist', 'widgets' ) ) {
 			remove_action( 'bbp_widgets_init', array( 'BBP_Views_Widget', 'register_widget' ) );
 		}
 
-		if ( bbpc()->get( 'default_disable_login', 'widgets' ) ) {
+		if ( gdbbx()->get( 'default_disable_login', 'widgets' ) ) {
 			remove_action( 'bbp_widgets_init', array( 'BBP_Login_Widget', 'register_widget' ) );
 		}
 
-		if ( bbpc()->get( 'default_disable_search', 'widgets' ) ) {
+		if ( gdbbx()->get( 'default_disable_search', 'widgets' ) ) {
 			remove_action( 'bbp_widgets_init', array( 'BBP_Search_Widget', 'register_widget' ) );
 		}
 
-		if ( bbpc()->get( 'default_disable_stats', 'widgets' ) ) {
+		if ( gdbbx()->get( 'default_disable_stats', 'widgets' ) ) {
 			remove_action( 'bbp_widgets_init', array( 'BBP_Stats_Widget', 'register_widget' ) );
 		}
 	}
 
 	public function init() {
 		foreach ( $this->widgets as $widget => $class ) {
-			$class = 'Dev4Press\\Plugin\\BBPC\\Widget\\' . $class;
+			$class = 'Dev4Press\\Plugin\\GDBBX\\Widget\\' . $class;
 
 			if ( class_exists( $class ) ) {
 				register_widget( $class );

@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 use WP_User_Query;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -32,7 +32,7 @@ class Thanks extends Feature {
 
 		$this->allowed = $this->allowed( 'allow' );
 
-		add_action( 'bbpc_template_before_replies_loop', array( $this, 'before_replies_loop' ), 10, 2 );
+		add_action( 'gdbbx_template_before_replies_loop', array( $this, 'before_replies_loop' ), 10, 2 );
 
 		add_action( 'bbp_theme_after_topic_content', array( $this, 'thanks_display' ), 40 );
 		add_action( 'bbp_theme_after_reply_content', array( $this, 'thanks_display' ), 40 );
@@ -40,7 +40,7 @@ class Thanks extends Feature {
 		add_action( 'bbp_get_request_thanks', array( $this, 'process_thanks' ) );
 		add_action( 'bbp_get_request_unthanks', array( $this, 'process_thanks' ) );
 
-		add_filter( 'bbpc_script_values', array( $this, 'script_values' ) );
+		add_filter( 'gdbbx_script_values', array( $this, 'script_values' ) );
 
 		if ( $this->settings['notify_active'] ) {
 			UserSettings::instance()->register(
@@ -75,8 +75,8 @@ class Thanks extends Feature {
 		}
 
 		if ( $this->settings[ $type ] && $this->allowed ) {
-			$thanked = bbpc_cache()->thanks_get_given( $id, $user_id );
-			$nonce   = wp_create_nonce( 'bbpc-thanks-' . $id );
+			$thanked = gdbbx_cache()->thanks_get_given( $id, $user_id );
+			$nonce   = wp_create_nonce( 'gdbbx-thanks-' . $id );
 
 			$data = array(
 				'data-thanks-id="' . $id . '"',
@@ -87,14 +87,14 @@ class Thanks extends Feature {
 				if ( $this->settings['removal'] ) {
 					$data[] = 'data-thanks-action="unthanks"';
 
-					return '<a role="button" ' . join( ' ', $data ) . ' href="#" class="bbpc-link-unthanks">' . $this->_string( 'remove' ) . '</a>';
+					return '<a role="button" ' . join( ' ', $data ) . ' href="#" class="gdbbx-link-unthanks">' . $this->_string( 'remove' ) . '</a>';
 				} else {
 					return false;
 				}
 			} else {
 				$data[] = 'data-thanks-action="thanks"';
 
-				return '<a role="button" ' . join( ' ', $data ) . ' href="#" class="bbpc-link-thanks">' . $this->_string( 'thanks' ) . '</a>';
+				return '<a role="button" ' . join( ' ', $data ) . ' href="#" class="gdbbx-link-thanks">' . $this->_string( 'thanks' ) . '</a>';
 			}
 		} else {
 			return false;
@@ -107,19 +107,19 @@ class Thanks extends Feature {
 
 	public function save_thanks( $action, $post_id, $user_id ) {
 		if ( $action == 'thanks' ) {
-			do_action( 'bbpc_user_said_thanks', $post_id, $user_id );
+			do_action( 'gdbbx_user_said_thanks', $post_id, $user_id );
 
-			$thanks_id = bbpc_db()->thanks_add( $post_id, $user_id );
+			$thanks_id = gdbbx_db()->thanks_add( $post_id, $user_id );
 
 			$this->thanks_notify( $post_id, $user_id, $thanks_id );
 
-			do_action( 'bbpc_say_thanks_saved', $post_id, $user_id, $thanks_id );
+			do_action( 'gdbbx_say_thanks_saved', $post_id, $user_id, $thanks_id );
 		} else if ( $action == 'unthanks' ) {
-			do_action( 'bbpc_user_removed_thanks', $post_id, $user_id );
+			do_action( 'gdbbx_user_removed_thanks', $post_id, $user_id );
 
-			bbpc_db()->thanks_remove( $post_id, $user_id );
+			gdbbx_db()->thanks_remove( $post_id, $user_id );
 
-			do_action( 'bbpc_say_thanks_removed', $post_id, $user_id );
+			do_action( 'gdbbx_say_thanks_removed', $post_id, $user_id );
 		}
 	}
 
@@ -128,7 +128,7 @@ class Thanks extends Feature {
 		$user_id = bbp_get_current_user_id();
 		$action  = $_GET['action'];
 
-		if ( ! bbp_verify_nonce_request( 'bbpc-thanks-' . $post_id ) ) {
+		if ( ! bbp_verify_nonce_request( 'gdbbx-thanks-' . $post_id ) ) {
 			bbp_add_error( 'bgdbx_thanks_nonce', __( "<strong>ERROR</strong>: Are you sure you wanted to do that?", "bbp-core" ) );
 		}
 
@@ -146,7 +146,7 @@ class Thanks extends Feature {
 
 	public function script_values( $values ) {
 		$values['load'][] = 'thanks';
-		$values['thanks'] = apply_filters( 'bbpc_thanks_script_values', array(
+		$values['thanks'] = apply_filters( 'gdbbx_thanks_script_values', array(
 			'thanks'   => $this->_string( 'thanks' ),
 			'unthanks' => $this->_string( 'remove' ),
 			'saved'    => $this->_string( 'saved' ),
@@ -171,7 +171,7 @@ class Thanks extends Feature {
 	}
 
 	public function thanks_notify( $post_id, $user_id, $thanks_id = 0 ) {
-		$active = apply_filters( 'bbpc_thanks_send_user_notification', $this->settings['notify_active'], $post_id, $user_id );
+		$active = apply_filters( 'gdbbx_thanks_send_user_notification', $this->settings['notify_active'], $post_id, $user_id );
 
 		if ( $active ) {
 			$start_content = _x( "%THANKS_AUTHOR% said thanks for '%POST_TITLE%' in forum: '%FORUM_TITLE%'.
@@ -191,9 +191,9 @@ Do not reply to this email!", "Email message: notify about post thanks", "bbp-co
 			$user    = get_user_by( 'id', $_author );
 
 			if ( $user ) {
-				$send = bbpc_user( $_author )->get( 'thanks-notification' );
+				$send = gdbbx_user( $_author )->get( 'thanks-notification' );
 
-				if ( apply_filters( 'bbpc_thanks_send_notification_forced_for_author', $send, $_author ) ) {
+				if ( apply_filters( 'gdbbx_thanks_send_notification_forced_for_author', $send, $_author ) ) {
 					$_title = bbp_is_reply( $post_id ) ? bbp_get_reply_title( $post_id ) : bbp_get_topic_title( $post_id );
 					$_url   = bbp_is_reply( $post_id ) ? bbp_get_reply_url( $post_id ) : get_permalink( $post_id );
 					$_forum = bbp_is_reply( $post_id ) ? bbp_get_reply_forum_id( $post_id ) : bbp_get_topic_forum_id( $post_id );
@@ -222,14 +222,14 @@ Do not reply to this email!", "Email message: notify about post thanks", "bbp-co
 	}
 
 	public function display( $post_id, $post_type = 'topic' ) {
-		echo '<div class="bbpc-thanks-wrapper bbpc-thanks-type-' . $post_type . ' bbpc-thanks-post-' . $post_id . '">';
+		echo '<div class="gdbbx-thanks-wrapper gdbbx-thanks-type-' . $post_type . ' gdbbx-thanks-post-' . $post_id . '">';
 
-		$thanks_list = bbpc_cache()->thanks_get_list( $post_id );
+		$thanks_list = gdbbx_cache()->thanks_get_list( $post_id );
 
 		if ( count( $thanks_list ) > 0 ) {
-			include( bbpc_get_template_part( 'bbpc-thanks-list.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-thanks-list.php' ) );
 		} else {
-			include( bbpc_get_template_part( 'bbpc-thanks-none.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-thanks-none.php' ) );
 		}
 
 		echo '</div>';
@@ -244,10 +244,10 @@ Do not reply to this email!", "Email message: notify about post thanks", "bbp-co
 	}
 
 	public function before_replies_loop( $posts, $users ) {
-		bbpc_cache()->thanks_run_bulk_count_given( $users );
-		bbpc_cache()->thanks_run_bulk_count_received( $users );
-		bbpc_cache()->thanks_run_bulk_given( $posts );
-		bbpc_cache()->thanks_run_bulk_list( $posts );
+		gdbbx_cache()->thanks_run_bulk_count_given( $users );
+		gdbbx_cache()->thanks_run_bulk_count_received( $users );
+		gdbbx_cache()->thanks_run_bulk_given( $posts );
+		gdbbx_cache()->thanks_run_bulk_list( $posts );
 	}
 
 	public function get_list_top_thanked_users( $args = array() ) {
@@ -255,7 +255,7 @@ Do not reply to this email!", "Email message: notify about post thanks", "bbp-co
 
 		$args = wp_parse_args( $args, $default );
 
-		$raw = bbpc_db()->top_thanked_users( $args['limit'] );
+		$raw = gdbbx_db()->top_thanked_users( $args['limit'] );
 
 		if ( ! empty( $raw ) ) {
 			if ( $args['return'] == 'ids' ) {
@@ -295,7 +295,7 @@ Do not reply to this email!", "Email message: notify about post thanks", "bbp-co
 			$show_date = $this->settings['display_date'];
 
 			if ( $show_date != 'no' && $date_time !== false ) {
-				$timestamp = bbpc_plugin()->datetime()->timestamp_gmt_to_local( strtotime( $date_time ) );
+				$timestamp = gdbbx_plugin()->datetime()->timestamp_gmt_to_local( strtotime( $date_time ) );
 
 				if ( $show_date == 'date' ) {
 					$show['date'] = date_i18n( get_option( 'date_format' ), $timestamp );
@@ -304,7 +304,7 @@ Do not reply to this email!", "Email message: notify about post thanks", "bbp-co
 				}
 			}
 
-			return apply_filters( 'bbpc_say_thanks_user_to_display', $show, $user );
+			return apply_filters( 'gdbbx_say_thanks_user_to_display', $show, $user );
 		}
 
 		return false;
@@ -314,11 +314,11 @@ Do not reply to this email!", "Email message: notify about post thanks", "bbp-co
 		switch ( $name ) {
 			default:
 			case 'thanks':
-				return apply_filters( 'bbpc_thanks_string_thanks', __( "Thanks", "bbp-core" ) );
+				return apply_filters( 'gdbbx_thanks_string_thanks', __( "Thanks", "bbp-core" ) );
 			case 'remove':
-				return apply_filters( 'bbpc_thanks_string_remove', __( "Remove Thanks", "bbp-core" ) );
+				return apply_filters( 'gdbbx_thanks_string_remove', __( "Remove Thanks", "bbp-core" ) );
 			case 'saved':
-				return apply_filters( 'bbpc_thanks_string_saved', __( "Thanks Saved", "bbp-core" ) );
+				return apply_filters( 'gdbbx_thanks_string_saved', __( "Thanks Saved", "bbp-core" ) );
 		}
 	}
 }

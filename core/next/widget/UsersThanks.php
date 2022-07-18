@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,16 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class UsersThanks extends Widget {
 	public $widget_base = 'd4p_bbw_usersthanks';
-	public $widget_class = 'bbpc-widget bbpc-widget-usersthanks';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-usersthanks';
 
 	public $defaults = array(
 		'title'    => 'Top Thanked Users',
-		'template' => 'bbpc-widget-usersthanks.php',
+		'template' => 'gdbbx-widget-usersthanks.php',
 		'limit'    => 10
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "Top Thanked Users", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "Top Thanked Users", "bbp-core" );
 		$this->widget_description = __( "List of users with most thanks received.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -50,7 +50,7 @@ class UsersThanks extends Widget {
 			return array();
 		}
 
-		return bbpc_say_thanks()->get_list_top_thanked_users( array(
+		return gdbbx_say_thanks()->get_list_top_thanked_users( array(
 			'limit'  => $instance['limit'],
 			'return' => 'list'
 		) );
@@ -58,12 +58,12 @@ class UsersThanks extends Widget {
 
 	public function the_render( $instance, $results = false ) {
 		if ( empty( $results ) ) {
-			echo '<span class="bbpc-no-users">' . __( "No users found", "bbp-core" ) . '</span>';
+			echo '<span class="gdbbx-no-users">' . __( "No users found", "bbp-core" ) . '</span>';
 		} else {
 			echo '<ul>' . D4P_EOL;
 
-			$template = apply_filters( 'bbpc-widget-usersthanks-template', $instance['template'], $results, $this );
-			$path     = bbpc_get_template_part( $template );
+			$template = apply_filters( 'gdbbx-widget-usersthanks-template', $instance['template'], $results, $this );
+			$path     = gdbbx_get_template_part( $template );
 
 			foreach ( $results as $user ) {
 				include( $path );

@@ -5,7 +5,7 @@
 }
 
 .d4p-group-dashboard-users {
-    .bbpc-front-user {
+    .gdbbx-front-user {
         a {
             color: inherit !important;
             text-decoration: none;
@@ -20,23 +20,23 @@
             }
         }
 
-        &.bbpc-user-color-bbp_keymaster {
+        &.gdbbx-user-color-bbp_keymaster {
             color: #d00;
         }
 
-        &.bbpc-user-color-bbp_moderator {
+        &.gdbbx-user-color-bbp_moderator {
             color: #06c;
         }
 
-        &.bbpc-user-color-bbp_participant {
+        &.gdbbx-user-color-bbp_participant {
             color: #333;
         }
 
-        &.bbpc-user-color-bbp_spectator {
+        &.gdbbx-user-color-bbp_spectator {
             color: #0d0;
         }
 
-        &.bbpc-user-color-bbp_blocked {
+        &.gdbbx-user-color-bbp_blocked {
             color: #aaa;
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Database;
+namespace Dev4Press\Plugin\GDBBX\Database;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -56,9 +56,9 @@ class Posts extends Core {
 		$sql = "SELECT p.ID, p.post_type, p.post_date as post_date, p.post_author, 
             CAST(t.meta_value as UNSIGNED) as topic, 
        		CAST(m.meta_value as UNSIGNED) as forum
-            FROM " . bbpc_db()->wpdb()->posts . " p 
-            INNER JOIN " . bbpc_db()->wpdb()->postmeta . " m ON p.ID = m.post_id AND m.meta_key = '_bbp_forum_id'
-            INNER JOIN " . bbpc_db()->wpdb()->postmeta . " t ON p.ID = t.post_id AND t.meta_key = '_bbp_topic_id'
+            FROM " . gdbbx_db()->wpdb()->posts . " p 
+            INNER JOIN " . gdbbx_db()->wpdb()->postmeta . " m ON p.ID = m.post_id AND m.meta_key = '_bbp_forum_id'
+            INNER JOIN " . gdbbx_db()->wpdb()->postmeta . " t ON p.ID = t.post_id AND t.meta_key = '_bbp_topic_id'
             WHERE p.post_type = '" . bbp_get_reply_post_type() . "'";
 
 		if ( ! empty( $args['post_status'] ) ) {
@@ -84,8 +84,8 @@ class Posts extends Core {
 
 	public function get_new_topics( array $args ) : array {
 		$sql = "SELECT p.ID, p.post_date, p.post_author, CAST(m.meta_value as UNSIGNED) as forum
-            FROM " . bbpc_db()->wpdb()->posts . " p 
-            INNER JOIN " . bbpc_db()->wpdb()->postmeta . " m ON p.ID = m.post_id AND m.meta_key = '_bbp_forum_id'
+            FROM " . gdbbx_db()->wpdb()->posts . " p 
+            INNER JOIN " . gdbbx_db()->wpdb()->postmeta . " m ON p.ID = m.post_id AND m.meta_key = '_bbp_forum_id'
             WHERE p.post_type = '" . bbp_get_topic_post_type() . "'";
 
 		if ( ! empty( $args['post_status'] ) ) {

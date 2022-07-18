@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Library;
+namespace Dev4Press\Plugin\GDBBX\Library;
 
 use wpdb;
 

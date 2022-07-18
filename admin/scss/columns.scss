@@ -15,14 +15,14 @@
     &.pages {
         th,
         td {
-            &.column-bbpc-forum-subscriptions {
+            &.column-gdbbx-forum-subscriptions {
                 width: 40px;
                 text-align: center;
             }
         }
 
         td {
-            &.column-bbpc-forum-subscriptions {
+            &.column-gdbbx-forum-subscriptions {
                 a {
                     font-weight: bold;
                 }
@@ -33,21 +33,21 @@
     &.posts {
         th,
         td {
-            &.column-bbpc-is-private {
+            &.column-gdbbx-is-private {
                 width: 30px;
                 text-align: center;
             }
 
-            &.column-bbpc-attachments-count,
-            &.column-bbpc-topic-subscriptions,
-            &.column-bbpc-topic-favorites {
+            &.column-gdbbx-attachments-count,
+            &.column-gdbbx-topic-subscriptions,
+            &.column-gdbbx-topic-favorites {
                 width: 40px;
                 text-align: center;
             }
         }
 
         th {
-            &.column-bbpc-is-private {
+            &.column-gdbbx-is-private {
                 div {
                     font-size: 18px;
                 }
@@ -55,15 +55,15 @@
         }
 
         td {
-            &.column-bbpc-is-private {
+            &.column-gdbbx-is-private {
                 color: #aa0000;
                 font-size: 1.1em;
                 font-weight: bold;
             }
 
-            &.column-bbpc-attachments-count,
-            &.column-bbpc-topic-subscriptions,
-            &.column-bbpc-topic-favorites {
+            &.column-gdbbx-attachments-count,
+            &.column-gdbbx-topic-subscriptions,
+            &.column-gdbbx-topic-favorites {
                 a {
                     font-weight: bold;
                 }

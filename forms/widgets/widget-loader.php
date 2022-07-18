@@ -1,33 +1,24 @@
 <?php
 
-d4p_includes(
-	[
-		[
-			'name'      => 'functions',
-			'directory' => 'admin',
-		],
-		[
-			'name'      => 'walkers',
-			'directory' => 'admin',
-		],
-	],
-	BBPC_D4PLIB
-);
+d4p_includes(array(
+	array('name' => 'functions', 'directory' => 'admin'),
+	array('name' => 'walkers', 'directory' => 'admin')
+), GDBBX_D4PLIB);
 
 $_tab = $instance['_tab'];
 
 ?>
 
 <div class="d4plib-widget <?php echo $this->widget_base; ?>-wrapper">
-	<div class="d4plib-widget-tabs" role="tablist">
-		<input class="d4plib-widget-active-tab" value="<?php echo $_tab; ?>" id="<?php echo $this->get_field_id( '_tab' ); ?>" name="<?php echo $this->get_field_name( '_tab' ); ?>" type="hidden"/>
+    <div class="d4plib-widget-tabs" role="tablist">
+        <input class="d4plib-widget-active-tab" value="<?php echo $_tab; ?>" id="<?php echo $this->get_field_id( '_tab' ); ?>" name="<?php echo $this->get_field_name( '_tab' ); ?>" type="hidden"/>
 		<?php
 
 		foreach ( $tabs as $tab => $obj ) {
 			$tabkey = $this->get_tabkey( $tab );
 
 			$class    = 'd4plib-widget-tab d4plib-tabname-' . $tabkey;
-			$class   .= ' d4plib-tab-' . $tab;
+			$class    .= ' d4plib-tab-' . $tab;
 			$selected = 'false';
 
 			if ( isset( $obj['class'] ) ) {
@@ -35,7 +26,7 @@ $_tab = $instance['_tab'];
 			}
 
 			if ( $tab == $_tab ) {
-				$class   .= ' d4plib-tab-active';
+				$class    .= ' d4plib-tab-active';
 				$selected = 'true';
 			}
 
@@ -43,15 +34,15 @@ $_tab = $instance['_tab'];
 		}
 
 		?>
-	</div>
-	<div class="d4plib-widget-tabs-content">
+    </div>
+    <div class="d4plib-widget-tabs-content">
 		<?php
 
 		foreach ( $tabs as $tab => $obj ) {
 			$tabkey = $this->get_tabkey( $tab );
 
 			$class    = 'd4plib-tab-content d4plib-tabname-' . $tabkey;
-			$class   .= ' d4plib-content-for-' . $tab;
+			$class    .= ' d4plib-content-for-' . $tab;
 			$selected = 'true';
 
 			if ( isset( $obj['class'] ) ) {
@@ -59,21 +50,21 @@ $_tab = $instance['_tab'];
 			}
 
 			if ( $tab == $_tab ) {
-				$class   .= ' d4plib-content-active';
+				$class    .= ' d4plib-content-active';
 				$selected = 'false';
 			}
 
 			echo '<div id="' . $tabkey . '" aria-hidden="' . $selected . '" role="tabpanel" class="' . $class . '" aria-labelledby="' . $tabkey . '-tab">';
 
 			foreach ( $obj['include'] as $inc ) {
-				$template = BBPC_PATH . 'forms/widgets/' . $inc . '.php';
+				$template = GDBBX_PATH . 'forms/widgets/' . $inc . '.php';
 
-				include $template;
+				include( $template );
 			}
 
 			echo '</div>';
 		}
 
 		?>
-	</div>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Admin;
+namespace Dev4Press\Plugin\GDBBX\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,19 +10,19 @@ class MetaBoxes {
 	function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_meta' ) );
 
-		add_action( 'bbpc_admin_toolbox_forums_meta_content_attachments', array(
+		add_action( 'gdbbx_admin_toolbox_forums_meta_content_attachments', array(
 			$this,
 			'metabox_content_attachments'
 		) );
-		add_action( 'bbpc_admin_toolbox_forums_meta_content_privacy', array( $this, 'metabox_content_privacy' ) );
-		add_action( 'bbpc_admin_toolbox_forums_meta_content_locking', array( $this, 'metabox_content_locking' ) );
-		add_action( 'bbpc_admin_toolbox_forums_meta_content_closing', array( $this, 'metabox_content_closing' ) );
+		add_action( 'gdbbx_admin_toolbox_forums_meta_content_privacy', array( $this, 'metabox_content_privacy' ) );
+		add_action( 'gdbbx_admin_toolbox_forums_meta_content_locking', array( $this, 'metabox_content_locking' ) );
+		add_action( 'gdbbx_admin_toolbox_forums_meta_content_closing', array( $this, 'metabox_content_closing' ) );
 
-		add_action( 'bbpc_admin_toolbox_topic_attachments_meta_content_files', array(
+		add_action( 'gdbbx_admin_toolbox_topic_attachments_meta_content_files', array(
 			$this,
 			'metabox_content_files'
 		) );
-		add_action( 'bbpc_admin_toolbox_topic_attachments_meta_content_errors', array(
+		add_action( 'gdbbx_admin_toolbox_topic_attachments_meta_content_errors', array(
 			$this,
 			'metabox_content_errors'
 		) );
@@ -41,8 +41,8 @@ class MetaBoxes {
 	}
 
 	public function save_edit_forum( $post_id ) {
-		if ( isset( $_POST['bbpc_forum_settings'] ) && $_POST['bbpc_forum_settings'] == 'edit' ) {
-			$data = isset( $_POST['bbpc_settings'] ) ? (array) $_POST['bbpc_settings'] : array();
+		if ( isset( $_POST['gdbbx_forum_settings'] ) && $_POST['gdbbx_forum_settings'] == 'edit' ) {
+			$data = isset( $_POST['gdbbx_settings'] ) ? (array) $_POST['gdbbx_settings'] : array();
 
 			$meta = array();
 
@@ -91,25 +91,25 @@ class MetaBoxes {
 				$meta['attachments_mime_types_list'] = (array) ( $data['attachments_mime_types_list'] );
 			}
 
-			$meta = wp_parse_args( $meta, bbpc_default_forum_settings() );
+			$meta = wp_parse_args( $meta, gdbbx_default_forum_settings() );
 
 			if ( $meta['topic_auto_close_after_active'] != 'inherit' ) {
-				bbpc()->current['rules']['forums_auto_close'][ $post_id ] = $meta['topic_auto_close_after_active'];
+				gdbbx()->current['rules']['forums_auto_close'][ $post_id ] = $meta['topic_auto_close_after_active'];
 			} else {
-				if ( isset( bbpc()->current['rules']['forums_auto_close'][ $post_id ] ) ) {
-					unset( bbpc()->current['rules']['forums_auto_close'][ $post_id ] );
+				if ( isset( gdbbx()->current['rules']['forums_auto_close'][ $post_id ] ) ) {
+					unset( gdbbx()->current['rules']['forums_auto_close'][ $post_id ] );
 				}
 			}
 
-			bbpc()->save( 'rules' );
+			gdbbx()->save( 'rules' );
 
-			update_post_meta( $post_id, '_bbpc_settings', $meta );
+			update_post_meta( $post_id, '_gdbbx_settings', $meta );
 		}
 	}
 
 	public function admin_meta() {
-		if ( current_user_can( BBPC_CAP ) ) {
-			add_meta_box( 'bbpc-meta-forum', __( "BBP Core", "bbp-core" ), array(
+		if ( current_user_can( GDBBX_CAP ) ) {
+			add_meta_box( 'gdbbx-meta-forum', __( "GD bbPress Toolbox", "bbp-core" ), array(
 				$this,
 				'metabox_forum'
 			), bbp_get_forum_post_type(), 'advanced', 'high' );
@@ -121,34 +121,34 @@ class MetaBoxes {
 	}
 
 	public function metabox_forum() {
-		include( BBPC_PATH . 'forms/meta/forum.php' );
+		include( GDBBX_PATH . 'forms/meta/forum.php' );
 	}
 
 	public function metabox_files() {
-		include( BBPC_PATH . 'forms/meta/attachments.php' );
+		include( GDBBX_PATH . 'forms/meta/attachments.php' );
 	}
 
 	public function metabox_content_attachments( $post_id ) {
-		include( BBPC_PATH . 'forms/meta/forum.attachments.php' );
+		include( GDBBX_PATH . 'forms/meta/forum.attachments.php' );
 	}
 
 	public function metabox_content_privacy( $post_id ) {
-		include( BBPC_PATH . 'forms/meta/forum.privacy.php' );
+		include( GDBBX_PATH . 'forms/meta/forum.privacy.php' );
 	}
 
 	public function metabox_content_locking( $post_id ) {
-		include( BBPC_PATH . 'forms/meta/forum.locking.php' );
+		include( GDBBX_PATH . 'forms/meta/forum.locking.php' );
 	}
 
 	public function metabox_content_closing( $post_id ) {
-		include( BBPC_PATH . 'forms/meta/forum.closing.php' );
+		include( GDBBX_PATH . 'forms/meta/forum.closing.php' );
 	}
 
 	public function metabox_content_files( $post_id ) {
-		include( BBPC_PATH . 'forms/meta/attachments.files.php' );
+		include( GDBBX_PATH . 'forms/meta/attachments.files.php' );
 	}
 
 	public function metabox_content_errors( $post_id ) {
-		include( BBPC_PATH . 'forms/meta/attachments.errors.php' );
+		include( GDBBX_PATH . 'forms/meta/attachments.errors.php' );
 	}
 }

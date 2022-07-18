@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -99,10 +99,10 @@ class Mailer {
 		remove_all_filters( 'bbp_get_forum_title' );
 		remove_all_filters( 'the_title' );
 
-		$topic_title   = bbpc_email_clean_content( bbp_get_topic_title( $topic_id ) );
-		$forum_title   = bbpc_email_clean_content( bbp_get_forum_title( $forum_id ) );
-		$topic_content = bbpc_email_clean_content( bbp_get_topic_content( $topic_id ) );
-		$blog_name     = bbpc_email_clean_content( get_option( 'blogname' ) );
+		$topic_title   = gdbbx_email_clean_content( bbp_get_topic_title( $topic_id ) );
+		$forum_title   = gdbbx_email_clean_content( bbp_get_forum_title( $forum_id ) );
+		$topic_content = gdbbx_email_clean_content( bbp_get_topic_content( $topic_id ) );
+		$blog_name     = gdbbx_email_clean_content( get_option( 'blogname' ) );
 
 		return compact( 'topic_title', 'topic_content', 'blog_name', 'forum_title' );
 	}
@@ -117,11 +117,11 @@ class Mailer {
 		remove_all_filters( 'bbp_get_forum_title' );
 		remove_all_filters( 'the_title' );
 
-		$forum_title   = bbpc_email_clean_content( bbp_get_forum_title( $forum_id ) );
-		$topic_title   = bbpc_email_clean_content( bbp_get_topic_title( $topic_id ) );
-		$reply_title   = bbpc_email_clean_content( bbpc_get_reply_title( $reply_id ) );
-		$reply_content = bbpc_email_clean_content( bbp_get_reply_content( $reply_id ) );
-		$blog_name     = bbpc_email_clean_content( get_option( 'blogname' ) );
+		$forum_title   = gdbbx_email_clean_content( bbp_get_forum_title( $forum_id ) );
+		$topic_title   = gdbbx_email_clean_content( bbp_get_topic_title( $topic_id ) );
+		$reply_title   = gdbbx_email_clean_content( gdbbx_get_reply_title( $reply_id ) );
+		$reply_content = gdbbx_email_clean_content( bbp_get_reply_content( $reply_id ) );
+		$blog_name     = gdbbx_email_clean_content( get_option( 'blogname' ) );
 
 		return compact( 'topic_title', 'reply_title', 'reply_content', 'blog_name', 'forum_title' );
 	}
@@ -131,7 +131,7 @@ class Mailer {
 		$emails   = array();
 		$author   = bbp_get_topic_author_id( $topic_id );
 
-		if ( $_send_to_author && ( empty( $option_key ) || bbpc_user( $author )->get( $option_key ) ) ) {
+		if ( $_send_to_author && ( empty( $option_key ) || gdbbx_user( $author )->get( $option_key ) ) ) {
 			$user_ids[] = $author;
 		}
 

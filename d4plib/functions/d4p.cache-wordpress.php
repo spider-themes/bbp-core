@@ -25,51 +25,50 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! function_exists( 'wp_flush_rewrite_rules' ) ) {
-	function wp_flush_rewrite_rules() {
-		global $wp_rewrite;
+if (!function_exists('wp_flush_rewrite_rules')) {
+    function wp_flush_rewrite_rules() {
+        global $wp_rewrite;
 
-		$wp_rewrite->flush_rules();
-	}
+        $wp_rewrite->flush_rules();
+    }
 }
 
-if ( ! function_exists( 'd4p_cache_flush' ) ) {
-	/** @global wpdb $wpdb */
-	function d4p_cache_flush( $cache = true, $queries = true ) {
-		if ( $cache ) {
-			wp_cache_flush();
-		}
+if (!function_exists('d4p_cache_flush')) {
+    /** @global wpdb $wpdb */
+    function d4p_cache_flush($cache = true, $queries = true) {
+        if ($cache) {
+            wp_cache_flush();
+        }
 
-		if ( $queries ) {
-			global $wpdb;
+        if ($queries) {
+            global $wpdb;
 
-			if ( is_array( $wpdb->queries ) && ! empty( $wpdb->queries ) ) {
-				unset( $wpdb->queries );
-				$wpdb->queries = [];
-			}
-		}
-	}
+            if (is_array($wpdb->queries) && !empty($wpdb->queries)) {
+                unset($wpdb->queries);
+                $wpdb->queries = array();
+            }
+        }
+    }
 }
 
-if ( ! function_exists( 'd4p_posts_cache_by_ids' ) ) {
-	/** @global wpdb $wpdb */
-	function d4p_posts_cache_by_ids( $posts ) {
-		global $wpdb;
+if (!function_exists('d4p_posts_cache_by_ids')) {
+    /** @global wpdb $wpdb */
+    function d4p_posts_cache_by_ids($posts) {
+        global $wpdb;
 
-		$posts = _get_non_cached_ids( $posts, 'posts' );
-		$posts = array_filter( $posts );
+        $posts = _get_non_cached_ids($posts, 'posts');
+        $posts = array_filter($posts);
 
-		if ( ! empty( $posts ) ) {
-			$sql = 'SELECT * FROM ' . $wpdb->posts . ' WHERE ID IN (' . join( ',', (array) $posts ) . ')';
-			$raw = $wpdb->get_results( $sql );
+        if (!empty($posts)) {
+            $sql = 'SELECT * FROM '.$wpdb->posts.' WHERE ID IN ('.join(',', (array)$posts).')';
+            $raw = $wpdb->get_results($sql);
 
-			foreach ( $raw as $_post ) {
-				$_post = sanitize_post( $_post, 'raw' );
-				wp_cache_add( $_post->ID, $_post, 'posts' );
-			}
-		}
-	}
+            foreach ($raw as $_post) {
+                $_post = sanitize_post($_post, 'raw');
+                wp_cache_add($_post->ID, $_post, 'posts');
+            }
+        }
+    }
 }

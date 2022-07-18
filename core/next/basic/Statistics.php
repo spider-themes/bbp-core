@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 class Statistics {
 	public function __construct() {
@@ -52,15 +52,15 @@ class Statistics {
 	}
 
 	public function forums_stats() : array {
-		$the_key    = bbpc_plugin()->get_transient_key( 'statistics_forums_stats' );
-		$expiration = apply_filters( 'bbpc_statistics_cache_expiration', 7200 );
+		$the_key    = gdbbx_plugin()->get_transient_key( 'statistics_forums_stats' );
+		$expiration = apply_filters( 'gdbbx_statistics_cache_expiration', 7200 );
 
 		$statistics = get_transient( $the_key );
 
 		if ( $statistics === false || ! is_array( $statistics ) ) {
 			$statistics = $this->_calculate_forums_stats();
 
-			$expire = apply_filters( 'bbpc_forum_statistics_expiration', $expiration );
+			$expire = apply_filters( 'gdbbx_forum_statistics_expiration', $expiration );
 
 			set_transient( $the_key, $statistics, $expire );
 		}
@@ -77,18 +77,18 @@ class Statistics {
 			}
 		}
 
-		return (array) apply_filters( 'bbpc_get_statistics', $statistics );
+		return (array) apply_filters( 'gdbbx_get_statistics', $statistics );
 	}
 
 	public function user_counts() : array {
-		$the_key = bbpc_plugin()->get_transient_key( 'statistics_user_counts' );
+		$the_key = gdbbx_plugin()->get_transient_key( 'statistics_user_counts' );
 
 		$results = get_transient( $the_key );
 
 		if ( $results === false || ! is_array( $results ) ) {
 			$results = $this->_calculate_user_counts();
 
-			$expire = apply_filters( 'bbpc_user_counts_expiration', 7200 );
+			$expire = apply_filters( 'gdbbx_user_counts_expiration', 7200 );
 
 			set_transient( $the_key, $results, $expire );
 		}
@@ -156,11 +156,11 @@ class Statistics {
 			$canned_replies_count = $all_canned_replies->publish;
 		}
 
-		$_attachments            = bbpc_db()->count_attachments_per_type();
+		$_attachments            = gdbbx_db()->count_attachments_per_type();
 		$attachments_topic_count = $_attachments[ bbp_get_topic_post_type() ];
 		$attachments_reply_count = $_attachments[ bbp_get_reply_post_type() ];
 		$attachments_count       = $attachments_reply_count + $attachments_topic_count;
-		$attachments_unique      = bbpc_db()->count_unique_attachments();
+		$attachments_unique      = gdbbx_db()->count_unique_attachments();
 
 		$raw = array_map( 'absint', compact(
 			'user_count',
@@ -184,7 +184,7 @@ class Statistics {
 			'attachments_reply_count'
 		) );
 
-		$raw = $raw + bbpc_db()->engagements_extra_stats();
+		$raw = $raw + gdbbx_db()->engagements_extra_stats();
 		$raw = array_map( 'number_format_i18n', $raw );
 
 		$raw['user_roles_count'] = array_map( 'number_format_i18n', $user_roles_count );

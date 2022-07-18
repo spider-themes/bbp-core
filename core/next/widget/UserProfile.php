@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class UserProfile extends Widget {
 	public $widget_base = 'd4p_bbw_userprofile';
-	public $widget_class = 'bbpc-widget bbpc-widget-userprofile';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-userprofile';
 
 	public $defaults = array(
 		'title'              => 'My Profile',
-		'template'           => 'bbpc-widget-userprofile.php',
+		'template'           => 'gdbbx-widget-userprofile.php',
 		'show_login'         => true,
 		'show_profile'       => true,
 		'show_stats'         => true,
@@ -30,7 +30,7 @@ class UserProfile extends Widget {
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "User Profile", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "User Profile", "bbp-core" );
 		$this->widget_description = __( "Logged in user profile and links.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -82,7 +82,7 @@ class UserProfile extends Widget {
 			$profile_data['replies'] = __( "Replies Created", "bbp-core" ) . ': <strong>' . bbp_get_user_reply_count_raw( bbp_get_current_user_id() ) . '</strong>';
 		}
 
-		apply_filters( 'bbpc-widget-userprofile-profile-data', $profile_data, $instance, $this );
+		apply_filters( 'gdbbx-widget-userprofile-profile-data', $profile_data, $instance, $this );
 
 		return $profile_data;
 	}
@@ -110,7 +110,7 @@ class UserProfile extends Widget {
 			$profile_data['engagements'] = '<a href="' . esc_url( bbp_get_user_engagements_url( bbp_get_current_user_id() ) ) . '">' . __( "Engagements", "bbp-core" ) . '</a>';
 		}
 
-		apply_filters( 'bbpc-widget-userprofile-profile-links', $profile_data, $instance, $this );
+		apply_filters( 'gdbbx-widget-userprofile-profile-links', $profile_data, $instance, $this );
 
 		return $profile_data;
 	}
@@ -124,7 +124,7 @@ class UserProfile extends Widget {
 			$links['register'] = '<a href="' . esc_url( site_url( 'wp-login.php?action=register', 'login' ) ) . '">' . __( "Register", "bbp-core" ) . '</a>';
 		}
 
-		apply_filters( 'bbpc-widget-userprofile-profile-login-links', $links, $instance, $this );
+		apply_filters( 'gdbbx-widget-userprofile-profile-login-links', $links, $instance, $this );
 
 		return $links;
 	}
@@ -134,8 +134,8 @@ class UserProfile extends Widget {
 		$links   = $this->profile_links( $instance );
 		$login   = $this->profile_login( $instance );
 
-		$template = apply_filters( 'bbpc-widget-userprofile-template', $instance['template'], $results, $this );
+		$template = apply_filters( 'gdbbx-widget-userprofile-template', $instance['template'], $results, $this );
 
-		include( bbpc_get_template_part( $template ) );
+		include( gdbbx_get_template_part( $template ) );
 	}
 }

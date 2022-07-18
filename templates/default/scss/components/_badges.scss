@@ -1,14 +1,14 @@
 #{$forums} {
-    .bbpc-badge-new-reply {
+    .gdbbx-badge-new-reply {
         float: left;
     }
 
-    .bbpc-badge-new-reply,
-    .bbpc-badge-unread-forum,
-    .bbpc-badge-unread-topic,
-    .bbpc-badge-new-reply-topic,
-    .bbpc-badge-new-posts,
-    .bbpc-badge-new-topic {
+    .gdbbx-badge-new-reply,
+    .gdbbx-badge-unread-forum,
+    .gdbbx-badge-unread-topic,
+    .gdbbx-badge-new-reply-topic,
+    .gdbbx-badge-new-posts,
+    .gdbbx-badge-new-topic {
         background: #111;
         border-radius: 2px;
         padding: 0 4px 1px;
@@ -17,12 +17,12 @@
         color: #FFF;
     }
 
-    .bbpc-badge-unread-forum,
-    .bbpc-badge-unread-topic {
+    .gdbbx-badge-unread-forum,
+    .gdbbx-badge-unread-topic {
         background: #009;
     }
 
-    .bbpc-badge-new-reply-topic {
+    .gdbbx-badge-new-reply-topic {
         background: #090;
     }
 }

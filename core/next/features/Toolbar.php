@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -27,7 +27,7 @@ class Toolbar extends Feature {
 		if ( $this->allowed() ) {
 			$this->title = $this->settings['title'] ? _x( "Forums", "Toolbar menu default title", "bbp-core" ) : __( $this->settings['title'], "bbp-core" );
 
-			add_action( 'bbpc_init', array( $this, 'init' ) );
+			add_action( 'gdbbx_init', array( $this, 'init' ) );
 		}
 	}
 
@@ -129,7 +129,7 @@ class Toolbar extends Feature {
 			}
 		}
 
-		if ( current_user_can( BBPC_CAP ) ) {
+		if ( current_user_can( GDBBX_CAP ) ) {
 			$wp_admin_bar->add_group( array(
 				'parent' => 'gdbb-toolbar',
 				'id'     => 'gdbb-toolbar-admin'
@@ -216,7 +216,7 @@ class Toolbar extends Feature {
 				'parent' => 'gdbb-toolbar-toolbox',
 				'id'     => 'gdbb-toolbar-toolbox-front',
 				'title'  => __( "Front Page", "bbp-core" ),
-				'href'   => admin_url( 'admin.php?page=bbp-core-front' )
+				'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-front' )
 			) );
 			$wp_admin_bar->add_group( array(
 				'parent' => 'gdbb-toolbar-toolbox',
@@ -226,25 +226,25 @@ class Toolbar extends Feature {
 				'parent' => 'gdbb-toolbar-toolbox-third',
 				'id'     => 'gdbb-toolbar-toolbox-features',
 				'title'  => __( "Features", "bbp-core" ),
-				'href'   => admin_url( 'admin.php?page=bbp-core-features' )
+				'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-features' )
 			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'gdbb-toolbar-toolbox-third',
 				'id'     => 'gdbb-toolbar-toolbox-settings',
 				'title'  => __( "Settings", "bbp-core" ),
-				'href'   => admin_url( 'admin.php?page=bbp-core-settings' )
+				'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-settings' )
 			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'gdbb-toolbar-toolbox-third',
 				'id'     => 'gdbb-toolbar-toolbox-attachments',
 				'title'  => __( "Attachments", "bbp-core" ),
-				'href'   => admin_url( 'admin.php?page=bbp-core-attachments' )
+				'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-attachments' )
 			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'gdbb-toolbar-toolbox-third',
 				'id'     => 'gdbb-toolbar-toolbox-users',
 				'title'  => __( "Users", "bbp-core" ),
-				'href'   => admin_url( 'admin.php?page=bbp-core-users' )
+				'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-users' )
 			) );
 
 			if ( Plugin::instance()->is_enabled( 'canned-replies' ) ) {
@@ -270,7 +270,7 @@ class Toolbar extends Feature {
 					'parent' => 'gdbb-toolbar-toolbox-third',
 					'id'     => 'gdbb-toolbar-toolbox-thanks-list',
 					'title'  => __( "Thanks List", "bbp-core" ),
-					'href'   => admin_url( 'admin.php?page=bbp-core-thanks-list' )
+					'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-thanks-list' )
 				) );
 			}
 
@@ -278,13 +278,13 @@ class Toolbar extends Feature {
 				'parent' => 'gdbb-toolbar-toolbox-third',
 				'id'     => 'gdbb-toolbar-toolbox-errors',
 				'title'  => __( "Errors Log", "bbp-core" ),
-				'href'   => admin_url( 'admin.php?page=bbp-core-errors' )
+				'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-errors' )
 			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'gdbb-toolbar-toolbox-third',
 				'id'     => 'gdbb-toolbar-toolbox-tools',
 				'title'  => __( "Tools", "bbp-core" ),
-				'href'   => admin_url( 'admin.php?page=bbp-core-tools' )
+				'href'   => admin_url( 'admin.php?page=gd-bbpress-toolbox-tools' )
 			) );
 		}
 

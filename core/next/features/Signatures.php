@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,7 +42,7 @@ class Signatures extends Feature {
 	public function __construct() {
 		parent::__construct();
 
-		require_once( BBPC_PATH . 'core/next/functions/signatures.php' );
+		require_once( GDBBX_PATH . 'core/next/functions/signatures.php' );
 
 		$this->allowed  = $this->allowed();
 		$this->edit     = $this->allowed( 'edit', 'signatures-edit' );
@@ -67,7 +67,7 @@ class Signatures extends Feature {
 			add_action( 'wp_enqueue_scripts', array( $this, 'tinymce_override' ) );
 		}
 
-		add_action( 'bbpc_init', array( $this, 'init' ) );
+		add_action( 'gdbbx_init', array( $this, 'init' ) );
 	}
 
 	public static function instance() : Signatures {
@@ -90,7 +90,7 @@ class Signatures extends Feature {
 
 	public function tinymce_override() {
 		$load = bbp_is_user_home_edit() || bbp_is_single_user_edit() ||
-		        ( bbpc_plugin()->buddypress && bp_is_user_profile_edit() );
+		        ( gdbbx_plugin()->buddypress && bp_is_user_profile_edit() );
 
 		if ( $load ) {
 			Enqueue::instance()->tinymce();
@@ -112,7 +112,7 @@ class Signatures extends Feature {
 		add_action( 'personal_options_update', array( $this, 'editor_save' ) );
 
 		add_action( 'bbp_user_edit_after', array( $this, 'editor_form_bbpress' ) );
-		add_action( 'bbpc_user_edit_signature_info', array( $this, 'signature_info' ) );
+		add_action( 'gdbbx_user_edit_signature_info', array( $this, 'signature_info' ) );
 	}
 
 	public function add_content_filters() {
@@ -135,13 +135,13 @@ class Signatures extends Feature {
 		$this->_user_id = $user_id;
 
 		if ( $template == '' ) {
-			$template = 'bbpc-form-signature-generic.php';
+			$template = 'gdbbx-form-signature-generic.php';
 		}
 
-		$template = apply_filters( 'bbpc_signature_generic_editor_template', $template );
-		$template = bbpc_get_template_part( $template );
+		$template = apply_filters( 'gdbbx_signature_generic_editor_template', $template );
+		$template = gdbbx_get_template_part( $template );
 
-		include_once( apply_filters( 'bbpc_signature_generic_editor_file', $template ) );
+		include_once( apply_filters( 'gdbbx_signature_generic_editor_file', $template ) );
 	}
 
 	public function editor_form_profile() {
@@ -149,14 +149,14 @@ class Signatures extends Feature {
 			return;
 		}
 
-		include_once( apply_filters( 'bbpc_signature_profile_editor_file', BBPC_PATH . 'forms/profile/signature.php' ) );
+		include_once( apply_filters( 'gdbbx_signature_profile_editor_file', GDBBX_PATH . 'forms/profile/signature.php' ) );
 	}
 
 	public function editor_form_bbpress() {
-		$template = apply_filters( 'bbpc_signature_bbpress_editor_template', 'bbpc-form-signature-bbpress.php' );
-		$template = bbpc_get_template_part( $template );
+		$template = apply_filters( 'gdbbx_signature_bbpress_editor_template', 'gdbbx-form-signature-bbpress.php' );
+		$template = gdbbx_get_template_part( $template );
 
-		include_once( apply_filters( 'bbpc_signature_bbpress_editor_file', $template ) );
+		include_once( apply_filters( 'gdbbx_signature_bbpress_editor_file', $template ) );
 	}
 
 	public function get_signature_for_user( $user_id = 0 ) {
@@ -169,7 +169,7 @@ class Signatures extends Feature {
 		$old_filter   = $user->filter;
 		$user->filter = 'display';
 
-		$_signature = bbpc_update_shorthand_bbcodes( $user->signature );
+		$_signature = gdbbx_update_shorthand_bbcodes( $user->signature );
 
 		$user->filter = $old_filter;
 
@@ -182,7 +182,7 @@ class Signatures extends Feature {
 		$old_filter          = $profileuser->filter;
 		$profileuser->filter = 'display';
 
-		$_signature = bbpc_update_shorthand_bbcodes( $profileuser->signature );
+		$_signature = gdbbx_update_shorthand_bbcodes( $profileuser->signature );
 
 		$profileuser->filter = $old_filter;
 
@@ -194,7 +194,7 @@ class Signatures extends Feature {
 	}
 
 	public function get_signature_for_bbpress_displayed_user() {
-		return bbpc_update_shorthand_bbcodes( bbp_get_displayed_user_field( 'signature' ) );
+		return gdbbx_update_shorthand_bbcodes( bbp_get_displayed_user_field( 'signature' ) );
 	}
 
 	public function signature_info() {
@@ -247,16 +247,16 @@ class Signatures extends Feature {
 		if ( isset( $_POST['signature'] ) ) {
 			$sig = $this->format_signature( $_POST['signature'] );
 
-			bbpc_update_raw_user_signature( $user_id, $sig );
+			gdbbx_update_raw_user_signature( $user_id, $sig );
 		}
 	}
 
 	public function reply_content( $content, $reply_id = 0 ) {
-		if ( bbpc()->is_inside_content_shortcode( $reply_id ) ) {
+		if ( gdbbx()->is_inside_content_shortcode( $reply_id ) ) {
 			return $content;
 		}
 
-		if ( bbpc_is_feed() ) {
+		if ( gdbbx_is_feed() ) {
 			return $content;
 		}
 
@@ -268,10 +268,10 @@ class Signatures extends Feature {
 			$user_id = bbp_get_reply_author_id( $reply_id );
 		}
 
-		$sig = bbpc_user_signature( $user_id, array( 'echo' => false ) );
+		$sig = gdbbx_user_signature( $user_id, array( 'echo' => false ) );
 
 		if ( $sig != '' ) {
-			$content .= apply_filters( 'bbpc_content_signature', $sig, $user_id );
+			$content .= apply_filters( 'gdbbx_content_signature', $sig, $user_id );
 		}
 
 		Enqueue::instance()->core();
@@ -280,10 +280,10 @@ class Signatures extends Feature {
 	}
 
 	public function textarea_class() {
-		$class = 'bbpc-signature';
+		$class = 'gdbbx-signature';
 
 		if ( $this->settings['limiter'] ) {
-			$class .= ' bbpc-limiter-enabled';
+			$class .= ' gdbbx-limiter-enabled';
 		}
 
 		return $class;
@@ -303,18 +303,18 @@ class Signatures extends Feature {
 	public function generate_editor( $content ) {
 		$_editor = $this->settings['editor'];
 
-		if ($_editor == 'bbcodes' && !bbpc_is_bbcodes_toolbar_available()) {
+		if ($_editor == 'bbcodes' && !gdbbx_is_bbcodes_toolbar_available()) {
 			$_editor = 'textarea';
 		}
 
 		if ( $_editor == 'textarea' || $_editor == 'bbcodes' ) {
 			if ( $_editor == 'bbcodes' ) {
-				\Dev4Press\Plugin\BBPC\BBCodes\Toolbar::instance()->display();
+				\Dev4Press\Plugin\GDBBX\BBCodes\Toolbar::instance()->display();
 			}
 
 			echo '<textarea' . $this->textarea_data() . ' class="' . $this->textarea_class() . '" name="signature" id="signature" rows="5" cols="30">' . esc_attr( $content ) . '</textarea>';
 		} else if ( $this->tinymce ) {
-			$settings = apply_filters( 'bbpc_signature_tinymce_settings', array(
+			$settings = apply_filters( 'gdbbx_signature_tinymce_settings', array(
 				'textarea_rows' => 5,
 				'teeny'         => $this->settings['editor'] == 'tinymce_compact'
 			) );

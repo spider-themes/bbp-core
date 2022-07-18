@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Database;
+namespace Dev4Press\Plugin\GDBBX\Database;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -56,8 +56,8 @@ class Cache extends Core {
 
 		foreach ( $raw as $row ) {
 			$list[ $row->id ] = array(
-				'active' => $row->active ? bbpc_plugin()->datetime()->timestamp_local_to_gmt( strtotime( $row->active ) ) : 0,
-				'posted' => $row->posted ? bbpc_plugin()->datetime()->timestamp_local_to_gmt( strtotime( $row->posted ) ) : 0
+				'active' => $row->active ? gdbbx_plugin()->datetime()->timestamp_local_to_gmt( strtotime( $row->active ) ) : 0,
+				'posted' => $row->posted ? gdbbx_plugin()->datetime()->timestamp_local_to_gmt( strtotime( $row->posted ) ) : 0
 			);
 		}
 

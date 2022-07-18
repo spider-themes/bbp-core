@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Attachments;
+namespace Dev4Press\Plugin\GDBBX\Attachments;
 
 use PclZip;
 
@@ -23,12 +23,12 @@ class Bulk {
 	}
 
 	public function run() {
-		if ( isset( $_GET['bbpc-bulk-download'] ) && ! empty( $_GET['bbpc-bulk-download'] ) ) {
-			$id = absint( $_GET['bbpc-bulk-download'] );
+		if ( isset( $_GET['gdbbx-bulk-download'] ) && ! empty( $_GET['gdbbx-bulk-download'] ) ) {
+			$id = absint( $_GET['gdbbx-bulk-download'] );
 
 			if ( $id > 0 ) {
-				if ( bbpc_attachments()->is_bulk_download_allowed() ) {
-					$files = bbpc_get_post_attachments( $id );
+				if ( gdbbx_attachments()->is_bulk_download_allowed() ) {
+					$files = gdbbx_get_post_attachments( $id );
 					$url   = bbp_is_topic( $id )
 						? get_permalink( $id )
 						:
@@ -51,7 +51,7 @@ class Bulk {
 		if ( $dir['error'] === false ) {
 			$file_name = 'attachments-for-' . $id . '-' . time() . '.zip';
 			$file_temp = 'att-' . time() . '-' . $id . '.bbx';
-			$file_path = trailingslashit( $dir['basedir'] ) . 'bbpc/';
+			$file_path = trailingslashit( $dir['basedir'] ) . 'gdbbx/';
 
 			$proceed = true;
 			if ( ! file_exists( $file_path ) ) {
@@ -76,13 +76,13 @@ class Bulk {
 					$zip->add( $path, PCLZIP_OPT_REMOVE_PATH, $folder, PCLZIP_OPT_ADD_TEMP_FILE_ON );
 				}
 
-				if ( ! wp_next_scheduled( 'bbpc_clear_bulk_directory' ) ) {
-					wp_schedule_single_event( time() + HOUR_IN_SECONDS, 'bbpc_clear_bulk_directory' );
+				if ( ! wp_next_scheduled( 'gdbbx_clear_bulk_directory' ) ) {
+					wp_schedule_single_event( time() + HOUR_IN_SECONDS, 'gdbbx_clear_bulk_directory' );
 				}
 
 				d4p_includes( array(
 					array( 'name' => 'file-download', 'directory' => 'functions' )
-				), BBPC_D4PLIB );
+				), GDBBX_D4PLIB );
 
 				d4p_download_resume( $file_path . $file_temp, $file_name );
 

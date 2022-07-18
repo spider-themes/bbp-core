@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,7 +33,7 @@ class FooterActions extends Feature {
 		$links = $this->_topic_links();
 
 		if ( $links != '' ) {
-			echo '<div class="bbpc-footer-meta">' . $links . '</div>';
+			echo '<div class="gdbbx-footer-meta">' . $links . '</div>';
 		}
 	}
 
@@ -41,21 +41,21 @@ class FooterActions extends Feature {
 		$links = $this->_reply_links();
 
 		if ( $links != '' ) {
-			echo '<div class="bbpc-footer-meta">' . $links . '</div>';
+			echo '<div class="gdbbx-footer-meta">' . $links . '</div>';
 		}
 	}
 
 	private function _topic_links( $args = array() ) {
 		$r = bbp_parse_args( $args, array(
 			'id'     => bbp_get_topic_id(),
-			'before' => '<span class="bbpc-admin-links">',
+			'before' => '<span class="gdbbx-admin-links">',
 			'after'  => '</span>',
 			'sep'    => ' | ',
 			'links'  => array()
 		), 'get_topic_footer_links' );
 
 		if ( empty( $r['links'] ) ) {
-			$r['links'] = apply_filters( 'bbpc_topic_footer_links', array(), $r['id'] );
+			$r['links'] = apply_filters( 'gdbbx_topic_footer_links', array(), $r['id'] );
 		}
 
 		if ( empty( $r['links'] ) ) {
@@ -65,13 +65,13 @@ class FooterActions extends Feature {
 		$links  = implode( $r['sep'], array_filter( $r['links'] ) );
 		$retval = $r['before'] . $links . $r['after'];
 
-		return apply_filters( 'bbpc_get_topic_footer_links', $retval, $r, $args );
+		return apply_filters( 'gdbbx_get_topic_footer_links', $retval, $r, $args );
 	}
 
 	function _reply_links( $args = array() ) {
 		$r = bbp_parse_args( $args, array(
 			'id'     => 0,
-			'before' => '<span class="bbpc-admin-links">',
+			'before' => '<span class="gdbbx-admin-links">',
 			'after'  => '</span>',
 			'sep'    => ' | ',
 			'links'  => array()
@@ -92,7 +92,7 @@ class FooterActions extends Feature {
 		}
 
 		if ( empty( $r['links'] ) ) {
-			$r['links'] = apply_filters( 'bbpc_reply_footer_links', array(), $r['id'] );
+			$r['links'] = apply_filters( 'gdbbx_reply_footer_links', array(), $r['id'] );
 		}
 
 		if ( empty( $r['links'] ) ) {
@@ -102,6 +102,6 @@ class FooterActions extends Feature {
 		$links  = implode( $r['sep'], array_filter( $r['links'] ) );
 		$retval = $r['before'] . $links . $r['after'];
 
-		return apply_filters( 'bbpc_get_reply_footer_links', $retval, $r, $args );
+		return apply_filters( 'gdbbx_get_reply_footer_links', $retval, $r, $args );
 	}
 }

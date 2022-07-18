@@ -1,15 +1,15 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Database;
+namespace Dev4Press\Plugin\GDBBX\Database;
 
-use SpiderDevs\Plugin\BBPC\Library\DB;
+use Dev4Press\Plugin\GDBBX\Library\DB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 abstract class Core extends DB {
-	public $_prefix = 'bbpc';
+	public $_prefix = 'gdbbx';
 	public $_tables = array(
 		'actions',
 		'actionmeta',

@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
-use SpiderDevs\Plugin\BBPC\Features\UserSettings;
+use Dev4Press\Plugin\GDBBX\Features\UserSettings;
 use WP_User;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -65,23 +65,23 @@ class User {
 	}
 
 	public function is_online() : bool {
-		return bbpc_module_online()->is_online( $this->id );
+		return gdbbx_module_online()->is_online( $this->id );
 	}
 
 	public function count_topics() : int {
-		return bbpc_cache()->userstats_count_posts( $this->id, bbp_get_topic_post_type() );
+		return gdbbx_cache()->userstats_count_posts( $this->id, bbp_get_topic_post_type() );
 	}
 
 	public function count_replies() : int {
-		return bbpc_cache()->userstats_count_posts( $this->id, bbp_get_reply_post_type() );
+		return gdbbx_cache()->userstats_count_posts( $this->id, bbp_get_reply_post_type() );
 	}
 
 	public function count_thanks_given() : int {
-		return bbpc_cache()->thanks_get_count_given( $this->id );
+		return gdbbx_cache()->thanks_get_count_given( $this->id );
 	}
 
 	public function count_thanks_received() : int {
-		return bbpc_cache()->thanks_get_count_received( $this->id );
+		return gdbbx_cache()->thanks_get_count_received( $this->id );
 	}
 
 	public function render_item( $item ) : string {
@@ -97,56 +97,56 @@ class User {
 	public function render_item_online_status() : string {
 		$online = $this->is_online();
 
-		return apply_filters( 'bbpc_user_stats_online_status',
-			'<div class="bbpc-user-stats-block bbpc-user-stats-online-status">
-                 <span class="bbpc-label bbpc-status-' . ( $online ? 'online' : 'offline' ) . '">' . ( $online ? __( "Online", "bbp-core" ) : __( "Offline", "bbp-core" ) ) . '</span>
+		return apply_filters( 'gdbbx_user_stats_online_status',
+			'<div class="gdbbx-user-stats-block gdbbx-user-stats-online-status">
+                 <span class="gdbbx-label gdbbx-status-' . ( $online ? 'online' : 'offline' ) . '">' . ( $online ? __( "Online", "bbp-core" ) : __( "Offline", "bbp-core" ) ) . '</span>
                  </div>', $online );
 	}
 
 	public function render_item_topics_count() : string {
 		$topics = $this->count_topics();
 
-		return apply_filters( 'bbpc_user_stats_topics_count',
-			'<div class="bbpc-user-stats-block bbpc-user-stats-topics">
-                 <span class="bbpc-label">' . __( "Topics", "bbp-core" ) . ':</span> <span class="bbpc-value">' . $topics . '</span>
+		return apply_filters( 'gdbbx_user_stats_topics_count',
+			'<div class="gdbbx-user-stats-block gdbbx-user-stats-topics">
+                 <span class="gdbbx-label">' . __( "Topics", "bbp-core" ) . ':</span> <span class="gdbbx-value">' . $topics . '</span>
                  </div>', $topics );
 	}
 
 	public function render_item_replies_count() : string {
 		$replies = $this->count_replies();
 
-		return apply_filters( 'bbpc_user_stats_replies_count',
-			'<div class="bbpc-user-stats-block bbpc-user-stats-replies">
-                 <span class="bbpc-label">' . __( "Replies", "bbp-core" ) . ':</span> <span class="bbpc-value">' . $replies . '</span>
+		return apply_filters( 'gdbbx_user_stats_replies_count',
+			'<div class="gdbbx-user-stats-block gdbbx-user-stats-replies">
+                 <span class="gdbbx-label">' . __( "Replies", "bbp-core" ) . ':</span> <span class="gdbbx-value">' . $replies . '</span>
                  </div>', $replies );
 	}
 
 	public function render_item_thanks_given() : string {
 		$thanks_given = $this->count_thanks_given();
 
-		return apply_filters( 'bbpc_user_stats_thanks_given_count',
-			'<div class="bbpc-user-stats-block bbpc-user-stats-thanks-given">
-                     <span class="bbpc-label">' . __( "Has thanked", "bbp-core" ) . ':</span> <span class="bbpc-value">' . sprintf( _n( "%s time", "%s times", $thanks_given, "bbp-core" ), $thanks_given ) . '</span>
+		return apply_filters( 'gdbbx_user_stats_thanks_given_count',
+			'<div class="gdbbx-user-stats-block gdbbx-user-stats-thanks-given">
+                     <span class="gdbbx-label">' . __( "Has thanked", "bbp-core" ) . ':</span> <span class="gdbbx-value">' . sprintf( _n( "%s time", "%s times", $thanks_given, "bbp-core" ), $thanks_given ) . '</span>
                      </div>', $thanks_given );
 	}
 
 	public function render_item_thanks_received() : string {
 		$thanks_received = $this->count_thanks_received();
 
-		return apply_filters( 'bbpc_user_stats_thanks_received_count',
-			'<div class="bbpc-user-stats-block bbpc-user-stats-thanks-received">
-                     <span class="bbpc-label">' . __( "Been thanked", "bbp-core" ) . ':</span> <span class="bbpc-value">' . sprintf( _n( "%s time", "%s times", $thanks_received, "bbp-core" ), $thanks_received ) . '</span>
+		return apply_filters( 'gdbbx_user_stats_thanks_received_count',
+			'<div class="gdbbx-user-stats-block gdbbx-user-stats-thanks-received">
+                     <span class="gdbbx-label">' . __( "Been thanked", "bbp-core" ) . ':</span> <span class="gdbbx-value">' . sprintf( _n( "%s time", "%s times", $thanks_received, "bbp-core" ), $thanks_received ) . '</span>
                      </div>', $thanks_received );
 	}
 
 	public function render_item_registration_date() : string {
 		if ( $this->is_user() ) {
 			$date   = $this->user->user_registered;
-			$format = apply_filters( 'bbpc_user_stats_registered_date_format', get_option( 'date_format' ) );
+			$format = apply_filters( 'gdbbx_user_stats_registered_date_format', get_option( 'date_format' ) );
 
-			return apply_filters( 'bbpc_user_stats_registered_on',
-				'<div class="bbpc-user-stats-block bbpc-user-stats-registered">
-                 <span class="bbpc-label">' . __( "Registered On", "bbp-core" ) . ':</span> <span class="bbpc-value">' . mysql2date( $format, $date ) . '</span>
+			return apply_filters( 'gdbbx_user_stats_registered_on',
+				'<div class="gdbbx-user-stats-block gdbbx-user-stats-registered">
+                 <span class="gdbbx-label">' . __( "Registered On", "bbp-core" ) . ':</span> <span class="gdbbx-value">' . mysql2date( $format, $date ) . '</span>
                  </div>', $date, $format );
 		} else {
 			return '';

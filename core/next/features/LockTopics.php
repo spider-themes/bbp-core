@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Manager\LockTopics as LockTopicsManager;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Manager\LockTopics as LockTopicsManager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,8 +18,8 @@ class LockTopics extends Feature {
 	public function __construct() {
 		parent::__construct();
 
-		add_action( 'bbpc_core', array( $this, 'ready' ) );
-		add_action( 'bbpc_template', array( $this, 'loader' ) );
+		add_action( 'gdbbx_core', array( $this, 'ready' ) );
+		add_action( 'gdbbx_template', array( $this, 'loader' ) );
 	}
 
 	public static function instance() : LockTopics {
@@ -37,7 +37,7 @@ class LockTopics extends Feature {
 	}
 
 	public function loader() {
-		if ( ! bbpc_current_user_can_moderate() && $this->is_topic_temp_locked() ) {
+		if ( ! gdbbx_current_user_can_moderate() && $this->is_topic_temp_locked() ) {
 			$this->topic_lock_reply_form();
 		}
 
@@ -57,7 +57,7 @@ class LockTopics extends Feature {
 		$locked = $this->is_topic_temp_locked( $id ) ? 'locked' : 'unlocked';
 
 		$url = add_query_arg( 'id', $id, bbp_get_topic_permalink( $id ) );
-		$url = add_query_arg( '_wpnonce', wp_create_nonce( 'bbpc_lock_' . $id ), $url );
+		$url = add_query_arg( '_wpnonce', wp_create_nonce( 'gdbbx_lock_' . $id ), $url );
 
 		if ( $locked == 'locked' ) {
 			$url = add_query_arg( 'action', 'unlock', $url );
@@ -73,7 +73,7 @@ class LockTopics extends Feature {
 	public function is_topic_temp_locked( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
-		return get_post_meta( $topic_id, '_bbpc_temp_lock', true ) === 'locked';
+		return get_post_meta( $topic_id, '_gdbbx_temp_lock', true ) === 'locked';
 	}
 
 	public function topic_lock_reply_form() {
@@ -81,12 +81,12 @@ class LockTopics extends Feature {
 	}
 
 	public function message_topic_reply_lock() {
-		return apply_filters( 'bbpc_privacy_topic_reply_form_message', __( "This topic is temporarily locked.", "bbp-core" ) );
+		return apply_filters( 'gdbbx_privacy_topic_reply_form_message', __( "This topic is temporarily locked.", "bbp-core" ) );
 	}
 
 	public function replace_topic_reply_form( $templates, $slug, $name ) {
 		if ( $slug == 'form' && $name == 'reply' && ! bbp_is_reply_edit() ) {
-			$templates = array( 'bbpc-form-lock.php' );
+			$templates = array( 'gdbbx-form-lock.php' );
 		}
 
 		return $templates;
@@ -95,10 +95,10 @@ class LockTopics extends Feature {
 	public function lock_topic( $topic_id = 0, $status = 'lock' ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
-		delete_post_meta( $topic_id, '_bbpc_temp_lock' );
+		delete_post_meta( $topic_id, '_gdbbx_temp_lock' );
 
 		if ( $status == 'lock' ) {
-			add_post_meta( $topic_id, '_bbpc_temp_lock', 'locked', true );
+			add_post_meta( $topic_id, '_gdbbx_temp_lock', 'locked', true );
 		}
 	}
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Manager;
+namespace Dev4Press\Plugin\GDBBX\Manager;
 
-use SpiderDevs\Plugin\BBPC\Features\LockTopics as LockTopicsFeature;
-use SpiderDevs\Plugin\GDFAR\Manager\Process;
+use Dev4Press\Plugin\GDBBX\Features\LockTopics as LockTopicsFeature;
+use Dev4Press\Plugin\GDFAR\Manager\Process;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class LockTopics {
 	private $_defaults = array(
 		'topic' => array(
-			'edit' => array( 'bbpc-lock' ),
-			'bulk' => array( 'bbpc-lock' )
+			'edit' => array( 'gdbbx-lock' ),
+			'bulk' => array( 'gdbbx-lock' )
 		)
 	);
 
@@ -27,9 +27,9 @@ class LockTopics {
 					$key    = $scope . '-' . $action . '-' . $name;
 					$method = $scope . '_' . $action . '_' . str_replace( '-', '_', $name );
 
-					add_filter( 'bbpc-action-visible-' . $key, '__return_true' );
-					add_filter( 'bbpc-action-display-' . $key, array( $this, 'display_' . $method ), 10, 2 );
-					add_filter( 'bbpc-action-process-' . $key, array( $this, 'process_' . $method ), 10, 2 );
+					add_filter( 'gdbbx-action-visible-' . $key, '__return_true' );
+					add_filter( 'gdbbx-action-display-' . $key, array( $this, 'display_' . $method ), 10, 2 );
+					add_filter( 'gdbbx-action-process-' . $key, array( $this, 'process_' . $method ), 10, 2 );
 				}
 			}
 		}
@@ -56,26 +56,26 @@ class LockTopics {
 	}
 
 	public function register() {
-		gdfar_register_action( 'bbpc-lock', array(
+		gdfar_register_action( 'gdbbx-lock', array(
 			'scope'       => 'topic',
 			'action'      => 'edit',
-			'prefix'      => 'bbpc',
+			'prefix'      => 'gdbbx',
 			'label'       => __( "Lock", "bbp-core" ),
 			'description' => __( "Change topic lock status.", "bbp-core" ),
-			'source'      => 'BBP Core'
+			'source'      => 'GD bbPress Toolbox Pro'
 		) );
 
-		gdfar_register_action( 'bbpc-lock', array(
+		gdfar_register_action( 'gdbbx-lock', array(
 			'scope'       => 'topic',
 			'action'      => 'bulk',
-			'prefix'      => 'bbpc',
+			'prefix'      => 'gdbbx',
 			'label'       => __( "Lock", "bbp-core" ),
 			'description' => __( "Change topic lock status.", "bbp-core" ),
-			'source'      => 'BBP Core'
+			'source'      => 'GD bbPress Toolbox Pro'
 		) );
 	}
 
-	public function display_topic_edit_bbpc_lock( $render, $args = array() ) : string {
+	public function display_topic_edit_gdbbx_lock( $render, $args = array() ) : string {
 		$list = array(
 			'lock'   => __( "Locked", "bbp-core" ),
 			'unlock' => __( "Unlocked", "bbp-core" )
@@ -90,7 +90,7 @@ class LockTopics {
 		) );
 	}
 
-	public function process_topic_edit_bbpc_lock( $result, $args = array() ) {
+	public function process_topic_edit_gdbbx_lock( $result, $args = array() ) {
 		$topic_id = $args['id'];
 
 		$new_status = $args['value']['lock'] ?? '';
@@ -109,7 +109,7 @@ class LockTopics {
 		return $result;
 	}
 
-	public function display_topic_bulk_bbpc_lock( $render, $args = array() ) : string {
+	public function display_topic_bulk_gdbbx_lock( $render, $args = array() ) : string {
 		$list = array(
 			''       => __( "Don't Change", "bbp-core" ),
 			'lock'   => __( "Locked", "bbp-core" ),
@@ -123,7 +123,7 @@ class LockTopics {
 		) );
 	}
 
-	public function process_topic_bulk_bbpc_lock( $result, $args = array() ) {
+	public function process_topic_bulk_gdbbx_lock( $result, $args = array() ) {
 		$new_status = $args['value']['lock'] ?? '';
 
 		if ( ! empty( $new_status ) ) {

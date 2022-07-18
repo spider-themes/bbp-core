@@ -25,349 +25,348 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! class_exists( 'd4p_plugin_settings_corex' ) ) {
-	abstract class d4p_plugin_settings_corex {
-		public $base = 'd4p';
+if (!class_exists('d4p_plugin_settings_corex')) {
+    abstract class d4p_plugin_settings_corex {
+        public $base = 'd4p';
 
-		public $info;
-		public $scope = 'blog';
+        public $info;
+        public $scope = 'blog';
 
-		public $current  = [];
-		public $settings = [];
+        public $current = array();
+        public $settings = array();
 
-		public $skip_update           = [];
-		public $skip_delete_on_update = [];
+        public $skip_update = array();
+        public $skip_delete_on_update = array();
 
-		public function __construct() {
-			$this->constructor();
-		}
+        public function __construct() {
+            $this->constructor();
+        }
 
-		public function __get( $name ) {
-			$get = explode( '_', $name, 2 );
+        public function __get($name) {
+            $get = explode('_', $name, 2);
 
-			return $this->get( $get[1], $get[0] );
-		}
+            return $this->get($get[1], $get[0]);
+        }
 
-		public function init() {
-			$this->current['info'] = $this->_settings_get( 'info' );
+        public function init() {
+            $this->current['info'] = $this->_settings_get('info');
 
-			do_action( $this->base . '_settings_init' );
+            do_action($this->base.'_settings_init');
 
-			do_action( $this->base . '_' . $this->scope . '_settings_init' );
+            do_action($this->base.'_'.$this->scope.'_settings_init');
 
-			$installed = is_array( $this->current['info'] ) && isset( $this->current['info']['build'] );
+            $installed = is_array($this->current['info']) && isset($this->current['info']['build']);
 
-			if ( ! $installed ) {
-				$this->_install();
-			} else {
-				$update = $this->current['info']['build'] != $this->info->build;
+            if (!$installed) {
+                $this->_install();
+            } else {
+                $update = $this->current['info']['build'] != $this->info->build;
 
-				if ( $update ) {
-					$this->_update();
-				} else {
-					$groups = $this->_groups();
+                if ($update) {
+                    $this->_update();
+                } else {
+                    $groups = $this->_groups();
 
-					foreach ( $groups as $key ) {
-						$this->current[ $key ] = $this->_settings_get( $key );
+                    foreach ($groups as $key) {
+                        $this->current[$key] = $this->_settings_get($key);
 
-						if ( ! is_array( $this->current[ $key ] ) ) {
-							$data = $this->group( $key );
+                        if (!is_array($this->current[$key])) {
+                            $data = $this->group($key);
 
-							if ( ! is_null( $data ) ) {
-								$this->current[ $key ] = $data;
+                            if (!is_null($data)) {
+                                $this->current[$key] = $data;
 
-								$this->_settings_update( $key, $data );
-							}
-						}
-					}
-				}
-			}
+                                $this->_settings_update($key, $data);
+                            }
+                        }
+                    }
+                }
+            }
 
-			do_action( $this->base . '_' . $this->scope . '_settings_loaded' );
+            do_action($this->base.'_'.$this->scope.'_settings_loaded');
 
-			do_action( $this->base . '_settings_loaded' );
-		}
+            do_action($this->base.'_settings_loaded');
+        }
 
-		public function group( $group ) {
-			if ( isset( $this->settings[ $group ] ) ) {
-				return $this->settings[ $group ];
-			} else {
-				return null;
-			}
-		}
+        public function group($group) {
+            if (isset($this->settings[$group])) {
+                return $this->settings[$group];
+            } else {
+                return null;
+            }
+        }
 
-		public function exists( $name, $group = 'settings' ) {
-			if ( isset( $this->current[ $group ][ $name ] ) ) {
-				return true;
-			} elseif ( isset( $this->settings[ $group ][ $name ] ) ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+        public function exists($name, $group = 'settings') {
+            if (isset($this->current[$group][$name])) {
+                return true;
+            } else if (isset($this->settings[$group][$name])) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
-		public function prefix_get( $prefix, $group = 'settings' ) {
-			$settings = array_merge( array_keys( $this->settings[ $group ] ), array_keys( $this->current[ $group ] ) );
+        public function prefix_get($prefix, $group = 'settings') {
+            $settings = array_merge(array_keys($this->settings[$group]), array_keys($this->current[$group]));
 
-			$results = [];
+            $results = array();
 
-			foreach ( $settings as $key ) {
-				if ( substr( $key, 0, strlen( $prefix ) ) == $prefix ) {
-					$results[ substr( $key, strlen( $prefix ) ) ] = $this->get( $key, $group );
-				}
-			}
+            foreach ($settings as $key) {
+                if (substr($key, 0, strlen($prefix)) == $prefix) {
+                    $results[substr($key, strlen($prefix))] = $this->get($key, $group);
+                }
+            }
 
-			return $results;
-		}
+            return $results;
+        }
 
-		public function group_get( $group ) {
-			$default = $this->settings[ $group ];
-			$current = $this->current[ $group ];
+        public function group_get($group) {
+            $default = $this->settings[$group];
+            $current = $this->current[$group];
 
-			return wp_parse_args( $current, $default );
-		}
+            return wp_parse_args($current, $default);
+        }
 
-		public function register_group( $group ) {
-			$this->settings[ $group ] = [];
-		}
+        public function register_group($group) {
+            $this->settings[$group] = array();
+        }
 
-		public function register( $group, $name, $value ) {
-			$this->settings[ $group ][ $name ] = $value;
-		}
+        public function register($group, $name, $value) {
+            $this->settings[$group][$name] = $value;
+        }
 
-		public function get( $name, $group = 'settings' ) {
-			$exit = null;
+        public function get($name, $group = 'settings') {
+            $exit = null;
 
-			if ( isset( $this->current[ $group ][ $name ] ) ) {
-				$exit = $this->current[ $group ][ $name ];
-			} elseif ( isset( $this->settings[ $group ][ $name ] ) ) {
-				$exit = $this->settings[ $group ][ $name ];
-			}
+            if (isset($this->current[$group][$name])) {
+                $exit = $this->current[$group][$name];
+            } else if (isset($this->settings[$group][$name])) {
+                $exit = $this->settings[$group][$name];
+            }
 
-			return apply_filters( $this->base . '_' . $this->scope . '_settings_get', $exit, $name, $group );
-		}
+            return apply_filters($this->base.'_'.$this->scope.'_settings_get', $exit, $name, $group);
+        }
 
-		public function set( $name, $value, $group = 'settings', $save = false ) {
-			$this->current[ $group ][ $name ] = $value;
+        public function set($name, $value, $group = 'settings', $save = false) {
+            $this->current[$group][$name] = $value;
 
-			if ( $save ) {
-				$this->save( $group );
-			}
-		}
+            if ($save) {
+                $this->save($group);
+            }
+        }
 
-		public function save( $group ) {
-			$this->_settings_update( $group, $this->current[ $group ] );
-		}
+        public function save($group) {
+            $this->_settings_update($group, $this->current[$group]);
+        }
 
-		public function is_install() {
-			return $this->get( 'install', 'info' );
-		}
+        public function is_install() {
+            return $this->get('install', 'info');
+        }
 
-		public function is_update() {
-			return $this->get( 'update', 'info' );
-		}
+        public function is_update() {
+            return $this->get('update', 'info');
+        }
 
-		public function mark_for_update() {
-			$this->current['info']['update'] = true;
+        public function mark_for_update() {
+            $this->current['info']['update'] = true;
 
-			$this->save( 'info' );
-		}
+            $this->save('info');
+        }
 
-		public function remove_by_prefix( $prefix, $group, $save = true ) {
-			$keys = array_keys( $this->current[ $group ] );
+        public function remove_by_prefix($prefix, $group, $save = true) {
+            $keys = array_keys($this->current[$group]);
 
-			foreach ( $keys as $key ) {
-				if ( substr( $key, 0, strlen( $prefix ) ) == $prefix ) {
-					unset( $this->current[ $group ][ $key ] );
-				}
-			}
+            foreach ($keys as $key) {
+                if (substr($key, 0, strlen($prefix)) == $prefix) {
+                    unset($this->current[$group][$key]);
+                }
+            }
 
-			if ( $save ) {
-				$this->save( $group );
-			}
-		}
+            if ($save) {
+                $this->save($group);
+            }
+        }
 
-		public function remove_plugin_settings() {
-			$this->_settings_delete( 'info' );
+        public function remove_plugin_settings() {
+            $this->_settings_delete('info');
 
-			foreach ( $this->_groups() as $group ) {
-				$this->_settings_delete( $group );
-			}
-		}
+            foreach ($this->_groups() as $group) {
+                $this->_settings_delete($group);
+            }
+        }
 
-		public function remove_plugin_settings_by_group( $group ) {
-			$this->_settings_delete( $group );
-		}
+        public function remove_plugin_settings_by_group($group) {
+            $this->_settings_delete($group);
+        }
 
-		public function import_from_object( $import, $list = [] ) {
-			if ( empty( $list ) ) {
-				$list = $this->_groups();
-			}
+        public function import_from_object($import, $list = array()) {
+            if (empty($list)) {
+                $list = $this->_groups();
+            }
 
-			$import = (array) $import;
+            $import = (array)$import;
 
-			foreach ( $import as $key => $data ) {
-				if ( in_array( $key, $list ) ) {
-					$this->current[ $key ] = (array) $data;
+            foreach ($import as $key => $data) {
+                if (in_array($key, $list)) {
+                    $this->current[$key] = (array)$data;
 
-					$this->save( $key );
-				}
-			}
-		}
+                    $this->save($key);
+                }
+            }
+        }
 
-		public function export_to_json( $list = [] ) {
-			return json_encode( $this->_settings_to_array( $list ) );
-		}
+        public function export_to_json($list = array()) {
+            return json_encode($this->_settings_to_array($list));
+        }
 
-		public function export_to_serialized_php( $list = [] ) {
-			return serialize( $this->_settings_to_array( $list ) );
-		}
+        public function export_to_serialized_php($list = array()) {
+            return serialize($this->_settings_to_array($list));
+        }
 
-		public function file_version() {
-			return $this->info_version . '.' . $this->info_build;
-		}
+        public function file_version() {
+            return $this->info_version.'.'.$this->info_build;
+        }
 
-		public function plugin_version() {
-			return 'v' . $this->info_version . '_b' . $this->info_build;
-		}
+        public function plugin_version() {
+            return 'v'.$this->info_version.'_b'.$this->info_build;
+        }
 
-		protected function _db() { }
+        protected function _db() { }
 
-		protected function _name( $name ) {
-			return 'd4p_' . $this->scope . '_' . $this->info->code . '_' . $name;
-		}
+        protected function _name($name) {
+            return 'd4p_'.$this->scope.'_'.$this->info->code.'_'.$name;
+        }
 
-		protected function _install() {
-			$this->current = $this->_merge();
-
-			$this->current['info']            = $this->info->to_array();
-			$this->current['info']['install'] = true;
-			$this->current['info']['update']  = false;
-
-			foreach ( $this->current as $key => $data ) {
-				$this->_settings_update( $key, $data );
-			}
-
-			$this->_db();
-		}
-
-		protected function _update() {
-			$old_build = $this->current['info']['build'];
-
-			$this->current['info']             = $this->info->to_array();
-			$this->current['info']['install']  = false;
-			$this->current['info']['update']   = true;
-			$this->current['info']['previous'] = $old_build;
-
-			$this->_settings_update( 'info', $this->current['info'] );
-
-			$settings = $this->_merge();
-
-			foreach ( $settings as $key => $data ) {
-				$now = $this->_settings_get( $key );
-
-				if ( ! is_array( $now ) ) {
-					$now = $data;
-				} elseif ( ! in_array( $key, $this->skip_update ) ) {
-					$_skip = in_array( $key, $this->skip_delete_on_update );
-
-					$now = $this->_upgrade( $now, $data, $_skip );
-				}
-
-				$this->current[ $key ] = $now;
-
-				$this->_settings_update( $key, $now );
-			}
-
-			$this->_db();
-		}
-
-		protected function _upgrade( $old, $new, $skip_delete = false ) {
-			foreach ( $new as $key => $value ) {
-				if ( ! array_key_exists( $key, $old ) ) {
-					$old[ $key ] = $value;
-				}
-			}
-
-			if ( $skip_delete === false ) {
-				$unset = [];
-				foreach ( $old as $key => $value ) {
-					if ( ! array_key_exists( $key, $new ) ) {
-						$unset[] = $key;
-					}
-				}
-
-				if ( ! empty( $unset ) ) {
-					foreach ( $unset as $key ) {
-						unset( $old[ $key ] );
-					}
-				}
-			}
-
-			return $old;
-		}
-
-		protected function _groups() {
-			return array_keys( $this->settings );
-		}
-
-		protected function _merge() {
-			$merged = [];
-
-			foreach ( $this->settings as $key => $data ) {
-				$merged[ $key ] = [];
-
-				foreach ( $data as $name => $value ) {
-					$merged[ $key ][ $name ] = $value;
-				}
-			}
-
-			return $merged;
-		}
-
-		protected function _settings_get( $name ) {
-			if ( $this->scope == 'network' ) {
-				return get_site_option( $this->_name( $name ) );
-			} else {
-				return get_option( $this->_name( $name ) );
-			}
-		}
-
-		protected function _settings_delete( $name ) {
-			if ( $this->scope == 'network' ) {
-				delete_site_option( $this->_name( $name ) );
-			} else {
-				delete_option( $this->_name( $name ) );
-			}
-		}
-
-		protected function _settings_update( $name, $data ) {
-			if ( $this->scope == 'network' ) {
-				update_site_option( $this->_name( $name ), $data );
-			} else {
-				update_option( $this->_name( $name ), $data );
-			}
-		}
-
-		protected function _settings_to_array( $list = [] ) {
-			if ( empty( $list ) ) {
-				$list = $this->_groups();
-			}
-
-			$data = [
-				'info' => $this->current['info'],
-			];
-
-			foreach ( $list as $name ) {
-				$data[ $name ] = $this->current[ $name ];
-			}
-
-			return $data;
-		}
-
-		abstract protected function constructor();
-	}
+        protected function _install() {
+            $this->current = $this->_merge();
+
+            $this->current['info'] = $this->info->to_array();
+            $this->current['info']['install'] = true;
+            $this->current['info']['update'] = false;
+
+            foreach ($this->current as $key => $data) {
+                $this->_settings_update($key, $data);
+            }
+
+            $this->_db();
+        }
+
+        protected function _update() {
+            $old_build = $this->current['info']['build'];
+
+            $this->current['info'] = $this->info->to_array();
+            $this->current['info']['install'] = false;
+            $this->current['info']['update'] = true;
+            $this->current['info']['previous'] = $old_build;
+
+            $this->_settings_update('info', $this->current['info']);
+
+            $settings = $this->_merge();
+
+            foreach ($settings as $key => $data) {
+                $now = $this->_settings_get($key);
+
+                if (!is_array($now)) {
+                    $now = $data;
+                } else if (!in_array($key, $this->skip_update)) {
+                    $_skip = in_array($key, $this->skip_delete_on_update);
+
+                    $now = $this->_upgrade($now, $data, $_skip);
+                }
+
+                $this->current[$key] = $now;
+
+                $this->_settings_update($key, $now);
+            }
+
+            $this->_db();
+        }
+
+        protected function _upgrade($old, $new, $skip_delete = false) {
+            foreach ($new as $key => $value) {
+                if (!array_key_exists($key, $old)) {
+                    $old[$key] = $value;
+                }
+            }
+
+            if ($skip_delete === false) {
+                $unset = array();
+                foreach ($old as $key => $value) {
+                    if (!array_key_exists($key, $new)) {
+                        $unset[] = $key;
+                    }
+                }
+
+                if (!empty($unset)) {
+                    foreach ($unset as $key) {
+                        unset($old[$key]);
+                    }
+                }
+            }
+
+            return $old;
+        }
+
+        protected function _groups() {
+            return array_keys($this->settings);
+        }
+
+        protected function _merge() {
+            $merged = array();
+
+            foreach ($this->settings as $key => $data) {
+                $merged[$key] = array();
+
+                foreach ($data as $name => $value) {
+                    $merged[$key][$name] = $value;
+                }
+            }
+
+            return $merged;
+        }
+
+        protected function _settings_get($name) {
+            if ($this->scope == 'network') {
+                return get_site_option($this->_name($name));
+            } else {
+                return get_option($this->_name($name));
+            }
+        }
+
+        protected function _settings_delete($name) {
+            if ($this->scope == 'network') {
+                delete_site_option($this->_name($name));
+            } else {
+                delete_option($this->_name($name));
+            }
+        }
+
+        protected function _settings_update($name, $data) {
+            if ($this->scope == 'network') {
+                update_site_option($this->_name($name), $data);
+            } else {
+                update_option($this->_name($name), $data);
+            }
+        }
+
+        protected function _settings_to_array($list = array()) {
+            if (empty($list)) {
+                $list = $this->_groups();
+            }
+
+            $data = array(
+                'info' => $this->current['info']
+            );
+
+            foreach ($list as $name) {
+                $data[$name] = $this->current[$name];
+            }
+
+            return $data;
+        }
+
+        abstract protected function constructor();
+    }
 }

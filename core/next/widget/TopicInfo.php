@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class TopicInfo extends Widget {
 	public $widget_base = 'd4p_bbw_topicinfo';
-	public $widget_class = 'bbpc-widget bbpc-widget-topicinfo';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-topicinfo';
 
 	public $defaults = array(
 		'title'                   => 'Topic Information',
-		'template'                => 'bbpc-widget-topicinfo.php',
+		'template'                => 'gdbbx-widget-topicinfo.php',
 		'show_forum'              => true,
 		'show_author'             => true,
 		'show_post_date'          => true,
@@ -27,7 +27,7 @@ class TopicInfo extends Widget {
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "Topic Information", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "Topic Information", "bbp-core" );
 		$this->widget_description = __( "Information about current topic.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -147,7 +147,7 @@ class TopicInfo extends Widget {
 		}
 
 		if ( $instance['show_participants'] && bbp_get_topic_voice_count( $topic_id ) > 1 ) {
-			$users = bbpc_db()->get_topic_participants( $topic_id );
+			$users = gdbbx_db()->get_topic_participants( $topic_id );
 
 			$participants = array();
 			foreach ( $users as $id ) {
@@ -176,13 +176,13 @@ class TopicInfo extends Widget {
 			);
 		}
 
-		$list = apply_filters( 'bbpc-widget-topicinfo-list', $list, $this );
+		$list = apply_filters( 'gdbbx-widget-topicinfo-list', $list, $this );
 
 		return $list;
 	}
 
 	public function the_render( $instance, $results = false ) {
-		$template = apply_filters( 'bbpc-widget-topicinfo-template', $instance['template'], $results, $this );
-		include( bbpc_get_template_part( $template ) );
+		$template = apply_filters( 'gdbbx-widget-topicinfo-template', $instance['template'], $results, $this );
+		include( gdbbx_get_template_part( $template ) );
 	}
 }

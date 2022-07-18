@@ -1,12 +1,12 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Admin;
+namespace Dev4Press\Plugin\GDBBX\Admin;
 
-use bbpc_grid_attachments;
-use bbpc_grid_errors;
-use bbpc_grid_reports;
-use bbpc_grid_thanks;
-use bbpc_grid_users;
+use gdbbx_grid_attachments;
+use gdbbx_grid_errors;
+use gdbbx_grid_reports;
+use gdbbx_grid_thanks;
+use gdbbx_grid_users;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,16 +14,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Grids {
 	public $options = array(
-		'bbpc_rows_users_per_page',
-		'bbpc_rows_thanks_per_page',
-		'bbpc_rows_attachments_per_page',
-		'bbpc_rows_errors_per_page',
-		'bbpc_rows_reports_per_page'
+		'gdbbx_rows_users_per_page',
+		'gdbbx_rows_thanks_per_page',
+		'gdbbx_rows_attachments_per_page',
+		'gdbbx_rows_errors_per_page',
+		'gdbbx_rows_reports_per_page'
 	);
 
 	public function __construct() {
 		add_filter( 'set-screen-option', array( $this, 'screen_options_grid_rows_save' ), 10, 3 );
-		add_action( 'bbpc_admin_load_hooks', array( $this, 'load_hooks' ) );
+		add_action( 'gdbbx_admin_load_hooks', array( $this, 'load_hooks' ) );
 	}
 
 	public static function instance() : Grids {
@@ -45,23 +45,23 @@ class Grids {
 	}
 
 	public function load_hooks() {
-		add_action( 'load-bbpress-toolbox_page_bbp-core-users', array(
+		add_action( 'load-bbpress-toolbox_page_gd-bbpress-toolbox-users', array(
 			$this,
 			'screen_options_grid_rows_users'
 		) );
-		add_action( 'load-bbpress-toolbox_page_bbp-core-reported-posts', array(
+		add_action( 'load-bbpress-toolbox_page_gd-bbpress-toolbox-reported-posts', array(
 			$this,
 			'screen_options_grid_rows_reports'
 		) );
-		add_action( 'load-bbpress-toolbox_page_bbp-core-thanks-list', array(
+		add_action( 'load-bbpress-toolbox_page_gd-bbpress-toolbox-thanks-list', array(
 			$this,
 			'screen_options_grid_rows_thanks'
 		) );
-		add_action( 'load-bbpress-toolbox_page_bbp-core-attachments', array(
+		add_action( 'load-bbpress-toolbox_page_gd-bbpress-toolbox-attachments', array(
 			$this,
 			'screen_options_grid_rows_attachments'
 		) );
-		add_action( 'load-bbpress-toolbox_page_bbp-core-errors', array(
+		add_action( 'load-bbpress-toolbox_page_gd-bbpress-toolbox-errors', array(
 			$this,
 			'screen_options_grid_rows_errors'
 		) );
@@ -71,69 +71,69 @@ class Grids {
 		$args = array(
 			'label'   => __( "Rows", "bbp-core" ),
 			'default' => 25,
-			'option'  => 'bbpc_rows_thanks_per_page'
+			'option'  => 'gdbbx_rows_thanks_per_page'
 		);
 
 		add_screen_option( 'per_page', $args );
 
-		require_once( BBPC_PATH . 'core/grids/thanks.php' );
+		require_once( GDBBX_PATH . 'core/grids/thanks.php' );
 
-		new bbpc_grid_thanks();
+		new gdbbx_grid_thanks();
 	}
 
 	public function screen_options_grid_rows_reports() {
 		$args = array(
 			'label'   => __( "Rows", "bbp-core" ),
 			'default' => 25,
-			'option'  => 'bbpc_rows_reports_per_page'
+			'option'  => 'gdbbx_rows_reports_per_page'
 		);
 
 		add_screen_option( 'per_page', $args );
 
-		require_once( BBPC_PATH . 'core/grids/reports.php' );
+		require_once( GDBBX_PATH . 'core/grids/reports.php' );
 
-		new bbpc_grid_reports();
+		new gdbbx_grid_reports();
 	}
 
 	public function screen_options_grid_rows_users() {
 		$args = array(
 			'label'   => __( "Rows", "bbp-core" ),
 			'default' => 25,
-			'option'  => 'bbpc_rows_users_per_page'
+			'option'  => 'gdbbx_rows_users_per_page'
 		);
 
 		add_screen_option( 'per_page', $args );
 
-		require_once( BBPC_PATH . 'core/grids/users.php' );
+		require_once( GDBBX_PATH . 'core/grids/users.php' );
 
-		new bbpc_grid_users();
+		new gdbbx_grid_users();
 	}
 
 	public function screen_options_grid_rows_attachments() {
 		$args = array(
 			'label'   => __( "Rows", "bbp-core" ),
 			'default' => 25,
-			'option'  => 'bbpc_rows_attachments_per_page'
+			'option'  => 'gdbbx_rows_attachments_per_page'
 		);
 
 		add_screen_option( 'per_page', $args );
 
-		require_once( BBPC_PATH . 'core/grids/attachments.php' );
+		require_once( GDBBX_PATH . 'core/grids/attachments.php' );
 
-		new bbpc_grid_attachments();
+		new gdbbx_grid_attachments();
 	}
 
 	public function screen_options_grid_rows_errors() {
 		$args = array(
 			'label'   => __( "Rows", "bbp-core" ),
 			'default' => 25,
-			'option'  => 'bbpc_rows_errors_per_page'
+			'option'  => 'gdbbx_rows_errors_per_page'
 		);
 
 		add_screen_option( 'per_page', $args );
 
-		require_once( BBPC_PATH . 'core/grids/errors.php' );
+		require_once( GDBBX_PATH . 'core/grids/errors.php' );
 
-		new bbpc_grid_errors();
+		new gdbbx_grid_errors();
 	}
 }

@@ -2,8 +2,8 @@
 
 if (!defined('ABSPATH')) { exit; }
 
-class bbpc_core_info {
-    public $code = 'bbp-core';
+class gdbbx_core_info {
+    public $code = 'gd-bbpress-toolbox';
 
     public $version = '6.7.2';
     public $build = 1072;

@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -114,7 +114,7 @@ class CustomViews extends Feature {
 	public function __construct() {
 		parent::__construct();
 
-		add_action( 'bbpc_core', array( $this, 'ready' ) );
+		add_action( 'gdbbx_core', array( $this, 'ready' ) );
 	}
 
 	public static function instance() : CustomViews {
@@ -259,7 +259,7 @@ class CustomViews extends Feature {
 					);
 					break;
 				case 'myfavorite':
-					$ids = bbpc_db()->get_user_favorites_topic_ids( $this->user_id );
+					$ids = gdbbx_db()->get_user_favorites_topic_ids( $this->user_id );
 
 					if ( empty( $ids ) ) {
 						$args = $this->_empty_view_args();
@@ -268,7 +268,7 @@ class CustomViews extends Feature {
 					}
 					break;
 				case 'mysubscribed':
-					$ids = bbpc_db()->get_user_subscribed_topic_ids( $this->user_id );
+					$ids = gdbbx_db()->get_user_subscribed_topic_ids( $this->user_id );
 
 					if ( empty( $ids ) ) {
 						$args = $this->_empty_view_args();
@@ -278,7 +278,7 @@ class CustomViews extends Feature {
 					break;
 			}
 
-			$args["bbpc-custom-view"] = $slug;
+			$args["gdbbx-custom-view"] = $slug;
 
 			bbp_register_view( $slug, $title, $args, $feed );
 		}
@@ -342,7 +342,7 @@ class CustomViews extends Feature {
 				$this->_get_new_posts();
 				break;
 			case 'newposts':
-				$this->last_activity = defined( 'BBPC_LAST_ACTIVTY' ) ? BBPC_LAST_ACTIVTY : bbpc_plugin()->get_user_last_activity( $this->user_id );
+				$this->last_activity = defined( 'GDBBX_LAST_ACTIVTY' ) ? GDBBX_LAST_ACTIVTY : gdbbx_plugin()->get_user_last_activity( $this->user_id );
 
 				if ( $this->last_activity != 0 ) {
 					add_filter( 'posts_where', array( $this, 'new_posts_where' ), 10, 2 );
@@ -356,12 +356,12 @@ class CustomViews extends Feature {
 
 	public function posts_thanks( $query, $obj ) {
 		if ( bbp_is_single_view() ) {
-			if ( isset( $obj->query['bbpc-custom-view'] ) ) {
-				$query['join']    .= " INNER JOIN " . bbpc_db()->actions . " bbpc_ac ON bbpc_ac.post_id = " . bbpc_db()->wpdb()->posts . ".ID AND bbpc_ac.action = 'thanks'";
-				$query['orderby'] = "CAST(count(bbpc_ac.post_id) AS UNSIGNED) DESC";
+			if ( isset( $obj->query['gdbbx-custom-view'] ) ) {
+				$query['join']    .= " INNER JOIN " . gdbbx_db()->actions . " gdbbx_ac ON gdbbx_ac.post_id = " . gdbbx_db()->wpdb()->posts . ".ID AND gdbbx_ac.action = 'thanks'";
+				$query['orderby'] = "CAST(count(gdbbx_ac.post_id) AS UNSIGNED) DESC";
 
 				if ( $this->current_user > 0 ) {
-					$query['where'] .= " AND " . bbpc_db()->wpdb()->posts . ".post_author = " . $this->current_user;
+					$query['where'] .= " AND " . gdbbx_db()->wpdb()->posts . ".post_author = " . $this->current_user;
 				}
 			}
 		}
@@ -371,11 +371,11 @@ class CustomViews extends Feature {
 
 	public function new_posts_where( $where, $obj ) {
 		if ( bbp_is_single_view() ) {
-			if ( isset( $obj->query['bbpc-custom-view'] ) ) {
+			if ( isset( $obj->query['gdbbx-custom-view'] ) ) {
 				if ( ! empty( $this->new_posts_ids ) ) {
-					$where .= " AND " . bbpc_db()->wpdb()->posts . ".ID in (" . join( ', ', $this->new_posts_ids ) . ") ";
+					$where .= " AND " . gdbbx_db()->wpdb()->posts . ".ID in (" . join( ', ', $this->new_posts_ids ) . ") ";
 				} else if ( $this->current_user > 0 ) {
-					$where .= " AND " . bbpc_db()->wpdb()->posts . ".post_author = " . $this->current_user;
+					$where .= " AND " . gdbbx_db()->wpdb()->posts . ".post_author = " . $this->current_user;
 				} else {
 					$where .= " AND 1 = 2 ";
 				}
@@ -387,9 +387,9 @@ class CustomViews extends Feature {
 
 	private function _get_new_posts() {
 		if ( $this->last_activity != '' ) {
-			$this->new_posts_ids = bbpc_get_new_topics( $this->last_activity );
+			$this->new_posts_ids = gdbbx_get_new_topics( $this->last_activity );
 		} else if ( $this->user_filtered > 0 ) {
-			$this->new_posts_ids = bbpc_db()->get_topics_with_user_reply( $this->user_filtered );
+			$this->new_posts_ids = gdbbx_db()->get_topics_with_user_reply( $this->user_filtered );
 		}
 	}
 

@@ -1,12 +1,11 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-bbpc_wizard();
+gdbbx_wizard();
 
-require BBPC_PATH . 'forms/wizard/header.php';
+include(GDBBX_PATH.'forms/wizard/header.php');
 
-require BBPC_PATH . 'forms/wizard/' . bbpc_wizard()->current_panel() . '.php';
+include(GDBBX_PATH.'forms/wizard/'.gdbbx_wizard()->current_panel().'.php');
 
-require BBPC_PATH . 'forms/wizard/footer.php';
+include(GDBBX_PATH.'forms/wizard/footer.php');

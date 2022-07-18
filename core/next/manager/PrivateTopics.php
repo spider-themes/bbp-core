@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Manager;
+namespace Dev4Press\Plugin\GDBBX\Manager;
 
-use SpiderDevs\Plugin\BBPC\Features\PrivateTopics as PrivateTopicsFeature;
-use SpiderDevs\Plugin\GDFAR\Manager\Process;
+use Dev4Press\Plugin\GDBBX\Features\PrivateTopics as PrivateTopicsFeature;
+use Dev4Press\Plugin\GDFAR\Manager\Process;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class PrivateTopics {
 	private $_defaults = array(
 		'topic' => array(
-			'edit' => array( 'bbpc-private' ),
-			'bulk' => array( 'bbpc-private' )
+			'edit' => array( 'gdbbx-private' ),
+			'bulk' => array( 'gdbbx-private' )
 		)
 	);
 
@@ -27,9 +27,9 @@ class PrivateTopics {
 					$key    = $scope . '-' . $action . '-' . $name;
 					$method = $scope . '_' . $action . '_' . str_replace( '-', '_', $name );
 
-					add_filter( 'bbpc-action-visible-' . $key, '__return_true' );
-					add_filter( 'bbpc-action-display-' . $key, array( $this, 'display_' . $method ), 10, 2 );
-					add_filter( 'bbpc-action-process-' . $key, array( $this, 'process_' . $method ), 10, 2 );
+					add_filter( 'gdbbx-action-visible-' . $key, '__return_true' );
+					add_filter( 'gdbbx-action-display-' . $key, array( $this, 'display_' . $method ), 10, 2 );
+					add_filter( 'gdbbx-action-process-' . $key, array( $this, 'process_' . $method ), 10, 2 );
 				}
 			}
 		}
@@ -56,26 +56,26 @@ class PrivateTopics {
 	}
 
 	public function register() {
-		gdfar_register_action( 'bbpc-private', array(
+		gdfar_register_action( 'gdbbx-private', array(
 			'scope'       => 'topic',
 			'action'      => 'edit',
-			'prefix'      => 'bbpc',
+			'prefix'      => 'gdbbx',
 			'label'       => __( "Private", "bbp-core" ),
 			'description' => __( "Change topic privacy status.", "bbp-core" ),
-			'source'      => 'BBP Core'
+			'source'      => 'GD bbPress Toolbox Pro'
 		) );
 
-		gdfar_register_action( 'bbpc-private', array(
+		gdfar_register_action( 'gdbbx-private', array(
 			'scope'       => 'topic',
 			'action'      => 'bulk',
-			'prefix'      => 'bbpc',
+			'prefix'      => 'gdbbx',
 			'label'       => __( "Private", "bbp-core" ),
 			'description' => __( "Change topic privacy status.", "bbp-core" ),
-			'source'      => 'BBP Core'
+			'source'      => 'GD bbPress Toolbox Pro'
 		) );
 	}
 
-	public function display_topic_edit_bbpc_private( $render, $args = array() ) : string {
+	public function display_topic_edit_gdbbx_private( $render, $args = array() ) : string {
 		$list = array(
 			'private' => __( "Private", "bbp-core" ),
 			'public'  => __( "Public", "bbp-core" )
@@ -90,7 +90,7 @@ class PrivateTopics {
 		) );
 	}
 
-	public function process_topic_edit_bbpc_private( $result, $args = array() ) {
+	public function process_topic_edit_gdbbx_private( $result, $args = array() ) {
 		$topic_id = $args['id'];
 
 		$new_status = $args['value']['private'] ?? '';
@@ -109,7 +109,7 @@ class PrivateTopics {
 		return $result;
 	}
 
-	public function display_topic_bulk_bbpc_private( $render, $args = array() ) : string {
+	public function display_topic_bulk_gdbbx_private( $render, $args = array() ) : string {
 		$list = array(
 			''        => __( "Don't Change", "bbp-core" ),
 			'private' => __( "Private", "bbp-core" ),
@@ -123,7 +123,7 @@ class PrivateTopics {
 		) );
 	}
 
-	public function process_topic_bulk_bbpc_private( $result, $args = array() ) {
+	public function process_topic_bulk_gdbbx_private( $result, $args = array() ) {
 		$new_status = $args['value']['private'] ?? '';
 
 		if ( ! empty( $new_status ) ) {

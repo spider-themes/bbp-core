@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class ForumInfo extends Widget {
 	public $widget_base = 'd4p_bbw_foruminfo';
-	public $widget_class = 'bbpc-widget bbpc-widget-foruminfo';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-foruminfo';
 
 	public $defaults = array(
 		'title'               => 'Forum Information',
-		'template'            => 'bbpc-widget-foruminfo.php',
+		'template'            => 'gdbbx-widget-foruminfo.php',
 		'show_parent_forum'   => true,
 		'show_count_topics'   => true,
 		'show_count_replies'  => true,
@@ -24,7 +24,7 @@ class ForumInfo extends Widget {
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "Forum Information", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "Forum Information", "bbp-core" );
 		$this->widget_description = __( "Information about current forum.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -137,14 +137,14 @@ class ForumInfo extends Widget {
 			);
 		}
 
-		return apply_filters( 'bbpc-widget-foruminfo-list', $list, $this );
+		return apply_filters( 'gdbbx-widget-foruminfo-list', $list, $this );
 	}
 
 	public function the_render( $instance, $results = false ) {
 		$instance = $this->instance( $instance );
 
-		$template = apply_filters( 'bbpc-widget-foruminfo-template', $instance['template'], $results, $this );
+		$template = apply_filters( 'gdbbx-widget-foruminfo-template', $instance['template'], $results, $this );
 
-		include( bbpc_get_template_part( $template ) );
+		include( gdbbx_get_template_part( $template ) );
 	}
 }

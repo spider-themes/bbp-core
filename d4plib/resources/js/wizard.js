@@ -1,23 +1,23 @@
-;/*jslint regexp: true, nomen: true, undef: true, sloppy: true, eqeq: true, vars: true, white: true, plusplus: true, maxerr: 50, indent: 4 */(function($, window, document, undefined) {
-	window.wp           = window.wp || {};
-	window.wp.dev4press = window.wp.dev4press || {};
+/*jslint regexp: true, nomen: true, undef: true, sloppy: true, eqeq: true, vars: true, white: true, plusplus: true, maxerr: 50, indent: 4 */
 
-	window.wp.dev4press.wizard = {
-		init: function() {
-			$( ".bbpc-wizard-connect-switch" ).change(
-				function(){
-					var connect = $( this ).val() === "yes",
-					the_id      = $( this ).data( "connect" );
+;(function($, window, document, undefined) {
+    window.wp = window.wp || {};
+    window.wp.dev4press = window.wp.dev4press || {};
 
-					if (connect) {
-						$( "#" + the_id ).slideDown( "slow" );
-					} else {
-						$( "#" + the_id ).slideUp( "fast" );
-					}
-				}
-			);
-		}
-	};
+    window.wp.dev4press.wizard = {
+        init: function() {
+            $(".gdbbx-wizard-connect-switch").change(function(){
+                var connect = $(this).val() === "yes",
+                    the_id = $(this).data("connect");
 
-	window.wp.dev4press.wizard.init();
-})( jQuery, window, document );
+                if (connect) {
+                    $("#" + the_id).slideDown("slow");
+                } else {
+                    $("#" + the_id).slideUp("fast");
+                }
+            });
+        }
+    };
+
+    window.wp.dev4press.wizard.init();
+})(jQuery, window, document);

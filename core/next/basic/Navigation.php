@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Basic;
+namespace Dev4Press\Plugin\GDBBX\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -35,11 +35,11 @@ class Navigation {
 	}
 
 	public function admin_extras_metabox() {
-		include( BBPC_PATH . 'forms/meta/navmenu.extras.php' );
+		include( GDBBX_PATH . 'forms/meta/navmenu.extras.php' );
 	}
 
 	public function admin_views_metabox() {
-		include( BBPC_PATH . 'forms/meta/navmenu.views.php' );
+		include( GDBBX_PATH . 'forms/meta/navmenu.views.php' );
 	}
 
 	public function extras_items_processing( $items, $menu, $args ) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Tasks\Cleanup;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Tasks\Cleanup;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -83,7 +83,7 @@ class Profiles extends Feature {
 		$keep_private = $this->settings['thanks_private'];
 
 		if ( ! $keep_private || $this->is_profile_owner() ) {
-			include( bbpc_get_template_part( 'bbpc-user-thanks.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-user-thanks.php' ) );
 		}
 	}
 
@@ -91,22 +91,22 @@ class Profiles extends Feature {
 		$keep_private = $this->settings['extras_private'];
 
 		if ( ! $keep_private || $this->is_profile_owner() ) {
-			$this->counts = bbpc_db()->get_user_subscription_favorites_counts( $this->current_profile_user()->ID );
+			$this->counts = gdbbx_db()->get_user_subscription_favorites_counts( $this->current_profile_user()->ID );
 
-			include( bbpc_get_template_part( 'bbpc-user-extra.php' ) );
+			include( gdbbx_get_template_part( 'gdbbx-user-extra.php' ) );
 		}
 	}
 
 	public function replace_profile( $templates, $slug, $name ) {
 		if ( $slug == 'content' && $name == 'single-user' ) {
-			$templates = array( 'bbpc-user-profile-protected.php' );
+			$templates = array( 'gdbbx-user-profile-protected.php' );
 		}
 
 		return $templates;
 	}
 
 	public function message_profile_protected() {
-		return apply_filters( 'bbpc_user_profile_protected_message', sprintf( __( "You must be <a href='%s'>logged in</a> to access user profile pages.", "bbp-core" ), wp_login_url( get_permalink() ) ) );
+		return apply_filters( 'gdbbx_user_profile_protected_message', sprintf( __( "You must be <a href='%s'>logged in</a> to access user profile pages.", "bbp-core" ), wp_login_url( get_permalink() ) ) );
 	}
 
 	/** @return \WP_User */
@@ -134,7 +134,7 @@ class Profiles extends Feature {
 			$url = add_query_arg( 'bbx-remove', $name, $url );
 			$url = add_query_arg( '_wpnonce', wp_create_nonce( 'bbx-remove-' . $name . '-' . $this->current_profile_user()->ID ), $url );
 
-			return apply_filters( 'bbpc_user_profile_link_remove_' . $name, ' (<a href="' . $url . '">' . $label . '</a>)', $url, $label );
+			return apply_filters( 'gdbbx_user_profile_link_remove_' . $name, ' (<a href="' . $url . '">' . $label . '</a>)', $url, $label );
 		}
 
 		return '';

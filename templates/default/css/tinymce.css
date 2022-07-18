@@ -5,30 +5,30 @@
   box-sizing: content-box;
 }
 
-#bbpress-forums #bbp-user-wrapper .bbpc-editor-tinymce {
+#bbpress-forums #bbp-user-wrapper .gdbbx-editor-tinymce {
   min-width: 0;
 }
-#bbpress-forums #bbp-user-wrapper .bbpc-editor-tinymce .wp-editor-container {
+#bbpress-forums #bbp-user-wrapper .gdbbx-editor-tinymce .wp-editor-container {
   border: 1px solid #E5E5E5;
 }
-#bbpress-forums #bbp-user-wrapper .bbpc-editor-tinymce textarea.wp-editor-area {
+#bbpress-forums #bbp-user-wrapper .gdbbx-editor-tinymce textarea.wp-editor-area {
   border: 0;
   width: 100%;
   background: #FFF;
 }
-#bbpress-forums #bbp-user-wrapper .bbpc-editor-tinymce div {
+#bbpress-forums #bbp-user-wrapper .gdbbx-editor-tinymce div {
   float: none;
   clear: inherit;
   margin-bottom: 0;
   width: auto;
 }
-#bbpress-forums #bbp-user-wrapper .bbpc-editor-tinymce div.wp-media-buttons {
+#bbpress-forums #bbp-user-wrapper .gdbbx-editor-tinymce div.wp-media-buttons {
   float: left;
 }
-#bbpress-forums #bbp-user-wrapper .bbpc-editor-tinymce div.wp-editor-tabs {
+#bbpress-forums #bbp-user-wrapper .gdbbx-editor-tinymce div.wp-editor-tabs {
   float: right;
 }
-#bbpress-forums #bbp-user-wrapper .bbpc-editor-tinymce div.quicktags-toolbar input {
+#bbpress-forums #bbp-user-wrapper .gdbbx-editor-tinymce div.quicktags-toolbar input {
   width: auto !important;
   border-radius: 3px !important;
   background: #F7F7F7;
@@ -39,7 +39,7 @@
 }
 
 #buddypress #bbpress-forums .wp-switch-editor,
-#buddypress .bbpc-editor-tinymce .wp-switch-editor {
+#buddypress .gdbbx-editor-tinymce .wp-switch-editor {
   background: #EBEBEB;
   border: 1px solid #E5E5E5;
   padding: 3px 8px 4px;
@@ -48,16 +48,16 @@
 }
 #buddypress #bbpress-forums textarea.wp-editor-area,
 #buddypress #bbpress-forums textarea.wp-editor-area,
-#buddypress .bbpc-editor-tinymce textarea.wp-editor-area,
-#buddypress .bbpc-editor-tinymce textarea.wp-editor-area {
+#buddypress .gdbbx-editor-tinymce textarea.wp-editor-area,
+#buddypress .gdbbx-editor-tinymce textarea.wp-editor-area {
   border: 0;
   width: 100%;
   background: #FFF;
 }
 #buddypress #bbpress-forums .mce-widget button,
 #buddypress #bbpress-forums .mce-widget button,
-#buddypress .bbpc-editor-tinymce .mce-widget button,
-#buddypress .bbpc-editor-tinymce .mce-widget button {
+#buddypress .gdbbx-editor-tinymce .mce-widget button,
+#buddypress .gdbbx-editor-tinymce .mce-widget button {
   min-width: 0;
   padding: 2px 3px;
   line-height: normal;
@@ -68,10 +68,8 @@
   border-bottom-color: #F5F5F5;
   color: #555;
 }
-#buddypress .bbpc-editor-tinymce .html-active .switch-html {
+#buddypress .gdbbx-editor-tinymce .html-active .switch-html {
   background: #F5F5F5;
   border-bottom-color: #F5F5F5;
   color: #555;
 }
-
-/*# sourceMappingURL=tinymce.css.map */

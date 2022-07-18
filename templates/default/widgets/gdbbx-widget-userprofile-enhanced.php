@@ -1,64 +1,64 @@
-<div class="bbpc-widget-the-profile-enhanced">
-	<?php if ( is_user_logged_in() ) : ?>
+<div class="gdbbx-widget-the-profile-enhanced">
+    <?php if (is_user_logged_in()) : ?>
 
-		<?php if ( $instance['show_profile'] ) { ?>
-		<h3 class="bbpc-widget-profile-title">
+    <?php if ($instance['show_profile']) { ?>
+        <h3 class="gdbbx-widget-profile-title">
 
-			<?php bbp_user_profile_link( bbp_get_current_user_id() ); ?>
+        <?php bbp_user_profile_link(bbp_get_current_user_id()); ?>
 
-		</h3>
-	<?php } ?>
+        </h3>
+    <?php } ?>
 
-	<div class="bbpc-widget-profile">
-		<a href="<?php echo esc_url( bbp_get_user_profile_url( bbp_get_current_user_id() ) ); ?>">
-			<?php echo get_avatar( bbp_get_current_user_id(), $instance['avatar_size'] ); ?>
-		</a>
+    <div class="gdbbx-widget-profile">
+        <a href="<?php echo esc_url(bbp_get_user_profile_url(bbp_get_current_user_id())); ?>">
+            <?php echo get_avatar(bbp_get_current_user_id(), $instance['avatar_size']); ?>
+        </a>
 
-		<?php
+        <?php
 
-		$links_profile = [];
+        $links_profile = array();
 
-		if ( $instance['show_edit'] ) {
-			$links_profile[] = '<a href="' . esc_url( bbp_get_user_profile_edit_url( bbp_get_current_user_id() ) ) . '">' . __( 'edit profile', 'bbp-core' ) . '</a>';
-		}
+        if ($instance['show_edit']) {
+            $links_profile[] = '<a href="'.esc_url(bbp_get_user_profile_edit_url(bbp_get_current_user_id())).'">'.__("edit profile", "bbp-core").'</a>';
+        }
 
-		if ( $instance['show_logout'] ) {
-			$links_profile[] = '<a href="' . wp_logout_url() . '">' . __( 'log out', 'bbp-core' ) . '</a>';
-		}
+        if ($instance['show_logout']) {
+            $links_profile[] = '<a href="'.wp_logout_url().'">'.__("log out", "bbp-core").'</a>';
+        }
 
-		if ( ! empty( $links_profile ) ) {
+        if (!empty($links_profile)) {
+        
+        ?>
 
-			?>
+        <div class="__profile-links"><?php echo join(' &middot; ', $links_profile); ?></div>
 
-		<div class="__profile-links"><?php echo join( ' &middot; ', $links_profile ); ?></div>
+        <?php } if (!empty($links_profile)) { ?>
 
-		<?php } if ( ! empty( $links_profile ) ) { ?>
+        <div class="__extended-links">
+            <?php echo join(' &middot; ', $links); ?>
+        </div>
 
-		<div class="__extended-links">
-			<?php echo join( ' &middot; ', $links ); ?>
-		</div>
+        <?php } if (!empty($profile)) { ?>
 
-		<?php } if ( ! empty( $profile ) ) { ?>
+        <div class="__profile-stats">
+            <ul>
+                <li><?php echo join('</li><li>', $profile); ?></li>
+            </ul>
+        </div>
 
-		<div class="__profile-stats">
-			<ul>
-				<li><?php echo join( '</li><li>', $profile ); ?></li>
-			</ul>
-		</div>
+        <?php } ?>
 
-		<?php } ?>
+    </div>
 
-	</div>
+    <?php else : ?>
 
-	<?php else : ?>
+    <div class="gdbbx-widget-profile-login">
+        <h3><?php _e("Login and Registration", "bbp-core"); ?></h3>
 
-	<div class="bbpc-widget-profile-login">
-		<h3><?php _e( 'Login and Registration', 'bbp-core' ); ?></h3>
+        <div class="">
+            <?php echo join(' &middot; ', $login); ?>
+        </div>
+    </div>
 
-		<div class="">
-			<?php echo join( ' &middot; ', $login ); ?>
-		</div>
-	</div>
-
-	<?php endif; ?>
+    <?php endif; ?>
 </div>

@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Tasks;
+namespace Dev4Press\Plugin\GDBBX\Tasks;
 
-use SpiderDevs\Plugin\BBPC\Database\Tasks;
+use Dev4Press\Plugin\GDBBX\Database\Tasks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

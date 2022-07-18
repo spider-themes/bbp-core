@@ -1,4 +1,4 @@
-.bbpc-accessibility-show-for-sr {
+.gdbbx-accessibility-show-for-sr {
   position: absolute !important;
   width: 1px;
   height: 1px;
@@ -6,7 +6,7 @@
   clip: rect(0, 0, 0, 0);
 }
 
-.bbpc-bbcodes-toolbar {
+.gdbbx-bbcodes-toolbar {
   box-sizing: border-box;
   display: block;
   border-radius: 3px 3px 0 0;
@@ -16,20 +16,20 @@
   padding: 0;
   border-bottom: none;
 }
-.bbpc-bbcodes-toolbar * {
+.gdbbx-bbcodes-toolbar * {
   box-sizing: border-box;
 }
-.bbpc-bbcodes-toolbar .bbpc-buttonbar-inner {
+.gdbbx-bbcodes-toolbar .gdbbx-buttonbar-inner {
   overflow: hidden;
   padding: 3px;
 }
-.bbpc-bbcodes-toolbar .bbpc-buttonbar-button {
+.gdbbx-bbcodes-toolbar .gdbbx-buttonbar-button {
   border: 1px solid #F5F5F5;
   text-align: center;
   border-radius: 3px;
   display: inline-block;
 }
-.bbpc-bbcodes-toolbar .bbpc-buttonbar-button button.bbpc-button {
+.gdbbx-bbcodes-toolbar .gdbbx-buttonbar-button button.gdbbx-button {
   display: block;
   text-decoration: none;
   border: none;
@@ -41,29 +41,29 @@
   text-align: center;
   cursor: pointer;
 }
-.bbpc-bbcodes-toolbar .bbpc-buttonbar-button button.bbpc-button i {
+.gdbbx-bbcodes-toolbar .gdbbx-buttonbar-button button.gdbbx-button i {
   line-height: 1;
   vertical-align: text-top;
 }
-.bbpc-bbcodes-toolbar .bbpc-buttonbar-button:hover {
+.gdbbx-bbcodes-toolbar .gdbbx-buttonbar-button:hover {
   border: 1px solid #DDD;
   background-color: #FFF;
 }
-.bbpc-bbcodes-toolbar .bbpc-buttonbar-button:hover button .bbpc-button {
+.gdbbx-bbcodes-toolbar .gdbbx-buttonbar-button:hover button .gdbbx-button {
   color: #111;
 }
-.bbpc-bbcodes-toolbar.bbpc-buttonbar-size-small .bbpc-buttonbar-button {
+.gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-small .gdbbx-buttonbar-button {
   height: 30px;
   line-height: 28px;
   padding: 0;
   margin: 1px;
   width: 30px !important;
 }
-.bbpc-bbcodes-toolbar.bbpc-buttonbar-size-small .bbpc-buttonbar-button button.bbpc-button {
+.gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-small .gdbbx-buttonbar-button button.gdbbx-button {
   height: 28px;
   line-height: 28px;
 }
-.bbpc-bbcodes-toolbar.bbpc-buttonbar-size-medium .bbpc-buttonbar-button {
+.gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-medium .gdbbx-buttonbar-button {
   height: 36px;
   line-height: 34px;
   padding: 0;
@@ -71,27 +71,27 @@
   width: 36px !important;
   cursor: pointer;
 }
-.bbpc-bbcodes-toolbar.bbpc-buttonbar-size-medium .bbpc-buttonbar-button button.bbpc-button {
+.gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-medium .gdbbx-buttonbar-button button.gdbbx-button {
   height: 34px;
   line-height: 34px;
 }
-.bbpc-bbcodes-toolbar.bbpc-buttonbar-size-large .bbpc-buttonbar-button {
+.gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-large .gdbbx-buttonbar-button {
   height: 42px;
   line-height: 40px;
   padding: 0;
   margin: 5px;
   width: 42px !important;
 }
-.bbpc-bbcodes-toolbar.bbpc-buttonbar-size-large .bbpc-buttonbar-button button.bbpc-button {
+.gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-large .gdbbx-buttonbar-button button.gdbbx-button {
   height: 42px;
   line-height: 42px;
 }
 
-.bbpc-signature-form {
+.gdbbx-signature-form {
   margin: 0 !important;
 }
-.bbpc-signature-form.bbpc-editor-bbcodes.bbpc-buddypress-xprofile textarea,
-.bbpc-signature-form.bbpc-editor-bbcodes textarea {
+.gdbbx-signature-form.gdbbx-editor-bbcodes.gdbbx-buddypress-xprofile textarea,
+.gdbbx-signature-form.gdbbx-editor-bbcodes textarea {
   width: 100% !important;
   margin: 0;
   border-color: #DDD;
@@ -99,33 +99,33 @@
   box-sizing: border-box;
 }
 
-#profile-page .bbpc-signature-form.bbpc-editor-bbcodes textarea.signature:focus {
+#profile-page .gdbbx-signature-form.gdbbx-editor-bbcodes textarea.signature:focus {
   box-shadow: none;
 }
 
-.bp-profile-field .bbpc-signature-form.wp-editor-wrap {
+.bp-profile-field .gdbbx-signature-form.wp-editor-wrap {
   margin-left: 200px !important;
 }
 
-#bbpress-forums .bbpc-signature-form.bbpc-editor-bbcodes textarea.signature {
+#bbpress-forums .gdbbx-signature-form.gdbbx-editor-bbcodes textarea.signature {
   width: 100% !important;
   margin: 0 !important;
   border-color: #DDD !important;
   background-color: #FFF !important;
 }
-#bbpress-forums .bbpc-bbcodes-toolbar .bbpc-buttonbar-button button.bbpc-button i {
+#bbpress-forums .gdbbx-bbcodes-toolbar .gdbbx-buttonbar-button button.gdbbx-button i {
   line-height: 1;
 }
-#bbpress-forums .bbpc-bbcodes-toolbar.bbpc-buttonbar-size-small .bbpc-buttonbar-button button.bbpc-button i {
+#bbpress-forums .gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-small .gdbbx-buttonbar-button button.gdbbx-button i {
   font-size: 14px;
 }
-#bbpress-forums .bbpc-bbcodes-toolbar.bbpc-buttonbar-size-medium .bbpc-buttonbar-button button.bbpc-button i {
+#bbpress-forums .gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-medium .gdbbx-buttonbar-button button.gdbbx-button i {
   font-size: 18px;
 }
-#bbpress-forums .bbpc-bbcodes-toolbar.bbpc-buttonbar-size-large .bbpc-buttonbar-button button.bbpc-button i {
+#bbpress-forums .gdbbx-bbcodes-toolbar.gdbbx-buttonbar-size-large .gdbbx-buttonbar-button button.gdbbx-button i {
   font-size: 22px;
 }
 
-#buddypress button.bbpc-button {
+#buddypress button.gdbbx-button {
   padding: 2px 3px;
 }

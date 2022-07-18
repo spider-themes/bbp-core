@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\BB;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\BB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -31,10 +31,10 @@ class PrivateReplies extends Feature {
 
 		$this->threaded = bbp_thread_replies();
 
-		add_action( 'bbpc_bbpress_request_first', array( $this, 'request' ) );
-		add_action( 'bbpc_bbpress_template_first', array( $this, 'loader' ) );
+		add_action( 'gdbbx_bbpress_request_first', array( $this, 'request' ) );
+		add_action( 'gdbbx_bbpress_template_first', array( $this, 'loader' ) );
 
-		add_action( 'bbpc_feed', array( $this, 'loader_for_feed' ) );
+		add_action( 'gdbbx_feed', array( $this, 'loader_for_feed' ) );
 	}
 
 	public static function instance() : PrivateReplies {
@@ -74,7 +74,7 @@ class PrivateReplies extends Feature {
 	}
 
 	public function loader_for_feed() {
-		add_filter( 'bbpc_privacy_is_enabled_topic_private', array( $this, 'feed_override_no_forum' ), 10, 2 );
+		add_filter( 'gdbbx_privacy_is_enabled_topic_private', array( $this, 'feed_override_no_forum' ), 10, 2 );
 
 		$this->replies = $this->is_enabled_reply_private();
 
@@ -93,7 +93,7 @@ class PrivateReplies extends Feature {
 
 	public function is_enabled_reply_private() {
 		$forum_id = BB::i()->get_forum_id();
-		$forum    = bbpc_forum( $forum_id )->privacy()->get( 'enable_reply_private' );
+		$forum    = gdbbx_forum( $forum_id )->privacy()->get( 'enable_reply_private' );
 
 		$active = false;
 		if ( $forum == 'default' || $forum == 'yes' ) {
@@ -102,12 +102,12 @@ class PrivateReplies extends Feature {
 			$active = false;
 		}
 
-		return apply_filters( 'bbpc_privacy_is_enabled_reply_private', $active, $forum_id );
+		return apply_filters( 'gdbbx_privacy_is_enabled_reply_private', $active, $forum_id );
 	}
 
 	public function reply_activity_stream( $content ) {
 		if ( $this->is_private( $this->reply_id ) ) {
-			$content = apply_filters( 'bbpc_private_replies_is_private_text_for_activity_stream', __( "Reply is marked as private.", "bbp-core" ) );
+			$content = apply_filters( 'gdbbx_private_replies_is_private_text_for_activity_stream', __( "Reply is marked as private.", "bbp-core" ) );
 		}
 
 		return $content;
@@ -127,7 +127,7 @@ class PrivateReplies extends Feature {
 
 	public function reply_hiding( $content, $reply_id ) {
 		if ( ! $this->is_user_allowed( $reply_id ) ) {
-			$content = apply_filters( 'bbpc_private_replies_is_private_text', __( "This reply has been marked as private.", "bbp-core" ) );
+			$content = apply_filters( 'gdbbx_private_replies_is_private_text', __( "This reply has been marked as private.", "bbp-core" ) );
 		}
 
 		return $content;
@@ -136,7 +136,7 @@ class PrivateReplies extends Feature {
 	public function reply_save( $reply_id = 0, $topic_id = 0 ) {
 		$this->reply_id = $reply_id;
 
-		if ( isset( $_POST['bbpc_private_reply'] ) ) {
+		if ( isset( $_POST['gdbbx_private_reply'] ) ) {
 			update_post_meta( $reply_id, '_bbp_reply_is_private', '1' );
 		} else {
 			delete_post_meta( $reply_id, '_bbp_reply_is_private' );
@@ -155,13 +155,13 @@ class PrivateReplies extends Feature {
 		$edit   = bbp_is_reply_edit();
 		$status = $edit ? $this->is_private() : ( $this->settings['default'] == "checked" );
 
-		$label = apply_filters( 'bbpc_private_reply_checkbox_label', __( "Set this as private reply", "bbp-core" ) );
+		$label = apply_filters( 'gdbbx_private_reply_checkbox_label', __( "Set this as private reply", "bbp-core" ) );
 
 		?>
 
         <p>
-            <input name="bbpc_private_reply" id="bbpc_private_reply" type="checkbox"<?php checked( '1', $status ); ?> value="1"/>
-            <label for="bbpc_private_reply"><?php echo $label; ?></label>
+            <input name="gdbbx_private_reply" id="gdbbx_private_reply" type="checkbox"<?php checked( '1', $status ); ?> value="1"/>
+            <label for="gdbbx_private_reply"><?php echo $label; ?></label>
         </p>
 
 		<?php
@@ -169,13 +169,13 @@ class PrivateReplies extends Feature {
 
 	public function reply_post_class( $classes, $reply_id ) {
 		if ( $this->is_private( $reply_id ) ) {
-			$classes[] = 'bbpc-private-reply';
+			$classes[] = 'gdbbx-private-reply';
 
 			if ( ! $this->is_user_allowed( $reply_id ) ) {
-				$classes[] = 'bbpc-private-reply-locked';
+				$classes[] = 'gdbbx-private-reply-locked';
 
 				if ( $this->settings['css_hide'] ) {
-					$classes[] = 'bbpc-private-reply-hidden';
+					$classes[] = 'gdbbx-private-reply-hidden';
 				}
 			}
 		}
@@ -225,17 +225,17 @@ class PrivateReplies extends Feature {
 			}
 
 			if ( ! $allowed && $this->settings['moderators_can_read'] ) {
-				$allowed = bbpc_can_user_moderate();
+				$allowed = gdbbx_can_user_moderate();
 			}
 		}
 
-		return (bool) apply_filters( 'bbpc_private_is_user_allowed_to_reply', $allowed, $private, $reply_id, $user_id );
+		return (bool) apply_filters( 'gdbbx_private_is_user_allowed_to_reply', $allowed, $private, $reply_id, $user_id );
 	}
 
 	public function has_private_replies( $topic_id = 0 ) : bool {
 		$topic_id = $topic_id == 0 ? bbp_get_topic_id( $topic_id ) : absint( $topic_id );
 
-		return bbpc_cache()->private_count_topic_replies( $topic_id ) > 0;
+		return gdbbx_cache()->private_count_topic_replies( $topic_id ) > 0;
 	}
 
 	public function is_private( $reply_id = 0 ) : bool {
@@ -243,8 +243,8 @@ class PrivateReplies extends Feature {
 			$reply_id = bbp_get_reply_id();
 		}
 
-		$status = bbpc_cache()->private_post( $reply_id );
+		$status = gdbbx_cache()->private_post( $reply_id );
 
-		return (bool) apply_filters( 'bbpc_is_reply_private', $status, $reply_id );
+		return (bool) apply_filters( 'gdbbx_is_reply_private', $status, $reply_id );
 	}
 }

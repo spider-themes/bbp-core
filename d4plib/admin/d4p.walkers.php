@@ -25,61 +25,56 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! class_exists( 'd4pCheckboxRadioWalker' ) ) {
-	class d4pCheckboxRadioWalker extends Walker {
-		public $tree_type = 'settings';
+if (!class_exists('d4pCheckboxRadioWalker')) {
+    class d4pCheckboxRadioWalker extends Walker {
+        public $tree_type = 'settings';
 
-		public $db_fields = [
-			'parent' => 'parent',
-			'id'     => 'id',
-		];
+        public $db_fields = array('parent' => 'parent', 'id' => 'id');
 
-		public function start_lvl( &$output, $depth = 0, $args = [] ) {
-			$indent  = str_repeat( "\t", $depth );
-			$output .= "\n$indent<ul class='children'>\n";
-		}
+        public function start_lvl(&$output, $depth = 0, $args = array()) {
+            $indent = str_repeat("\t", $depth);
+            $output.= "\n$indent<ul class='children'>\n";
+        }
 
-		public function end_lvl( &$output, $depth = 0, $args = [] ) {
-			$indent  = str_repeat( "\t", $depth );
-			$output .= "$indent</ul>\n";
-		}
+        public function end_lvl(&$output, $depth = 0, $args = array()) {
+            $indent = str_repeat("\t", $depth);
+            $output.= "$indent</ul>\n";
+        }
 
-		public function start_el( &$output, $page, $depth = 0, $args = [], $current_page = 0 ) {
-			if ( $depth ) {
-				$indent = str_repeat( "\t", $depth );
-			} else {
-				$indent = '';
-			}
+        public function start_el(&$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+            if ($depth) {
+                $indent = str_repeat("\t", $depth);
+            } else {
+                $indent = '';
+            }
 
-			$css_class = [
-				'option-item',
-				'option-item-parent-' . $page->parent,
-				'option-item' . $page->id,
-			];
+            $css_class = array(
+                'option-item', 
+                'option-item-parent-'.$page->parent, 
+                'option-item'.$page->id);
 
-			$css_classes = implode( ' ', $css_class );
+            $css_classes = implode(' ', $css_class);
 
-			$args['input'] = empty( $args['input'] ) ? 'checkbox' : $args['input'];
+            $args['input'] = empty($args['input']) ? 'checkbox' : $args['input'];
 
-			$selected = in_array( $page->id, $args['selected'] ) ? ' checked="checked"' : '';
+            $selected = in_array($page->id, $args['selected']) ? ' checked="checked"' : '';
 
-			$output .= $indent . sprintf(
-				'<li class="%s"><label><input type="%s" value="%s" name="%s%s"%s class="widefat" />%s</label>',
-				esc_attr( $css_classes ),
-				esc_attr( $args['input'] ),
-				esc_attr( $page->id ),
-				esc_attr( $args['name'] ),
-				$args['input'] == 'checkbox' ? '[]' : '',
-				$selected,
-				$page->title
-			);
-		}
+            $output.= $indent.sprintf(
+                '<li class="%s"><label><input type="%s" value="%s" name="%s%s"%s class="widefat" />%s</label>',
+                esc_attr($css_classes),
+                esc_attr($args['input']),
+                esc_attr($page->id),
+                esc_attr($args['name']),
+                $args['input'] == 'checkbox' ? '[]' : '',
+                $selected,
+                $page->title
+            );
+        }
 
-		public function end_el( &$output, $page, $depth = 0, $args = [] ) {
-			$output .= "</li>\n";
-		}
-	}
+        public function end_el(&$output, $page, $depth = 0, $args = array()) {
+            $output.= "</li>\n";
+        }
+    }
 }

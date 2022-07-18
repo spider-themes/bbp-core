@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Attachments;
+namespace Dev4Press\Plugin\GDBBX\Attachments;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,9 +23,9 @@ class Handlers {
 
 	private function run() {
 		add_action( 'before_delete_post', array( $this, 'delete_post' ) );
-		add_action( 'bbpc_init', array( $this, 'delete_attachments' ) );
+		add_action( 'gdbbx_init', array( $this, 'delete_attachments' ) );
 
-		if ( bbpc_attachments()->get( 'hide_attachments_from_media_library' ) ) {
+		if ( gdbbx_attachments()->get( 'hide_attachments_from_media_library' ) ) {
 			add_filter( 'ajax_query_attachments_args', array( $this, 'query_attachments' ) );
 
 			if ( is_admin() ) {
@@ -36,18 +36,18 @@ class Handlers {
 
 	public function delete_post( $id ) {
 		if ( bbp_is_reply( $id ) || bbp_is_topic( $id ) ) {
-			if ( bbpc_attachments()->get( 'delete_attachments' ) == 'delete' ) {
-				$files = bbpc_get_post_attachments( $id );
+			if ( gdbbx_attachments()->get( 'delete_attachments' ) == 'delete' ) {
+				$files = gdbbx_get_post_attachments( $id );
 
 				if ( is_array( $files ) && ! empty( $files ) ) {
 					foreach ( $files as $file ) {
-						bbpc_db()->delete_attachment( $id, $file->ID );
+						gdbbx_db()->delete_attachment( $id, $file->ID );
 					}
 				}
-			} else if ( bbpc_attachments()->get( 'delete_attachments' ) == 'detach' ) {
-				bbpc_db()->remove_attachment_assignment( $id );
+			} else if ( gdbbx_attachments()->get( 'delete_attachments' ) == 'detach' ) {
+				gdbbx_db()->remove_attachment_assignment( $id );
 
-				bbpc_db()->update( bbpc_db()->wpdb()->posts, array( 'post_parent' => 0 ), array(
+				gdbbx_db()->update( gdbbx_db()->wpdb()->posts, array( 'post_parent' => 0 ), array(
 					'post_parent' => $id,
 					'post_type'   => 'attachment'
 				) );
@@ -56,7 +56,7 @@ class Handlers {
 			if ( bbp_is_reply( $id ) ) {
 				$topic_id = bbp_get_reply_topic_id( $id );
 
-				bbpc_db()->update_topic_attachments_count( $topic_id );
+				gdbbx_db()->update_topic_attachments_count( $topic_id );
 			}
 		}
 	}
@@ -70,8 +70,8 @@ class Handlers {
 	public function intercept_query_clauses( $pieces ) {
 		remove_filter( 'posts_clauses', array( $this, 'intercept_query_clauses' ) );
 
-		$pieces['join']  .= ' LEFT JOIN ' . bbpc_db()->attachments . ' bbpca ON bbpca.`attachment_id` = ' . bbpc_db()->wpdb()->posts . '.`ID` ';
-		$pieces['where'] .= ' AND bbpca.`post_id` IS NULL ';
+		$pieces['join']  .= ' LEFT JOIN ' . gdbbx_db()->attachments . ' gdbbxa ON gdbbxa.`attachment_id` = ' . gdbbx_db()->wpdb()->posts . '.`ID` ';
+		$pieces['where'] .= ' AND gdbbxa.`post_id` IS NULL ';
 
 		return $pieces;
 	}
@@ -87,20 +87,20 @@ class Handlers {
 	}
 
 	public function delete_attachments() {
-		if ( isset( $_GET['bbpc-action'] ) ) {
-			$action = d4p_sanitize_basic( $_GET['bbpc-action'] );
+		if ( isset( $_GET['gdbbx-action'] ) ) {
+			$action = d4p_sanitize_basic( $_GET['gdbbx-action'] );
 			$att_id = absint( $_GET['att_id'] );
 			$bbp_id = absint( $_GET['bbp_id'] );
 
 			if ( $att_id > 0 && $bbp_id > 0 && ( $action == 'delete' || $action == 'detach' ) ) {
-				$nonce = wp_verify_nonce( $_GET['_wpnonce'], 'bbpc-attachment-' . $action . '-' . $bbp_id . '-' . $att_id );
+				$nonce = wp_verify_nonce( $_GET['_wpnonce'], 'gdbbx-attachment-' . $action . '-' . $bbp_id . '-' . $att_id );
 
 				if ( $nonce ) {
 					$this->delete_attachment( $att_id, $bbp_id, $action );
 				}
 			}
 
-			$url = remove_query_arg( array( '_wpnonce', 'bbpc-action', 'att_id', 'bbp_id' ) );
+			$url = remove_query_arg( array( '_wpnonce', 'gdbbx-action', 'att_id', 'bbp_id' ) );
 			wp_redirect( $url );
 			exit;
 		}
@@ -110,18 +110,18 @@ class Handlers {
 		$post      = get_post( $bbp_id );
 		$author_id = $post->post_author;
 
-		$allow = bbpc_attachments()->get_deletion_status( $author_id );
+		$allow = gdbbx_attachments()->get_deletion_status( $author_id );
 
 		if ( $action == 'delete' && ( $allow == 'delete' || $allow == 'both' ) ) {
-			bbpc_db()->delete_attachment( $bbp_id, $att_id );
+			gdbbx_db()->delete_attachment( $bbp_id, $att_id );
 		}
 
 		if ( $action == 'detach' && ( $allow == 'detach' || $allow == 'both' ) ) {
-			bbpc_db()->detach_attachment( $bbp_id, $att_id );
+			gdbbx_db()->detach_attachment( $bbp_id, $att_id );
 		}
 
 		$_topic_id = bbp_is_topic( $bbp_id ) ? $bbp_id : bbp_get_reply_topic_id( $bbp_id );
 
-		bbpc_db()->update_topic_attachments_count( $_topic_id );
+		gdbbx_db()->update_topic_attachments_count( $_topic_id );
 	}
 }

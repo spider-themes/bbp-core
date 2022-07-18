@@ -25,88 +25,87 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! class_exists( 'd4p_admin_core_options' ) ) {
-	abstract class d4p_admin_core_options extends d4p_admin_core_basic {
-		public function __construct() {
-			parent::__construct();
-		}
+if (!class_exists('d4p_admin_core_options')) {
+    abstract class d4p_admin_core_options extends d4p_admin_core_basic {
+        public function __construct() {
+            parent::__construct();
+        }
 
-		public function var_screen_id() {
-			return 'settings_page_' . $this->plugin;
-		}
+        public function var_screen_id() {
+            return 'settings_page_'.$this->plugin;
+        }
 
-		public function current_screen( $screen ) {
-			if ( $screen->id == $this->var_screen_id() ) {
-				$this->page = true;
-			}
+        public function current_screen($screen) {
+            if ($screen->id == $this->var_screen_id()) {
+                $this->page = true;
+            }
 
-			if ( $this->page ) {
-				if ( isset( $_GET['panel'] ) && $_GET['panel'] != '' ) {
-					$this->panel = d4p_sanitize_slug( $_GET['panel'] );
-				} else {
-					$this->panel = 'settings';
-				}
+            if ($this->page) {
+                if (isset($_GET['panel']) && $_GET['panel'] != '') {
+                    $this->panel = d4p_sanitize_slug($_GET['panel']);
+                } else {
+                    $this->panel = 'settings';
+                }
 
-				if ( isset( $_GET['task'] ) && $_GET['task'] != '' ) {
-					$this->task = d4p_sanitize_slug( $_GET['task'] );
-				}
-			}
+                if (isset($_GET['task']) && $_GET['task'] != '') {
+                    $this->task = d4p_sanitize_slug($_GET['task']);
+                }
+            }
 
-			$this->load_postget_back();
-		}
+            $this->load_postget_back();
+        }
 
-		public function current_url( $with_panel = true, $with_task = true ) {
-			$page = 'options-general.php?page=' . $this->plugin;
+        public function current_url($with_panel = true, $with_task = true) {
+            $page = 'options-general.php?page='.$this->plugin;
 
-			if ( $with_panel && $this->panel !== false && $this->panel != '' ) {
-				$page .= '&panel=' . $this->panel;
-			}
+            if ($with_panel && $this->panel !== false && $this->panel != '') {
+                $page.= '&panel='.$this->panel;
+            }
 
-			if ( $with_task && isset( $this->task ) && $this->task !== false && $this->task != '' ) {
-				$page .= '&task=' . $this->task;
-			}
+            if ($with_task && isset($this->task) && $this->task !== false && $this->task != '') {
+                $page.= '&task='.$this->task;
+            }
 
-			return self_admin_url( $page );
-		}
+            return self_admin_url($page);
+        }
 
-		public function plugin_init() {
-			parent::plugin_init();
+        public function plugin_init() {
+            parent::plugin_init();
 
-			if ( $this->is_install() ) {
-				add_action( 'admin_notices', [ $this, 'install_notice' ] );
-			}
+            if ($this->is_install()) {
+                add_action('admin_notices', array($this, 'install_notice'));
+            }
 
-			if ( $this->is_update() ) {
-				add_action( 'admin_notices', [ $this, 'update_notice' ] );
-			}
-		}
+            if ($this->is_update()) {
+                add_action('admin_notices', array($this, 'update_notice'));
+            }
+        }
 
-		public function admin_menu() {
-			$this->page_ids[] = add_options_page( $this->title(), $this->menu_title(), $this->menu_cap, $this->plugin, [ $this, 'plugin_interface' ] );
+        public function admin_menu() {
+            $this->page_ids[] = add_options_page($this->title(), $this->menu_title(), $this->menu_cap, $this->plugin, array($this, 'plugin_interface'));
 
-			$this->admin_load_hooks();
-		}
+            $this->admin_load_hooks();
+        }
 
-		public function install_or_update() {
-			$install = $this->is_install();
-			$update  = $this->is_update();
+        public function install_or_update() {
+            $install = $this->is_install();
+            $update = $this->is_update();
 
-			if ( $install ) {
-				include $this->path . 'forms/install.php';
-			} elseif ( $update ) {
-				include $this->path . 'forms/update.php';
-			}
+            if ($install) {
+                include($this->path.'forms/install.php');
+            } else if ($update) {
+                include($this->path.'forms/update.php');
+            }
 
-			return $install || $update;
-		}
+            return $install || $update;
+        }
 
-		public function plugin_interface() {
-			if ( ! $this->install_or_update() ) {
-				require_once $this->path . 'forms/front.php';
-			}
-		}
-	}
+        public function plugin_interface() {
+            if (!$this->install_or_update()) {
+                require_once($this->path.'forms/front.php');
+            }
+        }
+    }
 }

@@ -25,103 +25,102 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! class_exists( 'd4p_plugin_core' ) ) {
-	abstract class d4p_plugin_core {
-		public $widgets = [];
-		public $enqueue = false;
-		public $cap     = 'activate_plugins';
-		public $plugin  = '';
-		public $url     = '';
+if (!class_exists('d4p_plugin_core')) {
+    abstract class d4p_plugin_core {
+        public $widgets = array();
+        public $enqueue = false;
+        public $cap = 'activate_plugins';
+        public $plugin = '';
+        public $url = '';
 
-		public $is_debug;
-		public $wp_version;
-		public $wp_version_real;
+        public $is_debug;
+        public $wp_version;
+        public $wp_version_real;
 
-		public $js_locale = [];
+        public $js_locale = array();
 
-		public function __construct() {
-			add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
-			add_action( 'after_setup_theme', [ $this, 'after_setup_theme' ] );
-		}
+        public function __construct() {
+            add_action('plugins_loaded', array($this, 'plugins_loaded'));
+            add_action('after_setup_theme', array($this, 'after_setup_theme'));
+        }
 
-		public function file( $type, $name, $d4p = false, $min = true, $base_url = null ) {
-			$get = is_null( $base_url ) ? $this->url : $base_url;
+        public function file($type, $name, $d4p = false, $min = true, $base_url = null) {
+            $get = is_null($base_url) ? $this->url : $base_url;
 
-			if ( $d4p ) {
-				$get .= 'd4plib/resources/';
-			}
+            if ($d4p) {
+                $get.= 'd4plib/resources/';
+            }
 
-			$get .= $type . '/' . $name;
+            $get.= $type.'/'.$name;
 
-			if ( ! $this->is_debug && $type != 'font' && $min ) {
-				$get .= '.min';
-			}
+            if (!$this->is_debug && $type != 'font' && $min) {
+                $get.= '.min';
+            }
 
-			$get .= '.' . $type;
+            $get.= '.'.$type;
 
-			return $get;
-		}
+            return $get;
+        }
 
-		public function plugins_loaded() {
-			global $wp_version;
+        public function plugins_loaded() {
+            global $wp_version;
 
-			$this->wp_version      = substr( str_replace( '.', '', $wp_version ), 0, 2 );
-			$this->wp_version_real = $wp_version;
+            $this->wp_version = substr(str_replace('.', '', $wp_version), 0, 2);
+            $this->wp_version_real = $wp_version;
 
-			if ( ! empty( $this->widgets ) ) {
-				add_action( 'widgets_init', [ $this, 'widgets_init' ] );
-			}
+            if (!empty($this->widgets)) {
+                add_action('widgets_init', array($this, 'widgets_init'));
+            }
 
-			if ( $this->enqueue ) {
-				add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-			}
+            if ($this->enqueue) {
+                add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+            }
 
-			$this->is_debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
+            $this->is_debug = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
 
-			$this->load_textdomain();
-			$this->init_capabilities();
-		}
+            $this->load_textdomain();
+            $this->init_capabilities();
+        }
 
-		public function load_textdomain() {
-			load_plugin_textdomain( $this->plugin, false, $this->plugin . '/languages' );
-			load_plugin_textdomain( 'd4plib', false, $this->plugin . '/d4plib/languages' );
-		}
+        public function load_textdomain() {
+            load_plugin_textdomain($this->plugin, false, $this->plugin.'/languages');
+            load_plugin_textdomain('d4plib', false, $this->plugin.'/d4plib/languages');
+        }
 
-		public function locale() {
-			return apply_filters( 'plugin_locale', get_user_locale(), $this->plugin );
-		}
+        public function locale() {
+            return apply_filters('plugin_locale', get_user_locale(), $this->plugin);
+        }
 
-		public function locale_js_code( $script ) {
-			$locale = $this->locale();
+        public function locale_js_code($script) {
+            $locale = $this->locale();
 
-			if ( ! empty( $locale ) && isset( $this->js_locale[ $script ] ) ) {
-				$code = strtolower( substr( $locale, 0, 2 ) );
+            if (!empty($locale) && isset($this->js_locale[$script])) {
+                $code = strtolower(substr($locale, 0, 2));
 
-				if ( in_array( $code, $this->js_locale[ $script ] ) ) {
-					return $code;
-				}
-			}
+                if (in_array($code, $this->js_locale[$script])) {
+                    return $code;
+                }
+            }
 
-			return false;
-		}
+            return false;
+        }
+   
+        public function init_capabilities() {
+            $role = get_role('administrator');
 
-		public function init_capabilities() {
-			$role = get_role( 'administrator' );
+            if (!is_null($role)) {
+                $role->add_cap($this->cap);
+            } else {
+                $this->cap = 'activate_plugins';
+            }
+        }
 
-			if ( ! is_null( $role ) ) {
-				$role->add_cap( $this->cap );
-			} else {
-				$this->cap = 'activate_plugins';
-			}
-		}
+        public function after_setup_theme() {}
 
-		public function after_setup_theme() {}
+        public function widgets_init() {}
 
-		public function widgets_init() {}
-
-		public function enqueue_scripts() {}
-	}
+        public function enqueue_scripts() {}
+    }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -38,7 +38,7 @@ class TopicActions extends Feature {
 		$this->has_footer = Plugin::instance()->is_enabled( 'footer-actions' );
 
 		add_filter( 'bbp_topic_admin_links', array( $this, 'topic_admin_links' ), 10, 2 );
-		add_filter( 'bbpc_topic_footer_links', array( $this, 'topic_footer_links' ), 10, 2 );
+		add_filter( 'gdbbx_topic_footer_links', array( $this, 'topic_footer_links' ), 10, 2 );
 	}
 
 	public static function instance() : TopicActions {
@@ -52,12 +52,12 @@ class TopicActions extends Feature {
 	}
 
 	private function _generate_links( $topic_id ) {
-		if ( bbpc_current_user_can_moderate() ) {
+		if ( gdbbx_current_user_can_moderate() ) {
 			if ( $this->settings['duplicate'] != 'hide' ) {
 				$url = bbp_get_topic_permalink( $topic_id );
 
 				$url = add_query_arg( 'id', $topic_id, $url );
-				$url = add_query_arg( '_wpnonce', wp_create_nonce( 'bbpc_dupe_topic_' . $topic_id ), $url );
+				$url = add_query_arg( '_wpnonce', wp_create_nonce( 'gdbbx_dupe_topic_' . $topic_id ), $url );
 				$url = add_query_arg( 'action', 'dupe_topic', $url );
 
 				$this->links['duplicate'] = '<a href="' . $url . '" class="d4p-bbt-dupe-topic-link">' . __( "Duplicate Topic", "bbp-core" ) . '</a>';
@@ -74,24 +74,24 @@ class TopicActions extends Feature {
 			}
 		}
 
-		if ( $this->settings['thanks'] != 'hide' && bbpc_say_thanks() !== false ) {
-			$link = bbpc_say_thanks()->get_thanks_link( $topic_id );
+		if ( $this->settings['thanks'] != 'hide' && gdbbx_say_thanks() !== false ) {
+			$link = gdbbx_say_thanks()->get_thanks_link( $topic_id );
 
 			if ( $link !== false ) {
 				$this->links['thanks'] = $link;
 			}
 		}
 
-		if ( $this->settings['report'] != 'hide' && bbpc_report() !== false ) {
-			$link = bbpc_report()->get_report_link( $topic_id );
+		if ( $this->settings['report'] != 'hide' && gdbbx_report() !== false ) {
+			$link = gdbbx_report()->get_report_link( $topic_id );
 
 			if ( $link !== false ) {
 				$this->links['report'] = $link;
 			}
 		}
 
-		if ( $this->settings['quote'] != 'hide' && bbpc_quote() !== false ) {
-			$link = bbpc_quote()->get_quote_link( $topic_id );
+		if ( $this->settings['quote'] != 'hide' && gdbbx_quote() !== false ) {
+			$link = gdbbx_quote()->get_quote_link( $topic_id );
 
 			if ( $link !== false ) {
 				$this->links['quote'] = $link;

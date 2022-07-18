@@ -1,4 +1,4 @@
-.bbpc-accessibility-show-for-sr {
+.gdbbx-accessibility-show-for-sr {
     position: absolute !important;
     width: 1px;
     height: 1px;
@@ -20,19 +20,19 @@
         box-sizing: border-box;
     }
 
-    .bbpc-buttonbar-inner {
+    .gdbbx-buttonbar-inner {
         overflow: hidden;
         padding: 3px;
     }
 
-    .bbpc-buttonbar-button {
+    .gdbbx-buttonbar-button {
         border: 1px solid #F5F5F5;
         text-align: center;
         border-radius: 3px;
         display: inline-block;
 
         button {
-            &.bbpc-button {
+            &.gdbbx-button {
                 display: block;
                 text-decoration: none;
                 border: none;
@@ -56,15 +56,15 @@
             background-color: #FFF;
 
             button {
-                .bbpc-button {
+                .gdbbx-button {
                     color: #111;
                 }
             }
         }
     }
 
-    &.bbpc-buttonbar-size-small {
-        .bbpc-buttonbar-button {
+    &.gdbbx-buttonbar-size-small {
+        .gdbbx-buttonbar-button {
             height: 30px;
             line-height: 28px;
             padding: 0;
@@ -72,9 +72,9 @@
             width: 30px !important;
         }
 
-        .bbpc-buttonbar-button {
+        .gdbbx-buttonbar-button {
             button {
-                &.bbpc-button {
+                &.gdbbx-button {
                     height: 28px;
                     line-height: 28px;
                 }
@@ -82,8 +82,8 @@
         }
     }
 
-    &.bbpc-buttonbar-size-medium {
-        .bbpc-buttonbar-button {
+    &.gdbbx-buttonbar-size-medium {
+        .gdbbx-buttonbar-button {
             height: 36px;
             line-height: 34px;
             padding: 0;
@@ -92,7 +92,7 @@
             cursor: pointer;
 
             button {
-                &.bbpc-button {
+                &.gdbbx-button {
                     height: 34px;
                     line-height: 34px;
                 }
@@ -100,8 +100,8 @@
         }
     }
 
-    &.bbpc-buttonbar-size-large {
-        .bbpc-buttonbar-button {
+    &.gdbbx-buttonbar-size-large {
+        .gdbbx-buttonbar-button {
             height: 42px;
             line-height: 40px;
             padding: 0;
@@ -109,7 +109,7 @@
             width: 42px !important;
 
             button {
-                &.bbpc-button {
+                &.gdbbx-button {
                     height: 42px;
                     line-height: 42px;
                 }
@@ -121,8 +121,8 @@
 .#{$signature-form} {
     margin: 0 !important;
 
-    &.bbpc-editor-bbcodes {
-        &.bbpc-buddypress-xprofile textarea,
+    &.gdbbx-editor-bbcodes {
+        &.gdbbx-buddypress-xprofile textarea,
         textarea {
             width: 100% !important;
             margin: 0;
@@ -133,16 +133,16 @@
     }
 }
 
-#profile-page .bbpc-signature-form.bbpc-editor-bbcodes textarea.signature:focus {
+#profile-page .gdbbx-signature-form.gdbbx-editor-bbcodes textarea.signature:focus {
     box-shadow: none;
 }
 
-.bp-profile-field .bbpc-signature-form.wp-editor-wrap {
+.bp-profile-field .gdbbx-signature-form.wp-editor-wrap {
     margin-left: 200px !important;
 }
 
 #{$forums} {
-    .bbpc-signature-form.bbpc-editor-bbcodes textarea.signature {
+    .gdbbx-signature-form.gdbbx-editor-bbcodes textarea.signature {
         width: 100% !important;
         margin: 0 !important;
         border-color: #DDD !important;
@@ -150,9 +150,9 @@
     }
 
     .#{$toolbar} {
-        .bbpc-buttonbar-button {
+        .gdbbx-buttonbar-button {
             button {
-                &.bbpc-button {
+                &.gdbbx-button {
                     i {
                         line-height: 1;
                     }
@@ -160,10 +160,10 @@
             }
         }
 
-        &.bbpc-buttonbar-size-small {
-            .bbpc-buttonbar-button {
+        &.gdbbx-buttonbar-size-small {
+            .gdbbx-buttonbar-button {
                 button {
-                    &.bbpc-button {
+                    &.gdbbx-button {
                         i {
                             font-size: 14px;
                         }
@@ -172,10 +172,10 @@
             }
         }
 
-        &.bbpc-buttonbar-size-medium {
-            .bbpc-buttonbar-button {
+        &.gdbbx-buttonbar-size-medium {
+            .gdbbx-buttonbar-button {
                 button {
-                    &.bbpc-button {
+                    &.gdbbx-button {
                         i {
                             font-size: 18px;
                         }
@@ -184,10 +184,10 @@
             }
         }
 
-        &.bbpc-buttonbar-size-large {
-            .bbpc-buttonbar-button {
+        &.gdbbx-buttonbar-size-large {
+            .gdbbx-buttonbar-button {
                 button {
-                    &.bbpc-button {
+                    &.gdbbx-button {
                         i {
                             font-size: 22px;
                         }
@@ -199,7 +199,7 @@
 }
 
 #{$buddypress} {
-    button.bbpc-button {
+    button.gdbbx-button {
         padding: 2px 3px;
     }
 }

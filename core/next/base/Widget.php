@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Base;
+namespace Dev4Press\Plugin\GDBBX\Base;
 
 use WP_Widget;
 
@@ -13,7 +13,7 @@ abstract class Widget extends WP_Widget {
 	public $allow_empty_title = false;
 	public $results_cachable = false;
 
-	public $cache_prefix = 'bbpc-widget';
+	public $cache_prefix = 'gdbbx-widget';
 	public $cache_method = 'full';
 
 	public $widget_base = '';
@@ -113,7 +113,7 @@ abstract class Widget extends WP_Widget {
 			        array_slice( $tabs, 1, 2, true );
 		}
 
-		include( BBPC_PATH . 'forms/widgets/widget-loader.php' );
+		include( GDBBX_PATH . 'forms/widgets/widget-loader.php' );
 	}
 
 	public function update( $new_instance, $old_instance ) : array {
@@ -179,7 +179,7 @@ abstract class Widget extends WP_Widget {
 
 		if ( isset( $new_instance['_roles'] ) ) {
 			$_roles      = array_map( 'd4p_sanitize_basic', $new_instance['_roles'] );
-			$valid_roles = bbpc_get_wordpress_user_roles();
+			$valid_roles = gdbbx_get_wordpress_user_roles();
 
 			foreach ( $_roles as $role ) {
 				if ( isset( $valid_roles[ $role ] ) ) {

@@ -1,8 +1,8 @@
 @import 'includes/_variables';
 @import 'components/_icons';
 
-.bbpc-image-mark {
-    background: transparent url(icons/bbpc.png);
+.gdbbx-image-mark {
+    background: transparent url(icons/gdbbx.png);
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -11,12 +11,12 @@
 }
 
 @each $icon, $char in $marks {
-    .bbpc-image-mark.bbpc-image-#{$icon} {
+    .gdbbx-image-mark.gdbbx-image-#{$icon} {
         background-position: 0 -#{$char}px;
     }
 }
 
-.bbpc-image-mark.bbpc-image-arrow {
+.gdbbx-image-mark.gdbbx-image-arrow {
     margin-left: 4px;
     margin-right: 0;
 }
@@ -26,20 +26,20 @@
         list-style: none;
         padding: 0 0 0 18px;
 
-        &.bbpc-image {
+        &.gdbbx-image {
             a i {
                 display: inline-block;
                 width: 16px;
                 height: 16px;
                 vertical-align: middle;
-                background: transparent url(icons/bbpc.png) no-repeat;
+                background: transparent url(icons/gdbbx.png) no-repeat;
             }
         }
     }
 }
 
 @each $icon, $char in $files {
-    .#{$attachments} li.bbpc-image.bbpc-image-#{$icon} {
+    .#{$attachments} li.gdbbx-image.gdbbx-image-#{$icon} {
         a i {
             background-position: 0 -#{$char}px !important;
         }

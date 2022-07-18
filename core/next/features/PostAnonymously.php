@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -35,7 +35,7 @@ class PostAnonymously extends Feature {
 		parent::__construct();
 
 		if ( is_user_logged_in() ) {
-			add_action( 'bbpc_template', array( $this, 'frontend' ) );
+			add_action( 'gdbbx_template', array( $this, 'frontend' ) );
 		}
 	}
 
@@ -115,7 +115,7 @@ class PostAnonymously extends Feature {
 			return $retval;
 		}
 
-		$this->forum_id = apply_filters( 'bbpc_post_anonymously_prepare_topic_form_forum_id', bbp_get_forum_id() );
+		$this->forum_id = apply_filters( 'gdbbx_post_anonymously_prepare_topic_form_forum_id', bbp_get_forum_id() );
 
 		return $this->prepare_the_form( $retval, 'topic' );
 	}
@@ -125,7 +125,7 @@ class PostAnonymously extends Feature {
 			return $retval;
 		}
 
-		$this->forum_id = apply_filters( 'bbpc_post_anonymously_prepare_reply_form_forum_id', bbp_get_topic_forum_id() );
+		$this->forum_id = apply_filters( 'gdbbx_post_anonymously_prepare_reply_form_forum_id', bbp_get_topic_forum_id() );
 
 		return $this->prepare_the_form( $retval, 'reply' );
 	}
@@ -145,7 +145,7 @@ class PostAnonymously extends Feature {
 			$allowed = $forum_id > 0 && in_array( $forum_id, $this->get( 'allowed_in_forums', array() ) );
 		}
 
-		return apply_filters( 'bbpc_post_anonymously_is_forum_allowed', $allowed, $forum_id );
+		return apply_filters( 'gdbbx_post_anonymously_is_forum_allowed', $allowed, $forum_id );
 	}
 
 	public function is_forum_forced( $forum_id = 0 ) : bool {
@@ -155,22 +155,22 @@ class PostAnonymously extends Feature {
 			$forced = false;
 		}
 
-		return apply_filters( 'bbpc_post_anonymously_is_forum_forced', $forced, $forum_id );
+		return apply_filters( 'gdbbx_post_anonymously_is_forum_forced', $forced, $forum_id );
 	}
 
 	public function topic_allowed_checkbox() {
-		include( bbpc_get_template_part( 'bbpc-form-topic-post-anonymously.php' ) );
+		include( gdbbx_get_template_part( 'gdbbx-form-topic-post-anonymously.php' ) );
 	}
 
 	public function reply_allowed_checkbox() {
-		include( bbpc_get_template_part( 'bbpc-form-reply-post-anonymously.php' ) );
+		include( gdbbx_get_template_part( 'gdbbx-form-reply-post-anonymously.php' ) );
 	}
 
 	public function topic_forced_message() {
 		?>
 
         <div class="bbp-template-notice info">
-            <p><?php echo apply_filters( 'bbpc_post_anonymously_topic_form_forced_message', __( "The topic you create in this forum will be posted anonymously.", "bbp-core" ) ); ?></p>
+            <p><?php echo apply_filters( 'gdbbx_post_anonymously_topic_form_forced_message', __( "The topic you create in this forum will be posted anonymously.", "bbp-core" ) ); ?></p>
         </div>
 
 		<?php
@@ -180,7 +180,7 @@ class PostAnonymously extends Feature {
 		?>
 
         <div class="bbp-template-notice info">
-            <p><?php echo apply_filters( 'bbpc_post_anonymously_reply_form_forced_message', __( "The reply you create in this forum topic will be posted anonymously.", "bbp-core" ) ); ?></p>
+            <p><?php echo apply_filters( 'gdbbx_post_anonymously_reply_form_forced_message', __( "The reply you create in this forum topic will be posted anonymously.", "bbp-core" ) ); ?></p>
         </div>
 
 		<?php
@@ -203,7 +203,7 @@ class PostAnonymously extends Feature {
 		}
 
 		$full_hash = md5( $hash_key );
-		$hash      = apply_filters( 'bbpc_post_anonymously_anon_hash', substr( $full_hash, 0, 6 ) . substr( $full_hash, 26 ), $full_hash );
+		$hash      = apply_filters( 'gdbbx_post_anonymously_anon_hash', substr( $full_hash, 0, 6 ) . substr( $full_hash, 26 ), $full_hash );
 
 		$anon = array(
 			'_bbp_anonymous_name'  => str_replace( '{{HASH}}', $hash, $this->get( 'anonymous_name' ) ),
@@ -215,7 +215,7 @@ class PostAnonymously extends Feature {
 			$anon['_bbp_anonymous_link'] = $elements['user_id'];
 		}
 
-		$anon = apply_filters( 'bbpc_post_anonymously_anon_data', $anon, $elements, $hash );
+		$anon = apply_filters( 'gdbbx_post_anonymously_anon_data', $anon, $elements, $hash );
 
 		foreach ( $anon as $key => $value ) {
 			update_post_meta( $post_id, $key, $value );
@@ -246,7 +246,7 @@ class PostAnonymously extends Feature {
 		}
 
 		if ( $_check_post ) {
-			if ( isset( $_POST['bbpc_post_anonymously'] ) && $_POST['bbpc_post_anonymously'] === '1' ) {
+			if ( isset( $_POST['gdbbx_post_anonymously'] ) && $_POST['gdbbx_post_anonymously'] === '1' ) {
 				$_post_anon = true;
 			}
 		}

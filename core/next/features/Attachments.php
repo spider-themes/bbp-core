@@ -1,14 +1,14 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Attachments\Bulk;
-use SpiderDevs\Plugin\BBPC\Attachments\Display;
-use SpiderDevs\Plugin\BBPC\Attachments\Form;
-use SpiderDevs\Plugin\BBPC\Attachments\Handlers;
-use SpiderDevs\Plugin\BBPC\Attachments\Topic;
-use SpiderDevs\Plugin\BBPC\Attachments\Upload;
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Attachments\Bulk;
+use Dev4Press\Plugin\GDBBX\Attachments\Display;
+use Dev4Press\Plugin\GDBBX\Attachments\Form;
+use Dev4Press\Plugin\GDBBX\Attachments\Handlers;
+use Dev4Press\Plugin\GDBBX\Attachments\Topic;
+use Dev4Press\Plugin\GDBBX\Attachments\Upload;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -141,10 +141,10 @@ class Attachments extends Feature {
 	private function run() {
 		Handlers::instance();
 
-		add_action( 'bbpc_init', array( $this, 'thumbnail' ) );
+		add_action( 'gdbbx_init', array( $this, 'thumbnail' ) );
 
 		if ( ! is_admin() ) {
-			add_action( 'bbpc_core', array( $this, 'frontend' ) );
+			add_action( 'gdbbx_core', array( $this, 'frontend' ) );
 		}
 	}
 
@@ -156,13 +156,13 @@ class Attachments extends Feature {
 		$size = $this->get( 'image_thumbnail_size' );
 		$size = explode( 'x', $size );
 
-		$args = apply_filters( 'bbpc_attachments_thumb_image_size_args', array(
+		$args = apply_filters( 'gdbbx_attachments_thumb_image_size_args', array(
 			'width'  => $size[0],
 			'height' => $size[1],
 			'crop'   => true
 		) );
 
-		add_image_size( 'bbpc-thumb', $args['width'], $args['height'], $args['crop'] );
+		add_image_size( 'gdbbx-thumb', $args['width'], $args['height'], $args['crop'] );
 	}
 
 	public function frontend() {
@@ -175,12 +175,12 @@ class Attachments extends Feature {
 			Topic::instance()->run();
 		}
 
-		add_action( 'bbpc_template_before_replies_loop', array( $this, 'before_replies_loop' ) );
-		add_action( 'bbpc_template_before_topics_loop', array( $this, 'before_topics_loop' ) );
+		add_action( 'gdbbx_template_before_replies_loop', array( $this, 'before_replies_loop' ) );
+		add_action( 'gdbbx_template_before_topics_loop', array( $this, 'before_topics_loop' ) );
 
-		$this->icons       = apply_filters( 'bbpc_attachments_icons_sets', $this->icons );
-		$this->font_icons  = apply_filters( 'bbpc_attachments_font_icons_sets', $this->font_icons );
-		$this->thumb_types = apply_filters( 'bbpc_attachments_thumb_extensions', $this->thumb_types );
+		$this->icons       = apply_filters( 'gdbbx_attachments_icons_sets', $this->icons );
+		$this->font_icons  = apply_filters( 'gdbbx_attachments_font_icons_sets', $this->font_icons );
+		$this->thumb_types = apply_filters( 'gdbbx_attachments_thumb_extensions', $this->thumb_types );
 	}
 
 	public function is_thumbnail_type( $extension ) : bool {
@@ -190,7 +190,7 @@ class Attachments extends Feature {
 	public function render_attachment_icon( $ext ) : string {
 		$icon = $this->icon( $ext );
 
-		$cls = 'bbpc-icon bbpc-icon-';
+		$cls = 'gdbbx-icon gdbbx-icon-';
 		foreach ( $this->font_icons as $fa => $list ) {
 			$list = explode( '|', $list );
 
@@ -199,7 +199,7 @@ class Attachments extends Feature {
 			}
 		}
 
-		return '<i class="' . $cls . ' bbpc-fw"></i> ';
+		return '<i class="' . $cls . ' gdbbx-fw"></i> ';
 	}
 
 	public function icon( $ext ) : string {
@@ -233,34 +233,34 @@ class Attachments extends Feature {
 	public function get_file_size( $forum_id = 0 ) {
 		$size = $this->get( 'max_file_size' );
 
-		$forum    = bbpc_forum( $forum_id )->attachments()->get( 'max_file_size_override' );
-		$override = bbpc_forum( $forum_id )->attachments()->get( 'max_file_size' );
+		$forum    = gdbbx_forum( $forum_id )->attachments()->get( 'max_file_size_override' );
+		$override = gdbbx_forum( $forum_id )->attachments()->get( 'max_file_size' );
 
 		if ( $override > 0 && $forum == 'yes' ) {
 			$size = $override;
 		}
 
-		return apply_filters( 'bbpc_attachments_max_file_size', $size, bbpc_forum()->forum() );
+		return apply_filters( 'gdbbx_attachments_max_file_size', $size, gdbbx_forum()->forum() );
 	}
 
 	public function get_max_files( $forum_id = 0 ) {
 		$files = $this->get( 'max_to_upload' );
 
-		$forum    = bbpc_forum( $forum_id )->attachments()->get( 'max_to_upload_override' );
-		$override = bbpc_forum( $forum_id )->attachments()->get( 'max_to_upload' );
+		$forum    = gdbbx_forum( $forum_id )->attachments()->get( 'max_to_upload_override' );
+		$override = gdbbx_forum( $forum_id )->attachments()->get( 'max_to_upload' );
 
 		if ( $override > 0 && $forum == 'yes' ) {
 			$files = $override;
 		}
 
-		return apply_filters( 'bbpc_attachments_max_to_upload', $files, bbpc_forum()->forum() );
+		return apply_filters( 'gdbbx_attachments_max_to_upload', $files, gdbbx_forum()->forum() );
 	}
 
 	public function get_file_extensions( $forum_id = 0 ) : array {
 		$list = $this->get( 'mime_types_list' );
 
-		$forum    = bbpc_forum( $forum_id )->attachments()->get( 'mime_types_list_override' );
-		$override = bbpc_forum( $forum_id )->attachments()->get( 'mime_types_list' );
+		$forum    = gdbbx_forum( $forum_id )->attachments()->get( 'mime_types_list_override' );
+		$override = gdbbx_forum( $forum_id )->attachments()->get( 'mime_types_list' );
 
 		if ( ! empty( $override ) && $forum == 'yes' ) {
 			$list = $override;
@@ -271,7 +271,7 @@ class Attachments extends Feature {
 			$show = array_merge( $show, explode( '|', $i ) );
 		}
 
-		return (array) apply_filters( 'bbpc_attachments_extensions_list', $show, bbpc_forum()->forum() );
+		return (array) apply_filters( 'gdbbx_attachments_extensions_list', $show, gdbbx_forum()->forum() );
 	}
 
 	public function filter_mime_types( $forum_id = 0 ) {
@@ -283,8 +283,8 @@ class Attachments extends Feature {
 			$full = get_allowed_mime_types();
 			$list = $this->get( 'mime_types_list' );
 
-			$forum    = bbpc_forum( $forum_id )->attachments()->get( 'mime_types_list_override' );
-			$override = bbpc_forum( $forum_id )->attachments()->get( 'mime_types_list' );
+			$forum    = gdbbx_forum( $forum_id )->attachments()->get( 'mime_types_list_override' );
+			$override = gdbbx_forum( $forum_id )->attachments()->get( 'mime_types_list' );
 
 			if ( ! empty( $override ) && $forum == 'yes' ) {
 				$list = $override;
@@ -304,7 +304,7 @@ class Attachments extends Feature {
 	}
 
 	public function is_hidden_from_visitors( $forum_id = 0 ) : bool {
-		$forum = bbpc_forum( $forum_id )->attachments()->get( 'hide_from_visitors' );
+		$forum = gdbbx_forum( $forum_id )->attachments()->get( 'hide_from_visitors' );
 
 		$hide = false;
 		if ( $forum == 'default' ) {
@@ -315,11 +315,11 @@ class Attachments extends Feature {
 			$hide = false;
 		}
 
-		return (bool) apply_filters( 'bbpc_attachments_is_hidden_from_visitors', $hide, bbpc_forum()->forum() );
+		return (bool) apply_filters( 'gdbbx_attachments_is_hidden_from_visitors', $hide, gdbbx_forum()->forum() );
 	}
 
 	public function is_preview_for_visitors( $forum_id = 0 ) : bool {
-		$forum = bbpc_forum( $forum_id )->attachments()->get( 'preview_for_visitors' );
+		$forum = gdbbx_forum( $forum_id )->attachments()->get( 'preview_for_visitors' );
 
 		$hide = false;
 		if ( $forum == 'default' ) {
@@ -330,19 +330,19 @@ class Attachments extends Feature {
 			$hide = false;
 		}
 
-		return (bool) apply_filters( 'bbpc_attachments_is_preview_for_visitors', $hide, bbpc_forum()->forum() );
+		return (bool) apply_filters( 'gdbbx_attachments_is_preview_for_visitors', $hide, gdbbx_forum()->forum() );
 	}
 
 	public function is_active( $forum_id = 0 ) : bool {
-		$forum = bbpc_forum( $forum_id )->attachments()->get( 'status' );
+		$forum = gdbbx_forum( $forum_id )->attachments()->get( 'status' );
 
 		$active = $forum == 'default' || $forum == 'yes';
 
-		return (bool) apply_filters( 'bbpc_attachments_forum_enabled', $active, bbpc_forum()->forum() );
+		return (bool) apply_filters( 'gdbbx_attachments_forum_enabled', $active, gdbbx_forum()->forum() );
 	}
 
 	public function in_topic_form( $forum_id = 0 ) : bool {
-		$forum = bbpc_forum( $forum_id )->attachments()->get( 'topic_form' );
+		$forum = gdbbx_forum( $forum_id )->attachments()->get( 'topic_form' );
 
 		$active = false;
 		if ( $forum == 'default' ) {
@@ -353,11 +353,11 @@ class Attachments extends Feature {
 			$active = false;
 		}
 
-		return (bool) apply_filters( 'bbpc_attachments_forum_topic_form', $active, bbpc_forum()->forum() );
+		return (bool) apply_filters( 'gdbbx_attachments_forum_topic_form', $active, gdbbx_forum()->forum() );
 	}
 
 	public function in_reply_form( $forum_id = 0 ) : bool {
-		$forum = bbpc_forum( $forum_id )->attachments()->get( 'reply_form' );
+		$forum = gdbbx_forum( $forum_id )->attachments()->get( 'reply_form' );
 
 		$active = false;
 		if ( $forum == 'default' ) {
@@ -368,7 +368,7 @@ class Attachments extends Feature {
 			$active = false;
 		}
 
-		return (bool) apply_filters( 'bbpc_attachments_forum_reply_form', $active, bbpc_forum()->forum() );
+		return (bool) apply_filters( 'gdbbx_attachments_forum_reply_form', $active, gdbbx_forum()->forum() );
 	}
 
 	public function is_right_size( $file, $forum_id = 0 ) : bool {
@@ -407,7 +407,7 @@ class Attachments extends Feature {
 			}
 		}
 
-		return (bool) apply_filters( 'bbpc_attachments_is_user_allowed', $allowed );
+		return (bool) apply_filters( 'gdbbx_attachments_is_user_allowed', $allowed );
 	}
 
 	public function is_no_limit() : bool {
@@ -426,15 +426,15 @@ class Attachments extends Feature {
 			}
 		}
 
-		return (bool) apply_filters( 'bbpc_attachments_is_user_with_no_limit', $allowed );
+		return (bool) apply_filters( 'gdbbx_attachments_is_user_with_no_limit', $allowed );
 	}
 
 	public function get_deletion_status( $author_id ) {
 		$allow = 'no';
 
-		if ( bbpc_is_current_user_bbp_keymaster() ) {
+		if ( gdbbx_is_current_user_bbp_keymaster() ) {
 			$allow = $this->get( 'delete_visible_to_admins' );
-		} else if ( bbpc_is_current_user_bbp_moderator() ) {
+		} else if ( gdbbx_is_current_user_bbp_moderator() ) {
 			$allow = $this->get( 'delete_visible_to_moderators' );
 		} else if ( $author_id == bbp_get_current_user_id() ) {
 			$allow = $this->get( 'delete_visible_to_author' );
@@ -444,11 +444,11 @@ class Attachments extends Feature {
 	}
 
 	public function before_replies_loop( $posts ) {
-		bbpc_cache()->attachments_run_bulk_counts( $posts );
-		bbpc_cache()->attachments_errors_run_bulk_counts( $posts );
+		gdbbx_cache()->attachments_run_bulk_counts( $posts );
+		gdbbx_cache()->attachments_errors_run_bulk_counts( $posts );
 	}
 
 	public function before_topics_loop( $posts ) {
-		bbpc_cache()->attachments_run_bulk_topics_counts( $posts );
+		gdbbx_cache()->attachments_run_bulk_topics_counts( $posts );
 	}
 }

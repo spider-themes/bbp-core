@@ -1,34 +1,33 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-$panels = [];
+$panels = array();
 
-require BBPC_PATH . 'forms/shared/top.php';
+include(GDBBX_PATH.'forms/shared/top.php');
 
 ?>
 
 <div class="d4p-content-right d4p-content-full">
-	<form method="get" action="">
-		<input type="hidden" name="page" value="bbp-core-attachments" />
-		<input type="hidden" name="bbpc_handler" value="getback" />
+    <form method="get" action="">
+        <input type="hidden" name="page" value="gd-bbpress-toolbox-attachments" />
+        <input type="hidden" name="gdbbx_handler" value="getback" />
 
-		<?php
+        <?php 
 
-		require_once BBPC_PATH . 'core/grids/attachments.php';
+        require_once(GDBBX_PATH.'core/grids/attachments.php');
 
-		$_grid = new bbpc_grid_attachments();
-		$_grid->prepare_items();
+        $_grid = new gdbbx_grid_attachments();
+        $_grid->prepare_items();
 
-		$_grid->search_box( __( 'Search', 'bbp-core' ), 'attachment-name' );
+        $_grid->search_box(__("Search", "bbp-core"), 'attachment-name');
 
-		$_grid->display();
+        $_grid->display();
 
-		?>
-	</form>
+        ?>
+    </form>
 </div>
 
 <?php
 
-require BBPC_PATH . 'forms/shared/bottom.php';
+include(GDBBX_PATH.'forms/shared/bottom.php');

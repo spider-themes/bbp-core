@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -57,7 +57,7 @@ class AdminColumns extends Feature {
 
 	public function admin_forum_columns( $columns ) {
 		if ( $this->settings['forum_subscriptions'] ) {
-			$columns['bbpc-forum-subscriptions'] = '<span class="vers dashicons dashicons-star-filled" title="' . esc_attr_x( "Subscribers", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Subscribers", "bbp-core" ) . '</span></span>';
+			$columns['gdbbx-forum-subscriptions'] = '<span class="vers dashicons dashicons-star-filled" title="' . esc_attr_x( "Subscribers", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Subscribers", "bbp-core" ) . '</span></span>';
 		}
 
 		return $columns;
@@ -66,11 +66,11 @@ class AdminColumns extends Feature {
 	public function admin_forum_columns_data( $column, $id ) {
 		$this->forum_calculate_counts();
 
-		if ( $column == 'bbpc-forum-subscriptions' ) {
+		if ( $column == 'gdbbx-forum-subscriptions' ) {
 			if ( isset( $this->data[ $id ] ) ) {
 				$value = $this->data[ $id ];
 
-				echo '<a href="admin.php?page=bbp-core-users&view=forum_subscriptions&filter-forum=' . $id . '" title="' . esc_attr( sprintf( _n( "%s User", "%s Users", $value, "bbp-core" ), $value ) ) . '">' . esc_html( $value ) . '</a>';
+				echo '<a href="admin.php?page=gd-bbpress-toolbox-users&view=forum_subscriptions&filter-forum=' . $id . '" title="' . esc_attr( sprintf( _n( "%s User", "%s Users", $value, "bbp-core" ), $value ) ) . '">' . esc_html( $value ) . '</a>';
 			} else {
 				echo '0';
 			}
@@ -86,8 +86,8 @@ class AdminColumns extends Feature {
 
 		$forums = wp_list_pluck( $wp_query->posts, 'ID' );
 
-		$sql = "SELECT ID, COUNT(*) AS counter FROM " . bbpc_db()->wpdb()->postmeta . " m INNER JOIN " . bbpc_db()->wpdb()->posts . " p ON p.ID = m.post_id WHERE m.meta_key = '_bbp_subscription' AND p.post_type = '" . bbp_get_forum_post_type() . "' AND p.ID IN (" . join( ", ", $forums ) . ") GROUP BY p.ID";
-		$raw = bbpc_db()->get_results( $sql );
+		$sql = "SELECT ID, COUNT(*) AS counter FROM " . gdbbx_db()->wpdb()->postmeta . " m INNER JOIN " . gdbbx_db()->wpdb()->posts . " p ON p.ID = m.post_id WHERE m.meta_key = '_bbp_subscription' AND p.post_type = '" . bbp_get_forum_post_type() . "' AND p.ID IN (" . join( ", ", $forums ) . ") GROUP BY p.ID";
+		$raw = gdbbx_db()->get_results( $sql );
 
 		foreach ( $raw as $row ) {
 			$this->data[ $row->ID ] = absint( $row->counter );
@@ -98,19 +98,19 @@ class AdminColumns extends Feature {
 
 	public function admin_topic_columns( $columns ) {
 		if ( $this->settings['topic_private'] && Plugin::instance()->is_enabled( 'private-topics' ) ) {
-			$columns['bbpc-is-private'] = '<span class="vers dashicons dashicons-lock" title="' . esc_attr_x( "Private", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Private", "bbp-core" ) . '</span></span>';
+			$columns['gdbbx-is-private'] = '<span class="vers dashicons dashicons-lock" title="' . esc_attr_x( "Private", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Private", "bbp-core" ) . '</span></span>';
 		}
 
 		if ( $this->settings['topic_attachments'] ) {
-			$columns['bbpc-attachments-count'] = '<span class="vers dashicons dashicons-admin-media" title="' . esc_attr_x( "Attachments", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Attachments", "bbp-core" ) . '</span></span>';
+			$columns['gdbbx-attachments-count'] = '<span class="vers dashicons dashicons-admin-media" title="' . esc_attr_x( "Attachments", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Attachments", "bbp-core" ) . '</span></span>';
 		}
 
 		if ( $this->settings['topic_subscriptions'] ) {
-			$columns['bbpc-topic-subscriptions'] = '<span class="vers dashicons dashicons-star-filled" title="' . esc_attr_x( "Subscribers", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Subscribers", "bbp-core" ) . '</span></span>';
+			$columns['gdbbx-topic-subscriptions'] = '<span class="vers dashicons dashicons-star-filled" title="' . esc_attr_x( "Subscribers", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Subscribers", "bbp-core" ) . '</span></span>';
 		}
 
 		if ( $this->settings['topic_favorites'] ) {
-			$columns['bbpc-topic-favorites'] = '<span class="vers dashicons dashicons-heart" title="' . esc_attr_x( "Favorited", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Favorited", "bbp-core" ) . '</span></span>';
+			$columns['gdbbx-topic-favorites'] = '<span class="vers dashicons dashicons-heart" title="' . esc_attr_x( "Favorited", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Favorited", "bbp-core" ) . '</span></span>';
 		}
 
 		return $columns;
@@ -119,34 +119,34 @@ class AdminColumns extends Feature {
 	public function admin_topic_columns_data( $column, $id ) {
 		$this->topic_calculate_counts();
 
-		if ( $column == 'bbpc-is-private' ) {
-			if ( bbpc_is_topic_private( $id ) ) {
+		if ( $column == 'gdbbx-is-private' ) {
+			if ( gdbbx_is_topic_private( $id ) ) {
 				echo '&#x2713;';
 			}
-		} else if ( $column == 'bbpc-topic-subscriptions' ) {
+		} else if ( $column == 'gdbbx-topic-subscriptions' ) {
 			if ( isset( $this->data[ $id ]['subscription'] ) ) {
 				$value = $this->data[ $id ]['subscription'];
 
-				echo '<a href="admin.php?page=bbp-core-users&view=topic_subscriptions&filter-topic=' . $id . '" title="' . esc_attr( sprintf( _n( "%s User", "%s Users", $value, "bbp-core" ), $value ) ) . '">' . esc_html( $value ) . '</a>';
+				echo '<a href="admin.php?page=gd-bbpress-toolbox-users&view=topic_subscriptions&filter-topic=' . $id . '" title="' . esc_attr( sprintf( _n( "%s User", "%s Users", $value, "bbp-core" ), $value ) ) . '">' . esc_html( $value ) . '</a>';
 			} else {
 				echo '0';
 			}
-		} else if ( $column == 'bbpc-topic-favorites' ) {
+		} else if ( $column == 'gdbbx-topic-favorites' ) {
 			if ( isset( $this->data[ $id ]['favorite'] ) ) {
 				$value = $this->data[ $id ]['favorite'];
 
-				echo '<a href="admin.php?page=bbp-core-users&view=topic_favorites&filter-topic=' . $id . '" title="' . esc_attr( sprintf( _n( "%s User", "%s Users", $value, "bbp-core" ), $value ) ) . '">' . esc_html( $value ) . '</a>';
+				echo '<a href="admin.php?page=gd-bbpress-toolbox-users&view=topic_favorites&filter-topic=' . $id . '" title="' . esc_attr( sprintf( _n( "%s User", "%s Users", $value, "bbp-core" ), $value ) ) . '">' . esc_html( $value ) . '</a>';
 			} else {
 				echo '0';
 			}
-		} else if ( $column == 'bbpc-attachments-count' ) {
-			$attachments = bbpc_get_post_attachments( $id );
+		} else if ( $column == 'gdbbx-attachments-count' ) {
+			$attachments = gdbbx_get_post_attachments( $id );
 			$count       = count( $attachments );
 
 			if ( $count == 0 ) {
 				echo '0';
 			} else {
-				echo '<a href="' . admin_url( 'admin.php?page=bbp-core-attachments&bbp_topic_id=' . $id ) . '">' . esc_html( $count ) . '</a>';
+				echo '<a href="' . admin_url( 'admin.php?page=gd-bbpress-toolbox-attachments&bbp_topic_id=' . $id ) . '">' . esc_html( $count ) . '</a>';
 			}
 		}
 	}
@@ -160,10 +160,10 @@ class AdminColumns extends Feature {
 
 		$topics = wp_list_pluck( $wp_query->posts, 'ID' );
 
-		bbpc_cache()->private_run_bulk_posts( $topics );
+		gdbbx_cache()->private_run_bulk_posts( $topics );
 
-		$sql = "SELECT ID, SUBSTR(m.meta_key, 6) AS type, COUNT(*) AS counter FROM " . bbpc_db()->wpdb()->postmeta . " m INNER JOIN " . bbpc_db()->wpdb()->posts . " p ON p.ID = m.post_id WHERE m.meta_key IN ('_bbp_subscription', '_bbp_favorite') AND p.post_type = '" . bbp_get_topic_post_type() . "' AND p.ID IN (" . join( ", ", $topics ) . ") GROUP BY p.ID, m.meta_key";
-		$raw = bbpc_db()->get_results( $sql );
+		$sql = "SELECT ID, SUBSTR(m.meta_key, 6) AS type, COUNT(*) AS counter FROM " . gdbbx_db()->wpdb()->postmeta . " m INNER JOIN " . gdbbx_db()->wpdb()->posts . " p ON p.ID = m.post_id WHERE m.meta_key IN ('_bbp_subscription', '_bbp_favorite') AND p.post_type = '" . bbp_get_topic_post_type() . "' AND p.ID IN (" . join( ", ", $topics ) . ") GROUP BY p.ID, m.meta_key";
+		$raw = gdbbx_db()->get_results( $sql );
 
 		foreach ( $raw as $row ) {
 			if ( ! isset( $this->data[ $row->ID ] ) ) {
@@ -178,11 +178,11 @@ class AdminColumns extends Feature {
 
 	public function admin_reply_columns( $columns ) {
 		if ( $this->settings['reply_private'] && Plugin::instance()->is_enabled( 'private-replies' ) ) {
-			$columns['bbpc-is-private'] = '<span class="vers dashicons dashicons-lock" title="' . esc_attr_x( "Private", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Private", "bbp-core" ) . '</span></span>';
+			$columns['gdbbx-is-private'] = '<span class="vers dashicons dashicons-lock" title="' . esc_attr_x( "Private", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Private", "bbp-core" ) . '</span></span>';
 		}
 
 		if ( $this->settings['reply_attachments'] ) {
-			$columns['bbpc-attachments-count'] = '<span class="vers dashicons dashicons-admin-media" title="' . esc_attr_x( "Attachments", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Attachments", "bbp-core" ) . '</span></span>';
+			$columns['gdbbx-attachments-count'] = '<span class="vers dashicons dashicons-admin-media" title="' . esc_attr_x( "Attachments", "Admin Column", "bbp-core" ) . '"><span class="screen-reader-text">' . esc_html__( "Attachments", "bbp-core" ) . '</span></span>';
 		}
 
 		return $columns;
@@ -191,18 +191,18 @@ class AdminColumns extends Feature {
 	public function admin_reply_columns_data( $column, $id ) {
 		$this->reply_calculate_counts();
 
-		if ( $column == 'bbpc-is-private' ) {
-			if ( bbpc_is_reply_private( $id ) ) {
+		if ( $column == 'gdbbx-is-private' ) {
+			if ( gdbbx_is_reply_private( $id ) ) {
 				echo '&#x2713;';
 			}
-		} else if ( $column == 'bbpc-attachments-count' ) {
-			$attachments = bbpc_get_post_attachments( $id );
+		} else if ( $column == 'gdbbx-attachments-count' ) {
+			$attachments = gdbbx_get_post_attachments( $id );
 			$count       = count( $attachments );
 
 			if ( $count == 0 ) {
 				echo '0';
 			} else {
-				echo '<a href="' . admin_url( 'admin.php?page=bbp-core-attachments&bbp_reply_id=' . $id ) . '">' . esc_html( $count ) . '</a>';
+				echo '<a href="' . admin_url( 'admin.php?page=gd-bbpress-toolbox-attachments&bbp_reply_id=' . $id ) . '">' . esc_html( $count ) . '</a>';
 			}
 		}
 	}
@@ -216,7 +216,7 @@ class AdminColumns extends Feature {
 
 		$replies = wp_list_pluck( $wp_query->posts, 'ID' );
 
-		bbpc_cache()->private_run_bulk_posts( $replies );
+		gdbbx_cache()->private_run_bulk_posts( $replies );
 
 		$this->is_calculated = true;
 	}
@@ -224,9 +224,9 @@ class AdminColumns extends Feature {
 	public function pre_user_query( $query ) {
 		if ( ! isset( $query->query_vars['toolbox'] ) ) {
 			if ( $query->query_vars['orderby'] == 'usr.replies' ) {
-				$query->query_from .= " LEFT JOIN (SELECT post_author, count(*) as replies FROM " . bbpc_db()->wpdb()->posts . " WHERE post_type = 'reply' AND post_status IN ('publish', 'pending', 'closed') GROUP BY post_author) usr ON usr.post_author = " . bbpc_db()->wpdb()->users . ".ID";
+				$query->query_from .= " LEFT JOIN (SELECT post_author, count(*) as replies FROM " . gdbbx_db()->wpdb()->posts . " WHERE post_type = 'reply' AND post_status IN ('publish', 'pending', 'closed') GROUP BY post_author) usr ON usr.post_author = " . gdbbx_db()->wpdb()->users . ".ID";
 			} else if ( $query->query_vars['orderby'] == 'usr.topics' ) {
-				$query->query_from .= " LEFT JOIN (SELECT post_author, count(*) as topics FROM " . bbpc_db()->wpdb()->posts . " WHERE post_type = 'topic' AND post_status IN ('publish', 'pending', 'closed') GROUP BY post_author) usr ON usr.post_author = " . bbpc_db()->wpdb()->users . ".ID";
+				$query->query_from .= " LEFT JOIN (SELECT post_author, count(*) as topics FROM " . gdbbx_db()->wpdb()->posts . " WHERE post_type = 'topic' AND post_status IN ('publish', 'pending', 'closed') GROUP BY post_author) usr ON usr.post_author = " . gdbbx_db()->wpdb()->users . ".ID";
 			}
 
 			if ( $query->query_vars['orderby'] == 'usr.replies' || $query->query_vars['orderby'] == 'usr.topics' ) {
@@ -287,8 +287,8 @@ class AdminColumns extends Feature {
 		}
 
 		$users = array_keys( $wp_list_table->items );
-		$sql   = "SELECT post_type, post_author, count(*) AS counter FROM " . bbpc_db()->wpdb()->posts . " WHERE post_type IN ('reply', 'topic') AND post_status IN ('pending', 'publish', 'closed') AND post_author IN (" . join( ', ', $users ) . ") GROUP BY post_type, post_author";
-		$raw   = bbpc_db()->get_results( $sql );
+		$sql   = "SELECT post_type, post_author, count(*) AS counter FROM " . gdbbx_db()->wpdb()->posts . " WHERE post_type IN ('reply', 'topic') AND post_status IN ('pending', 'publish', 'closed') AND post_author IN (" . join( ', ', $users ) . ") GROUP BY post_type, post_author";
+		$raw   = gdbbx_db()->get_results( $sql );
 
 		foreach ( $raw as $row ) {
 			$wp_list_table->items[ $row->post_author ]->data->forums[ $row->post_type ] = $row->counter;
@@ -298,7 +298,7 @@ class AdminColumns extends Feature {
 	}
 
 	private function get_last_activity( $user_id ) {
-		$timestamp = bbpc_plugin()->get_user_last_activity( $user_id ) + d4p_gmt_offset() * 3600;
+		$timestamp = gdbbx_plugin()->get_user_last_activity( $user_id ) + d4p_gmt_offset() * 3600;
 
 		if ( $timestamp == 0 ) {
 			return '—';

@@ -1,57 +1,57 @@
 /* Feature: Quote */
-#bbpress-forums .bbpc-bbcode-quote {
+#bbpress-forums .gdbbx-bbcode-quote {
   padding: 0 0 0.5em 1em;
 }
-#bbpress-forums .bbpc-bbcode-quote p:last-child {
+#bbpress-forums .gdbbx-bbcode-quote p:last-child {
   margin-bottom: 0 !important;
 }
-#bbpress-forums .bbpc-bbcode-quote .bbpc-quote-title {
+#bbpress-forums .gdbbx-bbcode-quote .gdbbx-quote-title {
   font-weight: bold;
   padding-bottom: 2px;
   margin-bottom: 5px;
   border-bottom: 1px solid #DDD;
 }
-#bbpress-forums .bbpc-bbcode-quote.bbpc-quote-is-private p {
+#bbpress-forums .gdbbx-bbcode-quote.gdbbx-quote-is-private p {
   font-weight: bold;
   color: #800;
 }
 
 /* Feature: Thumbnail */
-#bbpress-forums .bbpc-topic-thumbnail {
+#bbpress-forums .gdbbx-topic-thumbnail {
   float: left;
   margin-right: 10px;
 }
-#bbpress-forums .bbpc-topic-thumbnail a {
+#bbpress-forums .gdbbx-topic-thumbnail a {
   display: block;
 }
-#bbpress-forums .bbpc-topic-thumbnail img {
+#bbpress-forums .gdbbx-topic-thumbnail img {
   height: 48px;
   width: auto;
 }
 
 /* Feature: Badges */
-#bbpress-forums .bbpc-badge-new-reply,
-#bbpress-forums .bbpc-badge-unread-forum,
-#bbpress-forums .bbpc-badge-unread-topic,
-#bbpress-forums .bbpc-badge-new-reply-topic,
-#bbpress-forums .bbpc-badge-new-posts,
-#bbpress-forums .bbpc-badge-new-topic {
+#bbpress-forums .gdbbx-badge-new-reply,
+#bbpress-forums .gdbbx-badge-unread-forum,
+#bbpress-forums .gdbbx-badge-unread-topic,
+#bbpress-forums .gdbbx-badge-new-reply-topic,
+#bbpress-forums .gdbbx-badge-new-posts,
+#bbpress-forums .gdbbx-badge-new-topic {
   margin: 0 0 0 4px;
   float: right;
 }
 
 /* Feature: Meta Footer */
-#bbpress-forums .bbpc-footer-meta {
+#bbpress-forums .gdbbx-footer-meta {
   background-color: #F4F4F4;
   padding: 8px;
   margin: 12px 0 0;
   overflow: auto;
 }
-#bbpress-forums .bbpc-footer-meta .bbpc-admin-links {
+#bbpress-forums .gdbbx-footer-meta .gdbbx-admin-links {
   float: right;
 }
-#bbpress-forums .bbpc-footer-meta .bbpc-admin-links a,
-#bbpress-forums .bbpc-footer-meta .bbpc-admin-links span {
+#bbpress-forums .gdbbx-footer-meta .gdbbx-admin-links a,
+#bbpress-forums .gdbbx-footer-meta .gdbbx-admin-links span {
   color: #BBB;
   font-weight: 400;
   font-size: 10px;

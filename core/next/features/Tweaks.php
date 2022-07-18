@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\BB;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\BB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -52,7 +52,7 @@ class Tweaks extends Feature {
 		}
 
 		if ( $this->settings['apply_fitvids_to_content'] ) {
-			add_filter( 'bbpc_script_values', array( $this, 'script_values' ) );
+			add_filter( 'gdbbx_script_values', array( $this, 'script_values' ) );
 		}
 
 		if ( $this->settings['hide_user_roles_from_users'] ) {
@@ -143,7 +143,7 @@ class Tweaks extends Feature {
 	}
 
 	public function load_seach_form_template() {
-		include( bbpc_get_template_part( 'bbpc-search-form-block.php' ) );
+		include( gdbbx_get_template_part( 'gdbbx-search-form-block.php' ) );
 	}
 
 	public function alternative_freshness( $output, $older_date, $newer_date ) {
@@ -200,7 +200,7 @@ class Tweaks extends Feature {
 	}
 
 	public function hide_user_roles( $r ) {
-		if ( ! bbpc_can_user_moderate() ) {
+		if ( ! gdbbx_can_user_moderate() ) {
 			$r['show_role'] = false;
 		}
 

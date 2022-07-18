@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Widget;
+namespace Dev4Press\Plugin\GDBBX\Widget;
 
-use SpiderDevs\Plugin\BBPC\Base\Widget;
+use Dev4Press\Plugin\GDBBX\Base\Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class TopicsViews extends Widget {
 	public $widget_base = 'd4p_bbw_topicsviews';
-	public $widget_class = 'bbpc-widget bbpc-widget-topicsviews';
+	public $widget_class = 'gdbbx-widget gdbbx-widget-topicsviews';
 
 	public $defaults = array(
 		'title' => 'Topics Views List',
@@ -18,7 +18,7 @@ class TopicsViews extends Widget {
 	);
 
 	public function __construct( $id_base = false, $name = '', $widget_options = array(), $control_options = array() ) {
-		$this->widget_name        = 'BBP Core: ' . __( "Topics Views", "bbp-core" );
+		$this->widget_name        = 'GD bbPress Toolbox: ' . __( "Topics Views", "bbp-core" );
 		$this->widget_description = __( "List of the selected topic views.", "bbp-core" );
 
 		parent::__construct( $id_base, $name, $widget_options, $control_options );
@@ -29,7 +29,7 @@ class TopicsViews extends Widget {
 			'content' => array(
 				'name'    => __( "Content", "gd-topic-polls" ),
 				'include' => array( 'topics-views-content' ),
-				'class'   => 'bbpc-tab-topics-views'
+				'class'   => 'gdbbx-tab-topics-views'
 			)
 		);
 	}

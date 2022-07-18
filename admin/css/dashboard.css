@@ -2,7 +2,7 @@
   display: block;
 }
 
-.d4p-group-dashboard-users .bbpc-front-user a {
+.d4p-group-dashboard-users .gdbbx-front-user a {
   color: inherit !important;
   text-decoration: none;
   border: 0;
@@ -10,23 +10,23 @@
   line-height: 20px;
   box-shadow: none;
 }
-.d4p-group-dashboard-users .bbpc-front-user a img {
+.d4p-group-dashboard-users .gdbbx-front-user a img {
   float: left;
   margin: 3px 3px 0 0;
 }
-.d4p-group-dashboard-users .bbpc-front-user.bbpc-user-color-bbp_keymaster {
+.d4p-group-dashboard-users .gdbbx-front-user.gdbbx-user-color-bbp_keymaster {
   color: #d00;
 }
-.d4p-group-dashboard-users .bbpc-front-user.bbpc-user-color-bbp_moderator {
+.d4p-group-dashboard-users .gdbbx-front-user.gdbbx-user-color-bbp_moderator {
   color: #06c;
 }
-.d4p-group-dashboard-users .bbpc-front-user.bbpc-user-color-bbp_participant {
+.d4p-group-dashboard-users .gdbbx-front-user.gdbbx-user-color-bbp_participant {
   color: #333;
 }
-.d4p-group-dashboard-users .bbpc-front-user.bbpc-user-color-bbp_spectator {
+.d4p-group-dashboard-users .gdbbx-front-user.gdbbx-user-color-bbp_spectator {
   color: #0d0;
 }
-.d4p-group-dashboard-users .bbpc-front-user.bbpc-user-color-bbp_blocked {
+.d4p-group-dashboard-users .gdbbx-front-user.gdbbx-user-color-bbp_blocked {
   color: #aaa;
 }
 
@@ -39,5 +39,3 @@
   list-style: disc outside;
   margin-left: 1em;
 }
-
-/*# sourceMappingURL=dashboard.css.map */

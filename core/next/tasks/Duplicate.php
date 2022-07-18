@@ -1,6 +1,6 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Tasks;
+namespace Dev4Press\Plugin\GDBBX\Tasks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -24,7 +24,7 @@ class Duplicate {
 		$topic = get_post( $id );
 		$terms = wp_get_post_terms( $id, bbp_get_topic_tag_tax_id(), array( 'fields' => 'ids' ) );
 
-		$topic_data = apply_filters( 'bbpc_dupe_topic_pre_insert', array(
+		$topic_data = apply_filters( 'gdbbx_dupe_topic_pre_insert', array(
 			'post_author'    => $topic->post_author,
 			'post_title'     => __( "Copy of", "bbp-core" ) . ' ' . $topic->post_title,
 			'post_content'   => $topic->post_content,

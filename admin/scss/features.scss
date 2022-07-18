@@ -39,8 +39,8 @@
     }
 }
 
-.bbpc-feature-more-control,
-.bbpc-features-bulk-control {
+.gdbbx-feature-more-control,
+.gdbbx-features-bulk-control {
     text-align: center;
     margin: 15px 0 0;
     border-top: 1px dotted #cccccc;
@@ -50,7 +50,7 @@
         width: 100%;
     }
 
-    .bbpc-inner-ctrl-options {
+    .gdbbx-inner-ctrl-options {
         display: none;
         padding: 10px;
         margin-top: 10px;
@@ -67,11 +67,11 @@
     }
 }
 
-.bbpc-content-editor-reply,
-.bbpc-content-editor-topic {
+.gdbbx-content-editor-reply,
+.gdbbx-content-editor-topic {
     display: none;
 
-    &.bbpc-select-type-show {
+    &.gdbbx-select-type-show {
         display: table-row;
     }
 }

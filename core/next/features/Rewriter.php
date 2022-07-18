@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 use WP_Post;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -244,7 +244,7 @@ class Rewriter extends Feature {
 		$forums = [];
 
 		if ( $forum_id === 0 ) {
-			return '/' . apply_filters( 'bbpc_topic_permalink_no_forum_slug', 'no-forum' ) . '/';
+			return '/' . apply_filters( 'gdbbx_topic_permalink_no_forum_slug', 'no-forum' ) . '/';
 		}
 
 		$forum      = get_post( $forum_id );

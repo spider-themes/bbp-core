@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -112,8 +112,8 @@ class ContentEditor extends Feature {
 				}
 			}
 
-			bbpc_roles()->update_roles();
-			bbpc_roles()->update_role_before_render();
+			gdbbx_roles()->update_roles();
+			gdbbx_roles()->update_role_before_render();
 
 			Enqueue::instance()->tinymce();
 		}
@@ -130,7 +130,7 @@ class ContentEditor extends Feature {
 	}
 
 	public function bbcodes_editor_fix( $args ) {
-		$args['editor_class'] .= ' bbpc-editor-fix';
+		$args['editor_class'] .= ' gdbbx-editor-fix';
 
 		return $args;
 	}
@@ -138,7 +138,7 @@ class ContentEditor extends Feature {
 	private function do_bbcodes( $form = 'topic' ) {
 		$this->do_textarea();
 
-		if ( bbpc_is_bbcodes_toolbar_available() ) {
+		if ( gdbbx_is_bbcodes_toolbar_available() ) {
 			if ( $form == 'topic' ) {
 				add_action( 'bbp_theme_before_topic_form_content', array( $this, 'bbcodes_display_topic' ), 10000 );
 			} else if ( $form == 'reply' ) {
@@ -166,9 +166,9 @@ class ContentEditor extends Feature {
 	private function bbcodes_display( $form = 'topic' ) {
 		$size = $this->get( 'bbcodes_' . $form . '_size' );
 
-		echo '<div class="bbpc-newpost-bbcodes">';
+		echo '<div class="gdbbx-newpost-bbcodes">';
 
-		\Dev4Press\Plugin\BBPC\BBCodes\Toolbar::instance()->display( $size );
+		\Dev4Press\Plugin\GDBBX\BBCodes\Toolbar::instance()->display( $size );
 
 		echo '</div>';
 	}

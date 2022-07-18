@@ -25,52 +25,51 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! class_exists( 'd4p_datetime_core' ) ) {
-	class d4p_datetime_core {
-		public function __construct() {}
+if (!class_exists('d4p_datetime_core')) {
+    class d4p_datetime_core {
+        public function __construct() {}
 
-		public function offset() {
-			$offset = get_option( 'gmt_offset' );
+        public function offset() {
+            $offset = get_option('gmt_offset');
 
-			if ( empty( $offset ) ) {
-				$offset = wp_timezone_override_offset();
-			}
+            if (empty($offset)) {
+                $offset = wp_timezone_override_offset();
+            }
 
-			return $offset === false ? 0 : $offset;
-		}
+            return $offset === false ? 0 : $offset;
+        }
 
-		public function formatted_offset( $offset = null ) {
-			if ( is_null( $offset ) ) {
-				$offset = $this->offset();
-			}
+        public function formatted_offset($offset = null) {
+            if (is_null($offset)) {
+                $offset = $this->offset();
+            }
 
-			$hours   = intval( $offset );
-			$minutes = absint( ( $offset - floor( $offset ) ) * 60 );
+            $hours = intval($offset);
+            $minutes = absint(($offset - floor($offset)) * 60);
 
-			return sprintf( '%+03d:%02d', $hours, $minutes );
-		}
+            return sprintf('%+03d:%02d', $hours, $minutes);
+        }
 
-		public function timestamp_local_to_gmt( $local ) {
-			return $local - $this->offset() * HOUR_IN_SECONDS;
-		}
+        public function timestamp_local_to_gmt($local) {
+            return $local - $this->offset() * HOUR_IN_SECONDS;
+        }
 
-		public function timestamp_gmt_to_local( $gmt ) {
-			return $gmt + $this->offset() * HOUR_IN_SECONDS;
-		}
+        public function timestamp_gmt_to_local($gmt) {
+            return $gmt + $this->offset() * HOUR_IN_SECONDS;
+        }
 
-		public function timestamp( $gmt = true ) {
-			return $gmt ? time() : $this->timestamp_gmt_to_local( time() );
-		}
+        public function timestamp($gmt = true) {
+            return $gmt ? time() : $this->timestamp_gmt_to_local(time());
+        }
 
-		public function date( $format, $gmt = true ) {
-			return $gmt ? gmdate( $format ) : gmdate( $format, $this->timestamp_gmt_to_local( time() ) );
-		}
+        public function date($format, $gmt = true) {
+            return $gmt ? gmdate($format) : gmdate($format, $this->timestamp_gmt_to_local(time()));
+        }
 
-		public function mysql_date( $gmt = true ) {
-			return $this->date( 'Y-m-d H:i:s', $gmt );
-		}
-	}
+        public function mysql_date($gmt = true) {
+            return $this->date('Y-m-d H:i:s', $gmt);
+        }
+    }
 }

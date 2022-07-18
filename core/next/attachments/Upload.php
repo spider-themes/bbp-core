@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Attachments;
+namespace Dev4Press\Plugin\GDBBX\Attachments;
 
-use SpiderDevs\Plugin\BBPC\Basic\Error;
+use Dev4Press\Plugin\GDBBX\Basic\Error;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -43,14 +43,14 @@ class Upload {
 
 		$post_id = $reply_id == 0 ? $topic_id : $reply_id;
 
-		if ( isset( $_POST['bbpc']['remove-attachment'] ) ) {
-			$attachments = (array) $_POST['bbpc']['remove-attachment'];
+		if ( isset( $_POST['gdbbx']['remove-attachment'] ) ) {
+			$attachments = (array) $_POST['gdbbx']['remove-attachment'];
 
 			foreach ( $attachments as $id => $action ) {
 				$attachment_id = absint( $id );
 
 				if ( $attachment_id > 0 && ( $action == 'delete' || $action == 'detach' ) ) {
-					bbpc_attachments()->h()->delete_attachment( $attachment_id, $post_id, $action );
+					gdbbx_attachments()->h()->delete_attachment( $attachment_id, $post_id, $action );
 				}
 			}
 		}
@@ -60,36 +60,36 @@ class Upload {
 		$uploads_captions = array();
 
 		if ( $is_topic ) {
-			$featured = bbpc_attachments()->get( 'topic_featured_image' );
+			$featured = gdbbx_attachments()->get( 'topic_featured_image' );
 		} else {
-			$featured = bbpc_attachments()->get( 'reply_featured_image' );
+			$featured = gdbbx_attachments()->get( 'reply_featured_image' );
 		}
 
 		$counter  = 0;
-		$captions = isset( $_POST['bbpc-attachment_caption'] ) ? (array) $_POST['bbpc-attachment_caption'] : array();
+		$captions = isset( $_POST['gdbbx-attachment_caption'] ) ? (array) $_POST['gdbbx-attachment_caption'] : array();
 
-		if ( ! empty( $_FILES ) && ! empty( $_FILES['bbpc-attachment'] ) ) {
+		if ( ! empty( $_FILES ) && ! empty( $_FILES['gdbbx-attachment'] ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
 			$errors    = new Error();
 			$overrides = array( 'test_form' => false );
 
-			foreach ( $_FILES['bbpc-attachment']['error'] as $key => $error ) {
-				$file_name = $_FILES['bbpc-attachment']['name'][ $key ];
+			foreach ( $_FILES['gdbbx-attachment']['error'] as $key => $error ) {
+				$file_name = $_FILES['gdbbx-attachment']['name'][ $key ];
 
 				if ( $error == UPLOAD_ERR_OK ) {
 					$file = array(
 						'name'     => $file_name,
-						'type'     => $_FILES['bbpc-attachment']['type'][ $key ],
-						'size'     => $_FILES['bbpc-attachment']['size'][ $key ],
-						'tmp_name' => $_FILES['bbpc-attachment']['tmp_name'][ $key ],
-						'error'    => $_FILES['bbpc-attachment']['error'][ $key ]
+						'type'     => $_FILES['gdbbx-attachment']['type'][ $key ],
+						'size'     => $_FILES['gdbbx-attachment']['size'][ $key ],
+						'tmp_name' => $_FILES['gdbbx-attachment']['tmp_name'][ $key ],
+						'error'    => $_FILES['gdbbx-attachment']['error'][ $key ]
 					);
 
 					$file_name = sanitize_file_name( $file_name );
 
-					if ( bbpc_attachments()->is_right_size( $file, $forum_id ) ) {
-						$mimes = bbpc_attachments()->filter_mime_types( $forum_id );
+					if ( gdbbx_attachments()->is_right_size( $file, $forum_id ) ) {
+						$mimes = gdbbx_attachments()->filter_mime_types( $forum_id );
 						if ( ! is_null( $mimes ) && ! empty( $mimes ) ) {
 							$overrides['mimes'] = $mimes;
 						}
@@ -97,13 +97,13 @@ class Upload {
 						$this->forum_id = $forum_id;
 						$this->user_id  = $reply_author;
 
-						if ( bbpc_attachments()->get( 'upload_dir_override' ) ) {
+						if ( gdbbx_attachments()->get( 'upload_dir_override' ) ) {
 							add_filter( 'upload_dir', array( $this, 'upload_dir' ) );
 						}
 
 						$upload = wp_handle_upload( $file, $overrides );
 
-						if ( bbpc_attachments()->get( 'upload_dir_override' ) ) {
+						if ( gdbbx_attachments()->get( 'upload_dir_override' ) ) {
 							remove_filter( 'upload_dir', array( $this, 'upload_dir' ) );
 						}
 
@@ -150,7 +150,7 @@ class Upload {
 			}
 		}
 
-		if ( ! empty( $errors->errors ) && bbpc_attachments()->get( 'log_upload_errors' ) == 1 ) {
+		if ( ! empty( $errors->errors ) && gdbbx_attachments()->get( 'log_upload_errors' ) == 1 ) {
 			foreach ( $errors->errors as $code => $errs ) {
 				foreach ( $errs as $error ) {
 					if ( $error[0] != '' && $error[1] != '' ) {
@@ -188,7 +188,7 @@ class Upload {
 				$attach_id   = wp_insert_attachment( $attachment, $upload['file'], $post_id );
 				$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
 
-				bbpc_db()->assign_attachment( $post_id, $attach_id );
+				gdbbx_db()->assign_attachment( $post_id, $attach_id );
 
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 
@@ -215,7 +215,7 @@ class Upload {
 
 			if ( current_theme_supports( 'post-thumbnails' ) ) {
 				if ( $featured && ! has_post_thumbnail( $post_id ) ) {
-					$ids = bbpc_cache()->attachments_get_attachments_ids( $post_id );
+					$ids = gdbbx_cache()->attachments_get_attachments_ids( $post_id );
 
 					$args = array(
 						'post_type'           => 'attachment',
@@ -239,7 +239,7 @@ class Upload {
 			}
 		}
 
-		bbpc_db()->update_topic_attachments_count( $topic_id );
+		gdbbx_db()->update_topic_attachments_count( $topic_id );
 	}
 
 	public function update_post_content( $post_id ) {
@@ -299,8 +299,8 @@ class Upload {
 	}
 
 	private function _upload_dir_structure() : string {
-		$base      = d4p_sanitize_file_path( bbpc_attachments()->get( 'upload_dir_forums_base' ) );
-		$structure = bbpc_attachments()->get( 'upload_dir_structure' );
+		$base      = d4p_sanitize_file_path( gdbbx_attachments()->get( 'upload_dir_forums_base' ) );
+		$structure = gdbbx_attachments()->get( 'upload_dir_structure' );
 
 		$forum      = get_post( $this->forum_id );
 		$forum_name = $forum->post_name;

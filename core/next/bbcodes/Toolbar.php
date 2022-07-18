@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\BBCodes;
+namespace Dev4Press\Plugin\GDBBX\BBCodes;
 
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
-use SpiderDevs\Plugin\BBPC\Features\BBCodes;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Features\BBCodes;
 
 class Toolbar {
 	private $_buttons;
@@ -261,12 +261,12 @@ class Toolbar {
 	}
 
 	private function render( $size = 'small' ) {
-		$class = 'bbpc-bbcodes-toolbar bbpc-buttonbar-size-' . $size;
+		$class = 'gdbbx-bbcodes-toolbar gdbbx-buttonbar-size-' . $size;
 
 		echo '<div role="toolbar" class="' . $class . '">';
-		echo '<div class="bbpc-buttonbar-inner">';
+		echo '<div class="gdbbx-buttonbar-inner">';
 
-		do_action( 'bbpc_bbcode_toolbar_buttons_before' );
+		do_action( 'gdbbx_bbcode_toolbar_buttons_before' );
 
 		$id = 1;
 		foreach ( $this->_buttons as $code => $obj ) {
@@ -277,33 +277,33 @@ class Toolbar {
 			}
 		}
 
-		do_action( 'bbpc_bbcode_toolbar_buttons_after' );
+		do_action( 'gdbbx_bbcode_toolbar_buttons_after' );
 
 		echo '</div>';
 		echo '</div>';
 	}
 
 	private function button( $code, $obj, $id ) {
-		$button_id = 'bbpc-button-' . $id;
+		$button_id = 'gdbbx-button-' . $id;
 
-		echo '<div id="' . $button_id . '" role="button" class="bbpc-buttonbar-button bbpc-buttonbar-button-' . $code . '" aria-labelledby="' . $button_id . '" aria-label="' . $obj['title'] . '">';
-		echo '<button class="bbpc-button" role="presentation" type="button" title="' . $obj['title'] . '" data-code="' . $code . '" data-bbcode="' . $obj['code'] . '">' . $this->icon( $code, $obj ) . '</button>';
+		echo '<div id="' . $button_id . '" role="button" class="gdbbx-buttonbar-button gdbbx-buttonbar-button-' . $code . '" aria-labelledby="' . $button_id . '" aria-label="' . $obj['title'] . '">';
+		echo '<button class="gdbbx-button" role="presentation" type="button" title="' . $obj['title'] . '" data-code="' . $code . '" data-bbcode="' . $obj['code'] . '">' . $this->icon( $code, $obj ) . '</button>';
 		echo '</div>';
 	}
 
 	private function icon( $code, $obj ) {
-		$icon = apply_filters( 'bbpc_bbcode_toolbar_button_icon', false, $code, $obj );
+		$icon = apply_filters( 'gdbbx_bbcode_toolbar_button_icon', false, $code, $obj );
 
 		if ( $icon !== false ) {
 			return $icon;
 		}
 
-		$class = "bbpc-icon bbpc-icon-" . $obj['icon'];
+		$class = "gdbbx-icon gdbbx-icon-" . $obj['icon'];
 
 		if ( $code == 'br' ) {
-			$class .= " bbpc-rotate-90";
+			$class .= " gdbbx-rotate-90";
 		}
 
-		return '<i aria-hidden="true" class="' . $class . '"></i><span class="bbpc-accessibility-show-for-sr">' . $obj['title'] . '</span>';
+		return '<i aria-hidden="true" class="' . $class . '"></i><span class="gdbbx-accessibility-show-for-sr">' . $obj['title'] . '</span>';
 	}
 }

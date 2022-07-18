@@ -1,11 +1,11 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
-use SpiderDevs\Plugin\BBPC\Basic\Plugin;
-use SpiderDevs\Plugin\BBPC\Basic\User;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Basic\Plugin;
+use Dev4Press\Plugin\GDBBX\Basic\User;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -32,7 +32,7 @@ class UsersStats extends Feature {
 			add_action( 'bbp_theme_after_topic_author_details', array( $this, 'user_stats' ) );
 			add_action( 'bbp_theme_after_reply_author_details', array( $this, 'user_stats' ) );
 
-			add_action( 'bbpc_template_before_replies_loop', array( $this, 'before_replies_loop' ), 10, 2 );
+			add_action( 'gdbbx_template_before_replies_loop', array( $this, 'before_replies_loop' ), 10, 2 );
 		}
 	}
 
@@ -47,8 +47,8 @@ class UsersStats extends Feature {
 	}
 
 	public function before_replies_loop( $posts, $users ) {
-		bbpc_cache()->userstats_run_bulk_counts( $users );
-		bbpc_cache()->userstats_run_bulk_online( $users );
+		gdbbx_cache()->userstats_run_bulk_counts( $users );
+		gdbbx_cache()->userstats_run_bulk_online( $users );
 	}
 
 	public function user_stats() {
@@ -64,7 +64,7 @@ class UsersStats extends Feature {
 		if ( $author > 0 ) {
 			$user = User::instance( $author );
 
-			if ( $this->settings['show_online_status'] && function_exists( 'bbpc_module_online' ) ) {
+			if ( $this->settings['show_online_status'] && function_exists( 'gdbbx_module_online' ) ) {
 				$list['online_status'] = $user->render_item_online_status();
 			}
 
@@ -95,8 +95,8 @@ class UsersStats extends Feature {
 			}
 		}
 
-		$list = apply_filters( 'bbpc_user_stats_items', $list, $author );
+		$list = apply_filters( 'gdbbx_user_stats_items', $list, $author );
 
-		echo '<div class="bbpc-user-stats">' . join( '', $list ) . '</div>';
+		echo '<div class="gdbbx-user-stats">' . join( '', $list ) . '</div>';
 	}
 }

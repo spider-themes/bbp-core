@@ -1,9 +1,9 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
-use SpiderDevs\Plugin\BBPC\Basic\Enqueue;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Basic\Enqueue;
 use WP_User;
 use WP_User_Query;
 
@@ -77,17 +77,17 @@ class ForumIndex extends Feature {
 	public function welcome_index() {
 		Enqueue::instance()->core();
 
-		include( bbpc_get_template_part( 'bbpc-forums-welcome.php' ) );
+		include( gdbbx_get_template_part( 'gdbbx-forums-welcome.php' ) );
 	}
 
 	public function forum_index() {
 		Enqueue::instance()->core();
 
-		include( bbpc_get_template_part( 'bbpc-forums-statistics.php' ) );
+		include( gdbbx_get_template_part( 'gdbbx-forums-statistics.php' ) );
 	}
 
 	private function last_activity() {
-		$value = defined( 'BBPC_LAST_ACTIVTY' ) ? BBPC_LAST_ACTIVTY : bbpc_plugin()->get_user_last_activity( bbp_get_current_user_id() );
+		$value = defined( 'GDBBX_LAST_ACTIVTY' ) ? GDBBX_LAST_ACTIVTY : gdbbx_plugin()->get_user_last_activity( bbp_get_current_user_id() );
 
 		return absint( $value );
 	}
@@ -98,8 +98,8 @@ class ForumIndex extends Feature {
 
 		$out = array(
 			'timestamp' => $activity,
-			'topics'    => bbpc_db()->get_topics_count_since( $activity ),
-			'replies'   => bbpc_db()->get_replies_count_since( $activity ),
+			'topics'    => gdbbx_db()->get_topics_count_since( $activity ),
+			'replies'   => gdbbx_db()->get_replies_count_since( $activity ),
 			'time'      => date_i18n( get_option( 'time_format' ), $timestamp ),
 			'date'      => date_i18n( get_option( 'date_format' ), $timestamp ),
 		);
@@ -107,7 +107,7 @@ class ForumIndex extends Feature {
 		$out['posts'] = $out['topics'] + $out['replies'];
 
 		if ( $out['posts'] == 0 ) {
-			add_filter( 'bbpc_welcome_back_user_links_last_visit', '__return_false' );
+			add_filter( 'gdbbx_welcome_back_user_links_last_visit', '__return_false' );
 		}
 
 		return $out;
@@ -117,7 +117,7 @@ class ForumIndex extends Feature {
 		$links = array();
 
 		$_view_new_posts = CustomViews::instance()->settings['newposts_slug'];
-		if ( bbp_get_view_id( $_view_new_posts ) !== false && apply_filters( 'bbpc_welcome_back_user_links_last_visit', true ) ) {
+		if ( bbp_get_view_id( $_view_new_posts ) !== false && apply_filters( 'gdbbx_welcome_back_user_links_last_visit', true ) ) {
 			$links[] = '<a href="' . bbp_get_view_url( $_view_new_posts ) . '">' . __( "New posts since last visit", "bbp-core" ) . '</a>';
 		}
 
@@ -132,12 +132,12 @@ class ForumIndex extends Feature {
 	}
 
 	public function user_roles_legend() : string {
-		$_roles = bbpc_get_user_roles();
+		$_roles = gdbbx_get_user_roles();
 
 		$items = array();
 
 		foreach ( $_roles as $role => $name ) {
-			$items[] = '<span class="bbpc-front-user bbpc-user-color-' . $role . '">' . $name . '</span>';
+			$items[] = '<span class="gdbbx-front-user gdbbx-user-color-' . $role . '">' . $name . '</span>';
 		}
 
 		return join( ', ', $items );
@@ -150,7 +150,7 @@ class ForumIndex extends Feature {
 		$items = array();
 
 		if ( $_show == 0 ) {
-			$online = bbpc_module_online()->online();
+			$online = gdbbx_module_online()->online();
 
 			$_users = array();
 			foreach ( $online['roles'] as $ids ) {
@@ -171,7 +171,7 @@ class ForumIndex extends Feature {
 
 			$label = __( "Users currently online", "bbp-core" );
 		} else {
-			$_users = array_keys( bbpc_db()->get_users_active_in_past( $_show * MINUTE_IN_SECONDS, $_limit ) );
+			$_users = array_keys( gdbbx_db()->get_users_active_in_past( $_show * MINUTE_IN_SECONDS, $_limit ) );
 
 			foreach ( $_users as $id ) {
 				$_user = get_user_by( 'id', absint( $id ) );
@@ -239,10 +239,10 @@ class ForumIndex extends Feature {
 
 		$_roles = $args['color'] ? $this->_user_roles( $user ) : array();
 
-		$_class = 'bbpc-front-user';
+		$_class = 'gdbbx-front-user';
 
 		if ( ! empty( $_roles ) ) {
-			$_class .= ' bbpc-user-color-' . $_roles[0];
+			$_class .= ' gdbbx-user-color-' . $_roles[0];
 		}
 
 		$item = '<span class="' . $_class . '">';
@@ -284,7 +284,7 @@ class ForumIndex extends Feature {
 	}
 
 	private function _user_roles( WP_User $user ) {
-		$_roles = array_keys( bbpc_get_user_roles() );
+		$_roles = array_keys( gdbbx_get_user_roles() );
 		$_inter = array_intersect( $user->roles, $_roles );
 
 		return array_values( $_inter );

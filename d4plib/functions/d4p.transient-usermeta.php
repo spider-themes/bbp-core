@@ -25,45 +25,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! function_exists( 'd4p_delete_user_transient' ) ) {
-	function d4p_delete_user_transient( $user_id, $transient ) {
-		$transient_option  = '_transient_' . $transient;
-		$transient_timeout = '_transient_timeout_' . $transient;
+if (!function_exists('d4p_delete_user_transient')) {
+    function d4p_delete_user_transient($user_id, $transient) {
+        $transient_option = '_transient_'.$transient;
+        $transient_timeout = '_transient_timeout_'.$transient;
 
-		delete_user_meta( $user_id, $transient_option );
-		delete_user_meta( $user_id, $transient_timeout );
-	}
+        delete_user_meta($user_id, $transient_option);
+        delete_user_meta($user_id, $transient_timeout);
+    }
 }
 
-if ( ! function_exists( 'd4p_get_user_transient' ) ) {
-	function d4p_get_user_transient( $user_id, $transient ) {
-		$transient_option  = '_transient_' . $transient;
-		$transient_timeout = '_transient_timeout_' . $transient;
+if (!function_exists('d4p_get_user_transient')) {
+    function d4p_get_user_transient($user_id, $transient) {
+        $transient_option = '_transient_'.$transient;
+        $transient_timeout = '_transient_timeout_'.$transient;
 
-		if ( get_user_meta( $user_id, $transient_timeout, true ) < time() ) {
-			delete_user_meta( $user_id, $transient_option );
-			delete_user_meta( $user_id, $transient_timeout );
-			return false;
-		}
+        if (get_user_meta($user_id, $transient_timeout, true) < time()) {
+            delete_user_meta($user_id, $transient_option);
+            delete_user_meta($user_id, $transient_timeout);
+            return false;
+        }
 
-		return get_user_meta( $user_id, $transient_option, true );
-	}
+        return get_user_meta($user_id, $transient_option, true);
+    }
 }
 
-if ( ! function_exists( 'd4p_set_user_transient' ) ) {
-	function d4p_set_user_transient( $user_id, $transient, $value, $expiration = 86400 ) {
-		$transient_option  = '_transient_' . $transient;
-		$transient_timeout = '_transient_timeout_' . $transient;
+if (!function_exists('d4p_set_user_transient')) {
+    function d4p_set_user_transient($user_id, $transient, $value, $expiration = 86400) {
+        $transient_option = '_transient_'.$transient;
+        $transient_timeout = '_transient_timeout_'.$transient;
 
-		if ( get_user_meta( $user_id, $transient_option, true ) != '' ) {
-			delete_user_meta( $user_id, $transient_option );
-			delete_user_meta( $user_id, $transient_timeout );
-		}
+        if (get_user_meta($user_id, $transient_option, true) != '') {
+            delete_user_meta($user_id, $transient_option);
+            delete_user_meta($user_id, $transient_timeout);
+        }
 
-		add_user_meta( $user_id, $transient_timeout, time() + $expiration, true );
-		add_user_meta( $user_id, $transient_option, $value, true );
-	}
+        add_user_meta($user_id, $transient_timeout, time() + $expiration, true);
+        add_user_meta($user_id, $transient_option, $value, true);
+    }
 }

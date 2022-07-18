@@ -1,15 +1,15 @@
-.bbpc-bbcode-profile_items,
-#{$forums}.bbpc-user-stats {
-    .bbpc-value {
+.gdbbx-bbcode-profile_items,
+#{$forums}.gdbbx-user-stats {
+    .gdbbx-value {
         font-weight: bold;
     }
 
-    .bbpc-label {
-        &.bbpc-status-offline {
+    .gdbbx-label {
+        &.gdbbx-status-offline {
             color: #C00;
         }
 
-        &.bbpc-status-online {
+        &.gdbbx-status-online {
             color: #298500;
             font-weight: bold;
         }

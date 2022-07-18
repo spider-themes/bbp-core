@@ -25,32 +25,31 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; }
+if (!defined('ABSPATH')) { exit; }
 
-if ( ! function_exists( 'd4p_get_ip_whois' ) ) {
-	function d4p_get_ip_whois( $ip = '' ) {
-		$server = 'whois.lacnic.net';
+if (!function_exists('d4p_get_ip_whois')) {
+    function d4p_get_ip_whois($ip = '') {
+        $server = 'whois.lacnic.net';
 
-		if ( $ip == '' ) {
-			$ip = d4p_visitor_ip();
-		}
+        if ($ip == '') {
+            $ip = d4p_visitor_ip();
+        }
 
-		$fp = @fsockopen( $server, 43, $errno, $errstr, 20 );
+        $fp = @fsockopen($server, 43, $errno, $errstr, 20);
 
-		if ( $fp === false ) {
-			return '';
-		} else {
-			fputs( $fp, $ip . "\r\n" );
+        if ($fp === false) {
+            return '';
+        } else {
+            fputs($fp, $ip."\r\n");
 
-			$out = '';
-			while ( ! feof( $fp ) ) {
-				$out .= fgets( $fp );
-			}
+            $out = '';
+            while (!feof($fp)) {
+                $out.= fgets($fp);
+            }
 
-			fclose( $fp );
+            fclose($fp);
 
-			return $out;
-		}
-	}
+            return $out;
+        }
+    }
 }

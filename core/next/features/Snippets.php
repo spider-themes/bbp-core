@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -114,7 +114,7 @@ class Snippets extends Feature {
 	public function discussion_forum_posting() {
 		$topic_id = bbp_get_topic_id();
 
-		if ( apply_filters( 'bbpc_rich_snippet_discussion_forum_posting', true, $topic_id ) ) {
+		if ( apply_filters( 'gdbbx_rich_snippet_discussion_forum_posting', true, $topic_id ) ) {
 			$this->_add_dfp_snippet( $topic_id );
 		}
 	}
@@ -164,7 +164,7 @@ class Snippets extends Feature {
 			}
 		}
 
-		$snippet = apply_filters( 'bbpc_rich_snippet_discussion_forum_posting_snippet', $snippet, $topic_id );
+		$snippet = apply_filters( 'gdbbx_rich_snippet_discussion_forum_posting_snippet', $snippet, $topic_id );
 
 		$render = '<script type="application/ld+json">';
 		$render .= json_encode( $snippet );
@@ -196,7 +196,7 @@ class Snippets extends Feature {
 			$_id = $this->settings['topic_dfp_fallback_image'];
 		}
 
-		$_id = apply_filters( 'bbpc_rich_snippet_discussion_forum_posting_featured_image_id', $_id, $topic_id );
+		$_id = apply_filters( 'gdbbx_rich_snippet_discussion_forum_posting_featured_image_id', $_id, $topic_id );
 
 		if ( $_id && $_id > 0 ) {
 			return wp_get_attachment_image_url( $_id, 'full' );

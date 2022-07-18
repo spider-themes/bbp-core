@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -63,13 +63,13 @@ class CloseTopicControl extends Feature {
 		}
 
 		if ( $allowed ) {
-			$label = apply_filters( 'bbpc_close_topic_checkbox_label', __( "Close this topic", "bbp-core" ) );
+			$label = apply_filters( 'gdbbx_close_topic_checkbox_label', __( "Close this topic", "bbp-core" ) );
 
 			?>
 
             <p>
-                <input name="bbpc_close_topic" id="bbpc_close_topic" type="checkbox" value="close"/>
-                <label for="bbpc_close_topic"><?php echo esc_html( $label ); ?></label>
+                <input name="gdbbx_close_topic" id="gdbbx_close_topic" type="checkbox" value="close"/>
+                <label for="gdbbx_close_topic"><?php echo esc_html( $label ); ?></label>
             </p>
 
 			<?php
@@ -84,7 +84,7 @@ class CloseTopicControl extends Feature {
 		$allowed = $this->allowed();
 
 		if ( $allowed ) {
-			$allowed = bbpc_current_user_can_moderate();
+			$allowed = gdbbx_current_user_can_moderate();
 		}
 
 		if ( ! $allowed ) {
@@ -94,7 +94,7 @@ class CloseTopicControl extends Feature {
 		}
 
 		if ( $allowed ) {
-			if ( isset( $_POST['bbpc_close_topic'] ) && $_POST['bbpc_close_topic'] == 'close' ) {
+			if ( isset( $_POST['gdbbx_close_topic'] ) && $_POST['gdbbx_close_topic'] == 'close' ) {
 				$done = bbp_close_topic( $topic_id );
 
 				if ( ! is_wp_error( $done ) && $done !== false ) {
@@ -119,7 +119,7 @@ class CloseTopicControl extends Feature {
 			return false;
 		}
 
-		$output   = bbpc_mailer()->get_topic_author_and_subscribers( $topic_id, 'bbp_topic_manual_close_user_ids', $_send_to_author, $_send_to_subscribers, 'topic-closed-notification' );
+		$output   = gdbbx_mailer()->get_topic_author_and_subscribers( $topic_id, 'bbp_topic_manual_close_user_ids', $_send_to_author, $_send_to_subscribers, 'topic-closed-notification' );
 		$user_ids = isset( $output['user_ids'] ) ? $output['user_ids'] : array();
 		$emails   = isset( $output['emails'] ) ? $output['emails'] : array();
 
@@ -128,7 +128,7 @@ class CloseTopicControl extends Feature {
 		}
 
 		$topic_url  = bbp_get_topic_permalink( $topic_id );
-		$topic_data = bbpc_mailer()->get_topic_content( $topic_id );
+		$topic_data = gdbbx_mailer()->get_topic_content( $topic_id );
 
 		/**
 		 * @var string $blog_name
@@ -159,7 +159,7 @@ Do not reply to this email!", "Email message: notify on topic manual close", "bb
 
 		$message = d4p_replace_tags_in_content( $message, array(
 			'BLOG_NAME'     => $blog_name,
-			'CLOSED_USER'   => bbpc_get_user_display_name(),
+			'CLOSED_USER'   => gdbbx_get_user_display_name(),
 			'FORUM_TITLE'   => $forum_title,
 			'FORUM_LINK'    => get_permalink( $forum_id ),
 			'TOPIC_TITLE'   => $topic_title,
@@ -178,7 +178,7 @@ Do not reply to this email!", "Email message: notify on topic manual close", "bb
 
 		$subject = d4p_replace_tags_in_content( $subject, array(
 			'BLOG_NAME'   => $blog_name,
-			'CLOSED_USER' => bbpc_get_user_display_name(),
+			'CLOSED_USER' => gdbbx_get_user_display_name(),
 			'TOPIC_TITLE' => $topic_title,
 			'FORUM_TITLE' => $forum_title
 		) );

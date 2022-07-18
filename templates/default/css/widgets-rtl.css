@@ -1,28 +1,28 @@
-.bbpc-widget {
+.gdbbx-widget {
   /* Info Widgets */
   /* Thanks Widget */
 }
-.bbpc-widget .bbpc-widget-the-info-dl dt {
+.gdbbx-widget .gdbbx-widget-the-info-dl dt {
   float: right;
   clear: right;
 }
-.bbpc-widget .bbpc-widget-the-info-list i.bbpc-icon {
+.gdbbx-widget .gdbbx-widget-the-info-list i.gdbbx-icon {
   float: right;
   margin-left: 4px;
 }
-.bbpc-widget .bbpc-widget-the-info-table table tbody th {
+.gdbbx-widget .gdbbx-widget-the-info-table table tbody th {
   text-align: right;
   padding-right: 0;
 }
-.bbpc-widget .bbpc-widget-the-info-table table tbody td {
+.gdbbx-widget .gdbbx-widget-the-info-table table tbody td {
   text-align: left;
   padding-left: 0;
 }
-.bbpc-widget .bbpc-widget-the-info-table table i.bbpc-icon {
+.gdbbx-widget .gdbbx-widget-the-info-table table i.gdbbx-icon {
   float: right;
   margin-left: 4px;
 }
-.bbpc-widget .bbpc-widget-userthanks-default img {
+.gdbbx-widget .gdbbx-widget-userthanks-default img {
   float: right;
   margin: 4px 0 0 4px;
 }

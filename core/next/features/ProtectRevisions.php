@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -39,11 +39,11 @@ class ProtectRevisions extends Feature {
 	}
 
 	public function reply_content_append_revisions( $content = '', $id = 0 ) {
-		if ( bbpc()->is_inside_content_shortcode( $id ) ) {
+		if ( gdbbx()->is_inside_content_shortcode( $id ) ) {
 			return $content;
 		}
 
-		if ( bbpc_is_feed() ) {
+		if ( gdbbx_is_feed() ) {
 			return $content;
 		}
 

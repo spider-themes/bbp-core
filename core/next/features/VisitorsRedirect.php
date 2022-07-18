@@ -1,8 +1,8 @@
 <?php
 
-namespace SpiderDevs\Plugin\BBPC\Features;
+namespace Dev4Press\Plugin\GDBBX\Features;
 
-use SpiderDevs\Plugin\BBPC\Base\Feature;
+use Dev4Press\Plugin\GDBBX\Base\Feature;
 use WP_Query;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -74,7 +74,7 @@ class VisitorsRedirect extends Feature {
 			$url = get_site_url();
 		}
 
-		$url = apply_filters( 'bbpc_visitors_redirect_' . $key, $url );
+		$url = apply_filters( 'gdbbx_visitors_redirect_' . $key, $url );
 
 		wp_redirect( $url );
 		exit;
@@ -88,7 +88,7 @@ class VisitorsRedirect extends Feature {
 	}
 
 	public function redirect_all() {
-		if ( apply_filters( 'bbpc_visitors_redirect_bbpress', bbpc_is_bbpress() ) ) {
+		if ( apply_filters( 'gdbbx_visitors_redirect_bbpress', gdbbx_is_bbpress() ) ) {
 			if ( $this->get( 'for_visitors' ) === 'custom' ) {
 				$this->redirect_to_key( 'for_visitors_url' );
 			} else if ( $this->get( 'for_visitors' ) === 'login' ) {
@@ -104,7 +104,7 @@ class VisitorsRedirect extends Feature {
 
 		$redirect = is_bbpress() && ! current_user_can( 'spectate' );
 
-		if ( apply_filters( 'bbpc_visitors_redirect_blocked_users', $redirect, bbp_get_current_user_id() ) ) {
+		if ( apply_filters( 'gdbbx_visitors_redirect_blocked_users', $redirect, bbp_get_current_user_id() ) ) {
 			$this->redirect_to_key( 'blocked_users_url' );
 		}
 	}
@@ -122,7 +122,7 @@ class VisitorsRedirect extends Feature {
 		if ( ( $request['type'] == 'topic' || $request['type'] == 'reply' ) && $this->settings['noaccess_topic'] ) {
 			$topic_id = $request['topic'];
 
-			if ( apply_filters( 'bbpc_visitors_redirect_hidden_forums_topic', $redirect, $topic_id, $forum_id ) ) {
+			if ( apply_filters( 'gdbbx_visitors_redirect_hidden_forums_topic', $redirect, $topic_id, $forum_id ) ) {
 				if ( $this->get( 'noaccess_topic' ) === 'custom' ) {
 					$this->redirect_to_key( 'noaccess_topic_url' );
 				} else if ( $this->get( 'noaccess_topic' ) === 'login' ) {
@@ -130,7 +130,7 @@ class VisitorsRedirect extends Feature {
 				}
 			}
 		} else {
-			if ( apply_filters( 'bbpc_visitors_redirect_hidden_forums', $redirect, $forum_id ) ) {
+			if ( apply_filters( 'gdbbx_visitors_redirect_hidden_forums', $redirect, $forum_id ) ) {
 				if ( $this->get( 'hidden_forums' ) === 'custom' ) {
 					$this->redirect_to_key( 'hidden_forums_url' );
 				} else if ( $this->get( 'hidden_forums' ) === 'login' ) {
@@ -153,7 +153,7 @@ class VisitorsRedirect extends Feature {
 		if ( ( $request['type'] == 'topic' || $request['type'] == 'reply' ) && $this->settings['noaccess_topic'] ) {
 			$topic_id = $request['topic'];
 
-			if ( apply_filters( 'bbpc_visitors_redirect_private_forums_topic', $redirect, $topic_id, $forum_id ) ) {
+			if ( apply_filters( 'gdbbx_visitors_redirect_private_forums_topic', $redirect, $topic_id, $forum_id ) ) {
 				if ( $this->get( 'noaccess_topic' ) === 'custom' ) {
 					$this->redirect_to_key( 'noaccess_topic_url' );
 				} else if ( $this->get( 'noaccess_topic' ) === 'login' ) {
@@ -161,7 +161,7 @@ class VisitorsRedirect extends Feature {
 				}
 			}
 		} else {
-			if ( apply_filters( 'bbpc_visitors_redirect_private_forums', $redirect, $forum_id ) ) {
+			if ( apply_filters( 'gdbbx_visitors_redirect_private_forums', $redirect, $forum_id ) ) {
 				if ( $this->get( 'private_forums' ) === 'custom' ) {
 					$this->redirect_to_key( 'private_forums_url' );
 				} else if ( $this->get( 'private_forums' ) === 'login' ) {
