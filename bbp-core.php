@@ -1,0 +1,113 @@
+<?php
+/*
+Plugin Name:       BBP Core
+Plugin URI:        https://spider-themes.net/bbp-core
+Description:       Expand bbPress powered forums with attachments upload, BBCodes support, signatures, widgets, quotes, toolbar menu, activity tracking, enhanced widgets, extra views...
+Author:            SpiderDevs
+Author URI:        https://profiles.wordpress.org/spiderdevs/
+Text Domain:       bbp-core
+Version:           1.0.0
+Requires at least: 5.3
+Tested up to:      5.9
+Requires PHP:      7.2
+License:           GPLv3 or later
+License URI:       https://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+defined( 'ABSPATH' ) || exit;
+
+require_once __DIR__ . '/autoloader.php';
+
+final class Bbp_core {
+	const VERSION = '1.0.0';
+
+	/**
+	 * Class constructor
+	 */
+	public function __construct() {
+		$this->define_constants();
+		$this->core_loads();
+
+		register_activation_hook( __FILE__, [ $this, 'activate' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ], 11 );
+		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
+
+		$this->core_loads();
+	}
+
+	/**
+	 * Define Plugin Constants
+	 *
+	 * @return void
+	 */
+	public function define_constants() {
+		define( 'BBPC_VERSION', self::VERSION );
+		define( 'BBPC_FILE', __FILE__ );
+		define( 'BBPC_DIR', __DIR__ . '/' );
+		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
+		define( 'BBPC_ASSETS', BBPC_URL . '/assets' );
+	}
+
+	/**
+	 *  Initializing Bbpc class
+	 *
+	 * @return \Bbp_core
+	 */
+	static function init() {
+		static $instance = false;
+
+		if ( ! $instance ) {
+			$instance = new self();
+		}
+	}
+
+	public function activate() {
+		$installed = get_option( 'bbpc_installed' );
+
+		if ( ! $installed ) {
+			update_option( 'bbpc_installed', time() );
+		}
+
+		update_option( 'bbpc_version', BBPC_VERSION );
+	}
+
+
+	/**
+	 * Initialize the plugin functionality
+	 *
+	 * @return void
+	 */
+	public function init_plugin() {
+		if ( is_admin() ) {
+			require BBPC_DIR . 'admin/settings/csf/codestar-framework.php';
+			require BBPC_DIR . 'admin/settings/options/settings.php';
+		
+		} else {
+			// TODO: Frontend classes here
+		}
+	}
+
+	/**
+	 * Load files with the core plugin
+	 *
+	 * @return void
+	 */
+	public function core_loads() {
+
+	}
+
+	public function load_assets() {
+
+	}
+}
+
+/**
+ * Initialize the bbp core plugin
+ *
+ * @return \Bbp_core
+ */
+function bbp_core() {
+	return Bbp_core::init();
+}
+
+bbp_core();
