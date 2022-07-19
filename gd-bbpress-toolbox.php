@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name:       BBP Core
 Plugin URI:        https://spider-themes.net/bbp-core
@@ -30,31 +29,43 @@ define( 'GDBBX_PATH', $gdbbx_dirname_basic );
 define( 'GDBBX_URL', $gdbbx_urlname_basic );
 define( 'GDBBX_D4PLIB', $gdbbx_dirname_basic . 'd4plib/' );
 
-require_once( GDBBX_D4PLIB . 'd4p.core.php' );
+require_once GDBBX_D4PLIB . 'd4p.core.php';
 
 d4p_prepare_object_cache( GDBBX_D4PLIB );
 
-d4p_includes( array(
-	array( 'name' => 'cache-wordpress', 'directory' => 'functions' ),
-	array( 'name' => 'transient-dbquery', 'directory' => 'functions' ),
-	array( 'name' => 'datetime', 'directory' => 'core' ),
-	'functions',
-	'sanitize',
-	'access',
-	'wp'
-), GDBBX_D4PLIB );
+d4p_includes(
+	[
+		[
+			'name'      => 'cache-wordpress',
+			'directory' => 'functions',
+		],
+		[
+			'name'      => 'transient-dbquery',
+			'directory' => 'functions',
+		],
+		[
+			'name'      => 'datetime',
+			'directory' => 'core',
+		],
+		'functions',
+		'sanitize',
+		'access',
+		'wp',
+	],
+	GDBBX_D4PLIB
+);
 
 global $_gdbbx_settings;
 
-require_once( GDBBX_PATH . 'core/functions/bbpress.php' );
-require_once( GDBBX_PATH . 'core/functions/features.php' );
-require_once( GDBBX_PATH . 'core/functions/conditionals.php' );
+require_once GDBBX_PATH . 'core/functions/bbpress.php';
+require_once GDBBX_PATH . 'core/functions/features.php';
+require_once GDBBX_PATH . 'core/functions/conditionals.php';
 
-require_once( GDBBX_PATH . 'core/version.php' );
-require_once( GDBBX_PATH . 'core/settings.php' );
+require_once GDBBX_PATH . 'core/version.php';
+require_once GDBBX_PATH . 'core/settings.php';
 
-require_once( GDBBX_PATH . 'core/next/autoload.php' );
-require_once( GDBBX_PATH . 'core/next/bridge.php' );
+require_once GDBBX_PATH . 'core/next/autoload.php';
+require_once GDBBX_PATH . 'core/next/bridge.php';
 
 gdbbx_plugin();
 
@@ -68,17 +79,33 @@ function gdbbx() {
 }
 
 if ( D4P_ADMIN ) {
-	d4p_includes( array(
-		array( 'name' => 'functions', 'directory' => 'admin' ),
-		array( 'name' => 'walkers', 'directory' => 'admin' )
-	), GDBBX_D4PLIB );
+	d4p_includes(
+		[
+			[
+				'name'      => 'functions',
+				'directory' => 'admin',
+			],
+			[
+				'name'      => 'walkers',
+				'directory' => 'admin',
+			],
+		],
+		GDBBX_D4PLIB
+	);
 
-	require_once( GDBBX_PATH . 'core/admin.php' );
+	require_once GDBBX_PATH . 'core/admin.php';
 }
 
 if ( D4P_AJAX ) {
 	gdbbx_ajax();
 }
 
-require_once( GDBBX_PATH . 'core/functions/deprecated.php' );
-require_once( GDBBX_PATH . 'core/functions/public.php' );
+require_once GDBBX_PATH . 'core/functions/deprecated.php';
+require_once GDBBX_PATH . 'core/functions/public.php';
+
+// Codestart Framework.
+if ( is_admin() ) {
+	require GDBBX_PATH . 'settings/csf/codestar-framework.php';
+
+	require GDBBX_PATH . 'settings/options/settings.php';
+}
