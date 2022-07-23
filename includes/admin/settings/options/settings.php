@@ -12,11 +12,11 @@ if ( class_exists( 'CSF' ) ) {
 			'framework_class' => 'bbp-core-settings',
 			'theme'           => 'dark',
 
-			'menu_title'      => 'BBP Core Settings',
+			'menu_title'      => 'Settings',
 			'menu_slug'       => 'bbp-core-settings',
 			'menu_type'       => 'submenu',
-			'menu_parent'     => 'gd-bbpress-toolbox-front', // TODO: Might need changing soon
-
+			'menu_parent'     => 'bbp-core',
+			
 			// Footer.
 			'footer_text'     => '',
 			'footer_after'    => '',

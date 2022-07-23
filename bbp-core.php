@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 
 require_once __DIR__ . '/autoloader.php';
 
-final class Bbp_core {
+final class BBP_Core {
 	const VERSION = '1.0.0';
 
 	/**
@@ -26,13 +26,11 @@ final class Bbp_core {
 	 */
 	public function __construct() {
 		$this->define_constants();
-		$this->core_loads();
 
 		register_activation_hook( __FILE__, [ $this, 'activate' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ], 11 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'load_admin_scripts' ] );
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
-
-		$this->core_loads();
 	}
 
 	/**
@@ -45,11 +43,11 @@ final class Bbp_core {
 		define( 'BBPC_FILE', __FILE__ );
 		define( 'BBPC_DIR', __DIR__ . '/' );
 		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
-		define( 'BBPC_ASSETS', BBPC_URL . '/assets' );
+		define( 'BBPC_ASSETS', BBPC_URL . '/assets/' );
 	}
 
 	/**
-	 *  Initializing Bbpc class
+	 *  Initializing Bbp_core class
 	 *
 	 * @return \Bbp_core
 	 */
@@ -61,6 +59,11 @@ final class Bbp_core {
 		}
 	}
 
+	/**
+	 * Actions on plugin activation
+	 *
+	 * @return void
+	 */
 	public function activate() {
 		$installed = get_option( 'bbpc_installed' );
 
@@ -79,25 +82,28 @@ final class Bbp_core {
 	 */
 	public function init_plugin() {
 		if ( is_admin() ) {
-			require BBPC_DIR . 'admin/settings/csf/codestar-framework.php';
-			require BBPC_DIR . 'admin/settings/options/settings.php';
-		
+			new Admin();
 		} else {
-			// TODO: Frontend classes here
+			new Frontend();
 		}
 	}
 
 	/**
-	 * Load files with the core plugin
+	 * Load Necessary assets for the plugin
 	 *
 	 * @return void
 	 */
-	public function core_loads() {
-
+	public function load_assets() {
+		wp_enqueue_style( 'bbpc', BBPC_ASSETS . 'css/bbpc.css' );
 	}
 
-	public function load_assets() {
-
+	/**
+	 * Load Admin Side styles and scripts.
+	 *
+	 * @return void
+	 */
+	public function load_admin_scripts(){
+		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );
 	}
 }
 
@@ -111,3 +117,6 @@ function bbp_core() {
 }
 
 bbp_core();
+
+// TODO: Bring in from Ama core
+//TODO:: Add voting system
