@@ -31,6 +31,8 @@ final class BBP_Core {
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'load_admin_scripts' ] );
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
+
+		$this->bbpc_hooks();
 	}
 
 	/**
@@ -81,10 +83,33 @@ final class BBP_Core {
 	 * @return void
 	 */
 	public function init_plugin() {
+		$this->load_features();
+
 		if ( is_admin() ) {
 			new Admin();
 		} else {
 			new Frontend();
+		}
+	}
+
+
+	/**
+	 * Load different features
+	 *
+	 * @return void
+	 */
+	public function load_features() {
+		$opt = get_option( 'bbp_core_settings' );
+		define( 'FEAT_PATH', plugin_dir_path( __FILE__ ) . 'includes/features/' );
+
+		if ( class_exists( 'bbPress' ) ) {
+			if ( $opt['is_solved_topics'] ) {
+				require FEAT_PATH . 'bbp_solved_topic.php'; // TODO: Show solved topics badge automatically after solved topic titles
+			}
+
+			if ( $opt['is_private_replies'] ) {
+				require FEAT_PATH . 'bbp-private-replies.php';
+			}
 		}
 	}
 
@@ -102,8 +127,17 @@ final class BBP_Core {
 	 *
 	 * @return void
 	 */
-	public function load_admin_scripts(){
+	public function load_admin_scripts() {
 		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );
+	}
+
+	/**
+	 * Actions and filter hooks in BBP Core plugin
+	 *
+	 * @return void
+	 */
+	public function bbpc_hooks() {
+		require BBPC_DIR . 'includes/hooks/actions.php';
 	}
 }
 
@@ -118,5 +152,4 @@ function bbp_core() {
 
 bbp_core();
 
-// TODO: Bring in from Ama core
-//TODO:: Add voting system
+// TODO:: Add voting system
