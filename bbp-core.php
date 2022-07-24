@@ -2,13 +2,13 @@
 /*
 Plugin Name:       BBP Core
 Plugin URI:        https://spider-themes.net/bbp-core
-Description:       Expand bbPress powered forums with attachments upload, BBCodes support, signatures, widgets, quotes, toolbar menu, activity tracking, enhanced widgets, extra views...
+Description:       Expand bbPress powered forums with useful features like - private reply, solved topics ...
 Author:            SpiderDevs
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
 Version:           1.0.0
-Requires at least: 5.3
-Tested up to:      5.9
+Requires at least: 5.0
+Tested up to:      6.0.1
 Requires PHP:      7.2
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
