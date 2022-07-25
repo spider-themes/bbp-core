@@ -39,6 +39,10 @@
     line-height: 1;
 }
 
+.bbp-core-settings{
+    max-width: 960px;
+}
+
 /* Menu */
 .bbpc-group-menu li a {
     border: 1px solid #6831C1;

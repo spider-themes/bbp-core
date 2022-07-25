@@ -12,22 +12,28 @@ BBP Core expands many useful features for your forums.
 
 == Description ==
 
-BBP Core powers your forum with useful features .
+BBP Core powers your forum with useful features. For example - solved topics, private replies, forum statistics etc.
 
 ### Reasons to Choose BBP Core ###
 
-- **On Demand Asset Loading:** Loading only necessary css, javascript assets on the BBP Core pages and will not load our assets on other pages of your website.
+- **Lightweight:** Loading only necessary css, javascript assets when necessary, it will not load assets unless necessary.
+
+- **statistics Dashboard:** A glimpse of forum statistics on the plugin dashboard, including - total number of forums, topics, replies, tags etc.
+
+- **Private Reply:** Create replies on topics privately, which only forum owners can see, it remains hidden to other customers.
+
+- **Solved Topics:** Mark topic as solved / unsolved. Solved topics shows 'Resolved' badge at the end of topic title.
 
 == Frequently Asked Questions ==
 
 = Does BBP Core work with any theme? =
-Yes, BBP Core works with any standard WordPress theme.
+Yes, BBP Core works with any bbPress WordPress theme.
 
 = Do I need coding skills to use BBP Core? =
 Absolutely not! BBP Core is as easy to use, as you can think of.
 
 = Where can I report bugs or contribute to the project? =
-To report bugs or to contribute, head-over to the [GitHub repository](https://github.com/spider-themes/BBP Core/issues)
+To report bugs or to contribute, head-over to the [GitHub repository](https://github.com/spider-themes/bbp-core/issues)
 
 == Installation ==
 
@@ -47,19 +53,16 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 
 = OPTION 2: Manually Upload Plugin Files =
 
-1. Download the plugin file from the plugin page: BBP Core.zip.
-2. Upload the 'BBP Core.zip' file to your '/wp-content/plugins' directory.
-2. Unzip the file BBP Core.zip (do not rename the folder).
-4. Optional step: configure the plugin in the Admin menu, in BBP Core -> Settings.
+1. Download the plugin file from the plugin page: bbp-core.zip.
+2. Upload the 'bbp-core.zip' file to your '/wp-content/plugins' directory.
+2. Unzip the file bbp-core.zip (do not rename the folder).
 
 == Screenshots ==
 
-1. Admin UI
-2. Documentation on Admin UI builder
-3. Docs shortcode UI on frontend
-4. Single doc page
+1. Admin Dashboard Statistics
+2. BBP Core Settings
 
 == Changelog ==
 
-= v1.0.0 (09 April 2022) =
+= v1.0.0 (July 25, 2022) =
  * Initial release
