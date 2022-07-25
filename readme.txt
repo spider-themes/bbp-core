@@ -1,5 +1,5 @@
 === BBP Core - Expand bbPress powered forums with useful features ===
-Contributors: spiderdevs, arafatjamil01
+Contributors: spiderdevs, arafatjamil01, mdjwel
 Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, topic, reply
 Requires at least: 5.0
 Tested up to: 6.0.1
