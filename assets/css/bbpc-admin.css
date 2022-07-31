@@ -1,3 +1,13 @@
+/*-- Codestar Framework --*/
+.csf-field .csf-title {
+    width: 25%;
+}
+
+.csf-field .csf-fieldset {
+    float: right;
+    width: calc(70% - 20px);
+}
+
 .bbpc-core-main *{
     box-sizing: border-box;
 }

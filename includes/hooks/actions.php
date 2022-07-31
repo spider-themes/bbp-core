@@ -2,7 +2,6 @@
 // Hooks.
 add_action( 'bbpc-resolved-topics', 'bbpc_resolved_topics', 10, 2 );
 
-
 // functions
 function bbpc_resolved_topics( $content = '', $topic_id = 0 ) {
 

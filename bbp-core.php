@@ -29,7 +29,7 @@ final class BBP_Core {
 
 		register_activation_hook( __FILE__, [ $this, 'activate' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'load_admin_scripts' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'load_admin_scripts' ], 12 );
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
 
 		$this->bbpc_hooks();
@@ -104,11 +104,15 @@ final class BBP_Core {
 
 		if ( class_exists( 'bbPress' ) ) {
 			if ( $opt['is_solved_topics'] ) {
-				require FEAT_PATH . 'bbp_solved_topic.php'; // TODO: Show solved topics badge automatically after solved topic titles
+				require FEAT_PATH . 'bbp_solved_topic.php';
 			}
 
 			if ( $opt['is_private_replies'] ) {
 				require FEAT_PATH . 'bbp-private-replies.php';
+			}
+
+			if ( $opt['is_votes'] ) {
+				new features\bbp_voting();
 			}
 		}
 	}
@@ -120,6 +124,11 @@ final class BBP_Core {
 	 */
 	public function load_assets() {
 		wp_enqueue_style( 'bbpc', BBPC_ASSETS . 'css/bbpc.css' );
+		wp_enqueue_style( 'bbpc-voting', BBPC_ASSETS . 'css/bbpc-voting.css' );
+
+		// BBP Voting.
+		wp_enqueue_script( 'bbpc-voting', BBPC_ASSETS . '/js/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );
+		wp_localize_script( 'bbpc-voting', 'bbp_voting_ajax_object', [ 'ajax_url' => admin_url( 'admin-ajax.php' ) ] );
 	}
 
 	/**
@@ -153,3 +162,5 @@ function bbp_core() {
 bbp_core();
 
 // TODO:: Add voting system
+// TODO: Add voting below user pictures, use hook - bbp_theme_after_reply_author_details
+// TODO: Check real world websites for front end design, e.g - stack overflow
