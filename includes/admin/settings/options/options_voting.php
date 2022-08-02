@@ -42,6 +42,7 @@
 					'id'       => 'upvote_label',
 					'type'     => 'text',
 					'title'    => __( 'Upvote Label.', 'bbp-core' ),
+					'default'  => __( 'Helpful', 'bbp-core' ),
 					'subtitle' => __( 'Change the upvote label from "Helpful" to something else.', 'bbp-core' ),
 				],
 
@@ -49,6 +50,7 @@
 					'id'       => 'downvote_label',
 					'type'     => 'text',
 					'title'    => __( 'Downvote Label.', 'bbp-core' ),
+					'default'  => __( 'Not Helpful', 'bbp-core' ),
 					'subtitle' => __( 'Change the downvote label from "Not Helpful" to something else.', 'bbp-core' ),
 				],
 

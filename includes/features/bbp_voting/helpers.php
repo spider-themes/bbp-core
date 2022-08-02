@@ -3,23 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! function_exists( 'bbp_voting_hook_setting' ) ) {
-	function bbp_voting_hook_setting( $value ) {
-		global $bbp_voting_hooks;
-		$setting       = current_filter();
-		$type          = $bbp_voting_hooks[ $setting ];
-		$setting_value = get_option( $setting );
-		if ( $type == 'bool' ) {
-			return $setting_value === 'true' ? true : false;
-		} else {
-			if ( ! empty( $setting_value ) ) {
-				return $setting_value;
-			}
-			return $value;
-		}
-	}
-}
-
 if ( ! function_exists( 'bbp_voting_get_plugin_install_link' ) ) {
 	function bbp_voting_get_plugin_install_link( $plugin, $action = 'install-plugin' ) {
 		return wp_nonce_url(

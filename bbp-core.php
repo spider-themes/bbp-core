@@ -103,15 +103,15 @@ final class BBP_Core {
 		define( 'FEAT_PATH', plugin_dir_path( __FILE__ ) . 'includes/features/' );
 
 		if ( class_exists( 'bbPress' ) ) {
-			if ( $opt['is_solved_topics'] ) {
+			if ( $opt['is_solved_topics'] ?? true ) {
 				require FEAT_PATH . 'bbp_solved_topic.php';
 			}
 
-			if ( $opt['is_private_replies'] ) {
+			if ( $opt['is_private_replies'] ?? true ) {
 				require FEAT_PATH . 'bbp-private-replies.php';
 			}
 
-			if ( $opt['is_votes'] ) {
+			if ( $opt['is_votes'] ?? true ) {
 				new features\bbp_voting();
 			}
 		}

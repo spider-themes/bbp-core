@@ -3,6 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+// TODO: View only settings to be fixed
+// TODO: Separate the variables in between
+
 // Settings Options.
 $opt = get_option( 'bbp_core_settings' );
 
@@ -10,11 +13,7 @@ echo '<pre>';
 print_r( $opt );
 echo '</pre>';
 
-$is_label = ! empty( $opt['is_label'] ) ? $opt['is_label'] : true;
-
-
-// Vote Buttons and Score
-
+// Vote Buttons and Score hooks.
 // add_action('bbp_theme_before_topic_author_details', 'bbp_voting_buttons');
 // add_action('bbp_theme_before_reply_author_details', 'bbp_voting_buttons');
 add_action( 'bbp_theme_before_topic_title', 'bbp_voting_buttons' );
@@ -26,31 +25,39 @@ add_action( 'bbp_theme_before_reply_content', 'bbp_voting_buttons' );
 add_action( 'bbp_voting_cpt', 'bbp_voting_buttons', 10, 1 );
 
 function bbp_voting_buttons( $post_obj = false ) {
-	// $author_link = '', $r = arrray(), $args = array()
-	// global $bbp_voting_last_author_link_post_id;
+	$opt = get_option( 'bbp_core_settings' );
+
 	$current_action = current_action();
+
 	if ( $current_action === 'bbp_voting_cpt' ) {
+
 		// Using a custom hook for a custom post type
 		if ( ! $post_obj ) {
 			return;
 		}
+
 		$post = $post_obj;
+
 	} else {
-		// Using a bbPress hook
 		$topic_post_type = bbp_get_topic_post_type();
 		$reply_post_type = bbp_get_reply_post_type();
+
+		// TODO: Change in the following array to add new hook function
 		if ( in_array( $current_action, [ 'bbp_theme_before_topic_title', 'bbp_template_before_lead_topic', 'bbp_theme_before_topic_content' ] ) ) {
-			// Topic hook will always be the topic
+			
 			$this_post_type = $topic_post_type;
 		}
+		
 		if ( $current_action === 'bbp_theme_before_reply_content' ) {
-			// Reply hook could be topic (OP) or a reply
 			$this_post_type = bbp_voting_get_current_post_type();
 		}
+
 		// Get the post
 		if ( $this_post_type == $topic_post_type ) {
 			$post = bbpress()->topic_query->post;
+			var_dump( $post );
 		}
+
 		if ( $this_post_type == $reply_post_type ) {
 			$post = bbpress()->reply_query->post;
 		}
@@ -144,8 +151,11 @@ function bbp_voting_buttons( $post_obj = false ) {
 		$float = in_array( current_action(), [ 'bbp_theme_before_reply_content', 'bbp_theme_before_topic_content', 'bbp_voting_cpt' ] );
 		$html .= '<div class="bbp-voting bbp-voting-post-' . $post_id . ( $view_only ? ' view-only' : ( $existing_vote == 1 ? ' voted-up' : ( $existing_vote == -1 ? ' voted-down' : '' ) ) ) . ( $admin_bypass ? ' admin-bypass' : '' ) . ( $float ? ' bbp-voting-float' : '' ) . '">';
 		// adds the word 'helpful' in red above the arrow
+		$is_label = ! empty( $opt['is_label'] ) ? $opt['is_label'] : true;
+
 		if ( $is_label ) {
-			$html .= '<div class="bbp-voting-label helpful">' . apply_filters( 'bbp_voting_helpful', 'Helpful' ) . '</div>';
+			$upvote_label = ! empty( $opt['upvote_label'] ) ? $opt['upvote_label'] : '';
+			$html        .= '<div class="bbp-voting-label helpful">' . $upvote_label . '</div>';
 		}
 		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
 			// AMP = No JS
@@ -185,7 +195,8 @@ function bbp_voting_buttons( $post_obj = false ) {
 		}
 		// adds the words 'not helpful' in red below the arrow
 		if ( ! $disable_down && $is_label ) {
-			$html .= '<div class="bbp-voting-label not-helpful">' . apply_filters( 'bbp_voting_not_helpful', 'Not Helpful' ) . '</div>';
+			$downvote_label = ! empty( $opt['downvote_label'] ) ? $opt['downvote_label'] : '';
+			$html          .= '<div class="bbp-voting-label not-helpful">' . $downvote_label . '</div>';
 		}
 		if ( $this_post_type == $reply_post_type ) {
 			$html = apply_filters( 'bbp_voting_after_reply_voting_buttons', $html, $post_id );
