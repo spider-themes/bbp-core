@@ -6,7 +6,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            SpiderDevs
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.0.0
+Version:           1.0.1
 Requires at least: 5.0
 Tested up to:      6.0.1
 Requires PHP:      7.2
@@ -100,15 +100,15 @@ final class BBP_Core {
 	 */
 	public function load_features() {
 		$opt = get_option( 'bbp_core_settings' );
-		define( 'FEAT_PATH', plugin_dir_path( __FILE__ ) . 'includes/features/' );
+		define( 'BBPC_FEAT_PATH', plugin_dir_path( __FILE__ ) . 'includes/features/' );
 
 		if ( class_exists( 'bbPress' ) ) {
 			if ( $opt['is_solved_topics'] ?? true ) {
-				require FEAT_PATH . 'bbp_solved_topic.php';
+				require BBPC_FEAT_PATH . 'bbp_solved_topic.php';
 			}
 
 			if ( $opt['is_private_replies'] ?? true ) {
-				require FEAT_PATH . 'bbp-private-replies.php';
+				require BBPC_FEAT_PATH . 'bbp-private-replies.php';
 			}
 
 			if ( $opt['is_votes'] ?? true ) {
@@ -160,7 +160,3 @@ function bbp_core() {
 }
 
 bbp_core();
-
-// TODO:: Add voting system
-// TODO: Add voting below user pictures, use hook - bbp_theme_after_reply_author_details
-// TODO: Check real world websites for front end design, e.g - stack overflow

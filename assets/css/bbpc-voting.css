@@ -168,3 +168,9 @@ ul.bbp-topics .bbp-voting {
     clear: both;
     margin: 0.75em 0;
 }
+
+/* After User */
+.forum-post-author + .bbp-voting {
+    position: absolute;
+    padding-top: 45px;
+}

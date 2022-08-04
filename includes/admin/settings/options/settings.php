@@ -25,10 +25,10 @@ if ( class_exists( 'CSF' ) ) {
 	);
 
 	// Widgets Settings.
-	define( 'SETTINGS_PATH', plugin_dir_path( __FILE__ ) );
+	define( 'BBPC_SETTINGS_PATH', plugin_dir_path( __FILE__ ) );
 
-	include SETTINGS_PATH . 'options_solved_topics.php';
-	include SETTINGS_PATH . 'options_private_replies.php';
-	include SETTINGS_PATH . 'options_voting.php';
+	include BBPC_SETTINGS_PATH . 'options_solved_topics.php';
+	include BBPC_SETTINGS_PATH . 'options_private_replies.php';
+	include BBPC_SETTINGS_PATH . 'options_voting.php';
 }
 

@@ -1,5 +1,5 @@
 <?php
-class admin {
+class Admin {
 	/**
 	 * Admin class construct
 	 */
@@ -32,7 +32,7 @@ class admin {
 	 * @return void
 	 */
 	public function load_csf() {
-		require BBPC_DIR . 'includes/admin/settings/csf/codestar-framework.php';
+		require BBPC_DIR . 'includes/admin/settings/codestar-framework/codestar-framework.php';
 		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
 	}
 }

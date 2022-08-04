@@ -1,5 +1,5 @@
 <?php
-class frontend {
+class Frontend {
 	function __construct() {
 
 	}

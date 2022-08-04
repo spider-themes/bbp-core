@@ -1,7 +1,7 @@
 <?php
 namespace admin;
 
-class menu {
+class Menu {
 	function __construct() {
 		add_action( 'admin_menu', [ $this, 'bbpc_admin_menu' ] );
 	}

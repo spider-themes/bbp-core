@@ -27,7 +27,7 @@
 						'before_content' => __( 'Before Content', 'bbp-core' ),
 						'below_user'     => __( 'Below User', 'bbp-core' ),
 					],
-					'default'     => 'before_content',
+					'default'     => 'below_user',
 				],
 
 				[
@@ -63,7 +63,7 @@
 					'placeholder' => __( 'Select an option', 'bbp-core' ),
 					'options'     => [
 						'hover'       => __( 'Hover', 'bbp-core' ),
-						'always_show' => __( 'Always Show', 'bbp-core' ),
+						'always-show' => __( 'Always Show', 'bbp-core' ),
 						'hide'        => __( 'Hide', 'bbp-core' ),
 					],
 					'default'     => 'hover',
@@ -149,7 +149,7 @@
 					'type'     => 'switcher',
 					'default'  => 1,
 					'title'    => __( 'Sort topics in a forum using their voting scores?', 'bbp-core' ),
-					'subtitle' => __( 'highest voted topics on top', 'bbp-core' ),
+					'subtitle' => __( 'Highest voted topics on top', 'bbp-core' ),
 				],
 
 				[
@@ -157,7 +157,7 @@
 					'type'     => 'switcher',
 					'default'  => 1,
 					'title'    => __( 'Sort replies on a topic using their voting scores?', 'bbp-core' ),
-					'subtitle' => __( 'highest voted topics on top', 'bbp-core' ),
+					'subtitle' => __( 'Highest voted replies on top', 'bbp-core' ),
 				],
 
 				[
@@ -170,5 +170,3 @@
 			],
 		]
 	);
-
-	// TODO: Add settings to choose location of the voting option, use hooks
