@@ -46,6 +46,7 @@ final class BBP_Core {
 		define( 'BBPC_DIR', __DIR__ . '/' );
 		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
 		define( 'BBPC_ASSETS', BBPC_URL . '/assets/' );
+		define( 'BBPC_IMG', BBPC_ASSETS . '/img/' );
 	}
 
 	/**
@@ -138,6 +139,22 @@ final class BBP_Core {
 	 */
 	public function load_admin_scripts() {
 		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );
+
+		// Custom UI assets.
+		wp_enqueue_style( 'normalize', BBPC_ASSETS . 'css/normalize.css' );
+		wp_enqueue_style( 'nice-select', BBPC_ASSETS . 'css/nice-select.css' );
+		wp_enqueue_style( 'jquery-ui', BBPC_ASSETS . 'css/ui-style.css' );
+
+		// Custom UI Scripts.
+		wp_enqueue_script( 'modernizr', BBPC_ASSETS . 'js/modernizr-3.11.2.min.js', [ 'jquery' ], '3.11.2', true );
+		wp_enqueue_script( 'modernizr', BBPC_ASSETS . 'js/jquery-ui.js', [ 'jquery' ], '1.12.1', true );
+		wp_enqueue_script( 'mixitup', BBPC_ASSETS . 'js/mixitup.min.js', [ 'jquery' ], '3.3.1', true );
+		wp_enqueue_script( 'mixitup-multifilter', BBPC_ASSETS . 'js/mixitup-multifilter.js', [ 'jquery' ], '3.3.1', true );
+		wp_enqueue_script( 'jquery-nice-select', BBPC_ASSETS . 'js/jquery.nice-select.min.js', [ 'jquery' ], '1.0', true );
+		wp_enqueue_script( 'tabby-polyfills', BBPC_ASSETS . 'js/tabby.polyfills.min.js', [ 'jquery' ], '1.0', true );
+		wp_enqueue_script( 'sortable', BBPC_ASSETS . 'js/Sortable.min.js', [ 'jquery' ], '1.0', true );
+		wp_enqueue_script( 'accordion', BBPC_ASSETS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
+		wp_enqueue_script( 'bbpc-main', BBPC_ASSETS . 'js/main.js', [ 'jquery' ], '1.0', true );
 	}
 
 	/**
@@ -160,3 +177,10 @@ function bbp_core() {
 }
 
 bbp_core();
+
+// TODO: Use EazyDocs UI Screen for bbp Core, menu item name Forum
+// TODO: Move Best Answer to the plugin
+
+// TODO: Settings > Use forum menu or not, if used this, give option to hide those post types, search for it, use filters
+// TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
+// TODO: Use topics, forums etc as tabs.

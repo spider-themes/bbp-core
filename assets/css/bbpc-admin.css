@@ -90,3 +90,15 @@
     padding-bottom: 0;
     margin-bottom: 0;
 }
+
+#bbpc-forum{
+    transition: .3s all ease;
+}
+
+#bbpc-forum:hover{
+    color: var(--clr-white);
+}
+
+#bbpc-topic{
+    
+}

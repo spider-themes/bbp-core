@@ -25,7 +25,6 @@ class Admin {
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 	}
 
-
 	/**
 	 * Load Codestar Framework and related settings
 	 *
