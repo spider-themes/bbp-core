@@ -17,7 +17,7 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 									</a>
 								</div>
 
-								<a href="<?php echo admin_url( 'post-new.php?post_type=forum' ); ?>" type="button" id="bbpc-foru" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
+								<a href="<?php echo admin_url( 'post-new.php?post_type=forum' ); ?>" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
 									<span class="dashicons dashicons-plus-alt2"></span>
 									<?php esc_html_e( 'Add Forum', 'bbp-core' ); ?>
 								</a>
@@ -43,36 +43,27 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 											<?php if ( current_user_can( 'edit_posts' ) ) : ?>
 												<div class="header-notify-icons">
 													<select name="bbpc_classic_ui" id="bbpc_classic_ui">
-														<option value="forum"><?php esc_html_e( 'Forum', 'bbp-core' ); ?></option>
+														<option value="<?php echo admin_url( 'admin.php?page=bbp-core' ); ?>"><?php esc_html_e( 'Choose classic UI', 'bbp-core' ); ?></option>
+														<option value="<?php echo admin_url( 'edit.php?post_type=forum' ); ?>"><?php esc_html_e( 'Forum', 'bbp-core' ); ?></option>
+														<option value="<?php echo admin_url( 'edit.php?post_type=topic' ); ?>"><?php esc_html_e( 'Topic', 'bbp-core' ); ?></option>
+														<option value="<?php echo admin_url( 'edit.php?post_type=reply' ); ?>"><?php esc_html_e( 'Reply', 'bbp-core' ); ?></option>
 													</select>
-													<a href="<?php echo admin_url( 'edit.php?post_type=forum' ); ?>" title="<?php esc_html_e( 'Go to Classic UI', 'bbp-core' ); ?>">
-														<?php esc_html_e( 'Classic UI', 'bbp-core' ); ?>
-													</a>
 												</div>
 											<?php endif; ?>
 
 											<div class="header-notify-icon">
-												<a href="admin.php?page=eazydocs-settings">
+												<a href="<?php echo admin_url( 'admin.php?page=bbp-core-settings' ); ?>">
 													<img src="<?php echo BBPC_IMG; ?>/admin/admin-settings.svg" alt="<?php esc_html_e( 'Settings Icon', 'bbp-core' ); ?>">
 												</a>
 											</div>
 										</div>
 									</li>
-
-									<?php
-									if ( class_exists( 'EazyDocsPro' ) && eaz_fs()->can_use_premium_code() ) :
-										do_action( 'eazydocs_notification' );
-									else :
-										?>
 										<li class="easydocs-notification pro-notification-alert" title="<?php esc_attr_e( 'Notifications', 'bbp-core' ); ?>">
 											<div class="header-notify-icon">
 												<img class="notify-icon" src="<?php echo BBPC_IMG; ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'bbp-core' ); ?>">
 												<img class="settings-pro-icon" src="<?php echo BBPC_IMG; ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'bbp-core' ); ?>">
 											</div>
 										</li>
-										<?php
-									endif;
-									?>
 								</ul>
 							</div>
 						</div>
@@ -169,7 +160,7 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 			?>
 	</ul>
 </div>
-						<div class="easydocs-tab-content">
+		<div class="easydocs-tab-content">
 			<?php
 			$child_docs_depth    = [];
 			$depth_two_parents   = [];
@@ -191,16 +182,16 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 					</li>
 					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".publish">
 						<span class="dashicons dashicons-admin-site-alt3"></span>
-						<?php esc_html_e( 'Public', 'bbp-core' ); ?>
+						<?php esc_html_e( 'No Reply', 'bbp-core' ); ?>
 					</li>
-					<!-- TODO: Filters will be no reply, solved, unsolved -->
+
 					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".private">
 						<span class="dashicons dashicons-privacy"></span>
-						<?php esc_html_e( 'Private', 'bbp-core' ); ?>
+						<?php esc_html_e( 'Solved', 'bbp-core' ); ?>
 					</li>
 					<li class="easydocs-btn easydocs-btn-orange-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".protected">
 						<span class="dashicons dashicons-lock"></span>
-						<?php esc_html_e( 'Protected', 'bbp-core' ); ?>
+						<?php esc_html_e( 'Unsolved', 'bbp-core' ); ?>
 					</li>
 					<li class="easydocs-btn easydocs-btn-gray-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".draft">
 						<span class="dashicons dashicons-edit-page"></span>

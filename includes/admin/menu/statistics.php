@@ -21,14 +21,14 @@
 		<?php
 		$stat = bbp_get_statistics();
 
-		$forum_total     = $stat['forum_count_int'];
-		$topic_total     = $stat['topic_count_int'] - $stat['topic_count_hidden_int'];
-		$reply_posts     = $stat['topic_tag_count_int'];
-		$reply_total     = $stat['reply_count_int'] - $stat['reply_count_hidden'];
-		$topic_tag_count = $stat['topic_tag_count'];
+		$forum_total     = $stat['forum_count_int'] ?? 0;
+		$topic_total     = ( $stat['topic_count_int'] ?? 0 ) - ( $stat['topic_count_hidden_int'] ?? 0 );
+		$reply_posts     = $stat['topic_tag_count_int'] ?? 0;
+		$reply_total     = ( $stat['reply_count_int'] ?? 0 ) - ( $stat['reply_count_hidden'] ?? 0 );
+		$topic_tag_count = $stat['topic_tag_count'] ?? 0;
 
 		if ( current_user_can( 'edit_topic_tags' ) ) {
-			$empty_topic_tag_count = $stat['empty_topic_tag_count_int'];
+			$empty_topic_tag_count = $stat['empty_topic_tag_count_int'] ?? 0;
 		}
 		?>
 		<div class="bbpc-stat-cards">

@@ -117,7 +117,6 @@
       if (!n.parents().hasClass("easydocs-notification")) e(".easydocs-notification .header-notify-icon").removeClass("active");
     })
   });
-
 })(jQuery);
 
 function menuToggle() {
@@ -142,3 +141,20 @@ var mixer1 = mixitup(containerEl1, config);
 var mixer1 = mixitup(containerEl2, config);
 var mixer1 = mixitup(containerEl3, config);
 
+// Dropdown Classic UI Filter
+let bbpc_classic_ui = document.getElementById('bbpc_classic_ui');
+
+function swithToLink(){
+  window.location.href=this.value;
+}
+
+bbpc_classic_ui.onchange = swithToLink;
+
+  //TODO: Do this later
+  // var dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id ); ?>" );
+	// function onSelectChange() {
+	// 	if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+	// 		document.location.href = this.options[ this.selectedIndex ].value;
+	// 	}
+	// }
+	// dropdown.onchange = onSelectChange;
