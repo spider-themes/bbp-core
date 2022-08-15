@@ -16,6 +16,40 @@ License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
 defined( 'ABSPATH' ) || exit;
 
+if ( ! function_exists( 'bc_fs' ) ) {
+    // Create a helper function for easy SDK access.
+    function bc_fs() {
+        global $bc_fs;
+
+        if ( ! isset( $bc_fs ) ) {
+            // Include Freemius SDK.
+            require_once dirname(__FILE__) . '/freemius/start.php';
+
+            $bc_fs = fs_dynamic_init( array(
+                'id'                  => '10864',
+                'slug'                => 'bbp-core',
+                'type'                => 'plugin',
+                'public_key'          => 'pk_41277ad11125f6e2a1b4e66f40164',
+                'is_premium'          => false,
+                'has_addons'          => false,
+                'has_paid_plans'      => false,
+                'menu'                => array(
+                    'slug'           => 'bbp-core',
+                    'account'        => false,
+                    'support'        => false,
+                ),
+            ) );
+        }
+
+        return $bc_fs;
+    }
+
+    // Init Freemius.
+    bc_fs();
+    // Signal that SDK was initiated.
+    do_action( 'bc_fs_loaded' );
+}
+
 require_once __DIR__ . '/autoloader.php';
 
 final class BBP_Core {
