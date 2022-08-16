@@ -17,37 +17,39 @@ License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'bc_fs' ) ) {
-    // Create a helper function for easy SDK access.
-    function bc_fs() {
-        global $bc_fs;
+	// Create a helper function for easy SDK access.
+	function bc_fs() {
+		global $bc_fs;
 
-        if ( ! isset( $bc_fs ) ) {
-            // Include Freemius SDK.
-            require_once dirname(__FILE__) . '/freemius/start.php';
+		if ( ! isset( $bc_fs ) ) {
+			// Include Freemius SDK.
+			require_once dirname( __FILE__ ) . '/freemius/start.php';
 
-            $bc_fs = fs_dynamic_init( array(
-                'id'                  => '10864',
-                'slug'                => 'bbp-core',
-                'type'                => 'plugin',
-                'public_key'          => 'pk_41277ad11125f6e2a1b4e66f40164',
-                'is_premium'          => false,
-                'has_addons'          => false,
-                'has_paid_plans'      => false,
-                'menu'                => array(
-                    'slug'           => 'bbp-core',
-                    'account'        => false,
-                    'support'        => false,
-                ),
-            ) );
-        }
+			$bc_fs = fs_dynamic_init(
+				[
+					'id'             => '10864',
+					'slug'           => 'bbp-core',
+					'type'           => 'plugin',
+					'public_key'     => 'pk_41277ad11125f6e2a1b4e66f40164',
+					'is_premium'     => false,
+					'has_addons'     => false,
+					'has_paid_plans' => false,
+					'menu'           => [
+						'slug'    => 'bbp-core',
+						'account' => false,
+						'support' => false,
+					],
+				]
+			);
+		}
 
-        return $bc_fs;
-    }
+		return $bc_fs;
+	}
 
-    // Init Freemius.
-    bc_fs();
-    // Signal that SDK was initiated.
-    do_action( 'bc_fs_loaded' );
+	// Init Freemius.
+	bc_fs();
+	// Signal that SDK was initiated.
+	do_action( 'bc_fs_loaded' );
 }
 
 require_once __DIR__ . '/autoloader.php';
@@ -64,6 +66,7 @@ final class BBP_Core {
 		register_activation_hook( __FILE__, [ $this, 'activate' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'load_admin_scripts' ], 12 );
+
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
 
 		$this->bbpc_hooks();
@@ -127,7 +130,6 @@ final class BBP_Core {
 		}
 	}
 
-
 	/**
 	 * Load different features
 	 *
@@ -174,8 +176,7 @@ final class BBP_Core {
 	public function load_admin_scripts() {
 		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );
 
-		// Custom UI assets.
-		$current_url = ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( $_GET['page'] ) : '';
+		$current_url = ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 		$target_url  = admin_url( 'admin.php?page=bbp-core' );
 
 		if ( $target_url == $current_url ) {
@@ -216,17 +217,12 @@ function bbp_core() {
 }
 
 bbp_core();
-// TODO: Move Best Answer to the plugin
 
-// TODO: Settings > Use forum menu or not, if used this, give option to hide those post types, search for it, use filters
 // TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
-// TODO: Use topics, forums etc as tabs.
+
 // TODO: Use pagination for topics
-// TODO: Bring the js from wp includes folder
+
 // TODO: Sweet alert for deletion @delwer
-// TODO: Fix search buttons @delwer
-// TODO: Remove add new
-// TODO: Remove underline from icons
 
 // TODO: Add voting feature description in readme.txt
 // TODO: Preview of ama on plugin page

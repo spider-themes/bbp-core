@@ -258,16 +258,16 @@ class bbp_solved_topic {
 
 		$retval = false;
 
-		// Checking a specific reply id
+		// Checking a specific reply id.
 		if ( ! empty( $topic_id ) ) {
 			$topic    = bbp_get_topic( $topic_id );
 			$topic_id = ! empty( $topic ) ? $topic->ID : 0;
 
-			// Using the global reply id
+		// Using the global reply id.
 		} elseif ( bbp_get_topic_id() ) {
 			$topic_id = bbp_get_topic_id();
 
-			// Use the current post id
+		// Use the current post id.
 		} elseif ( ! bbp_get_topic_id() ) {
 			$topic_id = get_the_ID();
 		}
@@ -292,16 +292,16 @@ class bbp_solved_topic {
 
 		$retval = false;
 
-		// Checking a specific reply id
+		// Checking a specific reply id.
 		if ( ! empty( $topic_id ) ) {
 			$topic    = bbp_get_topic( $topic_id );
 			$topic_id = ! empty( $topic ) ? $topic->ID : 0;
 
-			// Using the global reply id
+			// Using the global reply id.
 		} elseif ( bbp_get_topic_id() ) {
 			$topic_id = bbp_get_topic_id();
 
-			// Use the current post id
+			// Use the current post id.
 		} elseif ( ! bbp_get_topic_id() ) {
 			$topic_id = get_the_ID();
 		}
@@ -397,7 +397,6 @@ class bbp_solved_topic {
 
 		return $classes;
 	}
-
 }
 
 // Instantiate the class.

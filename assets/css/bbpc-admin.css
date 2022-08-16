@@ -16,6 +16,11 @@
     font-size: 16px;
 }
 
+.bbpc-stat-cards{
+    display: flex;
+    gap:30px;
+}
+
 .bbpc-stat-card{
     background-color: #fff;
 }
@@ -97,8 +102,4 @@
 
 #bbpc-forum:hover{
     color: var(--clr-white);
-}
-
-#bbpc-topic{
-    
 }

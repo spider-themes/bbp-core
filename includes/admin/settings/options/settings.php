@@ -1,4 +1,6 @@
 <?php
+
+
 if ( class_exists( 'CSF' ) ) {
 
 	// Set a unique slug-like ID.
@@ -23,6 +25,10 @@ if ( class_exists( 'CSF' ) ) {
 			'footer_credit'   => '',
 		]
 	);
+
+	if ( ! class_exists( 'bbPress' ) ) {
+		return;
+	}
 
 	// Widgets Settings.
 	define( 'BBPC_SETTINGS_PATH', plugin_dir_path( __FILE__ ) );

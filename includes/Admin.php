@@ -7,8 +7,19 @@ class Admin {
 		if ( ! class_exists( 'bbPress' ) ) {
 			add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		}
+
 		new admin\Menu();
 		$this->load_csf();
+	}
+
+	/**
+	 * Load Codestar Framework and related settings
+	 *
+	 * @return void
+	 */
+	public function load_csf() {
+		require BBPC_DIR . 'includes/admin/settings/codestar-framework/codestar-framework.php';
+		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
 	}
 
 	/**
@@ -22,16 +33,6 @@ class Admin {
 			'<strong>' . esc_html__( 'bbPress', 'bbp-core' ) . '</strong>'
 		);
 
-		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
-	}
-
-	/**
-	 * Load Codestar Framework and related settings
-	 *
-	 * @return void
-	 */
-	public function load_csf() {
-		require BBPC_DIR . 'includes/admin/settings/codestar-framework/codestar-framework.php';
-		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
+		printf( '<div class="notice notice-error is-dismissible"><p>%1$s</p></div>', $message );
 	}
 }

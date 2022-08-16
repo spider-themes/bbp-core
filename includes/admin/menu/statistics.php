@@ -1,3 +1,8 @@
+<?php
+if ( ! class_exists( 'bbPress' ) ) {
+	return;
+}
+?>
 <div class="bbp-core-main">
 	<div class="bbpc-heading">
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'BBP Core', 'bbp-core' ); ?></h1>
@@ -16,10 +21,11 @@
 		</ul>
 	</div>
 
-	<?php if ( class_exists( 'bbPress' ) ) : ?>
 	<div class="bbpc-stats">
 		<?php
 		$stat = bbp_get_statistics();
+
+		// TODO: Add another panel for user statistics.
 
 		$forum_total     = $stat['forum_count_int'] ?? 0;
 		$topic_total     = ( $stat['topic_count_int'] ?? 0 ) - ( $stat['topic_count_hidden_int'] ?? 0 );
@@ -34,7 +40,7 @@
 		<div class="bbpc-stat-cards">
 			<div class="bbpc-stat-card forum-stats">
 				<div class="bbpc-card-heading">
-					<h2><?php esc_html_e( 'Forum stats', 'bbp-core' ); ?></h2>
+					<h2><?php esc_html_e( 'User Stats', 'bbp-core' ); ?></h2>
 				</div>
 
 				<div class="bbpc-card-data">
@@ -71,12 +77,5 @@
 			</div>
 		</div>
 	</div>
-		<?php
-	else :
-		$admin = new \admin();
-		$admin->admin_notices();
-		?>
-
-		<?php endif; ?>
 	</div>
 </div>

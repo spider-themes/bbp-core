@@ -1,4 +1,7 @@
 <?php
+if ( ! class_exists( 'bbPress' ) ) {
+	return;
+}
 $depth_one_parents = [];
 $depth_two_parents = [];
 $forum_count       = (int) wp_count_posts( 'forum' )->publish;
@@ -25,10 +28,9 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 							</div>
 						</div>
 
-						<!-- TODO: Finish Searching properly -->
 						<div class="col-lg-5">
 							<form action="#" method="POST" class="easydocs-search-form">
-								<input type="search" name="keyword" class="form-control" id="easydocs-search" placeholder="<?php esc_attr_e( 'Search for', 'bbp-core' ); ?>" onkeyup="fetch()" />
+								<input type="search" name="keyword" class="form-control" id="bbpc-search" placeholder="<?php esc_attr_e( 'Search for', 'bbp-core' ); ?>" onkeyup="fetch()" />
 								<div class="search-icon">
 									<span class="dashicons dashicons-search"></span>
 								</div>
@@ -39,7 +41,6 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 								<ul class="d-flex justify-content-end">
 									<li>
 										<div class="easydocs-settings">
-
 											<?php if ( current_user_can( 'edit_posts' ) ) : ?>
 												<div class="header-notify-icons">
 													<select name="bbpc_classic_ui" id="bbpc_classic_ui">
@@ -87,50 +88,33 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 			?>
 
 <div class="tab-menu <?php echo $count > 12 ? '' : 'short'; ?>">
-	<ul class="easydocs-navbar sortable">
+	<ul class="easydocs-navbar">
 			<?php
 			$i = '';
 			while ( $query->have_posts() ) :
 				$query->the_post();
 				$i ++;
 				$depth_one_parents[] = get_the_ID();
+				$current_post        = get_the_ID();
 				$is_active           = $i == 1 ? 'is-active' : '';
-				$doc_counter         = get_pages(
+
+				$count_children = get_children(
 					[
-						'child_of'    => get_the_ID(),
-						'post_type'   => 'forum',
-						'post_status' => [ 'publish', 'draft' ],
+						'post_parent' => $current_post,
+						'post_type'   => 'topic',
+						'orderby'     => 'menu_order',
+						'order'       => 'asc',
 					]
 				);
-
-				$post_status = get_post_status( get_the_ID() );
-				global $post;
-
-				switch ( $post_status ) {
-					case 'publish':
-						$post_format = 'admin-site-alt3';
-						break;
-
-					case 'private':
-						$post_format = 'privacy';
-						break;
-
-					case 'draft':
-						$post_format = 'edit-page';
-						break;
-				}
-				if ( ! empty( $post->post_password ) ) {
-					$post_format = 'lock';
-				}
 				?>
 			<li class="easydocs-navitem  <?php echo esc_attr( $is_active ); ?>" data-rel="tab-<?php the_ID(); ?>" data-id="<?php the_ID(); ?>">
 				<div class="title">
-					<span title="<?php echo esc_attr( $post_status ); ?>" class="dashicons dashicons-<?php echo esc_attr( $post_format ); ?>"></span>
+					<span class="dashicons dashicons-buddicons-forums"></span>
 					<?php the_title(); ?>
 				</div>
 				<div class="total-page">
 					<span>
-						<?php echo count( $doc_counter ) > 0 ? count( $doc_counter ) : ''; ?>
+						<?php echo count( $count_children ) > 0 ? count( $count_children ) : ''; ?>
 					</span>
 				</div>
 				<div class="link">
@@ -142,13 +126,13 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 						endif;
 					?>
 
-					<a href="<?php the_permalink(); ?>" class="link external-link" target="_blank" data-id="tab-<?php the_ID(); ?>" title="<?php esc_attr_e( 'View this doc item in new tab', 'easydocs' ); ?>">
+					<a href="<?php the_permalink(); ?>" class="link external-link" target="_blank" data-id="tab-<?php the_ID(); ?>" title="<?php esc_attr_e( 'View this forum in new tab', 'bbp-core' ); ?>">
 						<span class="dashicons dashicons-external"></span>
 					</a>
 					<?php
 					if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
 						?>
-					<a href="<?php echo admin_url( 'admin.php' ); ?>/Delete_Post.php?DeleteID=<?php echo get_the_ID(); ?>" class="link delete parent-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
+					<a href="<?php echo admin_url( 'admin.php' ); ?>/Delete_Post.php?DeleteID=<?php echo get_the_ID(); ?>" class="link delete parent-delete" title="<?php esc_attr_e( 'Delete this forum permanently', 'bbp-core' ); ?>">
 						<span class="dashicons dashicons-trash"></span>
 					</a>
 					<?php endif; ?>
@@ -178,88 +162,50 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 				<ul class="single-item-filter">
 					<li class="easydocs-btn easydocs-btn-black-light easydocs-btn-rounded easydocs-btn-sm is-active" data-filter="all">
 						<span class="dashicons dashicons-media-document"></span>
-						<?php esc_html_e( 'All articles', 'bbp-core' ); ?>
+						<?php esc_html_e( 'All topics', 'bbp-core' ); ?>
 					</li>
-					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".publish">
+					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".no-reply">
 						<span class="dashicons dashicons-admin-site-alt3"></span>
 						<?php esc_html_e( 'No Reply', 'bbp-core' ); ?>
 					</li>
 
-					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".private">
+					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".solved">
 						<span class="dashicons dashicons-privacy"></span>
 						<?php esc_html_e( 'Solved', 'bbp-core' ); ?>
 					</li>
-					<li class="easydocs-btn easydocs-btn-orange-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".protected">
+					<li class="easydocs-btn easydocs-btn-orange-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".unsolved">
 						<span class="dashicons dashicons-lock"></span>
 						<?php esc_html_e( 'Unsolved', 'bbp-core' ); ?>
-					</li>
-					<li class="easydocs-btn easydocs-btn-gray-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".draft">
-						<span class="dashicons dashicons-edit-page"></span>
-						<?php esc_html_e( 'Draft', 'bbp-core' ); ?>
 					</li>
 				</ul>
 			</div>
 
-			<!-- TODO: Notifications, recent topics( ) , recent replies , you will get query from widgets -->
-			<ul class="easydocs-accordion sortable accordionjs">
+			<ul class="easydocs-accordion">
 					<?php
-							$children = get_children(
-								[
-									'post_parent' => $item,
-									'post_type'   => 'topic',
-									'orderby'     => 'menu_order',
-									'order'       => 'asc',
-									'exclude'     => get_post_thumbnail_id( $item ),
-								]
-							);
+					$children = get_children(
+						[
+							'post_parent' => $item,
+							'post_type'   => 'topic',
+							'orderby'     => 'menu_order',
+							'order'       => 'asc',
+						]
+					);
 
 					if ( is_array( $children ) ) :
 						foreach ( $children as $child ) :
-
-							$depth_two_parents[] = $child->ID;
-							$post_status         = $child->post_status;
-
-							$doc_items = get_children(
+							$replies = get_children(
 								[
 									'post_parent' => $child->ID,
-									'orderby'     => 'menu_order',
-									'post_type'   => 'docs',
-									'order'       => 'asc',
-									'exclude'     => get_post_thumbnail_id( $child ),
+									'post_type'   => 'reply',
+									'post_status' => [ 'publish', 'draft' ],
 								]
 							);
 
-							$child_one = get_children(
-								[
-									'post_parent' => $child->ID,
-									'post_type'   => 'docs',
-									'order'       => 'asc',
-									'orderby'     => 'menu_order',
-									'fields'      => 'ids',
-								]
-							);
-
-							$depth_two = '';
-							foreach ( $doc_items as $doc_item ) {
-								$child_depth = get_children(
-									[
-										'post_parent' => $doc_item->ID,
-										'post_type'   => 'docs',
-										'fields'      => 'ids',
-										'orderby'     => 'menu_order',
-										'order'       => 'asc',
-									]
-								);
-								$depth_two   = implode( ',', $child_depth );
-							}
-							$depth_docs = implode( ',', $child_one ) . ',' . $depth_two . ',' . $child->ID;
-
-							if ( ! empty( $child->post_password ) ) {
-								$post_status = 'protected';
-							}
+							$no_reply = 0 == count( $replies ) ? 'no-reply' : '';
+							$is_solved = $GLOBALS['bbp_solved_topic']->is_solved( $child->ID ) ? ' solved': ' unsolved';
 							?>
-						<li <?php post_class( 'easydocs-accordion-item accordion ez-section-acc-item mix ' . esc_attr( $post_status ) ); ?> data-id="<?php echo esc_attr( $child->ID ); ?>">
-							<div class="accordion-title ez-section-title <?php echo count( $doc_items ) > 0 ? 'has-child' : ''; ?>">
+						<li <?php post_class( 'easydocs-accordion-item accordion ez-section-acc-item mix ' . esc_attr( $no_reply ) . esc_attr( $is_solved ) ); ?> data-id="<?php echo esc_attr( $child->ID ); ?>">
+							<div class="accordion-title ez-section-title">
 									<?php
 									$edit_link = 'javascript:void(0)';
 									$target    = '_self';
@@ -273,251 +219,33 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 										<a href="<?php echo esc_attr( $edit_link ); ?>" target="<?php echo esc_attr( $target ); ?>">
 									<?php echo $child->post_title; ?>
 										</a>
-								<?php if ( count( $doc_items ) > 0 ) : ?>
+									<?php if ( count( $replies ) > 0 ) : ?>
 											<span class="count badge">
-												<?php echo count( $doc_items ); ?>
+												<?php echo count( $replies ); ?>
 											</span>
-										<?php endif; ?>
+									<?php endif; ?>
 									</h4>
 									<ul class="actions">
-								<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
 										<li>
-											<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Post.php?childID=<?php echo $child->ID; ?>&child=" class="child-doc" title="<?php esc_attr_e( 'Add new doc under this doc', 'bbp-core' ); ?>">
-												<span class="dashicons dashicons-plus-alt2"></span>
-											</a>
-										</li>
-										<?php endif; ?>
-										<li>
-											<a href="<?php echo get_permalink( $child ); ?>" target="_blank" title="<?php esc_attr_e( 'View this doc item in new tab', 'easydocs' ); ?>">
+											<a href="<?php echo get_permalink( $child ); ?>" target="_blank" title="<?php esc_attr_e( 'View this reply in new tab', 'bbp-core' ); ?>">
 												<span class="dashicons dashicons-external"></span>
 											</a>
 										</li>
 											<?php
 											if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
 												?>
-											<li class="delete">
+											<!-- <li class="delete">
 												<a href="<?php echo admin_url( 'admin.php' ); ?>/Delete_Post.php?ID=<?php echo $depth_docs; ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
 													<span class="dashicons dashicons-trash"></span>
 												</a>
-											</li>
-													<?php endif; ?>
+											</li> -->
+											<?php endif; ?>
 									</ul>
 								</div>
-
-								<div class="right-content">
-									<span class="progress-text">
-													<?php
-													$positive = (int) get_post_meta( $child->ID, 'positive' );
-													$negative = (int) get_post_meta( $child->ID, 'negative', true );
-
-													$positive_title = $positive ? sprintf( _n( '%d Positive vote, ', '%d Positive votes and ', $positive, 'bbp-core' ), number_format_i18n( $positive ) ) : esc_html__( 'No Positive votes, ', 'bbp-core' );
-													$negative_title = $negative ? sprintf( _n( '%d Negative vote found.', '%d Negative votes found.', $negative, 'bbp-core' ), number_format_i18n( $negative ) ) : esc_html__( 'No Negative votes.', 'bbp-core' );
-
-													$sum_votes = $positive + $negative;
-
-													if ( $positive || $negative ) {
-														echo "<progress id='file' value='$positive' max='$sum_votes' title='$positive_title$negative_title'> </progress>";
-													} else {
-														esc_html_e( 'No rates', 'bbp-core' );
-													}
-													?>
-									</span>
-								</div>
-							</div>
-							<div class="easydocs-accordion-body nesting-accordion child-docs">
-								<div class="nesting-task sortable">
-
-												<?php
-												foreach ( $doc_items as $doc_item ) :
-													$child_depth = get_children(
-														[
-															'post_parent' => $doc_item->ID,
-															'post_type'   => 'docs',
-															'orderby'     => 'menu_order',
-															'order'       => 'ASC',
-															'exclude'     => get_post_thumbnail_id( $doc_item ),
-														]
-													);
-
-													$last_section_docs = [];
-													if ( is_array( $child_depth ) ) {
-														foreach ( $child_depth as $dep3_docs ) {
-															$last_section_docs[] = $dep3_docs->ID;
-														}
-													}
-													$last_section_ids = implode( ',', $last_section_docs );
-
-													foreach ( $depth_two_parents as $sec2 ) {
-														$parent = $sec2;
-													}
-													$parent;
-													$dep2 = $doc_item->ID;
-													?>
-										<ul class="accordionjs">
-											<li <?php post_class( 'easydocs-accordion-item accordion mix child-one ' . $post_status ); ?> data-id="<?php echo esc_attr( $doc_item->ID ); ?>">
-												<div class="accordion-title <?php echo count( $child_depth ) > 0 ? 'has-child' : ''; ?>">
-													<?php
-													$edit_link = 'javascript:void(0)';
-													$target    = '_self';
-													if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
-														$edit_link = get_edit_post_link( $doc_item );
-														$target    = '_blank';
-													}
-													?>
-													<div class="left-content">
-														<h4>
-															<a href="<?php echo esc_attr( $edit_link ); ?>" target="<?php echo esc_attr( $target ); ?>" class="section-last-label">
-																<?php echo get_the_title( $doc_item ); ?>
-															</a>
-															<?php if ( count( $child_depth ) > 0 ) : ?>
-																<span class="count badge">
-																	<?php echo count( $child_depth ); ?>
-																</span>
-															<?php endif; ?>
-														</h4>
-														<ul class="actions">
-														<?php
-														if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
-															if ( class_exists( 'EazyDocsPro' ) && eaz_fs()->can_use_premium_code() ) :
-																?>
-																	<li class="duplicate">
-																		<?php do_action( 'eazydocs_child_section_doc_duplicate', $dep2, $parent ); ?>
-																	</li>
-																		<?php
-																	else :
-																		?>
-																	<li class="duplicate">
-																		<a href="javascript:void(0);" class="eazydocs-pro-notice" title="<?php esc_attr_e( 'Duplicate this doc with the child docs.', 'easydocs' ); ?>">
-																			<span class="dashicons dashicons-admin-page"></span>
-																		</a>
-																	</li>
-																		<?php
-																	endif;
-																			endif;
-														?>
-
-															<li>
-																<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Post.php?childID=<?php echo $doc_item->ID; ?>&child=" class="child-doc" title="<?php esc_attr_e( 'Add new doc under this doc', 'bbp-core' ); ?>">
-																	<span class="dashicons dashicons-plus-alt2"></span>
-																</a>
-															</li>
-
-															<li>
-																<a href="<?php echo get_permalink( $doc_item ); ?>" target="_blank" title="<?php esc_attr_e( 'View this doc item in new tab', 'easydocs' ); ?>">
-																	<span class="dashicons dashicons-external"></span>
-																</a>
-															</li>
-															<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
-																<li class="delete">
-																	<a href="<?php echo admin_url( 'admin.php' ); ?>/Delete_Post.php?ID=<?php echo esc_attr( $doc_item->ID . ',' . $last_section_ids ); ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
-																		<span class="dashicons dashicons-trash"></span>
-																	</a>
-																</li>
-															<?php endif; ?>
-														</ul>
-													</div>
-
-													<div class="right-content">
-														<span class="progress-text">
-															<?php
-															$positive = (int) get_post_meta( $doc_item->ID, 'positive' );
-															$negative = (int) get_post_meta( $doc_item->ID, 'negative', true );
-
-															$positive_title = $positive ? sprintf( _n( '%d Positive vote, ', '%d Positive votes and ', $positive, 'bbp-core' ), number_format_i18n( $positive ) ) : esc_html__( 'No Positive votes, ', 'bbp-core' );
-															$negative_title = $negative ? sprintf( _n( '%d Negative vote found.', '%d Negative votes found.', $negative, 'bbp-core' ), number_format_i18n( $negative ) ) : esc_html__( 'No Negative votes.', 'bbp-core' );
-
-															$sum_votes = $positive + $negative;
-
-															if ( $positive || $negative ) {
-																echo "<progress id='file' value='$positive' max='$sum_votes' title='$positive_title$negative_title'> </progress>";
-															} else {
-																esc_html_e( 'No rates', 'bbp-core' );
-															}
-															?>
-														</span>
-													</div>
-
-												</div>
-												<div class="easydocs-accordion-body nesting-accordion">
-													<ul class="nesting-task sortable">
-														<?php
-														foreach ( $child_depth as $dep3 ) :
-															?>
-															<li data-id="<?php echo $dep3->ID; ?>" class="child-docs-wrap d-flex justify-content-between">
-
-																<?php
-																$edit_link = 'javascript:void(0)';
-																$target    = '_self';
-																if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
-																	$edit_link = get_edit_post_link( $dep3 );
-																	$target    = '_blank';
-																}
-																?>
-
-																<a href="<?php echo esc_attr( $edit_link ); ?>" target="<?php echo esc_attr( $target ); ?>" class="child-last-label">
-																   <?php echo $dep3->post_title; ?>
-																</a>
-																<div class="child-right-content d-flex">
-
-																	<?php
-																	if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
-																		if ( class_exists( 'EazyDocsPro' ) && eaz_fs()->can_use_premium_code() ) :
-																			do_action( 'eazydocs_single_duplicate', $dep3->ID );
-																		else :
-																			?>
-																			<a href="javascript:void(0);" target="_blank" class="eazydocs-pro-notice" title="<?php esc_attr_e( 'Duplicate this doc with the child docs.', 'easydocs' ); ?>">
-																				<span class="dashicons dashicons-admin-page"></span>
-																			</a>
-																			<?php
-																		endif;
-																	}
-																	?>
-																	<a href="<?php echo get_permalink( $dep3 ); ?>" target="_blank" class="child-view-link" title="<?php esc_attr_e( 'View this doc item in new tab', 'easydocs' ); ?>">
-																		<span class="dashicons dashicons-external"></span>
-																	</a>
-																	<?php
-																	if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
-																		?>
-																	<a href="<?php echo admin_url( 'admin.php' ); ?>/Delete_Post.php?ID=<?php echo $dep3->ID; ?>" class="child-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
-																		<span class="dashicons dashicons-trash"></span>
-																	</a>
-																	<?php endif; ?>
-
-																	<span class="progress-text">
-																		<?php
-																		$positive = (int) get_post_meta( $dep3->ID, 'positive' );
-																		$negative = (int) get_post_meta( $dep3->ID, 'negative', true );
-
-																		$positive_title = $positive ? sprintf( _n( '%d Positive vote, ', '%d Positive votes and ', $positive, 'bbp-core' ), number_format_i18n( $positive ) ) : esc_html__( 'No Positive votes, ', 'bbp-core' );
-																		$negative_title = $negative ? sprintf( _n( '%d Negative vote found.', '%d Negative votes found.', $negative, 'bbp-core' ), number_format_i18n( $negative ) ) : esc_html__( 'No Negative votes.', 'bbp-core' );
-
-																		$sum_votes = $positive + $negative;
-
-																		if ( $positive || $negative ) {
-																			echo "<progress id='file' value='$positive' max='$sum_votes' title='$positive_title$negative_title'> </progress>";
-																		} else {
-																			esc_html_e( 'No rates', 'bbp-core' );
-																		}
-																		?>
-																	</span>
-																</div>
-															</li>
-															<?php
-																	endforeach;
-														?>
-													</ul>
-												</div>
-											</li>
-										</ul>
-													<?php
-												endforeach;
-												?>
-								</div>
-
 							</div>
 						</li>
 									<?php
-								endforeach;
+									endforeach;
 							endif;
 					?>
 			</ul>
@@ -525,15 +253,6 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 			<a class="button button-info section-doc" id="bbpc-topic" name="submit" href="<?php echo admin_url( 'post-new.php?post_type=topic' ); ?>">
 					<?php esc_html_e( 'Add topics', 'bbp-core' ); ?>
 			</a>
-
-						<?php
-							$current_theme = get_template();
-						if ( $current_theme == 'docy' || $current_theme == 'docly' || class_exists( 'EazyDocsPro' ) ) {
-							eazydocs_one_page( $item );
-
-						}
-						?>
-
 			</div>
 					<?php
 				endforeach;
@@ -561,5 +280,3 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 		?>
 	</div>
 </div>
-
-<!-- TODO: Classic ui should be made a dropdown, for forum, topics and replies -->
