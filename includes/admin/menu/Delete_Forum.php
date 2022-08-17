@@ -20,7 +20,7 @@ class Delete_Forum {
 	public function delete_forum() {
  
 		if ( ! empty ( $_GET['DeleteID'] ) ) {
-			$parent_forum_id = $_GET['DeleteID'] ?? '';
+			$parent_forum_id 	  = $_GET['DeleteID'] ?? '';
 			$children = get_children(
 				[
 					'post_parent' => $_GET['DeleteID'],
@@ -30,8 +30,8 @@ class Delete_Forum {
 				]
 			);
 
-			$topics 		= '';
-			$topic_replies 	= '';
+			$topics 			  = '';
+			$topic_replies 		  = '';
 			if ( is_array( $children ) ) :
 				foreach ( $children as $child ) :
 					$replies = get_children(

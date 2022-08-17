@@ -92,6 +92,7 @@ final class BBP_Core {
 	 */
 	public function core_includes(){
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
+		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
 	}
 
 	/**

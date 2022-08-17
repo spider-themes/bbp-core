@@ -231,15 +231,16 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 												<span class="dashicons dashicons-external"></span>
 											</a>
 										</li>
-											<?php
+										<?php
 											if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
-												?>
-											<!-- <li class="delete">
-												<a href="<?php echo admin_url( 'admin.php' ); ?>/Delete_Post.php?ID=<?php echo $depth_docs; ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
+											?>
+											<li class="delete">
+												<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php echo $child->ID; ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
 													<span class="dashicons dashicons-trash"></span>
 												</a>
-											</li> -->
-											<?php endif; ?>
+											</li>
+											<?php 
+										endif; ?>
 									</ul>
 								</div>
 							</div>
