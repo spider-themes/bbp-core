@@ -8,7 +8,7 @@
 				[
 					'id'       => 'is_bbp_post_types_hidden',
 					'type'     => 'switcher',
-					'default'  => 1,
+					'default'  => false,
 					'title'    => __( 'Hide bbPress post types', 'bbp-core' ),
 					'subtitle' => __( 'Native Forum, Topics and Replies post types menus will be hidden.', 'bbp-core' ),
 				],

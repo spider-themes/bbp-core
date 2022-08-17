@@ -20,7 +20,7 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 									</a>
 								</div>
 
-								<a href="<?php echo admin_url( 'post-new.php?post_type=forum' ); ?>" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
+								<a href="<?php echo admin_url( 'post-new.php?post_type=forum' ); ?>" target="_blank+" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
 									<span class="dashicons dashicons-plus-alt2"></span>
 									<?php esc_html_e( 'Add Forum', 'bbp-core' ); ?>
 								</a>
@@ -45,9 +45,9 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 												<div class="header-notify-icons">
 													<select name="bbpc_classic_ui" id="bbpc_classic_ui">
 														<option value="<?php echo admin_url( 'admin.php?page=bbp-core' ); ?>"><?php esc_html_e( 'Choose classic UI', 'bbp-core' ); ?></option>
-														<option value="<?php echo admin_url( 'edit.php?post_type=forum' ); ?>"><?php esc_html_e( 'Forum', 'bbp-core' ); ?></option>
-														<option value="<?php echo admin_url( 'edit.php?post_type=topic' ); ?>"><?php esc_html_e( 'Topic', 'bbp-core' ); ?></option>
-														<option value="<?php echo admin_url( 'edit.php?post_type=reply' ); ?>"><?php esc_html_e( 'Reply', 'bbp-core' ); ?></option>
+														<option value="<?php echo admin_url( 'edit.php?post_type=forum' ); ?>"><?php esc_html_e( 'Forums', 'bbp-core' ); ?></option>
+														<option value="<?php echo admin_url( 'edit.php?post_type=topic' ); ?>"><?php esc_html_e( 'Topics', 'bbp-core' ); ?></option>
+														<option value="<?php echo admin_url( 'edit.php?post_type=reply' ); ?>"><?php esc_html_e( 'Replies', 'bbp-core' ); ?></option>
 													</select>
 												</div>
 											<?php endif; ?>
@@ -182,77 +182,92 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 
 			<ul class="easydocs-accordion">
 					<?php
-					$children = get_children(
+					$children = new WP_Query(
 						[
-							'post_parent' => $item,
-							'post_type'   => 'topic',
-							'orderby'     => 'menu_order',
-							'order'       => 'asc',
+							'post_parent'    => $item,
+							'post_type'      => 'topic',
+							'orderby'        => 'menu_order',
+							'order'          => 'asc',
+							'posts_per_page' => -1,
 						]
 					);
 
-					if ( is_array( $children ) ) :
-						foreach ( $children as $child ) :
-							$replies = get_children(
-								[
-									'post_parent' => $child->ID,
-									'post_type'   => 'reply',
-									'post_status' => [ 'publish', 'draft' ],
-								]
-							);
+					while ( $children->have_posts() ) :
+						$children->the_post();
+						$current_topic_id = get_the_ID();
 
-							$no_reply = 0 == count( $replies ) ? 'no-reply' : '';
-							$is_solved = $GLOBALS['bbp_solved_topic']->is_solved( $child->ID ) ? ' solved': ' unsolved';
-							?>
-						<li <?php post_class( 'easydocs-accordion-item accordion ez-section-acc-item mix ' . esc_attr( $no_reply ) . esc_attr( $is_solved ) ); ?> data-id="<?php echo esc_attr( $child->ID ); ?>">
+						$replies = get_children(
+							[
+								'post_parent' => get_the_ID(),
+								'post_type'   => 'reply',
+								'post_status' => [ 'publish', 'draft' ],
+							]
+						);
+
+						$no_reply  = 0 == count( $replies ) ? 'no-reply' : '';
+						$is_solved = $GLOBALS['bbp_solved_topic']->is_solved( $current_topic_id ) ? ' solved' : ' unsolved';
+						?>
+						<li <?php post_class( 'easydocs-accordion-item accordion ez-section-acc-item mix ' . esc_attr( $no_reply ) . esc_attr( $is_solved ) ); ?> data-id="<?php echo esc_attr( $current_topic_id ); ?>">
 							<div class="accordion-title ez-section-title">
-									<?php
-									$edit_link = 'javascript:void(0)';
-									$target    = '_self';
-									if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
-										$edit_link = get_edit_post_link( $child );
-										$target    = '_blank';
-									}
-									?>
+								<?php
+								$edit_link = 'javascript:void(0)';
+								$target    = '_self';
+								if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
+									$edit_link = get_edit_post_link( $current_topic_id );
+									$target    = '_blank';
+								}
+								?>
 								<div class="left-content">
 									<h4>
 										<a href="<?php echo esc_attr( $edit_link ); ?>" target="<?php echo esc_attr( $target ); ?>">
-									<?php echo $child->post_title; ?>
+									<?php the_title(); ?>
 										</a>
-									<?php if ( count( $replies ) > 0 ) : ?>
-											<span class="count badge">
+										<div class="dashicons dashicons-admin-comments count-replies" title="<?php echo count( $replies ) . __( ' Replies', 'bbp-core' ); ?>">
+											<span>
 												<?php echo count( $replies ); ?>
 											</span>
-									<?php endif; ?>
+										</div>
 									</h4>
 									<ul class="actions">
 										<li>
-											<a href="<?php echo get_permalink( $child ); ?>" target="_blank" title="<?php esc_attr_e( 'View this reply in new tab', 'bbp-core' ); ?>">
+											<a href="<?php echo get_permalink( $current_topic_id ); ?>" target="_blank" title="<?php esc_attr_e( 'View this reply in new tab', 'bbp-core' ); ?>">
 												<span class="dashicons dashicons-external"></span>
 											</a>
 										</li>
-										<?php
+											<!-- 
+											<?php
+											//FIXME: Fix this
 											if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
-											?>
-											<li class="delete">
-												<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php echo $child->ID; ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
+												?>
+												<li class="delete">
+													<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this doc permanently', 'bbp-core' ); ?>">
 													<span class="dashicons dashicons-trash"></span>
-												</a>
-											</li>
-											<?php 
-										endif; ?>
+												<?php
+											endif;
+											?>
+											 -->
 									</ul>
 								</div>
 							</div>
 						</li>
-									<?php
-									endforeach;
-							endif;
+						<?php
+						endwhile;
+					// 	$total_pages = $children->max_num_pages;
+					// if ( $total_pages > 1 ) {
+					// 	$big = 999999999; // need an unlikely integer
+					// 	echo paginate_links(
+					// 		[
+					// 			'base'    => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+					// 			'current' => max( 1, get_query_var( 'paged' ) ),
+					// 			'total'   => $children->max_num_pages,
+					// 		]
+					// 	);
+					// }
+					wp_reset_postdata();
 					?>
 			</ul>
-
 			<a class="button button-info section-doc" id="bbpc-topic" name="submit" href="<?php echo admin_url( 'post-new.php?post_type=topic' ); ?>">
-					<?php esc_html_e( 'Add topics', 'bbp-core' ); ?>
+					<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 			</a>
 			</div>
 					<?php

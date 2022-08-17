@@ -14,8 +14,8 @@ class Menu {
 	public function bbpc_admin_menu() {
 		$capability = 'manage_options';
 
-		add_menu_page( __( 'BBP Core', 'bbp-core' ), __( 'BBP Core', 'bbp-core' ), $capability, 'bbp-core', [ $this, 'bbpc_plugin_page' ], 'dashicons-buddicons-bbpress-logo', 20 );
-		add_submenu_page( 'bbp-core', __( 'BBP Core Dashboard', 'bbp-core' ), __( 'Dashboard', 'bbp-core' ), $capability, 'admin.php?page=bbp-core-dashboard', [ $this, 'bbpc_statistics_dashboard' ] );
+		add_menu_page( __( 'BBP Core', 'bbp-core' ), __( 'Forums', 'bbp-core' ), $capability, 'bbp-core', [ $this, 'bbpc_plugin_page' ], 'dashicons-buddicons-bbpress-logo', 20 );
+		// add_submenu_page( 'bbp-core', __( 'BBP Core Dashboard', 'bbp-core' ), __( 'Dashboard', 'bbp-core' ), $capability, 'admin.php?page=bbp-core-dashboard', [ $this, 'bbpc_statistics_dashboard' ] );
 
 		// Remove menu items.
 		$opt = get_option( 'bbp_core_settings' );

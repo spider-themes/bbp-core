@@ -229,13 +229,17 @@ function bbp_core() {
 bbp_core();
 
 // TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
+// TODO: Use pagination for topics, use the code from Deski theme for pagination.
 
-// TODO: Use pagination for topics
-
-// TODO: Sweet alert for deletion @delwer
-
-// TODO: Add voting feature description in readme.txt
 // TODO: Preview of ama on plugin page
 
 // TODO: Create blocks for the widgets from gd bbpress plugin, with carbon fields.
 // TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
+
+//TODO: Move all the css to SCSS
+// TODO: forum icons will be thumbnail, max height width dao
+// TODO: topics er icon gulor vetore content hobe, comment icon er vetore, count 0 show koro, title diye diba, replies count dhore
+
+// TODO: Bring the admin global file to main plugin file
+// TODO: Plugin menu name and menu items name must be different. e.g - BBP Core > Forums
+

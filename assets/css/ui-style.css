@@ -2228,3 +2228,22 @@ color: #0062ae;
  .easydocs-accordion-item .dashicons{
    text-decoration: none;
  }
+
+ /* replies count */
+ .count-replies {
+  position:relative;
+  font-size: 25px;
+  margin-left: 5px;
+}
+
+.count-replies:before {
+  color: var(--black_200);
+}
+
+.count-replies span {
+  position: absolute;
+  top: -1px;
+  left: 8px;
+  color: #fff;
+  font-size: 0.6em;
+}

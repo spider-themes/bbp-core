@@ -1,5 +1,5 @@
 === BBP Core - Expand bbPress powered forums with useful features ===
-Contributors: spiderdevs, arafatjamil01, mdjwel
+Contributors: spiderdevs, arafatjamil01, mdjwel, delweratjk
 Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, topic, reply
 Requires at least: 5.0
 Tested up to: 6.0.1
@@ -23,6 +23,8 @@ BBP Core powers your forum with useful features. For example - solved topics, pr
 - **Private Reply:** Create replies on topics privately, which only forum owners can see, it remains hidden to other customers.
 
 - **Solved Topics:** Mark topic as solved / unsolved. Solved topics shows 'Resolved' badge at the end of topic title.
+
+- **Voting Feature:** Users can vote on topic replies. The highest voted reply goes to the top. AJAX powered voting system for better community.
 
 == Frequently Asked Questions ==
 
@@ -63,6 +65,11 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.0.1 (August 18, 2022) =
+ * Custom Forum dashboard UI
+ * BBPress voting
+ * Highly customizable settings options
 
 = v1.0.0 (July 25, 2022) =
  * Initial release
