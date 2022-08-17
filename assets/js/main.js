@@ -162,10 +162,7 @@
       if (!n.parents().hasClass('easydocs-notification'))
         e('.easydocs-notification .header-notify-icon').removeClass('active');
     });
-
-
     
-
     // DELETE FORUM
     function delete_forum() {
       $('.parent-delete').on('click', function (e) {

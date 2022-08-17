@@ -3,7 +3,7 @@ namespace admin\menu;
 
 /**
  * Class Delete_Post
- * @package eazyDocs\Admin
+ * @package BBP-core\Admin\Menu
  */
 class Delete_Forum {
 
