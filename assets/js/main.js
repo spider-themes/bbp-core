@@ -162,6 +162,35 @@
       if (!n.parents().hasClass('easydocs-notification'))
         e('.easydocs-notification .header-notify-icon').removeClass('active');
     });
+
+
+    
+
+    // DUPLICATE DOC
+    function delete_forum() {
+      $('.parent-delete').on('click', function (e) {
+          e.preventDefault();
+          let href = $(this).attr('href')
+          Swal.fire({
+              title: 'Are you sure to delete?',
+              text: "This forum will be deleted with the topics and replies, you won't be able to revert!",
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes'
+          }).then((result) => {
+              if (result.value) {
+                  document.location.href = href;
+              }
+          })
+      })
+  }
+  delete_forum()
+
+
+    
+
   });
 
 })(jQuery);

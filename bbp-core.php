@@ -62,6 +62,7 @@ final class BBP_Core {
 	 */
 	public function __construct() {
 		$this->define_constants();
+		$this->core_includes();
 
 		register_activation_hook( __FILE__, [ $this, 'activate' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'load_assets' ] );
@@ -84,6 +85,13 @@ final class BBP_Core {
 		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
 		define( 'BBPC_ASSETS', BBPC_URL . '/assets/' );
 		define( 'BBPC_IMG', BBPC_ASSETS . '/img/' );
+	}
+
+	/**
+	 * File includes
+	 */
+	public function core_includes(){
+		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 	}
 
 	/**
@@ -194,6 +202,7 @@ final class BBP_Core {
 			wp_enqueue_script( 'sortable', BBPC_ASSETS . 'js/Sortable.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'accordion', BBPC_ASSETS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'bbpc-main', BBPC_ASSETS . 'js/main.js', [ 'jquery' ], '1.0', true );
+			wp_enqueue_script( 'sweetalert', BBPC_ASSETS . 'js/sweetalert.min.js', [ 'jquery' ], '1.0', true );
 		}
 	}
 
