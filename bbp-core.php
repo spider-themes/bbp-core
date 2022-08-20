@@ -90,7 +90,8 @@ final class BBP_Core {
 	/**
 	 * File includes
 	 */
-	public function core_includes(){
+	public function core_includes() {
+		require_once BBPC_DIR . '/includes/functions.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
 	}
@@ -184,6 +185,7 @@ final class BBP_Core {
 	 */
 	public function load_admin_scripts() {
 		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );
+		wp_enqueue_style( 'bbpc-admin-global', BBPC_ASSETS . 'css/admin-global.css' );
 
 		$current_url = ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 		$target_url  = admin_url( 'admin.php?page=bbp-core' );
@@ -191,7 +193,7 @@ final class BBP_Core {
 		if ( $target_url == $current_url ) {
 			wp_enqueue_style( 'normalize', BBPC_ASSETS . 'css/normalize.css' );
 			wp_enqueue_style( 'nice-select', BBPC_ASSETS . 'css/nice-select.css' );
-			wp_enqueue_style( 'jquery-ui', BBPC_ASSETS . 'css/ui-style.css' );
+			wp_enqueue_style( 'jquery-ui', BBPC_ASSETS . 'css/admin-ui-style.css' );
 
 			// Scripts.
 			wp_enqueue_script( 'modernizr', BBPC_ASSETS . 'js/modernizr-3.11.2.min.js', [ 'jquery' ], '3.11.2', true );
@@ -230,16 +232,12 @@ bbp_core();
 
 // TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
 // TODO: Use pagination for topics, use the code from Deski theme for pagination.
-
-// TODO: Preview of ama on plugin page
-
 // TODO: Create blocks for the widgets from gd bbpress plugin, with carbon fields.
 // TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
 
-//TODO: Move all the css to SCSS
-// TODO: forum icons will be thumbnail, max height width dao
-// TODO: topics er icon gulor vetore content hobe, comment icon er vetore, count 0 show koro, title diye diba, replies count dhore
+//TODO: Redirection issue should be fixed @delwer
 
-// TODO: Bring the admin global file to main plugin file
-// TODO: Plugin menu name and menu items name must be different. e.g - BBP Core > Forums
-
+// TODO: Voting position, retina display , 1680px
+//TODO: Hover kapakapi
+//TODO: Select parent forum automatically
+//TODO: No forum, if not assigned forum, make it conditional

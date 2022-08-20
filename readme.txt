@@ -14,6 +14,8 @@ BBP Core expands many useful features for your forums.
 
 BBP Core powers your forum with useful features. For example - solved topics, private replies, forum statistics etc.
 
+[Live Demo Here](https://wordpress-theme.spider-themes.net/ama/forums/topic/about-bbpress-plugin-features/)
+
 ### Reasons to Choose BBP Core ###
 
 - **Lightweight:** Loading only necessary css, javascript assets when necessary, it will not load assets unless necessary.
