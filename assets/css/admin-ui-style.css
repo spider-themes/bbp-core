@@ -694,6 +694,7 @@ label {
 }
 .accordion-title:hover ul.actions li {
   margin: 0;
+  line-height: normal;
 }
 .accordion-title h4 {
   font-size: var(--fs-14);

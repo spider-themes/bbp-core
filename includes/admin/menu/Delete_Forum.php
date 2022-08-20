@@ -19,11 +19,11 @@ class Delete_Forum {
 	 */
 	public function delete_forum() {
  
-		if ( ! empty ( $_GET['DeleteID'] ) ) {
-			$parent_forum_id 	  = $_GET['DeleteID'] ?? '';
+		if ( ! empty ( $_GET['forum_ID'] ) ) {
+			$parent_forum_id 	  = $_GET['forum_ID'] ?? '';
 			$children = get_children(
 				[
-					'post_parent' => $_GET['DeleteID'],
+					'post_parent' => $_GET['forum_ID'],
 					'post_type'   => 'topic',
 					'orderby'     => 'menu_order',
 					'order'       => 'asc',

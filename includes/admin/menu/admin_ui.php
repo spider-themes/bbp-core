@@ -141,13 +141,14 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 					<?php
 					if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
 						?>
-					<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Post.php?DeleteID=<?php echo get_the_ID(); ?>" class="link delete parent-delete" title="<?php esc_attr_e( 'Delete this forum permanently', 'bbp-core' ); ?>">
+					<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Forum.php?forum_ID=<?php echo get_the_ID(); ?>" class="link forum-delete" title="<?php esc_attr_e( 'Delete this forum permanently', 'bbp-core' ); ?>">
 						<span class="dashicons dashicons-trash"></span>
 					</a>
 					<?php endif; ?>
 				</div>
 			</li>
 				<?php
+				$forum_parent = get_the_ID();
 		endwhile;
 			wp_reset_postdata();
 			?>
@@ -268,7 +269,7 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 
 									<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
 										<li class="delete">
-											<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="" title="<?php esc_attr_e( 'Delete this topic permanently', 'bbp-core' ); ?>">
+											<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this topic permanently', 'bbp-core' ); ?>">
 												<span class="dashicons dashicons-trash"></span>
 											</a>
 										</li>
@@ -283,7 +284,7 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 					wp_reset_postdata();
 					?>
 			</ul>
-			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'post-new.php?post_type=topic' ); ?>">
+			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'post-new.php?post_type=topic&forum_id='.$item ); ?>">
 					<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 			</a>
 			</div>

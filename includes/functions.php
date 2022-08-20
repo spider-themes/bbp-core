@@ -71,3 +71,18 @@ function bbpc_post_pagination() {
 
 		echo '</ul>';
 	}
+
+
+
+	add_action('admin_footer', function(){
+		if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/post-new.php') || strstr($_SERVER['REQUEST_URI'], 'wp-admin/post.php') ) {
+			$forum_id = $_GET['forum_id'] ?? '';
+			if( $forum_id ) :
+				?>
+				<script>
+					 document.getElementById('parent_id').value = <?php echo esc_js( $forum_id ); ?>;						 
+				</script>
+				<?php
+			endif;
+		}
+	});

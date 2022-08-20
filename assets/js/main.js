@@ -165,7 +165,7 @@
     
     // DELETE FORUM
     function delete_forum() {
-      $('.parent-delete').on('click', function (e) {
+      $('.forum-delete').on('click', function (e) {
           e.preventDefault();
           let href = $(this).attr('href')
           Swal.fire({
