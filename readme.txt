@@ -4,7 +4,7 @@ Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, to
 Requires at least: 5.0
 Tested up to: 6.0.1
 Requires PHP: 7.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,12 +63,12 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 
 == Screenshots ==
 
-1. Admin Dashboard Statistics
+1. Custom Admin Dashboard
 2. BBP Core Settings
 
 == Changelog ==
 
-= v1.0.1 (August 18, 2022) =
+= v1.0.1 (August 21, 2022) =
  * Custom Forum dashboard UI
  * BBPress voting
  * Highly customizable settings options

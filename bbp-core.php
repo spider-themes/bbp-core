@@ -231,13 +231,12 @@ function bbp_core() {
 bbp_core();
 
 // TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
-// TODO: Use pagination for topics, use the code from Deski theme for pagination.
 // TODO: Create blocks for the widgets from gd bbpress plugin, with carbon fields.
 // TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
-
-//TODO: Redirection issue should be fixed @delwer
 
 // TODO: Voting position, retina display , 1680px
 //TODO: Hover kapakapi
 //TODO: Select parent forum automatically
 //TODO: No forum, if not assigned forum, make it conditional
+
+// TODO: Use pagination for topics, use the code from Deski theme for pagination.

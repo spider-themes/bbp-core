@@ -1,7 +1,4 @@
 <?php
-
-use Elementor\Modules\System_Info\Reporters\Theme;
-
 if ( ! class_exists( 'bbPress' ) ) {
 	return;
 }
@@ -62,12 +59,12 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 											</div>
 										</div>
 									</li>
-										<li class="easydocs-notification pro-notification-alert" title="<?php esc_attr_e( 'Notifications', 'bbp-core' ); ?>">
+										<!-- <li class="easydocs-notification pro-notification-alert" title="<?php esc_attr_e( 'Notifications', 'bbp-core' ); ?>">
 											<div class="header-notify-icon">
 												<img class="notify-icon" src="<?php echo BBPC_IMG; ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'bbp-core' ); ?>">
 												<img class="settings-pro-icon" src="<?php echo BBPC_IMG; ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'bbp-core' ); ?>">
 											</div>
-										</li>
+										</li> -->
 								</ul>
 							</div>
 						</div>
@@ -280,11 +277,10 @@ $forum_count       = (int) wp_count_posts( 'forum' )->publish;
 						</li>
 						<?php
 						endwhile;
-
 					wp_reset_postdata();
 					?>
 			</ul>
-			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'post-new.php?post_type=topic&forum_id='.$item ); ?>">
+			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'post-new.php?post_type=topic&forum_id=' . $item ); ?>">
 					<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 			</a>
 			</div>

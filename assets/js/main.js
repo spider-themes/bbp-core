@@ -238,4 +238,4 @@ var config = {
   },
 };
 
-var mixer1 = mixitup(containerEl1, config);
+// var mixer1 = mixitup(containerEl1, config); 
