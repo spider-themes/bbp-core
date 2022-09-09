@@ -4,7 +4,7 @@ Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, to
 Requires at least: 5.0
 Tested up to: 6.0.1
 Requires PHP: 7.2
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ BBP Core powers your forum with useful features. For example - solved topics, pr
 
 - **Lightweight:** Loading only necessary css, javascript assets when necessary, it will not load assets unless necessary.
 
-- **statistics Dashboard:** A glimpse of forum statistics on the plugin dashboard, including - total number of forums, topics, replies, tags etc.
+- **Custom Admin UI:** A hierarchical view of the forums, nested topics and number of forums and topics are displayed in one page. Besides, a user can switch between solved, unsolved, never replied and all the topics.
 
 - **Private Reply:** Create replies on topics privately, which only forum owners can see, it remains hidden to other customers.
 
@@ -67,6 +67,13 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+= v1.0.3 (September 9, 2022) =
+ * Fix: Admin UI forum thumbnail
+ * Added support for docly theme
+
+= v1.0.2 (August 21, 2022) =
+ * Fix: Admin UI settings
+ * Fix: Admin UI CSS
 
 = v1.0.1 (August 21, 2022) =
  * Custom Forum dashboard UI

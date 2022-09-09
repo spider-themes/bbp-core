@@ -16,7 +16,7 @@ class BBP_Private_Replies {
 	--------------------------------------------*
 	 * Constructor
 	 *--------------------------------------------*/
-
+	
 	/**
 	 * Initializes the plugin by setting filters, and administration functions.
 	 */
@@ -321,6 +321,6 @@ class BBP_Private_Replies {
 
 } // end class
 
-// instantiate our plugin's class
+// instantiate our plugin's class.
 $GLOBALS['bbp_private_replies'] = new BBP_Private_Replies();
 ?>

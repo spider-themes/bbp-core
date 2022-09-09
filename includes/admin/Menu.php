@@ -26,7 +26,6 @@ class Menu {
 			remove_menu_page( 'edit.php?post_type=topic' );
 			remove_menu_page( 'edit.php?post_type=reply' );
 		}
-
 	}
 
 	/**

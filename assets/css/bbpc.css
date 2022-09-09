@@ -1,3 +1,7 @@
 /**
 * BBP Core plugin main css file
 */
+
+.solved-topic-bar{
+    display: inline;
+}

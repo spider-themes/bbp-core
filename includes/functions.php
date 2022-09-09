@@ -78,7 +78,7 @@ function bbpc_post_pagination() {
 		'admin_footer',
 		function() {
 			if ( strstr( $_SERVER['REQUEST_URI'], 'wp-admin/post-new.php' ) || strstr( $_SERVER['REQUEST_URI'], 'wp-admin/post.php' ) ) {
-				$forum_id = sanitize_text_field( wp_unslash( $_GET['forum_id'] ) ) ?? '';
+				$forum_id = sanitize_text_field( wp_unslash( isset( $_GET['forum_id'] ) ) ? $_GET['forum_id'] : '' );
 				if ( $forum_id ) :
 					?> 
 				<script>

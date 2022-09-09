@@ -6,13 +6,16 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            SpiderDevs
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.0.1
+Version:           1.0.3
 Requires at least: 5.0
 Tested up to:      6.0.1
 Requires PHP:      7.2
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 */
+
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -216,6 +219,7 @@ final class BBP_Core {
 	 */
 	public function bbpc_hooks() {
 		require BBPC_DIR . 'includes/hooks/actions.php';
+		require BBPC_DIR . 'includes/hooks/image_sizes.php';
 	}
 }
 
@@ -231,12 +235,10 @@ function bbp_core() {
 bbp_core();
 
 // TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
-// TODO: Create blocks for the widgets from gd bbpress plugin, with carbon fields.
 // TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
 
 // TODO: Voting position, retina display , 1680px
-//TODO: Hover kapakapi
-//TODO: Select parent forum automatically
-//TODO: No forum, if not assigned forum, make it conditional
 
 // TODO: Use pagination for topics, use the code from Deski theme for pagination.
+//TODO: Design best answer of bbp core as bbp of docy
+// TODO: Add bbp-core to all the themes.

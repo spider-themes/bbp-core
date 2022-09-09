@@ -13,7 +13,7 @@ class Admin {
 	}
 
 	/**
-	 * Load Codestar Framework and related settings
+	 * Load Codestar Framework and related settings.
 	 *
 	 * @return void
 	 */
