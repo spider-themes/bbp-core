@@ -1134,30 +1134,15 @@ a.child-delete {
   margin-right: auto;
 }
 .easydocs-search-form .search-icon {
-  top: 5px;
-  right: 5px;
   position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-  border-radius: 0.625rem;
-  background: rgba(76, 76, 241, 0.1);
-  text-align: center;
-  cursor: pointer;
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
-  --search-icon: var(--clr-blue);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.easydocs-search-form .search-icon:hover {
-  background: #4c4cf1;
-  --search-icon: var(--clr-white);
+  left: 15px;
+  transform: translateY(50%);
 }
 .easydocs-search-form input#bbpc-search {
   color: #9199a1;
-  padding: 0.75rem 1.25rem;
+  padding: 10px 15px 10px 40px;
   border: 1px solid #EDEAE9;
   border-radius: 0.625rem;
   box-sizing: border-box;

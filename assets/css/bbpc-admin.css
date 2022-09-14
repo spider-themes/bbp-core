@@ -103,3 +103,8 @@
 #bbpc-forum:hover{
     color: var(--clr-white);
 }
+
+.easydocs-navitem .title img {
+    max-height: 25px;
+    max-width: 25px;
+}

@@ -6,7 +6,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            SpiderDevs
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.0.3
+Version:           1.0.4
 Requires at least: 5.0
 Tested up to:      6.0.1
 Requires PHP:      7.2
@@ -177,7 +177,7 @@ final class BBP_Core {
 		wp_enqueue_style( 'bbpc-voting', BBPC_ASSETS . 'css/bbpc-voting.css' );
 
 		// BBP Voting.
-		wp_enqueue_script( 'bbpc-voting', BBPC_ASSETS . '/js/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );
+		wp_enqueue_script( 'bbpc-voting', BBPC_ASSETS . 'js/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );
 		wp_localize_script( 'bbpc-voting', 'bbp_voting_ajax_object', [ 'ajax_url' => admin_url( 'admin-ajax.php' ) ] );
 	}
 
@@ -242,3 +242,8 @@ bbp_core();
 // TODO: Use pagination for topics, use the code from Deski theme for pagination.
 //TODO: Design best answer of bbp core as bbp of docy
 // TODO: Add bbp-core to all the themes.
+
+
+//TODO: Beside filter, show total count
+//TODO: Close, open, hidden, open should be active
+//TODO: Add teak mark beside hidden, it will approve the posts and move to open

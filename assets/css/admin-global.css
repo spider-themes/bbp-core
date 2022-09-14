@@ -277,7 +277,6 @@ body.post-type-onepage-docs .type-onepage-docs .row-actions span.inline {
   color: #6d7882;
   font-family: Roboto, sans-serif;
 }
-
 .ezd-blank_state h2 {
   font-size: 32px;
   font-weight: 700;
@@ -297,19 +296,16 @@ p.big-p {
   border-radius: 3px;
   transition-duration: 0.3s;
 }
-
 .ezd-btn.btn-lg {
   font-size: 12px;
   padding: 8px 22px;
   font-weight: 500;
 }
-
 .ezd-btn.ezd-btn-pro:hover {
   background: #f4cc8a;
   color: #000;
   border-color: #f4cc8a;
 }
-
 .ezd-btn.ezd-btn-pro {
   background: #f1bd6c;
   color: #000;
@@ -319,7 +315,6 @@ p.big-p {
 .button-inline {
   margin-top: 40px;
 }
-
 .button-inline .button + .button {
   margin-left: 10px;
 }
@@ -352,7 +347,5 @@ p.big-p {
 .customize-pane-parent li#accordion-section-role_manager_fields {
   display: none !important;
 }
-
-/*# sourceMappingURL=admin-global.css.map */
 
 /*# sourceMappingURL=admin-global.css.map */
