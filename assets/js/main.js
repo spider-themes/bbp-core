@@ -163,14 +163,56 @@
         e('.easydocs-notification .header-notify-icon').removeClass('active');
     });
     
+    // ADD PARENT FORUM
+    function create_forum() {
+      $(document).on('click', '#bbpc-forum', function (e) {
+          e.preventDefault();
+          let href = $(this).attr('href')
+          Swal.fire({
+              title: bbp_core_local_object.create_forum_title,
+              input: 'text',
+              showCancelButton: true,
+              inputAttributes: {
+                  name: 'parent_title'
+              },
+          }).then((result) => {
+              if (result.value) {
+                  document.location.href = href + result.value;
+              }
+          })
+      })
+  }
+  create_forum();
+
+  // SECTION DOC
+  function create_topic() {
+    $(document).on('click', '#bbpc-topic', function (e) {
+        e.preventDefault();
+        let href = $(this).attr('href')
+        Swal.fire({
+            title: bbp_core_local_object.create_topic_title,
+            input: 'text',
+            showCancelButton: true,
+            inputAttributes: {
+                name: 'section'
+            },
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href + result.value;
+            }
+        })
+    })
+  } 
+  create_topic();
+
     // DELETE FORUM
     function delete_forum() {
       $('.forum-delete').on('click', function (e) {
           e.preventDefault();
           let href = $(this).attr('href')
           Swal.fire({
-              title: 'Are you sure to delete?',
-              text: "This forum will be deleted with the topics and replies, you won't be able to revert!",
+              title: bbp_core_local_object.forum_delete_title,
+              text: bbp_core_local_object.forum_delete_desc,
               icon: 'question',
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
@@ -191,8 +233,8 @@
         e.preventDefault();
         let href = $(this).attr('href')
         Swal.fire({
-            title: 'Are you sure to delete?',
-            text: "This topic will be deleted with all the replies, you won't be able to revert!",
+            title: bbp_core_local_object.forum_delete_title,
+            text: bbp_core_local_object.topic_delete_desc,
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -206,6 +248,8 @@
     })
   }
   delete_topic()
+
+
   });
 
 })(jQuery);

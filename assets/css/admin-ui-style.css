@@ -1292,6 +1292,10 @@ a.child-delete {
   align-items: center;
   justify-content: flex-end;
 }
+.navbar-right > ul {
+  align-items: center;
+  gap: 8px;
+}
 .navbar-right .js-darkmode-btn {
   display: flex;
   align-items: center;

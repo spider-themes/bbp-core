@@ -20,12 +20,10 @@ $forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam 
 										<?php esc_html_e( 'Forums', 'bbp-core' ); ?>
 									</a>
 								</div>
-
-								<a href="<?php echo admin_url( 'post-new.php?post_type=forum' ); ?>" target="_blank+" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
+								<a href="<?php echo admin_url('admin.php'); ?>/Create_Forum.php?parent_title=" target="_blank" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
 									<span class="dashicons dashicons-plus-alt2"></span>
 									<?php esc_html_e( 'Add Forum', 'bbp-core' ); ?>
 								</a>
-
 							</div>
 						</div>
 
@@ -78,6 +76,7 @@ $forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam 
 					'post_parent'    => 0,
 					'orderby'        => 'menu_order',
 					'order'          => 'ASC',
+					'post_status'    => 'publish' ,
 				]
 			);
 			$count = $query->found_posts;
@@ -310,7 +309,8 @@ $forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam 
 					wp_reset_postdata();
 					?>
 			</ul>
-			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'post-new.php?post_type=topic&forum_id=' . $item ); ?>">
+			
+			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?parentID=<?php echo $item; ?>&is_section=">
 					<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 			</a>
 			</div>

@@ -95,6 +95,7 @@ final class BBP_Core {
 	 */
 	public function core_includes() {
 		require_once BBPC_DIR . '/includes/functions.php';
+		require_once __DIR__ . '/includes/admin/menu/Create_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
 	}
@@ -209,6 +210,15 @@ final class BBP_Core {
 			wp_enqueue_script( 'accordion', BBPC_ASSETS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'bbpc-main', BBPC_ASSETS . 'js/main.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'sweetalert', BBPC_ASSETS . 'js/sweetalert.min.js', [ 'jquery' ], '1.0', true );
+			wp_localize_script( 'jquery', 'bbp_core_local_object',
+			array(
+				'create_forum_title'        	=> esc_html__( 'Enter Forum Title', 'bbp-core' ),
+				'create_topic_title'       		=> esc_html__( 'Enter Topic Title', 'bbp-core' ),
+				'forum_delete_title'     		=> esc_html__( "Are you sure to delete?", "bbp-core" ),
+				'forum_delete_desc'     		=> esc_html__( "This forum will be deleted with all the topics and you won't be able to revert!", "bbp-core" ),
+				'topic_delete_desc'     		=> esc_html__( "This topic will be deleted and you won't be able to revert!", "bbp-core" ),
+			)
+		);
 		}
 	}
 
