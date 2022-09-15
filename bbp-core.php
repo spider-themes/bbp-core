@@ -253,7 +253,9 @@ bbp_core();
 //TODO: Design best answer of bbp core as bbp of docy
 // TODO: Add bbp-core to all the themes.
 
-
-//TODO: Beside filter, show total count
-//TODO: Close, open, hidden, open should be active
 //TODO: Add teak mark beside hidden, it will approve the posts and move to open
+
+//TODO: add hidden replies after reply count, clicking it would show hidden replies.
+//TODO: When click on reply count, it will show the following replies, beside that, there will be pending replies.
+//TODO: Setup options to keep / remove top filters, in admin UI, also default is-active filter
+//TODO: Test with official Wordpress themes and other famous themes on worpdress repo.

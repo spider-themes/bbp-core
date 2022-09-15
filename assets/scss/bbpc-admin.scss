@@ -109,29 +109,27 @@
   max-width: 25px;
 }
 
-.bbpc-trash-filter {
+.bbpc-trash-filter {  
   border-radius: 1.875rem;
   margin-bottom: 0;
   background-color: rgba(212, 23, 23, 0.1);
-}
-.bbpc-trash-filter svg {
-  fill: #d41717;
-}
-.bbpc-trash-filter a {
-  justify-content: center;
-  gap: 0.3125rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #d41717;
+  svg {
+    fill: rgba(212, 23, 23, 1);
+  }
+  a {
+    justify-content: center;
+    gap: 0.3125rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgba(212, 23, 23, 1);
+  }
 }
 
-.bbpc-settings-icon {
+.bbpc-settings-icon{
   background: rgba(0, 0, 255, 0.058);
   padding: 10px;
   border-radius: 50%;
 }
-
-/*# sourceMappingURL=bbpc-admin.css.map */
