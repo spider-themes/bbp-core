@@ -259,17 +259,18 @@ function menuToggle() {
   toggleMenu.classList.toggle('is-active');
 }
 
+
 let docContainer = document.querySelectorAll('.easydocs-tab');
 
 var config = {
   controls: {
-    scope: 'local',
+	scope: 'local',
   },
   animation: {
-    enable: false,
+	enable: false,
   },
   load: {
-    filter: '.open-topics'
+	filter: '.open'
 }
 };
 

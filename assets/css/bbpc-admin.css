@@ -134,4 +134,21 @@
   border-radius: 50%;
 }
 
+.bbpc-approve-btn {
+  margin-left: 7px;
+  margin-right: 3px;
+  border: 1px solid #2DB22D;
+  color: #2DB22D;
+  border-radius: 50%;
+}
+.bbpc-approve-btn:hover {
+  border: 1px solid #07a207;
+  color: #07a207;
+}
+
+.bbpc-filter-btn-settings .csf--sibling.csf--active {
+  border: 1px solid #2DB22D;
+  background-color: #2DB22D;
+}
+
 /*# sourceMappingURL=bbpc-admin.css.map */

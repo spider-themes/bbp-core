@@ -6,7 +6,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            SpiderDevs
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.0.4
+Version:           1.0.5
 Requires at least: 5.0
 Tested up to:      6.0.1
 Requires PHP:      7.2
@@ -86,8 +86,8 @@ final class BBP_Core {
 		define( 'BBPC_FILE', __FILE__ );
 		define( 'BBPC_DIR', __DIR__ . '/' );
 		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
-		define( 'BBPC_ASSETS', BBPC_URL . '/assets/' );
-		define( 'BBPC_IMG', BBPC_ASSETS . '/img/' );
+		define( 'BBPC_ASSETS', BBPC_URL . 'assets/' );
+		define( 'BBPC_IMG', BBPC_ASSETS . 'img/' );
 	}
 
 	/**
@@ -210,15 +210,17 @@ final class BBP_Core {
 			wp_enqueue_script( 'accordion', BBPC_ASSETS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'bbpc-main', BBPC_ASSETS . 'js/main.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'sweetalert', BBPC_ASSETS . 'js/sweetalert.min.js', [ 'jquery' ], '1.0', true );
-			wp_localize_script( 'jquery', 'bbp_core_local_object',
-			array(
-				'create_forum_title'        	=> esc_html__( 'Enter Forum Title', 'bbp-core' ),
-				'create_topic_title'       		=> esc_html__( 'Enter Topic Title', 'bbp-core' ),
-				'forum_delete_title'     		=> esc_html__( "Are you sure to delete?", "bbp-core" ),
-				'forum_delete_desc'     		=> esc_html__( "This forum will be deleted with all the topics and you won't be able to revert!", "bbp-core" ),
-				'topic_delete_desc'     		=> esc_html__( "This topic will be deleted and you won't be able to revert!", "bbp-core" ),
-			)
-		);
+			wp_localize_script(
+				'jquery',
+				'bbp_core_local_object',
+				[
+					'create_forum_title' => esc_html__( 'Enter Forum Title', 'bbp-core' ),
+					'create_topic_title' => esc_html__( 'Enter Topic Title', 'bbp-core' ),
+					'forum_delete_title' => esc_html__( 'Are you sure to delete?', 'bbp-core' ),
+					'forum_delete_desc'  => esc_html__( "This forum will be deleted with all the topics and you won't be able to revert!", 'bbp-core' ),
+					'topic_delete_desc'  => esc_html__( "This topic will be deleted and you won't be able to revert!", 'bbp-core' ),
+				]
+			);
 		}
 	}
 
@@ -249,13 +251,10 @@ bbp_core();
 
 // TODO: Voting position, retina display , 1680px
 
-// TODO: Use pagination for topics, use the code from Deski theme for pagination.
+// TODO: Use pagination for topics, use bbp official pagination
 //TODO: Design best answer of bbp core as bbp of docy
-// TODO: Add bbp-core to all the themes.
-
-//TODO: Add teak mark beside hidden, it will approve the posts and move to open
 
 //TODO: add hidden replies after reply count, clicking it would show hidden replies.
 //TODO: When click on reply count, it will show the following replies, beside that, there will be pending replies.
 //TODO: Setup options to keep / remove top filters, in admin UI, also default is-active filter
-//TODO: Test with official Wordpress themes and other famous themes on worpdress repo.
+//TODO: Test with official WordPress themes and other famous themes on worpdress repo.

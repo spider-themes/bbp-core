@@ -18,10 +18,9 @@ class Delete_Forum {
 	 * Delete Parent Doc
 	 */
 	public function delete_forum() {
- 
-		if ( ! empty ( $_GET['forum_ID'] ) ) {
-			$parent_forum_id 	  = $_GET['forum_ID'] ?? '';
-			$children = get_children(
+		if ( ! empty( $_GET['forum_ID'] ) ) {
+			$parent_forum_id = $_GET['forum_ID'] ?? '';
+			$children        = get_children(
 				[
 					'post_parent' => $_GET['forum_ID'],
 					'post_type'   => 'topic',
@@ -30,8 +29,8 @@ class Delete_Forum {
 				]
 			);
 
-			$topics 			  = '';
-			$topic_replies 		  = '';
+			$topics        = '';
+			$topic_replies = '';
 			if ( is_array( $children ) ) :
 				foreach ( $children as $child ) :
 					$replies = get_children(
@@ -48,17 +47,17 @@ class Delete_Forum {
 							$topic_replies .= $reply->ID . ',';
 						endforeach;
 					endif;
-					
+
 				endforeach;
 			endif;
-			  
-			$forum_ids              = $parent_forum_id . ',' . $topic_replies . $topics;
-			$forum_id                  = explode( ',', $forum_ids );
-			$forum_id_int              = array_map( 'intval', $forum_id );
+
+			$forum_ids    = $parent_forum_id . ',' . $topic_replies . $topics;
+			$forum_id     = explode( ',', $forum_ids );
+			$forum_id_int = array_map( 'intval', $forum_id );
 			foreach ( $forum_id_int as $deletes ) {
 				wp_delete_post( $deletes, true );
 			}
-			wp_safe_redirect(admin_url( 'admin.php?page=bbp-core' ));
+			wp_safe_redirect( admin_url( 'admin.php?page=bbp-core' ) );
 		}
 	}
 }
