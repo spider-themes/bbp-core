@@ -1,5 +1,5 @@
 <?php
-namespace eazyDocs\Admin;
+namespace Admin;
 
 /**
  * Class Create_Post

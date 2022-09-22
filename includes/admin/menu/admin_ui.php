@@ -62,6 +62,20 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 											<?php endif; ?>
 										</div>
 									</li>
+									<?php
+									if ( class_exists('BBPCorePro') ) :
+										do_action('bbpcorepro_notification');
+									else :
+										?>
+										<li class="easydocs-notification bbp-core-pro-notification" title="<?php esc_attr_e('Notifications', 'eazydocs'); ?>">
+											<div class="header-notify-icon">
+												<img class="notify-icon" src="<?php echo BBPC_IMG ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'eazydocs' ); ?>">
+												<img class="settings-pro-icon" src="<?php echo BBPC_IMG ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'eazydocs' ); ?>">
+											</div>
+										</li>
+										<?php
+									endif;
+									?>
 								</ul>
 							</div>
 						</div>
