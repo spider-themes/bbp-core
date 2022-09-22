@@ -1,13 +1,9 @@
 <?php
-namespace eazyDocs\Admin;
+namespace Admin;
 
-/**
- * Class Create_Post
- * @package eazyDocs\Admin
- */
-class Create_Post {
+class Create_Forum {
 	/**
-	 * Create_Post constructor.
+	 * Create_Forum constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_init', [ $this, 'create_parent_doc' ] );

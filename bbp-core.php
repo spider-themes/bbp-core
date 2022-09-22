@@ -61,7 +61,7 @@ final class BBP_Core {
 	const VERSION = '1.0.0';
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->define_constants();
@@ -77,7 +77,7 @@ final class BBP_Core {
 	}
 
 	/**
-	 * Define Plugin Constants
+	 * Define Plugin Constants.
 	 *
 	 * @return void
 	 */
@@ -91,17 +91,18 @@ final class BBP_Core {
 	}
 
 	/**
-	 * File includes
+	 * File includes.
 	 */
 	public function core_includes() {
 		require_once BBPC_DIR . '/includes/functions.php';
+		require_once __DIR__ . '/includes/admin/menu/Approve_Topic.php';
 		require_once __DIR__ . '/includes/admin/menu/Create_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
 	}
 
 	/**
-	 *  Initializing Bbp_core class
+	 *  Initializing Bbp_core class.
 	 *
 	 * @return \Bbp_core
 	 */
@@ -114,7 +115,7 @@ final class BBP_Core {
 	}
 
 	/**
-	 * Actions on plugin activation
+	 * Actions on plugin activation.
 	 *
 	 * @return void
 	 */
@@ -130,7 +131,7 @@ final class BBP_Core {
 
 
 	/**
-	 * Initialize the plugin functionality
+	 * Initialize the plugin functionality.
 	 *
 	 * @return void
 	 */
@@ -145,7 +146,7 @@ final class BBP_Core {
 	}
 
 	/**
-	 * Load different features
+	 * Load different features.
 	 *
 	 * @return void
 	 */
@@ -169,7 +170,7 @@ final class BBP_Core {
 	}
 
 	/**
-	 * Load Necessary assets for the plugin
+	 * Load Necessary assets for the plugin.
 	 *
 	 * @return void
 	 */
@@ -208,7 +209,7 @@ final class BBP_Core {
 			wp_enqueue_script( 'tabby-polyfills', BBPC_ASSETS . 'js/tabby.polyfills.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'sortable', BBPC_ASSETS . 'js/Sortable.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'accordion', BBPC_ASSETS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
-			wp_enqueue_script( 'bbpc-main', BBPC_ASSETS . 'js/main.js', [ 'jquery' ], '1.0', true );
+			wp_enqueue_script( 'bbpc-admin-main', BBPC_ASSETS . 'js/admin-main.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'sweetalert', BBPC_ASSETS . 'js/sweetalert.min.js', [ 'jquery' ], '1.0', true );
 			wp_localize_script(
 				'jquery',
@@ -225,7 +226,7 @@ final class BBP_Core {
 	}
 
 	/**
-	 * Actions and filter hooks in BBP Core plugin
+	 * Actions and filter hooks in BBP Core plugin.
 	 *
 	 * @return void
 	 */
@@ -236,7 +237,7 @@ final class BBP_Core {
 }
 
 /**
- * Initialize the bbp core plugin
+ * Initialize the bbp core plugin.
  *
  * @return \Bbp_core
  */
@@ -245,16 +246,13 @@ function bbp_core() {
 }
 
 bbp_core();
+//TODO: Add hidden replies after reply count, clicking it would show hidden replies.
+//TODO: Use cookies for selecting previously selected filter item, even after reload.
+//TODO: Attachment feature
 
 // TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
 // TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
-
-// TODO: Voting position, retina display , 1680px
-
 // TODO: Use pagination for topics, use bbp official pagination
 //TODO: Design best answer of bbp core as bbp of docy
-
-//TODO: add hidden replies after reply count, clicking it would show hidden replies.
 //TODO: When click on reply count, it will show the following replies, beside that, there will be pending replies.
-//TODO: Setup options to keep / remove top filters, in admin UI, also default is-active filter
 //TODO: Test with official WordPress themes and other famous themes on worpdress repo.

@@ -8,10 +8,21 @@
 		'solved'   => 'Solved',
 		'unsolved' => 'Unsolved',
 		'all'      => 'All Topics',
-		'trash'    => 'Trash',
+		'trash'      => 'Trash',
+	];
+
+	$default_options = [
+		'.open-topics'     => 'Open',
+		'.closed-topics'   => 'Closed',
+		'.hidden-topics'   => 'Hidden',
+		'.no-reply' => 'No Reply',
+		'.solved'   => 'Solved',
+		'.unsolved' => 'Unsolved',
+		'all'      => 'All Topics'
 	];
 
 	$default_filter_options = [ 'open', 'closed', 'hidden', 'no_reply', 'solved', 'unsolved', 'all', 'trash' ];
+
 	CSF::createSection(
 		$prefix,
 		[
@@ -25,14 +36,14 @@
 					'subtitle' => __( 'Native Forum, Topics and Replies post types menus will be hidden.', 'bbp-core' ),
 				],
 
-				// [
-				// 	'id'          => 'default_filter',
-				// 	'type'        => 'select',
-				// 	'title'       => __( 'Choose default filter', 'bbp-core' ),
-				// 	'placeholder' => 'Select an option',
-				// 	'options'     => $filter_options,
-				// 	'default'     => 'open',
-				// ],
+				[
+					'id'          => 'default_filter',
+					'type'        => 'select',
+					'title'       => __( 'Choose default filter', 'bbp-core' ),
+					'placeholder' => 'Select an option',
+					'options'     => $default_options,
+					'default'     => '.open-topics',
+				],
 
 				[
 					'id'       => 'filter_buttons',

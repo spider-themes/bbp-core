@@ -118,13 +118,13 @@
    });
 
    // Dropdown Classic UI Filter
-   let bbpc_classic_ui = document.getElementById('bbpc_classic_ui');
+   let bbpcClassicUi = document.getElementById('bbpcClassicUi');
 
    function swithToLink(){
      window.location.href=this.value;
    }
 
-   bbpc_classic_ui.onchange = swithToLink;
+   bbpcClassicUi.onchange = swithToLink;
 });
 
   $(document).ready(function (e) {
@@ -247,10 +247,52 @@
         })
     })
   }
-  delete_topic()
-
-
+  delete_topic();
   });
+
+  // Click pending replies count to show pending replies.
+  $( '[click-target]').click(function(){
+    let id = $(this).attr('click-target');
+    $(`[click-target=${id}]`).toggleClass('active');
+    $(`[reply-target=${id}]`).toggle();
+  });
+
+   // Sidebar Tabs [COOKIE]
+   $(document).on('click', '[data-filter]', function () {
+    let target = $(this).attr('data-filter');
+    $('[data-filter]').removeClass('is-active');
+    $(this).addClass('is-active');
+    $(target)
+      .fadeIn('slow')
+      .siblings('.easydocs-tab')
+      .hide();
+      
+    let isActiveTab = $(this).hasClass('is-active');
+    if (isActiveTab === true) {
+      createCookie('bbpc_current_filter', target, 999);
+    }
+
+    return true;
+  });
+
+   // Keep Last filter item active
+   function keep_last_filter_active() {
+    let bbpcLastActiveFilter = readCookie('bbpc_current_filter');
+    console.log('ID is: ' + bbpcLastActiveFilter);
+    // console.log('cookie: ' + bbpcLastActiveFilter);
+    console.log(`[data-filter="${bbpcLastActiveFilter}"]`);
+    // if (bbpcLastActiveFilter) {
+    //   // Tab item
+    //   $('[data-filter]').removeClass('is-active');
+    //   $(`[data-filter="${bbpcLastActiveFilter}"]`).addClass('is-active');
+
+    //   // Tab content
+    //   $('.easydocs-tab-content .easydocs-tab').removeClass('tab-active');
+    //   $('#tab' + bbpcLastActiveFilter).addClass('tab-active');
+    // }
+  }
+
+  keep_last_filter_active();
 
 })(jQuery);
 
@@ -260,20 +302,11 @@ function menuToggle() {
 }
 
 
-let docContainer = document.querySelectorAll('.easydocs-tab');
+// var containerEl1 = document.querySelector('[data-ref="container-1"]');
+// var config = {
+//     controls: {
+//         scope: 'local'
+//     }
+// };
+// var mixer1 = mixitup(containerEl1, config);
 
-var config = {
-  controls: {
-	scope: 'local',
-  },
-  animation: {
-	enable: false,
-  },
-  load: {
-	filter: '.open'
-}
-};
-
-for (let i = 0; i < docContainer.length; i++) {
-  var mixer1 = mixitup(docContainer[i], config);
-}

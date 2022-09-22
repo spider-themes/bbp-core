@@ -7,12 +7,15 @@ $depth_two_parents = [];
 $fcount            = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 $bbpc_opt          = get_option( 'bbp_core_settings' );
-$filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_buttons'] : [];
+$filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_buttons'] : [];
 
 ?>
 <div class="wrap">
 	<div class="body-dark">
-		<?php if ( $forum_count > 0 ) : ?>
+		<?php
+		if ( $forum_count > 0 ) :
+			;
+			?>
 			<header class="easydocs-header-area">
 				<div class="container-fluid">
 					<div class="row alignment-center justify-content-between">
@@ -190,7 +193,7 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 							[
 								'post_parent' => $topic_id,
 								'post_type'   => bbp_get_reply_post_type(),
-								'post_status' => [ 'publish', 'draft' ],
+								'post_status' => [ 'publish', 'draft', 'pending' ],
 							]
 						);
 
@@ -224,23 +227,23 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 						}
 
 				endwhile;
-					$children->rewind_posts();
+					wp_reset_postdata();
 					?>
-		<div class="easydocs-tab<?php echo esc_attr( $active ); ?>" id="tab-<?php echo esc_attr( $item ); ?>">
+		<div class="easydocs-tab <?php echo esc_attr( $active ); ?>" id="tab-<?php echo esc_attr( $item ); ?>">
 			<div class="easydocs-filter-container">
 				<ul class="single-item-filter">
 					<?php if ( in_array( 'open', $filter_set, true ) ) : ?>
 						<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm is-active" data-filter=".open-topics">
-						<svg width="15px" height="15px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<g>
-								<path fill="none" d="M0 0h24v24H0z"/>
-								<path d="M16.1 3a5.023 5.023 0 0 0 0 2H4.511l7.55 6.662 5.049-4.52c.426.527.958.966 1.563 1.285l-6.601 5.911L4 7.216V19h16V8.9a5.023 5.023 0 0 0 2 0V20a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h13.1zM21 7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-							</g>
-						</svg>
-						<?php esc_html_e( 'Open', 'bbp-core' ); ?>
-						<span class="filter-count-badge"> <?php echo esc_html( $count_open ); ?> </span>
-					</li>
-						<?php endif; ?>
+							<svg width="15px" height="15px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<g>
+									<path fill="none" d="M0 0h24v24H0z"/>
+									<path d="M16.1 3a5.023 5.023 0 0 0 0 2H4.511l7.55 6.662 5.049-4.52c.426.527.958.966 1.563 1.285l-6.601 5.911L4 7.216V19h16V8.9a5.023 5.023 0 0 0 2 0V20a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h13.1zM21 7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+								</g>
+							</svg>
+							<?php esc_html_e( 'Open', 'bbp-core' ); ?>
+							<span class="filter-count-badge"> <?php echo esc_html( $count_open ); ?> </span>
+						</li>
+					<?php endif; ?>
 
 					<?php if ( in_array( 'closed', $filter_set, true ) ) : ?>
 					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".closed-topics">
@@ -249,7 +252,7 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 							<?php esc_html_e( 'Closed', 'bbp-core' ); ?>
 							<span class="filter-count-badge"> <?php echo esc_html( $count_closed ); ?> </span>
 					</li>
-				<?php endif; ?>
+					<?php endif; ?>
 
 					<?php if ( in_array( 'hidden', $filter_set, true ) ) : ?>
 					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".hidden-topics">
@@ -258,8 +261,8 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 							<?php esc_html_e( 'Hidden', 'bbp-core' ); ?>
 							<span class="filter-count-badge"> <?php echo esc_html( $count_hidden ); ?> </span>
 					</li>
-				<?php endif; ?>
-				
+					<?php endif; ?>
+
 					<?php if ( in_array( 'no_reply', $filter_set, true ) ) : ?>
 					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".no-reply">
 						<svg height="15px" width="15px" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -269,7 +272,7 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 						<?php esc_html_e( 'No Reply', 'bbp-core' ); ?>
 						<span class="filter-count-badge"> <?php echo esc_html( $count_no_reply ); ?> </span>
 					</li>
-				<?php endif; ?>
+					<?php endif; ?>
 
 					<?php if ( in_array( 'solved', $filter_set, true ) ) : ?>
 					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".solved">
@@ -279,7 +282,7 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 						<?php esc_html_e( 'Solved', 'bbp-core' ); ?>
 						<span class="filter-count-badge"> <?php echo esc_html( $count_solved ); ?> </span>
 					</li>
-				<?php endif; ?>
+					<?php endif; ?>
 
 					<?php if ( in_array( 'unsolved', $filter_set, true ) ) : ?>
 					<li class="easydocs-btn easydocs-btn-orange-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".unsolved">
@@ -292,9 +295,9 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 						<?php esc_html_e( 'Unsolved', 'bbp-core' ); ?>
 						<span class="filter-count-badge"> <?php echo esc_html( $count_unsolved ); ?> </span>
 					</li>
-				<?php endif; ?>
+					<?php endif; ?>
 
-					<?php if ( in_array( 'all_topics', $filter_set, true ) ) : ?>
+					<?php if ( in_array( 'all', $filter_set, true ) ) : ?>
 					<li class="easydocs-btn easydocs-btn-black-light easydocs-btn-rounded easydocs-btn-sm" data-filter="all">
 						<svg height="15px" width="15px" enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 								<path d="M352,0H64C28.704,0,0,28.704,0,64v192c0,35.296,28.704,64,64,64v80c0,6.24,3.648,11.936,9.312,14.528    C75.456,415.52,77.728,416,80,416c3.744,0,7.456-1.312,10.4-3.872L197.92,320H352c35.296,0,64-28.704,64-64V64    C416,28.704,387.296,0,352,0z M384,256c0,17.632-14.368,32-32,32H192c-3.808,0-7.52,1.344-10.4,3.872L96,365.216V304    c0-8.832-7.168-16-16-16H64c-17.632,0-32-14.368-32-32V64c0-17.632,14.368-32,32-32h288c17.632,0,32,14.368,32,32V256z"/>
@@ -303,8 +306,10 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 						<?php esc_html_e( 'All topics', 'bbp-core' ); ?>
 						<span class="filter-count-badge"> <?php echo esc_html( $children->post_count ); ?> </span>
 					</li>
-				<?php endif; ?>
-				<?php if ( in_array( 'trash', $filter_set, true ) ) : ?>
+					<?php endif; ?>
+				</ul>
+
+					<?php if ( in_array( 'trash', $filter_set, true ) ) : ?>
 					<li class="easydocs-btn-sm bbpc-trash-filter">
 						<a href="<?php echo admin_url( 'edit.php?post_status=trash&post_type=topic' ); ?>">
 						<svg width="15px" height="15px" viewBox="0 0 24 24" id="magicoon-Regular" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="trash-Regular"><path id="trash-Regular-2" data-name="trash-Regular" class="cls-1" d="M21,5.25H17.441A1.251,1.251,0,0,1,16.255,4.4l-.316-.95a1.746,1.746,0,0,0-1.66-1.2H9.721a1.745,1.745,0,0,0-1.66,1.2l-.316.948a1.251,1.251,0,0,1-1.186.855H3a.75.75,0,0,0,0,1.5H4.3l.767,11.5a3.76,3.76,0,0,0,3.742,3.5h6.386a3.76,3.76,0,0,0,3.742-3.5L19.7,6.75H21a.75.75,0,0,0,0-1.5ZM9.483,3.921a.252.252,0,0,1,.238-.171h4.558a.252.252,0,0,1,.238.17l.316.95a2.777,2.777,0,0,0,.161.38H9.006a2.737,2.737,0,0,0,.161-.381ZM17.438,18.15a2.255,2.255,0,0,1-2.245,2.1H8.807a2.255,2.255,0,0,1-2.245-2.1L5.8,6.75h.757a2.783,2.783,0,0,0,.317-.025A.736.736,0,0,0,7,6.75H17a.736.736,0,0,0,.124-.025,2.783,2.783,0,0,0,.317.025H18.2ZM14.75,11v5a.75.75,0,0,1-1.5,0V11a.75.75,0,0,1,1.5,0Zm-4,0v5a.75.75,0,0,1-1.5,0V11a.75.75,0,0,1,1.5,0Z"/></g></svg>
@@ -312,8 +317,7 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 						<span class="filter-count-badge"> <?php echo esc_html( $count_trash ); ?> </span>
 					</a>
 					</li>
-				<?php endif; ?>
-				</ul>
+					<?php endif; ?>
 			</div>
 
 			<ul class="easydocs-accordion">
@@ -322,26 +326,36 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 						$children->the_post();
 						$current_topic_id = get_the_ID();
 
-						$replies = get_children(
+						$replies = new WP_Query(
 							[
 								'post_parent' => $current_topic_id,
 								'post_type'   => bbp_get_reply_post_type(),
-								'post_status' => [ 'publish', 'draft' ],
+								'post_status' => [ 'publish', 'draft', 'pending' ],
 							]
 						);
 
-						$no_reply    = 0 == count( $replies ) ? 'no-reply' : '';
+						$pending_replies = [];
+
+						while ( $replies->have_posts() ) :
+							$replies->the_post();
+							$reply_id = get_the_ID();
+
+							if ( bbp_is_reply_pending( $reply_id ) ) {
+								$pending_replies[] = $reply_id;
+							}
+
+						endwhile;
+						wp_reset_postdata();
+
+						$no_reply    = 0 == $replies->found_posts ? 'no-reply' : '';
 						$is_solved   = $GLOBALS['bbp_solved_topic']->is_solved( $current_topic_id ) ? ' solved' : ' unsolved';
 						$is_open     = bbp_is_topic_closed( $current_topic_id ) ? ' closed-topics' : ' open-topics';
 						$is_hidden   = bbp_is_topic_spam( $current_topic_id ) ? ' hidden-topics' : '';
 						$approve_btn = '';
-						if ( bbp_is_topic_spam( $current_topic_id ) ) {
-							$url         = admin_url( 'admin.php?page=bbp-core&bbpc_approve_topic_id=' ) . $current_topic_id;
-							$approve_btn = sprintf( '<a class="bbpc-approve-btn" href=%1$s><span class="dashicons dashicons-yes" title="%2$s"></span></a>', $url, __( 'Approve this topic', 'bbp-core' ) );
-						}
 
-						if ( ! empty( $_GET['bbpc_approve_topic_id'] ) && bbp_is_topic( $topic_id ) ) {
-							bbp_approve_topic( $topic_id );
+						if ( bbp_is_topic_spam( $current_topic_id ) ) {
+							$url         = admin_url( 'admin.php' ) . '/Approve_Topic.php?bbpc_approve_topic_id=' . $current_topic_id;
+							$approve_btn = sprintf( '<a class="bbpc-approve-btn" href=%1$s><span class="dashicons dashicons-yes" title="%2$s"></span></a>', $url, __( 'Approve this topic', 'bbp-core' ) );
 						}
 
 						$filter_class = $no_reply . $is_solved . $is_open . $is_hidden;
@@ -350,7 +364,7 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 					<li <?php post_class( 'easydocs-accordion-item accordion ez-section-acc-item mix ' . esc_attr( $filter_class ) ); ?> data-id="<?php echo esc_attr( $current_topic_id ); ?>">
 						<div class="accordion-title ez-section-title">
 							<?php
-							$edit_link = 'javascript:void(0)';
+							$edit_link = 'javascript:void( 0 )';
 							$target    = '_self';
 							if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
 								$edit_link = get_edit_post_link( $current_topic_id );
@@ -360,25 +374,47 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 							<div class="left-content">
 								<h4>
 									<a href="<?php echo esc_attr( $edit_link ); ?>" target="<?php echo esc_attr( $target ); ?>">
-								<?php the_title(); ?>
+									<?php the_title(); ?>
 									</a>
-									<?php echo $approve_btn; ?>
-									<div title="<?php echo count( $replies ) . __( ' Replies', 'bbp-core' ); ?>">
-										<span class="bbpc-reply-count">
-											<?php echo count( $replies ); ?>
+									<?php
+									$allowed_html = [
+										'a'    => [
+											'href'  => [],
+											'class' => [],
+										],
+										'span' => [
+											'class' => [],
+											'title' => [],
+										],
+
+									];
+
+									echo wp_kses( $approve_btn, $allowed_html );
+									$pending_replies_count = count( $pending_replies );
+									$reply_count           = $replies->found_posts - $pending_replies_count;
+									?>
+									<div title="<?php echo esc_attr( $reply_count ) . __( ' Publised replies', 'bbp-core' ); ?>">
+										<span class="bbpc-reply-count bbpc-published-replies">
+											<?php echo esc_html( $reply_count ); ?>
+										</span>
+									</div>
+
+									<div click-target='<?php echo esc_attr( $current_topic_id ); ?>' title="<?php echo esc_attr( $pending_replies_count ) . __( ' Pending replies', 'bbp-core' ); ?>">
+										<span class="bbpc-reply-count bbpc-pending-replies">
+											<?php echo esc_html( $pending_replies_count ); ?>
 										</span>
 									</div>
 								</h4>
 								<ul class="actions">
 									<li>
-										<a href="<?php echo get_permalink( $current_topic_id ); ?>" target="_blank" title="<?php esc_attr_e( 'View this reply in new tab', 'bbp-core' ); ?>">
+										<a href="<?php echo get_permalink( $current_topic_id ); ?>" target="_blank" title="<?php esc_attr_e( 'View this reply in new tab', 'bbp() - core' ); ?>">
 											<span class="dashicons dashicons-external"></span>
 										</a>
 									</li>
 
 								<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
 									<li class="delete">
-										<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this topic permanently', 'bbp-core' ); ?>">
+										<a href="<?php echo admin_url( 'admin . php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this topic permanently', 'bbp-core' ); ?>">
 											<span class="dashicons dashicons-trash"></span>
 										</a>
 									</li>
@@ -386,6 +422,50 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 								</ul>
 							</div>
 						</div>
+						<!-- Accordion children -->
+						<div class="easydocs-accordion-body nesting-accordion">
+							<?php if ( ! empty( $pending_replies_count ) ) : ?>
+								<ul class="bbpc-nested-replies" reply-target=<?php echo esc_attr( $current_topic_id ); ?>>
+								<?php
+								foreach ( $pending_replies as $p_reply ) {
+									setup_postdata( $p_reply );
+									?>
+									<li reply-id="<?php the_ID(); ?>" class="bbpc-reply-wrap">
+										<?php
+										echo esc_html( wp_trim_words( get_the_content(), 10, '...' ) );
+											echo '  -  ';
+											the_author();
+										?>
+									<?php
+									if ( bbp_is_reply_pending( $p_reply ) ) {
+										$url         = admin_url( 'admin.php' ) . '/Approve_Topic.php?bbpc_approve_reply_id=' . $p_reply;
+										$approve_btn = sprintf( '<a class="bbpc-approve-btn" href=%1$s><span class="dashicons dashicons-yes" title="%2$s"></span></a>', $url, __( 'Approve this topic', 'bbp-core' ) );
+									}
+
+										$allowed_html = [
+											'a'    => [
+												'href'  => [],
+												'class' => [],
+											],
+											'span' => [
+												'class' => [],
+												'title' => [],
+											],
+
+										];
+
+										echo wp_kses( $approve_btn, $allowed_html );
+										?>
+									</li>
+									<?php
+								}
+
+								wp_reset_postdata();
+								?>
+							</ul>
+							<?php endif; ?>
+						</div>
+						<!-- ./Accordion children ends -->
 					</li>
 						<?php
 					endwhile;
@@ -393,7 +473,7 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 					?>
 			</ul>
 
-			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?parentID=<?php echo $item; ?>&is_section=">
+			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin . php' ); ?>/Create_Forum.php?parentID=<?php echo $item; ?>&is_section=">
 					<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 			</a>
 			</div>
@@ -410,16 +490,39 @@ $filter_set        = !empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_b
 			?>
 			<div class="eazydocs-no-content">
 				<img src="<?php echo BBPC_IMG; ?>/icon/folder-open.png" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
-				<p class="big-p"> <?php esc_html_e( 'No docs has been found. Perhaps', 'bbp-core' ); ?> </p>
+				<p class="big-p"> <?php esc_html_e( 'No docs has been found . Perhaps', 'bbp-core' ); ?> </p>
 				<p> <br>
-					<a class="button button-primary ezd-btn btn-lg" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Post.php?new_doc=" id="new-doc">
+					<a class="button button-primary ezd-btn btn-lg" href="<?php echo admin_url( 'admin . php' ); ?>/Create_Post.php?new_doc=" id="new-doc">
 						<?php esc_html_e( 'Create a Doc', 'bbp-core' ); ?>
 					</a>
 				</p>
-
-			</div>
-			<?php
-		endif;
-		?>
+		</div>
+	<?php endif; ?>
 	</div>
 </div>
+
+
+<script>
+	(function ($) {
+		$(document).ready(function () {
+			let docContainer = document.querySelectorAll('.easydocs-tab');
+
+			var config = {
+			controls: {
+				scope: 'local',
+			},
+			animation: {
+				enable: false,
+			},
+			load: {
+				filter: '<?php echo esc_js( $bbpc_opt['default_filter'] ?? 'open-topics' ); ?>'
+				// filter: '.closed-topics'
+			}
+			};
+
+			for (let i = 0; i < docContainer.length; i++) {
+			var mixer1 = mixitup(docContainer[i], config);
+		}
+	});
+})(jQuery);
+</script>
