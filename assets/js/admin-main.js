@@ -247,7 +247,34 @@
         })
     })
   }
-  delete_topic();
+  
+  delete_topic()
+
+  // Notification pro alert
+  $('.easydocs-notification.bbp-core-pro-notification').on('click', function (e) {
+    e.preventDefault();
+    let href = $(this).attr('href')
+    let assets = bbp_core_local_object.BBPC_ASSETS;
+    Swal.fire({
+        title: 'Notification is a Premium feature',
+        html: '<span class="pro-notification-body-text">You need to Upgrade the Premium Version to use this feature</span><video height="400px" autoplay="autoplay" loop="loop" src="'+assets+'/videos/noti.mp4"></video>',
+        icon: false,
+        buttons: false,
+        dangerMode: true,
+        showCloseButton: true,
+        confirmButtonText:
+            '<a href="admin.php?page=bbp-core-pricing">Upgrade to Premium</a>',
+        footer: '<a href="https://spider-themes.net/bbp-core/" target="_blank"> Learn More </a>',
+        customClass: {
+            title: 'upgrade-premium-heading',
+            confirmButton: 'upgrade-premium-button',
+            footer: 'notification-pro-footer-wrap',
+        },
+        confirmButtonColor: '#f1bd6c',
+        Borderless: true
+    })
+  });
+
   });
 
   // Click pending replies count to show pending replies.

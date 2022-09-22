@@ -1400,6 +1400,22 @@ a.child-delete {
   line-height: 1;
 }
 
+.settings-pro-icon {
+  position: absolute;
+  right: 0px;
+  top: -5px;
+}
+
+.swal2-styled.swal2-confirm.upgrade-premium-button > a {
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.swal2-footer.notification-pro-footer-wrap > a {
+  text-decoration: none;
+}
+
 .notification-body {
   padding: 18px 0;
 }

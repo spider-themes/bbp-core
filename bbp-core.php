@@ -220,6 +220,7 @@ final class BBP_Core {
 					'forum_delete_title' => esc_html__( 'Are you sure to delete?', 'bbp-core' ),
 					'forum_delete_desc'  => esc_html__( "This forum will be deleted with all the topics and you won't be able to revert!", 'bbp-core' ),
 					'topic_delete_desc'  => esc_html__( "This topic will be deleted and you won't be able to revert!", 'bbp-core' ),
+					'BBPC_ASSETS'           		=> BBPC_ASSETS
 				]
 			);
 		}
