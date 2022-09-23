@@ -1111,6 +1111,7 @@ a.child-delete {
 
 .notification-dropdown {
   width: 360px;
+  border-radius: 2px;
 }
 .notification-dropdown::before {
   content: "";
@@ -1383,14 +1384,15 @@ a.child-delete {
 }
 
 .notification-head {
-  padding: var(--gutter-20) var(--gutter-25);
+  padding: 9px 12px;
+  background: #f1f2f3;
   -webkit-box-shadow: 0 1px 0 0 #edeef2;
   -moz-box-shadow: 0 1px 0 0 #edeef2;
   box-shadow: 0 1px 0 0 #edeef2;
 }
 .notification-head .header-text {
   color: var(--clr-dark);
-  font-size: var(--fs-14);
+  font-size: var(--fs-13);
   font-weight: var(--fw-500);
   line-height: 1;
 }
@@ -1416,9 +1418,6 @@ a.child-delete {
   text-decoration: none;
 }
 
-.notification-body {
-  padding: 18px 0;
-}
 .notification-body .filter-button-group {
   display: flex;
   gap: 8px;
@@ -1457,13 +1456,12 @@ a.child-delete {
 }
 
 .notify-column {
-  margin-top: 16px;
   max-height: 18.75rem;
   overflow-y: auto;
   scrollbar-width: thin;
+  /* Notification updated css */
 }
 .notify-column::-webkit-scrollbar-track {
-  border-radius: 10px;
   background-color: var(--clr-text-light);
 }
 .notify-column::-webkit-scrollbar {
@@ -1471,8 +1469,41 @@ a.child-delete {
   background-color: #F5F5F5;
 }
 .notify-column::-webkit-scrollbar-thumb {
-  border-radius: 10px;
   background-color: var(--clr-text);
+}
+.notify-column ul li {
+  border-bottom: 1px solid #f1f2f3;
+  margin-bottom: 0;
+}
+.notify-column ul li a {
+  text-decoration: none;
+  gap: 9px;
+  align-content: space-around;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.notify-column ul li a .notify-icon {
+  padding-top: 5px;
+}
+.notify-column ul li a .notify-content-wrap {
+  width: -webkit-fill-available;
+}
+.notify-column ul li a .notify-content-wrap .notify-content-header {
+  color: #525960;
+  font-size: 12px;
+}
+.notify-column ul li a .notify-content-wrap .notify-content-summary p {
+  color: #0074cc;
+  font-size: 13px;
+}
+.notify-column ul li a:focus {
+  box-shadow: none;
+}
+.notify-column ul li:hover {
+  background: #e3e6e8;
+}
+.notify-column ul li:last-child {
+  border-bottom: none;
 }
 
 .notification-item {
