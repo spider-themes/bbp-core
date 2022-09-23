@@ -8,14 +8,10 @@ $fcount            = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 $bbpc_opt          = get_option( 'bbp_core_settings' );
 $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_buttons'] : [];
-
 ?>
 <div class="wrap">
 	<div class="body-dark">
-		<?php
-		if ( $forum_count > 0 ) :
-			;
-			?>
+		<?php if ( $forum_count > 0 ) :	?>
 			<header class="easydocs-header-area">
 				<div class="container-fluid">
 					<div class="row alignment-center justify-content-between">
@@ -247,7 +243,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 			<div class="easydocs-filter-container">
 				<ul class="single-item-filter">
 					<?php if ( in_array( 'open', $filter_set, true ) ) : ?>
-						<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm is-active" data-filter=".open-topics">
+						<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm is-active" cookie-id="open-<?php echo esc_attr( $item ); ?>" data-filter=".open-topics">
 							<svg width="15px" height="15px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 								<g>
 									<path fill="none" d="M0 0h24v24H0z"/>
@@ -260,7 +256,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					<?php endif; ?>
 
 					<?php if ( in_array( 'closed', $filter_set, true ) ) : ?>
-					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".closed-topics">
+					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="closed-<?php echo esc_attr( $item ); ?>" data-filter=".closed-topics">
 							<svg width="15px" height="15px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83 2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z"/></svg>
 
 							<?php esc_html_e( 'Closed', 'bbp-core' ); ?>
@@ -269,7 +265,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					<?php endif; ?>
 
 					<?php if ( in_array( 'hidden', $filter_set, true ) ) : ?>
-					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".hidden-topics">
+					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="hidden-<?php echo esc_attr( $item ); ?>" data-filter=".hidden-topics">
 						<svg width="15px" height="15px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="notAllowedIconTitle" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000000"> <title id="notAllowedIconTitle">Not Allowed</title> <circle cx="12" cy="12" r="10"/> <path stroke-linecap="square" d="M5,5 L19,19"/> </svg>
 
 							<?php esc_html_e( 'Hidden', 'bbp-core' ); ?>
@@ -278,7 +274,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					<?php endif; ?>
 
 					<?php if ( in_array( 'no_reply', $filter_set, true ) ) : ?>
-					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".no-reply">
+					<li class="easydocs-btn easydocs-btn-blue-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="no_reply-<?php echo esc_attr( $item ); ?>" data-filter=".no-reply">
 						<svg height="15px" width="15px" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 						<path d="m21.5 24h-19c-1.379 0-2.5-1.122-2.5-2.5v-9c0-.276.224-.5.5-.5s.5.224.5.5v9c0 .827.673 1.5 1.5 1.5h19c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5h-4c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h4c1.379 0 2.5 1.122 2.5 2.5v15c0 1.378-1.121 2.5-2.5 2.5z"/>
 						<path d="m17.5 16c-.187 0-.361-.104-.447-.276l-.84-1.68c-.94-1.878-2.825-3.044-4.923-3.044h-3.29v3.5c0 .202-.122.385-.309.462-.186.078-.401.035-.545-.108l-7-7c-.195-.195-.195-.512 0-.707l7-7c.144-.144.36-.187.545-.109.187.077.309.26.309.462v3.5h1.5c4.687 0 8.5 3.813 8.5 8.5v3c0 .232-.159.434-.385.487-.039.009-.077.013-.115.013zm-10-6h3.79c2.401 0 4.567 1.293 5.71 3.391v-.891c0-4.136-3.364-7.5-7.5-7.5h-2c-.276 0-.5-.224-.5-.5v-2.793l-5.793 5.793 5.793 5.793v-2.793c0-.276.224-.5.5-.5z"/>
@@ -289,7 +285,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					<?php endif; ?>
 
 					<?php if ( in_array( 'solved', $filter_set, true ) ) : ?>
-					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".solved">
+					<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="solved-<?php echo esc_attr( $item ); ?>" data-filter=".solved">
 						<svg width="12pt" height="12pt" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
 						<path d="m369.16 174.77c7.8125 7.8125 7.8125 20.477 0 28.285l-134.17 134.18c-7.8125 7.8086-20.473 7.8086-28.285 0l-63.871-63.875c-7.8125-7.8086-7.8125-20.473 0-28.281 7.8086-7.8125 20.473-7.8125 28.281 0l49.73 49.73 120.03-120.04c7.8125-7.8086 20.477-7.8086 28.285 0zm142.84 81.23c0 141.5-114.52 256-256 256-141.5 0-256-114.52-256-256 0-141.5 114.52-256 256-256 141.5 0 256 114.52 256 256zm-40 0c0-119.39-96.621-216-216-216-119.39 0-216 96.621-216 216 0 119.39 96.621 216 216 216 119.39 0 216-96.621 216-216z"/>
 						</svg>
@@ -299,7 +295,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					<?php endif; ?>
 
 					<?php if ( in_array( 'unsolved', $filter_set, true ) ) : ?>
-					<li class="easydocs-btn easydocs-btn-orange-light easydocs-btn-rounded easydocs-btn-sm" data-filter=".unsolved">
+					<li class="easydocs-btn easydocs-btn-orange-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="unsolved-<?php echo esc_attr( $item ); ?>" data-filter=".unsolved">
 						<svg width="15px" height="15px" viewBox="0 0 358 358" xmlns="http://www.w3.org/2000/svg">
 						<path d="m134.34 147.24c-3.478-3.349-7.513-5.933-11.992-7.68-4.652-1.815-9.567-2.638-14.609-2.447-8.8037 0.335-17.221 3.946-23.702 10.169-6.4875 6.23-10.43 14.498-11.1 23.28-0.4301 5.619 0.394 11.089 2.4493 16.26 1.1399 2.868 4.3891 4.268 7.2568 3.128 2.868-1.14 4.2687-4.389 3.1287-7.257-1.4216-3.576-1.9907-7.37-1.6914-11.279 0.9542-12.495 11.533-22.656 24.084-23.133 6.913-0.262 13.457 2.227 18.425 7.01 4.97 4.785 7.707 11.219 7.707 18.117 0 5.188-6.784 13.533-17.706 21.779-4.06 3.066-7.395 7.135-9.646 11.767-2.212 4.554-3.382 9.658-3.382 14.763v5.009c0 3.086 2.502 5.588 5.588 5.588s5.588-2.502 5.588-5.588v-5.009c0-6.968 3.21-13.551 8.587-17.611 10.103-7.628 22.147-19.146 22.147-30.698 0-5.023-1.008-9.889-2.995-14.463-1.918-4.416-4.656-8.354-8.137-11.705z"/>
 						<path d="m109.15 260.03c4.629 0 8.382-3.753 8.382-8.382 0-4.63-3.753-8.382-8.382-8.382s-8.382 3.752-8.382 8.382c0 4.629 3.753 8.382 8.382 8.382z"/>
@@ -312,7 +308,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					<?php endif; ?>
 
 					<?php if ( in_array( 'all', $filter_set, true ) ) : ?>
-					<li class="easydocs-btn easydocs-btn-black-light easydocs-btn-rounded easydocs-btn-sm" data-filter="all">
+					<li class="easydocs-btn easydocs-btn-black-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="all-<?php echo esc_attr( $item ); ?>" data-filter="all">
 						<svg height="15px" width="15px" enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 								<path d="M352,0H64C28.704,0,0,28.704,0,64v192c0,35.296,28.704,64,64,64v80c0,6.24,3.648,11.936,9.312,14.528    C75.456,415.52,77.728,416,80,416c3.744,0,7.456-1.312,10.4-3.872L197.92,320H352c35.296,0,64-28.704,64-64V64    C416,28.704,387.296,0,352,0z M384,256c0,17.632-14.368,32-32,32H192c-3.808,0-7.52,1.344-10.4,3.872L96,365.216V304    c0-8.832-7.168-16-16-16H64c-17.632,0-32-14.368-32-32V64c0-17.632,14.368-32,32-32h288c17.632,0,32,14.368,32,32V256z"/>
 								<path d="m469.22 99.744c-8.384-2.88-17.44 1.536-20.352 9.92-2.88 8.352 1.536 17.44 9.92 20.352 12.672 4.352 21.216 16.416 21.216 29.984v192c0 17.632-14.368 32-32 32h-16c-8.832 0-16 7.168-16 16v61.216l-85.6-73.344c-2.88-2.528-6.592-3.872-10.4-3.872h-141.76c-8.832 0-16 7.168-16 16s7.136 16 16 16h135.84l107.52 92.128c2.944 2.56 6.656 3.872 10.4 3.872 2.272 0 4.544-0.48 6.688-1.472 5.664-2.592 9.312-8.288 9.312-14.528v-80c35.296 0 64-28.704 64-64v-192c0-27.2-17.184-51.424-42.784-60.256z"/><path d="m304 96h-192c-8.832 0-16 7.168-16 16s7.168 16 16 16h192c8.832 0 16-7.168 16-16s-7.168-16-16-16z"/><path d="m240 160h-128c-8.832 0-16 7.168-16 16s7.168 16 16 16h128c8.832 0 16-7.168 16-16s-7.168-16-16-16z"/></svg>

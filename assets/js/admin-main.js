@@ -110,22 +110,22 @@
   });
 
   $(document).ready(function () {
-    $("#bbpc-search").on("keyup", function() {
-     var value = $(this).val().toLowerCase();
-     $(".easydocs-accordion-item").filter(function() {
-         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-     })
-   });
+    $('#bbpc-search').on('keyup', function () {
+      var value = $(this).val().toLowerCase();
+      $('.easydocs-accordion-item').filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
 
-   // Dropdown Classic UI Filter
-   let bbpcClassicUi = document.getElementById('bbpcClassicUi');
+    // Dropdown Classic UI Filter
+    let bbpc_classic_ui = document.getElementById('bbpc_classic_ui');
 
-   function swithToLink(){
-     window.location.href=this.value;
-   }
+    function swithToLink() {
+      window.location.href = this.value;
+    }
 
-   bbpcClassicUi.onchange = swithToLink;
-});
+    bbpc_classic_ui.onchange = swithToLink;
+  });
 
   $(document).ready(function (e) {
     function t(t) {
@@ -162,138 +162,142 @@
       if (!n.parents().hasClass('easydocs-notification'))
         e('.easydocs-notification .header-notify-icon').removeClass('active');
     });
-    
+
     // ADD PARENT FORUM
     function create_forum() {
       $(document).on('click', '#bbpc-forum', function (e) {
-          e.preventDefault();
-          let href = $(this).attr('href')
-          Swal.fire({
-              title: bbp_core_local_object.create_forum_title,
-              input: 'text',
-              showCancelButton: true,
-              inputAttributes: {
-                  name: 'parent_title'
-              },
-          }).then((result) => {
-              if (result.value) {
-                  document.location.href = href + result.value;
-              }
-          })
-      })
-  }
-  create_forum();
-
-  // SECTION DOC
-  function create_topic() {
-    $(document).on('click', '#bbpc-topic', function (e) {
         e.preventDefault();
-        let href = $(this).attr('href')
+        let href = $(this).attr('href');
         Swal.fire({
-            title: bbp_core_local_object.create_topic_title,
-            input: 'text',
-            showCancelButton: true,
-            inputAttributes: {
-                name: 'section'
-            },
+          title: bbp_core_local_object.create_forum_title,
+          input: 'text',
+          showCancelButton: true,
+          inputAttributes: {
+            name: 'parent_title',
+          },
         }).then((result) => {
-            if (result.value) {
-                document.location.href = href + result.value;
-            }
-        })
-    })
-  } 
-  create_topic();
+          if (result.value) {
+            document.location.href = href + result.value;
+          }
+        });
+      });
+    }
+    create_forum();
+
+    // SECTION DOC
+    function create_topic() {
+      $(document).on('click', '#bbpc-topic', function (e) {
+        e.preventDefault();
+        let href = $(this).attr('href');
+        Swal.fire({
+          title: bbp_core_local_object.create_topic_title,
+          input: 'text',
+          showCancelButton: true,
+          inputAttributes: {
+            name: 'section',
+          },
+        }).then((result) => {
+          if (result.value) {
+            document.location.href = href + result.value;
+          }
+        });
+      });
+    }
+    create_topic();
 
     // DELETE FORUM
     function delete_forum() {
       $('.forum-delete').on('click', function (e) {
-          e.preventDefault();
-          let href = $(this).attr('href')
-          Swal.fire({
-              title: bbp_core_local_object.forum_delete_title,
-              text: bbp_core_local_object.forum_delete_desc,
-              icon: 'question',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes'
-          }).then((result) => {
-              if (result.value) {
-                  document.location.href = href;
-              }
-          })
-      })
-  }
-  delete_forum()
-
-  // DELETE TOPIC
-  function delete_topic() {
-    $('.section-delete').on('click', function (e) {
         e.preventDefault();
-        let href = $(this).attr('href')
+        let href = $(this).attr('href');
         Swal.fire({
-            title: bbp_core_local_object.forum_delete_title,
-            text: bbp_core_local_object.topic_delete_desc,
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
+          title: bbp_core_local_object.forum_delete_title,
+          text: bbp_core_local_object.forum_delete_desc,
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes',
         }).then((result) => {
-            if (result.value) {
-                document.location.href = href;
-            }
-        })
-    })
-  }
-  
-  delete_topic()
+          if (result.value) {
+            document.location.href = href;
+          }
+        });
+      });
+    }
+    delete_forum();
 
-  // Notification pro alert
-  $('.easydocs-notification.bbp-core-pro-notification').on('click', function (e) {
-    e.preventDefault();
-    let href = $(this).attr('href')
-    let assets = bbp_core_local_object.BBPC_ASSETS;
-    Swal.fire({
-        title: 'Notification is a Premium feature',
-        html: '<span class="pro-notification-body-text">You need to Upgrade the Premium Version to use this feature</span><video height="400px" autoplay="autoplay" loop="loop" src="'+assets+'/videos/noti.mp4"></video>',
-        icon: false,
-        buttons: false,
-        dangerMode: true,
-        showCloseButton: true,
-        confirmButtonText:
+    // DELETE TOPIC
+    function delete_topic() {
+      $('.section-delete').on('click', function (e) {
+        e.preventDefault();
+        let href = $(this).attr('href');
+        Swal.fire({
+          title: bbp_core_local_object.forum_delete_title,
+          text: bbp_core_local_object.topic_delete_desc,
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes',
+        }).then((result) => {
+          if (result.value) {
+            document.location.href = href;
+          }
+        });
+      });
+    }
+
+    delete_topic();
+
+    // Notification pro alert
+    $('.easydocs-notification.bbp-core-pro-notification').on(
+      'click',
+      function (e) {
+        e.preventDefault();
+        let href = $(this).attr('href');
+        let assets = bbp_core_local_object.BBPC_ASSETS;
+        Swal.fire({
+          title: 'Notification is a Premium feature',
+          html:
+            '<span class="pro-notification-body-text">You need to Upgrade the Premium Version to use this feature</span><video height="400px" autoplay="autoplay" loop="loop" src="' +
+            assets +
+            '/videos/noti.mp4"></video>',
+          icon: false,
+          buttons: false,
+          dangerMode: true,
+          showCloseButton: true,
+          confirmButtonText:
             '<a href="admin.php?page=bbp-core-pricing">Upgrade to Premium</a>',
-        footer: '<a href="https://spider-themes.net/bbp-core/" target="_blank"> Learn More </a>',
-        customClass: {
+          footer:
+            '<a href="https://spider-themes.net/bbp-core/" target="_blank"> Learn More </a>',
+          customClass: {
             title: 'upgrade-premium-heading',
             confirmButton: 'upgrade-premium-button',
             footer: 'notification-pro-footer-wrap',
-        },
-        confirmButtonColor: '#f1bd6c',
-        Borderless: true
-    })
-  });
-
+          },
+          confirmButtonColor: '#f1bd6c',
+          Borderless: true,
+        });
+      }
+    );
   });
 
   // Click pending replies count to show pending replies.
-  $( '[click-target]').click(function(){
+  $('[click-target]').click(function () {
     let id = $(this).attr('click-target');
     $(`[click-target=${id}]`).toggleClass('active');
     $(`[reply-target=${id}]`).toggle();
   });
 
-   // Sidebar Tabs [COOKIE]
-   $(document).on('click', '[data-filter]', function () {
-    let target = $(this).attr('data-filter');
-    $('[data-filter]').removeClass('is-active');
-    $(this).addClass('is-active');
-    $(target)
-      .fadeIn('slow')
-      .siblings('.easydocs-tab')
-      .hide();
-      
+  // Sidebar Tabs [COOKIE]
+  $(document).on('click', '[cookie-id]', function () {
+    let target = $(this).attr('cookie-id');
+    let item = `[cookie-id=${target}]`;
+    $('[cookie-id]').removeClass('is-active mixitup-control-active');
+    $(item).addClass('is-active mixitup-control-active');
+    $(target).fadeIn('slow').siblings('.easydocs-tab').hide();
+
     let isActiveTab = $(this).hasClass('is-active');
     if (isActiveTab === true) {
       createCookie('bbpc_current_filter', target, 999);
@@ -302,24 +306,21 @@
     return true;
   });
 
-   // Keep Last filter item active
-   function keep_last_filter_active() {
-    let bbpcLastActiveFilter = readCookie('bbpc_current_filter');
-    console.log('ID is: ' + bbpcLastActiveFilter);
-    // console.log('cookie: ' + bbpcLastActiveFilter);
-    console.log(`[data-filter="${bbpcLastActiveFilter}"]`);
-    // if (bbpcLastActiveFilter) {
-    //   // Tab item
-    //   $('[data-filter]').removeClass('is-active');
-    //   $(`[data-filter="${bbpcLastActiveFilter}"]`).addClass('is-active');
+  $(document).ready(function () {
+    // Keep Last filter item active
+    function keepLastFilterActive() {
+      let bbpcLastActiveFilter = readCookie('bbpc_current_filter');
+      console.log('ID is: ' + bbpcLastActiveFilter);
+      if (bbpcLastActiveFilter) {
+        // Tab item
+        $('[cookie-id]').removeClass('is-active mixitup-control-active');
+        $(`[cookie-id="${bbpcLastActiveFilter}"]`).click();
+      }
+    }
 
-    //   // Tab content
-    //   $('.easydocs-tab-content .easydocs-tab').removeClass('tab-active');
-    //   $('#tab' + bbpcLastActiveFilter).addClass('tab-active');
-    // }
-  }
+    keepLastFilterActive();
 
-  keep_last_filter_active();
+  });
 
 })(jQuery);
 
@@ -327,13 +328,3 @@ function menuToggle() {
   const toggleMenu = document.querySelector('.easydocs-dropdown');
   toggleMenu.classList.toggle('is-active');
 }
-
-
-// var containerEl1 = document.querySelector('[data-ref="container-1"]');
-// var config = {
-//     controls: {
-//         scope: 'local'
-//     }
-// };
-// var mixer1 = mixitup(containerEl1, config);
-
