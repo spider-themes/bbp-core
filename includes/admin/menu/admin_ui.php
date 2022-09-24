@@ -500,7 +500,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 			?>
 			<div class="eazydocs-no-content">
 				<img src="<?php echo BBPC_IMG; ?>/icon/folder-open.png" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
-				<p class="big-p"> <?php esc_html_e( 'No docs has been found . Perhaps', 'bbp-core' ); ?> </p>
+				<p class="big-p"> <?php esc_html_e( 'No forum has been found . Perhaps', 'bbp-core' ); ?> </p>
 				<p> <br>
 					<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?parent_title=" target="_blank" type="button" id="bbpc-forum" class="button button-primary ezd-btn btn-lg">
 						<?php esc_html_e( 'Create Forum', 'bbp-core' ); ?>
