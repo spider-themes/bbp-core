@@ -66,10 +66,10 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 										do_action('bbpcorepro_notification');
 									else :
 										?>
-										<li class="easydocs-notification bbp-core-pro-notification" title="<?php esc_attr_e('Notifications', 'eazydocs'); ?>">
+										<li class="easydocs-notification bbp-core-pro-notification" title="<?php esc_attr_e('Notifications', 'bbp-core'); ?>">
 											<div class="header-notify-icon">
-												<img class="notify-icon" src="<?php echo BBPC_IMG ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'eazydocs' ); ?>">
-												<img class="settings-pro-icon" src="<?php echo BBPC_IMG ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'eazydocs' ); ?>">
+												<img class="notify-icon" src="<?php echo BBPC_IMG ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'bbp-core' ); ?>">
+												<img class="settings-pro-icon" src="<?php echo BBPC_IMG ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'bbp-core' ); ?>">
 											</div>
 										</li>
 										<?php
@@ -424,7 +424,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 
 								<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
 									<li class="delete">
-										<a href="<?php echo admin_url( 'admin . php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this topic permanently', 'bbp-core' ); ?>">
+										<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Delete this topic permanently', 'bbp-core' ); ?>">
 											<span class="dashicons dashicons-trash"></span>
 										</a>
 									</li>
@@ -483,7 +483,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					?>
 			</ul>
 
-			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin . php' ); ?>/Create_Forum.php?parentID=<?php echo $item; ?>&is_section=">
+			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Topic.php?parentID=<?php echo $item; ?>&is_section=">
 					<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 			</a>
 			</div>
@@ -502,8 +502,8 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 				<img src="<?php echo BBPC_IMG; ?>/icon/folder-open.png" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
 				<p class="big-p"> <?php esc_html_e( 'No docs has been found . Perhaps', 'bbp-core' ); ?> </p>
 				<p> <br>
-					<a class="button button-primary ezd-btn btn-lg" href="<?php echo admin_url( 'admin . php' ); ?>/Create_Post.php?new_doc=" id="new-doc">
-						<?php esc_html_e( 'Create a Doc', 'bbp-core' ); ?>
+					<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?parent_title=" target="_blank" type="button" id="bbpc-forum" class="button button-primary ezd-btn btn-lg">
+						<?php esc_html_e( 'Create Forum', 'bbp-core' ); ?>
 					</a>
 				</p>
 		</div>

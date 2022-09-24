@@ -1293,9 +1293,6 @@ a.child-delete {
   font-family: "Roboto";
 }
 
-.easydocs-settings {
-  margin-right: 10px;
-}
 .easydocs-settings .header-notify-icons a {
   text-decoration: none;
   padding-top: 5px;
@@ -1389,6 +1386,12 @@ a.child-delete {
   -webkit-box-shadow: 0 1px 0 0 #edeef2;
   -moz-box-shadow: 0 1px 0 0 #edeef2;
   box-shadow: 0 1px 0 0 #edeef2;
+}
+.notification-head.no-notification-text {
+  padding: 20px 12px;
+  background: #bebebe26;
+  display: block;
+  text-align: center;
 }
 .notification-head .header-text {
   color: var(--clr-dark);
@@ -1589,6 +1592,18 @@ a.child-delete {
   color: var(--clr-text-light);
   line-height: 1;
   margin-top: 0.375rem;
+}
+
+.eazydocs-no-content {
+  display: block;
+  text-align: center;
+  margin-top: 250px;
+}
+.eazydocs-no-content img {
+  width: auto;
+  max-width: 50px;
+  height: auto;
+  margin: 0px auto 10px;
 }
 
 /*----------------------------------------*/

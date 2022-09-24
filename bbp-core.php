@@ -97,6 +97,7 @@ final class BBP_Core {
 		require_once BBPC_DIR . '/includes/functions.php';
 		require_once __DIR__ . '/includes/admin/menu/Approve_Topic.php';
 		require_once __DIR__ . '/includes/admin/menu/Create_Forum.php';
+		require_once __DIR__ . '/includes/admin/menu/Create_Topic.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
 	}
