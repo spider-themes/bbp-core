@@ -6,7 +6,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            SpiderDevs
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.0.5
+Version:           1.0.7
 Requires at least: 5.0
 Tested up to:      6.0.1
 Requires PHP:      7.2
@@ -221,7 +221,7 @@ final class BBP_Core {
 					'forum_delete_title' => esc_html__( 'Are you sure to delete?', 'bbp-core' ),
 					'forum_delete_desc'  => esc_html__( "This forum will be deleted with all the topics and you won't be able to revert!", 'bbp-core' ),
 					'topic_delete_desc'  => esc_html__( "This topic will be deleted and you won't be able to revert!", 'bbp-core' ),
-					'BBPC_ASSETS'           		=> BBPC_ASSETS
+					'BBPC_ASSETS'        => BBPC_ASSETS,
 				]
 			);
 		}
@@ -248,13 +248,3 @@ function bbp_core() {
 }
 
 bbp_core();
-//TODO: Add hidden replies after reply count, clicking it would show hidden replies.
-//TODO: Use cookies for selecting previously selected filter item, even after reload.
-//TODO: Attachment feature
-
-// TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
-// TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
-// TODO: Use pagination for topics, use bbp official pagination
-//TODO: Design best answer of bbp core as bbp of docy
-//TODO: When click on reply count, it will show the following replies, beside that, there will be pending replies.
-//TODO: Test with official WordPress themes and other famous themes on worpdress repo.

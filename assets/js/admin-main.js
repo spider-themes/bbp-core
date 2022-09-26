@@ -310,7 +310,6 @@
     // Keep Last filter item active
     function keepLastFilterActive() {
       let bbpcLastActiveFilter = readCookie('bbpc_current_filter');
-      console.log('ID is: ' + bbpcLastActiveFilter);
       if (bbpcLastActiveFilter) {
         // Tab item
         $('[cookie-id]').removeClass('is-active mixitup-control-active');
