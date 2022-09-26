@@ -173,7 +173,7 @@
           input: 'text',
           showCancelButton: true,
           inputAttributes: {
-            name: 'parent_title',
+            name: 'bbp_parent_title',
           },
         }).then((result) => {
           if (result.value) {

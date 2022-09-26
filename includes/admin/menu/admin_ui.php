@@ -22,7 +22,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 										<?php esc_html_e( 'Forums', 'bbp-core' ); ?>
 									</a>
 								</div>
-								<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?parent_title=" target="_blank" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
+								<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?bbp_parent_title=" target="_blank" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
 									<span class="dashicons dashicons-plus-alt2"></span>
 									<?php esc_html_e( 'Add Forum', 'bbp-core' ); ?>
 								</a>
@@ -502,7 +502,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 				<img src="<?php echo BBPC_IMG; ?>/icon/folder-open.png" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
 				<p class="big-p"> <?php esc_html_e( 'No forum has been found . Perhaps', 'bbp-core' ); ?> </p>
 				<p> <br>
-					<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?parent_title=" target="_blank" type="button" id="bbpc-forum" class="button button-primary ezd-btn btn-lg">
+					<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?bbp_parent_title=" target="_blank" type="button" id="bbpc-forum" class="button button-primary ezd-btn btn-lg">
 						<?php esc_html_e( 'Create Forum', 'bbp-core' ); ?>
 					</a>
 				</p>

@@ -13,8 +13,8 @@ class Create_Forum {
      * Create parent Doc post
      */
     public function bbp_create_forum() {
-	        if ( ! empty ( $_GET['parent_title'] ) ) {
-            $title = ! empty ( $_GET['parent_title'] ) ? sanitize_text_field( $_GET['parent_title'] ) : '';
+	        if ( ! empty ( $_GET['bbp_parent_title'] ) ) {
+            $bbp_parent_title = ! empty ( $_GET['bbp_parent_title'] ) ? sanitize_text_field( $_GET['bbp_parent_title'] ) : '';
             $args = [
                 'post_type'   => 'forum',
                 'post_parent' => 0
@@ -27,7 +27,7 @@ class Create_Forum {
 
             // Create post object
             $post = wp_insert_post( array(
-                'post_title'   => $title,
+                'post_title'   => $bbp_parent_title,
                 'post_parent'  => 0,
                 'post_content' => '',
                 'post_type'    => 'forum',
