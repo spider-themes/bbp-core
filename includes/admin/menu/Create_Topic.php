@@ -14,10 +14,10 @@ class Create_Topic {
      */
     public function bbp_create_topic() {
 
-	    if ( isset ( $_GET['is_section'] ) && ! empty ( $_GET['is_section'] ) ) {
+	    if ( isset ( $_GET['is_bbp_section'] ) && ! empty ( $_GET['is_bbp_section'] ) ) {
 
-			$parentID      = ! empty ( $_GET['parentID'] ) ? absint( $_GET['parentID'] ) : 0;
-			$section_title = ! empty ( $_GET['is_section'] ) ? sanitize_text_field( $_GET['is_section'] ) : '';
+			$parentID      = ! empty ( $_GET['bbp_parentID'] ) ? absint( $_GET['bbp_parentID'] ) : 0;
+			$section_title = ! empty ( $_GET['is_bbp_section'] ) ? sanitize_text_field( $_GET['is_bbp_section'] ) : '';
 			$parent_item   = get_children( array(
 				'post_parent' => $parentID,
 				'post_type'   => 'topic'

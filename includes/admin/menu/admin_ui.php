@@ -483,7 +483,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					?>
 			</ul>
 
-			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Topic.php?parentID=<?php echo $item; ?>&is_section=">
+			<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Topic.php?bbp_parentID=<?php echo $item; ?>&is_bbp_section=">
 					<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 			</a>
 			</div>
