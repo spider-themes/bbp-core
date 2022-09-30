@@ -1,6 +1,4 @@
 <?php
-
-
 if ( class_exists( 'CSF' ) ) {
 
 	// Set a unique slug-like ID.
@@ -37,5 +35,6 @@ if ( class_exists( 'CSF' ) ) {
 	include BBPC_SETTINGS_PATH . 'options_solved_topics.php';
 	include BBPC_SETTINGS_PATH . 'options_private_replies.php';
 	include BBPC_SETTINGS_PATH . 'options_voting.php';
+	include BBPC_SETTINGS_PATH . 'options_attachments.php';
 }
 

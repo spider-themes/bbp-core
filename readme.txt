@@ -69,7 +69,7 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
-= v1.0.6 (September 24, 2022) =
+= v1.0.7 (September 26, 2022) =
  * Fix: Filters visibility issues fixed
 
 = v1.0.6 (September 24, 2022) =

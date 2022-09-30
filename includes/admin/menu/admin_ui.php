@@ -7,11 +7,11 @@ $depth_two_parents = [];
 $fcount            = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 $bbpc_opt          = get_option( 'bbp_core_settings' );
-$filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_buttons'] : [];
+$filter_set        = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'no_reply', 'solved', 'unsolved', 'all', 'trash' ];
 ?>
 <div class="wrap">
 	<div class="body-dark">
-		<?php if ( $forum_count > 0 ) :	?>
+		<?php if ( $forum_count > 0 ) : ?>
 			<header class="easydocs-header-area">
 				<div class="container-fluid">
 					<div class="row alignment-center justify-content-between">
@@ -62,14 +62,14 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 										</div>
 									</li>
 									<?php
-									if ( class_exists('BBPCorePro') ) :
-										do_action('bbpcorepro_notification');
+									if ( class_exists( 'BBPCorePro' ) ) :
+										do_action( 'bbpcorepro_notification' );
 									else :
 										?>
-										<li class="easydocs-notification bbp-core-pro-notification" title="<?php esc_attr_e('Notifications', 'bbp-core'); ?>">
+										<li class="easydocs-notification bbp-core-pro-notification" title="<?php esc_attr_e( 'Notifications', 'bbp-core' ); ?>">
 											<div class="header-notify-icon">
-												<img class="notify-icon" src="<?php echo BBPC_IMG ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'bbp-core' ); ?>">
-												<img class="settings-pro-icon" src="<?php echo BBPC_IMG ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'bbp-core' ); ?>">
+												<img class="notify-icon" src="<?php echo BBPC_IMG; ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'bbp-core' ); ?>">
+												<img class="settings-pro-icon" src="<?php echo BBPC_IMG; ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'bbp-core' ); ?>">
 											</div>
 										</li>
 										<?php
@@ -507,10 +507,9 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 					</a>
 				</p>
 		</div>
-	<?php endif; ?>
+	<?php endif; //TODO: Fix open topics not being selected issue. ?>
 	</div>
 </div>
-
 
 <script>
 	(function ($) {
@@ -525,8 +524,7 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 				enable: false,
 			},
 			load: {
-				filter: '<?php echo esc_js( $bbpc_opt['default_filter'] ?? 'open-topics' ); ?>'
-				// filter: '.closed-topics'
+				filter: '<?php echo esc_js( $bbpc_opt['default_filter'] ?? '.open-topics' ); ?>'
 			}
 			};
 
@@ -536,3 +534,4 @@ $filter_set        = ! empty( $bbpc_opt['filter_buttons'] ) ? $bbpc_opt['filter_
 	});
 })(jQuery);
 </script>
+

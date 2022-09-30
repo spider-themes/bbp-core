@@ -14,9 +14,6 @@ License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 */
 
-use Carbon_Fields\Container;
-use Carbon_Fields\Field;
-
 defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'bc_fs' ) ) {
@@ -167,6 +164,10 @@ final class BBP_Core {
 			if ( $opt['is_votes'] ?? true ) {
 				new features\bbp_voting();
 			}
+
+			if ( $opt['is_attachment'] ?? true ) {
+				new features\bbp_attachments();
+			}
 		}
 	}
 
@@ -193,10 +194,11 @@ final class BBP_Core {
 		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );
 		wp_enqueue_style( 'bbpc-admin-global', BBPC_ASSETS . 'css/admin-global.css' );
 
-		$current_url = ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
-		$target_url  = admin_url( 'admin.php?page=bbp-core' );
+		$current_url       = ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+		$bbp_core_url      = admin_url( 'admin.php?page=bbp-core' );
+		$bbpc_settings_url = admin_url( 'admin.php?page=bbp-core-settings' );
 
-		if ( $target_url == $current_url ) {
+		if ( $bbp_core_url == $current_url ) {
 			wp_enqueue_style( 'normalize', BBPC_ASSETS . 'css/normalize.css' );
 			wp_enqueue_style( 'nice-select', BBPC_ASSETS . 'css/nice-select.css' );
 			wp_enqueue_style( 'jquery-ui', BBPC_ASSETS . 'css/admin-ui-style.css' );
@@ -225,6 +227,12 @@ final class BBP_Core {
 				]
 			);
 		}
+
+		if ( $bbpc_settings_url == $current_url ) {
+			wp_enqueue_style( 'sweetalert', EAZYDOCS_ASSETS . '/css/admin/sweetalert.css' );
+			wp_enqueue_script( 'sweetalert', EAZYDOCS_ASSETS . '/js/admin/sweetalert.min.js', [ 'jquery' ], true, true );
+			wp_enqueue_script( 'bbpc-admin-global', BBPC_ASSETS . 'js/admin-global.js', BBPC_VERSION );
+		}
 	}
 
 	/**
@@ -248,3 +256,13 @@ function bbp_core() {
 }
 
 bbp_core();
+
+
+//TODO: Attachment feature
+
+// TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
+// TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
+// TODO: Use pagination for topics, use bbp official pagination
+//TODO: Design best answer of bbp core as bbp of docy
+//TODO: When click on reply count, it will show the following replies, beside that, there will be pending replies.
+//TODO: Test with official WordPress themes and other famous themes on worpdress repo.
