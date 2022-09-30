@@ -92,7 +92,7 @@
   // Remain the last active doc tab
   function keep_last_active_doc_tab() {
     let doc_last_current_tab = readCookie('eazydocs_doc_current_tab');
-    if (doc_last_current_tab) {
+    if ( doc_last_current_tab ) {
       // Tab item
       $('.tab-menu .easydocs-navitem').removeClass('is-active');
       $(

@@ -7,7 +7,7 @@ $depth_two_parents = [];
 $fcount            = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 $bbpc_opt          = get_option( 'bbp_core_settings' );
-$filter_set        = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'no_reply', 'solved', 'unsolved', 'all', 'trash' ];
+$filter_set        = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash' ];
 ?>
 <div class="wrap">
 <div class="body-dark">

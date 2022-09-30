@@ -21,7 +21,7 @@
 		'all'      => 'All Topics'
 	];
 
-	$default_filter_options = [ 'open', 'closed', 'hidden', 'no_reply', 'solved', 'unsolved', 'all', 'trash' ];
+	$default_filter_options = [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash' ];
 
 	CSF::createSection(
 		$prefix,
