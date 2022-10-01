@@ -39,14 +39,14 @@ class GDATTAdminMeta {
 			check_admin_referer( 'bbp-core' );
 
 			//TODO: Check all these.
-			BBPCATTCore::instance()->o['max_file_size']      = absint( $_POST['max_file_size'] );
-			BBPCATTCore::instance()->o['max_to_upload']      = absint( $_POST['max_to_upload'] );
-			BBPCATTCore::instance()->o['roles_to_upload']    = (array) $_POST['roles_to_upload'];
-			BBPCATTCore::instance()->o['is_attachment_icon']    = isset( $_POST['is_attachment_icon'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['is_attachment_icons']   = isset( $_POST['is_attachment_icons'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['hide_from_visitors'] = isset( $_POST['hide_from_visitors'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['include_always']     = isset( $_POST['include_always'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['delete_attachments'] = bbpc_sanitize_basic( $_POST['delete_attachments'] );
+			BBPCATTCore::instance()->o['max_file_size']       = absint( $_POST['max_file_size'] );
+			BBPCATTCore::instance()->o['max_to_upload']       = absint( $_POST['max_to_upload'] );
+			BBPCATTCore::instance()->o['roles_to_upload']     = (array) $_POST['roles_to_upload'];
+			BBPCATTCore::instance()->o['is_attachment_icon']  = isset( $_POST['is_attachment_icon'] ) ? 1 : 0;
+			BBPCATTCore::instance()->o['is_attachment_icons'] = isset( $_POST['is_attachment_icons'] ) ? 1 : 0;
+			BBPCATTCore::instance()->o['hide_from_visitors']  = isset( $_POST['hide_from_visitors'] ) ? 1 : 0;
+			BBPCATTCore::instance()->o['include_always']      = isset( $_POST['include_always'] ) ? 1 : 0;
+			BBPCATTCore::instance()->o['delete_attachments']  = bbpc_sanitize_basic( $_POST['delete_attachments'] );
 
 			update_option( 'bbp-core', BBPCATTCore::instance()->o );
 			wp_redirect( add_query_arg( 'settings-updated', 'true' ) );
@@ -60,9 +60,9 @@ class GDATTAdminMeta {
 			BBPCATTCore::instance()->o['errors_visible_to_admins']     = isset( $_POST['errors_visible_to_admins'] ) ? 1 : 0;
 			BBPCATTCore::instance()->o['errors_visible_to_moderators'] = isset( $_POST['errors_visible_to_moderators'] ) ? 1 : 0;
 			BBPCATTCore::instance()->o['errors_visible_to_author']     = isset( $_POST['errors_visible_to_author'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['delete_visible_to_admins']     = bbpc_sanitize_basic( $_POST['delete_visible_to_admins'] );
-			BBPCATTCore::instance()->o['delete_visible_to_moderators'] = bbpc_sanitize_basic( $_POST['delete_visible_to_moderators'] );
-			BBPCATTCore::instance()->o['delete_visible_to_author']     = bbpc_sanitize_basic( $_POST['delete_visible_to_author'] );
+			BBPCATTCore::instance()->o['delete_visible_to_admins']     = true; //TODO: Customize in pro version
+			BBPCATTCore::instance()->o['delete_visible_to_moderators'] = true; //TODO: Customize in pro version
+			BBPCATTCore::instance()->o['delete_visible_to_author']     = false; //TODO: Customize in pro version
 
 			update_option( 'bbp-core', BBPCATTCore::instance()->o );
 			wp_redirect( add_query_arg( 'settings-updated', 'true' ) );

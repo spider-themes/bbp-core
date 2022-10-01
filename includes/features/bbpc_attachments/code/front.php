@@ -260,6 +260,8 @@ class GDATTFront {
 		$post      = get_post( $id );
 		$author_id = $post->post_author;
 
+		$opt = get_option( 'bbp_core_settings' );
+
 		if ( ! empty( $attachments ) ) {
 			$content .= '<div class="bbp-attachments">';
 			$content .= '<h6>' . __( 'Attachments', 'bbp-core' ) . ':</h6>';
@@ -272,13 +274,8 @@ class GDATTFront {
 				$listing    = '<ol';
 				$thumbnails = '<ol';
 
-				if ( bbpc_bba_o( 'is_attachment_icons' ) == 1 ) {
-					$listing    .= ' class="with-icons d4p-bbp-listing"';
-					$thumbnails .= ' class="with-icons d4p-bba-thumbnails"';
-				} else {
-					$listing    .= ' class="d4p-bbp-listing"';
-					$thumbnails .= ' class="d4p-bba-thumbnails"';
-				}
+				$listing    .= ' class="with-icons d4p-bbp-listing"';
+				$thumbnails .= ' class="with-icons d4p-bba-thumbnails"';			
 
 				$listing    .= '>';
 				$thumbnails .= '>';
@@ -293,11 +290,11 @@ class GDATTFront {
 
 					$allow = 'no';
 					if ( bbpc_is_user_admin() ) {
-						$allow = bbpc_bba_o( 'delete_visible_to_admins' );
+						$allow = 'delete';
 					} elseif ( bbpc_is_user_moderator() ) {
-						$allow = bbpc_bba_o( 'delete_visible_to_moderators' );
+						$allow = 'delete';
 					} elseif ( $author_id == $user_ID ) {
-						$allow = bbpc_bba_o( 'delete_visible_to_author' );
+						$allow = false;
 					}
 
 					if ( $allow == 'delete' || $allow == 'both' ) {
@@ -324,7 +321,7 @@ class GDATTFront {
 					$caption = false;
 
 					$img = false;
-					if ( bbpc_bba_o( 'image_thumbnail_active' ) == 1 ) {
+					if ( ( $opt['attachment_image_x'] ?? false ) && ( $opt['attachment_image_y'] ?? false ) ) {
 						$html = wp_get_attachment_image( $attachment->ID, 'bbpc-attachment-thumb' );
 
 						if ( $html != '' ) {
@@ -350,9 +347,9 @@ class GDATTFront {
 					if ( $html == '' ) {
 						$html = $filename;
 
-						if ( bbpc_bba_o( 'is_attachment_icons' ) == 1 ) {
+					
 							$class_li = 'bbp-atticon bbp-atticon-' . $this->icon( $ext );
-						}
+						
 					}
 
 					if ( $img ) {
@@ -398,7 +395,7 @@ class GDATTFront {
 			$content .= '</div>';
 		}
 
-		if ( ( bbpc_bba_o( 'errors_visible_to_author' ) == 1 && $author_id == $user_ID ) || ( bbpc_bba_o( 'errors_visible_to_admins' ) == 1 && bbpc_is_user_admin() ) || ( bbpc_bba_o( 'errors_visible_to_moderators' ) == 1 && bbpc_is_user_moderator() ) ) {
+		if ( bbpc_is_user_admin() || bbpc_is_user_moderator() ) {
 			$errors = get_post_meta( $id, '_bbp_attachment_upload_error' );
 
 			if ( ! empty( $errors ) ) {
@@ -407,10 +404,9 @@ class GDATTFront {
 				$content .= '<ol';
 
 				$class_li = 'bbp-file-error';
-				if ( bbpc_bba_o( 'is_attachment_icons' ) == 1 ) {
-					$content  .= ' class="with-icons"';
-					$class_li .= ' bbp-atticon bbp-atticon-error';
-				}
+
+				$content  .= ' class="with-icons"';
+				$class_li .= ' bbp-atticon bbp-atticon-error';
 
 				$content .= '>';
 

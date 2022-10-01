@@ -1,0 +1,65 @@
+<div class="tab-menu <?php echo $count > 12 ? '' : 'short'; ?>">
+	<ul class="easydocs-navbar">
+		<?php
+		$i = '';
+		while ( $query->have_posts() ) :
+			$query->the_post();
+			$i++;
+			$parent_forums[] = get_the_ID();
+			$current_post        = get_the_ID();
+			$is_active           = $i == 1 ? 'is-active' : '';
+			echo $is_active;
+			$count_children = get_children(
+				[
+					'post_parent' => $current_post,
+					'post_type'   => bbp_get_topic_post_type(),
+					'orderby'     => 'menu_order',
+					'order'       => 'asc',
+					'post_status' => [ 'any', 'spam', 'trash' ],
+				]
+			);
+			?>
+			<li class="easydocs-navitem <?php echo esc_attr( $is_active ); ?>" data-rel="tab-<?php the_ID(); ?>" data-id="<?php the_ID(); ?>">
+				<div class="title">
+					<?php
+					if ( has_post_thumbnail() ) :
+							echo get_the_post_thumbnail( $current_post, 'bbpc_20x20' );
+						?>
+						<?php else : ?>
+					<span class="dashicons dashicons-buddicons-forums"></span>
+					<?php endif; ?>
+					<?php the_title(); ?>
+				</div>
+				<div class="total-page">
+					<span>
+						<?php echo count( $count_children ) > 0 ? count( $count_children ) : ''; ?>
+					</span>
+				</div>
+				<div class="link">
+					<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
+						<a href="<?php echo get_edit_post_link( get_the_ID() ); ?>" class="link edit" target="_blank" title="<?php esc_attr_e( 'Edit this forum.', 'bbp-core' ); ?>">
+							<span class="dashicons dashicons-edit"></span>
+						</a>
+						<?php
+						endif;
+					?>
+
+					<a href="<?php the_permalink(); ?>" class="link external-link" target="_blank" data-id="tab-<?php the_ID(); ?>" title="<?php esc_attr_e( 'View this forum in new tab', 'bbp-core' ); ?>">
+						<span class="dashicons dashicons-external"></span>
+					</a>
+					<?php
+					if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
+						?>
+					<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Forum.php?forum_ID=<?php echo get_the_ID(); ?>" class="link forum-delete" title="<?php esc_attr_e( 'Delete this forum permanently', 'bbp-core' ); ?>">
+						<span class="dashicons dashicons-trash"></span>
+					</a>
+					<?php endif; ?>
+				</div>
+			</li>
+			<?php
+			$forum_parent = get_the_ID();
+		endwhile;
+		wp_reset_postdata();
+		?>
+	</ul>
+</div>

@@ -220,6 +220,7 @@ final class BBP_Core {
 			wp_enqueue_script( 'accordion', BBPC_ASSETS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'bbpc-admin-main', BBPC_ASSETS . 'js/admin-main.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'sweetalert', BBPC_ASSETS . 'js/sweetalert.min.js', [ 'jquery' ], '1.0', true );
+
 			wp_localize_script(
 				'jquery',
 				'bbp_core_local_object',
@@ -272,3 +273,6 @@ bbp_core();
 //TODO: Design best answer of bbp core as bbp of docy
 //TODO: When click on reply count, it will show the following replies, beside that, there will be pending replies.
 //TODO: Test with official WordPress themes and other famous themes on worpdress repo.
+
+//FIXME: Create parts for files, when too big, keep proper formatting
+//FIXME: Reply showing

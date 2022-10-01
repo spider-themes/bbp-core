@@ -16,8 +16,6 @@ class BBPCATTCore {
 
 		$this->wp_version = substr( str_replace( '.', '', $wp_version ), 0, 2 );
 
-		$gdd = new GDATTDefaults();
-
 		$this->o = get_option( 'bbp_core_settings' );
 
 		$this->plugin_path = dirname( dirname( __FILE__ ) ) . '/';
@@ -102,11 +100,11 @@ class BBPCATTCore {
 
 				$allow = 'no';
 				if ( bbpc_is_user_admin() ) {
-					$allow = bbpc_bba_o( 'delete_visible_to_admins' );
+					$allow = 'delete';
 				} elseif ( bbpc_is_user_moderator() ) {
-					$allow = bbpc_bba_o( 'delete_visible_to_moderators' );
+					$allow =  'delete';
 				} elseif ( $author_ID == $user_ID ) {
-					$allow = bbpc_bba_o( 'delete_visible_to_author' );
+					$allow = false;
 				}
 
 				if ( $action == 'delete' && ( $allow == 'delete' || $allow == 'both' ) ) {
