@@ -72,21 +72,18 @@ class GDATTFront {
 	}
 
 	public function register_scripts_and_styles() {
-		$debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
-		$files = 'front' . ( $debug ? '' : '.min' );
-
 		//TODO: Fix the constant for version
-		wp_register_style( 'gdatt-attachments', BBPCATTACHMENT_URL . 'css/' . $files . '.css', [], BBPC_VERSION );
-		wp_register_script( 'gdatt-attachments', BBPCATTACHMENT_URL . 'js/' . $files . '.js', [ 'jquery' ], BBPC_VERSION, true );
+		wp_register_style( 'bbpc-attachments', BBPCATTACHMENT_URL . 'css/front.min.css', [], BBPC_VERSION );
+		wp_register_script( 'bbpc-attachments', BBPCATTACHMENT_URL . 'js/front.min.js', [ 'jquery' ], BBPC_VERSION, true );
 	}
 
 	public function include_scripts_and_styles() {
-		wp_enqueue_style( 'gdatt-attachments' );
-		wp_enqueue_script( 'gdatt-attachments' );
+		wp_enqueue_style( 'bbpc-attachments' );
+		wp_enqueue_script( 'bbpc-attachments' );
 
 		wp_localize_script(
-			'gdatt-attachments',
-			'gdbbPressAttachmentsInit',
+			'bbpc-attachments',
+			'bbpcAttachmentsInit',
 			[
 				'max_files'    => apply_filters( 'bbpc_bbpressattchment_allow_upload', BBPCATTCore::instance()->get_max_files(), bbp_get_forum_id() ),
 				'are_you_sure' => __( 'This operation is not reversible. Are you sure?', 'bbp-core' ),

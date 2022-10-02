@@ -19,7 +19,7 @@ class BBPCATTCore {
 		$this->o = get_option( 'bbp_core_settings' );
 
 		$this->plugin_path = dirname( dirname( __FILE__ ) ) . '/';
-		$this->plugin_url  = plugins_url( '/gd-bbpress-attachments/' );
+		$this->plugin_url  = plugins_url( '/', __DIR__ );
 
 		define( 'BBPCATTACHMENT_URL', $this->plugin_url );
 		define( 'BBPCATTACHMENTS_PATH', $this->plugin_path );
@@ -146,15 +146,16 @@ class BBPCATTCore {
 	public function delete_post( $id ) {
 		if ( bbpc_has_bbpress() ) {
 			if ( bbp_is_reply( $id ) || bbp_is_topic( $id ) ) {
-				if ( $this->o['delete_attachments'] == 'delete' ) {
-					$files = bbpc_get_post_attachments( $id );
+				//TODO: Add conditions in pro
+				// if ( $this->o['delete_attachments'] == 'delete' ) {
+				// 	$files = bbpc_get_post_attachments( $id );
 
-					if ( is_array( $files ) && ! empty( $files ) ) {
-						foreach ( $files as $file ) {
-							wp_delete_attachment( $file->ID );
-						}
-					}
-				} elseif ( $this->o['delete_attachments'] == 'detach' ) {
+				// 	if ( is_array( $files ) && ! empty( $files ) ) {
+				// 		foreach ( $files as $file ) {
+				// 			wp_delete_attachment( $file->ID );
+				// 		}
+				// 	}
+				// } elseif ( $this->o['delete_attachments'] == 'detach' ) {
 					global $wpdb;
 
 					$wpdb->update(
@@ -165,7 +166,7 @@ class BBPCATTCore {
 							'post_type'   => 'attachment',
 						]
 					);
-				}
+				//}
 			}
 		}
 	}
