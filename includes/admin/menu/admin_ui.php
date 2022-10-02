@@ -2,25 +2,24 @@
 if ( ! class_exists( 'bbPress' ) ) {
 	return;
 }
-$parent_forums     = [];
-$fcount            = wp_count_posts( bbp_get_forum_post_type() );
-$forum_count       = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
-$bbpc_opt          = get_option( 'bbp_core_settings' );
-$filter_set        = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash' ];
+$parent_forums = [];
+$fcount        = wp_count_posts( bbp_get_forum_post_type() );
+$forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
+$bbpc_opt      = get_option( 'bbp_core_settings' );
+$filter_set    = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash' ];
 ?>
 <div class="wrap">
 <div class="body-dark">
 	<?php
 	if ( $forum_count > 0 ) :
 		include __DIR__ . '/admin_ui/header.php';
-		// print_r(__DIR__);
 		?>
 
 		<main>
 			<div class="easydocs-sidebar-menu">
 				<div class="tab-container">
 					<?php
-					$query = new WP_Query(
+					$forum_query = new WP_Query(
 						[
 							'post_type'      => bbp_get_forum_post_type(),
 							'posts_per_page' => -1,
@@ -30,7 +29,8 @@ $filter_set        = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden'
 							'post_status'    => 'publish',
 						]
 					);
-					$count = $query->found_posts;
+
+					$count = $forum_query->found_posts;
 
 					// Left Sidebar Forums.
 					include __DIR__ . '/admin_ui/forums.php';
@@ -38,8 +38,8 @@ $filter_set        = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden'
 
 					<div class="easydocs-tab-content">
 						<?php
-						$ids                 = 0;
-						$container           = 1;
+						$ids       = 0;
+						$container = 1;
 						if ( is_array( $parent_forums ) ) :
 							foreach ( $parent_forums as $item ) :
 								$ids ++;
@@ -153,15 +153,15 @@ $filter_set        = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden'
 			let docContainer = document.querySelectorAll('.easydocs-tab');
 
 			var config = {
-			controls: {
-				scope: 'local',
-			},
-			animation: {
-				enable: false,
-			},
-			load: {
-				filter: '<?php echo esc_js( $bbpc_opt['default_filter'] ?? '.open-topics' ); ?>'
-			}
+				controls: {
+					scope: 'local',
+				},
+				animation: {
+					enable: false,
+				},
+				load: {
+					filter: '<?php echo esc_js( $bbpc_opt['default_filter'] ?? '.open-topics' ); ?>'
+				}
 			};
 
 			for (let i = 0; i < docContainer.length; i++) {

@@ -1,0 +1,772 @@
+# Copyright (C) 2022 spider-themes
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: BBP Core 1.0.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bbp-core\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-10-01T11:53:49+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: bbp-core\n"
+
+#. Plugin Name of the plugin
+#: includes/admin/Menu.php:17
+#: includes/admin/menu/statistics.php:8
+msgid "BBP Core"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://spider-themes.net/bbp-core"
+msgstr ""
+
+#. Description of the plugin
+msgid "Expand bbPress powered forums with useful features like - private reply, solved topics ..."
+msgstr ""
+
+#. Author of the plugin
+msgid "spider-themes"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://profiles.wordpress.org/spiderdevs/"
+msgstr ""
+
+#: bbp-core.php:228
+msgid "Enter Forum Title"
+msgstr ""
+
+#: bbp-core.php:229
+msgid "Enter Topic Title"
+msgstr ""
+
+#: bbp-core.php:230
+msgid "Are you sure to delete?"
+msgstr ""
+
+#: bbp-core.php:231
+msgid "This forum will be deleted with all the topics and you won't be able to revert!"
+msgstr ""
+
+#: bbp-core.php:232
+msgid "This topic will be deleted and you won't be able to revert!"
+msgstr ""
+
+#. translators: 1: BBP Core 2: bbPress
+#: includes/Admin.php:31
+msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+msgstr ""
+
+#: includes/Admin.php:32
+msgid "BBP Core Plugin"
+msgstr ""
+
+#: includes/Admin.php:33
+msgid "bbPress"
+msgstr ""
+
+#: includes/admin/Menu.php:18
+#: includes/admin/menu/admin_ui/header.php:8
+#: includes/admin/menu/admin_ui/header.php:42
+msgid "Forums"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:120
+msgid "Add Topic"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:135
+msgid "Folder Open"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:136
+msgid "No forum has been found . Perhaps"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:139
+msgid "Create Forum"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/forums.php:40
+msgid "Edit this forum."
+msgstr ""
+
+#: includes/admin/menu/admin_ui/forums.php:47
+msgid "View this forum in new tab"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/forums.php:53
+msgid "Delete this forum permanently"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:13
+msgid "Add Forum"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:23
+msgid "Search for"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:32
+msgid "Settings Icon"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:41
+msgid "Choose classic UI"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:43
+msgid "Topics"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:44
+msgid "Replies"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:55
+msgid "Notifications"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:57
+msgid "Notify Icon"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:58
+msgid "Pro Icon"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:11
+msgid "Open"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:20
+msgid "Closed"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:28
+msgid "Hidden"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:39
+msgid "No Reply"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:49
+msgid "Solved"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:62
+msgid "Unsolved"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:72
+msgid "All topics"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:82
+msgid "Trash"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/topics.php:38
+#: includes/admin/menu/admin_ui/topics.php:124
+msgid "Approve this topic"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/topics.php:77
+msgid " Publised replies"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/topics.php:83
+msgid " Pending replies"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/topics.php:99
+msgid "Delete this topic permanently"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:10
+msgid "Expand bbPress powered forums with useful features."
+msgstr ""
+
+#: includes/admin/menu/statistics.php:17
+msgid "BBP Core Logo"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:20
+#: includes/features/bbpc_attachments/code/admin.php:31
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:43
+msgid "User Stats"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:50
+msgid " Forums"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:55
+msgid " Topics"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:60
+msgid " Replies"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:65
+msgid " Topic Tags"
+msgstr ""
+
+#: includes/admin/menu/statistics.php:71
+msgid " Empty Topic Tags"
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:29
+msgid "Admin UI"
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:35
+msgid "Hide bbPress post types"
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:36
+msgid "Native Forum, Topics and Replies post types menus will be hidden."
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:42
+msgid "Choose default filter"
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:51
+msgid "Filters to show on admin page."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:6
+#: includes/admin/settings/options/options_attachments.php:14
+#: includes/features/bbpc_attachments/code/front.php:267
+#: includes/features/bbpc_attachments/code/meta.php:122
+#: includes/features/bbpc_attachments/forms/uploader.php:16
+msgid "Attachments"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:20
+msgid "Show attachments on topic replies."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:26
+msgctxt "bbp core maximum file size upload"
+msgid "Maximum File Size"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:27
+msgid "Input the values in Kilo Bytes (KB)"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:34
+msgctxt "bbp core maximum file size upload"
+msgid "Maximum number of file to upload at once"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:43
+msgid "Hide Attachment from visitors"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:50
+msgid "Who can upload files "
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:56
+msgid "Users who can upload attachments."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:69
+msgid "When an associated Topic or Reply has been deleted"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:76
+msgid "Delete the attachment along with forum/topic."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:82
+msgid "Forums Integration"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:87
+msgid "With these options you can modify the forums to include attachment elements."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:96
+msgid "Attachment Icon"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:103
+msgid "File type Icons"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:109
+#: includes/admin/settings/options/options_attachments.php:180
+msgid "Display of image attachments"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:114
+#: includes/admin/settings/options/options_attachments.php:185
+msgid "Attached images can be displayed as thumbnails, and from here you can control this."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:120
+#: includes/admin/settings/options/options_attachments.php:191
+msgid "With Caption"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:127
+#: includes/admin/settings/options/options_attachments.php:198
+msgid "Inline"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:134
+#: includes/admin/settings/options/options_attachments.php:205
+msgid "CSS Class"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:140
+#: includes/admin/settings/options/options_attachments.php:212
+msgid "REL Attribute"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:141
+#: includes/admin/settings/options/options_attachments.php:213
+msgid "lightbox"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:142
+#: includes/admin/settings/options/options_attachments.php:214
+msgid "You can use these tags: %ID%, %TOPIC%"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:147
+#: includes/admin/settings/options/options_attachments.php:221
+msgid "Image thumbnails size."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:152
+#: includes/admin/settings/options/options_attachments.php:226
+msgid "Changing thumbnails size affects only new image attachments. To use new size for old attachments, resize them using Regenerate Thumbnails plugin."
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:158
+#: includes/admin/settings/options/options_attachments.php:232
+msgid "Thumbnail width"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:159
+#: includes/admin/settings/options/options_attachments.php:166
+#: includes/admin/settings/options/options_attachments.php:233
+#: includes/admin/settings/options/options_attachments.php:240
+msgctxt "attachment image thumbnail size"
+msgid "px"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:165
+#: includes/admin/settings/options/options_attachments.php:239
+msgid "Thumbnail height"
+msgstr ""
+
+#: includes/admin/settings/options/options_attachments.php:175
+msgid "Images"
+msgstr ""
+
+#: includes/admin/settings/options/options_private_replies.php:6
+#: includes/admin/settings/options/options_private_replies.php:12
+msgid "Private Replies"
+msgstr ""
+
+#: includes/admin/settings/options/options_private_replies.php:13
+msgid "Enable/ Disable Private Replies feature."
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:6
+#: includes/admin/settings/options/options_solved_topics.php:12
+msgid "Solved Topics"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:13
+msgid "Enable/ Disable Solved Topics feature."
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:6
+msgid "Voting"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:12
+msgid "Enable BBP Voting Fetures?"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:17
+msgid "Voting Labels"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:23
+msgid "Voting Option Position"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:25
+#: includes/admin/settings/options/options_voting.php:63
+msgid "Select an option"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:27
+msgid "Before Content"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:28
+msgid "Below User"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:37
+msgid "Show Labels."
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:38
+msgid "Show the labels that describe what up and down mean?"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:44
+msgid "Upvote Label."
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:45
+msgid "Upvote"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:46
+msgid "Change the upvote label from \"Upvote\" to something else."
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:52
+msgid "Downvote Label."
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:53
+msgid "Downvote"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:54
+msgid "Change the downvote label from \"Downvote\" to something else."
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:60
+msgid "Display Vote Numbers"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:61
+msgid "Choose how to display the number of up votes and down votes"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:65
+msgid "Hover"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:66
+msgid "Always Show"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:67
+msgid "Hide"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:74
+msgid "Disable Voting"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:81
+msgid "Disable Voting on Topics"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:82
+#: includes/admin/settings/options/options_voting.php:90
+msgid "You can override this at the forum level"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:89
+msgid "Disable Voting on Replies"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:97
+msgid "Disable Down Votes"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:98
+msgid "Only Allow Up Votes"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:103
+msgid "View-Only Scores"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:110
+msgid "Disable voting for visitors who are not logged in"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:111
+msgid "Scores will display (if configured to), but voting will be disabled if not logged in"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:118
+msgid "Disable adding new votes after a topic is closed"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:119
+msgid "Scores will display (if configured to), but new votes for the topic or the topic's replies will be disabled"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:126
+msgid "Don't allow authors to vote on their own topic/reply"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:127
+msgid "They can still vote on other people's topics/replies"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:132
+msgid "Admin Voting"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:139
+msgid "Allow any administrator user to vote as much as they want?"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:144
+msgid "Sort by Voting Scores"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:151
+msgid "Sort topics in a forum using their voting scores?"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:152
+msgid "Highest voted topics on top"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:159
+msgid "Sort replies on a topic using their voting scores?"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:160
+msgid "Highest voted replies on top"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:167
+msgid " Break out the lead topic to separate it from the replies"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:168
+msgid "Simply enabled the built-in bbPress hook, bbp_show_lead_topic. This is useful to resolve a bug in bbPress when sort order is messed up when Threaded Replies are enabled in bbPress."
+msgstr ""
+
+#: includes/admin/settings/options/settings.php:11
+msgid "BBP Core Settings"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:40
+msgid "Upgrade to GD bbPress Toolbox Pro"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:52
+msgid "Website"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:53
+msgid "On Twitter"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:54
+msgid "On Facebook"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:60
+msgid "Get Help"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:61
+msgid "General Plugin Information"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:62
+msgid "Home Page on Dev4Press.com"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:63
+msgid "Home Page on WordPress.org"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:64
+msgid "Getting Plugin Support"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:65
+msgid "Support Forum on Dev4Press.com"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:66
+msgid "Support Forum on WordPress.org"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:75
+msgid "On Dev4Press website you can find many useful plugins, themes and tutorials, all for WordPress. Please, take a few minutes to browse some of these resources, you might find some of them very useful."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:76
+msgid "Plugins"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:76
+msgid "We have more than 10 plugins available, some of them are commercial and some are available for free."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:77
+msgid "Knowledge Base"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:77
+msgid "Premium and free tutorials for our plugins themes, and many general and practical WordPress tutorials."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:78
+msgid "Support Forums"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/admin.php:78
+msgid "Premium support forum for all with valid licenses to get help. Also, report bugs and leave suggestions."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:13
+msgid "File exceeds allowed file size."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:14
+msgid "File not uploaded."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:15
+msgid "Upload file size exceeds PHP maximum file size allowed."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:16
+msgid "Upload file size exceeds FORM specified file size."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:17
+msgid "Upload file only partially uploaded."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:18
+msgid "Can't write file to the disk."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:19
+msgid "Temporary folder for upload is missing."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/defaults.php:20
+msgid "Server extension restriction stopped upload."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/front.php:92
+msgid "This operation is not reversible. Are you sure?"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/front.php:251
+msgid "attachment"
+msgid_plural "attachments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/features/bbpc_attachments/code/front.php:272
+msgid "You must be <a href='%s'>logged in</a> to view attached files."
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/front.php:301
+msgid "delete"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/front.php:305
+msgid "detach"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/front.php:403
+#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:20
+msgid "Upload Errors"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/meta.php:136
+msgid "Attachments Settings"
+msgstr ""
+
+#: includes/features/bbpc_attachments/code/meta.php:137
+#: includes/features/bbpc_attachments/code/meta.php:138
+msgid "Attachments List"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:4
+msgid "No attachments here."
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:11
+msgid "edit"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:3
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:4
+msgid "Disable Attachments"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:14
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:15
+msgid "Override Defaults"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:24
+msgid "Settings to override"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:26
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:27
+msgid "Maximum file size"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:32
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:33
+msgid "Maximum files to upload"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:35
+msgid "at once"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:38
+msgid "Hide list of attachments"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:39
+msgid "Hide From Visitors"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/attachments/meta_forum.php:47
+msgid "From visitors"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/uploader.php:2
+msgid "Upload Attachments"
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/uploader.php:9
+msgid "Maximum file size allowed is %s."
+msgstr ""
+
+#: includes/features/bbpc_attachments/forms/uploader.php:19
+msgid "Add another file"
+msgstr ""

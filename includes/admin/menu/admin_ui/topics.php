@@ -12,20 +12,7 @@
 			]
 		);
 
-        //FIXME: Replies are showing in topic query
-
 		$pending_replies = [];
-
-		while ( $replies->have_posts() ) :
-			$replies->the_post();
-			$reply_id = get_the_ID();
-
-			if ( bbp_is_reply_pending( $reply_id ) ) {
-				$pending_replies[] = $reply_id;
-			}
-
-		endwhile;
-		wp_reset_postdata();
 
 		$no_reply    = 0 == $replies->found_posts ? 'no-reply' : '';
 		$is_solved   = $GLOBALS['bbp_solved_topic']->is_solved( $current_topic_id ) ? ' solved' : ' unsolved';
@@ -54,6 +41,7 @@
 				<div class="left-content">
 					<h4>
 						<a href="<?php echo esc_attr( $edit_link ); ?>" target="<?php echo esc_attr( $target ); ?>">
+
 						<?php the_title(); ?>
 						</a>
 						<?php
@@ -68,8 +56,21 @@
 							],
 
 						];
-
+ 
 						echo wp_kses( $approve_btn, $allowed_html );
+
+						while ( $replies->have_posts() ) :
+							$replies->the_post();
+							$reply_id = get_the_ID();
+
+							if ( bbp_is_reply_pending( $reply_id ) ) {
+								$pending_replies[] = $reply_id;
+							}
+
+						endwhile;
+						wp_reset_postdata();
+
+
 						$pending_replies_count = count( $pending_replies );
 						$reply_count           = $replies->found_posts - $pending_replies_count;
 						?>

@@ -2,8 +2,8 @@
 	<ul class="easydocs-navbar">
 		<?php
 		$i = '';
-		while ( $query->have_posts() ) :
-			$query->the_post();
+		while ( $forum_query->have_posts() ) :
+			$forum_query->the_post();
 			$i++;
 			$parent_forums[] = get_the_ID();
 			$current_post        = get_the_ID();
