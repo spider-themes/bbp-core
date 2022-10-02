@@ -189,7 +189,7 @@ class GDATTFront {
 
 		$post_id = $reply_id == 0 ? $topic_id : $reply_id;
 
-		if ( ! empty( $errors->errors ) && bbpc_bba_o( 'log_upload_errors' ) == 1 ) {
+		if ( ! empty( $errors->errors ) ) {
 			foreach ( $errors->errors as $code => $errs ) {
 				foreach ( $errs as $error ) {
 					if ( $error[0] != '' && $error[1] != '' ) {
