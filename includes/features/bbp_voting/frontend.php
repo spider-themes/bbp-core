@@ -55,7 +55,6 @@ function bbp_voting_buttons( $post_obj = false ) {
 		// Get the post.
 		if ( $this_post_type == $topic_post_type ) {
 			$post = bbpress()->topic_query->post;
-			var_dump( $post );
 		}
 
 		if ( $this_post_type == $reply_post_type ) {
