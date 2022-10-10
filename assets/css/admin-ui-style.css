@@ -761,7 +761,7 @@ label {
 .accordion-title ul.actions li a img:hover {
   opacity: 1;
 }
-.accordion-title ul.actions li a.eazydocs-pro-notice .dashicons {
+.accordion-title ul.actions li a.st-pro-notice .dashicons {
   color: #f1bd6c;
 }
 .accordion-title .left-content {
@@ -1814,7 +1814,7 @@ a.child-delete {
 .link a .dashicons:hover {
   color: #fff;
 }
-.link a.eazydocs-pro-notice .dashicons {
+.link a.st-pro-notice .dashicons {
   color: #f1bd6c;
 }
 .link:hover svg {

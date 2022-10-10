@@ -68,22 +68,6 @@ class GDATTAdminMeta {
 			wp_redirect( add_query_arg( 'settings-updated', 'true' ) );
 			exit();
 		}
-
-		if ( isset( $_POST['gdbb-att-images-submit'] ) ) {
-			check_admin_referer( 'bbp-core' );
-
-			BBPCATTCore::instance()->o['image_thumbnail_active']  = isset( $_POST['image_thumbnail_active'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['image_thumbnail_inline']  = isset( $_POST['image_thumbnail_inline'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['image_thumbnail_caption'] = isset( $_POST['image_thumbnail_caption'] ) ? 1 : 0;
-			BBPCATTCore::instance()->o['image_thumbnail_rel']     = bbpc_sanitize_basic( $_POST['image_thumbnail_rel'] );
-			BBPCATTCore::instance()->o['image_thumbnail_css']     = bbpc_sanitize_basic( $_POST['image_thumbnail_css'] );
-			BBPCATTCore::instance()->o['image_thumbnail_size_x']  = absint( $_POST['image_thumbnail_size_x'] );
-			BBPCATTCore::instance()->o['image_thumbnail_size_y']  = absint( $_POST['image_thumbnail_size_y'] );
-
-			update_option( 'bbp-core', BBPCATTCore::instance()->o );
-			wp_redirect( add_query_arg( 'settings-updated', 'true' ) );
-			exit();
-		}
 	}
 
 	public function admin_head() { ?>

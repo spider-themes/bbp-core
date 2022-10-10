@@ -109,13 +109,13 @@ a.eazydocs-close-notice:active {
   width: calc(70% - 20px);
 }
 
-.eazydocs-pro-notice.csf-field {
+.st-pro-notice.csf-field {
   position: relative;
   cursor: pointer;
 }
 
-.eazydocs-pro-notice .csf-title,
-.eazydocs-pro-notice .csf-fieldset {
+.st-pro-notice .csf-title,
+.st-pro-notice .csf-fieldset {
   opacity: 0.5;
   pointer-events: none;
 }
@@ -139,7 +139,7 @@ body.valid .active-theme.csf-field::after {
   display: none;
 }
 
-.eazydocs-pro-notice.csf-field::before {
+.st-pro-notice.csf-field::before {
   content: "Pro";
   background-color: #f1bd6c;
   color: #000;
@@ -148,7 +148,7 @@ body.valid .active-theme.csf-field::after {
   margin-bottom: 10px;
 }
 
-.eazydocs-pro-notice.csf-field::after {
+.st-pro-notice.csf-field::after {
   position: absolute;
   content: "";
   width: 100%;

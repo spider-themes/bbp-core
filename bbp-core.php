@@ -30,10 +30,8 @@ if ( ! function_exists( 'bc_fs' ) ) {
                 'slug'                => 'bbp-core',
                 'type'                => 'plugin',
                 'public_key'          => 'pk_41277ad11125f6e2a1b4e66f40164',
-                'is_premium'          => true,
-                'premium_suffix'      => 'Pro',
-                // If your plugin is a serviceware, set this option to false.
-                'has_premium_version' => true,
+                'is_premium'          => false,
+                'is_premium_only'     => false,
                 'has_addons'          => false,
                 'has_paid_plans'      => true,
                 'trial'               => array(
@@ -43,6 +41,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
                 'menu'                => array(
                     'slug'           => 'bbp-core',
                     'support'        => false,
+                    'first-path'     => 'admin.php?page=bbp-core',
                 ),
             ) );
         }

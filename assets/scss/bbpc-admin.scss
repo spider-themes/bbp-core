@@ -109,7 +109,7 @@
   max-width: 25px;
 }
 
-.bbpc-trash-filter {  
+.bbpc-trash-filter {
   border-radius: 1.875rem;
   margin-bottom: 0;
   background-color: rgba(212, 23, 23, 0.1);
@@ -125,6 +125,10 @@
     align-items: center;
     text-decoration: none;
     color: rgba(212, 23, 23, 1);
+  }
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 }
 
