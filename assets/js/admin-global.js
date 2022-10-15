@@ -3,11 +3,11 @@
     $(document).ready(function() {
 
         // Eazydocs Pro notices.
-        $('.eazydocs-pro-notice ul li:last-child label input').attr('disabled', true);
+        $('.st-pro-notice ul li:last-child label input').attr('disabled', true);
         // eazydocs pro notice.
         function eazydocs_pro_notice() {
             if ( $('body').hasClass('valid') ) {
-                $('.eazydocs-pro-notice:not(div[class*="active-theme"])').on('click', function (e) {
+                $('.st-pro-notice:not(div[class*="active-theme"])').on('click', function (e) {
                     e.preventDefault();
                     let href = $(this).attr('href')
                     Swal.fire({
@@ -20,7 +20,7 @@
                     })
                 })
             } else {
-                $('.eazydocs-pro-notice').on('click', function (e) {
+                $('.st-pro-notice').on('click', function (e) {
                     e.preventDefault();
                     let href = $(this).attr('href')
                     Swal.fire({
@@ -78,7 +78,7 @@
         });
 
         // Remove condition if it has pro notice class
-        $('.eazydocs-pro-notice').attr('data-condition', '');
+        $('.st-pro-notice').attr('data-condition', '');
 
     })
 })(jQuery);

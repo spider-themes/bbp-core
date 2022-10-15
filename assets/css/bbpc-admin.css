@@ -127,6 +127,10 @@
   text-decoration: none;
   color: #d41717;
 }
+.bbpc-trash-filter:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 .bbpc-settings-icon {
   background: rgba(0, 0, 255, 0.058);

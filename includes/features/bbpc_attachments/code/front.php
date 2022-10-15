@@ -326,35 +326,23 @@ class GDATTFront {
 
 							$class_li = 'bbp-atthumb';
 
-							if ( bbpc_bba_o( 'image_thumbnail_inline' ) == 1 ) {
-								$class_li .= ' bbp-inline';
-							}
-
-							$class_a = bbpc_bba_o( 'image_thumbnail_css' );
 							$caption = bbpc_bba_o( 'image_thumbnail_caption' ) == 1;
-
-							$rel_a = ' rel="' . bbpc_bba_o( 'image_thumbnail_rel' ) . '"';
-							$rel_a = str_replace( '%ID%', $id, $rel_a );
-							$rel_a = str_replace( '%TOPIC%', bbp_get_topic_id(), $rel_a );
 						}
 					}
 
-					$item = '<li id="d4p-bbp-attachment_' . $attachment->ID . '" class="d4p-bbp-attachment d4p-bbp-attachment-' . $ext . ' ' . $class_li . '">';
+					$item = '<li id="bbpcore-attach_' . $attachment->ID . '" class="bbpcore-attach bbpcore-attachment-' . $ext . ' ' . $class_li . '">';
 
 					if ( $html == '' ) {
 						$html = $filename;
-
-					
-							$class_li = 'bbp-atticon bbp-atticon-' . $this->icon( $ext );
-						
+                        $class_li = 'bbp-atticon bbp-atticon-' . $this->icon( $ext );
 					}
 
 					if ( $img ) {
 						if ( $caption ) {
-							$item .= '<div style="width: ' . bbpc_bba_o( 'image_thumbnail_size_x' ) . 'px" class="wp-caption">';
+							$item .= '<div style="width: ' . bbpc_bba_o( 'attachment_image_x' ) . 'px" class="wp-caption">';
 						}
 
-						$item .= '<a class="' . $class_a . '"' . $rel_a . ' href="' . $file_url . '" title="' . $a_title . '">' . $html . '</a>';
+						$item .= '<a class="' . $class_a . '" href="' . $file_url . '" title="' . $a_title . '">' . $html . '</a>';
 
 						if ( $caption ) {
 							$a_title = '<a href="' . $file_url . '"' . $_download . '>' . $a_title . '</a>';

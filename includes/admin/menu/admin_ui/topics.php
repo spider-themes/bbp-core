@@ -54,7 +54,6 @@
 								'class' => [],
 								'title' => [],
 							],
-
 						];
  
 						echo wp_kses( $approve_btn, $allowed_html );
@@ -149,8 +148,8 @@
 			</div>
 			<!-- ./Accordion children ends -->
 		</li>
-			<?php
-		endwhile;
-		wp_reset_postdata();
+        <?php
+    endwhile;
+    wp_reset_postdata();
 	?>
-	</ul>
+</ul>
