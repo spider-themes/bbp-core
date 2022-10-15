@@ -41,7 +41,7 @@ class Delete_Topic {
 			$topic_ids              = explode( ',', $topics_id );
 			$topic_id_int           = array_map( 'intval', $topic_ids );
 			foreach ( $topic_id_int as $delete_topic ) {
-				wp_delete_post( $delete_topic, true ); 
+				wp_trash_post( $delete_topic, true ); 
 			}
 			wp_safe_redirect(admin_url( 'admin.php?page=bbp-core' ));
 		}
