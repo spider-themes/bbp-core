@@ -53,7 +53,7 @@ $filter_set    = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'n
 										'orderby'        => 'menu_order',
 										'order'          => 'asc',
 										'posts_per_page' => -1,
-										'post_status'    => [ 'any', 'spam', 'trash' ],
+										'post_status'    => [ 'any', 'spam' ],
 									]
 								);
 
@@ -100,15 +100,28 @@ $filter_set    = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'n
 									} else {
 										$count_unsolved++;
 									}
-
-									// Count trash.
-									if ( bbp_is_topic_trash( $topic_id ) ) {
-										$count_trash++;
-									}
+									
 
 							endwhile;
-								wp_reset_postdata();
-								?>
+
+							$trash_topic = new WP_Query(
+								[
+									'post_parent'    => $item,
+									'post_type'      => bbp_get_topic_post_type(),
+									'posts_per_page' => -1,
+									'post_status'    => [ 'trash' ],
+								]
+							);
+							
+							while ( $trash_topic->have_posts() ) :
+								$trash_topic->the_post();
+								$trash_topic_id 	= get_the_ID();
+								// Count trash.
+								if ( bbp_is_topic_trash( $trash_topic_id ) ) {
+									$count_trash++;
+								}
+							endwhile; wp_reset_postdata();
+							?>
 							<div class="easydocs-tab <?php echo esc_attr( $active ); ?>" id="tab-<?php echo esc_attr( $item ); ?>">
 
 								<!-- Tab filters. -->

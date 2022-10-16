@@ -25,6 +25,8 @@ class BBPCATTCore {
 		define( 'BBPCATTACHMENTS_PATH', $this->plugin_path );
 
 		add_action( 'after_setup_theme', [ $this, 'load' ], 5 );
+		add_action( 'before_delete_post', [ $this, 'topic_attachment_deletion' ]);
+		add_action( 'before_delete_post', [ $this, 'reply_attachment_deletion' ]);
 	}
 
 	public static function instance() {
@@ -178,7 +180,13 @@ class BBPCATTCore {
 
 	public function get_file_size( $global_only = false, $forum_id = 0 ) {
 		$forum_id = $forum_id == 0 ? bbp_get_forum_id() : $forum_id;
-		$value    = (int) $this->o['max_file_size'] ?? 512;
+		
+		if ( ! class_exists( 'BBPCorePro' ) ){
+			$value    		= 512;
+			// $value    	= (int) $this->o['max_file_size'] ?? 512;
+		}else{
+			$value    	= $this->o['max_file_size'] ?? 512;
+		}
 
 		if ( ! $global_only ) {
 			$meta = get_post_meta( $forum_id, '_gdbbatt_settings', true );
@@ -193,7 +201,11 @@ class BBPCATTCore {
 
 	public function get_max_files( $global_only = false, $forum_id = 0 ) {
 		$forum_id = $forum_id == 0 ? bbp_get_forum_id() : $forum_id;
-		$value    = $this->o['max_file_uploads'] ?? 4;
+		if( ! class_exists( 'BBPCorePro' ) ){
+			$value    		= 4;
+		}else{
+			$value    = $this->o['max_file_uploads'] ?? 4;
+		}
 
 		if ( ! $global_only ) {
 			$meta = get_post_meta( $forum_id, '_gdbbatt_settings', true );
@@ -248,5 +260,33 @@ class BBPCATTCore {
 		}
 
 		return apply_filters( 'bbpc_bbpressattchment_is_hidden_from_visitors', $value == 1 );
+	}
+
+	public function topic_attachment_deletion($topic_id){
+		if( class_exists( 'BBPCorePro' ) ){
+			$topic_deletion = $this->o['is_attachment_deletion'] ?? '';
+			
+			if( $topic_deletion == 1 && get_post_type($topic_id) == bbp_get_topic_post_type() ) {
+				$topic_attachments = get_attached_media( '', $topic_id );			
+				foreach ($topic_attachments as $attachment) {
+				wp_delete_attachment( $attachment->ID, 'true' );
+				}
+			}
+		}
+	}
+
+	public function reply_attachment_deletion($reply_id){
+
+		if( class_exists( 'BBPCorePro' ) ){
+			$reply_deletion = $this->o['is_attachment_deletion'] ?? '';
+
+			if( $reply_deletion == 1 && get_post_type($reply_id) == bbp_get_reply_post_type() ) {
+				$replies_attachments = get_attached_media( '', $reply_id );
+			
+				foreach ($replies_attachments as $attachment) {
+				wp_delete_attachment( $attachment->ID, 'true' );
+				}
+			}
+		}
 	}
 }

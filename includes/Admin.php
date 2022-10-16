@@ -19,7 +19,9 @@ class Admin {
 	 */
 	public function load_csf() {
 		require BBPC_DIR . 'includes/admin/settings/codestar-framework/codestar-framework.php';
+		if ( ! class_exists( 'BBPCorePro' ) ) {
 		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
+		}
 	}
 
 	/**
