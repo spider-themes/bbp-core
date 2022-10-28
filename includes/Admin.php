@@ -19,8 +19,11 @@ class Admin {
 	 */
 	public function load_csf() {
 		require BBPC_DIR . 'includes/admin/settings/codestar-framework/codestar-framework.php';
-		if ( ! class_exists( 'BBPCorePro' ) ) {
-		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
+		
+		if ( class_exists( 'BBPCorePro' ) ) {
+			require BBPC_DIR . 'includes/admin/settings/options/pro-settings.php';
+		} else {
+			require BBPC_DIR . 'includes/admin/settings/options/settings.php';
 		}
 	}
 
@@ -34,7 +37,6 @@ class Admin {
 			'<strong>' . esc_html__( 'BBP Core Plugin', 'bbp-core' ) . '</strong>',
 			'<strong>' . esc_html__( 'bbPress', 'bbp-core' ) . '</strong>'
 		);
-
 		printf( '<div class="notice notice-error is-dismissible"><p>%1$s</p></div>', $message );
 	}
 }

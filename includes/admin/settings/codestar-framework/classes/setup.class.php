@@ -387,11 +387,9 @@ if ( ! class_exists( 'CSF_Setup' ) ) {
       self::include_plugin_file( 'functions/validate.php' );
 
       // Include free version classes
-      self::include_plugin_file( 'classes/abstract.class.php'      );
-      self::include_plugin_file( 'classes/fields.class.php'        );
-      if( ! class_exists( 'BBPCorePro' ) ) {
-      self::include_plugin_file( 'classes/admin-options.class.php' );
-      }
+      self::include_plugin_file( 'classes/abstract.class.php' );
+      self::include_plugin_file( 'classes/fields.class.php' );      
+      self::include_plugin_file( 'classes/admin-options.class.php' );     
 
       // Include premium version classes
       if ( self::$premium ) {
