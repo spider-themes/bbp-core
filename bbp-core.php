@@ -104,6 +104,7 @@ final class BBP_Core {
 		require_once __DIR__ . '/includes/admin/menu/Create_Topic.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
+		require_once __DIR__ . '/includes/admin/Elementor/BBP_Widgets.php';
 	}
 
 	/**
@@ -143,6 +144,7 @@ final class BBP_Core {
 
 		if ( is_admin() ) {
 			new Admin();
+			new admin\Elementor\BBP_Widgets();
 		} else {
 			new Frontend();
 		}
