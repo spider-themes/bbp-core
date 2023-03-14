@@ -20,3 +20,210 @@
 .single-filter-item:hover > * {
     color: #078669;
 }
+
+/** === Doc search form result === **/
+#bbpc-search-result {
+    border: none;
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 30px 40px 0 rgba(4, 73, 89, 0.1);
+    font-size: 14px;
+    font-weight: 400;
+    display: none;
+    transition: all 0.4s;
+    z-index: 99;
+    margin-top: 25px;
+    border: 1px solid #e6eeef;
+    border-radius: 4px;
+    box-shadow: 0 3px 4px 0 rgba(4,73,89,.06); 
+    padding: 20px 25px;  
+    top: 45px; 
+
+  }
+  #bbpc-search-result:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    position: absolute;
+    top: -6px;
+    transform: rotate(45deg);
+    left: 40px;
+    border-left: 1px solid #e6eeef;
+    border-top: 1px solid #e6eeef;
+}
+  #bbpc-search-result .searchbar-tabs {
+    padding: 0 10px 15px 0;
+  }
+  #bbpc-search-result a {
+    text-decoration: none;
+  }
+  #bbpc-search-result.ajax-search {
+    display: block;
+  }
+  .search-results-tab .bbpc-search-title {
+    font-size: 16px;
+    color: #1d2746;
+    display: block;
+    border-bottom: 1px solid #e6eeef;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 8px;
+    margin: 12px 0 0;
+    padding-bottom: 8px;
+    text-transform: capitalize;
+}
+
+ /*
+ keywords
+ */
+ .bbpc-search-keyword {
+  display: block;
+  text-align: center;
+  margin: 15px 0 5px;
+}
+.bbpc-search-keyword.left{
+  text-align: left;
+}
+.bbpc-search-keyword.right{
+  text-align: right;
+}
+ .bbpc-search-keyword ul, .bbpc-search-keyword ul li {
+  list-style: none;
+  margin: 0 2px;
+  padding: 0;
+  display: inline-block;
+}
+ .bbpc-search-keyword ul li a {
+  color: #fff;
+  background: #02010136;
+  font-size: 14px;
+  text-transform: capitalize;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: 400;
+}
+.bbpc-search-active{
+  position: relative;
+}
+.bbpc-search-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+  z-index: 999;
+  opacity: 0;
+}
+.bbpc-search-active .bbpc-search-overlay{
+  opacity: 1;
+}
+.not-found-text, .bbpc-not-found-text {
+  display: none;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 12px 0 5px;
+  letter-spacing: 0.1px;
+}
+
+.bbpc_search_form_wrapper {
+  z-index: 9999;
+  position: relative;
+}
+.bbpc_search_form_wrapper .input-wrapper{
+  position: relative;
+}
+
+.bbpc_search_form_wrapper .input-wrapper .spinner {
+  position: absolute;
+  right: 27px;
+  top: 50%;
+  transform: translateY(-55%);
+  display: none;
+  background: #fff;
+  z-index: 999;
+}
+.bbpc_search_form_wrapper .input-wrapper .spinner img {
+  width: 22px;
+}
+.bbpc_search_form_wrapper .input-wrapper input {
+  width: 100%;
+}
+.searchbar-tabs .tab-item {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 11px 8px;
+  margin-right: 20px;
+  border: none;
+  background: 0 0;
+  color: var(--black_400);
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.searchbar-tabs .tab-item.active {
+  color: var(--brand_color);
+  border-bottom: 3px solid var(--brand_color);
+}
+.searchbar-tabs .tab-item:hover,
+.searchbar-tabs .tab-item:focus{
+  text-decoration: none;
+  outline:none;
+}
+.bbpc_search_form_wrapper .search-results-tab {
+  margin-bottom: 2.2rem;
+}
+.bbpc_search_form_wrapper .search-result-item {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex: 100%;
+  transition: all .3s;
+}
+.bbpc_search_form_wrapper .search-result-item a{
+  color: #6b707f;
+}
+
+.bbpc_search_form_wrapper .search-result-item:hover {
+  background: rgba(143,187,237,.1);
+}
+.bbpc_search_form_wrapper .input-wrapper .submit-btn-left {
+  position: absolute;
+  right: 27px;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  margin: auto;
+  align-items: center;
+}
+.bbpc_search_form_wrapper .input-wrapper .submit-btn-right {
+  position: absolute;
+  left: 27px;
+  top: 2px;
+  bottom: 2px;
+  margin: auto;
+  display: flex;
+  height: fit-content;
+}
+.bbpc_search_form_wrapper .input-wrapper button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  color: black;
+}
+.bbpc_search_form_wrapper .input-wrapper button svg {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 80%;
+}
+.forum-card .forum-card-thumbnail-area {
+  padding: 0 !important;
+}

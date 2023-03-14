@@ -1,0 +1,53 @@
+/**
+* Subscriber CSS
+**/
+.subscription-toggle {
+    background: #4c4cf1 !important;
+    outline: 0;
+    border-color: #4c4cf1 !important;
+    color:#fff !important;
+}
+.subscription-toggle a {
+    color: #fff;
+    text-decoration: none;
+}
+.bbp__success-subscribe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  .mailIcon {
+    margin-bottom: 10px;
+  }
+  .mailIcon svg {
+    width: 40px;
+    height: 40px;
+    background: #4c4cf1;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}
+/* FORUM CSS */
+.bbpc-widget-forum-info tr td:last-child {
+    text-align: right;
+}
+.icon_action {
+  font-family: 'ElegantIcons';
+  font-style: normal;
+  vertical-align: middle;
+}
+.icon_action::before {
+    content: "\e012";
+}
+.bbpc-widget-forum-info tr i {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.bbp__success-subscribe .is-subscribed a.subscription-toggle {
+  background: transparent !important;
+  color: #4c4cf1 !important;
+  margin: 0;
+  padding: 0 !important;
+}

@@ -1,1 +1,1 @@
-<div class="hero-search-4 hero-search-5" id="ama-search-result" data-noresult="<?php esc_attr_e('No Results Found', 'ama-core'); ?>"> </div>
+<div class="hero-search-4 hero-search-5" id="docy-search-result" data-noresult="<?php esc_attr_e('No Results Found', 'ama-core'); ?>"> </div>

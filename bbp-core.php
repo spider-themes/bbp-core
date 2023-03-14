@@ -107,7 +107,7 @@ final class BBP_Core {
 		require_once __DIR__ . '/includes/admin/Elementor/BBP_Widgets.php';
 		require_once __DIR__ . '/includes/functions.php';
 		require_once __DIR__ . '/includes/extra.php';
-
+		require_once __DIR__ . '/includes/ajax_actions.php';
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		require_once __DIR__ . '/includes/functionss.php';
 		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';
