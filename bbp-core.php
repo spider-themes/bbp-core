@@ -105,7 +105,14 @@ final class BBP_Core {
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
 		require_once __DIR__ . '/includes/admin/Elementor/BBP_Widgets.php';
+		require_once __DIR__ . '/includes/functions.php';
+		require_once __DIR__ . '/includes/extra.php';
+
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once __DIR__ . '/includes/functionss.php';
+		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';
 	}
+
 
 	/**
 	 *  Initializing Bbp_core class.
@@ -144,10 +151,10 @@ final class BBP_Core {
 
 		if ( is_admin() ) {
 			new Admin();
-			new admin\Elementor\BBP_Widgets();
 		} else {
 			new Frontend();
 		}
+		new admin\Elementor\BBP_Widgets();
 	}
 
 	/**
@@ -253,6 +260,23 @@ final class BBP_Core {
 		require BBPC_DIR . 'includes/hooks/image_sizes.php';
 	}
 }
+
+//  register bbpc custom css
+function register_bbpc_widgets_css() {
+	wp_enqueue_style( 'bbp-core-pro-style', plugins_url( '/assets/css/custom.css', __FILE__ ) );
+	wp_enqueue_style( 'bbp-core-pro-single-widgets_style', plugins_url( '/assets/css/elementor-editor.css', __FILE__ ) );
+	wp_enqueue_style( 'bbp-core-pro-scss-style', plugins_url( '/assets/scss/style.css', __FILE__ ) );
+
+}
+
+	add_action( 'wp_enqueue_scripts', 'register_bbpc_widgets_css' );
+
+// register custom js
+function register_bbpc_custom_js(){
+	wp_enqueue_script( 'bbpc_js', plugins_url( '/assets/js/forumTab.js', __FILE__ ) );
+
+}
+	add_action( 'wp_enqueue_scripts', 'register_bbpc_custom_js' );
 
 /**
  * Initialize the bbp core plugin.

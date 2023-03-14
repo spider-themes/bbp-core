@@ -1,5 +1,5 @@
 <?php
-namespace BBPCorePro\Frontend;
+namespace Frontend;
 
 /**
  * Class Assets

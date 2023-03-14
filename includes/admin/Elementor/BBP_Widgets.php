@@ -12,21 +12,21 @@ class BBP_Widgets{
 
     // Register Widgets
     public function register_widgets( $widgets_manager ) {
-        // Include Widget files
-        // require_once( __DIR__ . '/Single_forum.php' ); 
-        // require_once( __DIR__ . '/Forum_Ajax.php' ); 
-        // require_once( __DIR__ . '/Forum_posts.php' ); 
-        // require_once( __DIR__ . '/Forums.php' ); 
-        // require_once( __DIR__ . '/Forum.php' ); 
-        // require_once( __DIR__ . '/Forum_Tab.php' ); 
-        // require_once( __DIR__ . '/Search.php' ); 
-        // $widgets_manager->register( new Single_forum() );
-        // $widgets_manager->register( new Forum_Ajax() );       
-        // $widgets_manager->register( new Forum_posts() );
-        // $widgets_manager->register( new Forums() );
-        // $widgets_manager->register( new Forum() );
-        // $widgets_manager->register( new Forum_Tab() );
-        // $widgets_manager->register( new Search() );
+        // Include Widget files     
+        require_once( __DIR__ . '/Single_forum.php' ); 
+        require_once( __DIR__ . '/Forum_Ajax.php' ); 
+        require_once( __DIR__ . '/Forum_posts.php' ); 
+        require_once( __DIR__ . '/Forums.php' ); 
+        require_once( __DIR__ . '/Forum.php' ); 
+        require_once( __DIR__ . '/Forum_Tab.php' ); 
+        require_once( __DIR__ . '/Search.php' ); 
+        $widgets_manager->register( new Single_forum() );
+        $widgets_manager->register( new Forum_Ajax() );       
+        $widgets_manager->register( new Forum_posts() );
+        $widgets_manager->register( new Forums() );
+        $widgets_manager->register( new Forum() );
+        $widgets_manager->register( new Forum_Tab() );
+        $widgets_manager->register( new Search() );
     }
     
     // Register category

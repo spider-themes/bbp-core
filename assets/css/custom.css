@@ -1,0 +1,22 @@
+.community-post .post-content .entry-content .post-title:hover a {
+    color: #078669;
+}
+
+.row.gy-lg-0.gy-4 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*------- Ajax forum & Ama Forum --------*/
+.single-forum-post-widget .post-category img {
+    width: 15px;
+    height: auto;
+}
+
+.single-filter-item a {
+    color: var(--black_600);
+}
+
+.single-filter-item:hover > * {
+    color: #078669;
+}

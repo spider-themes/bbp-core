@@ -258,13 +258,13 @@ class Forum_Ajax extends Widget_Base {
                             </div>
                             <div class="post-info">
                                 <div class="author">
-                                    <img src="<?php echo BBPCOREPRO_IMG ?>/forum_tab/user-circle-alt.svg"
+                                    <img src="<?php echo BBPC_IMG ?>/forum_tab/user-circle-alt.svg"
                                          alt="user circle">
 									<?php echo get_the_author_meta( 'display_name', $author_id ) ?>
                                 </div>
 
                                 <div class="post-time">
-                                    <img src="<?php echo BBPCOREPRO_IMG ?>/forum_tab/time-outline.svg"
+                                    <img src="<?php echo BBPC_IMG ?>/forum_tab/time-outline.svg"
                                          alt="time outline">
 									<?php echo bbp_forum_last_active_time( get_the_ID() ); ?>
                                 </div>
@@ -279,13 +279,13 @@ class Forum_Ajax extends Widget_Base {
                         </div>
                         <div class="post-reach">
                             <div class="post-view">
-                                <img src="<?php echo BBPCOREPRO_IMG ?>/forum_tab/eye-outline.svg" alt="icon">
+                                <img src="<?php echo BBPC_IMG ?>/forum_tab/eye-outline.svg" alt="icon">
 								<?php bbp_topic_view_count( $topic_id );
 								echo '&nbsp;';
 								_e( 'Views', 'bbp-core' ) ?>
                             </div>
                             <div class="post-like">
-                                <img src="<?php echo BBPCOREPRO_IMG ?>/forum_tab/thumbs-up-outline.svg"
+                                <img src="<?php echo BBPC_IMG ?>/forum_tab/thumbs-up-outline.svg"
                                      alt="icon">
 								<?php if ( $vote_count ) {
 									echo $vote_count;
@@ -296,7 +296,7 @@ class Forum_Ajax extends Widget_Base {
 								_e( 'Likes', 'bbp-core' ); ?>
                             </div>
                             <div class="post-comment">
-                                <img src="<?php echo BBPCOREPRO_IMG ?>/forum_tab/chatbubbles-outline.svg"
+                                <img src="<?php echo BBPC_IMG ?>/forum_tab/chatbubbles-outline.svg"
                                      alt="icon">
 								<?php bbp_topic_reply_count( $topic_id );
 								echo '&nbsp;';

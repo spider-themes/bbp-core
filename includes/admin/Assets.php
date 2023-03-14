@@ -1,5 +1,5 @@
 <?php
-namespace BBPCorePro\admin;
+namespace admin;
 
 /**
  * Class Assets

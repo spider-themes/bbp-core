@@ -1,5 +1,5 @@
 <?php
-namespace BBPCorePro\admin;
+namespace admin;
 use WP_Query;
 
 /**

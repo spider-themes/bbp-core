@@ -1,0 +1,44 @@
+/*----------------------------------------------------
+@File: Default Styles
+
+This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+---------------------------------------------------- */
+
+/*=====================================================================
+@Template Name: Ama
+
+@Default Styles
+Table of Content:
+01/ Variables
+92/ Predefine
+03/ forumPosts
+04/ forum
+05/ forums
+
+
+=====================================================================*/
+
+@import "variables";
+
+@import "predefine";
+
+@import "forumPosts";
+
+@import "forum";
+
+@import "forums";
+
+@import "ajaxForum";
+
+@import "search";
+
+@import "single-forum";
+
+@import "forumTab";
+
+
+
+
+
