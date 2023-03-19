@@ -68,7 +68,7 @@
                                     </g>
                                     </svg>
                                 <!-- <i class="arrow_carrot-down second"></i> -->
-                                <svg width="13px" height="13px" class="second viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" >
+                                <svg width="13px" height="13px" class="second" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" >
 
                                     <path d="M0 0h48v48H0z" fill="none"/>
                                     <g id="Shopicon">

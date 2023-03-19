@@ -1,5 +1,5 @@
 <?php
-namespace BBPCorePro\Frontend;
+namespace Frontend;
 
 /**
  * Class Assets
@@ -18,8 +18,8 @@ class Assets {
 	 * Register scripts and styles [ FRONTEND ]
 	 */
 	public function frontend_scripts() {		
-		wp_enqueue_style( 'bbpc-frontend-css', BBPCOREPRO_ASSETS . '/frontend/css/frontend.css', array(), BBPCOREPRO_VERSION );
-		wp_enqueue_script( 'bbpc-frontend-js', BBPCOREPRO_ASSETS . '/frontend/js/frontend.js', array('jquery'), BBPCOREPRO_VERSION, true );
+		wp_enqueue_style( 'bbpc-frontend-css', BBPC_ASSETS . '/frontend/css/frontend.css', array(), BBPC_VERSION );
+		wp_enqueue_script( 'bbpc-frontend-js', BBPC_ASSETS . 'frontend/js/frontend.js', array('jquery'), BBPC_VERSION, true );
 		
 		// localize
 		if ( function_exists('is_bbpress') ){

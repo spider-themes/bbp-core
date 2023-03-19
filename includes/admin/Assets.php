@@ -16,7 +16,7 @@ class Assets {
 	}
 	
 	public function admin_scripts() {		
-		wp_enqueue_style( 'bbpc-admin-css', BBPCOREPRO_ASSETS . '/admin/css/admin.css', array(), BBPCOREPRO_VERSION );
-		wp_enqueue_script( 'bbpc-admin-js', BBPCOREPRO_ASSETS . '/admin/js/admin.js', array( 'jquery' ), BBPCOREPRO_VERSION, true );
+		wp_enqueue_style( 'bbpc-admin-css', BBPC_ASSETS . '/admin/css/admin.css', array(), BBPC_VERSION );
+		wp_enqueue_script( 'bbpc-admin-js', BBPC_ASSETS . '/admin/js/admin.js', array( 'jquery' ), BBPC_VERSION, true );
 	}	
 }
