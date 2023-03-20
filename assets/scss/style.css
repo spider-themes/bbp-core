@@ -1797,6 +1797,7 @@ ul.list-unstyled {
   }
 }
 .bbpc-show-more-btn-wrapper {
+  width: 100%;
   text-align: center;
   margin-top: 70px;
   margin-bottom: 50px;

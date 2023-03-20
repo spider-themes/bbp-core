@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade tab" id="tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="tab-pane show fade tab" id="tab2" role="tabpanel" aria-labelledby="profile-tab">
 				<?php
 				$i = 0;
 				while ( $topics->have_posts() ) : $topics->the_post();
