@@ -6,10 +6,9 @@
 			$forum_query->the_post();
 			$i++;
 			$parent_forums[] = get_the_ID();
-			$current_post        = get_the_ID();
-			$is_active           = $i == 1 ? 'is-active' : '';
-			echo $is_active;
-			$count_children = get_children(
+			$current_post    = get_the_ID();
+			$is_active       = $i == 1 ? 'is-active tab-active' : '';
+			$count_children  = get_children(
 				[
 					'post_parent' => $current_post,
 					'post_type'   => bbp_get_topic_post_type(),

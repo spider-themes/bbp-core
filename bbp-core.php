@@ -23,7 +23,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
 
         if ( ! isset( $bc_fs ) ) {
             // Include Freemius SDK.
-            require_once dirname(__FILE__) . '/freemius/start.php';
+            require_once dirname(__FILE__) . '/includes/fs/start.php';
 
             $bc_fs = fs_dynamic_init( array(
                 'id'                  => '10864',
@@ -35,7 +35,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
                 'has_addons'          => false,
                 'has_paid_plans'      => true,
                 'trial'               => array(
-                    'days'               => 7,
+                    'days'               => 14,
                     'is_require_payment' => true,
                 ),
                 'menu'                => array(
