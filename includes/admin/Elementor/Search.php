@@ -19,7 +19,7 @@ class Search extends Widget_Base {
 	}
 
 	public function get_title() {
-		return esc_html__( 'BBP Search', 'bbp-core' );
+		return esc_html__( 'BBPC Search', 'bbp-core' );
 	}
 
 	public function get_icon() {
@@ -62,17 +62,17 @@ class Search extends Widget_Base {
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'icon',
 				'options' => [
-					'icon'  => __( 'Icon', 'bbp-core' ),
-					'text'  => __( 'Text', 'bbp-core' )
+					'icon' => __( 'Icon', 'bbp-core' ),
+					'text' => __( 'Text', 'bbp-core' )
 				],
 			]
 		);
 
 		$this->add_control(
 			'submit_btn_icon', [
-				'label'   => __( 'Submit Button Icon', 'bbp-core' ),
-				'type'    => \Elementor\Controls_Manager::ICONS,
-				'default' => [
+				'label'     => __( 'Submit Button Icon', 'bbp-core' ),
+				'type'      => \Elementor\Controls_Manager::ICONS,
+				'default'   => [
 					'value'   => 'fas fa-search',
 					'library' => 'solid',
 				],
@@ -88,27 +88,27 @@ class Search extends Widget_Base {
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default'     => __( 'Search', 'bbp-core' ),
-				'condition' => [
+				'condition'   => [
 					'submit_btn_type' => 'text'
 				]
 			]
 		);
-		
+
 		$this->add_control(
 			'submit_btn_align', [
 				'label'   => __( 'Submit Alignment', 'bbp-core' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
-					'right'    => [
+					'right' => [
 						'title' => __( 'Left', 'bbp-core' ),
 						'icon'  => 'fa fa-align-left',
 					],
-					'left' => [
+					'left'  => [
 						'title' => __( 'Right', 'bbp-core' ),
 						'icon'  => 'fa fa-align-right',
 					],
 				],
-				'toggle' => false,
+				'toggle'  => false,
 				'default' => 'left'
 			]
 		);
@@ -141,7 +141,7 @@ class Search extends Widget_Base {
 				'label'   => __( 'Keywords Alignment', 'bbp-core' ),
 				'type'    => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
-					'left'    => [
+					'left'   => [
 						'title' => __( 'Left', 'bbp-core' ),
 						'icon'  => 'fa fa-align-left',
 					],
@@ -149,12 +149,12 @@ class Search extends Widget_Base {
 						'title' => __( 'Center', 'bbp-core' ),
 						'icon'  => 'fa fa-align-center',
 					],
-					'right' => [
+					'right'  => [
 						'title' => __( 'Right', 'bbp-core' ),
 						'icon'  => 'fa fa-align-right',
 					],
 				],
-				'toggle' => false,
+				'toggle'  => false,
 				'default' => 'center'
 			]
 		);
@@ -190,7 +190,7 @@ class Search extends Widget_Base {
 				]
 			]
 		);
-		
+
 		$this->end_controls_section();
 
 		/**
@@ -203,11 +203,11 @@ class Search extends Widget_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
-		
+
 		$this->add_control(
 			'input_heading_form', [
-				'label'     => esc_html__( 'Input', 'bbp-core' ),
-				'type'      => Controls_Manager::HEADING
+				'label' => esc_html__( 'Input', 'bbp-core' ),
+				'type'  => Controls_Manager::HEADING
 			]
 		);
 
@@ -220,7 +220,7 @@ class Search extends Widget_Base {
 				]
 			]
 		);
-		
+
 		$this->add_control(
 			'color_placeholder', [
 				'label'     => esc_html__( 'Placeholder Color', 'bbp-core' ),
@@ -230,7 +230,7 @@ class Search extends Widget_Base {
 				],
 			]
 		);
-		
+
 		$this->add_group_control(
 			Group_Control_Border::get_type(), [
 				'name'     => 'input_border',
@@ -259,16 +259,16 @@ class Search extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
-            'input-padding',[
-                'label' => esc_html__( 'Padding', 'bbp-core' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'selectors' => [
-                    '{{WRAPPER}} .bbpc_search_form_wrapper .input-wrapper input' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
-                ]
-            ]
-        );
-		
+			'input-padding', [
+				'label'      => esc_html__( 'Padding', 'bbp-core' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors'  => [
+					'{{WRAPPER}} .bbpc_search_form_wrapper .input-wrapper input' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+				]
+			]
+		);
+
 		$this->add_responsive_control(
 			'input-border-radius', [
 				'label'      => __( 'Border Radius', 'bbp-core' ),
@@ -298,7 +298,7 @@ class Search extends Widget_Base {
 			]
 		);
 
-		
+
 		$this->add_control(
 			'search_bg',
 			[
@@ -311,15 +311,15 @@ class Search extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
-            'btn-padding',[
-                'label' => esc_html__( 'Padding', 'bbp-core' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'selectors' => [
-                    '{{WRAPPER}} .bbpc_search_form_wrapper .input-wrapper button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
-                ]
-            ]
-        );
+			'btn-padding', [
+				'label'      => esc_html__( 'Padding', 'bbp-core' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors'  => [
+					'{{WRAPPER}} .bbpc_search_form_wrapper .input-wrapper button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+				]
+			]
+		);
 
 		$this->add_responsive_control(
 			'btn-border-radius', [
@@ -331,7 +331,7 @@ class Search extends Widget_Base {
 				],
 			]
 		);
-		
+
 		// slider controls
 		$this->add_control(
 			'typography_btn', [
@@ -352,7 +352,7 @@ class Search extends Widget_Base {
 			]
 		);
 
-		
+
 		// slider controls
 		$this->add_control(
 			'submit_btn_align_left', [
@@ -373,7 +373,7 @@ class Search extends Widget_Base {
 			]
 		);
 
-		
+
 		// slider controls
 		$this->add_control(
 			'submit_btn_align_right', [
@@ -397,16 +397,16 @@ class Search extends Widget_Base {
 		// typography controls
 		$this->add_group_control(
 			Group_Control_Typography::get_type(), [
-				'name'     => 'typography_btn',
-				'label'    => esc_html__( 'Typography', 'bbp-core' ),
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'name'      => 'typography_btn',
+				'label'     => esc_html__( 'Typography', 'bbp-core' ),
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'condition' => [
 					'submit_btn_type' => 'text'
 				],
-				'selector' => '{{WRAPPER}} .bbpc_search_form_wrapper .input-wrapper button',
+				'selector'  => '{{WRAPPER}} .bbpc_search_form_wrapper .input-wrapper button',
 			]
 		);
-		
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -514,9 +514,9 @@ class Search extends Widget_Base {
 		$title_tag = ! empty( $settings['title_tag'] ) ? $settings['title_tag'] : 'h2';
 		?>
 
-		<form action="<?php echo esc_url(home_url('/')) ?>" role="search" method="get" class="bbpc_search_form_wrapper">
-			<div class="form-group">
-				<div class="input-wrapper">
+        <form action="<?php echo esc_url( home_url( '/' ) ) ?>" role="search" method="get" class="bbpc_search_form_wrapper">
+            <div class="form-group">
+                <div class="input-wrapper">
 
 					<span class="submit-btn-<?php echo esc_attr( $settings['submit_btn_align'] ?? 'left' ); ?>">
 						<button type="submit">			
@@ -531,23 +531,23 @@ class Search extends Widget_Base {
 						</button>						 
 					</span>
 
-					<input type='search' id="searchInput" autocomplete="off" name="s"  placeholder="<?php echo esc_attr($settings['placeholder']) ?>">
+                    <input type='search' id="searchInput" autocomplete="off" name="s" placeholder="<?php echo esc_attr( $settings['placeholder'] ) ?>">
 
-					<!-- Ajax Search Loading Spinner -->
-					<?php include('Search/search-spinner.php'); ?>
+                    <!-- Ajax Search Loading Spinner -->
+					<?php include( 'Search/search-spinner.php' ); ?>
 
-					<!-- WPML Language Code -->
-					<?php if ( defined('ICL_LANGUAGE_CODE') ) : ?>
-						<input type="hidden" name="lang" value="<?php echo(ICL_LANGUAGE_CODE); ?>"/>
+                    <!-- WPML Language Code -->
+					<?php if ( defined( 'ICL_LANGUAGE_CODE' ) ) : ?>
+                        <input type="hidden" name="lang" value="<?php echo( ICL_LANGUAGE_CODE ); ?>"/>
 					<?php endif; ?>
 
-					<input type="hidden" id="hidden_post_type" name="post_type" value="docs" />
-				</div>
-			</div>
-			<?php include('Search/ajax-sarch-results.php'); ?>
-			<?php include('Search/keywords.php'); ?>
-		</form>
-		
+                    <input type="hidden" id="hidden_post_type" name="post_type" value="docs"/>
+                </div>
+            </div>
+			<?php include( 'Search/ajax-sarch-results.php' ); ?>
+			<?php include( 'Search/keywords.php' ); ?>
+        </form>
+
 		<?php
 	}
 }

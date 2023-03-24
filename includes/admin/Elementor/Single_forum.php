@@ -1,4 +1,5 @@
 <?php
+
 namespace admin\Elementor;
 
 use Elementor\Controls_Manager;
@@ -17,7 +18,7 @@ class Single_forum extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Single Forum', 'ama-core' );
+		return __( 'BBPC Single Forum', 'bbp-core' );
 	}
 
 	public function get_icon() {
@@ -34,43 +35,43 @@ class Single_forum extends Widget_Base {
 		$this->start_controls_section(
 			'style_sec',
 			[
-				'label' => esc_html__( 'Preset Skins', 'ama-core' ),
+				'label' => esc_html__( 'Preset Skins', 'bbp-core' ),
 			]
 		);
 
 		$this->add_control(
 			'style',
 			[
-				'label'   => esc_html__( 'Forums Style', 'ama-core' ),
+				'label'   => esc_html__( 'Forums Style', 'bbp-core' ),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => [
 					'1' => [
 						'icon'  => 'single_forum_1',
-						'title' => esc_html__( '01 : Single Forum With Topics', 'ama-core' ),
+						'title' => esc_html__( '01 : Single Forum With Topics', 'bbp-core' ),
 					],
 					'2' => [
 						'icon'  => 'single_forum_2',
-						'title' => esc_html__( '02 : Single Forum', 'ama-core' ),
+						'title' => esc_html__( '02 : Single Forum', 'bbp-core' ),
 					],
 				],
-
 				'default' => '1',
 			]
 		);
 
 		$this->end_controls_section(); // End Style
 
+
 		$this->start_controls_section(
 			'forum_thumb', [
-				'label' => __( 'Thumbnail', 'ama-core' ),
+				'label' => __( 'Thumbnail', 'bbp-core' ),
 			]
 		);
 
 		$this->add_control(
 			'cover_image', [
-				'label'       => __( 'Custom Cover Image', 'ama-core' ),
+				'label'       => __( 'Custom Cover Image', 'bbp-core' ),
 				'type'        => Controls_Manager::MEDIA,
-				'description' => __( 'If this is not set, the featured image will be used by default', 'ama-core' )
+				'description' => __( 'If this is not set, the featured image will be used by default', 'bbp-core' )
 			]
 		);
 
@@ -79,13 +80,13 @@ class Single_forum extends Widget_Base {
 		// --- Filter Options
 		$this->start_controls_section(
 			'filter_opt', [
-				'label' => __( 'Filter Options', 'ama-core' ),
+				'label' => __( 'Filter Options', 'bbp-core' ),
 			]
 		);
 
 		$this->add_control(
 			'forum_id', [
-				'label'   => esc_html__( 'Select Forum', 'ama-core' ),
+				'label'   => esc_html__( 'Select Forum', 'bbp-core' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => bbp_core_get_posts( 'forum' )
 			]
@@ -93,8 +94,8 @@ class Single_forum extends Widget_Base {
 
 		$this->add_control(
 			'ppp', [
-				'label'       => esc_html__( 'Topics', 'ama-core' ),
-				'description' => esc_html__( 'Maximum number of topics.', 'ama-core' ),
+				'label'       => esc_html__( 'Topics', 'bbp-core' ),
+				'description' => esc_html__( 'Maximum number of topics.', 'bbp-core' ),
 				'type'        => Controls_Manager::NUMBER,
 				'label_block' => true,
 				'default'     => 3
@@ -103,7 +104,7 @@ class Single_forum extends Widget_Base {
 
 		$this->add_control(
 			'order', [
-				'label'   => esc_html__( 'Order', 'ama-core' ),
+				'label'   => esc_html__( 'Order', 'bbp-core' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
 					'ASC'  => 'ASC',
@@ -115,10 +116,10 @@ class Single_forum extends Widget_Base {
 
 		$this->add_control(
 			'word_length',
-            [
-				'label'       => __( 'Number of Words', 'ama-core' ),
+			[
+				'label'       => __( 'Number of Words', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::NUMBER,
-				'description' => __( 'Number of words to show as forum content', 'ama-core' ),
+				'description' => __( 'Number of words to show as forum content', 'bbp-core' ),
 				'default'     => 12
 			]
 		);
@@ -126,10 +127,10 @@ class Single_forum extends Widget_Base {
 		$this->add_control(
 			'read_more',
 			[
-				'label'       => esc_html__( 'Read More Text', 'ama-core' ),
+				'label'       => esc_html__( 'Read More Text', 'bbp-core' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
-				'default'     => __( 'View All', 'ama-core' ),
+				'default'     => __( 'View All', 'bbp-core' ),
 			]
 		);
 
@@ -138,7 +139,7 @@ class Single_forum extends Widget_Base {
 		/**============== Background shape Image =====================**/
 		$this->start_controls_section(
 			'single_forum_style', [
-				'label' => __( 'Single Forum Style', 'ama-core' ),
+				'label' => __( 'Single Forum Style', 'bbp-core' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -154,27 +155,27 @@ class Single_forum extends Widget_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name'     => 'title_typography',
-				'label'    => __( 'Title Typography', 'ama-core' ),
-				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'separator' => 'before',
-				'selector' => '{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title h3, {{WRAPPER}} .forum-card .card-title h3',
+				'name'      => 'title_typography',
+				'label'     => __( 'Title Typography', 'bbp-core' ),
+				'scheme'    => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+				'separator' => 'before',
+				'selector'  => '{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title h3, {{WRAPPER}} .forum-card .card-title h3',
 			]
 		);
 
 		$this->add_control(
 			'title_color',
 			[
-				'label'     => __( 'Title Color', 'ama-core' ),
+				'label'     => __( 'Title Color', 'bbp-core' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'scheme'    => [
 					'type'  => \Elementor\Core\Schemes\Color::get_type(),
 					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
-                'separator'=>'after',
+				'separator' => 'after',
 				'selectors' => [
 					'{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title h3' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .forum-card .card-title h3' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .forum-card .card-title h3'                                => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -183,7 +184,7 @@ class Single_forum extends Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'excerpt_typography',
-				'label'    => __( 'Excerpt Typography', 'ama-core' ),
+				'label'    => __( 'Excerpt Typography', 'bbp-core' ),
 				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title p, {{WRAPPER}} .forum-card .card-body',
 			]
@@ -192,7 +193,7 @@ class Single_forum extends Widget_Base {
 		$this->add_control(
 			'excerpt_color',
 			[
-				'label'     => __( 'Excerpt Color', 'ama-core' ),
+				'label'     => __( 'Excerpt Color', 'bbp-core' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'scheme'    => [
 					'type'  => \Elementor\Core\Schemes\Color::get_type(),
@@ -200,7 +201,7 @@ class Single_forum extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title p' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .forum-card .card-body' => 'color: {{VALUE}}'
+					'{{WRAPPER}} .forum-card .card-body'                                   => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -208,7 +209,7 @@ class Single_forum extends Widget_Base {
 		$this->add_control(
 			'box_shadow_heading',
 			[
-				'label'     => esc_html__( 'Box Shadow', 'ama-core' ),
+				'label'     => esc_html__( 'Box Shadow', 'bbp-core' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -217,11 +218,11 @@ class Single_forum extends Widget_Base {
 		$this->add_control(
 			'item_box_shadow',
 			[
-				'label'          => esc_html__( 'Item Box Shadow', 'ama-core' ),
-				'type'   => \Elementor\Controls_Manager::BOX_SHADOW,
+				'label'     => esc_html__( 'Item Box Shadow', 'bbp-core' ),
+				'type'      => \Elementor\Controls_Manager::BOX_SHADOW,
 				'selectors' => [
 					'{{WRAPPER}} .forum-with-topics .topic-table .topic-contents' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
-					'{{WRAPPER}} .card.forum-card' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
+					'{{WRAPPER}} .card.forum-card'                                => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
 				],
 			]
 		);
@@ -241,14 +242,14 @@ class Single_forum extends Widget_Base {
 			'posts_per_page' => $settings['ppp'] ? $settings['ppp'] : 3,
 			'post_parent'    => $forum_id,
 		) );
-		 	// echo $settings['style'];
+		// echo $settings['style'];
 
 		if ( $forum_id ) {
 			include "inc/single-forum/single-forum-{$settings['style']}.php";
 		} else {
 			?>
             <div class="alert alert-warning" role="alert">
-				<?php _e( 'Please select a forum.', 'ama-core' ); ?>
+				<?php _e( 'Please select a forum.', 'bbp-core' ); ?>
             </div>
 			<?php
 		}

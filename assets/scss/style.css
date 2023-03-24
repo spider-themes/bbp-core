@@ -1170,9 +1170,6 @@ p kbd {
 .single-filter-item a {
   color: var(--black_600);
 }
-.single-filter-item:hover > * {
-  color: #078669;
-}
 
 .single-forum-post-widget .post-content .post-category a {
   display: inline-block;

@@ -202,7 +202,7 @@
   }
   
   .community-topic-widget-box {
-    box-shadow: 0px 1.6px 3.5px 0px #334d7226, 0px 0.5px 1px 0px #334d721a;
+    box-shadow: 0 1.6px 3.5px 0 #334d7226, 0 0.5px 1px 0 #334d721a;
     border-radius: 10px;
     display: flex;
     padding: 47px 40px;
@@ -210,7 +210,7 @@
     background-color: #fff;
   
     &:hover {
-      box-shadow: 0px 20px 45px 0px #334d7226;
+      box-shadow: 0 20px 45px 0 #334d7226;
     }
   
     img {
@@ -279,7 +279,7 @@
   margin-bottom: 50px;
   .show-more-btn {
     display: inline-block;
-    box-shadow: 0px 1.6px 3.5px 0px #334d7226, 0px 0.5px 1px 0px #334d721a;
+    box-shadow: 0 1.6px 3.5px 0 #334d7226, 0 0.5px 1px 0 #334d721a;
     transition: all 0.3s ease-out;
     font-size: 18px;
     font-weight: 400;
@@ -290,9 +290,10 @@
     padding: 0 40px;
     text-align: center;
     background-color: #fff;
+    margin-top: 50px;
   
     &:hover {
-      box-shadow: 0px 10px 30px 0px #334d721f;
+      box-shadow: 0 10px 30px 0 #334d721f;
       color: #4a6ee0;
     }
   
@@ -361,7 +362,7 @@
     svg {
       position: absolute;
       bottom: 0;
-      margin-left: 0px;
+      margin-left: 0;
       background-size: contain;
       top: 2px;
       left: 0%;

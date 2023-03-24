@@ -6,7 +6,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            spider-themes
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.0.7
+Version:           1.1.0
 Requires at least: 5.0
 Tested up to:      6.0.1
 Requires PHP:      7.2
@@ -17,43 +17,43 @@ License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'bc_fs' ) ) {
-    // Create a helper function for easy SDK access.
-    function bc_fs() {
-        global $bc_fs;
+	// Create a helper function for easy SDK access.
+	function bc_fs() {
+		global $bc_fs;
 
-        if ( ! isset( $bc_fs ) ) {
-            // Include Freemius SDK.
-            require_once dirname(__FILE__) . '/includes/fs/start.php';
+		if ( ! isset( $bc_fs ) ) {
+			// Include Freemius SDK.
+			require_once dirname( __FILE__ ) . '/includes/fs/start.php';
 
-            $bc_fs = fs_dynamic_init( array(
-                'id'                  => '10864',
-                'slug'                => 'bbp-core',
-                'type'                => 'plugin',
-                'public_key'          => 'pk_41277ad11125f6e2a1b4e66f40164',
-                'is_premium'          => false,
-                'is_premium_only'     => false,
-                'has_addons'          => false,
-                'has_paid_plans'      => true,
-                'trial'               => array(
-                    'days'               => 14,
-                    'is_require_payment' => true,
-                ),
-                'menu'                => array(
-                    'slug'           => 'bbp-core',
-                    'support'        => false,
-                    'first-path'     => 'admin.php?page=bbp-core',
-                ),
-            ) );
-        }
+			$bc_fs = fs_dynamic_init( array(
+				'id'              => '10864',
+				'slug'            => 'bbp-core',
+				'type'            => 'plugin',
+				'public_key'      => 'pk_41277ad11125f6e2a1b4e66f40164',
+				'is_premium'      => false,
+				'is_premium_only' => false,
+				'has_addons'      => false,
+				'has_paid_plans'  => true,
+				'trial'           => array(
+					'days'               => 14,
+					'is_require_payment' => true,
+				),
+				'menu'            => array(
+					'slug'       => 'bbp-core',
+					'support'    => false,
+					'first-path' => 'admin.php?page=bbp-core',
+				),
+			) );
+		}
 
-        return $bc_fs;
-    }
+		return $bc_fs;
+	}
 
-    // Init Freemius.
-    bc_fs()->add_filter( 'deactivate_on_activation', '__return_false' );
+	// Init Freemius.
+	bc_fs()->add_filter( 'deactivate_on_activation', '__return_false' );
 
-    // Signal that SDK was initiated.
-    do_action( 'bc_fs_loaded' );
+	// Signal that SDK was initiated.
+	do_action( 'bc_fs_loaded' );
 }
 
 require_once __DIR__ . '/autoloader.php';
@@ -114,7 +114,6 @@ final class BBP_Core {
 		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';
 	}
 
-
 	/**
 	 *  Initializing Bbp_core class.
 	 *
@@ -159,7 +158,6 @@ final class BBP_Core {
 		}
 		new admin\Elementor\BBP_Widgets();
 	}
-
 
 
 	/**
@@ -271,12 +269,10 @@ function register_bbpc_widgets_assets() {
 	wp_enqueue_style( 'bbpc-style', plugins_url( '/assets/css/custom.css', __FILE__ ) );
 	wp_enqueue_style( 'bbpc-scss-style', plugins_url( '/assets/scss/style.css', __FILE__ ) );
 	wp_enqueue_script( 'bbpc_js', plugins_url( '/assets/js/forumTab.js', __FILE__ ) );
-
 }
 
-
-	add_action( 'wp_enqueue_scripts', 'register_bbpc_widgets_assets',  );
-	add_action( 'elementor/editor/before_enqueue_scripts',  'register_bbpc_elementor_editor_assets'  );
+add_action( 'wp_enqueue_scripts', 'register_bbpc_widgets_assets', );
+add_action( 'elementor/editor/before_enqueue_scripts', 'register_bbpc_elementor_editor_assets' );
 
 function register_bbpc_elementor_editor_assets() {
 	wp_enqueue_style( 'bbpc-single-widgets_style', plugins_url( '/assets/css/elementor-editor.css', __FILE__ ) );

@@ -31,6 +31,11 @@
 
     .single-filter-item {
       margin-right: 40px;
+      display: flex;
+      align-items: center;
+      svg {
+        margin-right: 5px;
+      }
 
       @media (max-width: 1200px) and (min-width: 992px) {
         margin-right: 20px;
@@ -256,12 +261,6 @@
 .single-filter-item {
   a {
     color: var(--black_600);
-  }
-  
-  &:hover {
-    > * {
-      color: #078669;
-    }
   }
 }
 

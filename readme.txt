@@ -2,8 +2,8 @@
 Contributors: spiderdevs, arafatjamil01, mdjwel, delweratjk
 Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, topic, reply
 Requires at least: 5.0
-Tested up to: 6.0.1
-Requires PHP: 7.2
+Tested up to: 6.1.1
+Requires PHP: 7.4
 Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,10 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+= v1.1.0 (24 March 2023) =
+New: New Elementor widgets added (BBPC Forums, BBPC Ajax Forums, BBPC Forum Topics, BBPC Forum Tabs, BBPC Forums, BBPC Search, BBPC Single Forum)
+Tweaked: Removed some unncessary files
+
 = v1.0.7 (September 26, 2022) =
  * Fix: Filters visibility issues fixed
 

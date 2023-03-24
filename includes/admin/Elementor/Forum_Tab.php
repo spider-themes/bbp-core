@@ -1,5 +1,4 @@
 <?php
-
 namespace admin\Elementor;
 
 use Elementor\Controls_Manager;
@@ -17,7 +16,7 @@ class Forum_Tab extends Widget_Base {
 	}
 
 	public function get_title() {
-		return esc_html__( 'Forum Tab', 'ama-core' );
+		return esc_html__( 'BBPC Forum Tabs', 'bbp-core' );
 	}
 
 	public function get_icon() {
@@ -32,14 +31,14 @@ class Forum_Tab extends Widget_Base {
 		// --- Forum Filter Options
 		$this->start_controls_section(
 			'forum_filter', [
-				'label' => __( 'Froum Filter Options', 'ama-core' ),
+				'label' => __( 'Forum Filter Options', 'bbp-core' ),
 			]
 		);
 
 		$this->add_control(
 			'ppp', [
-				'label'       => esc_html__( 'Show Forums', 'ama-core' ),
-				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'ama-core' ),
+				'label'       => esc_html__( 'Show Forums', 'bbp-core' ),
+				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'bbp-core' ),
 				'type'        => Controls_Manager::NUMBER,
 				'label_block' => true,
 				'default'     => 9
@@ -48,7 +47,7 @@ class Forum_Tab extends Widget_Base {
 
 		$this->add_control(
 			'order', [
-				'label'   => esc_html__( 'Order', 'ama-core' ),
+				'label'   => esc_html__( 'Order', 'bbp-core' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
 					'ASC'  => 'ASC',
@@ -60,7 +59,7 @@ class Forum_Tab extends Widget_Base {
 
 		$this->add_control(
 			'more_txt', [
-				'label'       => esc_html__( 'More button text', 'ama-core' ),
+				'label'       => esc_html__( 'More button text', 'bbp-core' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'separator'   => 'before',
@@ -71,9 +70,9 @@ class Forum_Tab extends Widget_Base {
 		$this->add_control(
 			'more_url',
 			[
-				'label'       => esc_html__( 'More button link', 'ama-core' ),
+				'label'       => esc_html__( 'More button link', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ama-core' ),
+				'placeholder' => __( 'https://your-link.com', 'bbp-core' ),
 				'default'     => [
 					'url'         => get_post_type_archive_link( 'forum' ),
 					'is_external' => true,
@@ -88,14 +87,14 @@ class Forum_Tab extends Widget_Base {
 		//-------- Topic Filter Options
 		$this->start_controls_section(
 			'topic_filter', [
-				'label' => __( 'Topic Filter Options', 'ama-core' ),
+				'label' => __( 'Topic Filter Options', 'bbp-core' ),
 			]
 		);
 
 		$this->add_control(
 			'ppp2', [
-				'label'       => esc_html__( 'Show Forums', 'ama-core' ),
-				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'ama-core' ),
+				'label'       => esc_html__( 'Show Forums', 'bbp-core' ),
+				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'bbp-core' ),
 				'type'        => Controls_Manager::NUMBER,
 				'label_block' => true,
 				'default'     => 6
@@ -104,7 +103,7 @@ class Forum_Tab extends Widget_Base {
 
 		$this->add_control(
 			'order2', [
-				'label'   => esc_html__( 'Order', 'ama-core' ),
+				'label'   => esc_html__( 'Order', 'bbp-core' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
 					'ASC'  => 'ASC',
@@ -116,7 +115,7 @@ class Forum_Tab extends Widget_Base {
 
 		$this->add_control(
 			'more_txt2', [
-				'label'       => esc_html__( 'More button text', 'ama-core' ),
+				'label'       => esc_html__( 'More button text', 'bbp-core' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default'     => 'Show more'
@@ -125,9 +124,9 @@ class Forum_Tab extends Widget_Base {
 
 		$this->add_control(
 			'more_url2', [
-				'label'       => esc_html__( 'More button link', 'ama-core' ),
+				'label'       => esc_html__( 'More button link', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ama-core' ),
+				'placeholder' => __( 'https://your-link.com', 'bbp-core' ),
 				'default'     => [
 					'url'         => get_post_type_archive_link( 'topic' ),
 					'is_external' => true,
@@ -140,14 +139,14 @@ class Forum_Tab extends Widget_Base {
 
 		$this->start_controls_section(
 			'forum_tab_styling', [
-				'label' => __( 'Section Styles', 'ama-core' ),
+				'label' => __( 'Section Styles', 'bbp-core' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_responsive_control(
 			'padding', [
-				'label'      => __( 'Section Padding', 'ama-core' ),
+				'label'      => __( 'Section Padding', 'bbp-core' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
@@ -160,7 +159,7 @@ class Forum_Tab extends Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name'     => 'background',
-				'label'    => __( 'Section Background', 'ama-core' ),
+				'label'    => __( 'Section Background', 'bbp-core' ),
 				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '{{WRAPPER}} .community-area.bg-disable',
 			]
@@ -170,7 +169,7 @@ class Forum_Tab extends Widget_Base {
 
 		$this->start_controls_section(
 			'forum_tab_style', [
-				'label' => __( 'Forum Tab Title', 'ama-core' ),
+				'label' => __( 'Forum Tab Title', 'bbp-core' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -179,7 +178,7 @@ class Forum_Tab extends Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'forum_tab_title',
-				'label'    => __( 'Tab Label Typography', 'ama-core' ),
+				'label'    => __( 'Tab Label Typography', 'bbp-core' ),
 				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .community-area .nav-tabs .nav-item button',
 			]
@@ -188,7 +187,7 @@ class Forum_Tab extends Widget_Base {
 		$this->add_control(
 			'forum_tab_title_color',
 			[
-				'label'     => __( 'Tab Label Color', 'ama-core' ),
+				'label'     => __( 'Tab Label Color', 'bbp-core' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'scheme'    => [
 					'type'  => \Elementor\Core\Schemes\Color::get_type(),
@@ -204,14 +203,14 @@ class Forum_Tab extends Widget_Base {
 
 		$this->start_controls_section(
 			'forum_tab_button', [
-				'label' => esc_html__( 'Forum Tab Button', 'ama-core' ),
+				'label' => esc_html__( 'Forum Tab Button', 'bbp-core' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_responsive_control(
 			'tab_btn_margin', [
-				'label'      => esc_html__( 'Margin', 'ama-core' ),
+				'label'      => esc_html__( 'Margin', 'bbp-core' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
@@ -222,7 +221,7 @@ class Forum_Tab extends Widget_Base {
 
 		$this->add_responsive_control(
 			'tab_btn_padding', [
-				'label'      => esc_html__( 'Tab button padding', 'ama-core' ),
+				'label'      => esc_html__( 'Tab button padding', 'bbp-core' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
