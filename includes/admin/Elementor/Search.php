@@ -510,14 +510,20 @@ class Search extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings  = $this->get_settings();
-		$title_tag = ! empty( $settings['title_tag'] ) ? $settings['title_tag'] : 'h2';
+		$settings  		= $this->get_settings();
+		$title_tag 		= ! empty( $settings['title_tag'] ) ? $settings['title_tag'] : 'h2';
+		$cross_position = $settings['submit_btn_align'] ?? 'right';
+		if ( $cross_position == 'right' ) {
+			$cross_position = 'left';
+		} else {
+			$cross_position = 'right';
+		}
 		?>
 
         <form action="<?php echo esc_url( home_url( '/' ) ) ?>" role="search" method="get" class="bbpc_search_form_wrapper">
             <div class="form-group">
-                <div class="input-wrapper">
-
+                <div class="input-wrapper <?php echo esc_attr( $cross_position ); ?>">
+					
 					<span class="submit-btn-<?php echo esc_attr( $settings['submit_btn_align'] ?? 'left' ); ?>">
 						<button type="submit">			
 							<?php
