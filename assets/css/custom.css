@@ -1,8 +1,4 @@
-.community-post .post-content .entry-content .post-title:hover a {
-  color: #078669;
-}
-
-.row.gy-lg-0.gy-4 {
+.row {
   display: flex;
   flex-wrap: wrap;
 }

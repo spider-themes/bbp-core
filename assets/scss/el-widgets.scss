@@ -20,25 +20,20 @@ Table of Content:
 
 =====================================================================*/
 
-@import "variables";
+@import "el-widgets/variables";
 
-@import "predefine";
+@import "el-widgets/predefine";
 
-@import "forumPosts";
+@import "el-widgets/forumPosts";
 
-@import "forum";
+@import "el-widgets/forum";
 
-@import "forums";
+@import "el-widgets/forums";
 
-@import "ajaxForum";
+@import "el-widgets/ajaxForum";
 
-@import "search";
+@import "el-widgets/search";
 
-@import "single-forum";
+@import "el-widgets/single-forum";
 
-@import "forumTab";
-
-
-
-
-
+@import "el-widgets/forumTab";

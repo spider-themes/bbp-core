@@ -104,12 +104,12 @@ final class BBP_Core {
 		require_once __DIR__ . '/includes/admin/menu/Create_Topic.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
-		require_once __DIR__ . '/includes/admin/Elementor/BBP_Widgets.php';
+		require_once __DIR__ . '/includes/Elementor/BBP_Widgets.php';
 		require_once __DIR__ . '/includes/functions.php';
 		require_once __DIR__ . '/includes/extra.php';
 		require_once __DIR__ . '/includes/ajax_actions.php';
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		require_once __DIR__ . '/includes/functionss.php';
+		require_once __DIR__ . '/includes/functions.php';
 		require_once __DIR__ . '/includes/Frontend/Assets.php';
 		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';
 	}
@@ -262,20 +262,6 @@ final class BBP_Core {
 		require BBPC_DIR . 'includes/hooks/actions.php';
 		require BBPC_DIR . 'includes/hooks/image_sizes.php';
 	}
-}
-
-//  register bbpc custom css
-function register_bbpc_widgets_assets() {
-	wp_enqueue_style( 'bbpc-style', plugins_url( '/assets/css/custom.css', __FILE__ ) );
-	wp_enqueue_style( 'bbpc-scss-style', plugins_url( '/assets/scss/style.css', __FILE__ ) );
-	wp_enqueue_script( 'bbpc_js', plugins_url( '/assets/js/forumTab.js', __FILE__ ) );
-}
-
-add_action( 'wp_enqueue_scripts', 'register_bbpc_widgets_assets', );
-add_action( 'elementor/editor/before_enqueue_scripts', 'register_bbpc_elementor_editor_assets' );
-
-function register_bbpc_elementor_editor_assets() {
-	wp_enqueue_style( 'bbpc-single-widgets_style', plugins_url( '/assets/css/elementor-editor.css', __FILE__ ) );
 }
 
 /**
