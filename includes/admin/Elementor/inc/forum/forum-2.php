@@ -1,5 +1,4 @@
 <section class="forum-category-area pt-100 pb-115">
-	<div class="container">
 		<div class="row gy-lg-0 gy-4">
 			<?php
 			while ( $forums->have_posts() ) :
@@ -21,6 +20,4 @@
 			?>
 
 		</div>
-
-	</div>
 </section>
