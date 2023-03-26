@@ -995,6 +995,11 @@ p kbd {
 }
 .forum-post-widget .post-filter-widget .single-filter-item {
   margin-right: 40px;
+  display: flex;
+  align-items: center;
+}
+.forum-post-widget .post-filter-widget .single-filter-item svg {
+  margin-right: 5px;
 }
 @media (max-width: 1200px) and (min-width: 992px) {
   .forum-post-widget .post-filter-widget .single-filter-item {
@@ -1286,6 +1291,29 @@ ul.list-unstyled {
   color: var(--black_600);
   background: var(--black_50);
   font-weight: normal;
+}
+
+.solved-topic-bar {
+  display: inline;
+}
+
+.forum-meta li {
+  padding: 0;
+}
+
+.bbpc_search_form_wrapper .input-wrapper input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 20px;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, #000 45%, #000 55%, rgba(0, 0, 0, 0) 57%, rgba(0, 0, 0, 0) 100%), linear-gradient(135deg, transparent 0%, transparent 43%, #000 45%, #000 55%, transparent 57%, transparent 100%);
+}
+.bbpc_search_form_wrapper .input-wrapper input[type=search].left {
+  padding-left: 50px;
+}
+.bbpc_search_form_wrapper .input-wrapper input[type=search].right::-webkit-search-cancel-button {
+  margin-right: 50px;
 }
 
 .forum-with-topics {
@@ -1731,7 +1759,7 @@ ul.list-unstyled {
 }
 
 .community-topic-widget-box {
-  box-shadow: 0px 1.6px 3.5px 0px rgba(51, 77, 114, 0.1490196078), 0px 0.5px 1px 0px rgba(51, 77, 114, 0.1019607843);
+  box-shadow: 0 1.6px 3.5px 0 rgba(51, 77, 114, 0.1490196078), 0 0.5px 1px 0 rgba(51, 77, 114, 0.1019607843);
   border-radius: 10px;
   display: flex;
   padding: 47px 40px;
@@ -1739,7 +1767,7 @@ ul.list-unstyled {
   background-color: #fff;
 }
 .community-topic-widget-box:hover {
-  box-shadow: 0px 20px 45px 0px rgba(51, 77, 114, 0.1490196078);
+  box-shadow: 0 20px 45px 0 rgba(51, 77, 114, 0.1490196078);
 }
 .community-topic-widget-box img {
   margin-right: 24px;
@@ -1801,7 +1829,7 @@ ul.list-unstyled {
 }
 .bbpc-show-more-btn-wrapper .show-more-btn {
   display: inline-block;
-  box-shadow: 0px 1.6px 3.5px 0px rgba(51, 77, 114, 0.1490196078), 0px 0.5px 1px 0px rgba(51, 77, 114, 0.1019607843);
+  box-shadow: 0 1.6px 3.5px 0 rgba(51, 77, 114, 0.1490196078), 0 0.5px 1px 0 rgba(51, 77, 114, 0.1019607843);
   transition: all 0.3s ease-out;
   font-size: 18px;
   font-weight: 400;
@@ -1812,9 +1840,10 @@ ul.list-unstyled {
   padding: 0 40px;
   text-align: center;
   background-color: #fff;
+  margin-top: 50px;
 }
 .bbpc-show-more-btn-wrapper .show-more-btn:hover {
-  box-shadow: 0px 10px 30px 0px rgba(51, 77, 114, 0.1215686275);
+  box-shadow: 0 10px 30px 0 rgba(51, 77, 114, 0.1215686275);
   color: #4a6ee0;
 }
 .bbpc-show-more-btn-wrapper .show-more-btn i {
@@ -1878,7 +1907,7 @@ ul.list-unstyled {
 .dbl-arrow-upper .arrow-cont svg {
   position: absolute;
   bottom: 0;
-  margin-left: 0px;
+  margin-left: 0;
   background-size: contain;
   top: 2px;
   left: 0%;
