@@ -8,6 +8,8 @@ class Admin {
 			add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		}
 
+		add_filter( 'admin_body_class', [ $this, 'body_class' ] );
+
 		new admin\Menu();
 		$this->load_csf();
 	}
@@ -38,5 +40,19 @@ class Admin {
 			'<strong>' . esc_html__( 'bbPress', 'bbp-core' ) . '</strong>'
 		);
 		printf( '<div class="notice notice-error is-dismissible"><p>%1$s</p></div>', $message );
+	}
+
+	/**
+	 * Add body class to admin pages.
+	 *
+	 * @param string $classes Body classes.
+	 * @return string
+	 */
+	public function body_class( $classes ) {
+		// if current page is ?page=bbp-core in admin.
+		if ( isset( $_GET['page'] ) && 'bbp-core' === $_GET['page'] ) {
+			$classes .= ' bbpc-forum-ui';
+		}
+		return $classes;
 	}
 }

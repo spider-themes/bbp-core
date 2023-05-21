@@ -14,7 +14,7 @@
 		<?php endif; ?>
 
 		<?php if ( in_array( 'closed', $filter_set, true ) ) : ?>
-		<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="closed-<?php echo esc_attr( $item ); ?>" data-filter=".closed-topics">
+		<li class="easydocs-btn easydocs-btn-black-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="closed-<?php echo esc_attr( $item ); ?>" data-filter=".closed-topics">
             <svg width="15px" height="15px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83 2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z"/>
             </svg>
@@ -68,7 +68,7 @@
 		<?php endif; ?>
 
 		<?php if ( in_array( 'all', $filter_set, true ) ) : ?>
-		<li class="easydocs-btn easydocs-btn-black-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="all-<?php echo esc_attr( $item ); ?>" data-filter="all">
+		<li class="easydocs-btn easydocs-btn-green-light easydocs-btn-rounded easydocs-btn-sm" cookie-id="all-<?php echo esc_attr( $item ); ?>" data-filter="all">
 			<svg height="15px" width="15px" enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 					<path d="M352,0H64C28.704,0,0,28.704,0,64v192c0,35.296,28.704,64,64,64v80c0,6.24,3.648,11.936,9.312,14.528    C75.456,415.52,77.728,416,80,416c3.744,0,7.456-1.312,10.4-3.872L197.92,320H352c35.296,0,64-28.704,64-64V64    C416,28.704,387.296,0,352,0z M384,256c0,17.632-14.368,32-32,32H192c-3.808,0-7.52,1.344-10.4,3.872L96,365.216V304    c0-8.832-7.168-16-16-16H64c-17.632,0-32-14.368-32-32V64c0-17.632,14.368-32,32-32h288c17.632,0,32,14.368,32,32V256z"/>
 					<path d="m469.22 99.744c-8.384-2.88-17.44 1.536-20.352 9.92-2.88 8.352 1.536 17.44 9.92 20.352 12.672 4.352 21.216 16.416 21.216 29.984v192c0 17.632-14.368 32-32 32h-16c-8.832 0-16 7.168-16 16v61.216l-85.6-73.344c-2.88-2.528-6.592-3.872-10.4-3.872h-141.76c-8.832 0-16 7.168-16 16s7.136 16 16 16h135.84l107.52 92.128c2.944 2.56 6.656 3.872 10.4 3.872 2.272 0 4.544-0.48 6.688-1.472 5.664-2.592 9.312-8.288 9.312-14.528v-80c35.296 0 64-28.704 64-64v-192c0-27.2-17.184-51.424-42.784-60.256z"/><path d="m304 96h-192c-8.832 0-16 7.168-16 16s7.168 16 16 16h192c8.832 0 16-7.168 16-16s-7.168-16-16-16z"/><path d="m240 160h-128c-8.832 0-16 7.168-16 16s7.168 16 16 16h128c8.832 0 16-7.168 16-16s-7.168-16-16-16z"/></svg>
@@ -82,7 +82,7 @@
 		<div class="easydocs-btn-sm bbpc-trash-filter">
 			<a href="<?php echo admin_url( 'edit.php?post_status=trash&post_type=topic' ); ?>">
 				<svg width="15px" height="15px" viewBox="0 0 24 24" id="magicoon-Regular" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="trash-Regular"><path id="trash-Regular-2" data-name="trash-Regular" class="cls-1" d="M21,5.25H17.441A1.251,1.251,0,0,1,16.255,4.4l-.316-.95a1.746,1.746,0,0,0-1.66-1.2H9.721a1.745,1.745,0,0,0-1.66,1.2l-.316.948a1.251,1.251,0,0,1-1.186.855H3a.75.75,0,0,0,0,1.5H4.3l.767,11.5a3.76,3.76,0,0,0,3.742,3.5h6.386a3.76,3.76,0,0,0,3.742-3.5L19.7,6.75H21a.75.75,0,0,0,0-1.5ZM9.483,3.921a.252.252,0,0,1,.238-.171h4.558a.252.252,0,0,1,.238.17l.316.95a2.777,2.777,0,0,0,.161.38H9.006a2.737,2.737,0,0,0,.161-.381ZM17.438,18.15a2.255,2.255,0,0,1-2.245,2.1H8.807a2.255,2.255,0,0,1-2.245-2.1L5.8,6.75h.757a2.783,2.783,0,0,0,.317-.025A.736.736,0,0,0,7,6.75H17a.736.736,0,0,0,.124-.025,2.783,2.783,0,0,0,.317.025H18.2ZM14.75,11v5a.75.75,0,0,1-1.5,0V11a.75.75,0,0,1,1.5,0Zm-4,0v5a.75.75,0,0,1-1.5,0V11a.75.75,0,0,1,1.5,0Z"/></g></svg>
-				<?php esc_html_e( 'Trash', 'bbp-core' ); ?>
+				<?php esc_html_e( 'Trashed', 'bbp-core' ); ?>
 				<span class="filter-count-badge"> <?php echo esc_html( $count_trash ); ?> </span>
 			</a>
 		</div>

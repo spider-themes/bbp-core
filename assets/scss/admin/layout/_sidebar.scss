@@ -6,7 +6,7 @@
 }
 
 .tab-menu {
-    background: var(--clr-black-100);
+    background:  #000000; background: -moz-linear-gradient(to right,  #000000 0%,#0a1852 100%); background: -webkit-linear-gradient(to right,  #000000 0%,#0a1852 100%); background: linear-gradient(to right,  #000000 0%,#0a1852 100%);
     flex: 0 0 auto;
     width: 28%;
     &.short {
@@ -118,14 +118,16 @@
 .easydocs-tab-content {
     flex: 0 0 auto;
     width: 72%;
-    background: #E5E5E5;
-    padding: var(--gutter-40);
+    padding: 0 40px 40px 40px;
     @media (max-width: 1680px) {
         width: 70%;
     }
     @media (max-width: 1440px) {
         width: 70%;
         padding: 20px;
+    }
+    .button {
+        padding: 6px 25px;
     }
 }
 
@@ -136,6 +138,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: linear-gradient(125.95deg, #C700BF 10.95%, #7DA900 100%), linear-gradient(341.1deg, #00C2FF 7.52%, #4E00B1 77.98%), linear-gradient(222.34deg, #A90000 12.99%, #00FFE0 87.21%), linear-gradient(130.22deg, #8FA600 18.02%, #5A31FF 100%);
+    background-blend-mode: screen, color-dodge, color-dodge, normal;
     @media (max-width: 1440px) {
         padding: 10px 20px;
     }

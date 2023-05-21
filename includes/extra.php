@@ -1,4 +1,12 @@
-<?php 
+<?php
+/**
+ * Check If the Page is Forum page
+ */
+function bbpc_is_forum_page() {
+	if ( in_array( 'bbpress', get_body_class() ) ) {
+		return true;
+	}
+}
 
 /**
  * Posts Arraty

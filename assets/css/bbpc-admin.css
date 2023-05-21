@@ -113,6 +113,10 @@
   border-radius: 1.875rem;
   margin-bottom: 0;
   background-color: rgba(212, 23, 23, 0.1);
+  transition: all 0.3s;
+}
+.bbpc-trash-filter:hover {
+  background-color: rgba(212, 23, 23, 0.3);
 }
 .bbpc-trash-filter svg {
   fill: #d41717;
@@ -124,12 +128,8 @@
   font-size: 14px;
   display: flex;
   align-items: center;
-  text-decoration: none;
   color: #d41717;
-}
-.bbpc-trash-filter:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .bbpc-settings-icon {

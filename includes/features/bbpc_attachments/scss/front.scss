@@ -1,3 +1,12 @@
+.bbp-attachments {
+    ol.with-icons {
+        display: flex;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+    }
+}
+
 .bbp-attachments,
 .bbp-attachments-errors {
     border-top: 1px solid #DDD;

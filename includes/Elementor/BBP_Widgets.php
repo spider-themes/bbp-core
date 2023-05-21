@@ -43,7 +43,7 @@ class BBP_Widgets{
 	function register_widgets_assets() {
 		wp_enqueue_style( 'bbpc-style', plugins_url( '/assets/css/custom.css', __FILE__ ) );
 		wp_enqueue_style( 'bbpc-el-widgets', plugins_url( '/assets/css/el-widgets.css', __FILE__ ) );
-		wp_enqueue_script( 'bbpc_js', plugins_url( '/assets/js/forumTab.js', __FILE__ ) );
+		//wp_enqueue_script( 'bbpc_js', plugins_url( '/assets/js/forumTab.js', __FILE__ ) );
 	}
 
 	function register_elementor_editor_assets() {

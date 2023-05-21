@@ -19,7 +19,7 @@
  *
  */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-.col, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3 {
+.col {
   position: relative;
   width: 100%;
   padding-right: 15px;
@@ -1162,6 +1162,7 @@ a.child-delete {
 .easydocs-search-form {
   position: relative;
   max-width: 37.5rem;
+  flex: 1;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1212,8 +1213,8 @@ a.child-delete {
 /*  02. Header Area
 /*----------------------------------------*/
 .easydocs-header-area {
-  padding-top: var(--gutter-20);
-  padding-bottom: var(--gutter-20);
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 .easydocs-header-area .easydocs-row {
   margin-left: 0;
@@ -1659,38 +1660,19 @@ a.child-delete {
   margin-right: 0;
   margin-left: 0;
 }
-.no-gutters > .col, .no-gutters > .col-lg-6, .no-gutters > .col-lg-5, .no-gutters > .col-lg-4, .no-gutters > .col-lg-3,
+.no-gutters > .col,
 .no-gutters > [class*=col-] {
   padding-right: 0;
   padding-left: 0;
 }
 
-@media (min-width: 992px) {
-  .col-lg-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
+html, body {
+  height: auto !important;
 }
 
-@media (min-width: 992px) {
-  .col-lg-4 {
-    flex: 0 0 33.3333333333%;
-    max-width: 33.3333333333%;
-  }
-}
-
-@media (min-width: 992px) {
-  .col-lg-5 {
-    flex: 0 0 41.6666666667%;
-    max-width: 41.6666666667%;
-  }
-}
-
-@media (min-width: 992px) {
-  .col-lg-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
+body.bbpc-forum-ui {
+  background: radial-gradient(80.99% 100% at 50% 0%, #00FF0A 0%, #36008E 100%), radial-gradient(50% 123.47% at 50% 50%, #EFE7C8 0%, #36008E 100%), linear-gradient(301.28deg, #FF006B 0%, #48DD9E 100%), linear-gradient(294.84deg, #5A60E4 0%, #D30000 100%), linear-gradient(52.29deg, #000000 0%, #00FF85 100%), radial-gradient(100% 138.69% at 100% 0%, #0007A5 0%, #FF7A00 100%), radial-gradient(70.41% 100% at 50% 0%, #D5B300 0%, #2200AA 100%);
+  background-blend-mode: screen, screen, lighten, overlay, lighten, difference, normal;
 }
 
 /*----------------------------------------*/
@@ -1701,7 +1683,10 @@ a.child-delete {
 }
 
 .tab-menu {
-  background: var(--clr-black-100);
+  background: #000000;
+  background: -moz-linear-gradient(to right, #000000 0%, #0a1852 100%);
+  background: -webkit-linear-gradient(to right, #000000 0%, #0a1852 100%);
+  background: linear-gradient(to right, #000000 0%, #0a1852 100%);
   flex: 0 0 auto;
   width: 28%;
 }
@@ -1825,8 +1810,7 @@ a.child-delete {
 .easydocs-tab-content {
   flex: 0 0 auto;
   width: 72%;
-  background: #E5E5E5;
-  padding: var(--gutter-40);
+  padding: 0 40px 40px 40px;
 }
 @media (max-width: 1680px) {
   .easydocs-tab-content {
@@ -1839,6 +1823,9 @@ a.child-delete {
     padding: 20px;
   }
 }
+.easydocs-tab-content .button {
+  padding: 6px 25px;
+}
 
 .easydocs-filter-container {
   background: var(--clr-white);
@@ -1847,6 +1834,8 @@ a.child-delete {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: linear-gradient(125.95deg, #C700BF 10.95%, #7DA900 100%), linear-gradient(341.1deg, #00C2FF 7.52%, #4E00B1 77.98%), linear-gradient(222.34deg, #A90000 12.99%, #00FFE0 87.21%), linear-gradient(130.22deg, #8FA600 18.02%, #5A31FF 100%);
+  background-blend-mode: screen, color-dodge, color-dodge, normal;
 }
 @media (max-width: 1440px) {
   .easydocs-filter-container {

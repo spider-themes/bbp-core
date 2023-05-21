@@ -2,8 +2,8 @@
 /*  02. Header Area
 /*----------------------------------------*/
 .easydocs-header-area {
-  @include padding(py, var(--gutter-20));
-
+  padding-top: 30px;
+  padding-bottom: 50px;
   .easydocs-row {
     @include margin(mx, 0);
   }

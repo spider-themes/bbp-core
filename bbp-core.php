@@ -198,6 +198,9 @@ final class BBP_Core {
 		wp_enqueue_style( 'bbpc-voting', BBPC_ASSETS . 'css/bbpc-voting.css' );
 
 		// BBP Voting.
+		if ( ! is_singular( 'topic' ) ) {
+			return;
+		}
 		wp_enqueue_script( 'bbpc-voting', BBPC_ASSETS . 'js/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );
 		wp_localize_script( 'bbpc-voting', 'bbp_voting_ajax_object', [ 'ajax_url' => admin_url( 'admin-ajax.php' ) ] );
 	}
