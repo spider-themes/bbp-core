@@ -1,4 +1,5 @@
 <?php
+use admin\Assets;
 /*
 Plugin Name:       BBP Core
 Plugin URI:        https://spider-themes.net/bbp-core
@@ -111,7 +112,14 @@ final class BBP_Core {
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		require_once __DIR__ . '/includes/functions.php';
 		require_once __DIR__ . '/includes/Frontend/Assets.php';
-		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';
+		
+		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';		
+		require_once __DIR__ . '/includes/Elementor/inc/forum-ajax.php';
+
+		// Core installer notice
+		require_once __DIR__ . '/includes/admin/notices/notices.php';
+		require_once __DIR__ . '/includes/admin/notices/asking-for-review.php';
+		
 	}
 
 	/**
@@ -147,15 +155,20 @@ final class BBP_Core {
 	 * @return void
 	 */
 	public function init_plugin() {
+		
 		$this->load_features();
 
 		if ( is_admin() ) {
 			new Admin();
-		} else {
-			new Frontend();
-			new Frontend\Frontend_Actions();
-			new Frontend\Assets();
+			new Assets();
 		}
+		// If bbPress is not active, don't load assets and widgets.
+		if ( ! class_exists( 'bbPress' ) ) {
+			return;
+		}
+		if ( ! is_admin() ) {
+			new Frontend\Assets();
+		}		
 		new admin\Elementor\BBP_Widgets();
 	}
 
@@ -277,16 +290,3 @@ function bbp_core() {
 }
 
 bbp_core();
-
-
-//TODO: Attachment feature
-
-// TODO: Use topics, replies from gd bbpress plugin. Thumbnail, excerpt switcher in settings
-// TODO: Move ama template designs to bbp core plugin, as forum theming, we will create multiple themeing for forums.
-// TODO: Use pagination for topics, use bbp official pagination
-//TODO: Design best answer of bbp core as bbp of docy
-//TODO: When click on reply count, it will show the following replies, beside that, there will be pending replies.
-//TODO: Test with official WordPress themes and other famous themes on worpdress repo.
-
-//FIXME: Create parts for files, when too big, keep proper formatting
-//FIXME: Reply showing

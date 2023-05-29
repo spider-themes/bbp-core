@@ -6,7 +6,7 @@
     background: var(--bs-white);
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     transition: all 0.3s ease-in-out;
     border: 1px solid var(--black_50);
 
@@ -90,6 +90,12 @@
         margin: auto;
         margin-bottom: 0;
         line-height: 1.7;
+        a {
+          text-decoration: none;
+          &:hover {
+            color: var(--bbpc_brand_color);
+          }
+        }
       }
 
       p {
@@ -229,7 +235,7 @@
           color: #838793;
   
           &:hover {
-            color: var(--brand_color);
+            color: var(--bbpc_brand_color);
           }
         }
       }

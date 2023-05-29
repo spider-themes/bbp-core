@@ -97,6 +97,9 @@ if ( ! class_exists( 'CSF_Options' ) ) {
 
       // run only is admin panel options, avoid performance loss
       $this->pre_tabs     = $this->pre_tabs( $this->sections );
+
+      // if 
+
       $this->pre_fields   = $this->pre_fields( $this->sections );
       $this->pre_sections = $this->pre_sections( $this->sections );
 

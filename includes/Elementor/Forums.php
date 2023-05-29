@@ -39,6 +39,15 @@ class Forums extends Widget_Base {
 		return [ 'bbp-core' ];
 	}
 
+	// style dependency
+	public function get_style_depends() {
+		return [ 'bbpc-el-widgets' ];
+	}
+	
+	public function get_script_depends() {
+		return [ 'bbpc-ajax' ];
+	}
+
 	protected function register_controls() {
 
 		// --- Filter Options
@@ -117,6 +126,7 @@ class Forums extends Widget_Base {
 				'label'    => esc_html__( 'More text typography', 'bbp-core' ),
 				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .collapse-btn',
+				
 			]
 		);
 
@@ -131,20 +141,20 @@ class Forums extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .collapse-btn' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .more-communities .collapse-btn svg path' => 'stroke: {{VALUE}}',
 				],
 			]
 		);
-
 
 		$this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
-		$forums   = new WP_Query( array(
-			'post_type'      => 'forum',
-			'posts_per_page' => ! empty( $settings['ppp'] ) ? $settings['ppp'] : 5,
-			'order'          => $settings['order'],
+		$settings 				= $this->get_settings();
+		$forums   				= new WP_Query( array(
+			'post_type'      	=> 'forum',
+			'posts_per_page' 	=> ! empty( $settings['ppp'] ) ? $settings['ppp'] : 5,
+			'order'          	=> $settings['order'] ? $settings['order'] : 'ASC',
 		) );
 		?>
         <div class="communities-boxes">
@@ -159,25 +169,29 @@ class Forums extends Widget_Base {
                         <h3 class="title">
                             <a href="<?php the_permalink(); ?>"> <?php the_title() ?> </a>
                         </h3>
-                        <p class="total-post"> <?php bbp_forum_topic_count( get_the_ID() ); ?><?php esc_html_e( ' Posts', 'ama' ) ?> </p>
+                        <p class="total-post"> <?php bbp_forum_topic_count( get_the_ID() ); ?> <?php esc_html_e( ' Posts', 'bbp-core' ) ?> </p>
                     </div>
                     <!-- /.ama-com-box-content -->
                 </div>
                 <!-- /.ama-com-box -->
-			<?php
+				<?php
 			endwhile;
 			wp_reset_postdata();
 			?>
         </div>
         <!-- /.communities-boxes -->
 
-        <div class="more-communities">
+        <div class="more-communities" data_id="<?php echo esc_attr( $this->get_id() );?>">
 
-            <a href="#more-category" class="collapse-btn">
-				<?php echo esc_html( $settings['more_txt'] ) ?> <i class="icon_plus"></i>
+            <a href="#more-category" class="collapse-btn-wrap">
+				<?php echo esc_html( $settings['more_txt'] ); ?>
+				 
+				<svg class="icon_minus" fill="#000000" width="16px" height="16px" viewBox="0 0 24 24" id="minus" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"> <line id="primary" x1="19" y1="12" x2="5" y2="12" style="fill: none;  stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line> </svg>
+				
+				<svg class="icon_plus" fill="#000000" width="16px" height="16px" viewBox="0 0 24 24" id="plus" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><path id="primary" d="M5,12H19M12,5V19" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
             </a>
 
-            <div class="collapse-wrap" id="more-category">
+            <div class="collapse-wrap" id="more-category" data_id="<?php echo esc_attr( $this->get_id() );?>">
                 <div class="communities-boxes">
 					<?php
 					$forums2 = new WP_Query( array(
@@ -196,13 +210,12 @@ class Forums extends Widget_Base {
                                 <h3 class="title">
                                     <a href="<?php the_permalink(); ?>"> <?php the_title() ?> </a>
                                 </h3>
-                                <p class="total-post"> <?php bbp_forum_topic_count( get_the_ID() ); ?><?php esc_html_e
-									( ' Posts', 'bbp-core' ) ?> </p>
+                                <p class="total-post"> <?php bbp_forum_topic_count( get_the_ID() ); ?> <?php esc_html_e( ' Posts', 'bbp-core' ); ?> </p>
                             </div>
                             <!-- /.ama-com-box-content -->
                         </div>
                         <!-- /.ama-com-box -->
-					<?php
+						<?php
 					endwhile;
 					wp_reset_postdata();
 					?>
@@ -215,6 +228,3 @@ class Forums extends Widget_Base {
 		<?php
 	}
 }
-
-// TODO: show active class
-// TODO: add border below in active class, brand color

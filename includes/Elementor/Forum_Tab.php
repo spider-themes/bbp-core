@@ -26,6 +26,16 @@ class Forum_Tab extends Widget_Base {
 	public function get_categories() {
 		return [ 'bbp-core' ];
 	}
+	
+	public function get_style_depends() {
+		return['bbpc-el-widgets'];
+	}
+
+	// scripts dependencies
+	public function get_script_depends() {
+		return [ '' ];
+	}
+
 
 	protected function register_controls() {
 		// --- Forum Filter Options

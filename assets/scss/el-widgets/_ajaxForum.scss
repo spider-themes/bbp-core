@@ -33,6 +33,11 @@
       margin-right: 40px;
       display: flex;
       align-items: center;
+      a {
+        &.data-active {
+          color: var(--bbpc_brand_color);
+        }
+      }
       svg {
         margin-right: 5px;
       }
@@ -155,7 +160,7 @@
         margin-right: 5px;
         height: 15px;
         width: 15px;
-        margin-top: -2px;
+        margin-top: 0px;
       }
 
       color: var(--black_600);
@@ -261,6 +266,9 @@
 .single-filter-item {
   a {
     color: var(--black_600);
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -268,12 +276,29 @@
   .post-content {
     .post-category {
       a {
-        display: inline-block;
-        margin-top: 10px;
+        display: flex;
         font-size: 14px;
+        color: var(--black_600);
+        gap: 5px;
+        &:hover {
+          color: var(--bbpc_brand_color);
+          text-decoration: none;
+        }
       }
     }
   }
 }
 
-
+body{
+  &.body_dark {
+    .forum-post-widget{
+      .post-filter-widget{
+        .single-filter-item{
+          svg, path {
+            fill: darkgrey;
+          }
+        } 
+      } 
+    }
+  } 
+}

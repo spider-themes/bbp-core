@@ -157,6 +157,21 @@
 
 .bbpc_search_form_wrapper .input-wrapper input {
   width: 100%;
+  padding: .75em;
+}
+
+.bbpc_search_form_wrapper .input-wrapper input::-webkit-search-cancel-button {
+  -webkit-appearance: auto;
+  position: absolute;
+  right: 55px;
+}
+
+.bbpc_search_form_wrapper .input-wrapper.left input::-webkit-search-cancel-button {
+  right: 30px;
+}
+
+.bbpc_search_form_wrapper .input-wrapper.left input {
+  padding-left: 60px;
 }
 
 .searchbar-tabs .tab-item {
@@ -172,8 +187,8 @@
 }
 
 .searchbar-tabs .tab-item.active {
-  color: var(--brand_color);
-  border-bottom: 3px solid var(--brand_color);
+  color: var(--bbpc_brand_color);
+  border-bottom: 3px solid var(--bbpc_brand_color);
 }
 
 .searchbar-tabs .tab-item:hover,
@@ -243,4 +258,10 @@
 
 .forum-card .forum-card-thumbnail-area {
   padding: 0 !important;
+}
+body.body_dark input#searchInput.input_focused {
+  background: #fff;
+}
+body.body_dark .not-found-text, body.body_dark .bbpc-not-found-text {
+  color: black;
 }

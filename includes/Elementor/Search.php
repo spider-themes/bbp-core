@@ -335,7 +335,7 @@ class Search extends Widget_Base {
 		// slider controls
 		$this->add_control(
 			'typography_btn', [
-				'label'     => esc_html__( 'Slider', 'bbp-core' ),
+				'label'     => esc_html__( 'Icon Size', 'bbp-core' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -519,7 +519,7 @@ class Search extends Widget_Base {
 			$cross_position = 'right';
 		}
 		?>
-
+		
         <form action="<?php echo esc_url( home_url( '/' ) ) ?>" role="search" method="get" class="bbpc_search_form_wrapper">
             <div class="form-group">
                 <div class="input-wrapper <?php echo esc_attr( $cross_position ); ?>">
@@ -554,6 +554,40 @@ class Search extends Widget_Base {
 			<?php include( 'Search/keywords.php' ); ?>
         </form>
 
+		<script>
+			;(function($){
+				$(document).ready(function(){
+					// Focus in search input
+					$('.bbpc_search_form_wrapper').focusin(function () {
+
+						if ( $('body .body_wrapper').length > 0 ) {
+							$('body .body_wrapper').css('position', 'unset');
+						}
+						
+						$('.body_dark #searchInput').addClass('input_focused');
+
+						if ( $('#bbpc-search-result.ajax-search').length > 0 ) {
+							$('.body_dark #searchInput').addClass('input_focused');
+						}
+					});
+					
+					// Focus out search input
+					$('.bbpc_search_form_wrapper').focusout(function () {
+						
+						if ( $('body .body_wrapper').length > 0 ) {
+							$('body .body_wrapper').css('position','relative');
+						}
+
+						if ( $('#bbpc-search-result.ajax-search').length > 0 ) {
+							$('.body_dark #searchInput').addClass('input_focused');
+						} else {
+							$('.body_dark #searchInput').removeClass('input_focused');
+						}
+					});
+
+				});
+			})(jQuery);
+		</script>
 		<?php
 	}
 }

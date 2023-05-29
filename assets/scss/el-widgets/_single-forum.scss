@@ -57,7 +57,7 @@
     .topic-contents {
       display: flex;
       background: var(--bs-white);
-      box-shadow: 0 20px 60px -5px rgba(51, 77, 114, 0.12);
+      box-shadow: 0 1.6px 3.5px 0 #334d7226, 0 0.5px 1px 0 #334d721a;
       margin: 10px 0;
       border-radius: 8px;
       padding: 16px 30px;
@@ -66,6 +66,11 @@
 
       .title {
         width: 50%;
+        &:hover {
+          a {
+          text-decoration: none;
+          }
+        }
 
         p {
           margin-top: 0;
@@ -80,7 +85,7 @@
           line-height: 20px;
 
           &:hover {
-            color: var(--brand_color);
+            color: var(--bbpc_brand_color);
           }
         }
       }
@@ -119,6 +124,7 @@
             font-size: 16px;
             font-weight: 400;
             color:var(--black_900);
+            letter-spacing: normal;
           }
 
           .date {
@@ -128,7 +134,8 @@
             a {
               color: var(--black_400);
               &:hover {
-                color: var(--brand_color)
+                color: var(--bbpc_brand_color);
+                text-decoration: none;
               }
             }
           }
@@ -147,7 +154,11 @@
         line-height: 24px;
 
         &:hover {
-          color: var(--brand_color) !important;
+          text-decoration: none;
+          color: var(--bbpc_brand_color) !important;
+          span {
+            color: var(--bbpc_brand_color) !important;
+          }
         }
       }
     }
@@ -173,6 +184,7 @@
       text-transform: capitalize;
       margin-right: 10px;
       margin: 0;
+      letter-spacing: normal;
       @media all and (max-width: 560px) {
         margin-bottom: 4px;
       }
@@ -190,13 +202,25 @@
   list-style-type: none;
   top: 20px;
   right: 20px;
-  margin-top: 0;
+  margin: 0;
 
   li {
     display: flex;
     margin-right: 10px;
     line-height: 1 !important;
     border-radius: 3px;
+    margin-left: 0;
+    &.button {
+      padding: 0;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &:hover {
+      a {
+        text-decoration: none;
+      }
+    }
   }
 
   li:last-child {
@@ -211,6 +235,7 @@
     background: rgba(255, 255, 255, 0.15);
     padding: 8px;
     font-size: 14px !important;
+    margin-top: 0;
 
     &:hover {
       background: rgba(255, 255, 255, 0.3);
@@ -223,7 +248,7 @@
 
   .button a {
     color: #ffffff;
-    background: var(--brand_color);
+    background: var(--bbpc_brand_color);
     padding: 8px 14px;
     font-size: 14px !important;
     border-radius: 3px;
@@ -252,10 +277,15 @@
     h3 {
       font-size: 18px;
       margin-bottom: 5px;
-
+      margin-top: unset;
       &:hover {
-        color: var(--brand_color);
+        a {
+        color: var(--bbpc_brand_color);
+        }
       }
+    }
+    a {
+      text-decoration: none;
     }
   }
 
@@ -263,6 +293,9 @@
     position: relative;
     border-radius: 30px 30px 0 0;
     padding: 10px 25px;
+      img {
+        max-height: 700px;
+      }
   }
 
   .forum-meta {
@@ -322,7 +355,6 @@
 .home-forum-posts {
   .elementor-post__card {
     background-color: var(--bs-white) !important;
-
     .elementor-post__title a {
       color: var(--black_900);
     }
@@ -333,10 +365,44 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  /* min-width: 0; */
-  /* word-wrap: break-word; */
-  /* background-color: #fff; */
-  /* background-clip: border-box; */
-  /* border: 1px solid rgba(0,0,0,.125); */
-  /* border-radius: 0.25rem; */
+}
+body.body_dark {
+  .forum-with-topics{
+    .topic-table {
+      .topic-contents{
+        h3 {
+          a {
+            color: #fff !important;
+            &:hover {
+              color: var(--bbpc_brand_color) !important;
+            }
+          }
+        }
+        .title {
+          p {
+            color: var(--black_400);
+          }
+        }
+      }
+    }
+  }
+  .forum-with-topics {
+    .forum-card {
+      .card-body {
+        .card-title {
+          h3 {
+            a {
+              color: #fff !important;
+              &:hover {
+                color: var(--bbpc_brand_color) !important;
+              }
+            }
+          }
+        }
+        &:not(.card-title) {
+          color: var(--black_400);
+        }
+      }
+    }
+  }
 }

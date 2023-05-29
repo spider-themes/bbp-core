@@ -32,8 +32,12 @@ class Forum_Ajax extends Widget_Base {
 		return [ 'bbp-core' ];
 	}
 
+	public function get_style_depends() {
+		return [ 'bbpc-el-widgets' ];
+	}
+	
 	public function get_script_depends() {
-		return [ 'ama-ajax' ];
+		return [ 'bbpc-ajax' ];
 	}
 
 	protected function register_controls() {
@@ -198,13 +202,13 @@ class Forum_Ajax extends Widget_Base {
 		$topics = new WP_Query( array(
 			'post_type'      => 'topic',
 			'posts_per_page' => ! empty( $settings['ppp2'] ) ? $settings['ppp2'] : 9,
-			'order'          => $settings['order'],
+			'order'          => $settings['order'] ? $settings['order'] : 'DESC',
 		) );
 		?>
 
-        <div class="forum-post-widget">
+        <div class="forum-post-widget" data_id="<?php echo esc_attr( $this->get_id() ); ?>">
             <div class="post-filter-widget mb-20 wow fadeInUp">
-                <div class="single-filter-item ">
+                <div class="single-filter-item">
                     <!-- <i class="bi bi-grid"></i> -->
                     <svg fill="#000000" width="15px" height="15px" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin"
                          class="jam jam-grid">
@@ -274,14 +278,12 @@ class Forum_Ajax extends Widget_Base {
                             </div>
                             <div class="post-info">
                                 <div class="author">
-                                    <img src="<?php echo BBPC_IMG ?>/forum_tab/user-circle-alt.svg"
-                                         alt="user circle">
+                                    <img src="<?php echo BBPC_IMG ?>/forum_tab/user-circle-alt.svg" alt="<?php esc_attr_e( 'User circle alt icon', 'bbpc-core' ); ?>">
 									<?php echo get_the_author_meta( 'display_name', $author_id ) ?>
                                 </div>
 
                                 <div class="post-time">
-                                    <img src="<?php echo BBPC_IMG ?>/forum_tab/time-outline.svg"
-                                         alt="time outline">
+                                    <img src="<?php echo BBPC_IMG ?>/forum_tab/time-outline.svg" alt="<?php esc_attr_e( 'Time outline icon', 'bbpc-core' ); ?>">
 									<?php echo bbp_forum_last_active_time( get_the_ID() ); ?>
                                 </div>
                             </div>
@@ -295,28 +297,36 @@ class Forum_Ajax extends Widget_Base {
                         </div>
                         <div class="post-reach">
                             <div class="post-view">
-                                <img src="<?php echo BBPC_IMG ?>/forum_tab/eye-outline.svg" alt="icon">
-								<?php bbp_topic_view_count( $topic_id );
+                                <img src="<?php echo BBPC_IMG ?>/forum_tab/eye-outline.svg" alt="<?php esc_attr_e( 'Eye outline icon', 'bbpc-core' ); ?>">
+								
+								<?php 
+								bbp_topic_view_count( $topic_id );
 								echo '&nbsp;';
-								_e( 'Views', 'bbp-core' ) ?>
+								_e( 'Views', 'bbp-core' );
+								?>
                             </div>
                             <div class="post-like">
-                                <img src="<?php echo BBPC_IMG ?>/forum_tab/thumbs-up-outline.svg"
-                                     alt="icon">
-								<?php if ( $vote_count ) {
+                                <img src="<?php echo BBPC_IMG ?>/forum_tab/thumbs-up-outline.svg" alt="<?php esc_attr_e( 'Thumbs-up outline icon', 'bbpc-core' ); ?>">
+								
+								<?php 
+								if ( $vote_count ) {
 									echo $vote_count;
 								} else {
 									echo "0";
 								}
+								
 								echo '&nbsp;';
-								_e( 'Likes', 'bbp-core' ); ?>
+								_e( 'Likes', 'bbp-core' );
+								?>
                             </div>
                             <div class="post-comment">
-                                <img src="<?php echo BBPC_IMG ?>/forum_tab/chatbubbles-outline.svg"
-                                     alt="icon">
-								<?php bbp_topic_reply_count( $topic_id );
+                                <img src="<?php echo BBPC_IMG ?>/forum_tab/chatbubbles-outline.svg" alt="<?php esc_attr_e( 'Chat bubbles icon', 'bbpc-core' ); ?>">
+								
+								<?php 
+								bbp_topic_reply_count( $topic_id );
 								echo '&nbsp;';
-								_e( 'Replies', 'bbp-core' ) ?>
+								_e( 'Replies', 'bbp-core' );
+								?>
                             </div>
                         </div>
                     </div>

@@ -29,6 +29,10 @@ class Single_forum extends Widget_Base {
 		return [ 'bbp-core' ];
 	}
 
+	public function get_style_depends() {
+		return [ 'bbpc-el-widgets' ];
+	}
+
 	protected function register_controls() {
 
 		//-------- Select Style ---------- //
@@ -55,6 +59,7 @@ class Single_forum extends Widget_Base {
 					],
 				],
 				'default' => '1',
+				'toggle'  => false,
 			]
 		);
 
@@ -224,6 +229,13 @@ class Single_forum extends Widget_Base {
 					'{{WRAPPER}} .forum-with-topics .topic-table .topic-contents' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
 					'{{WRAPPER}} .card.forum-card'                                => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
 				],
+				'default'   => [
+					'horizontal' => 0,
+					'vertical'   => '1.6px',
+					'blur'       => '3.5px',
+					'spread'     => 0,
+					'color'      => 'rgba(0,0,0,0.1)',
+				]
 			]
 		);
 

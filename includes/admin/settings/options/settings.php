@@ -31,6 +31,7 @@ if ( class_exists( 'CSF' ) ) {
 	// Widgets Settings.
 	define( 'BBPC_SETTINGS_PATH', plugin_dir_path( __FILE__ ) );
 
+	include BBPC_SETTINGS_PATH . 'options_general.php';
 	include BBPC_SETTINGS_PATH . 'options_admin_ui.php';
 	include BBPC_SETTINGS_PATH . 'options_solved_topics.php';
 	include BBPC_SETTINGS_PATH . 'options_private_replies.php';
