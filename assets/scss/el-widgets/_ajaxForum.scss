@@ -257,8 +257,9 @@
 .single-forum-post-widget {
   .post-category {
     img {
-      width: 15px;
+      width: 20px;
       height: auto;
+      border-radius: 50%;
     }
   }
 }
@@ -276,7 +277,6 @@
   .post-content {
     .post-category {
       a {
-        display: flex;
         font-size: 14px;
         color: var(--black_600);
         gap: 5px;

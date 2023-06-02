@@ -4,11 +4,6 @@
 }
 
 /* ------- Ajax forum & Ama Forum -------- */
-.single-forum-post-widget .post-category img {
-  width: 15px;
-  height: auto;
-}
-
 .single-filter-item a {
   color: var(--black_600);
 }

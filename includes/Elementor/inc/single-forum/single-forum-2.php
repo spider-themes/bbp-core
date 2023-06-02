@@ -1,7 +1,9 @@
 <div class="forum-with-topics">
     <div class="card forum-card">
         <a href="<?php the_permalink( $forum_id ); ?>" class="forum-card-thumbnail-area">
-            <img src="<?php echo $post_thumbnail_url; ?>" class="card-img-top" alt="<?php the_title_attribute( array( 'post' => $forum_id ) ) ?>">
+            <?php if ( $post_thumbnail_url ) : ?>
+                <img src="<?php echo $post_thumbnail_url; ?>" class="card-img-top" alt="<?php the_title_attribute( array( 'post' => $forum_id ) ) ?>">
+            <?php endif; ?>
             <ul class="forum-meta d-flex">
                 <li class="topics" data-toggle="tooltip" data-placement="top" title="<?php _e( 'Topics', 'bbp-core' ) ?>">
                     <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">

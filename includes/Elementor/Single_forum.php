@@ -44,6 +44,14 @@ class Single_forum extends Widget_Base {
 		);
 
 		$this->add_control(
+			'forum_id', [
+				'label'   => esc_html__( 'Select Forum', 'bbp-core' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => bbp_core_get_posts( 'forum' )
+			]
+		);
+
+		$this->add_control(
 			'style',
 			[
 				'label'   => esc_html__( 'Forums Style', 'bbp-core' ),
@@ -86,14 +94,6 @@ class Single_forum extends Widget_Base {
 		$this->start_controls_section(
 			'filter_opt', [
 				'label' => __( 'Filter Options', 'bbp-core' ),
-			]
-		);
-
-		$this->add_control(
-			'forum_id', [
-				'label'   => esc_html__( 'Select Forum', 'bbp-core' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => bbp_core_get_posts( 'forum' )
 			]
 		);
 
@@ -208,34 +208,6 @@ class Single_forum extends Widget_Base {
 					'{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title p' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .forum-card .card-body'                                   => 'color: {{VALUE}}'
 				],
-			]
-		);
-
-		$this->add_control(
-			'box_shadow_heading',
-			[
-				'label'     => esc_html__( 'Box Shadow', 'bbp-core' ),
-				'type'      => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'item_box_shadow',
-			[
-				'label'     => esc_html__( 'Item Box Shadow', 'bbp-core' ),
-				'type'      => \Elementor\Controls_Manager::BOX_SHADOW,
-				'selectors' => [
-					'{{WRAPPER}} .forum-with-topics .topic-table .topic-contents' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
-					'{{WRAPPER}} .card.forum-card'                                => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
-				],
-				'default'   => [
-					'horizontal' => 0,
-					'vertical'   => '1.6px',
-					'blur'       => '3.5px',
-					'spread'     => 0,
-					'color'      => 'rgba(0,0,0,0.1)',
-				]
 			]
 		);
 

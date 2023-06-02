@@ -1,164 +1,180 @@
 .communities-boxes {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -30px;
+  gap: 30px;
+
+  @media (max-width: 1025px) {
+    margin: 0 -10px;
+  }
+
+  @media(max-width: 992px) {
     flex-wrap: wrap;
-    margin: 0 -30px;
-  
-    @media (max-width: 1025px) {
-      margin: 0 -10px;
+    justify-content: center;
+    width: calc(100% + 30px);
+  }
+
+  @media(max-width: 420px) {
+    width: calc(100% + 15px);
+
+  }
+
+  .com-box {
+    text-align: center;
+    margin-bottom: 57px;
+    width: 20%;
+    flex: 0 0 200px;
+
+    @media(max-width: 1200px) {
+      flex: 0 0 165px;
     }
-  
-    @media(max-width: 992px) {
-      flex-wrap: wrap;
+
+    @media(max-width: 991px) {
+      flex: 0 0 180px;
+    }
+
+    @media(max-width: 768px) {
+      flex: 0 0 185px;
+    }
+
+    @media(max-width: 426px) {
+      flex: 0 0 170px;
+      margin-bottom: 30px;
+    }
+
+    .icon-container {
+      border-radius: 6px;
+      background: var(--bs-white);
+      box-shadow: 0 40px 70px 0 rgba(2, 47, 57, 0.1);
+      display: flex;
+      align-items: center;
       justify-content: center;
-      width: calc(100% + 30px);
+      height: 100px;
+      width: 100px;
+      margin: 0 auto 20px;
     }
-  
-    @media(max-width: 420px) {
-      width: calc(100% + 15px);
-  
-    }
-  
-    .com-box {
-      text-align: center;
-      margin-bottom: 57px;
-      width: 20%;
-      flex: 0 0 200px ;
-  
-      @media(max-width: 1200px) {
-        flex: 0 0 165px;
-      }
-  
-      @media(max-width: 991px) {
-        flex: 0 0 180px;
-      }
-  
-      @media(max-width: 768px) {
-        flex: 0 0 185px;
-      }
-  
-      @media(max-width: 426px) {
-        flex: 0 0 170px;
-        margin-bottom: 30px;
-      }
-  
-      .icon-container {
-        border-radius: 6px;
-        background: var(--bs-white);
-        box-shadow: 0 40px 70px 0 rgba(2, 47, 57, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-        width: 100px;
-        margin: 0 auto 20px;
-      }
-  
-      .com-box-content {
-        .title {
-          font-size: 20px;
-          line-height: 26px;
-          font-weight: 500;
+
+    .com-box-content {
+      .title {
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: 500;
+        color: #1d2746;
+        margin-bottom: 5px;
+        transition: all 0.3s ease-in-out;
+        letter-spacing: normal;
+        margin-top: 10px;
+
+        a {
           color: #1d2746;
-          margin-bottom: 5px;
-          transition: all 0.3s ease-in-out;
-          letter-spacing: normal;
-          margin-top: 10px;
-          a {
-            color: #1d2746;
-  
-            &:hover {
-              color: $brand_color;
-              text-decoration: none;
-            }
-          }
-  
+
           &:hover {
             color: $brand_color;
+            text-decoration: none;
           }
         }
-  
-        .total-post {
-          color: $p_color;
-          font-size: 14px;
-          margin-top: 0;
-        }
-      }
-  
-  
-    }
-  }
-  .more-communities{
-    padding: 22px 0;
-    border-top: 1px solid #e8ecee;
-    border-bottom: 1px solid #e8ecee;
 
-    .collapse-wrap {
-        margin-top: 80px;
-        display: none;
+        &:hover {
+          color: $brand_color;
+        }
+      }
+
+      .total-post {
+        color: $p_color;
+        font-size: 14px;
+        margin-top: 0;
+      }
     }
-    .collapse-btn-wrap {
-      text-align: center;
-      display: table;
-      color: var(--bbpc_brand_color);
-      font-weight: 500;
-      margin: auto;
-      &:hover {
-        text-decoration: none;
+
+
+  }
+}
+
+.more-communities {
+  padding: 22px 0;
+  border-top: 1px solid #e8ecee;
+  border-bottom: 1px solid #e8ecee;
+
+  .collapse-wrap {
+    margin-top: 80px;
+    display: none;
+  }
+
+  .collapse-btn-wrap {
+    text-align: center;
+    display: table;
+    color: var(--black_600);
+    font-weight: 500;
+    margin: auto;
+    &:hover {
+      text-decoration: none;
+      color: var(--black_800);
+    }
+
+    svg {
+      position: relative;
+      vertical-align: middle;
+      display: inline;
+    }
+
+    .icon_plus, .icon_minus {
+      path, line {
+        stroke: var(--bbpc_brand_color);
       }
-      svg {
-        position: relative;
-        vertical-align: middle;
-        display: inline;
-      }
-      .icon_plus, .icon_minus {
-        path, line {
-          stroke: var(--bbpc_brand_color);
-        }
-      }
-      .icon_minus {
+    }
+
+    .icon_minus {
+      display: none;
+    }
+
+    &.active {
+      .icon_plus {
         display: none;
       }
-      &.active {
-        .icon_plus {
-          display: none;
-        }
-        .icon_minus {
-          display: initial;
-        }
+
+      .icon_minus {
+        display: initial;
       }
+    }
   }
-  }
-  body{
-    &.body_dark {
-      .communities-boxes {
-        .com-box {
-          .com-box-content {
-             .title {
-               a {
-                color: #fff;
-                &:hover {
-                  color: var(--bbpc_brand_color);
-                }
+}
+
+body {
+  &.body_dark {
+    .communities-boxes {
+      .com-box {
+        .com-box-content {
+          .title {
+            a {
+              color: #fff;
+
+              &:hover {
+                color: var(--bbpc_brand_color);
               }
             }
-            .total-post {
-              color: #8b8b8b;
-            }
+          }
+
+          .total-post {
+            color: #8b8b8b;
           }
         }
       }
-      .more-communities {
-        border-color: #272727;
-      }
-      .single-forum-post-widget {
-        .post-info {
-         div {
+    }
+
+    .more-communities {
+      border-color: #272727;
+    }
+
+    .single-forum-post-widget {
+      .post-info {
+        div {
           color: #848d95;
         }
+
         .post-category {
           a {
             color: #848d95;
+
             &:hover {
               color: var(--bbpc_brand_color);
             }
@@ -166,16 +182,17 @@
         }
       }
     }
-    .community-area{
-      .nav-tabs { 
-       .nav-item { 
-         button {
-           &.active {
-             color: #fff;
-             }
-           }
-         }
-       }
-     }
+
+    .community-area {
+      .nav-tabs {
+        .nav-item {
+          button {
+            &.active {
+              color: #fff;
+            }
+          }
+        }
+      }
     }
   }
+}
