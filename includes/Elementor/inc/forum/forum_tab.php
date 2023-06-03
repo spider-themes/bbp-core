@@ -1,14 +1,20 @@
+<?php 
+$forum_tab_title = ! empty ( $settings['forum_tab_title'] ) ? $settings['forum_tab_title'] :  __( 'Show Forum', 'bbp-core' );
+$topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topics_tab_title'] :  __( 'Show Topics', 'bbp-core' );
+?>
+
 <section class="community-area" id="forumTab-<?php echo esc_attr( $this->get_id() ); ?>">
     <ul class="nav nav-tabs tab-buttons" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active tab-button tab" onclick="forumTab(event, 'forumTab-<?php echo esc_attr( $this->get_id() ); ?>', 'forum-<?php echo esc_attr( $this->get_id() ); ?>')">
-				<?php _e( 'Show Forums', 'bbp-core' ) ?>
-            </button>
+        <button class="nav-link active tab-button tab" onclick="forumTab(event, 'forumTab-<?php echo esc_attr( $this->get_id() ); ?>', 'forum-<?php echo esc_attr( $this->get_id() ); ?>')">
+            <?php echo esc_html( $forum_tab_title ); ?>
+        </button>
+
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link tab-button tab" onclick="forumTab(event, 'forumTab-<?php echo esc_attr( $this->get_id() ); ?>', 'topics-<?php echo esc_attr( $this->get_id() ); ?>')">
-				<?php _e( 'Show Topics', 'bbp-core' ) ?>
-            </button>
+        <button class="nav-link tab-button tab" onclick="forumTab(event, 'forumTab-<?php echo esc_attr( $this->get_id() ); ?>', 'topics-<?php echo esc_attr( $this->get_id() ); ?>')">
+            <?php echo esc_html( $topics_tab_title ); ?>
+        </button>
         </li>
     </ul>
     <div id="forum-<?php echo esc_attr( $this->get_id() ); ?>" class="tab-content show active">

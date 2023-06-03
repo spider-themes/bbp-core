@@ -46,6 +46,16 @@ class Forum_Tab extends Widget_Base {
 		);
 
 		$this->add_control(
+			'forum_tab_title',
+			[
+				'label'       => __( 'Forum Tab Title', 'bbp-core' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => __( 'Show Forums', 'bbp-core' ),
+				'placeholder' => __( 'Enter the tab title', 'bbp-core' ),
+			]
+		);
+
+		$this->add_control(
 			'ppp', [
 				'label'       => esc_html__( 'Show Forums', 'bbp-core' ),
 				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'bbp-core' ),
@@ -102,6 +112,16 @@ class Forum_Tab extends Widget_Base {
 		);
 
 		$this->add_control(
+			'topics_tab_title',
+			[
+				'label'       => __( 'Topics Tab Title', 'bbp-core' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'default'     => __( 'Show Topics', 'bbp-core' ),
+				'placeholder' => __( 'Enter the tab title', 'bbp-core' ),
+			]
+		);
+
+		$this->add_control(
 			'ppp2', [
 				'label'       => esc_html__( 'Show Forums', 'bbp-core' ),
 				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'bbp-core' ),
@@ -142,36 +162,6 @@ class Forum_Tab extends Widget_Base {
 					'is_external' => true,
 					'nofollow'    => true,
 				],
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'forum_tab_styling', [
-				'label' => __( 'Section Styles', 'bbp-core' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_responsive_control(
-			'padding', [
-				'label'      => __( 'Section Padding', 'bbp-core' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-				'selectors'  => [
-					'{{WRAPPER}} .community-area.bg-disable' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name'     => 'background',
-				'label'    => __( 'Section Background', 'bbp-core' ),
-				'types'    => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .community-area.bg-disable',
 			]
 		);
 
