@@ -22,7 +22,6 @@ Table of Content:
   --rob: "Roboto", sans-serif;
   --great: "Great Vibes", cursive;
   --bg_gradient: linear-gradient( 45deg, #F5FDFF, #FEEFEC );
-  --bbpc_brand_color: #078669;
   --h_title: #1d2746;
   --p_color: #6b707f;
   --bs-white: #fff;
@@ -894,9 +893,9 @@ p kbd {
 
 .communities-boxes {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 -30px;
-  gap: 30px;
 }
 @media (max-width: 1025px) {
   .communities-boxes {
@@ -991,13 +990,12 @@ p kbd {
 .more-communities .collapse-btn-wrap {
   text-align: center;
   display: table;
-  color: var(--black_600);
+  color: var(--bbpc_brand_color);
   font-weight: 500;
   margin: auto;
 }
 .more-communities .collapse-btn-wrap:hover {
   text-decoration: none;
-  color: var(--black_800);
 }
 .more-communities .collapse-btn-wrap svg {
   position: relative;
@@ -1244,9 +1242,8 @@ body.body_dark .community-area .nav-tabs .nav-item button.active {
 }
 
 .single-forum-post-widget .post-category img {
-  width: 20px;
+  width: 15px;
   height: auto;
-  border-radius: 50%;
 }
 
 .single-filter-item a {
@@ -1257,6 +1254,7 @@ body.body_dark .community-area .nav-tabs .nav-item button.active {
 }
 
 .single-forum-post-widget .post-content .post-category a {
+  display: flex;
   font-size: 14px;
   color: var(--black_600);
   gap: 5px;
@@ -1477,15 +1475,15 @@ ul.list-unstyled {
   border-radius: 50%;
 }
 .forum-with-topics .topic-table .topic-contents .user .user-info span.bbp-author-name {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  color: var(--black_800);
+  color: var(--black_900);
   letter-spacing: normal;
 }
 .forum-with-topics .topic-table .topic-contents .user .user-info .date {
   font-size: 13px;
+  margin-bottom: 0;
   margin: 0;
-  line-height: 1.5;
 }
 .forum-with-topics .topic-table .topic-contents .user .user-info .date a {
   color: var(--black_400);
@@ -1496,6 +1494,7 @@ ul.list-unstyled {
 }
 .forum-with-topics .topic-table .topic-contents .user .user-info h3 {
   line-height: 0.5;
+  margin-bottom: 0;
   margin: 0;
 }
 .forum-with-topics .topic-table .topic-contents h3 a {
@@ -1529,6 +1528,7 @@ ul.list-unstyled {
 .forum-info .title-area .title {
   font-size: 28px;
   text-transform: capitalize;
+  margin-right: 10px;
   margin: 0;
   letter-spacing: normal;
 }
@@ -1634,12 +1634,13 @@ ul.list-unstyled {
   bottom: 0;
   right: 20px;
   top: auto;
-  margin-bottom: 20px;
 }
-.forum-card .forum-meta .topics, .forum-card .forum-meta .replies {
+.forum-card .forum-meta .topics,
+.forum-card .forum-meta .replies {
   background: rgba(23, 29, 36, 0.7);
 }
-.forum-card .forum-meta .topics:hover, .forum-card .forum-meta .replies:hover {
+.forum-card .forum-meta .topics:hover,
+.forum-card .forum-meta .replies:hover {
   background: rgba(23, 29, 36, 0.8);
 }
 

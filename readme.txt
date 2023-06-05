@@ -102,4 +102,4 @@ Tweaked: Removed some unncessary files
  * Highly customizable settings options
 
 = v1.0.0 (July 25, 2022) =
- * Initial release TEST
+ * Initial release

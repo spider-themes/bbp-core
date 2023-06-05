@@ -16,11 +16,11 @@
 				<div class="search-icon">
 					<span class="dashicons dashicons-search"></span>
 				</div>
-				<input type="search" name="keyword" class="form-control" id="bbpc-search" placeholder="<?php esc_attr_e( 'Search for', 'bbp-core' ); ?>" onkeyup="fetch()"/>
+				<input type="search" name="keyword" class="form-control" id="bbpc-search" placeholder="<?php esc_attr_e( 'Search on ...', 'bbp-core' ); ?>" onkeyup="fetch()"/>
 			</form>
 			<div class="navbar-right">
 				<ul class="d-flex justify-content-end bbpc-right-nav">
-					<li>
+					<li class="easydocs-settings">
 						<div class="header-notify-icon bbpc-settings-icon">
 							<a href="<?php echo admin_url( 'admin.php?page=bbp-core-settings' ); ?>">
 								<img src="<?php echo BBPC_IMG; ?>/admin/admin-settings.svg" alt="<?php esc_html_e( 'Settings Icon', 'bbp-core' ); ?>">
@@ -29,16 +29,16 @@
 					</li>
 					<li>
 						<div class="easydocs-settings">
-							<?php if ( current_user_can( 'edit_posts' ) ) : ?>
-								<div class="header-notify-icons">
-									<select name="bbpc_classic_ui" id="bbpc_classic_ui">
-										<option value="<?php echo admin_url( 'admin.php?page=bbp-core' ); ?>"><?php esc_html_e( 'Choose classic UI', 'bbp-core' ); ?></option>
-										<option value="<?php echo admin_url( 'edit.php?post_type=forum' ); ?>"><?php esc_html_e( 'Forums', 'bbp-core' ); ?></option>
-										<option value="<?php echo admin_url( 'edit.php?post_type=topic' ); ?>"><?php esc_html_e( 'Topics', 'bbp-core' ); ?></option>
-										<option value="<?php echo admin_url( 'edit.php?post_type=reply' ); ?>"><?php esc_html_e( 'Replies', 'bbp-core' ); ?></option>
-									</select>
-								</div>
-							<?php endif; ?>
+						<?php if ( current_user_can( 'edit_posts' ) ) : ?>
+							<div class="header-notify-icons">
+								<select name="bbpc_classic_ui" id="bbpc_classic_ui">
+									<option value="<?php echo admin_url( 'admin.php?page=bbp-core' ); ?>"><?php esc_html_e( 'Choose classic UI', 'bbp-core' ); ?></option>
+									<option value="<?php echo admin_url( 'edit.php?post_type=forum' ); ?>"><?php esc_html_e( 'Forums', 'bbp-core' ); ?></option>
+									<option value="<?php echo admin_url( 'edit.php?post_type=topic' ); ?>"><?php esc_html_e( 'Topics', 'bbp-core' ); ?></option>
+									<option value="<?php echo admin_url( 'edit.php?post_type=reply' ); ?>"><?php esc_html_e( 'Replies', 'bbp-core' ); ?></option>
+								</select>
+							</div>
+						<?php endif; ?>
 						</div>
 					</li>
 					<?php

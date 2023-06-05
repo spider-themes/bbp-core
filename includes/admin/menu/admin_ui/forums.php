@@ -1,4 +1,5 @@
 <div class="tab-menu <?php echo $count > 12 ? '' : 'short'; ?>">
+<div class="tab-menu-left-layer"></div>
 	<ul class="easydocs-navbar">
 		<?php
 		$i = '';
@@ -27,7 +28,7 @@
 						<?php else : ?>
 					<span class="dashicons dashicons-buddicons-forums"></span>
 					<?php endif; ?>
-					<?php the_title(); ?>
+					<span class="easydocs-forums-title"><?php the_title(); ?></span>
 				</div>
 				<div class="total-page">
 					<span>

@@ -130,7 +130,7 @@ $filter_set    = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'n
 								<!-- Children topics. -->
 								<?php include __DIR__ . '/admin_ui/topics.php'; ?>
 
-								<a class="button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Topic.php?bbp_parentID=<?php echo $item; ?>&is_bbp_section=">
+								<a class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Topic.php?bbp_parentID=<?php echo $item; ?>&is_bbp_section=">
 									<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 								</a>
 							</div>
