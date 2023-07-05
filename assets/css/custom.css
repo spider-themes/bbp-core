@@ -133,7 +133,7 @@
 }
 
 .bbpc_search_form_wrapper {
-  z-index: 9999;
+  z-index: 2;
   position: relative;
 }
 

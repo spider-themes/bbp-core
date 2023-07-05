@@ -59,8 +59,6 @@ class Forum_Tab extends Widget_Base {
 			'ppp', [
 				'label'       => esc_html__( 'Show Forums', 'bbp-core' ),
 				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'bbp-core' ),
-				'type'        => Controls_Manager::NUMBER,
-				'label_block' => true,
 				'default'     => 9
 			]
 		);
@@ -125,7 +123,6 @@ class Forum_Tab extends Widget_Base {
 			'ppp2', [
 				'label'       => esc_html__( 'Show Forums', 'bbp-core' ),
 				'description' => esc_html__( 'Show the forums count at the initial view. Default is 9 forums in a row.', 'bbp-core' ),
-				'type'        => Controls_Manager::NUMBER,
 				'label_block' => true,
 				'default'     => 6
 			]

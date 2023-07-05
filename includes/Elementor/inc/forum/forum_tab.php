@@ -18,7 +18,7 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
         </li>
     </ul>
     <div id="forum-<?php echo esc_attr( $this->get_id() ); ?>" class="tab-content show active">
-        <div class="row gy-4 bbpc-community-topic-widget-main-wrapper">
+        <div class="gy-4 bbpc-community-topic-widget-main-wrapper">
             <?php
             while ( $forums->have_posts() ) : $forums->the_post();
                 $item_id   = get_the_ID();
@@ -28,24 +28,16 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
                     <div class="community-topic-widget-box">
                         <?php the_post_thumbnail( 'full' ); ?>
                         <div class="box-content">
-                            <h5> <a href="<?php the_permalink() ?>"> <?php the_title() ?> </a> </h5>
-                            <span>
-                                <?php
-                                bbp_forum_topic_count( $item_id );
-                                _e( ' Posts', 'bbp-core' );
-                                ?>
-                            </span>
+                            <h5>
+                                <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                            </h5>
+                            <span><?php bbp_forum_topic_count( $item_id );_e( ' Posts', 'bbp-core' ); ?></span>
                             <span class="vr-line">|</span>
-                            <span>
-                                <?php
-                                bbp_forum_reply_count( $item_id );
-                                _e( ' Replies', 'bbp-core' );
-                                ?>
-                            </span>
+                            <span><?php bbp_forum_reply_count( $item_id );_e( ' Replies', 'bbp-core' ); ?></span>
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
             endwhile;
             wp_reset_postdata();
             ?>
