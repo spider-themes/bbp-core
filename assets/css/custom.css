@@ -17,14 +17,14 @@
 #bbpc-search-result {
   position: absolute;
   width: 100%;
-  background: #fff;
+  background: var(--bs-white);
   font-size: 14px;
   font-weight: 400;
   display: none;
   transition: all 0.4s;
   z-index: 99;
   margin-top: 25px;
-  border: 1px solid #e6eeef;
+  border: 1px solid var(--black_50);
   border-radius: 4px;
   box-shadow: 0 3px 4px 0 rgb(4 73 89 / 6%);
   padding: 20px 25px;
@@ -35,13 +35,13 @@
   content: "";
   width: 12px;
   height: 12px;
-  background: #fff;
+  background: var(--bs-white);
   position: absolute;
   top: -6px;
   transform: rotate(45deg);
   left: 40px;
-  border-left: 1px solid #e6eeef;
-  border-top: 1px solid #e6eeef;
+  border-left: 1px solid var(--black_50);
+  border-top: 1px solid var(--black_50);
 }
 
 #bbpc-search-result .searchbar-tabs {
@@ -58,9 +58,9 @@
 
 .search-results-tab .bbpc-search-title {
   font-size: 16px;
-  color: #1d2746;
+  color: var(--h_title);
   display: block;
-  border-bottom: 1px solid #e6eeef;
+  border-bottom: 1px solid var(--black_50);
   font-weight: 500;
   text-align: left;
   padding-left: 8px;
@@ -211,7 +211,7 @@
 }
 
 .bbpc_search_form_wrapper .search-result-item a {
-  color: #6b707f;
+  color: var(--p_color);
 }
 
 .bbpc_search_form_wrapper .search-result-item:hover {
