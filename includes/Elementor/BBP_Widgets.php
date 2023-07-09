@@ -1,14 +1,49 @@
 <?php
 namespace admin\Elementor;
 
-class BBP_Widgets{
+use Pro_Widget_Map;
+
+class BBP_Widgets {
+
     public function __construct() {
+
         // Register Widgets
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
+
         // Register Category
         add_action( 'elementor/elements/categories_registered', [ $this, 'register_category' ] );        
 	    add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'register_elementor_editor_assets' ] );
+
+        // Register Elementor Preview Editor Scripts
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_scripts']);
     }
+
+
+    /**
+     * @return void
+     *
+     */
+    public function enqueue_editor_scripts() {
+
+        wp_enqueue_script('element-pack', BDTEP_ASSETS_URL . 'js/ep-editor.js', [], '1.0.0', true);
+
+        $localize_data = [
+            'pro_installed'  => element_pack_pro_installed(),
+            'promotional_widgets'   => [],
+        ];
+
+        if (!element_pack_pro_installed()) {
+            $pro_widget_map = new Pro_Widget_Map();
+            $localize_data['promotional_widgets'] = $pro_widget_map->get_pro_widget_map();
+        }
+
+        wp_localize_script(
+            'element-pack',
+            'ElementPackConfig',
+            $localize_data
+        );
+    }
+
 
     // Register Widgets
     public function register_widgets( $widgets_manager ) {

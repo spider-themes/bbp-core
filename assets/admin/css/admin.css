@@ -14,7 +14,6 @@
 }
 .bbpc-forum-information-wrapper .bbpc-info-show:not(.show-subscribe) {
     column-count: 2;
-    display: grid;
     gap: 8px;
     margin: 15px 0;
     display: flex;

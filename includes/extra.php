@@ -81,18 +81,50 @@ function bbp_topic_view_count( $topic_id = 0 ) {
 }
 
 
+/**
+ * Get forum title
+ * @return string
+ */
+function bbpc_forum_title(){
+    $forum_id       = bbp_get_forum_id();
+    $forum_title    = get_the_title( $forum_id );
+    return $forum_title;
+}
 
-// /**
-// 	 * Limit letter
-// 	 *
-// 	 * @param $string
-// 	 * @param $limit_length
-// 	 * @param string       $suffix
-// 	 */
-// 	function bbp_core_limit_letter( $string, $limit_length, $suffix = '...' ) {
-// 		if ( strlen( $string ) > $limit_length ) {
-// 			echo strip_shortcodes( substr( $string, 0, $limit_length ) . $suffix );
-// 		} else {
-// 			echo strip_shortcodes( esc_html( $string ) );
-// 		}
-// 	}
+/**
+ * Get the value of a settings field.
+ *
+ * @param string $option  settings field name
+ * @param string $section the section name this field belongs to
+ * @param string $default default text if it's not found
+ *
+ * @return mixed
+ */
+function bbpc_get_opt( $option, $default = '' ) {
+    $options = get_option( 'bbp_core_settings' );
+
+    if ( isset( $options[ $option ] ) ) {
+        return $options[ $option ];
+    }
+
+    return $default;
+}
+
+if (!function_exists('element_pack_pro_installed')) {
+
+    function element_pack_pro_installed() {
+
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $file_path = 'bdthemes-element-pack/bdthemes-element-pack.php';
+        $installed_plugins = get_plugins();
+
+        echo '<pre>';
+        print_r($file_path);
+        echo '</pre>';
+
+        return isset($installed_plugins[$file_path]);
+    }
+}

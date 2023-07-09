@@ -16,6 +16,21 @@ License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
+define('BDTEP__FILE__', __FILE__);
+
+
+define('BDTEP_PNAME', basename(dirname(BDTEP__FILE__)));
+define('BDTEP_PBNAME', plugin_basename(BDTEP__FILE__));
+define('BDTEP_PATH', plugin_dir_path(BDTEP__FILE__));
+define('BDTEP_URL', plugins_url('/', BDTEP__FILE__));
+define('BDTEP_ADMIN_PATH', BDTEP_PATH . 'admin/');
+define('BDTEP_ADMIN_URL', BDTEP_URL . 'admin/');
+define('BDTEP_MODULES_PATH', BDTEP_PATH . 'modules/');
+define('BDTEP_INC_PATH', BDTEP_PATH . 'includes/');
+define('BDTEP_ASSETS_URL', BDTEP_URL . 'assets/');
+define('BDTEP_ASSETS_PATH', BDTEP_PATH . 'assets/');
+define('BDTEP_MODULES_URL', BDTEP_URL . 'modules/');
+
 
 if ( ! function_exists( 'bc_fs' ) ) {
 	// Create a helper function for easy SDK access.
@@ -59,6 +74,8 @@ if ( ! function_exists( 'bc_fs' ) ) {
 
 require_once __DIR__ . '/autoloader.php';
 
+
+
 /**
  * Plugin's heart
  */
@@ -99,18 +116,15 @@ final class BBP_Core {
 	 * File includes.
 	 */
 	public function core_includes() {
-		require_once BBPC_DIR . '/includes/functions.php';
 		require_once __DIR__ . '/includes/admin/menu/Approve_Topic.php';
 		require_once __DIR__ . '/includes/admin/menu/Create_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Create_Topic.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Forum.php';
 		require_once __DIR__ . '/includes/admin/menu/Delete_Topic.php';
 		require_once __DIR__ . '/includes/Elementor/BBP_Widgets.php';
-		require_once __DIR__ . '/includes/functions.php';
 		require_once __DIR__ . '/includes/extra.php';
 		require_once __DIR__ . '/includes/ajax_actions.php';
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		require_once __DIR__ . '/includes/functions.php';
 		require_once __DIR__ . '/includes/Frontend/Assets.php';
 		
 		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';		
@@ -119,6 +133,11 @@ final class BBP_Core {
 		// Core installer notice
 		require_once __DIR__ . '/includes/admin/notices/notices.php';
 		require_once __DIR__ . '/includes/admin/notices/asking-for-review.php';
+
+
+        //Register Pro Widgets
+        require_once __DIR__ . '/includes/Pro_Widget_Map.php';
+        require_once __DIR__ . '/includes/Module_service.php';
 		
 	}
 

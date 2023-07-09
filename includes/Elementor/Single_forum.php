@@ -22,7 +22,7 @@ class Single_forum extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-gallery-grid';
+		return 'eicon-gallery-grid bbpc-lock-icon';
 	}
 
 	public function get_categories() {

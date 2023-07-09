@@ -88,3 +88,17 @@
   background-size: cover;
   background-position: top;
 }
+
+/*==================== Widget Preview Icon =====================*/
+.elementor-panel .elementor-element .icon .bbpc-lock-icon::after {
+  content: "\e96f";
+  opacity: .5;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 13px;
+}
+.elementor-panel .elementor-element .icon .bbpc-lock-icon::after:hover {
+  opacity: 1;
+  color: red;
+}
