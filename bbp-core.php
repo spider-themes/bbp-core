@@ -9,8 +9,8 @@ Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
 Version:           1.1.0
 Requires at least: 5.0
-Tested up to:      6.0.1
-Requires PHP:      7.2
+Tested up to:      6.2
+Requires PHP:      7.4
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -66,7 +66,7 @@ require_once __DIR__ . '/autoloader.php';
  * Plugin's heart
  */
 final class BBP_Core {
-	const VERSION = '1.0.0';
+	const VERSION = '1.1.0';
 
 	/**
 	 * Class constructor.
@@ -125,8 +125,8 @@ final class BBP_Core {
         $theme = wp_get_theme();
 
         if ( $theme != 'ama' || $theme != 'Ama'  ) {
-            require_once __DIR__ . '/includes/Pro_Widget_Map.php';
-            require_once __DIR__ . '/includes/Module_service.php';
+            require_once __DIR__ . '/includes/admin/Pro_Widget_Map.php';
+            require_once __DIR__ . '/includes/admin/Pro_Widget_Service.php';
         }
 
 		

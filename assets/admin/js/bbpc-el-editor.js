@@ -2,14 +2,14 @@
 
     'use strict';
 
-    var ElementPackEditor = {
+    var BbpcEditor = {
 
         init: function () {
-            elementor.channels.editor.on('section:activated', ElementPackEditor.onAnimatedBoxSectionActivated);
+            elementor.channels.editor.on('section:activated', BbpcEditor.onAnimatedBoxSectionActivated);
 
             window.elementor.on('preview:loaded', function () {
-                elementor.$preview[0].contentWindow.ElementPackEditor = ElementPackEditor;
-                ElementPackEditor.onPreviewLoaded();
+                elementor.$preview[0].contentWindow.BbpcEditor = BbpcEditor;
+                BbpcEditor.onPreviewLoaded();
             });
         },
 
@@ -22,17 +22,17 @@
         }
     };
 
-    $(window).on('elementor:init', ElementPackEditor.init);
+    $(window).on('elementor:init', BbpcEditor.init);
 
-    window.ElementPackEditor = ElementPackEditor;
+    window.BbpcEditor = BbpcEditor;
 
 
     elementor.hooks.addFilter("panel/elements/regionViews", function (panel) {
 
-        if (ElementPackConfig.pro_installed || ElementPackConfig.promotional_widgets <= 0) return panel;
+        if (BbpcConfig.pro_installed || BbpcConfig.promotional_widgets <= 0) return panel;
 
         var promotionalWidgetHandler,
-            promotionalWidgets = ElementPackConfig.promotional_widgets,
+            promotionalWidgets = BbpcConfig.promotional_widgets,
             elementsCollection = panel.elements.options.collection,
             categories = panel.categories.options.collection,
             categoriesView = panel.categories.view,
@@ -50,15 +50,15 @@
         });
 
         elementsCollection.each(function (widget) {
-            "bbp-core" === widget.get("categories")[0] && proWidgets.push(widget)
+            "bbp-core-pro" === widget.get("categories")[0] && proWidgets.push(widget)
         });
 
         freeCategoryIndex = categories.findIndex({
-            name: "element-pack"
+            name: "bbp-core"
         });
 
         freeCategoryIndex && categories.add({
-            name: "bbp-core",
+            name: "bbp-core-pro",
             title: "BBP Core Pro",
             defaultActive: !1,
             items: proWidgets

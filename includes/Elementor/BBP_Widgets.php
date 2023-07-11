@@ -1,7 +1,7 @@
 <?php
 namespace admin\Elementor;
 
-use Pro_Widget_Map;
+use admin\Pro_Widget_Map;
 
 class BBP_Widgets {
 
@@ -16,7 +16,7 @@ class BBP_Widgets {
 
         // Register Elementor Preview Editor Scripts
         $theme = wp_get_theme();
-        if ( $theme != 'ama' || $theme != 'Ama'  ) {
+        if ( $theme != 'ama' || $theme != 'Ama' ) {
             add_action('elementor/editor/after_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ]);
         }
     }
@@ -28,7 +28,7 @@ class BBP_Widgets {
      */
     public function enqueue_editor_scripts() {
 
-        wp_enqueue_script('bbpc-el-editor', BBPC_ASSETS . 'js/bbpc-el-editor.js', [], '1.0.0', true);
+        wp_enqueue_script('bbpc-el-editor', BBPC_ASSETS . 'admin/js/bbpc-el-editor.js', [], '1.0.0', true);
 
         $localize_data = [
             'pro_installed'  => bbpc_pro_installed(),
@@ -41,7 +41,7 @@ class BBP_Widgets {
         }
 
         //
-        wp_localize_script('bbpc-el-editor', 'ElementPackConfig', $localize_data);
+        wp_localize_script('bbpc-el-editor', 'BbpcConfig', $localize_data);
     }
 
 
