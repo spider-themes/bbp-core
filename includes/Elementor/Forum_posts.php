@@ -32,7 +32,7 @@ class Forum_posts extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-post-list';
+		return 'bbpc_icon_ama_forum_posts';
 	}
 
 	public function get_keywords() {

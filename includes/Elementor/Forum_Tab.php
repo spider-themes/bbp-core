@@ -20,7 +20,7 @@ class Forum_Tab extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-posts-grid';
+		return 'bbpc_icon_ama_forum_tab';
 	}
 
 	public function get_categories() {

@@ -13,15 +13,60 @@ class Module_service {
     public static function get_widget_settings($callable) {
 
         $settings_fields = [
-            'element_pack_active_modules' => [
+            'bbpc_active_modules' => [
                 [
-                    'name'         => 'advanced-button',
-                    'label'        => esc_html__('Advanced Button', 'bdthemes-element-pack'),
+                    'name'         => 'ama_ajax_forum',
+                    'label'        => esc_html__('BBPC Ajax Forums', 'bbp-core'),
                     'type'         => 'checkbox',
                     'default'      => 'off',
                     'widget_type'  => 'pro',
-                    'demo_url'     => 'https://www.elementpack.pro/demo/element/advanced-button/',
-                    'video_url'    => 'https://youtu.be/Lq_st2IWZiE',
+                    'demo_url'     => 'https://spider-themes.net/bbp-core/',
+                    //'video_url'    => 'https://youtu.be/Lq_st2IWZiE',
+                ],
+                [
+                    'name'         => 'ama_forum_posts',
+                    'label'        => esc_html__('BBPC Forum Topics', 'bbp-core'),
+                    'type'         => 'checkbox',
+                    'default'      => 'off',
+                    'widget_type'  => 'pro',
+                    'demo_url'     => 'https://spider-themes.net/bbp-core/',
+                    //'video_url'    => 'https://youtu.be/Lq_st2IWZiE',
+                ],
+                [
+                    'name'         => 'ama_forum_tab',
+                    'label'        => esc_html__('BBPC Forum Tabs', 'bbp-core'),
+                    'type'         => 'checkbox',
+                    'default'      => 'off',
+                    'widget_type'  => 'pro',
+                    'demo_url'     => 'https://spider-themes.net/bbp-core/',
+                    //'video_url'    => 'https://youtu.be/Lq_st2IWZiE',
+                ],
+                [
+                    'name'         => 'ama_forums',
+                    'label'        => esc_html__('BBPC Forums', 'bbp-core'),
+                    'type'         => 'checkbox',
+                    'default'      => 'off',
+                    'widget_type'  => 'pro',
+                    'demo_url'     => 'https://spider-themes.net/bbp-core/',
+                    //'video_url'    => 'https://youtu.be/Lq_st2IWZiE',
+                ],
+                [
+                    'name'         => 'ama_search',
+                    'label'        => esc_html__('BBPC Search', 'bbp-core'),
+                    'type'         => 'checkbox',
+                    'default'      => 'off',
+                    'widget_type'  => 'pro',
+                    'demo_url'     => 'https://spider-themes.net/bbp-core/',
+                    //'video_url'    => 'https://youtu.be/Lq_st2IWZiE',
+                ],
+                [
+                    'name'         => 'ama_single_forum',
+                    'label'        => esc_html__('BBPC Single Forum', 'bbp-core'),
+                    'type'         => 'checkbox',
+                    'default'      => 'off',
+                    'widget_type'  => 'pro',
+                    'demo_url'     => 'https://spider-themes.net/bbp-core/',
+                    //'video_url'    => 'https://youtu.be/Lq_st2IWZiE',
                 ],
             ]
         ];
@@ -32,33 +77,5 @@ class Module_service {
         return $callable($settings);
     }
 
-    private static function _is_plugin_installed($plugin, $plugin_path) {
-        $installed_plugins = get_plugins();
-        return isset($installed_plugins[$plugin_path]);
-    }
-
-
-
-
-
-    public static function has_module_style($module_id) {
-        if ( file_exists(BDTEP_MODULES_PATH . $module_id . '/module.info.php') ) {
-            $module_data = require BDTEP_MODULES_PATH . $module_id . '/module.info.php';
-
-            if ( isset($module_data['has_style']) ) {
-                return $module_data['has_style'];
-            }
-        }
-    }
-
-    public static function has_module_script($module_id) {
-        if ( file_exists(BDTEP_MODULES_PATH . $module_id . '/module.info.php') ) {
-            $module_data = require BDTEP_MODULES_PATH . $module_id . '/module.info.php';
-
-            if ( isset($module_data['has_script']) ) {
-                return $module_data['has_script'];
-            }
-        }
-    }
 }
 

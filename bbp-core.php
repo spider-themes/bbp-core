@@ -16,20 +16,6 @@ License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
-define('BDTEP__FILE__', __FILE__);
-
-
-define('BDTEP_PNAME', basename(dirname(BDTEP__FILE__)));
-define('BDTEP_PBNAME', plugin_basename(BDTEP__FILE__));
-define('BDTEP_PATH', plugin_dir_path(BDTEP__FILE__));
-define('BDTEP_URL', plugins_url('/', BDTEP__FILE__));
-define('BDTEP_ADMIN_PATH', BDTEP_PATH . 'admin/');
-define('BDTEP_ADMIN_URL', BDTEP_URL . 'admin/');
-define('BDTEP_MODULES_PATH', BDTEP_PATH . 'modules/');
-define('BDTEP_INC_PATH', BDTEP_PATH . 'includes/');
-define('BDTEP_ASSETS_URL', BDTEP_URL . 'assets/');
-define('BDTEP_ASSETS_PATH', BDTEP_PATH . 'assets/');
-define('BDTEP_MODULES_URL', BDTEP_URL . 'modules/');
 
 
 if ( ! function_exists( 'bc_fs' ) ) {
@@ -136,8 +122,13 @@ final class BBP_Core {
 
 
         //Register Pro Widgets
-        require_once __DIR__ . '/includes/Pro_Widget_Map.php';
-        require_once __DIR__ . '/includes/Module_service.php';
+        $theme = wp_get_theme();
+
+        if ( $theme != 'ama' || $theme != 'Ama'  ) {
+            require_once __DIR__ . '/includes/Pro_Widget_Map.php';
+            require_once __DIR__ . '/includes/Module_service.php';
+        }
+
 		
 	}
 

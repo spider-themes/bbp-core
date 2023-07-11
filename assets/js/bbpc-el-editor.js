@@ -1,4 +1,4 @@
-(function ($) {
+;(function ($) {
 
     'use strict';
 
@@ -18,9 +18,6 @@
             var elementorFrontend = $('#elementor-preview-iframe')[0].contentWindow.elementorFrontend;
 
             elementorFrontend.hooks.addAction('frontend/element_ready/widget', function ($scope) {
-                // $scope.find('.bdt-elementor-template-edit-link').on('click', function (event) {
-                //     window.open($(this).attr('href'));
-                // });
             });
         }
     };
@@ -30,14 +27,7 @@
     window.ElementPackEditor = ElementPackEditor;
 
 
-
-
-
     elementor.hooks.addFilter("panel/elements/regionViews", function (panel) {
-
-        jQuery(document).ready(function () {
-            jQuery('body').append(`<style>.bdt-pro-unlock-icon:after{right: auto !important; left: 5px !important;}</style>`);
-        });
 
         if (ElementPackConfig.pro_installed || ElementPackConfig.promotional_widgets <= 0) return panel;
 
@@ -60,7 +50,7 @@
         });
 
         elementsCollection.each(function (widget) {
-            "element-pack-pro" === widget.get("categories")[0] && proWidgets.push(widget)
+            "bbp-core" === widget.get("categories")[0] && proWidgets.push(widget)
         });
 
         freeCategoryIndex = categories.findIndex({
@@ -68,8 +58,8 @@
         });
 
         freeCategoryIndex && categories.add({
-            name: "element-pack-pro",
-            title: "Element Pack Pro",
+            name: "bbp-core",
+            title: "BBP Core Pro",
             defaultActive: !1,
             items: proWidgets
         }, {
@@ -97,8 +87,8 @@
                 void this.constructor.__super__.onMouseDown.call(this);
                 var promotion = this.getWedgetOption(this.model.get("name"));
                 elementor.promotion.showDialog({
-                    title: sprintf(wp.i18n.__('%s', 'elementor'), this.model.get("title")),
-                    content: sprintf(wp.i18n.__('Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'elementor'), this.model.get("title")),
+                    title: sprintf(wp.i18n.__('%s', 'bbp-core'), this.model.get("title")),
+                    content: sprintf(wp.i18n.__('Use %s widget and dozens more pro features to extend your toolbox and build sites faster and better.', 'bbp-core'), this.model.get("title")),
                     targetElement: this.el,
                     position: {
                         blockStart: '-7'

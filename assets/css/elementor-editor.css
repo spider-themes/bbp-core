@@ -98,7 +98,37 @@
   right: 5px;
   font-size: 13px;
 }
-.elementor-panel .elementor-element .icon .bbpc-lock-icon::after:hover {
-  opacity: 1;
-  color: red;
+
+.elementor-panel .elementor-element .icon i {
+  display: inline-block;
+  font-family: eicons;
+  font-size: inherit;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+.elementor-panel .elementor-element .icon .bbpc_icon_ama_single_forum::before {
+  content: "\e830";
+}
+
+.elementor-panel .elementor-element .icon .bbpc_icon_ama_ajax_forum::before {
+  content: "\e847";
+}
+
+.elementor-panel .elementor-element .icon .bbpc_icon_ama_search::before {
+  content: "\e851";
+}
+
+.elementor-panel .elementor-element .icon .bbpc_icon_ama_forum_posts::before {
+  content: "\e843";
+}
+
+.elementor-panel .elementor-element .icon .bbpc_icon_ama_forum_tab::before {
+  content: "\e847";
+}
+.elementor-panel .elementor-element .icon .bbpc_icon_ama_forums::before {
+  content: "\e830";
 }

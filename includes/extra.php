@@ -110,20 +110,17 @@ function bbpc_get_opt( $option, $default = '' ) {
     return $default;
 }
 
-if (!function_exists('element_pack_pro_installed')) {
+if (!function_exists('bbpc_pro_installed')) {
 
-    function element_pack_pro_installed() {
+    function bbpc_pro_installed() {
 
         if (!function_exists('get_plugins')) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 
+        $file_path = '';
         $file_path = 'bdthemes-element-pack/bdthemes-element-pack.php';
         $installed_plugins = get_plugins();
-
-        echo '<pre>';
-        print_r($file_path);
-        echo '</pre>';
 
         return isset($installed_plugins[$file_path]);
     }

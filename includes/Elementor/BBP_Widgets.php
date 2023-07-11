@@ -15,7 +15,10 @@ class BBP_Widgets {
 	    add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'register_elementor_editor_assets' ] );
 
         // Register Elementor Preview Editor Scripts
-        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_scripts']);
+        $theme = wp_get_theme();
+        if ( $theme != 'ama' || $theme != 'Ama'  ) {
+            add_action('elementor/editor/after_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ]);
+        }
     }
 
 
@@ -25,41 +28,45 @@ class BBP_Widgets {
      */
     public function enqueue_editor_scripts() {
 
-        wp_enqueue_script('element-pack', BDTEP_ASSETS_URL . 'js/ep-editor.js', [], '1.0.0', true);
+        wp_enqueue_script('bbpc-el-editor', BBPC_ASSETS . 'js/bbpc-el-editor.js', [], '1.0.0', true);
 
         $localize_data = [
-            'pro_installed'  => element_pack_pro_installed(),
+            'pro_installed'  => bbpc_pro_installed(),
             'promotional_widgets'   => [],
         ];
 
-        if (!element_pack_pro_installed()) {
+        if ( !bbpc_pro_installed() ) {
             $pro_widget_map = new Pro_Widget_Map();
             $localize_data['promotional_widgets'] = $pro_widget_map->get_pro_widget_map();
         }
 
-        wp_localize_script(
-            'element-pack',
-            'ElementPackConfig',
-            $localize_data
-        );
+        //
+        wp_localize_script('bbpc-el-editor', 'ElementPackConfig', $localize_data);
     }
 
 
     // Register Widgets
     public function register_widgets( $widgets_manager ) {
-        // Include Widget files     
-        require_once( __DIR__ . '/Single_forum.php' ); 
-        require_once( __DIR__ . '/Forum_Ajax.php' ); 
-        require_once( __DIR__ . '/Forum_posts.php' ); 
-        require_once( __DIR__ . '/Forums.php' );
-        require_once( __DIR__ . '/Forum_Tab.php' ); 
-        require_once( __DIR__ . '/Search.php' ); 
-        $widgets_manager->register( new Single_forum() );
-        $widgets_manager->register( new Forum_Ajax() );       
-        $widgets_manager->register( new Forum_posts() );
-        $widgets_manager->register( new Forums() );
-        $widgets_manager->register( new Forum_Tab() );
-        $widgets_manager->register( new Search() );
+
+        $theme = wp_get_theme();
+
+        // Include Widget files
+        if ( $theme == 'ama' || $theme == 'Ama' ) {
+            require_once( __DIR__ . '/Single_forum.php' );
+            require_once( __DIR__ . '/Forum_Ajax.php' );
+            require_once( __DIR__ . '/Forum_posts.php' );
+            require_once( __DIR__ . '/Forums.php' );
+            require_once( __DIR__ . '/Forum_Tab.php' );
+            require_once( __DIR__ . '/Search.php' );
+
+            $widgets_manager->register( new Single_forum() );
+            $widgets_manager->register( new Forum_Ajax() );
+            $widgets_manager->register( new Forum_posts() );
+            $widgets_manager->register( new Forums() );
+            $widgets_manager->register( new Forum_Tab() );
+            $widgets_manager->register( new Search() );
+        }
+
     }
     
     // Register category

@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class Pro_Widget_Map{
@@ -7,7 +8,7 @@ class Pro_Widget_Map{
 
         $arr_obj = Module_service::get_widget_settings(
             function ($settings) {
-                $core_widgets        = $settings['settings_fields']['element_pack_active_modules'];
+                $core_widgets        = $settings['settings_fields']['bbpc_active_modules'];
 
                 $arr = [];
 
@@ -16,15 +17,15 @@ class Pro_Widget_Map{
                     if ('pro' == $widget['widget_type']) {
 
                         $ar = [
-                            'categories' => ['element-pack-pro'],
+                            'categories' => ['bbp-core'],
                             'name'       => $widget['name'],
                             'title'      => $widget['label'],
-                            'icon'       => 'bdt-wi-' . $widget['name'] . ' bdt-pro-unlock-icon',
+                            'icon'       => 'bbpc_icon_' . $widget['name'],
                             'action_button' => [
                                 'classes'   => ['elementor-button', 'elementor-button-success'],
-                                'text'      => esc_html__('See it in Action ddd', 'bdthemes-element-pack'),
+                                'text'      => esc_html__('See it in Action', 'bbp-core'),
                                 'url'       => esc_url($widget['demo_url'])
-                            ]
+                            ],
                         ];
 
                         array_push($arr, $ar);

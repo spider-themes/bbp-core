@@ -23,7 +23,7 @@ class Search extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-search';
+		return 'bbpc_icon_ama_search';
 	}
 
 	public function get_style_depends() {

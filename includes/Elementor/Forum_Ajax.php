@@ -21,7 +21,7 @@ class Forum_Ajax extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-posts-grid';
+		return 'bbpc_icon_ama_ajax_forum';
 	}
 
 	public function get_keywords() {
