@@ -69,9 +69,16 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
-= v1.1.0 (24 March 2023) =
-New: New Elementor widgets added (BBPC Forums, BBPC Ajax Forums, BBPC Forum Topics, BBPC Forum Tabs, BBPC Forums, BBPC Search, BBPC Single Forum)
-Tweaked: Removed some unnecessary files
+= v1.1.0 (13 July 2023) =
+New: BBPC Forums Elementor widgets added
+New: BBPC Ajax Forums Elementor widgets added (Unlocked in Ama theme and Ama Pro plugin)
+New: BBPC Forum Topics Elementor widgets added (Unlocked in Ama theme and Ama Pro plugin)
+New: BBPC Forum Tabs Elementor widgets added (Unlocked in Ama theme and Ama Pro plugin)
+New: BBPC Forum Search Elementor widgets added (Unlocked in Ama theme and Ama Pro plugin)
+New: BBPC Forum Single Forum Elementor widgets added (Unlocked in Ama theme and Ama Pro plugin)
+Tweaked: Removed some unnecessary files (Unlocked in Ama theme and Ama Pro plugin)
+Tweaked: Improved/redesigned the Unified Forums Builder UI (Admin UI)
+Updated: Freemius SDK to v2.5.9
 
 = v1.0.7 (September 26, 2022) =
  * Fix: Filters visibility issues fixed

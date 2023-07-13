@@ -16,7 +16,7 @@ class BBP_Widgets {
 
         // Register Elementor Preview Editor Scripts
         $theme = wp_get_theme();
-        if ( $theme != 'ama' || $theme != 'Ama' ) {
+        if ( $theme != 'Ama' || !bbpc_is_premium() ) {
             add_action('elementor/editor/after_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ]);
         }
     }
@@ -31,14 +31,11 @@ class BBP_Widgets {
         wp_enqueue_script('bbpc-el-editor', BBPC_ASSETS . 'admin/js/bbpc-el-editor.js', [], '1.0.0', true);
 
         $localize_data = [
-            'pro_installed'  => bbpc_pro_installed(),
             'promotional_widgets'   => [],
         ];
 
-        if ( !bbpc_pro_installed() ) {
-            $pro_widget_map = new Pro_Widget_Map();
-            $localize_data['promotional_widgets'] = $pro_widget_map->get_pro_widget_map();
-        }
+        $pro_widget_map = new Pro_Widget_Map();
+        $localize_data['promotional_widgets'] = $pro_widget_map->get_pro_widget_map();
 
         //
         wp_localize_script('bbpc-el-editor', 'BbpcConfig', $localize_data);
@@ -51,7 +48,7 @@ class BBP_Widgets {
         $theme = wp_get_theme();
 
         // Include Widget files
-        if ( $theme == 'ama' || $theme == 'Ama' ) {
+        if ( $theme == 'Ama' || bbpc_is_premium() ) {
             require_once( __DIR__ . '/Single_forum.php' );
             require_once( __DIR__ . '/Forum_Ajax.php' );
             require_once( __DIR__ . '/Forum_posts.php' );
@@ -66,7 +63,6 @@ class BBP_Widgets {
             $widgets_manager->register( new Forum_Tab() );
             $widgets_manager->register( new Search() );
         }
-
     }
     
     // Register category

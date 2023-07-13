@@ -9,6 +9,17 @@ function bbpc_is_forum_page() {
 }
 
 /**
+ * Check if the pro plugin and plan is active
+ *
+ * @return bool|void
+ */
+function bbpc_is_premium() {
+	if ( class_exists('BBPCorePro') && bc_fs()->can_use_premium_code() ) {
+		return true;
+	}
+}
+
+/**
  * Posts Arraty
  * @param object Post Type
  */
@@ -108,20 +119,4 @@ function bbpc_get_opt( $option, $default = '' ) {
     }
 
     return $default;
-}
-
-if (!function_exists('bbpc_pro_installed')) {
-
-    function bbpc_pro_installed() {
-
-        if (!function_exists('get_plugins')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        $file_path = '';
-        $file_path = 'bdthemes-element-pack/bdthemes-element-pack.php';
-        $installed_plugins = get_plugins();
-
-        return isset($installed_plugins[$file_path]);
-    }
 }

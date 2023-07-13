@@ -1707,8 +1707,7 @@ body.bbpc-forum-ui {
   height: 100%;
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  background: rgba(143, 143, 143, 0.5);
 }
 
 .easydocs-tab {
@@ -1722,7 +1721,7 @@ body.bbpc-forum-ui {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 30px 13px 25px;
+  padding: 12px 30px 12px 12px;
   margin-bottom: 5px;
   cursor: pointer;
   -webkit-transition: 0.3s ease-out;
@@ -1736,7 +1735,7 @@ body.bbpc-forum-ui {
   }
 }
 .easydocs-navitem.is-active {
-  border-left-color: var(--clr-blue);
+  border-left-color: #72aee6;
   background: rgba(159, 162, 180, 0.2);
   --title-opacity: 1;
   --total-page-opacity: 1;
@@ -1769,6 +1768,19 @@ body.bbpc-forum-ui {
   font-weight: 500;
   color: var(--clr-white);
   opacity: var(--title-opacity, 0.7);
+}
+.easydocs-navitem .title img {
+  border-radius: 7px;
+  padding: 5px;
+  height: auto;
+  background: #fff;
+  width: 30px;
+}
+.easydocs-navitem .title span.dashicons {
+  width: 32px;
+}
+.easydocs-navitem .title span.easydocs-forums-title {
+  padding-left: 15px;
 }
 .easydocs-navitem .total-page {
   font-size: var(--fs-12);
@@ -1848,6 +1860,7 @@ body.bbpc-forum-ui {
   justify-content: space-between;
   background: linear-gradient(125.95deg, #C700BF 10.95%, #7DA900 100%), linear-gradient(341.1deg, #00C2FF 7.52%, #4E00B1 77.98%), linear-gradient(222.34deg, #A90000 12.99%, #00FFE0 87.21%), linear-gradient(130.22deg, #8FA600 18.02%, #5A31FF 100%);
   background-blend-mode: screen, color-dodge, color-dodge, normal;
+  padding-left: 16px;
 }
 @media (max-width: 1440px) {
   .easydocs-filter-container {
@@ -1858,7 +1871,7 @@ body.bbpc-forum-ui {
 .single-item-filter {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 5px;
 }
 .single-item-filter .easydocs-btn {
   display: flex;
@@ -1866,9 +1879,16 @@ body.bbpc-forum-ui {
   justify-content: center;
   font-size: 12px;
   gap: 0.3125rem;
-  --btn-py: 0.25rem;
-  --btn-px: 0.75rem;
   --btn-fs: var(--fs-14);
+  transition: all 0.3s;
+  border-radius: 15px;
+}
+.single-item-filter .easydocs-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.single-item-filter .easydocs-btn.is-active {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #f1f1f1;
 }
 .single-item-filter .easydocs-btn.easydocs-btn-black-light {
   --btn-icon: #0D0E2B;

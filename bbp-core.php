@@ -1,5 +1,7 @@
 <?php
+
 use admin\Assets;
+
 /*
 Plugin Name:       BBP Core
 Plugin URI:        https://spider-themes.net/bbp-core
@@ -42,6 +44,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
 				),
 				'menu'            => array(
 					'slug'       => 'bbp-core',
+					'contact'    => false,
 					'support'    => false,
 					'first-path' => 'admin.php?page=bbp-core',
 				),
@@ -59,7 +62,6 @@ if ( ! function_exists( 'bc_fs' ) ) {
 }
 
 require_once __DIR__ . '/autoloader.php';
-
 
 
 /**
@@ -112,24 +114,21 @@ final class BBP_Core {
 		require_once __DIR__ . '/includes/ajax_actions.php';
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		require_once __DIR__ . '/includes/Frontend/Assets.php';
-		
-		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';		
+
+		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';
 		require_once __DIR__ . '/includes/Elementor/inc/forum-ajax.php';
 
 		// Core installer notice
 		require_once __DIR__ . '/includes/admin/notices/notices.php';
 		require_once __DIR__ . '/includes/admin/notices/asking-for-review.php';
 
+		//Register Pro Widgets
+		$theme = wp_get_theme();
 
-        //Register Pro Widgets
-        $theme = wp_get_theme();
-
-        if ( $theme != 'ama' || $theme != 'Ama'  ) {
-            require_once __DIR__ . '/includes/admin/Pro_Widget_Map.php';
-            require_once __DIR__ . '/includes/admin/Pro_Widget_Service.php';
-        }
-
-		
+		if ( $theme != 'Ama' || ! bbpc_is_premium() ) {
+			require_once __DIR__ . '/includes/admin/Pro_Widget_Map.php';
+			require_once __DIR__ . '/includes/admin/Pro_Widget_Service.php';
+		}
 	}
 
 	/**
@@ -165,7 +164,7 @@ final class BBP_Core {
 	 * @return void
 	 */
 	public function init_plugin() {
-		
+
 		$this->load_features();
 
 		if ( is_admin() ) {
@@ -178,7 +177,7 @@ final class BBP_Core {
 		}
 		if ( ! is_admin() ) {
 			new Frontend\Assets();
-		}		
+		}
 		new admin\Elementor\BBP_Widgets();
 	}
 

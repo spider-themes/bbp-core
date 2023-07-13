@@ -22,11 +22,10 @@
 			<li class="easydocs-navitem <?php echo esc_attr( $is_active ); ?>" data-rel="tab-<?php the_ID(); ?>" data-id="<?php the_ID(); ?>">
 				<div class="title">
 					<?php
-					if ( has_post_thumbnail() ) :
-							echo get_the_post_thumbnail( $current_post, 'bbpc_20x20' );
-						?>
-						<?php else : ?>
-					<span class="dashicons dashicons-buddicons-forums"></span>
+					if ( get_the_post_thumbnail($current_post) ) :
+							echo get_the_post_thumbnail( $current_post, 'bbpc_32x32' );
+					else : ?>
+						<span class="dashicons dashicons-buddicons-forums"></span>
 					<?php endif; ?>
 					<span class="easydocs-forums-title"><?php the_title(); ?></span>
 				</div>

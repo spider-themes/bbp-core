@@ -104,11 +104,6 @@
   color: var(--clr-white);
 }
 
-.easydocs-navitem .title img {
-  max-height: 25px;
-  max-width: 25px;
-}
-
 .bbpc-trash-filter {
   border-radius: 1.875rem;
   margin-bottom: 0;
