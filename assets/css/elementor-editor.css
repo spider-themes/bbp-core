@@ -111,24 +111,21 @@
 }
 
 .elementor-panel .elementor-element .icon .bbpc_icon_ama_single_forum::before {
-  content: "\e830";
-}
-
-.elementor-panel .elementor-element .icon .bbpc_icon_ama_ajax_forum::before {
-  content: "\e847";
+  content: "\e968";
 }
 
 .elementor-panel .elementor-element .icon .bbpc_icon_ama_search::before {
   content: "\e851";
 }
-
+.elementor-panel .elementor-element .icon .bbpc_icon_ama_ajax_forum::before {
+  content: "\e967";
+}
 .elementor-panel .elementor-element .icon .bbpc_icon_ama_forum_posts::before {
   content: "\e843";
 }
-
 .elementor-panel .elementor-element .icon .bbpc_icon_ama_forum_tab::before {
-  content: "\e847";
+  content: "\e861";
 }
 .elementor-panel .elementor-element .icon .bbpc_icon_ama_forums::before {
-  content: "\e830";
+  content: "\e847";
 }
