@@ -32,6 +32,8 @@ if ( class_exists( 'CSF' ) ) {
 	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_private_replies.php';
 	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_voting.php';
 	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_attachments.php';
+	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_mini_profile.php';
+	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_shortcode.php';
 	
 	if ( ! class_exists( 'bbPress' ) ) {
 		return;

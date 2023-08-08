@@ -84,6 +84,7 @@ final class BBP_Core {
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
 
 		$this->bbpc_hooks();
+		$this->load_csf();
 	}
 
 	/**
@@ -286,6 +287,22 @@ final class BBP_Core {
 	public function bbpc_hooks() {
 		require BBPC_DIR . 'includes/hooks/actions.php';
 		require BBPC_DIR . 'includes/hooks/image_sizes.php';
+	}
+	
+	/**
+	 * Load Codestar Framework and related settings.
+	 *
+	 * @return void
+	 */
+	public function load_csf() {
+		require BBPC_DIR . 'includes/admin/settings/codestar-framework/codestar-framework.php';
+		
+		// if plugin bbp-core-pro activate
+		if ( class_exists('BBPCorePro') ) {
+			require BBPC_DIR . 'includes/admin/settings/options/pro-settings.php';
+		} else {
+			require BBPC_DIR . 'includes/admin/settings/options/settings.php';
+		}
 	}
 }
 

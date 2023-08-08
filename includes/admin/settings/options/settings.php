@@ -12,7 +12,7 @@ if ( class_exists( 'CSF' ) ) {
 			'framework_class' => 'bbp-core-settings',
 			'theme'           => 'dark',
 
-			'menu_title'      => 'Settings',
+			'menu_title'      => __( 'Settings', 'bbp-core-pro' ),
 			'menu_slug'       => 'bbp-core-settings',
 			'menu_type'       => 'submenu',
 			'menu_parent'     => 'bbp-core',
@@ -24,18 +24,19 @@ if ( class_exists( 'CSF' ) ) {
 		]
 	);
 
-	if ( ! class_exists( 'bbPress' ) ) {
-		return;
-	}
-
 	// Widgets Settings.
 	define( 'BBPC_SETTINGS_PATH', plugin_dir_path( __FILE__ ) );
 
-	include BBPC_SETTINGS_PATH . 'options_general.php';
 	include BBPC_SETTINGS_PATH . 'options_admin_ui.php';
 	include BBPC_SETTINGS_PATH . 'options_solved_topics.php';
 	include BBPC_SETTINGS_PATH . 'options_private_replies.php';
 	include BBPC_SETTINGS_PATH . 'options_voting.php';
 	include BBPC_SETTINGS_PATH . 'options_attachments.php';
+
+	
+	if ( ! class_exists( 'bbPress' ) ) {
+		return;
+	}
+	
 }
 
