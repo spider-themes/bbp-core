@@ -28,8 +28,8 @@ if ( class_exists( 'CSF' ) ) {
 	define( 'BBPCPRO_SETTINGS_PATH', plugin_dir_path( __FILE__ ) );
 
 	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_admin_ui.php';
-	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_solved_topics.php';
-	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_private_replies.php';
+	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_topics.php';
+	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_replies.php';
 	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_voting.php';
 	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_attachments.php';
 	include BBPCPRO_SETTINGS_PATH . 'pro-options/options_mini_profile.php';

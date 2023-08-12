@@ -11,9 +11,7 @@
 					'default'  => 1,
 					'title'    => __( 'Private Replies', 'bbp-core' ),
 					'subtitle' => __( 'Enable/ Disable Private Replies feature.', 'bbp-core' ),
-				],
-
-				
+				]
 			],
 		]
 	);
