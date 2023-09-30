@@ -29,7 +29,7 @@
     width: 60px;
     height: 100%;
     @include property;
-    background: rgb(143 143 143 / 50%);
+    background: rgb(143 143 143 / 30%);
   }
 }
 
@@ -96,7 +96,7 @@
     }
 
     span.easydocs-forums-title {
-      padding-left: 15px;
+      padding-left: 20px;
     }
   }
 

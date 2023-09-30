@@ -237,10 +237,9 @@ button {
   html:focus-within {
     scroll-behavior: auto;
   }
-
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -318,7 +317,7 @@ h1 {
 }
 @media screen and (min-width: 20rem) {
   h1 {
-    font-size: calc(2rem + 1.75 * ((100vw - 20rem) / 55));
+    font-size: calc(2rem + 1.75 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -332,7 +331,7 @@ h2 {
 }
 @media screen and (min-width: 20rem) {
   h2 {
-    font-size: calc(2rem + 1 * ((100vw - 20rem) / 55));
+    font-size: calc(2rem + 1 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -346,7 +345,7 @@ h3 {
 }
 @media screen and (min-width: 20rem) {
   h3 {
-    font-size: calc(1.375rem + 0.125 * ((100vw - 20rem) / 55));
+    font-size: calc(1.375rem + 0.125 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -360,7 +359,7 @@ h4 {
 }
 @media screen and (min-width: 20rem) {
   h4 {
-    font-size: calc(1rem + 0.125 * ((100vw - 20rem) / 55));
+    font-size: calc(1rem + 0.125 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -843,7 +842,7 @@ a.child-delete {
   font-size: 10px;
   line-height: 1.9090909;
   text-align: center;
-  margin-left: 7px;
+  margin-left: 10px;
 }
 .bbpc-reply-count:after {
   content: "";
@@ -1381,14 +1380,14 @@ a.child-delete {
 
 .notification-head {
   padding: 9px 12px;
-  background: #f1f2f3;
+  background: hsl(210, 8%, 95%);
   -webkit-box-shadow: 0 1px 0 0 #edeef2;
   -moz-box-shadow: 0 1px 0 0 #edeef2;
   box-shadow: 0 1px 0 0 #edeef2;
 }
 .notification-head.no-notification-text {
   padding: 20px 12px;
-  background: #bebebe26;
+  background: rgba(190, 190, 190, 0.1490196078);
   display: block;
   text-align: center;
 }
@@ -1491,18 +1490,18 @@ a.child-delete {
   width: -webkit-fill-available;
 }
 .notify-column ul li a .notify-content-wrap .notify-content-header {
-  color: #525960;
+  color: hsl(210, 8%, 35%);
   font-size: 12px;
 }
 .notify-column ul li a .notify-content-wrap .notify-content-summary p {
-  color: #0074cc;
+  color: hsl(206, 100%, 40%);
   font-size: 13px;
 }
 .notify-column ul li a:focus {
   box-shadow: none;
 }
 .notify-column ul li:hover {
-  background: #e3e6e8;
+  background: hsl(210, 8%, 90%);
 }
 .notify-column ul li:last-child {
   border-bottom: none;
@@ -1707,7 +1706,7 @@ body.bbpc-forum-ui {
   height: 100%;
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
-  background: rgba(143, 143, 143, 0.5);
+  background: rgba(143, 143, 143, 0.3);
 }
 
 .easydocs-tab {
@@ -1780,7 +1779,7 @@ body.bbpc-forum-ui {
   width: 32px;
 }
 .easydocs-navitem .title span.easydocs-forums-title {
-  padding-left: 15px;
+  padding-left: 20px;
 }
 .easydocs-navitem .total-page {
   font-size: var(--fs-12);

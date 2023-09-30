@@ -110,22 +110,25 @@
   });
 
   $(document).ready(function () {
-    $('#bbpc-search').on('keyup', function () {
-      var value = $(this).val().toLowerCase();
-      $('.easydocs-accordion-item').filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+
+    if ( $('#bbpc-search').length ) {
+      $('#bbpc-search').on('keyup', function () {
+        var value = $(this).val().toLowerCase();
+        $('.easydocs-accordion-item').filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
       });
-    });
 
-    // Dropdown Classic UI Filter
-    let bbpc_classic_ui = document.getElementById('bbpc_classic_ui');
+      // Dropdown Classic UI Filter
+      let bbpc_classic_ui = document.getElementById('bbpc_classic_ui');
 
-    function swithToLink() {
-      window.location.href = this.value;
+      function swithToLink() {
+        window.location.href = this.value;
+      }
+
+      bbpc_classic_ui.onchange = swithToLink;
     }
-
-    bbpc_classic_ui.onchange = swithToLink;
-  });
+  })
 
   $(document).ready(function (e) {
     function t(t) {

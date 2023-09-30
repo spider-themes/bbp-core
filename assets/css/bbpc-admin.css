@@ -114,7 +114,7 @@
   background-color: rgba(212, 23, 23, 0.3);
 }
 .bbpc-trash-filter svg {
-  fill: #d41717;
+  fill: rgb(212, 23, 23);
 }
 .bbpc-trash-filter a {
   justify-content: center;
@@ -123,7 +123,7 @@
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #d41717;
+  color: rgb(212, 23, 23);
   text-decoration: none;
 }
 
@@ -148,6 +148,25 @@
 .bbpc-filter-btn-settings .csf--sibling.csf--active {
   border: 1px solid #2DB22D;
   background-color: #2DB22D;
+}
+
+/** === FS contents === **/
+#fs_connect .fs-header .fs-plugin-icon,
+#fs_connect .fs-header .fs-plugin-icon img {
+  height: auto;
+}
+#fs_connect .fs-content h2 {
+  font-size: 28px;
+  margin: 15px auto;
+  line-height: 1.2 !important;
+}
+#fs_connect .fs-content p {
+  font-size: 16px !important;
+  text-align: center;
+  line-height: 1.7;
+}
+#fs_connect .fs-box-container {
+  border-radius: 15px;
 }
 
 /*# sourceMappingURL=bbpc-admin.css.map */

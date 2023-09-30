@@ -6,7 +6,6 @@ namespace admin;
  * @package BBPCorePro\Admin
  */
 class Assets {
-
 	/**
 	 * Assets constructor.
 	 */
@@ -15,9 +14,9 @@ class Assets {
 	}
 	
 	public function admin_scripts() {		
-		wp_enqueue_style( 'bbpc-admin-css', BBPC_ASSETS . '/admin/css/admin.css', array(), BBPC_VERSION );
-		wp_enqueue_script( 'bbpc-admin-js', BBPC_ASSETS . '/admin/js/admin.js', array( 'jquery' ), BBPC_VERSION, true );
-		wp_enqueue_script( 'bbpc-notify-review', BBPC_ASSETS . '/admin/js/review.js', array( 'jquery' ), BBPC_VERSION, true );
+		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'admin/css/admin.css', array(), BBPC_VERSION );
+		wp_enqueue_script( 'bbpc-admin', BBPC_ASSETS . 'admin/js/admin.js', array( 'jquery' ), BBPC_VERSION, true );
+		wp_enqueue_script( 'bbpc-notify-review', BBPC_ASSETS . 'admin/js/review.js', array( 'jquery' ), BBPC_VERSION, true );
 
         // Localize the script with new data
         $ajax_url = admin_url('admin-ajax.php');
@@ -32,5 +31,5 @@ class Assets {
                 'nonce' 					=> wp_create_nonce('bbpc-admin-nonce')               
             )
         );
-	}	
+	}
 }

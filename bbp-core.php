@@ -1,5 +1,4 @@
 <?php
-
 use admin\Assets;
 
 /*
@@ -18,7 +17,6 @@ License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
-
 
 if ( ! function_exists( 'bc_fs' ) ) {
 	// Create a helper function for easy SDK access.

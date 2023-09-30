@@ -9,8 +9,8 @@ CSF::createSection(
             [
                 'id'         => 'bbpc_shortcode',
                 'type'       => 'text',
-                'title'      => esc_html__( 'Profile URL', 'bbp-core' ),
-                'subtitle'   => esc_html__( 'Use this shortcode to display your profile URL', 'bbp-core' ),
+                'title'      => esc_html__( 'My Profile URL', 'bbp-core' ),
+                'subtitle'   => esc_html__( 'Use this shortcode to get the user\'s own profile URL', 'bbp-core' ),
                 'default'    => '[bbpc_profile_link]',
                 'attributes' => array(
                     'readonly' => 'readonly',
