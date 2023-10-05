@@ -1,5 +1,6 @@
 (function($){
-    $(document).ready(function(){        
+    $(document).ready(function(){
+        
         $(document).on('click', '.is-subscribed a', function(e){   
             e.preventDefault();         
             $(this).text( "Unsubscribing..." );    
@@ -31,17 +32,41 @@
 (function($){ 
     $(document).ready(function(){
 
-        // Focus in search input
-        $('.bbpc_search_form_wrapper').focusin(function () {
-            $('body').addClass('bbpc-search-active');
-            $('body.bbpc-search-active').append('<div class="bbpc-search-overlay"></div>');
+        const overlay = $('.bbpc-search-overlay');
+      
+        $('#searchInput, #bbpc-search-result, .bbpc-search-keyword ul li a').on('click', function() {
+            overlay.css('display', 'block');
+            
+            // Focus in search input
+            $('.bbpc_search_form_wrapper').focusin(function () {
+
+                $('.body_dark #searchInput').addClass('input_focused');
+
+                if ( $('#bbpc-search-result.ajax-search').length > 0 ) {
+                    $('.body_dark #searchInput').addClass('input_focused');
+                }
+            });
+            
+            // Focus out search input
+            $('.bbpc_search_form_wrapper').focusout(function () {
+                
+                if ( $('#bbpc-search-result.ajax-search').length > 0 ) {
+                    $('.body_dark #searchInput').addClass('input_focused');
+                } else {
+                    $('.body_dark #searchInput').removeClass('input_focused');
+                }
+            });
+            
+            $('#searchInput').keyup(function(){
+                $('.click_capture').css({'opacity':'0', 'visibility':'hidden'});
+            });
+
         });
-        
-        // Focus out search input
-        $('.bbpc_search_form_wrapper').focusout(function () {
-            $('body').removeClass('bbpc-search-active');
-            $('.bbpc-search-overlay').remove();
+
+        overlay.on('click', function() {
+            overlay.css('display', 'none');
         });
+
         
         // Keyup in search input
         $('#searchInput').keyup(function(){
@@ -134,7 +159,7 @@
         });
 
     });
-})(jQuery)
+})(jQuery);
 
 // All Tabs
 function searchAllTab() {
