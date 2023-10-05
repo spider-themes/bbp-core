@@ -36,6 +36,8 @@
       
         $('#searchInput, #bbpc-search-result, .bbpc-search-keyword ul li a').on('click', function() {
             overlay.css('display', 'block');
+            // addClass
+            overlay.addClass('active');
             
             // Focus in search input
             $('.bbpc_search_form_wrapper').focusin(function () {
@@ -61,10 +63,13 @@
                 $('.click_capture').css({'opacity':'0', 'visibility':'hidden'});
             });
 
+
+
         });
 
         overlay.on('click', function() {
             overlay.css('display', 'none');
+            overlay.removeClass('active');
         });
 
         

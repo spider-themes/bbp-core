@@ -253,8 +253,7 @@ body.body_dark .not-found-text, body.body_dark .bbpc-not-found-text {
   line-height: 0;
 }
 
-
-.bbpc-search-overlay {
+.bbpc-search-overlay.active {
   display: none;
   position: fixed;
   top: 0;
