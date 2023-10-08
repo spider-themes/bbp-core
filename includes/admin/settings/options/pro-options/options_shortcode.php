@@ -5,7 +5,6 @@ CSF::createSection(
     [
         'title'  => __( 'Shortcodes', 'bbp-core' ),
         'fields' => [
-            
             [
                 'id'         => 'bbpc_shortcode',
                 'type'       => 'text',
@@ -16,7 +15,6 @@ CSF::createSection(
                     'readonly' => 'readonly',
                 ),
             ]
-            
         ],
     ]
 );

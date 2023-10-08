@@ -20,6 +20,25 @@ function bbpc_is_premium() {
 }
 
 /**
+ * BBP Core Admin pages
+ * If any of the admin pages match the current page, return true.
+ *
+ * @return bool|void
+ */
+function bbpc_admin_pages() {
+	$admin_page = $_GET['page'] ?? '';
+	$post_type  = $_GET['post_type'] ?? '';
+
+	if ( $admin_page == 'bbp-core'
+	     || $admin_page == 'bbp-core-settings'
+	     || strstr( $_SERVER['REQUEST_URI'], 'wp-admin/post-new.php' )
+	     || strstr( $_SERVER['REQUEST_URI'], 'wp-admin/post.php' )
+	) {
+		return true;
+	}
+}
+
+/**
  * Posts Arraty
  * @param object Post Type
  */

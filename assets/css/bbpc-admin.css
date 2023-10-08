@@ -1,11 +1,126 @@
-/*-- Codestar Framework --*/
+/** === Codestar options / Pro Alert === **/
+.csf-field-image_select figure {
+  width: 100px;
+}
+
+.csf-options {
+  max-width: 1200px;
+}
+
 .csf-field .csf-title {
-  width: 25%;
+  width: 30%;
 }
 
 .csf-field .csf-fieldset {
-  float: right;
   width: calc(70% - 20px);
+}
+
+.st-pro-notice.csf-field {
+  position: relative;
+  cursor: pointer;
+}
+
+.st-pro-notice .csf-title,
+.st-pro-notice .csf-fieldset {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+body.valid.docy .active-theme-docy .csf-title,
+body.valid.docy .active-theme-docy .csf-fieldset,
+body.valid.docly .active-theme-docly .csf-title,
+body.valid.docly .active-theme-docly .csf-fieldset,
+body.valid .active-theme .csf-title,
+body.valid .active-theme .csf-fieldset {
+  pointer-events: inherit;
+  opacity: 1;
+}
+
+body.valid.docy .active-theme-docy.csf-field::before,
+body.valid.docy .active-theme-docy.csf-field::after,
+body.valid.docly .active-theme-docly.csf-field::before,
+body.valid.docly .active-theme-docly.csf-field::after,
+body.valid .active-theme.csf-field::before,
+body.valid .active-theme.csf-field::after {
+  display: none;
+}
+
+.st-pro-notice.csf-field::before {
+  content: "Pro";
+  background-color: #f1bd6c;
+  color: #000;
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.st-pro-notice.csf-field::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 2;
+}
+
+.upgrade-link {
+  background-color: #f1bd6c;
+  color: #000;
+  padding: 2px 6px;
+}
+
+.swal2-styled.swal2-confirm.upgrade-premium-button {
+  background-color: #f1bd6c;
+  outline: none;
+  box-shadow: none !important;
+}
+
+.swal2-title.upgrade-premium-heading {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  margin-bottom: -15px;
+}
+
+.pro-notification-body-text {
+  font-size: 15px;
+  display: block;
+  margin-bottom: 25px;
+}
+
+.swal2-styled.swal2-confirm.upgrade-premium-button > a {
+  color: black;
+  font-weight: normal;
+}
+
+.swal2-footer.notification-pro-footer-wrap {
+  border-top: none;
+  margin: 8px 0px 0px;
+  padding: 0px;
+}
+
+.swal2-html-container {
+  line-height: 1.6;
+}
+
+#customize-controls .csf-field-image_select img {
+  width: 85px;
+  height: auto;
+}
+
+.notice.is-dismissible.bottom-10 {
+  padding-bottom: 15px;
+}
+
+.notice-warning.eaz-notice {
+  background: #ffffbe;
+}
+
+.header-notify-icon .notify-icon {
+  padding-top: 10px;
+  margin: auto;
 }
 
 .bbpc-core-main * {

@@ -574,6 +574,7 @@ label {
   background: var(--clr-white);
   border-radius: 5px;
   overflow: hidden;
+  border: 1px solid #edeae9;
 }
 .easydocs-accordion .acc_active .accordion-title {
   border-bottom: 1px solid #edeae9;
@@ -1179,6 +1180,7 @@ a.child-delete {
   border-radius: 0.625rem;
   box-sizing: border-box;
   line-height: unset;
+  box-shadow: 0 1px 1px rgba(11, 80, 115, 0.3), 0 1px 5px rgba(60, 64, 67, 0.1);
 }
 
 .easydocs-accordion-item progress {

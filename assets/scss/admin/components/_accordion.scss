@@ -6,6 +6,7 @@
   background: var(--clr-white);
   border-radius: 5px;
   overflow: hidden;
+  border: 1px solid #edeae9;
 
   .acc_active {
     .accordion-title {
@@ -95,6 +96,7 @@
   @media (max-width: 1440px) {
     padding: 12px 20px 12px 34px;
   }
+
   &.ez-section-title {
     h4 {
       font-weight: var(--fw-500);
@@ -128,6 +130,7 @@
 
   ul.actions {
     display: flex;
+
     li {
       margin: 0;
     }
@@ -142,6 +145,7 @@
 
     ul.actions {
       display: flex;
+
       li {
         margin: 0;
         line-height: normal;
@@ -199,12 +203,15 @@
     gap: var(--gutter-10);
     --section-icon: #9199a1;
     margin-left: 15px;
+
     .duplicate {
       order: 1;
     }
+
     .delete {
       order: 2;
     }
+
     li {
       @include hover {
         --section-icon: var(--clr-dark);
@@ -212,20 +219,24 @@
 
       a {
         text-decoration: none;
+
         .dashicons {
           color: var(--black_150);
           font-size: 18px;
           padding-top: 3px;
+
           &:hover {
             color: var(--black_400);
           }
         }
+
         img {
           opacity: 0.5;
           @include hover {
             opacity: 1;
           }
         }
+
         &.st-pro-notice .dashicons {
           color: #f1bd6c;
         }
@@ -258,6 +269,7 @@
 
 .nesting-accordion {
   padding: 0;
+
   a {
     text-decoration: none;
   }
@@ -333,6 +345,7 @@ a.child-delete {
 
   &.bbpc-published-replies {
     background-color: #cc8033;
+
     &:after {
       border-top: 5px solid #cc8033;
     }
@@ -343,6 +356,7 @@ a.child-delete {
   &:hover,
   &:active {
     background: #0275d8;
+
     &:after {
       border-top-color: #0275d8;
     }
@@ -354,11 +368,11 @@ a.child-delete {
   display: none;
 }
 
-.ez-section-title div:has(.active){
-  .bbpc-pending-replies{
-      background: #0275d8;
+.ez-section-title div:has(.active) {
+  .bbpc-pending-replies {
+    background: #0275d8;
 
-      &:after {
+    &:after {
       border-top-color: #0275d8;
     }
   }

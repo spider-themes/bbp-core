@@ -233,7 +233,6 @@ final class BBP_Core {
 	 */
 	public function load_admin_scripts() {
 		wp_enqueue_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );
-		wp_enqueue_style( 'bbpc-admin-global', BBPC_ASSETS . 'css/admin-global.css' );
 
 		$current_url       = ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 		$bbp_core_url      = admin_url( 'admin.php?page=bbp-core' );
