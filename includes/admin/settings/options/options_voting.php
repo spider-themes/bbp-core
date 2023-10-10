@@ -34,7 +34,7 @@ CSF::createSection(
                 'id'       => 'is_label',
                 'type'     => 'switcher',
                 'default'  => false,
-                'title'    => __( 'Show Labels.', 'bbp-core' ),
+                'title'    => __( 'Show Labels', 'bbp-core' ),
                 'subtitle' => __( 'Show the labels that describe what up and down mean?', 'bbp-core' ),
             ],
 

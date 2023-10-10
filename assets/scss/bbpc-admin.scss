@@ -3,14 +3,16 @@
   width: 100px;
 }
 
-.csf-options {
+.bbp-core-settings {
   max-width: 1200px;
 }
+
 .csf-field .csf-title {
   width: 30%;
 }
+
 .csf-field .csf-fieldset {
-  width: calc(70% - 20px);
+  width: calc(70% - 25px);
 }
 
 .st-pro-notice.csf-field {
@@ -71,7 +73,7 @@ body.valid .active-theme.csf-field::after {
 
 .swal2-styled.swal2-confirm.upgrade-premium-button {
   background-color: #f1bd6c;
-  outline:none;
+  outline: none;
   box-shadow: none !important;
 }
 
@@ -87,6 +89,7 @@ body.valid .active-theme.csf-field::after {
   display: block;
   margin-bottom: 25px;
 }
+
 .swal2-styled.swal2-confirm.upgrade-premium-button > a {
   color: black;
   font-weight: normal;
@@ -107,7 +110,7 @@ body.valid .active-theme.csf-field::after {
   height: auto;
 }
 
-.notice.is-dismissible.bottom-10{
+.notice.is-dismissible.bottom-10 {
   padding-bottom: 15px;
 }
 
@@ -164,10 +167,6 @@ body.valid .active-theme.csf-field::after {
   background: #ddd;
   padding: 10px;
   line-height: 1;
-}
-
-.bbp-core-settings {
-  max-width: 960px;
 }
 
 /* Menu */

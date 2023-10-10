@@ -3,7 +3,7 @@
   width: 100px;
 }
 
-.csf-options {
+.bbp-core-settings {
   max-width: 1200px;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .csf-field .csf-fieldset {
-  width: calc(70% - 20px);
+  width: calc(70% - 25px);
 }
 
 .st-pro-notice.csf-field {
@@ -167,10 +167,6 @@ body.valid .active-theme.csf-field::after {
   background: #ddd;
   padding: 10px;
   line-height: 1;
-}
-
-.bbp-core-settings {
-  max-width: 960px;
 }
 
 /* Menu */

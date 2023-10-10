@@ -8,7 +8,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            spider-themes
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.1.0
+Version:           1.2.0
 Requires at least: 5.0
 Tested up to:      6.2
 Requires PHP:      7.4
@@ -292,14 +292,10 @@ final class BBP_Core {
 	 * @return void
 	 */
 	public function load_csf() {
-		require BBPC_DIR . 'includes/admin/settings/codestar-framework/codestar-framework.php';
+		require BBPC_DIR . 'includes/admin/settings/csf/classes/setup.class.php';
 		
 		// if plugin bbp-core-pro activate
-		if ( class_exists('BBPCorePro') ) {
-			require BBPC_DIR . 'includes/admin/settings/options/pro-settings.php';
-		} else {
-			require BBPC_DIR . 'includes/admin/settings/options/settings.php';
-		}
+		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
 	}
 }
 

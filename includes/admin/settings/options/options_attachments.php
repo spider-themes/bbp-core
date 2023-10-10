@@ -35,8 +35,9 @@ CSF::createSection(
 				'type'     => 'switcher',
 				'default'  => true,
 				'title'    => __( 'Hide Attachment from visitors', 'bbp-core' ),
-				'text_on'  => 'Hide',
-				'text_off' => 'Show',
+				'text_on'  => __( 'Hide', 'bbp-core' ),
+				'text_off' => __( 'Show', 'bbp-core' ),
+				'text_width' => 85
 			],
 
 			[
@@ -73,15 +74,12 @@ CSF::createSection(
 
 			[
 				'type'    => 'subheading',
-				'content' => __( 'Forums Integration', 'bbp-core' ),
+				'content' => __( 'Forums integration', 'bbp-core' ),
 			],
 
 			[
 				'type'    => 'content',
-				'content' => __(
-					'With these options you can modify the forums to include attachment elements.',
-					'bbp-core'
-				),
+				'content' => __( 'With these options you can modify the forums to include attachment elements.', 'bbp-core' ),
 			],
 
 			[
@@ -118,7 +116,7 @@ CSF::createSection(
             // Thumbnail
 			[
 				'type'    => 'subheading',
-				'content' => __( 'Image thumbnails size.', 'bbp-core' ),
+				'content' => __( 'Image thumbnails size', 'bbp-core' ),
 			],
 
 			[

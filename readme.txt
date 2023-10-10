@@ -69,6 +69,13 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+= v1.2.0 (13 July 2023) =
+Fixed: BBP Core Search Form widget's overlay color on focus issue fixed
+Updated: Freemius SDK to v2.5.12
+Tweaked: Removed some unnecessary files
+Tweaked: Made compatible with the Latest BBP Core Pro plugin
+Tweaked: Regenerated the POT file more accurately with the latest strings
+
 = v1.1.0 (13 July 2023) =
 New: BBPC Forums Elementor widgets added
 New: BBPC Ajax Forums Elementor widgets added (Unlocked in Ama theme and Ama Pro plugin)

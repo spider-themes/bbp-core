@@ -32,8 +32,12 @@
 					'id'       => 'is_bbp_post_types_hidden',
 					'type'     => 'switcher',
 					'default'  => false,
-					'title'    => __( 'Hide bbPress post types', 'bbp-core' ),
-					'subtitle' => __( 'Native Forum, Topics and Replies post types menus will be hidden.', 'bbp-core' ),
+					'title'    => __( 'Classic bbPress post types', 'bbp-core' ),
+					'subtitle' => __( 'Since you can manage the Forums from our unified forums UI, you can hide or disable the classic bbPress menus.', 'bbp-core' ),
+					'desc' => __( 'Native Forum, Topics and Replies post types menus will be hidden. ', 'bbp-core' ),
+					'text_on'  => __( 'Show', 'bbp-core' ),
+					'text_off' => __( 'Hide', 'bbp-core' ),
+					'text_width' => 85
 				],
 
 				[

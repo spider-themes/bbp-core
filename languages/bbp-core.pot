@@ -1,153 +1,709 @@
-# Copyright (C) 2022 spider-themes
-# This file is distributed under the GPLv3 or later.
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: BBP Core 1.0.7\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bbp-core\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: BBP Core\n"
+"POT-Creation-Date: 2023-10-11 02:31+0600\n"
+"PO-Revision-Date: 2023-10-11 02:30+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-01T11:53:49+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
-"X-Domain: bbp-core\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: bbp-core.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#. Plugin Name of the plugin
-#: includes/admin/Menu.php:17
-#: includes/admin/menu/statistics.php:8
-msgid "BBP Core"
+#: assets/admin/js/bbpc-el-editor.js:90
+#, javascript-format
+msgid "%s"
 msgstr ""
 
-#. Plugin URI of the plugin
-msgid "https://spider-themes.net/bbp-core"
+#: assets/admin/js/bbpc-el-editor.js:91
+#, javascript-format
+msgid ""
+"Use %s widget and dozens more pro features to extend your toolbox and build "
+"sites faster and better."
 msgstr ""
 
-#. Description of the plugin
-msgid "Expand bbPress powered forums with useful features like - private reply, solved topics ..."
-msgstr ""
-
-#. Author of the plugin
-msgid "spider-themes"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://profiles.wordpress.org/spiderdevs/"
-msgstr ""
-
-#: bbp-core.php:228
+#: bbp-core.php:262
 msgid "Enter Forum Title"
 msgstr ""
 
-#: bbp-core.php:229
+#: bbp-core.php:263
 msgid "Enter Topic Title"
 msgstr ""
 
-#: bbp-core.php:230
+#: bbp-core.php:264
 msgid "Are you sure to delete?"
 msgstr ""
 
-#: bbp-core.php:231
-msgid "This forum will be deleted with all the topics and you won't be able to revert!"
+#: bbp-core.php:265
+msgid ""
+"This forum will be deleted with all the topics and you won't be able to "
+"revert!"
 msgstr ""
 
-#: bbp-core.php:232
+#: bbp-core.php:266
 msgid "This topic will be deleted and you won't be able to revert!"
 msgstr ""
 
-#. translators: 1: BBP Core 2: bbPress
-#: includes/Admin.php:31
-msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+#. Plugin Name of the plugin/theme
+#: includes/Elementor/BBP_Widgets.php:72 includes/admin/Menu.php:17
+#: includes/admin/menu/statistics.php:8 includes/admin/notices/notices.php:20
+msgid "BBP Core"
 msgstr ""
 
-#: includes/Admin.php:32
-msgid "BBP Core Plugin"
+#: includes/Elementor/Forum_Ajax.php:20
+#: includes/admin/Pro_Widget_Service.php:20
+msgid "BBPC Ajax Forums"
 msgstr ""
 
-#: includes/Admin.php:33
-msgid "bbPress"
+#: includes/Elementor/Forum_Ajax.php:49
+msgid "Content Section"
 msgstr ""
 
-#: includes/admin/Menu.php:18
-#: includes/admin/menu/admin_ui/header.php:8
-#: includes/admin/menu/admin_ui/header.php:42
-msgid "Forums"
+#: includes/Elementor/Forum_Ajax.php:55 includes/Elementor/Forum_Tab.php:53
+#: includes/Elementor/Forum_Tab.php:60 includes/Elementor/Forum_Tab.php:124
+#: includes/Elementor/Forums.php:62
+msgid "Show Forums"
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:120
-msgid "Add Topic"
+#: includes/Elementor/Forum_Ajax.php:56 includes/Elementor/Forum_Tab.php:61
+#: includes/Elementor/Forum_Tab.php:125
+msgid ""
+"Show the forums count at the initial view. Default is 9 forums in a row."
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:135
-msgid "Folder Open"
+#: includes/Elementor/Forum_Ajax.php:65 includes/Elementor/Forum_Tab.php:68
+#: includes/Elementor/Forum_Tab.php:133 includes/Elementor/Forum_posts.php:70
+#: includes/Elementor/Forums.php:82 includes/Elementor/Single_forum.php:122
+msgid "Order"
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:136
-msgid "No forum has been found . Perhaps"
+#: includes/Elementor/Forum_Ajax.php:82
+msgid "Title Style"
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:139
-msgid "Create Forum"
+#: includes/Elementor/Forum_Ajax.php:91
+msgid "Forum title typography"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/forums.php:40
-msgid "Edit this forum."
+#: includes/Elementor/Forum_Ajax.php:100 includes/Elementor/Forum_Ajax.php:116
+msgid "Forum title color"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/forums.php:47
-msgid "View this forum in new tab"
+#: includes/Elementor/Forum_Ajax.php:133
+msgid "Forum meta typography"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/forums.php:53
-msgid "Delete this forum permanently"
+#: includes/Elementor/Forum_Ajax.php:142
+msgid "Forum meta color"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:13
-msgid "Add Forum"
+#: includes/Elementor/Forum_Ajax.php:159
+msgid "Parent forum typography"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:23
-msgid "Search for"
+#: includes/Elementor/Forum_Ajax.php:168
+msgid "Parent forum color"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:32
-msgid "Settings Icon"
+#: includes/Elementor/Forum_Ajax.php:183
+msgid "Parent forum hover color"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:41
-msgid "Choose classic UI"
+#: includes/Elementor/Forum_Ajax.php:217 includes/ajax_actions.php:67
+msgid "All"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:43
-msgid "Topics"
+#: includes/Elementor/Forum_Ajax.php:227
+msgid "Popular"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:44
+#: includes/Elementor/Forum_Ajax.php:234
+msgid "Featured"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:243
+msgid "Recent"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:250
+#: includes/admin/menu/admin_ui/tab_filters.php:62
+msgid "Unsolved"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:259
+#: includes/admin/menu/admin_ui/tab_filters.php:49
+msgid "Solved"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:281
+msgid "User circle alt icon"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:286
+#: includes/Elementor/inc/forum-ajax.php:91
+msgid "Time outline icon"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:300
+#: includes/Elementor/inc/forum-ajax.php:105
+msgid "Eye outline icon"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:305
+#: includes/Elementor/inc/forum-ajax.php:110
+msgid "Views"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:309
+msgid "Thumbs-up outline icon"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:319
+#: includes/Elementor/inc/forum-ajax.php:125
+msgid "Likes"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:323
+msgid "Chat bubbles icon"
+msgstr ""
+
+#: includes/Elementor/Forum_Ajax.php:328
+#: includes/Elementor/inc/forum-ajax.php:134
+#: includes/Elementor/inc/single-forum/single-forum-1.php:16
+#: includes/Elementor/inc/single-forum/single-forum-1.php:66
+#: includes/Elementor/inc/single-forum/single-forum-2.php:14
+#: includes/admin/menu/admin_ui/header.php:38
+#: includes/admin/widgets/forum-info/Forum_Information.php:87
 msgid "Replies"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:55
+#: includes/Elementor/Forum_Tab.php:19 includes/admin/Pro_Widget_Service.php:38
+msgid "BBPC Forum Tabs"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:44
+msgid "Forum Filter Options"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:51 includes/Elementor/Forum_Tab.php:169
+msgid "Forum Tab Title"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:54 includes/Elementor/Forum_Tab.php:118
+msgid "Enter the tab title"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:80 includes/Elementor/Forum_Tab.php:145
+msgid "More button text"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:91 includes/Elementor/Forum_Tab.php:154
+msgid "More button link"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:93 includes/Elementor/Forum_Tab.php:156
+msgid "https://your-link.com"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:108
+msgid "Topic Filter Options"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:115
+msgid "Topics Tab Title"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:117
+#: includes/Elementor/inc/forum/forum_tab.php:3
+msgid "Show Topics"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:178
+msgid "Tab Label Typography"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:187
+msgid "Tab Label Color"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:203
+msgid "Forum Tab Button"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:210 includes/Elementor/Search.php:421
+msgid "Margin"
+msgstr ""
+
+#: includes/Elementor/Forum_Tab.php:221
+msgid "Tab button padding"
+msgstr ""
+
+#: includes/Elementor/Forum_posts.php:31
+#: includes/admin/Pro_Widget_Service.php:29
+msgid "BBPC Forum Topics"
+msgstr ""
+
+#: includes/Elementor/Forum_posts.php:56 includes/Elementor/Forums.php:56
+#: includes/Elementor/Single_forum.php:107
+msgid "Filter Options"
+msgstr ""
+
+#: includes/Elementor/Forum_posts.php:62
+msgid "Show Forum Topics"
+msgstr ""
+
+#: includes/Elementor/Forum_posts.php:109
+msgid "Last active: "
+msgstr ""
+
+#: includes/Elementor/Forums.php:31 includes/admin/Pro_Widget_Service.php:47
+msgid "BBPC Forums"
+msgstr ""
+
+#: includes/Elementor/Forums.php:63
+msgid ""
+"Show the forums count at the initial view. Default is 5 forums in a row."
+msgstr ""
+
+#: includes/Elementor/Forums.php:72
+msgid "Hidden Forums"
+msgstr ""
+
+#: includes/Elementor/Forums.php:73
+msgid "Hidden forums will show on clicking on the More button."
+msgstr ""
+
+#: includes/Elementor/Forums.php:94 includes/Elementor/Single_forum.php:145
+msgid "Read More Text"
+msgstr ""
+
+#: includes/Elementor/Forums.php:106
+msgid "Forum Style"
+msgstr ""
+
+#: includes/Elementor/Forums.php:115
+msgid "Forum Title Typography"
+msgstr ""
+
+#: includes/Elementor/Forums.php:126
+msgid "More text typography"
+msgstr ""
+
+#: includes/Elementor/Forums.php:136
+msgid "More text color"
+msgstr ""
+
+#: includes/Elementor/Forums.php:172 includes/Elementor/Forums.php:213
+#: includes/Elementor/inc/forum/forum_tab.php:34
+msgid " Posts"
+msgstr ""
+
+#: includes/Elementor/Search.php:22 includes/admin/Pro_Widget_Service.php:56
+msgid "BBPC Search"
+msgstr ""
+
+#: includes/Elementor/Search.php:45 includes/Elementor/Search.php:202
+msgid "Form"
+msgstr ""
+
+#: includes/Elementor/Search.php:51
+msgid "Placeholder"
+msgstr ""
+
+#: includes/Elementor/Search.php:61
+msgid "Search Type"
+msgstr ""
+
+#: includes/Elementor/Search.php:65
+msgid "Icon"
+msgstr ""
+
+#: includes/Elementor/Search.php:66
+msgid "Text"
+msgstr ""
+
+#: includes/Elementor/Search.php:73
+msgid "Submit Button Icon"
+msgstr ""
+
+#: includes/Elementor/Search.php:87
+msgid "Submit Button Text"
+msgstr ""
+
+#: includes/Elementor/Search.php:90
+msgid "Search"
+msgstr ""
+
+#: includes/Elementor/Search.php:99
+msgid "Submit Alignment"
+msgstr ""
+
+#: includes/Elementor/Search.php:103 includes/Elementor/Search.php:145
+#: includes/admin/settings/csf/fields/typography/typography.php:171
+msgid "Left"
+msgstr ""
+
+#: includes/Elementor/Search.php:107 includes/Elementor/Search.php:153
+#: includes/admin/settings/csf/fields/typography/typography.php:173
+msgid "Right"
+msgstr ""
+
+#: includes/Elementor/Search.php:118 includes/Elementor/Search.php:414
+msgid "Keywords"
+msgstr ""
+
+#: includes/Elementor/Search.php:129
+msgid "Keywords Label"
+msgstr ""
+
+#: includes/Elementor/Search.php:141
+msgid "Keywords Alignment"
+msgstr ""
+
+#: includes/Elementor/Search.php:149
+#: includes/admin/settings/csf/fields/typography/typography.php:172
+msgid "Center"
+msgstr ""
+
+#: includes/Elementor/Search.php:166
+msgid "Title"
+msgstr ""
+
+#: includes/Elementor/Search.php:175
+msgid "Repeater List"
+msgstr ""
+
+#: includes/Elementor/Search.php:180
+msgid "Keyword #1"
+msgstr ""
+
+#: includes/Elementor/Search.php:183
+msgid "Keyword #2"
+msgstr ""
+
+#: includes/Elementor/Search.php:209
+msgid "Input"
+msgstr ""
+
+#: includes/Elementor/Search.php:216
+msgid "Text Color"
+msgstr ""
+
+#: includes/Elementor/Search.php:226
+msgid "Placeholder Color"
+msgstr ""
+
+#: includes/Elementor/Search.php:237
+msgid "Border"
+msgstr ""
+
+#: includes/Elementor/Search.php:244 includes/Elementor/Search.php:466
+msgid "Background Color"
+msgstr ""
+
+#: includes/Elementor/Search.php:255 includes/Elementor/Search.php:401
+#: includes/Elementor/Search.php:478
+msgid "Typography"
+msgstr ""
+
+#: includes/Elementor/Search.php:263 includes/Elementor/Search.php:315
+#: includes/Elementor/Search.php:486
+msgid "Padding"
+msgstr ""
+
+#: includes/Elementor/Search.php:274 includes/Elementor/Search.php:326
+#: includes/Elementor/Search.php:498
+msgid "Border Radius"
+msgstr ""
+
+#: includes/Elementor/Search.php:285
+msgid "Submit"
+msgstr ""
+
+#: includes/Elementor/Search.php:293
+msgid "Button Color"
+msgstr ""
+
+#: includes/Elementor/Search.php:305
+msgid "Background"
+msgstr ""
+
+#: includes/Elementor/Search.php:338
+msgid "Icon Size"
+msgstr ""
+
+#: includes/Elementor/Search.php:359 includes/Elementor/Search.php:380
+msgid "Spacing"
+msgstr ""
+
+#: includes/Elementor/Search.php:422
+msgid "Margin around the keywords block"
+msgstr ""
+
+#: includes/Elementor/Search.php:435
+msgid "Label Color"
+msgstr ""
+
+#: includes/Elementor/Search.php:447
+msgid "Label Typography"
+msgstr ""
+
+#: includes/Elementor/Search.php:455
+msgid "Keyword Color"
+msgstr ""
+
+#: includes/Elementor/Search/ajax-sarch-results.php:1
+#: includes/Elementor/inc/hero/ajax-search-results.php:1
+msgid "No Results Found"
+msgstr ""
+
+#: includes/Elementor/Search/search-spinner.php:2
+#: includes/Elementor/inc/hero/search-spinner.php:2
+msgid "loading"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:28
+#: includes/admin/Pro_Widget_Service.php:65
+msgid "BBPC Single Forum"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:53
+msgid "Preset Skins"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:59
+msgid "Select Forum"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:68
+msgid "Forums Style"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:73
+msgid "01 : Single Forum With Topics"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:77
+msgid "02 : Single Forum"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:90
+msgid "Thumbnail"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:96
+msgid "Custom Cover Image"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:98
+msgid "If this is not set, the featured image will be used by default"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:113
+#: includes/Elementor/inc/single-forum/single-forum-1.php:10
+#: includes/Elementor/inc/single-forum/single-forum-2.php:8
+#: includes/admin/menu/admin_ui/header.php:37
+#: includes/admin/widgets/forum-info/Forum_Information.php:69
+#: includes/ajax_actions.php:170 includes/ajax_actions.php:271
+msgid "Topics"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:114
+msgid "Maximum number of topics."
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:135
+msgid "Number of Words"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:137
+msgid "Number of words to show as forum content"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:148
+msgid "View All"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:157
+msgid "Single Forum Style"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:174
+msgid "Title Typography"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:184
+msgid "Title Color"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:202
+msgid "Excerpt Typography"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:211
+msgid "Excerpt Color"
+msgstr ""
+
+#: includes/Elementor/Single_forum.php:247
+msgid "Please select a forum."
+msgstr ""
+
+#: includes/Elementor/inc/forum-ajax.php:86
+msgid "User circle icon"
+msgstr ""
+
+#: includes/Elementor/inc/forum-ajax.php:115
+msgid "Thumbs up icon"
+msgstr ""
+
+#: includes/Elementor/inc/forum-ajax.php:129
+msgid "Chatbubbles outline icon"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:2
+msgid "Show Forum"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:36
+#: includes/Elementor/inc/forum/forum_tab.php:119
+#: includes/admin/menu/statistics.php:60
+msgid " Replies"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:73
+msgid "User circle"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:78
+msgid "Time outline"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:101
+msgid "View icon"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:103
+msgid " Views"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:106
+msgid "Like icon"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:113
+msgid " Likes"
+msgstr ""
+
+#: includes/Elementor/inc/forum/forum_tab.php:116
+msgid "Comment icon"
+msgstr ""
+
+#: includes/Elementor/inc/single-forum/single-forum-1.php:46
+msgid "Topic"
+msgstr ""
+
+#: includes/Elementor/inc/single-forum/single-forum-1.php:49
+msgid "Voice"
+msgstr ""
+
+#: includes/Elementor/inc/single-forum/single-forum-1.php:75
+msgid "Freshness"
+msgstr ""
+
+#: includes/Elementor/inc/single-forum/single-forum-1.php:126
+msgid "No posts found."
+msgstr ""
+
+#: includes/admin/Menu.php:18 includes/admin/menu/admin_ui/header.php:7
+#: includes/admin/menu/admin_ui/header.php:36 includes/ajax_actions.php:150
+#: includes/ajax_actions.php:251
+msgid "Forums"
+msgstr ""
+
+#: includes/admin/Pro_Widget_Map.php:29
+msgid "See it in Action"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:134
+msgid "Add Topic"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:149
+msgid "Folder Open"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:150
+msgid "No forum has been found . Perhaps"
+msgstr ""
+
+#: includes/admin/menu/admin_ui.php:153
+msgid "Create Forum"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/forums.php:39
+msgid "Edit this forum."
+msgstr ""
+
+#: includes/admin/menu/admin_ui/forums.php:46
+msgid "View this forum in new tab"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/forums.php:52
+msgid "Move this forum to the Trash"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:12
+msgid "Add Forum"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:19
+msgid "Search on ..."
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:26
+msgid "Settings Icon"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:35
+msgid "Choose classic UI"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/header.php:49
 msgid "Notifications"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:57
+#: includes/admin/menu/admin_ui/header.php:51
 msgid "Notify Icon"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:58
+#: includes/admin/menu/admin_ui/header.php:52
 msgid "Pro Icon"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:11
-msgid "Open"
+#: includes/admin/menu/admin_ui/tab_filters.php:7
+msgid "All topics"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:20
+#: includes/admin/menu/admin_ui/tab_filters.php:15
 msgid "Closed"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:28
+#: includes/admin/menu/admin_ui/tab_filters.php:23
+msgid "Open"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/tab_filters.php:31
 msgid "Hidden"
 msgstr ""
 
@@ -155,37 +711,29 @@ msgstr ""
 msgid "No Reply"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:49
-msgid "Solved"
+#: includes/admin/menu/admin_ui/tab_filters.php:74
+msgid "Trashed"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:62
-msgid "Unsolved"
-msgstr ""
-
-#: includes/admin/menu/admin_ui/tab_filters.php:72
-msgid "All topics"
-msgstr ""
-
-#: includes/admin/menu/admin_ui/tab_filters.php:82
-msgid "Trash"
-msgstr ""
-
-#: includes/admin/menu/admin_ui/topics.php:38
-#: includes/admin/menu/admin_ui/topics.php:124
+#: includes/admin/menu/admin_ui/topics.php:25
+#: includes/admin/menu/admin_ui/topics.php:123
 msgid "Approve this topic"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/topics.php:77
+#: includes/admin/menu/admin_ui/topics.php:76
 msgid " Publised replies"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/topics.php:83
+#: includes/admin/menu/admin_ui/topics.php:82
 msgid " Pending replies"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/topics.php:99
-msgid "Delete this topic permanently"
+#: includes/admin/menu/admin_ui/topics.php:91
+msgid "View this reply in new tab"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/topics.php:98
+msgid "Move this topic to the Trash"
 msgstr ""
 
 #: includes/admin/menu/statistics.php:10
@@ -197,6 +745,8 @@ msgid "BBP Core Logo"
 msgstr ""
 
 #: includes/admin/menu/statistics.php:20
+#: includes/admin/settings/options/pro-settings.php:15
+#: includes/admin/settings/options/settings.php:15
 #: includes/features/bbpc_attachments/code/admin.php:31
 msgid "Settings"
 msgstr ""
@@ -213,10 +763,6 @@ msgstr ""
 msgid " Topics"
 msgstr ""
 
-#: includes/admin/menu/statistics.php:60
-msgid " Replies"
-msgstr ""
-
 #: includes/admin/menu/statistics.php:65
 msgid " Topic Tags"
 msgstr ""
@@ -225,158 +771,883 @@ msgstr ""
 msgid " Empty Topic Tags"
 msgstr ""
 
+#: includes/admin/notices/asking-for-review.php:14
+msgid "Give BBP Core a review"
+msgstr ""
+
+#: includes/admin/notices/asking-for-review.php:16
+msgid ""
+"Thank you for choosing BBP Core. We hope you love it. Could you take a "
+"couple of seconds posting a nice review to share your happy experience?"
+msgstr ""
+
+#: includes/admin/notices/asking-for-review.php:19
+msgid "We will be forever grateful. Thank you in advance."
+msgstr ""
+
+#: includes/admin/notices/asking-for-review.php:22
+msgid "Rate now"
+msgstr ""
+
+#: includes/admin/notices/asking-for-review.php:23
+msgid "Later"
+msgstr ""
+
+#: includes/admin/notices/asking-for-review.php:24
+msgid "Already did"
+msgstr ""
+
+#: includes/admin/notices/core_installer.php:101
+msgid "You don't have permission to install the plugins"
+msgstr ""
+
+#: includes/admin/notices/notices.php:14
+msgid "Activate Now!"
+msgstr ""
+
+#: includes/admin/notices/notices.php:14
+msgid "Install Now!"
+msgstr ""
+
+#: includes/admin/notices/notices.php:20
+msgid "requires"
+msgstr ""
+
+#: includes/admin/notices/notices.php:20
+msgid "bbPress"
+msgstr ""
+
+#: includes/admin/notices/notices.php:20
+msgid " plugin to be installed. Please get the plugin now!"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:169
+msgid "Error while saving the changes."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:229
+msgid "Settings successfully imported."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:241
+#: includes/admin/settings/csf/classes/admin-options.class.php:257
+msgid "Default settings restored."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:328
+msgid "Settings saved."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:509
+msgid "You have unsaved changes, save your changes!"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:511
+msgid "show all settings"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:513
+#: includes/admin/settings/csf/fields/icon/icon.php:57
+#: includes/admin/settings/csf/fields/map/map.php:23
+msgid "Search..."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:516
+#: includes/admin/settings/csf/classes/admin-options.class.php:639
+msgid "Save"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:516
+#: includes/admin/settings/csf/classes/admin-options.class.php:639
+msgid "Saving..."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:517
+#: includes/admin/settings/csf/classes/admin-options.class.php:640
+msgid "Reset Section"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:517
+#: includes/admin/settings/csf/classes/admin-options.class.php:640
+msgid "Are you sure to reset this section options?"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:518
+#: includes/admin/settings/csf/classes/admin-options.class.php:641
+msgid "Reset All"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:518
+#: includes/admin/settings/csf/classes/admin-options.class.php:641
+#: includes/admin/settings/csf/classes/comment-options.class.php:201
+#: includes/admin/settings/csf/classes/metabox-options.class.php:278
+#: includes/admin/settings/csf/fields/backup/backup.php:31
+msgid "Reset"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:518
+#: includes/admin/settings/csf/classes/admin-options.class.php:641
+msgid "Are you sure you want to reset all settings to default values?"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/admin-options.class.php:616
+#: includes/admin/settings/csf/classes/comment-options.class.php:184
+#: includes/admin/settings/csf/classes/metabox-options.class.php:261
+#: includes/admin/settings/csf/fields/button_set/button_set.php:56
+#: includes/admin/settings/csf/fields/checkbox/checkbox.php:82
+#: includes/admin/settings/csf/fields/radio/radio.php:75
+#: includes/admin/settings/csf/fields/select/select.php:113
+#: includes/admin/settings/csf/functions/actions.php:41
+msgid "No data available."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/comment-options.class.php:202
+#: includes/admin/settings/csf/classes/metabox-options.class.php:279
+msgid "update post"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/comment-options.class.php:202
+#: includes/admin/settings/csf/classes/metabox-options.class.php:279
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/setup.class.php:615
+msgid "Are you sure?"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/setup.class.php:616
+#, php-format
+msgid "Please enter %s or more characters"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/setup.class.php:617
+msgid "Searching..."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/setup.class.php:618
+msgid "No results found."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/setup.class.php:719
+msgid "Oops! Not allowed."
+msgstr ""
+
+#: includes/admin/settings/csf/classes/setup.class.php:787
+#: includes/admin/settings/csf/classes/setup.class.php:791
+msgid "Field not found!"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/shortcode-options.class.php:210
+#: includes/admin/settings/csf/fields/group/group.php:23
+msgid "Add New"
+msgstr ""
+
+#: includes/admin/settings/csf/classes/shortcode-options.class.php:247
+#: includes/admin/settings/csf/functions/actions.php:16
+#: includes/admin/settings/csf/functions/actions.php:68
+#: includes/admin/settings/csf/functions/actions.php:106
+#: includes/admin/settings/csf/functions/actions.php:141
+#: includes/admin/settings/csf/functions/actions.php:170
+msgid "Error: Invalid nonce verification."
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:36
+#: includes/admin/settings/csf/fields/media/media.php:59
+msgid "Not selected"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:72
+#: includes/admin/settings/csf/fields/date/date.php:31
+#: includes/admin/settings/csf/fields/datetime/datetime.php:36
+msgid "From"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:90
+#: includes/admin/settings/csf/fields/date/date.php:32
+#: includes/admin/settings/csf/fields/datetime/datetime.php:37
+msgid "To"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:108
+msgid "Direction"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:114
+msgid "Gradient Direction"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:115
+msgid "&#8659; top to bottom"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:116
+msgid "&#8658; left to right"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:117
+msgid "&#8664; corner top to right"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:118
+msgid "&#8665; corner top to left"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:161
+msgid "Background Position"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:162
+msgid "Left Top"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:163
+msgid "Left Center"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:164
+msgid "Left Bottom"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:165
+msgid "Center Top"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:166
+msgid "Center Center"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:167
+msgid "Center Bottom"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:168
+msgid "Right Top"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:169
+msgid "Right Center"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:170
+msgid "Right Bottom"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:184
+msgid "Background Repeat"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:185
+msgid "Repeat"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:186
+msgid "No Repeat"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:187
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:188
+msgid "Repeat Vertically"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:202
+msgid "Background Attachment"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:203
+msgid "Scroll"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:204
+msgid "Fixed"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:218
+msgid "Background Size"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:219
+msgid "Cover"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:220
+msgid "Contain"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:221
+msgid "Auto"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:235
+msgid "Background Origin"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:236
+#: includes/admin/settings/csf/fields/background/background.php:254
+msgid "Padding Box"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:237
+#: includes/admin/settings/csf/fields/background/background.php:253
+msgid "Border Box"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:238
+#: includes/admin/settings/csf/fields/background/background.php:255
+msgid "Content Box"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:252
+msgid "Background Clip"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:269
+msgid "Background Blend Mode"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:270
+#: includes/admin/settings/csf/fields/link_color/link_color.php:36
+#: includes/admin/settings/csf/fields/typography/typography.php:186
+msgid "Normal"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:271
+msgid "Multiply"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:272
+msgid "Screen"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:273
+msgid "Overlay"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:274
+msgid "Darken"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:275
+msgid "Lighten"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:276
+msgid "Color Dodge"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:277
+msgid "Saturation"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:278
+msgid "Color"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/background/background.php:279
+msgid "Luminosity"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/backup/backup.php:26
+msgid "Import"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/backup/backup.php:29
+msgid "Export & Download"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:25
+#: includes/admin/settings/csf/fields/spacing/spacing.php:25
+msgid "top"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:26
+#: includes/admin/settings/csf/fields/spacing/spacing.php:26
+msgid "right"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:27
+#: includes/admin/settings/csf/fields/spacing/spacing.php:27
+msgid "bottom"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:28
+#: includes/admin/settings/csf/fields/spacing/spacing.php:28
+msgid "left"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:29
+#: includes/admin/settings/csf/fields/spacing/spacing.php:29
+msgid "all"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:51
+#: includes/admin/settings/csf/fields/typography/typography.php:214
+msgid "Solid"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:52
+#: includes/admin/settings/csf/fields/typography/typography.php:217
+msgid "Dashed"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:53
+#: includes/admin/settings/csf/fields/typography/typography.php:216
+msgid "Dotted"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:54
+#: includes/admin/settings/csf/fields/typography/typography.php:215
+msgid "Double"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:55
+msgid "Inset"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:56
+msgid "Outset"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:57
+msgid "Groove"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:58
+msgid "ridge"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/border/border.php:59
+#: includes/admin/settings/csf/fields/typography/typography.php:199
+#: includes/admin/settings/csf/fields/typography/typography.php:213
+msgid "None"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/checkbox/checkbox.php:23
+msgid "Check/Uncheck All"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/dimensions/dimensions.php:22
+msgid "width"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/dimensions/dimensions.php:23
+msgid "height"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/gallery/gallery.php:20
+msgid "Add Gallery"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/gallery/gallery.php:21
+msgid "Edit Gallery"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/gallery/gallery.php:22
+msgid "Clear"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/group/group.php:41
+#: includes/admin/settings/csf/fields/repeater/repeater.php:27
+msgid "Error: Field ID conflict."
+msgstr ""
+
+#: includes/admin/settings/csf/fields/group/group.php:52
+#: includes/admin/settings/csf/fields/group/group.php:107
+#: includes/admin/settings/csf/fields/repeater/repeater.php:48
+#: includes/admin/settings/csf/fields/repeater/repeater.php:76
+msgid "Are you sure to delete this item?"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/group/group.php:141
+#: includes/admin/settings/csf/fields/repeater/repeater.php:89
+msgid "You cannot add more."
+msgstr ""
+
+#: includes/admin/settings/csf/fields/group/group.php:142
+#: includes/admin/settings/csf/fields/repeater/repeater.php:90
+msgid "You cannot remove more."
+msgstr ""
+
+#: includes/admin/settings/csf/fields/icon/icon.php:20
+#: includes/admin/settings/csf/fields/icon/icon.php:53
+msgid "Add Icon"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/icon/icon.php:21
+msgid "Remove Icon"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/link/link.php:20
+msgid "Add Link"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/link/link.php:21
+msgid "Edit Link"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/link/link.php:22
+msgid "Remove Link"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/link_color/link_color.php:37
+#: includes/admin/settings/options/options_voting.php:65
+msgid "Hover"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/link_color/link_color.php:38
+msgid "Active"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/link_color/link_color.php:39
+msgid "Visited"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/link_color/link_color.php:40
+msgid "Focus"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/map/map.php:24
+msgid "Latitude"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/map/map.php:25
+msgid "Longitude"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/media/media.php:25
+#: includes/admin/settings/csf/fields/upload/upload.php:24
+msgid "Upload"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/media/media.php:26
+#: includes/admin/settings/csf/fields/upload/upload.php:25
+msgid "Remove"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/sorter/sorter.php:21
+msgid "Enabled"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/sorter/sorter.php:22
+msgid "Disabled"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/switcher/switcher.php:20
+msgid "On"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/switcher/switcher.php:21
+msgid "Off"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:96
+msgid "Font Family"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:97
+msgid "Select a font"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:105
+msgid "Backup Font Family"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:119
+#: includes/admin/settings/csf/fields/typography/typography.php:132
+#: includes/admin/settings/csf/fields/typography/typography.php:145
+#: includes/admin/settings/csf/fields/typography/typography.php:160
+#: includes/admin/settings/csf/fields/typography/typography.php:176
+#: includes/admin/settings/csf/fields/typography/typography.php:189
+#: includes/admin/settings/csf/fields/typography/typography.php:203
+#: includes/admin/settings/csf/fields/typography/typography.php:221
+msgid "Default"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:130
+msgid "Font Style"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:144
+#: includes/admin/settings/csf/fields/typography/typography.php:145
+msgid "Load Extra Styles"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:158
+msgid "Subset"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:168
+msgid "Text Align"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:170
+msgid "Inherit"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:174
+msgid "Justify"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:175
+msgid "Initial"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:184
+msgid "Font Variant"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:187
+msgid "Small Caps"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:188
+msgid "All Small Caps"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:197
+msgid "Text Transform"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:200
+msgid "Capitalize"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:201
+msgid "Uppercase"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:202
+msgid "Lowercase"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:211
+msgid "Text Decoration"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:218
+msgid "Wavy"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:219
+msgid "Overline"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:220
+msgid "Line-through"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:233
+msgid "Font Size"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:245
+msgid "Line Height"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:257
+msgid "Letter Spacing"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:269
+msgid "Word Spacing"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:284
+msgid "Font Color"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:295
+msgid "Custom Style"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:362
+msgid "Custom Web Fonts"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:368
+msgid "Safe Web Fonts"
+msgstr ""
+
+#: includes/admin/settings/csf/fields/typography/typography.php:388
+msgid "Google Web Fonts"
+msgstr ""
+
+#: includes/admin/settings/csf/functions/actions.php:72
+#: includes/admin/settings/csf/functions/actions.php:110
+msgid "Error: Invalid key."
+msgstr ""
+
+#: includes/admin/settings/csf/functions/actions.php:114
+msgid "Error: The response is not a valid JSON response."
+msgstr ""
+
+#: includes/admin/settings/csf/functions/actions.php:174
+msgid "Error: Invalid term ID."
+msgstr ""
+
+#: includes/admin/settings/csf/functions/actions.php:180
+msgid "Error: You do not have permission to do that."
+msgstr ""
+
+#: includes/admin/settings/csf/functions/validate.php:14
+#: includes/admin/settings/csf/functions/validate.php:86
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: includes/admin/settings/csf/functions/validate.php:32
+#: includes/admin/settings/csf/functions/validate.php:106
+msgid "Please enter a valid number."
+msgstr ""
+
+#: includes/admin/settings/csf/functions/validate.php:50
+#: includes/admin/settings/csf/functions/validate.php:126
+msgid "This field is required."
+msgstr ""
+
+#: includes/admin/settings/csf/functions/validate.php:68
+#: includes/admin/settings/csf/functions/validate.php:146
+msgid "Please enter a valid URL."
+msgstr ""
+
 #: includes/admin/settings/options/options_admin_ui.php:29
 msgid "Admin UI"
 msgstr ""
 
 #: includes/admin/settings/options/options_admin_ui.php:35
-msgid "Hide bbPress post types"
+msgid "Classic bbPress post types"
 msgstr ""
 
 #: includes/admin/settings/options/options_admin_ui.php:36
-msgid "Native Forum, Topics and Replies post types menus will be hidden."
+msgid ""
+"Since you can manage the Forums from our unified forums UI, you can hide or "
+"disable the classic bbPress menus."
 msgstr ""
 
-#: includes/admin/settings/options/options_admin_ui.php:42
+#: includes/admin/settings/options/options_admin_ui.php:37
+msgid "Native Forum, Topics and Replies post types menus will be hidden. "
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:38
+#: includes/admin/settings/options/options_attachments.php:39
+msgid "Show"
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:39
+#: includes/admin/settings/options/options_attachments.php:38
+#: includes/admin/settings/options/options_voting.php:67
+msgid "Hide"
+msgstr ""
+
+#: includes/admin/settings/options/options_admin_ui.php:46
 msgid "Choose default filter"
 msgstr ""
 
-#: includes/admin/settings/options/options_admin_ui.php:51
+#: includes/admin/settings/options/options_admin_ui.php:55
 msgid "Filters to show on admin page."
 msgstr ""
 
 #: includes/admin/settings/options/options_attachments.php:6
-#: includes/admin/settings/options/options_attachments.php:14
-#: includes/features/bbpc_attachments/code/front.php:267
-#: includes/features/bbpc_attachments/code/meta.php:122
+#: includes/features/bbpc_attachments/code/front.php:264
+#: includes/features/bbpc_attachments/code/meta.php:106
 #: includes/features/bbpc_attachments/forms/uploader.php:16
 msgid "Attachments"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:20
+#: includes/admin/settings/options/options_attachments.php:12
 msgid "Show attachments on topic replies."
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:26
+#: includes/admin/settings/options/options_attachments.php:18
 msgctxt "bbp core maximum file size upload"
 msgid "Maximum File Size"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:27
+#: includes/admin/settings/options/options_attachments.php:19
 msgid "Input the values in Kilo Bytes (KB)"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:34
+#: includes/admin/settings/options/options_attachments.php:28
 msgctxt "bbp core maximum file size upload"
 msgid "Maximum number of file to upload at once"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:43
+#: includes/admin/settings/options/options_attachments.php:37
 msgid "Hide Attachment from visitors"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:50
+#: includes/admin/settings/options/options_attachments.php:45
 msgid "Who can upload files "
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:56
+#: includes/admin/settings/options/options_attachments.php:51
 msgid "Users who can upload attachments."
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:69
+#: includes/admin/settings/options/options_attachments.php:64
 msgid "When an associated Topic or Reply has been deleted"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:76
+#: includes/admin/settings/options/options_attachments.php:71
 msgid "Delete the attachment along with forum/topic."
 msgstr ""
 
+#: includes/admin/settings/options/options_attachments.php:77
+msgid "Forums integration"
+msgstr ""
+
 #: includes/admin/settings/options/options_attachments.php:82
-msgid "Forums Integration"
+msgid ""
+"With these options you can modify the forums to include attachment elements."
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:87
-msgid "With these options you can modify the forums to include attachment elements."
-msgstr ""
-
-#: includes/admin/settings/options/options_attachments.php:96
+#: includes/admin/settings/options/options_attachments.php:88
 msgid "Attachment Icon"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:103
+#: includes/admin/settings/options/options_attachments.php:95
 msgid "File type Icons"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:109
-#: includes/admin/settings/options/options_attachments.php:180
+#: includes/admin/settings/options/options_attachments.php:101
 msgid "Display of image attachments"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:114
-#: includes/admin/settings/options/options_attachments.php:185
-msgid "Attached images can be displayed as thumbnails, and from here you can control this."
+#: includes/admin/settings/options/options_attachments.php:106
+msgid ""
+"Attached images can be displayed as thumbnails, and from here you can "
+"control this."
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:120
-#: includes/admin/settings/options/options_attachments.php:191
+#: includes/admin/settings/options/options_attachments.php:112
 msgid "With Caption"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:127
-#: includes/admin/settings/options/options_attachments.php:198
-msgid "Inline"
+#: includes/admin/settings/options/options_attachments.php:119
+msgid "Image thumbnails size"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:134
-#: includes/admin/settings/options/options_attachments.php:205
-msgid "CSS Class"
+#: includes/admin/settings/options/options_attachments.php:124
+msgid ""
+"Changing thumbnails size affects only new image attachments. To use new size "
+"for old attachments, resize them using Regenerate Thumbnails plugin."
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:140
-#: includes/admin/settings/options/options_attachments.php:212
-msgid "REL Attribute"
-msgstr ""
-
-#: includes/admin/settings/options/options_attachments.php:141
-#: includes/admin/settings/options/options_attachments.php:213
-msgid "lightbox"
-msgstr ""
-
-#: includes/admin/settings/options/options_attachments.php:142
-#: includes/admin/settings/options/options_attachments.php:214
-msgid "You can use these tags: %ID%, %TOPIC%"
-msgstr ""
-
-#: includes/admin/settings/options/options_attachments.php:147
-#: includes/admin/settings/options/options_attachments.php:221
-msgid "Image thumbnails size."
-msgstr ""
-
-#: includes/admin/settings/options/options_attachments.php:152
-#: includes/admin/settings/options/options_attachments.php:226
-msgid "Changing thumbnails size affects only new image attachments. To use new size for old attachments, resize them using Regenerate Thumbnails plugin."
-msgstr ""
-
-#: includes/admin/settings/options/options_attachments.php:158
-#: includes/admin/settings/options/options_attachments.php:232
+#: includes/admin/settings/options/options_attachments.php:130
 msgid "Thumbnail width"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:159
-#: includes/admin/settings/options/options_attachments.php:166
-#: includes/admin/settings/options/options_attachments.php:233
-#: includes/admin/settings/options/options_attachments.php:240
-msgctxt "attachment image thumbnail size"
-msgid "px"
-msgstr ""
-
-#: includes/admin/settings/options/options_attachments.php:165
-#: includes/admin/settings/options/options_attachments.php:239
+#: includes/admin/settings/options/options_attachments.php:137
 msgid "Thumbnail height"
 msgstr ""
 
-#: includes/admin/settings/options/options_attachments.php:175
-msgid "Images"
+#: includes/admin/settings/options/options_general.php:6
+msgid "General"
+msgstr ""
+
+#: includes/admin/settings/options/options_general.php:11
+msgid "Frontend Brand Color"
 msgstr ""
 
 #: includes/admin/settings/options/options_private_replies.php:6
@@ -427,7 +1698,7 @@ msgid "Below User"
 msgstr ""
 
 #: includes/admin/settings/options/options_voting.php:37
-msgid "Show Labels."
+msgid "Show Labels"
 msgstr ""
 
 #: includes/admin/settings/options/options_voting.php:38
@@ -466,16 +1737,8 @@ msgstr ""
 msgid "Choose how to display the number of up votes and down votes"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:65
-msgid "Hover"
-msgstr ""
-
 #: includes/admin/settings/options/options_voting.php:66
 msgid "Always Show"
-msgstr ""
-
-#: includes/admin/settings/options/options_voting.php:67
-msgid "Hide"
 msgstr ""
 
 #: includes/admin/settings/options/options_voting.php:74
@@ -512,63 +1775,206 @@ msgid "Disable voting for visitors who are not logged in"
 msgstr ""
 
 #: includes/admin/settings/options/options_voting.php:111
-msgid "Scores will display (if configured to), but voting will be disabled if not logged in"
-msgstr ""
-
-#: includes/admin/settings/options/options_voting.php:118
-msgid "Disable adding new votes after a topic is closed"
+msgid ""
+"Scores will display (if configured to), but voting will be disabled if not "
+"logged in"
 msgstr ""
 
 #: includes/admin/settings/options/options_voting.php:119
-msgid "Scores will display (if configured to), but new votes for the topic or the topic's replies will be disabled"
+msgid "Disable adding new votes after a topic is closed"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:126
+#: includes/admin/settings/options/options_voting.php:120
+msgid ""
+"Scores will display (if configured to), but new votes for the topic or the "
+"topic's replies will be disabled"
+msgstr ""
+
+#: includes/admin/settings/options/options_voting.php:128
 msgid "Don't allow authors to vote on their own topic/reply"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:127
+#: includes/admin/settings/options/options_voting.php:129
 msgid "They can still vote on other people's topics/replies"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:132
+#: includes/admin/settings/options/options_voting.php:135
 msgid "Admin Voting"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:139
+#: includes/admin/settings/options/options_voting.php:142
 msgid "Allow any administrator user to vote as much as they want?"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:144
+#: includes/admin/settings/options/options_voting.php:149
 msgid "Sort by Voting Scores"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:151
+#: includes/admin/settings/options/options_voting.php:156
 msgid "Sort topics in a forum using their voting scores?"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:152
+#: includes/admin/settings/options/options_voting.php:157
 msgid "Highest voted topics on top"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:159
+#: includes/admin/settings/options/options_voting.php:165
 msgid "Sort replies on a topic using their voting scores?"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:160
+#: includes/admin/settings/options/options_voting.php:166
 msgid "Highest voted replies on top"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:167
+#: includes/admin/settings/options/options_voting.php:174
 msgid " Break out the lead topic to separate it from the replies"
 msgstr ""
 
-#: includes/admin/settings/options/options_voting.php:168
-msgid "Simply enabled the built-in bbPress hook, bbp_show_lead_topic. This is useful to resolve a bug in bbPress when sort order is messed up when Threaded Replies are enabled in bbPress."
+#: includes/admin/settings/options/options_voting.php:175
+msgid ""
+"Simply enabled the built-in bbPress hook, bbp_show_lead_topic. This is "
+"useful to resolve a bug in bbPress when sort order is messed up when "
+"Threaded Replies are enabled in bbPress."
 msgstr ""
 
+#: includes/admin/settings/options/pro-settings.php:11
 #: includes/admin/settings/options/settings.php:11
 msgid "BBP Core Settings"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/Forum_Information.php:11
+msgid "BBPC Forum Information"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/Forum_Information.php:12
+msgid "Insert forum information widget in forum sidebar"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/Forum_Information.php:26
+msgid "Forum Informations"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/Forum_Information.php:102
+msgid "BBP Core Pro avatar icon"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/Forum_Information.php:105
+msgid "Last post by"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/Forum_Information.php:127
+msgid "Last activity"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/Forum_Information.php:145
+msgid "Actions"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:2
+msgid "Basic"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:5
+msgid "Title:"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:10
+msgid "Information to show"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:15
+msgid "Show Topics Count"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:18
+msgid "Show replies count"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:21
+msgid "Show Icons"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:25
+msgid "Show last post user"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:28
+msgid "Show last activity"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:32
+msgid "Actions to show"
+msgstr ""
+
+#: includes/admin/widgets/forum-info/admin-options.php:35
+msgid "Show subscribe button"
+msgstr ""
+
+#: includes/ajax_actions.php:73
+msgid "Docs"
+msgstr ""
+
+#: includes/ajax_actions.php:80
+msgid "Forum"
+msgstr ""
+
+#: includes/ajax_actions.php:84
+msgid "Blog"
+msgstr ""
+
+#: includes/ajax_actions.php:100
+msgid "Blog Posts"
+msgstr ""
+
+#: includes/ajax_actions.php:123
+msgid "Documentation"
+msgstr ""
+
+#: includes/features/bbp-private-replies.php:88
+msgid "Set author's post as private."
+msgstr ""
+
+#: includes/features/bbp-private-replies.php:92
+msgid "Set as private reply"
+msgstr ""
+
+#: includes/features/bbp-private-replies.php:201
+msgid "This reply has been marked as private."
+msgstr ""
+
+#: includes/features/bbp-private-replies.php:203
+msgid "This is a private reply."
+msgstr ""
+
+#: includes/features/bbp_solved_topic.php:58
+#: includes/features/bbp_solved_topic.php:66
+msgid "Mark as solved"
+msgstr ""
+
+#: includes/features/bbp_solved_topic.php:61
+#: includes/features/bbp_solved_topic.php:64
+msgid "Mark as unsolved"
+msgstr ""
+
+#: includes/features/bbp_solved_topic.php:80
+#: includes/features/bbp_solved_topic.php:92
+msgid "You do not have the permission to do that!"
+msgstr ""
+
+#: includes/features/bbp_solved_topic.php:137
+msgid "Set this reply as Best Answer."
+msgstr ""
+
+#: includes/features/bbp_solved_topic.php:157
+msgid "Set this post as solved."
+msgstr ""
+
+#: includes/features/bbp_solved_topic.php:336
+msgid "Best Answer"
+msgstr ""
+
+#: includes/features/bbp_solved_topic.php:369 includes/hooks/actions.php:27
+msgid "Resolved"
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:40
@@ -616,7 +2022,10 @@ msgid "Support Forum on WordPress.org"
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:75
-msgid "On Dev4Press website you can find many useful plugins, themes and tutorials, all for WordPress. Please, take a few minutes to browse some of these resources, you might find some of them very useful."
+msgid ""
+"On Dev4Press website you can find many useful plugins, themes and tutorials, "
+"all for WordPress. Please, take a few minutes to browse some of these "
+"resources, you might find some of them very useful."
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:76
@@ -624,7 +2033,9 @@ msgid "Plugins"
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:76
-msgid "We have more than 10 plugins available, some of them are commercial and some are available for free."
+msgid ""
+"We have more than 10 plugins available, some of them are commercial and some "
+"are available for free."
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:77
@@ -632,7 +2043,9 @@ msgid "Knowledge Base"
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:77
-msgid "Premium and free tutorials for our plugins themes, and many general and practical WordPress tutorials."
+msgid ""
+"Premium and free tutorials for our plugins themes, and many general and "
+"practical WordPress tutorials."
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:78
@@ -640,7 +2053,9 @@ msgid "Support Forums"
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:78
-msgid "Premium support forum for all with valid licenses to get help. Also, report bugs and leave suggestions."
+msgid ""
+"Premium support forum for all with valid licenses to get help. Also, report "
+"bugs and leave suggestions."
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/defaults.php:13
@@ -675,39 +2090,40 @@ msgstr ""
 msgid "Server extension restriction stopped upload."
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:92
+#: includes/features/bbpc_attachments/code/front.php:89
 msgid "This operation is not reversible. Are you sure?"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:251
+#: includes/features/bbpc_attachments/code/front.php:248
 msgid "attachment"
 msgid_plural "attachments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/features/bbpc_attachments/code/front.php:272
+#: includes/features/bbpc_attachments/code/front.php:269
+#, php-format
 msgid "You must be <a href='%s'>logged in</a> to view attached files."
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:301
+#: includes/features/bbpc_attachments/code/front.php:298
 msgid "delete"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:305
+#: includes/features/bbpc_attachments/code/front.php:302
 msgid "detach"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:403
+#: includes/features/bbpc_attachments/code/front.php:388
 #: includes/features/bbpc_attachments/forms/attachments/meta_files.php:20
 msgid "Upload Errors"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/meta.php:136
+#: includes/features/bbpc_attachments/code/meta.php:120
 msgid "Attachments Settings"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/meta.php:137
-#: includes/features/bbpc_attachments/code/meta.php:138
+#: includes/features/bbpc_attachments/code/meta.php:121
+#: includes/features/bbpc_attachments/code/meta.php:122
 msgid "Attachments List"
 msgstr ""
 
@@ -764,9 +2180,28 @@ msgid "Upload Attachments"
 msgstr ""
 
 #: includes/features/bbpc_attachments/forms/uploader.php:9
+#, php-format
 msgid "Maximum file size allowed is %s."
 msgstr ""
 
 #: includes/features/bbpc_attachments/forms/uploader.php:19
 msgid "Add another file"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://spider-themes.net/bbp-core"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Expand bbPress powered forums with useful features like - private reply, "
+"solved topics ..."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "spider-themes"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://profiles.wordpress.org/spiderdevs/"
 msgstr ""
