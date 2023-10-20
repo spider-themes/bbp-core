@@ -33,7 +33,7 @@ class Forum_Tab extends Widget_Base {
 
 	// scripts dependencies
 	public function get_script_depends() {
-		return [ '' ];
+		return [ 'bbpc_js' ];
 	}
 
 

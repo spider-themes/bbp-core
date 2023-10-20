@@ -4,10 +4,10 @@ namespace BBPCorePro\WpWidgets;
 
 use WP_Widget;
 
+wp_enqueue_style( 'bbp-core-admin' );
 // Newsletter
 class Forum_Information extends WP_Widget {
-    
-	public function __construct() { // 'Newsletter' Widget Defined
+	public function __construct() {
 		parent::__construct( 'bbpc_forum_info', esc_html__( 'BBPC Forum Information', 'bbp-core-pro' ), array(
 			'description' => esc_html__( 'Insert forum information widget in forum sidebar', 'bbp-core-pro' ),
 			'classname'   => 'bbpc_forum_information'
@@ -17,8 +17,6 @@ class Forum_Information extends WP_Widget {
 	// Front End
 	public function widget( $args, $instance ) {
         // if single forum page
-        // if only forum single page
-
         if ( ! isset( $args['widget_id'] ) ) {
             $args['widget_id'] = $this->id;
         }
@@ -99,7 +97,7 @@ class Forum_Information extends WP_Widget {
                                         <?php 
                                         if( $show_icons == 'on' ) :
                                             ?>
-                                            <img src="<?php echo BBPCOREPRO_IMG ?>/avatar.svg" alt="<?php esc_attr_e( 'BBP Core Pro avatar icon', 'bbp-core' ); ?>">
+                                            <img src="<?php echo BBPC_IMG ?>/avatar.svg" alt="<?php esc_attr_e( 'BBP Core Pro avatar icon', 'bbp-core' ); ?>">
                                             <?php 
                                         endif;
                                         esc_html_e( 'Last post by', 'bbp-core' );
@@ -133,6 +131,8 @@ class Forum_Information extends WP_Widget {
                             endif;
                             
                             if ( $show_subscribe == 'on' ) :
+                                wp_enqueue_style( 'bbpc-frontend-global' );
+                                wp_enqueue_script( 'bbpc-wp-widget' );
                                 ?>
                                 <tr class="show_subscribe">
                                     <th>
@@ -176,8 +176,8 @@ class Forum_Information extends WP_Widget {
         $show_replies_count     = isset( $instance['show_replies_count'] ) ? esc_attr( $instance['show_replies_count'] ) : '';
         $show_last_post_user    = isset( $instance['show_last_post_user'] ) ? esc_attr( $instance['show_last_post_user'] ) : '';
         $show_last_activity     = isset( $instance['show_last_activity'] ) ? esc_attr( $instance['show_last_activity'] ) : '';
-        $show_subscribe         = isset( $instance['show_subscribe'] ) ? esc_attr( $instance['show_subscribe'] ) : '';
-        require plugin_dir_path(__FILE__) . 'admin-options.php'; 
+        $show_subscribe         = isset( $instance['show_subscribe'] ) ? esc_attr( $instance['show_subscribe'] ) : '';       
+        require plugin_dir_path(__FILE__) . 'admin-options.php';   
 	}
 
     public function update($new_instance, $old_instance){

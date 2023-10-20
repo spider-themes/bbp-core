@@ -2,6 +2,7 @@
 $optionReview = get_option('bbpc_notify_review');
 if ( time() >= (int)$optionReview && $optionReview !== '0' ) {
     add_action('admin_notices', 'bbpc_notify_give_review');
+    wp_enqueue_script( 'bbpc-notify-review' );
 }
 add_action('wp_ajax_bbpc_notify_save_review', 'bbpc_notify_save_review');
 

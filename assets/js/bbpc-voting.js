@@ -13,7 +13,7 @@ function bbpress_post_vote_link_clicked(post_id, direction) {
         'post_id': post_id,
         'direction': direction
     };
-    jQuery.post(bbp_voting_ajax_object.ajax_url, data, function(response) {
+    jQuery.post(bbpc_localize_script.ajaxurl, data, function(response) {
         if(response.hasOwnProperty('error')) {
             // Error response
             console.log('Voting error:', response.error);
@@ -65,7 +65,7 @@ function bbp_voting_select_accepted_answer(post_id) {
         'action': 'bbp_voting_select_accepted_answer',
         'post_id': post_id
     };
-    jQuery.post(bbp_voting_ajax_object.ajax_url, data, function(response) {
+    jQuery.post(bbpc_localize_script.ajaxurl, data, function(response) {
         console.log('Accepted answer', response);
         if(response) window.location.reload();
     });

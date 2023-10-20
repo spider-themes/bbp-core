@@ -24,3 +24,7 @@
   margin: 0;
   padding: 0 !important;
 }
+.bbp__success-subscribe.alert {
+  border: 1px solid #94e3a1;
+  text-align: center;
+}

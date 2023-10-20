@@ -27,11 +27,11 @@ class Search extends Widget_Base {
 	}
 
 	public function get_style_depends() {
-		return [ 'ama-core-style' ];
+		return [ 'ama-core-style', 'bbpc-el-widgets' ];
 	}
 
 	public function get_script_depends() {
-		return [ 'bbpc-frontend-js' ];
+		return [ 'bbpc-frontend-js', 'bbpc-frontend-js' ];
 	}
 
 	public function get_categories() {

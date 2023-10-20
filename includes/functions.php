@@ -25,18 +25,26 @@ function bbpc_is_premium() {
  *
  * @return bool|void
  */
-function bbpc_admin_pages() {
-	$admin_page = $_GET['page'] ?? '';
-	$post_type  = $_GET['post_type'] ?? '';
+function bbpc_admin_pages($admin) {
+	$current_url 	= ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+	
+	if ( $admin == 'admin' ){
+		if ( $current_url == admin_url('admin.php?page=bbp-core') ) {
+			return true;
+		}
+	} elseif ( $admin == 'settings' ) {
+		if ( $current_url == admin_url('admin.php?page=bbp-core-settings') ) {
+			return true;
+		}
+	}
+}
 
-	if ( $admin_page == 'bbp-core'
-	     || $admin_page == 'bbp-core-settings'
-	     || strstr( $_SERVER['REQUEST_URI'], 'wp-admin/post-new.php' )
-	     || strstr( $_SERVER['REQUEST_URI'], 'wp-admin/post.php' )
-	) {
+function bbpc_forum_assets(){
+	if ( bbp_is_single_forum() ||  bbp_is_single_topic() ) {
 		return true;
 	}
 }
+
 
 /**
  * Posts Arraty

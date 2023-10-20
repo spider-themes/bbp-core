@@ -15,12 +15,12 @@ jQuery(document).ready(function () {
         jQuery
         .ajax({
           dataType: 'json',
-          url: bbpc_local_object.ajaxurl,
+          url: bbp_core_local_object.ajaxurl,
           type: "post",
           data: {
             action: "bbpc_notify_save_review",
             field: fieldValue,
-            nonce: bbpc_local_object.nonce,
+            nonce: bbp_core_local_object.nonce,
           },
         })
         .done(function (result) {
