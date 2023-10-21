@@ -16,7 +16,7 @@ class Assets {
 	public function admin_scripts() {
 		
 		wp_register_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );		
-		wp_register_style( 'sweetalert', BBPC_ASSETS . '/css/admin/sweetalert.css' );
+		wp_register_style( 'sweetalert', BBPC_ASSETS . '/css/sweetalert.css' );
 		
 		wp_register_script( 'sweetalert', BBPC_ASSETS . 'js/sweetalert.min.js', [ 'jquery' ], '1.0', true );
         wp_register_script( 'bbpc-notify-review', BBPC_ASSETS . 'admin/js/review.js', array( 'jquery' ), BBPC_VERSION, true );
