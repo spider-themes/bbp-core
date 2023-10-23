@@ -2,47 +2,24 @@
     'use sticky'
     $(document).ready(function() {
 
-        $('.st-pro-notice ul li:last-child label input').attr('disabled', true);
+        $('body.bbpc-no-pro .st-pro-notice ul li:last-child label input').attr('disabled', true);
         // BBP Core pro notice.
         function bbpc_pro_notice() {
-            if ( $('body').hasClass('valid') ) {
-                $('.st-pro-notice:not(div[class*="active-theme"])').on('click', function (e) {
-                    e.preventDefault();
-                    let href = $(this).attr('href')
-                    Swal.fire({
-                        title: 'Opps...',
-                        html: 'This is a PRO feature. You need to <a href="admin.php?page=eazydocs-pricing"><strong class="upgrade-link">Upgrade&nbsp;&nbsp;➤</strong></a> to the Premium Version to use this feature',
-                        icon: "warning",
-                        buttons: [false, "Close"],
-                        dangerMode: true
-                    })
-                })
-            } else {
+            if ( $('body').hasClass('bbpc-no-pro') ) {
                 $('.st-pro-notice').on('click', function (e) {
                     e.preventDefault();
-                    let href = $(this).attr('href')
                     Swal.fire({
                         title: 'Opps...',
-                        html: 'This is a PRO feature. You need to <a href="admin.php?page=eazydocs-pricing"><strong class="upgrade-link">Upgrade&nbsp;&nbsp;➤</strong></a> to the Premium Version to use this feature',
+                        html: 'This is a PRO feature. You need to <a href="admin.php?page=bbp-core-pricing"><strong class="upgrade-link">Upgrade&nbsp;&nbsp;➤</strong></a> to the Premium Version to use this feature',
                         icon: "warning",
                         buttons: [false, "Close"],
                         dangerMode: true
                     })
-                })
+                });
+            } else {
+                // rmeove class if it has pro notice class
+                $('.csf-field').removeClass('st-pro-notice');
             }
-            
-            // BBP Core promax notice
-            $('body.ezd_promax .eazydocs-promax-notice').on('click', function (e) {
-                e.preventDefault();
-                let href = $(this).attr('href')
-                Swal.fire({
-                    title: 'Opps...',
-                    html: 'This is a PRO-MAX feature. You need to <a href="admin.php?page=eazydocs-pricing"><strong class="upgrade-link">Upgrade&nbsp;&nbsp;➤</strong></a> to the Premium Version to use this feature',
-                    icon: "warning",
-                    buttons: [false, "Close"],
-                    dangerMode: true
-                })
-            })
         }
         bbpc_pro_notice();
 

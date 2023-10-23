@@ -42,7 +42,7 @@
 						</div>
 					</li>
 					<?php
-					if ( class_exists( 'BBPCorePro' ) ) :
+					if ( bbpc_is_premium() ) :
 						do_action( 'bbpcorepro_notification' );
 					else :
 						?>

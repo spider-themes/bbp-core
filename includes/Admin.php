@@ -19,6 +19,12 @@ class Admin {
 		if ( isset( $_GET['page'] ) && 'bbp-core' === $_GET['page'] ) {
 			$classes .= ' bbpc-forum-ui';
 		}
+
+		// if has no pro plan.
+		if ( empty( bc_fs()->is_plan( 'pro' ) ) ) {
+			$classes .= ' bbpc-no-pro';
+		}
+
 		return $classes;
 	}
 }
