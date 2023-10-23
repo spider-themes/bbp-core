@@ -172,7 +172,7 @@ final class BBP_Core {
 
 		if ( is_admin() ) {
 			new Admin();
-			new Admin\Assets();
+			new admin\Assets();
 		}elseif ( ! is_admin() ) {
 			new Frontend\Assets();
 		}
