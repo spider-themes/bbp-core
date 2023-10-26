@@ -1,8 +1,8 @@
 === BBP Core - Expand bbPress powered forums with useful features ===
-Contributors: spiderdevs, arafatjamil01, mdjwel, delweratjk
+Contributors: spiderdevs, mdjwel, delweratjk
 Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, topic, reply
 Requires at least: 5.0
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.4
 Stable tag: 1.1.0
 License: GPLv2 or later
@@ -69,12 +69,15 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
-= v1.2.0 (13 July 2023) =
+= v1.2.0 (27 October 2023) =
 Fixed: BBP Core Search Form widget's overlay color on focus issue fixed
+Fixed: PHP Namespace issue
 Updated: Freemius SDK to v2.5.12
+Tweaked: Re-structured and optimized the codebase
 Tweaked: Removed some unnecessary files
 Tweaked: Made compatible with the Latest BBP Core Pro plugin
 Tweaked: Regenerated the POT file more accurately with the latest strings
+Tweaked: Forum Builder UI improved in the Admin Dashboard
 
 = v1.1.0 (13 July 2023) =
 New: BBPC Forums Elementor widgets added

@@ -2,15 +2,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BBP Core\n"
-"POT-Creation-Date: 2023-10-11 02:31+0600\n"
-"PO-Revision-Date: 2023-10-11 02:30+0600\n"
+"POT-Creation-Date: 2023-10-27 01:01+0600\n"
+"PO-Revision-Date: 2023-10-27 01:00+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: bbp-core.php\n"
@@ -31,28 +31,6 @@ msgstr ""
 msgid ""
 "Use %s widget and dozens more pro features to extend your toolbox and build "
 "sites faster and better."
-msgstr ""
-
-#: bbp-core.php:262
-msgid "Enter Forum Title"
-msgstr ""
-
-#: bbp-core.php:263
-msgid "Enter Topic Title"
-msgstr ""
-
-#: bbp-core.php:264
-msgid "Are you sure to delete?"
-msgstr ""
-
-#: bbp-core.php:265
-msgid ""
-"This forum will be deleted with all the topics and you won't be able to "
-"revert!"
-msgstr ""
-
-#: bbp-core.php:266
-msgid "This topic will be deleted and you won't be able to revert!"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -184,7 +162,8 @@ msgstr ""
 #: includes/Elementor/inc/single-forum/single-forum-1.php:66
 #: includes/Elementor/inc/single-forum/single-forum-2.php:14
 #: includes/admin/menu/admin_ui/header.php:38
-#: includes/admin/widgets/forum-info/Forum_Information.php:87
+#: includes/admin/settings/options/options_private_replies.php:6
+#: includes/admin/widgets/forum-info/Forum_Information.php:85
 msgid "Replies"
 msgstr ""
 
@@ -330,6 +309,7 @@ msgid "Icon"
 msgstr ""
 
 #: includes/Elementor/Search.php:66
+#: includes/admin/settings/options/options_solved_topics.php:129
 msgid "Text"
 msgstr ""
 
@@ -436,6 +416,8 @@ msgid "Button Color"
 msgstr ""
 
 #: includes/Elementor/Search.php:305
+#: includes/admin/settings/options/options_solved_topics.php:90
+#: includes/admin/settings/options/options_solved_topics.php:149
 msgid "Background"
 msgstr ""
 
@@ -514,7 +496,8 @@ msgstr ""
 #: includes/Elementor/inc/single-forum/single-forum-1.php:10
 #: includes/Elementor/inc/single-forum/single-forum-2.php:8
 #: includes/admin/menu/admin_ui/header.php:37
-#: includes/admin/widgets/forum-info/Forum_Information.php:69
+#: includes/admin/settings/options/options_solved_topics.php:7
+#: includes/admin/widgets/forum-info/Forum_Information.php:67
 #: includes/ajax_actions.php:170 includes/ajax_actions.php:271
 msgid "Topics"
 msgstr ""
@@ -623,6 +606,28 @@ msgstr ""
 
 #: includes/Elementor/inc/single-forum/single-forum-1.php:126
 msgid "No posts found."
+msgstr ""
+
+#: includes/admin/Assets.php:61
+msgid "Enter Forum Title"
+msgstr ""
+
+#: includes/admin/Assets.php:62
+msgid "Enter Topic Title"
+msgstr ""
+
+#: includes/admin/Assets.php:63
+msgid "Are you sure to delete?"
+msgstr ""
+
+#: includes/admin/Assets.php:64
+msgid ""
+"This forum will be deleted with all the topics and you won't be able to "
+"revert!"
+msgstr ""
+
+#: includes/admin/Assets.php:65
+msgid "This topic will be deleted and you won't be able to revert!"
 msgstr ""
 
 #: includes/admin/Menu.php:18 includes/admin/menu/admin_ui/header.php:7
@@ -745,7 +750,7 @@ msgid "BBP Core Logo"
 msgstr ""
 
 #: includes/admin/menu/statistics.php:20
-#: includes/admin/settings/options/pro-settings.php:15
+#: includes/admin/settings/options/options_solved_topics.php:60
 #: includes/admin/settings/options/settings.php:15
 #: includes/features/bbpc_attachments/code/admin.php:31
 msgid "Settings"
@@ -771,29 +776,29 @@ msgstr ""
 msgid " Empty Topic Tags"
 msgstr ""
 
-#: includes/admin/notices/asking-for-review.php:14
+#: includes/admin/notices/asking-for-review.php:15
 msgid "Give BBP Core a review"
 msgstr ""
 
-#: includes/admin/notices/asking-for-review.php:16
+#: includes/admin/notices/asking-for-review.php:17
 msgid ""
 "Thank you for choosing BBP Core. We hope you love it. Could you take a "
 "couple of seconds posting a nice review to share your happy experience?"
 msgstr ""
 
-#: includes/admin/notices/asking-for-review.php:19
+#: includes/admin/notices/asking-for-review.php:20
 msgid "We will be forever grateful. Thank you in advance."
 msgstr ""
 
-#: includes/admin/notices/asking-for-review.php:22
+#: includes/admin/notices/asking-for-review.php:23
 msgid "Rate now"
 msgstr ""
 
-#: includes/admin/notices/asking-for-review.php:23
+#: includes/admin/notices/asking-for-review.php:24
 msgid "Later"
 msgstr ""
 
-#: includes/admin/notices/asking-for-review.php:24
+#: includes/admin/notices/asking-for-review.php:25
 msgid "Already did"
 msgstr ""
 
@@ -1142,6 +1147,8 @@ msgid "Saturation"
 msgstr ""
 
 #: includes/admin/settings/csf/fields/background/background.php:278
+#: includes/admin/settings/options/options_solved_topics.php:77
+#: includes/admin/settings/options/options_solved_topics.php:136
 msgid "Color"
 msgstr ""
 
@@ -1650,7 +1657,73 @@ msgstr ""
 msgid "Frontend Brand Color"
 msgstr ""
 
-#: includes/admin/settings/options/options_private_replies.php:6
+#: includes/admin/settings/options/options_mini_profile.php:6
+#: includes/admin/settings/options/options_mini_profile.php:10
+msgid "Mini Profile"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:16
+msgid "Show / Hide"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:21
+msgid "Avatar"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:27
+msgid "Select Menu"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:28
+msgid "Select a menu location to display the user avatar"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:37
+#: includes/admin/settings/options/options_mini_profile.php:70
+msgid "Gap"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:39
+msgid ""
+"Set the gap between the menu and the Mini Profile's avatar image. The gap "
+"will be applied to Left side of the Avatar image."
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:50
+msgid "Dropdown Profile Box"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:57
+msgid "Width"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:71
+msgid ""
+"Set the gap between the Avatar image and the Mini Profile's dropdwon box. "
+"This option is helpful to adjust the menu height with the Mini Profile's "
+"dropdwon box"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:105
+msgid "Color Management"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:112
+msgid "Content"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:113
+msgid "Change the color of the information at the top of the mini profile."
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:161
+msgid "Links"
+msgstr ""
+
+#: includes/admin/settings/options/options_mini_profile.php:162
+msgid "Change the color of the information at the bottom of the mini profile."
+msgstr ""
+
 #: includes/admin/settings/options/options_private_replies.php:12
 msgid "Private Replies"
 msgstr ""
@@ -1659,13 +1732,103 @@ msgstr ""
 msgid "Enable/ Disable Private Replies feature."
 msgstr ""
 
-#: includes/admin/settings/options/options_solved_topics.php:6
-#: includes/admin/settings/options/options_solved_topics.php:12
-msgid "Solved Topics"
+#: includes/admin/settings/options/options_private_replies.php:18
+msgid "Anonymous Reply"
+msgstr ""
+
+#: includes/admin/settings/options/options_private_replies.php:19
+msgid "Allow anonymous to reply a topic."
+msgstr ""
+
+#: includes/admin/settings/options/options_private_replies.php:25
+#: includes/admin/settings/options/options_solved_topics.php:42
+msgid "Anonymous Label"
+msgstr ""
+
+#: includes/admin/settings/options/options_private_replies.php:26
+#: includes/admin/settings/options/options_solved_topics.php:43
+msgid "Post Anonymously"
+msgstr ""
+
+#: includes/admin/settings/options/options_shortcode.php:6
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/admin/settings/options/options_shortcode.php:11
+msgid "My Profile URL"
+msgstr ""
+
+#: includes/admin/settings/options/options_shortcode.php:12
+msgid "Use this shortcode to get the user's own profile URL"
 msgstr ""
 
 #: includes/admin/settings/options/options_solved_topics.php:13
+msgid "Solved Topics"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:14
 msgid "Enable/ Disable Solved Topics feature."
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:20
+msgid "Auto Approval"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:21
+msgid "Enable/ Disable Auto Approval feature."
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:27
+msgid "Pending Notice"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:28
+msgid "Your topic is awaiting for moderation."
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:35
+msgid "Anonymous Topic"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:36
+msgid "Allow anonymous to create topics."
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:49
+msgid "Same Topic Voting"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:54
+msgid "Enable / Disable"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:61
+msgid "Customize voting button text and color for single topic."
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:65
+msgid "Button"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:70
+msgid "Label"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:71
+msgid "I have the same question"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:107
+#: includes/admin/settings/options/options_solved_topics.php:166
+msgid "Hover Background"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:124
+msgid "Success"
+msgstr ""
+
+#: includes/admin/settings/options/options_solved_topics.php:130
+msgid "Updated vote successfully"
 msgstr ""
 
 #: includes/admin/settings/options/options_voting.php:6
@@ -1837,7 +2000,6 @@ msgid ""
 "Threaded Replies are enabled in bbPress."
 msgstr ""
 
-#: includes/admin/settings/options/pro-settings.php:11
 #: includes/admin/settings/options/settings.php:11
 msgid "BBP Core Settings"
 msgstr ""
@@ -1850,19 +2012,19 @@ msgstr ""
 msgid "Insert forum information widget in forum sidebar"
 msgstr ""
 
-#: includes/admin/widgets/forum-info/Forum_Information.php:26
+#: includes/admin/widgets/forum-info/Forum_Information.php:24
 msgid "Forum Informations"
 msgstr ""
 
-#: includes/admin/widgets/forum-info/Forum_Information.php:102
+#: includes/admin/widgets/forum-info/Forum_Information.php:100
 msgid "BBP Core Pro avatar icon"
 msgstr ""
 
-#: includes/admin/widgets/forum-info/Forum_Information.php:105
+#: includes/admin/widgets/forum-info/Forum_Information.php:103
 msgid "Last post by"
 msgstr ""
 
-#: includes/admin/widgets/forum-info/Forum_Information.php:127
+#: includes/admin/widgets/forum-info/Forum_Information.php:125
 msgid "Last activity"
 msgstr ""
 

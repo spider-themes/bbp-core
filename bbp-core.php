@@ -1,6 +1,4 @@
 <?php
-use admin\Assets;
-
 /*
 Plugin Name:       BBP Core
 Plugin URI:        https://spider-themes.net/bbp-core
@@ -66,7 +64,7 @@ require_once __DIR__ . '/autoloader.php';
  * Plugin's heart
  */
 final class BBP_Core {
-	const VERSION = '1.1.0';
+	const VERSION = '1.2.0';
 
 	/**
 	 * Class constructor.

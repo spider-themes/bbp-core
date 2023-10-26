@@ -2187,7 +2187,7 @@
 @mixin triangle($direction: top, $width: 50px, $height: $width, $color: $global-color) {
   $half: $width / 2;
 
-  @if ( $direction == top ) {
+  @if ($direction == top) {
     width: 0;
     height: 0;
     border-style: solid;
@@ -2196,7 +2196,7 @@
     display: block;
   }
 
-  @if ( $direction == right ) {
+  @if ($direction == right) {
     width: 0;
     height: 0;
     border-style: solid;

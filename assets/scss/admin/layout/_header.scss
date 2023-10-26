@@ -4,6 +4,7 @@
 .easydocs-header-area {
   padding-top: 30px;
   padding-bottom: 50px;
+
   .easydocs-row {
     @include margin(mx, 0);
   }
@@ -11,6 +12,7 @@
 
 .navbar-left {
   gap: var(--gutter-20);
+
   .easydocs-btn {
     --btn-icon: var(--clr-blue);
     --btn-py: 0.5rem;
@@ -20,10 +22,12 @@
     display: flex;
     align-items: center;
     gap: 6px;
+
     span.dashicons {
       font-size: 14px;
       margin-bottom: -4px;
     }
+
     @include hover {
       --btn-icon: var(--clr-white);
     }
@@ -48,8 +52,9 @@
     background: rgba(#252733, 0.05);
     text-align: center;
     cursor: pointer;
+
     &:hover {
-      background: #cdcdcd;
+      background: rgb(37 39 51 / 9%);
     }
 
     svg {
@@ -65,11 +70,8 @@
 
   .easydocs-badge {
     @include absolute(top rem(-7px) right rem(-8px));
-
-
     background: #FA3E3E;
     color: var(--clr-white);
-
     top: -0.4375rem;
     right: -0.2rem;
     position: absolute;
@@ -84,7 +86,6 @@
     height: 16px;
     display: inline-table;
     font-family: 'Roboto';
-
   }
 }
 
@@ -128,10 +129,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  > ul{
+
+  > ul {
     align-items: center;
     gap: 8px;
   }
+
   .js-darkmode-btn {
     display: flex;
     align-items: center;
@@ -188,56 +191,36 @@
   }
 }
 
-.notification-head {
-  padding: 9px 12px;
-  background: hsl(210deg 8% 95%);
-  &.no-notification-text{
-    padding: 20px 12px;
-    background: #bebebe26;
-    display: block;
-    text-align: center;
-  }
-  @include shadow($y: 1px, $color: #EDEEF2);
-
-  .header-text {
-    color: var(--clr-dark);
-    font-size: var(--fs-13);
-    font-weight: var(--fw-500);
-    line-height: 1;
-  }
-
-  .right-text {
-    color: var(--clr-text);
-    font-size: var(--fs-12);
-    line-height: 1;
-  }
-}
-
 .settings-pro-icon {
   position: absolute;
   right: 0px;
   top: -5px;
 }
+
 .swal2-styled.swal2-confirm.upgrade-premium-button {
-  > a{
+  > a {
     color: black;
     font-weight: normal;
     text-decoration: none;
   }
 }
+
 .swal2-footer.notification-pro-footer-wrap {
-  > a{
+  > a {
     text-decoration: none;
   }
 }
+
 .notification-body {
   .filter-button-group {
     display: flex;
     gap: 8px;
     @include padding(px, var(--gutter-25));
+
     svg {
       top: 0;
     }
+
     .easydocs-btn {
       --notification-icon: var(--clr-dark);
       --btn-px: 1rem;
@@ -249,15 +232,18 @@
       --btn-bg: #e4e6eb;
       --btn-clr: var(--clr-dark);
       --btn-bc: transparent;
+
       &.mixitup-control-active {
         background-color: #e7f3ff;
         color: #1877f2;
         --notification-icon: #1877f2;
-        .dashicons-screenoptions:before{
+
+        .dashicons-screenoptions:before {
           color: #1877f2;
         }
+
         @include hover {
-          background-color:#d2e6f9;
+          background-color: #d2e6f9;
         }
       }
 
@@ -286,41 +272,54 @@
   &::-webkit-scrollbar-thumb {
     background-color: var(--clr-text);
   }
+
   /* Notification updated css */
-  ul{
-    li{
+  ul {
+    li {
       border-bottom: 1px solid #f1f2f3;
       margin-bottom: 0;
-      a{
+
+      a {
         text-decoration: none;
         gap: 9px;
         align-content: space-around;
         padding: 10px;
         box-sizing: border-box;
-        .notify-icon{
+
+        .notify-icon {
           padding-top: 5px;
         }
-        .notify-content-wrap{
+
+        .notify-content-wrap {
           width: -webkit-fill-available;
-          .notify-content-header{
+
+          .notify-content-header {
             color: hsl(210deg 8% 35%);
             font-size: 12px;
+            .noti-type {
+              color: var(--black_800);
+              font-weight: 500;
+            }
           }
-          .notify-content-summary{
-            p{
+
+          .notify-content-summary {
+            p {
               color: hsl(206deg 100% 40%);
               font-size: 13px;
             }
           }
         }
-        &:focus{
+
+        &:focus {
           box-shadow: none;
         }
       }
-      &:hover{
+
+      &:hover {
         background: hsl(210deg 8% 90%);
       }
-      &:last-child{
+
+      &:last-child {
         border-bottom: none;
       }
     }
@@ -356,6 +355,7 @@
 
     .notify-badge-blue {
       @include gradient(180deg, #22AAF1, #066BDA);
+
       .dashicons {
         font-size: 12px;
         color: white;
@@ -387,7 +387,8 @@
     padding-right: 0.5rem;
     margin: 0;
     line-height: 1;
-    a{
+
+    a {
       text-decoration: none;
     }
   }
@@ -413,11 +414,13 @@
   line-height: 1;
   margin-top: 0.375rem;
 }
-.eazydocs-no-content{
+
+.eazydocs-no-content {
   display: block;
-    text-align: center;
-    margin-top: 250px;
-  img{
+  text-align: center;
+  margin-top: 250px;
+
+  img {
     width: auto;
     max-width: 50px;
     height: auto;

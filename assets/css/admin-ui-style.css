@@ -1087,13 +1087,12 @@ a.child-delete {
 }
 
 .easydocs-dropdown {
-  top: 170%;
-  right: -30px;
+  top: 130%;
+  right: -20px;
   position: absolute;
-  -webkit-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.06);
-  -moz-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.06);
-  width: 260px;
+  -webkit-box-shadow: 0 30px 40px 0 rgba(4, 73, 89, 0.1) 0 0 0 rgba(var(--clr-black), 1);
+  -moz-box-shadow: 0 30px 40px 0 rgba(4, 73, 89, 0.1) 0 0 0 rgba(var(--clr-black), 1);
+  box-shadow: 0 30px 40px 0 rgba(4, 73, 89, 0.1) 0 0 0 rgba(var(--clr-black), 1);
   background-color: var(--clr-white);
   border-radius: 0.5rem;
   z-index: 999;
@@ -1108,20 +1107,45 @@ a.child-delete {
 }
 
 .notification-dropdown {
-  width: 360px;
+  width: 340px;
   border-radius: 2px;
 }
 .notification-dropdown::before {
   content: "";
   top: -0.625rem;
-  right: 2.5rem;
+  right: 28px;
   position: absolute;
   width: 0;
   height: 0;
   border-style: solid;
   border-width: 0 10px 10px 10px;
-  border-color: transparent transparent var(--clr-white) transparent;
+  border-color: transparent transparent #f9f9f9 transparent;
   display: block;
+}
+
+.notification-head {
+  padding: 9px 12px;
+  background: #f9f9f9;
+  -webkit-box-shadow: 0 1px 0 0 #edeef2;
+  -moz-box-shadow: 0 1px 0 0 #edeef2;
+  box-shadow: 0 1px 0 0 #edeef2;
+}
+.notification-head.no-notification-text {
+  padding: 20px 12px;
+  background: rgba(190, 190, 190, 0.1490196078);
+  display: block;
+  text-align: center;
+}
+.notification-head .header-text {
+  color: var(--clr-dark);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-500);
+  line-height: 1;
+}
+.notification-head .right-text {
+  color: var(--clr-text);
+  font-size: var(--fs-12);
+  line-height: 1;
 }
 
 .form-control {
@@ -1260,7 +1284,7 @@ a.child-delete {
   cursor: pointer;
 }
 :is(.easydocs-notification, .easydocs-settings) .header-notify-icon:hover {
-  background: #cdcdcd;
+  background: rgba(37, 39, 51, 0.09);
 }
 :is(.easydocs-notification, .easydocs-settings) .header-notify-icon svg {
   position: relative;
@@ -1380,31 +1404,6 @@ a.child-delete {
   display: none;
 }
 
-.notification-head {
-  padding: 9px 12px;
-  background: hsl(210, 8%, 95%);
-  -webkit-box-shadow: 0 1px 0 0 #edeef2;
-  -moz-box-shadow: 0 1px 0 0 #edeef2;
-  box-shadow: 0 1px 0 0 #edeef2;
-}
-.notification-head.no-notification-text {
-  padding: 20px 12px;
-  background: rgba(190, 190, 190, 0.1490196078);
-  display: block;
-  text-align: center;
-}
-.notification-head .header-text {
-  color: var(--clr-dark);
-  font-size: var(--fs-13);
-  font-weight: var(--fw-500);
-  line-height: 1;
-}
-.notification-head .right-text {
-  color: var(--clr-text);
-  font-size: var(--fs-12);
-  line-height: 1;
-}
-
 .settings-pro-icon {
   position: absolute;
   right: 0px;
@@ -1494,6 +1493,10 @@ a.child-delete {
 .notify-column ul li a .notify-content-wrap .notify-content-header {
   color: hsl(210, 8%, 35%);
   font-size: 12px;
+}
+.notify-column ul li a .notify-content-wrap .notify-content-header .noti-type {
+  color: var(--black_800);
+  font-weight: 500;
 }
 .notify-column ul li a .notify-content-wrap .notify-content-summary p {
   color: hsl(206, 100%, 40%);
