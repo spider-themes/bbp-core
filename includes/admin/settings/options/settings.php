@@ -34,6 +34,7 @@ if ( class_exists( 'CSF' ) ) {
 	include BBPC_SETTINGS_PATH . 'options_attachments.php';
 	include BBPC_SETTINGS_PATH . 'options_mini_profile.php';
 	include BBPC_SETTINGS_PATH . 'options_shortcode.php';
+	include BBPC_SETTINGS_PATH . 'options_notification.php';
 
 	
 	if ( ! class_exists( 'bbPress' ) ) {

@@ -166,7 +166,7 @@ CSF::createSection(
 						'type'             => 'link_color',
 						'title'            => 'Color',
 						'default'          => array(
-							'color'        => '#e0e6f0',
+							'color'        => '#384764',
 							'hover'        => '#4080FF',
 						),
 						'output'           => '.bbpc-min-profile-links ul li a',

@@ -36,8 +36,7 @@
           },
           success: function (data) {
             $('.forum-post-widget[data_id="'+data_id+'"] #aj-post-filter-widget').html(data)
-          }
-          ,
+          },
           error: function () {
             console.log('Oops! Something wrong, try again!')
           }
