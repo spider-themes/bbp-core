@@ -24,7 +24,7 @@ CSF::createSection(
 			[
 				'id'         => 'bbpc_profile_location',
 				'type'       => 'select',
-				'title'      => __( 'Select Menu', 'bbp-core' ),
+				'title'      => __( 'Menu Location', 'bbp-core' ),
 				'subtitle'   => __( 'Select a menu location to display the user avatar', 'bbp-core' ),
 				'options'    => 'menus',
 				'default'    => 'main_menu',

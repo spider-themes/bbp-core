@@ -24,7 +24,7 @@ CSF::createSection(
 			[
 				'id'         => 'bbpc_notification_location',
 				'type'       => 'select',
-				'title'      => __( 'Select Menu', 'bbp-core' ),
+				'title'      => __( 'Menu Location', 'bbp-core' ),
 				'subtitle'   => __( 'Select a menu location to display the user avatar', 'bbp-core' ),
 				'options'    => 'menus',
 				'default'    => 'main_menu',
@@ -191,8 +191,8 @@ CSF::createSection(
 						'type'             => 'link_color',
 						'title'            => 'Links',
 						'default'          => array(
-							'color'        => '#4080FF',
-							'hover'        => '#4080FF',
+							'color'        => '#000000',
+							'hover'        => '#000000',
 						),
 						'output'           => '.bbpc-notification-item:hover h5 a,.bbpc-notification-item h5 a',
 						'output_mode'      => 'color',
