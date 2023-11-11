@@ -44,6 +44,15 @@ CSF::createSection(
 				'max'              => 200,
                 'class'            => 'st-pro-notice'
 			],
+			
+			[
+				'id'				=> 'bbpc_notification_avatar',
+				'type'				=> 'media',
+				'title'            	=> __( 'Upload Icon', 'bbp-core' ),
+				'dependency'       	=> [ 'bbpc_notification', '==', true, ],
+                'class'            	=> 'st-pro-notice',
+				'url'				=> false
+			],
 
 			[
 				'type'       	   => 'subheading',
