@@ -211,14 +211,14 @@ body {
 }
 
 .widget_display_replies li:before {
-  font-family: "Line Awesome Free" !important;
-  content: "\f4ad" !important;
-  font-weight: 900;
-  font-size: 18px !important;
-  margin: 0px !important;
+  font-family: eleganticons;
+  content: "w";
+  font-size: 15px !important;
+  margin: 0 12px 0 0 !important;
   padding: 0px !important;
   line-height: 23px;
 }
+
 
 .widget_display_topics li {
   div {
@@ -226,11 +226,10 @@ body {
   }
 
   &::before {
-    font-family: 'Line Awesome Free';
-    content: "\f7cd";
-    font-weight: 900;
+    font-family: eleganticons;
+    content: "b";
     margin: -3px 12px 0 0;
-    font-size: 18px;
+    font-size: 15px;
     color: var(--black_800);
     position: absolute;
     left: 0;
@@ -265,7 +264,7 @@ body {
 
 .widget_display_topics li a,
 .widget_display_replies li a {
-  color: var(--secondary_color);
+  color: #1d2746;
   .bbp-author-avatar{
     img{
       border-radius: 50px;
@@ -281,7 +280,7 @@ body {
 
 .widget_display_topics li a:hover,
 .widget_display_replies li a:hover {
-  color: var(--brand_color);
+  color: var(--bbpc_brand_color);
 }
 
 .bbp-logged-in .avatar {
@@ -307,7 +306,7 @@ body {
 
 .bbp-logged-in a.button.logout-link:hover,
 .bbp-logged-in h4 a:hover {
-  color: var(--brand_color);
+  color: var(--bbpc_brand_color);
 }
 
 .bbp-logged-in a.button.logout-link:hover,
@@ -341,7 +340,7 @@ ul.bbp-topics-widget.newness img {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.18s ease-in-out;
   background: #fff;
   border: 1px solid #d0d8dc;
-  color: var(--secondary_color);
+  color: #1d2746;
   height: 26px;
   font-size: 12px;
   line-height: 26px;
@@ -349,8 +348,8 @@ ul.bbp-topics-widget.newness img {
 
 .comment-content .bbp-topic-reply-link:hover {
   background: #fff;
-  border: 1px solid var(--secondary_color);
-  color: var(--secondary_color);
+  border: 1px solid #1d2746;
+  color: #1d2746;
 }
 
 .page-numbers {
