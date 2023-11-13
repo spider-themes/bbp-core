@@ -21,6 +21,7 @@ class Assets {
 	public function bbpc_elementor_script(){
 		// Elementor widgets scripts
 		wp_enqueue_style( 'bbpc-el-widgets', BBPC_ASSETS . 'css/el-widgets.css' );		
+		wp_enqueue_style( 'elegant-icon', BBPC_ASSETS . 'vendors/elegant-icon/style.css' );		
 		wp_register_script( 'bbpc_js',  BBPC_ASSETS . 'js/forumTab.js', ['jquery'], true, true );
 		wp_register_script( 'bbpc-frontend-js', BBPC_ASSETS . 'frontend/js/frontend.js', array('jquery'), BBPC_VERSION, true );
 		wp_register_script( 'bbpc-ajax', BBPC_ASSETS . 'js/ajax.js', array('jquery'), BBPC_VERSION, true );	
