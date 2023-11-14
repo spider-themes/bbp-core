@@ -244,9 +244,11 @@ body {
   color: var(--black_900);
 }
 
-.widget_display_topics li,
-.widget_display_replies li {
+.widget_display_topics li{
   padding-left: 30px;
+}
+.widget_display_topics li, 
+.widget_display_replies li {
   position: relative;
   margin-bottom: 10px;
   padding-bottom: 10px;

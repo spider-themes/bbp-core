@@ -490,9 +490,12 @@ body.body_dark .community-area .nav-tabs .nav-item button.active {
   color: var(--black_900);
 }
 
+.widget_display_topics li {
+  padding-left: 30px;
+}
+
 .widget_display_topics li,
 .widget_display_replies li {
-  padding-left: 30px;
   position: relative;
   margin-bottom: 10px;
   padding-bottom: 10px;
@@ -676,7 +679,7 @@ ul.bbp-topics-widget.newness img {
   align-items: center;
 }
 .forum-post-widget .post-filter-widget .single-filter-item a.data-active {
-  color: var(--bbpc_brand_color);
+  color: #046bd2;
 }
 .forum-post-widget .post-filter-widget .single-filter-item svg {
   margin-right: 5px;
@@ -1443,7 +1446,7 @@ body.body_dark .not-found-text, body.body_dark .bbpc-not-found-text {
   border-radius: 3px;
 }
 .forum-meta .button a:hover {
-  background: #2a2aef;
+  background: #085d4c;
 }
 
 .forum-card {
@@ -1464,7 +1467,7 @@ body.body_dark .not-found-text, body.body_dark .bbpc-not-found-text {
   margin-top: unset;
 }
 .forum-card .card-title h3:hover a {
-  color: var(--bbpc_brand_color);
+  color: #0b589d;
 }
 .forum-card .card-title a {
   text-decoration: none;
@@ -1566,7 +1569,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   transform: translateX(2px);
 }
 .single-forum-post-widget:hover .post-title h6 a {
-  color: var(--bbpc_brand_color);
+  color: #046bd2;
 }
 .single-forum-post-widget .post-title {
   margin-bottom: 10px;
