@@ -679,9 +679,9 @@ ul.bbp-topics-widget.newness img {
   align-items: center;
 }
 .forum-post-widget .post-filter-widget .single-filter-item a.data-active {
-  color: #046bd2;
+  color: var(--bbpc_brand_color);
 }
-.forum-post-widget .post-filter-widget .single-filter-item svg {
+.forum-post-widget .post-filter-widget .single-filter-item i {
   margin-right: 5px;
 }
 @media (max-width: 1200px) and (min-width: 992px) {
@@ -1007,7 +1007,6 @@ ul.list-unstyled {
   font-weight: 400;
   display: none;
   transition: all 0.4s;
-  z-index: 99;
   margin-top: 25px;
   border: 1px solid var(--black_50);
   border-radius: 4px;
@@ -1096,7 +1095,6 @@ ul.list-unstyled {
 
 .bbpc_search_form_wrapper {
   position: relative;
-  z-index: 9999;
 }
 .bbpc_search_form_wrapper .input-wrapper {
   position: relative;
@@ -1126,25 +1124,18 @@ ul.list-unstyled {
   position: absolute;
   right: 30px;
 }
-.bbpc_search_form_wrapper .input-wrapper.left {
-  padding-left: 60px;
-}
-.bbpc_search_form_wrapper .input-wrapper.left input::-webkit-search-cancel-button {
-  right: 30px;
-}
 .bbpc_search_form_wrapper .input-wrapper .submit-btn-left {
   position: absolute;
-  right: 27px;
+  right: 0;
   top: 0;
   bottom: 0;
-  z-index: 999;
   display: flex;
   margin: auto;
   align-items: center;
 }
 .bbpc_search_form_wrapper .input-wrapper .submit-btn-right {
   position: absolute;
-  left: 27px;
+  left: 0;
   top: 2px;
   bottom: 2px;
   margin: auto;
@@ -1217,6 +1208,16 @@ body.body_dark input#searchInput.input_focused {
 }
 body.body_dark .not-found-text, body.body_dark .bbpc-not-found-text {
   color: black;
+}
+
+/** === Focust Search Form === **/
+body.bbpc-search-focused .focus_overlay {
+  opacity: 1;
+  visibility: visible;
+}
+body.bbpc-search-focused .banner_search_form {
+  position: relative;
+  z-index: 999 !important;
 }
 
 .bbpc-search-overlay.active {
@@ -1569,7 +1570,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   transform: translateX(2px);
 }
 .single-forum-post-widget:hover .post-title h6 a {
-  color: #046bd2;
+  color: var(--bbpc_brand_color);
 }
 .single-forum-post-widget .post-title {
   margin-bottom: 10px;

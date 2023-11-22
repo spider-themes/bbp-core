@@ -176,7 +176,6 @@ class Forum_Tab extends Widget_Base {
 			[
 				'name'     => 'forum_tab_title',
 				'label'    => __( 'Tab Label Typography', 'bbp-core' ),
-				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .community-area .nav-tabs .nav-item button',
 			]
 		);
@@ -186,10 +185,6 @@ class Forum_Tab extends Widget_Base {
 			[
 				'label'     => __( 'Tab Label Color', 'bbp-core' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .community-area .nav-tabs .nav-item button' => 'color: {{VALUE}}',
 				],

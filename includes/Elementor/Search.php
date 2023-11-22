@@ -3,7 +3,6 @@
 namespace admin\Elementor;
 
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Border;
@@ -253,7 +252,6 @@ class Search extends Widget_Base {
 			Group_Control_Typography::get_type(), [
 				'name'     => 'typography_placeholder',
 				'label'    => esc_html__( 'Typography', 'bbp-core' ),
-				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .bbpc_search_form_wrapper .input-wrapper input::placeholder, .bbpc_search_form_wrapper .input-wrapper input',
 			]
 		);
@@ -399,7 +397,6 @@ class Search extends Widget_Base {
 			Group_Control_Typography::get_type(), [
 				'name'      => 'typography_btn',
 				'label'     => esc_html__( 'Typography', 'bbp-core' ),
-				'scheme'    => Typography::TYPOGRAPHY_1,
 				'condition' => [
 					'submit_btn_type' => 'text'
 				],
@@ -425,7 +422,7 @@ class Search extends Widget_Base {
 				'selectors'   => [ '{{WRAPPER}} .bbpc-search-keyword ul li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ],
 				'separator'   => 'before',
 				'default'     => [
-					'unit' => 'px', // The selected CSS Unit. 'px', '%', 'em',
+					'unit' => 'px',
 				],
 			]
 		);
@@ -445,13 +442,23 @@ class Search extends Widget_Base {
 			[
 				'name'     => 'keyword_label_typography',
 				'label'    => __( 'Label Typography', 'bbp-core' ),
-				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .bbpc-search-keyword span.bbpc-search-keywords-label',
 			]
 		);
 
+		$this->start_controls_tabs(
+			'bbpc_tabs_keywords_style'
+		);
+		
+		$this->start_controls_tab(
+			'bbpc_keywords_style',
+			[
+				'label' => esc_html__( 'Normal', 'bbp-core' ),
+			]
+		);
+		
 		$this->add_control(
-			'color_keywords', [
+			'bbpc_color_keywords', [
 				'label'     => esc_html__( 'Keyword Color', 'bbp-core' ),
 				'type'      => Controls_Manager::COLOR,
 				'separator' => 'before',
@@ -460,23 +467,54 @@ class Search extends Widget_Base {
 				],
 			]
 		);
-
+		
 		$this->add_control(
-			'color_keywords_bg', [
+			'bbpc_color_keywords_bg', [
 				'label'     => esc_html__( 'Background Color', 'bbp-core' ),
 				'type'      => Controls_Manager::COLOR,
+				'separator' => 'after',
 				'selectors' => [
 					'{{WRAPPER}} .bbpc-search-keyword ul li a' => 'background: {{VALUE}};',
 				],
 			]
 		);
+		
+		$this->end_controls_tab();
+		
+		$this->start_controls_tab(
+			'bbpc_keywords_style_hover',
+			[
+				'label' => esc_html__( 'Hover', 'bbp-core' ),
+			]
+		);
+		
+		$this->add_control(
+			'bbpc_color_keywords_hover', [
+				'label'     => esc_html__( 'Keyword Color', 'bbp-core' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .bbpc-search-keyword ul li a:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		
+		$this->add_control(
+			'bbpc_color_keywords_bg_hover', [
+				'label'     => esc_html__( 'Background Color', 'bbp-core' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .bbpc-search-keyword ul li a:hover' => 'background: {{VALUE}};',
+				],
+			]
+		);
+		
+		$this->end_controls_tabs();
 
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(), [
 				'name'     => 'typography_keywords',
 				'label'    => esc_html__( 'Typography', 'bbp-core' ),
-				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .bbpc-search-keyword ul li a',
 			]
 		);
@@ -488,7 +526,7 @@ class Search extends Widget_Base {
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [ '{{WRAPPER}} .bbpc-search-keyword ul li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ],
 				'default'    => [
-					'unit' => 'px', // The selected CSS Unit. 'px', '%', 'em',
+					'unit' => 'px',
 				],
 			]
 		);
@@ -500,7 +538,7 @@ class Search extends Widget_Base {
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [ '{{WRAPPER}} .bbpc-search-keyword ul li a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ],
 				'default'    => [
-					'unit' => 'px', // The selected CSS Unit. 'px', '%', 'em',
+					'unit' => 'px',
 				],
 			]
 		);

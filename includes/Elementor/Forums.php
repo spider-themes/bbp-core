@@ -4,8 +4,6 @@ namespace admin\Elementor;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Typography;
-use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use WP_Query;
@@ -113,7 +111,6 @@ class Forums extends Widget_Base {
 			[
 				'name'     => 'forum_title_typography',
 				'label'    => esc_html__( 'Forum Title Typography', 'bbp-core' ),
-				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .com-box-content .title a',
 			]
 		);
@@ -124,7 +121,6 @@ class Forums extends Widget_Base {
 			[
 				'name'     => 'more_text_typography',
 				'label'    => esc_html__( 'More text typography', 'bbp-core' ),
-				'scheme'   => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .collapse-btn',
 				
 			]
@@ -135,10 +131,6 @@ class Forums extends Widget_Base {
 			[
 				'label'     => esc_html__( 'More text color', 'bbp-core' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .collapse-btn' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .more-communities .collapse-btn svg path' => 'stroke: {{VALUE}}',

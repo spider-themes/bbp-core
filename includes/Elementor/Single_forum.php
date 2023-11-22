@@ -3,8 +3,6 @@
 namespace admin\Elementor;
 
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes\Color;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
@@ -172,7 +170,6 @@ class Single_forum extends Widget_Base
             [
                 'name' => 'title_typography',
                 'label' => __('Title Typography', 'bbp-core'),
-                'scheme' => Typography::TYPOGRAPHY_1,
                 'separator' => 'before',
                 'selector' => '{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title h3, {{WRAPPER}} .forum-card .card-title h3',
             ]
@@ -183,10 +180,6 @@ class Single_forum extends Widget_Base
             [
                 'label' => __('Title Color', 'bbp-core'),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'separator' => 'after',
                 'selectors' => [
                     '{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title h3' => 'color: {{VALUE}}',
@@ -200,7 +193,6 @@ class Single_forum extends Widget_Base
             [
                 'name' => 'excerpt_typography',
                 'label' => __('Excerpt Typography', 'bbp-core'),
-                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title p, {{WRAPPER}} .forum-card .card-body',
             ]
         );
@@ -210,10 +202,6 @@ class Single_forum extends Widget_Base
             [
                 'label' => __('Excerpt Color', 'bbp-core'),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Color::get_type(),
-                    'value' => Color::COLOR_1,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .forum-with-topics .topic-table .topic-contents .title p' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .forum-card .card-body' => 'color: {{VALUE}}'

@@ -150,7 +150,6 @@ ul.list-unstyled {
   font-weight: 400;
   display: none;
   transition: all 0.4s;
-  z-index: 99;
   margin-top: 25px;
   border: 1px solid var(--black_50);
   border-radius: 4px;
@@ -241,7 +240,6 @@ ul.list-unstyled {
 
 .bbpc_search_form_wrapper {
   position: relative;
-  z-index: 9999;
   .input-wrapper {
     position: relative;
     .spinner {
@@ -269,27 +267,18 @@ ul.list-unstyled {
         right: 30px;
       }
     }
-    &.left{
-      padding-left: 60px;
-      input{
-        &::-webkit-search-cancel-button {
-          right: 30px;
-        }
-      }
-    }
     .submit-btn-left {
       position: absolute;
-      right: 27px;
+      right: 0;
       top: 0;
       bottom: 0;
-      z-index: 999;
       display: flex;
       margin: auto;
       align-items: center;
     }
     .submit-btn-right {
       position: absolute;
-      left: 27px;
+      left: 0;
       top: 2px;
       bottom: 2px;
       margin: auto;
@@ -373,6 +362,25 @@ body {
     }
   }
 }
+
+
+
+/** === Focust Search Form === **/
+body.bbpc-search-focused {
+	.focus_overlay {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.banner_search_form {
+		position: relative;
+    z-index: 999 !important;
+	}
+}
+
+// body:not(.ezd-search-focused) #ezd-search-results.ajax-search {
+// 	display: none;
+// }
 
 .bbpc-search-overlay{
   &.active {

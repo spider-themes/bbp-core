@@ -35,10 +35,10 @@
       align-items: center;
       a {
         &.data-active {
-          color: #046bd2;
+          color: var(--bbpc_brand_color);
         }
       }
-      svg {
+      i {
         margin-right: 5px;
       }
 
