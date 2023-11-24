@@ -1210,14 +1210,14 @@ body.body_dark .not-found-text, body.body_dark .bbpc-not-found-text {
   color: black;
 }
 
-/** === Focust Search Form === **/
-body.bbpc-search-focused .focus_overlay {
+/** === Focus Search Form === **/
+body.bbpc-search-overlay {
   opacity: 1;
   visibility: visible;
 }
-body.bbpc-search-focused .banner_search_form {
-  position: relative;
-  z-index: 999 !important;
+
+body:not(.bbpc-search-overlay) #bbpc-search-result.ajax-search {
+  display: none;
 }
 
 .bbpc-search-overlay.active {
