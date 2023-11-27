@@ -106,9 +106,11 @@ Fixed: If solved topic exists, some php warning shows in the Forum Builder UI
 Fixed: Search Elementor widget's overlay color on focus issue
 Tweaked: Ajax Search Results improved for the Search Elementor widget
 Tweaked: Search form design improved (made consistent and adjusted with the background) in the Forum Builder UI in the Admin Dashboard
+Tweaked: Trashed topics excluded from the Forum Topics count in the Forum Builder UI
 Tweaked: Dashicons used instead of some svg icons (solved, unsolved filters) in the Forum Builder UI
 Tweaked: Space adjusted if all the filter tabs shown in the Forum Builder UI
 Tweaked: Removed some unnecessary files to make the plugin lightweight
+Updated: Freemius SDK to v2.6.0
 
 = v1.2.0 (27 October 2023) =
 Fixed: BBP Core Search Form widget's overlay color on focus issue fixed
