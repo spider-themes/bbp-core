@@ -402,6 +402,6 @@ class bbp_solved_topic {
 // Instantiate the class.
 $GLOBALS['bbp_solved_topic'] = new bbp_solved_topic();
 
-function bbp_solved_topic() {
+function bbp_solved_topic(): bbp_solved_topic {
 	return new bbp_solved_topic();
 }

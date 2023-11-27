@@ -6,7 +6,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            spider-themes
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.2.0
+Version:           1.2.1
 Requires at least: 5.0
 Tested up to:      6.2
 Requires PHP:      7.4
@@ -64,7 +64,7 @@ require_once __DIR__ . '/autoloader.php';
  * Plugin's heart
  */
 final class BBP_Core {
-	const VERSION = '1.2.0';
+	const VERSION = '1.2.1';
 
 	/**
 	 * Class constructor.
@@ -129,7 +129,6 @@ final class BBP_Core {
 		// Load CSF
 		require BBPC_DIR . 'includes/admin/settings/csf/classes/setup.class.php';
 		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
-
 	}
 
 	/**
@@ -192,23 +191,22 @@ final class BBP_Core {
 		$opt = get_option( 'bbp_core_settings' );
 		define( 'BBPC_FEAT_PATH', plugin_dir_path( __FILE__ ) . 'includes/features/' );
 
-		if ( class_exists( 'bbPress' ) ) {
-			if ( $opt['is_solved_topics'] ?? true ) {
-				require BBPC_FEAT_PATH . 'bbp_solved_topic.php';
-			}
-
-			if ( $opt['is_private_replies'] ?? true ) {
-				require BBPC_FEAT_PATH . 'bbp-private-replies.php';
-			}
-
-			if ( $opt['is_votes'] ?? true ) {
-				new features\bbp_voting();
-			}
-
-			if ( $opt['is_attachment'] ?? true ) {
-				new features\bbp_attachments();
-			}
+		if ( $opt['is_solved_topics'] ?? true ) {
+			require BBPC_FEAT_PATH . 'bbp_solved_topic.php';
 		}
+
+		if ( $opt['is_private_replies'] ?? true ) {
+			require BBPC_FEAT_PATH . 'bbp-private-replies.php';
+		}
+
+		if ( $opt['is_votes'] ?? true ) {
+			new features\bbp_voting();
+		}
+
+		if ( $opt['is_attachment'] ?? true ) {
+			new features\bbp_attachments();
+		}
+
 	}
 	
 }

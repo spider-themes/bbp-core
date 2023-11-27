@@ -11,8 +11,7 @@ function bbpc_search_data_fetch() {
 	$is_ajax_search_tab = $opt['is_ajax_search_tab'] ?? '';
 	global $post;
 
-	if ( class_exists( 'EazyDocs' ) || class_exists( 'bbPress' ) ) {
-		
+	if ( class_exists( 'bbPress' ) ) {
 		// All results query
 		$all_results = new WP_Query( array(
 			'post_type'      => ['forum', 'topic' ],

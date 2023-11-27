@@ -15,7 +15,7 @@
 					'post_type'   => bbp_get_topic_post_type(),
 					'orderby'     => 'menu_order',
 					'order'       => 'asc',
-					'post_status' => [ 'any', 'spam', 'trash' ],
+					'post_status' => [ 'any', 'spam' ],
 				]
 			);
 			?>

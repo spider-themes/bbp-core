@@ -4,7 +4,7 @@ Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, to
 Requires at least: 5.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,21 +14,51 @@ BBP Core expands many useful features for your forums.
 
 BBP Core powers your forum with useful features. For example - solved topics, private replies, forum statistics etc.
 
-[Live Demo Here](https://wordpress-theme.spider-themes.net/ama/forums/topic/about-bbpress-plugin-features/)
+## 🔗 USEFUL LINKS ##
+- [Get the Pro Version](https://spider-themes.net/bbp-core/pricing)
+- [Demo (built with bbPress and BBP Core)](https://wordpress-plugins.spider-themes.net/bbp-core-pro/)
+- [Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin)
+- [Explore More](https://spider-themes.net/bbp-core)
 
 ### Reasons to Choose BBP Core ###
 
 - **Lightweight:** Loading only necessary css, javascript assets when necessary, it will not load assets unless necessary.
 
-- **Custom Admin UI:** A hierarchical view of the forums, nested topics and number of forums and topics are displayed in one page. Besides, a user can filter among all topics, solved topics, unsolved topics, hidden topics, never replied topics, open topics and closed topics. Also, the user can go to trash to check for the trashed topics.
+- **Unified Forum Builder:**  It provides a single, organized view of forums and topics, along with filtering options for various topic statuses, enabling efficient navigation and management. Users can even check trashed topics.
 
-- **Forum Creation & Deletion:** Create forums and delete forums and topics from BBP Core Admin UI, no need to navigate to classic forum views.
+- **Effortless Topic Management:** You can create and delete forums and topics directly from the BBP Core Admin UI, eliminating the need to navigate to the classic forum views for these actions.
 
-- **Private Reply:** Create replies on topics privately, which only forum owners can see, it remains hidden to other customers.
+- **Private Reply:** Users can post replies to topics that are visible only to forum owners, ensuring privacy and confidentiality in their discussions.
 
-- **Solved Topics:** Mark topic as solved / unsolved. Solved topics shows 'Resolved' badge at the end of topic title.
+- **Solved Topics:** Allows users to mark forum topics as either solved or unsolved. Solved topics display a 'Resolved' badge at the end of their titles, making it easy to identify resolved issues.
 
-- **Voting Feature:** Users can vote on topic replies. The highest voted reply goes to the top. AJAX powered voting system for better community.
+- **Voting On Topic & Replies:**  Allows users to vote on replies to topics, with the highest-voted reply rising to the top. The voting system is powered by AJAX for a seamless and engaging community interaction.
+
+- **Media Attachments:**  Enables users to attach files to their replies, which can be downloaded by other users. The attachments are displayed in a separate section below the Topic and Reply content. This enhances the forum's functionality, allowing for the seamless sharing of relevant files and media within discussions.
+
+- **Elementor Integrated:** BBP Core comes with a set of Elementor widgets that can be used to display forums, topics, and replies on any page of your website. The widgets are highly customizable, allowing you to configure their appearance and functionality to suit your needs.
+
+### PRO Features ###
+- **1. Admin Notifications:** Displays real-time updates of the latest forum activity directly on the dashboard area. This offers users a quick and convenient way to stay informed about recent happenings within the forum.
+
+- **2. User Notifications:** Keep the logged-in users informed by providing them with real-time updates on the latest activity within their subscribed forums, topics, and replies. This ensures that users stay engaged and informed about discussions that matter most to them without having to actively monitor each one individually.
+
+- **3. Mini Profile:** Displays a compact version of the user profile, which can be used to quickly view the user's profile information and activity. This is useful for users who wish to quickly view the profile of another user without navigating to their profile page.
+
+- **4. Pre-made Elementor Templates:** BBP Core Pro comes with a set of pre-made Elementor templates that can be imported with a single click. The templates are highly customizable, allowing you to configure their appearance and functionality to suit your needs.
+
+- **5. I've the Same Question Button:** Allows users to quickly indicate that they have a similar question, possibly reducing duplicate threads and encouraging discussions on existing topics.
+
+- **6. Post as Anonymous:** Allows users to post replies to topics anonymously, without revealing their identity. This can be useful for users who wish to discuss sensitive topics without revealing their identity.
+
+- **7. My Profile Link:** Generates a dynamic URL that links directly to the profile page of the currently logged-in user. This convenient URL simplifies the process of users accessing and viewing their own profiles.
+
+- **8. Pending Topic:** Enables admin-controlled approval of forum topics to prevent spam or inappropriate content from being published until a moderator approves them.
+
+- **9. Advanced Attachment Features:** Increases the maximum file size and allows multiple files to be uploaded at once. Provides the option to delete attachments along with forum or topic content.
+
+- **10. Advanced Voting Features:** Options to restrict voting for non-logged-in users, prevent new votes on closed topics, disallow self-voting, allow unlimited voting for administrators, and sort topics and replies based on their voting scores.
+
 
 == Frequently Asked Questions ==
 
@@ -69,6 +99,17 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.2.1 (28 October 2023) =
+New: Brand Color change option added in the Settings page
+Fixed: If solved topic exists, some php warning shows in the Forum Builder UI
+Fixed: Search Elementor widget's overlay color on focus issue
+Tweaked: Ajax Search Results improved for the Search Elementor widget
+Tweaked: Search form design improved (made consistent and adjusted with the background) in the Forum Builder UI in the Admin Dashboard
+Tweaked: Dashicons used instead of some svg icons (solved, unsolved filters) in the Forum Builder UI
+Tweaked: Space adjusted if all the filter tabs shown in the Forum Builder UI
+Tweaked: Removed some unnecessary files to make the plugin lightweight
+
 = v1.2.0 (27 October 2023) =
 Fixed: BBP Core Search Form widget's overlay color on focus issue fixed
 Fixed: PHP Namespace issue

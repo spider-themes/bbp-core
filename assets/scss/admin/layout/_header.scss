@@ -2,7 +2,7 @@
 /*  02. Header Area
 /*----------------------------------------*/
 .easydocs-header-area {
-  padding-top: 30px;
+  padding-top: 40px;
   padding-bottom: 50px;
 
   .easydocs-row {
@@ -426,4 +426,36 @@
     height: auto;
     margin: 0px auto 10px;
   }
+}
+
+.bbpc-trash-filter {
+  border-radius: 1.875rem;
+  margin-bottom: 0;
+  background-color: rgba(212, 23, 23, 0.1);
+  transition: all .3s;
+
+  &:hover {
+    background-color: rgba(212, 23, 23, 0.3);
+  }
+
+  svg {
+    fill: rgba(212, 23, 23, 1);
+  }
+
+  a {
+    justify-content: center;
+    gap: 0.3125rem;
+    padding: 5px 15px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: rgba(212, 23, 23, 1);
+    text-decoration: none;
+  }
+}
+
+.bbpc-settings-icon {
+  background: rgba(0, 0, 255, 0.058);
+  padding: 10px;
+  border-radius: 50%;
 }

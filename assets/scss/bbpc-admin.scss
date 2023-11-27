@@ -198,38 +198,6 @@ body {
   color: var(--clr-white);
 }
 
-.bbpc-trash-filter {
-  border-radius: 1.875rem;
-  margin-bottom: 0;
-  background-color: rgba(212, 23, 23, 0.1);
-  transition: all .3s;
-
-  &:hover {
-    background-color: rgba(212, 23, 23, 0.3);
-  }
-
-  svg {
-    fill: rgba(212, 23, 23, 1);
-  }
-
-  a {
-    justify-content: center;
-    gap: 0.3125rem;
-    padding: 0.25rem 0.75rem;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    color: rgba(212, 23, 23, 1);
-    text-decoration: none;
-  }
-}
-
-.bbpc-settings-icon {
-  background: rgba(0, 0, 255, 0.058);
-  padding: 10px;
-  border-radius: 50%;
-}
-
 .bbpc-approve-btn {
   margin-left: 7px;
   margin-right: 3px;

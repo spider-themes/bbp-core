@@ -2,11 +2,11 @@
 if ( ! class_exists( 'bbPress' ) ) {
 	return;
 }
+
 $parent_forums = [];
 $fcount        = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 $bbpc_opt      = get_option( 'bbp_core_settings' );
-$filter_set    = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash' ];
 ?>
 <div class="wrap">
 <div class="body-dark">
@@ -14,7 +14,6 @@ $filter_set    = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'n
 	if ( $forum_count > 0 ) :
 		include __DIR__ . '/admin_ui/header.php';
 		?>
-
 		<main>
 			<div class="easydocs-sidebar-menu">
 				<div class="tab-container">
@@ -95,14 +94,14 @@ $filter_set    = $bbpc_opt['filter_buttons'] ?? [ 'open', 'closed', 'hidden', 'n
 									}
 
 									// Count solved.
-									if ( $GLOBALS['bbp_solved_topic']->is_solved( $topic_id ) ) {
+									// Before using $GLOBALS['bbp_solved_topic'], check if it is set
+									if (isset($GLOBALS['bbp_solved_topic']) && $GLOBALS['bbp_solved_topic']->is_solved($topic_id)) {
 										$count_solved++;
 									} else {
 										$count_unsolved++;
 									}
-									
 
-							endwhile;
+								endwhile; wp_reset_postdata();
 
 							$trash_topic = new WP_Query(
 								[

@@ -194,6 +194,12 @@
   align-items: center;
   gap: 5px;
 
+  &.all-available {
+    li {
+      padding: 5px 15px;
+    }
+  }
+
   .easydocs-btn {
     display: flex;
     align-items: center;
@@ -203,6 +209,7 @@
     --btn-fs: var(--fs-14);
     transition: all .3s;
     border-radius: 15px;
+    padding: 5px 25px;
     &:hover {
       background-color: rgba(#000, 0.1);
     }

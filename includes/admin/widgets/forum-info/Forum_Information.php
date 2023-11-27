@@ -4,7 +4,6 @@ namespace BBPCorePro\WpWidgets;
 
 use WP_Widget;
 
-wp_enqueue_style( 'bbp-core-admin' );
 // Newsletter
 class Forum_Information extends WP_Widget {
 	public function __construct() {
@@ -23,12 +22,12 @@ class Forum_Information extends WP_Widget {
  
         $title                  = ( ! empty( $instance['title'] ) ) ? $instance['title'] : esc_html__( 'Forum Informations', 'bbp-core-pro' );
         $title                  = apply_filters( 'widget_title', $title, $instance, $this->id_base );
-        $show_icons             = isset( $instance['show_icons'] ) ? $instance['show_icons'] : false;
-        $show_topics_count      = isset( $instance['show_topics_count'] ) ? $instance['show_topics_count'] : false;
-        $show_replies_count     = isset( $instance['show_replies_count'] ) ? $instance['show_replies_count'] : false;
-        $show_last_post_user    = isset( $instance['show_last_post_user'] ) ? $instance['show_last_post_user'] : false;
-        $show_last_activity     = isset( $instance['show_last_activity'] ) ? $instance['show_last_activity'] : false;
-        $show_subscribe         = isset( $instance['show_subscribe'] ) ? $instance['show_subscribe'] : false;
+        $show_icons             = $instance['show_icons'] ?? false;
+        $show_topics_count      = $instance['show_topics_count'] ?? false;
+        $show_replies_count     = $instance['show_replies_count'] ?? false;
+        $show_last_post_user    = $instance['show_last_post_user'] ?? false;
+        $show_last_activity     = $instance['show_last_activity'] ?? false;
+        $show_subscribe         = $instance['show_subscribe'] ?? false;
  
         echo $args['before_widget'];
 
@@ -166,7 +165,6 @@ class Forum_Information extends WP_Widget {
         endif;
         
 		echo $args['after_widget'];
-                
 	}
 
 	public function form( $instance ) {
