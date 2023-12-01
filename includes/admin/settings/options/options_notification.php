@@ -53,6 +53,16 @@ CSF::createSection(
                 'class'            	=> 'st-pro-notice',
 				'url'				=> false
 			],
+			
+			[
+				'id'      			=> 'bbpc_notification_unread_counter',
+				'type'    			=> 'switcher',
+				'default' 			=> false,
+				'title'   			=> __( 'Unread Counter', 'bbp-core' ),
+                'class'   			=> 'st-pro-notice',
+				'default'  			=> false,
+				'dependency' 		=> [ 'bbpc_notification', '==', true, ],
+			],
 
 			[
 				'type'       	   => 'subheading',
