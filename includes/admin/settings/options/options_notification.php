@@ -1,4 +1,6 @@
 <?php
+
+
 CSF::createSection(
 	$prefix,
 	[
@@ -9,6 +11,7 @@ CSF::createSection(
 				'type'    => 'subheading',
 				'content' => __( 'Notification', 'bbp-core' ),
 			],
+
 			[
 				'id'      => 'bbpc_notification',
 				'type'    => 'switcher',
@@ -16,21 +19,40 @@ CSF::createSection(
 				'title'   => __( 'Show / Hide', 'bbp-core' ),
                 'class'   => 'st-pro-notice'
 			],
+
 			[
 				'type'       => 'subheading',
 				'content'    => __( 'Avatar', 'bbp-core' ),
 				'dependency' => [ 'bbpc_notification', '==', true, ],
 			],
+
 			[
 				'id'         => 'bbpc_notification_location',
-				'type'       => 'select',
-				'title'      => __( 'Menu Location', 'bbp-core' ),
-				'subtitle'   => __( 'Select a menu location to display the user avatar', 'bbp-core' ),
-				'options'    => 'menus',
-				'default'    => 'main_menu',
+				'type'       => 'fieldset',
+				'title'      => __( 'Select Location', 'bbp-core' ),
+				'subtitle'   => __( 'Select the menu location to display the notification.', 'bbp-core' ),
 				'dependency' => [ 'bbpc_notification', '==', true, ],
-                'class'      => 'st-pro-notice'
+                'class'      => 'st-pro-notice',
+				'inline'	=> true,
+				'fields'     => [
+					[
+						'id' 		 => 'location_option',
+						'type'       => 'select',
+						'title'		 => __( 'Menu Location', 'bbp-core' ),
+						'options' 	 => 'bbpc_get_registered_nav_menus',
+						'default'    => 'main_menu',
+						'after'		 => __( 'To insert the notification into this location.', 'bbp-core' )						 
+					],
+
+					[
+						'id' 		 => 'location_selector',
+						'type'       => 'text',
+						'title'		 => __( '<b>Or</b> Selector', 'bbp-core' ),
+						'after'		 => __( 'To insert end of this selector. Ex: <code>.parent_selector</code>', 'bbp-core' )
+					]
+				]
 			],
+
 			[
 				'id'               => 'bbpc_notification_user_pos',
 				'type'             => 'slider',
@@ -108,6 +130,7 @@ CSF::createSection(
 				'dependency'       => [ 'bbpc_notification', '==', true, ],
                 'class'            => 'st-pro-notice'
 			],
+
 			[
 				'id'               => 'bbpc-mini-notification-border-radius',
 				'type'             => 'spacing',
@@ -119,11 +142,13 @@ CSF::createSection(
 				'dependency'       => [ 'bbpc_notification', '==', true, ],
                 'class'            => 'st-pro-notice'
 			],
+
 			[
 				'type'       => 'subheading',
 				'content'    => __( 'Head', 'bbp-core' ),
 				'dependency' => [ 'bbpc_notification', '==', true, ],
 			],
+
 			[
 				'id'      => 'bbpc_notification_head_opt',
 				'type'    => 'switcher',
@@ -132,6 +157,7 @@ CSF::createSection(
                 'class'   => 'st-pro-notice',
 				'dependency' => [ 'bbpc_notification', '==', true, ],
 			],
+
 			[
 				'id'      => 'bbpc_notification_head_text',
 				'type'    => 'text',
@@ -143,6 +169,7 @@ CSF::createSection(
 				],
                 'class'   => 'st-pro-notice'
 			],
+
 			[
 				'id'               => 'bbpc_notification_head_text_color',
 				'type'             => 'color',
@@ -155,7 +182,8 @@ CSF::createSection(
 					['bbpc_notification_head_opt', '==', true], 
 				],
 				'class'            => 'st-pro-notice'
-			],	
+			],
+
 			[
 				'id'               => 'bbpc_notification_head_text_bg',
 				'type'             => 'color',
@@ -168,7 +196,8 @@ CSF::createSection(
 					['bbpc_notification_head_opt', '==', true], 
 				],
 				'class'            => 'st-pro-notice'
-			],		
+			],
+
 			[
 				'id'      => 'bbpc_notification_head_sticky',
 				'type'    => 'switcher',
@@ -180,11 +209,13 @@ CSF::createSection(
 				],
                 'class'   => 'st-pro-notice'
 			],
+
 			[
 				'type'       => 'subheading',
 				'content'    => __( 'Color Management', 'bbp-core' ),
 				'dependency' => [ 'bbpc_notification', '==', true, ],
 			],
+
 			[
 				'id'         => 'bbpc-mini-notification-top',
 				'type'       => 'fieldset',
@@ -205,6 +236,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-notification-link',
 						'type'             => 'link_color',
@@ -217,7 +249,8 @@ CSF::createSection(
 						'output_mode'      => 'color',
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
-					],			
+					],	
+
 					[
 						'id'               => 'bbpc-mini-notification-meta',
 						'type'             => 'link_color',
@@ -227,6 +260,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-notification-btm-bg',
 						'type'             => 'color',
@@ -236,6 +270,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-notification-link-bg',
 						'type'             => 'color',

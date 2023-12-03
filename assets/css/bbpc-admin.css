@@ -228,4 +228,20 @@ body.bbpc-no-pro .st-pro-notice .csf-fieldset, body.bbpc-no-pro .st-pro-notice .
   border-radius: 15px;
 }
 
+/** === Notification & Mini profile CSS === **/
+.csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_notification_location] > .csf-field, .csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_profile_location] > .csf-field {
+  width: 100%;
+  display: flex;
+}
+.csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_notification_location] > .csf-field .csf-after-text, .csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_profile_location] > .csf-field .csf-after-text {
+  font-size: 12px;
+}
+.csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_notification_location] > .csf-field input, .csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_profile_location] > .csf-field input {
+  width: 95%;
+}
+.csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_notification_location] > .csf-field.csf-field-select > .csf-fieldset, .csf-field-fieldset .csf-fieldset-content[data-depend-id=bbpc_profile_location] > .csf-field.csf-field-select > .csf-fieldset {
+  display: flex;
+  gap: 10px;
+}
+
 /*# sourceMappingURL=bbpc-admin.css.map */

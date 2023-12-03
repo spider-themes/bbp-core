@@ -245,3 +245,27 @@ body {
     border-radius: 15px;
   }
 }
+/** === Notification & Mini profile CSS === **/
+.csf-field-fieldset{
+  .csf-fieldset-content {
+      &[data-depend-id='bbpc_notification_location'],
+      &[data-depend-id='bbpc_profile_location']{   
+        > .csf-field{
+          width: 100%;
+          display: flex;
+          .csf-after-text{
+            font-size: 12px;
+          }
+          input {
+            width: 95%;
+          }
+          &.csf-field-select{
+            > .csf-fieldset{
+              display: flex;
+              gap: 10px;
+            }
+          }
+        }
+    }
+  }
+}

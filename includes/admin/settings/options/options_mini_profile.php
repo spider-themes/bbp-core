@@ -9,6 +9,7 @@ CSF::createSection(
 				'type'    => 'subheading',
 				'content' => __( 'Mini Profile', 'bbp-core' ),
 			],
+			
 			[
 				'id'      => 'bbpc_mini_profile',
 				'type'    => 'switcher',
@@ -16,21 +17,38 @@ CSF::createSection(
 				'title'   => __( 'Show / Hide', 'bbp-core' ),
                 'class'   => 'st-pro-notice'
 			],
+			
 			[
 				'type'       => 'subheading',
 				'content'    => __( 'Avatar', 'bbp-core' ),
 				'dependency' => [ 'bbpc_mini_profile', '==', true, ],
 			],
+
 			[
 				'id'         => 'bbpc_profile_location',
-				'type'       => 'select',
-				'title'      => __( 'Menu Location', 'bbp-core' ),
-				'subtitle'   => __( 'Select a menu location to display the user avatar', 'bbp-core' ),
-				'options'    => 'menus',
-				'default'    => 'main_menu',
+				'type'       => 'fieldset',
+				'title'      => __( 'Select Location', 'bbp-core' ),
+				'subtitle'   => __( 'Select the menu location to display the mini profile.', 'bbp-core' ),
 				'dependency' => [ 'bbpc_mini_profile', '==', true, ],
-                'class'      => 'st-pro-notice'
+                'class'      => 'st-pro-notice',
+				'fields'     => [
+					[
+						'id' 		 => 'location_option',
+						'type'       => 'select',
+						'title'		 => __( 'Menu Location', 'bbp-core' ),
+						'options'    => 'bbpc_get_registered_nav_menus',
+						'after'		 => __( 'To insert the mini profile into this location.', 'bbp-core' )						 
+					],
+
+					[
+						'id' 		 => 'location_selector',
+						'type'       => 'text',
+						'title'		 => __( '<b>Or</b> Selector', 'bbp-core' ),
+						'after'		 => __( 'To insert end of this selector. Ex: <code>.parent_selector</code>', 'bbp-core' )
+					]
+				]
 			],
+
 			[
 				'id'               => 'bbpc_profile_user_pos',
 				'type'             => 'slider',
@@ -89,6 +107,7 @@ CSF::createSection(
 				'dependency'       => [ 'bbpc_mini_profile', '==', true, ],
                 'class'            => 'st-pro-notice'
 			],
+			
 			[
 				'id'               => 'bbpc-mini-profile-border-radius',
 				'type'             => 'spacing',
@@ -100,11 +119,13 @@ CSF::createSection(
 				'dependency'       => [ 'bbpc_mini_profile', '==', true, ],
                 'class'            => 'st-pro-notice'
 			],
+			
 			[
 				'type'       => 'subheading',
 				'content'    => __( 'Color Management', 'bbp-core' ),
 				'dependency' => [ 'bbpc_mini_profile', '==', true, ],
 			],
+			
 			[
 				'id'         => 'bbpc-mini-profile-top',
 				'type'       => 'fieldset',
@@ -125,6 +146,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-profile-author-role',
 						'type'             => 'color',
@@ -134,6 +156,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-profile-info-color',
 						'type'             => 'color',
@@ -143,6 +166,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-profile-top-bg',
 						'type'             => 'color',
@@ -154,6 +178,7 @@ CSF::createSection(
 					],
 				)
 			],
+			
 			[
 				'id'         => 'bbpc-mini-profile-bottom',
 				'type'       => 'fieldset',
@@ -174,6 +199,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-profile-link-bg',
 						'type'             => 'color',
@@ -183,6 +209,7 @@ CSF::createSection(
 						'output_important' => true,
                         'class'            => 'st-pro-notice'
 					],
+					
 					[
 						'id'               => 'bbpc-mini-profile-btm-bg',
 						'type'             => 'color',
