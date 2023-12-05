@@ -30,14 +30,9 @@ class BBP_Widgets {
 
         wp_enqueue_script('bbpc-el-editor', BBPC_ASSETS . 'admin/js/bbpc-el-editor.js', [], '1.0.0', true);
 
-        $localize_data = [
-            'promotional_widgets'   => [],
-        ];
-
+        $localize_data = [];
         $pro_widget_map = new Pro_Widget_Map();
         $localize_data['promotional_widgets'] = $pro_widget_map->get_pro_widget_map();
-
-        //
         wp_localize_script('bbpc-el-editor', 'BbpcConfig', $localize_data);
     }
 

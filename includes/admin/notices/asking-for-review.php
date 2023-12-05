@@ -1,6 +1,6 @@
 <?php
 $optionReview = get_option('bbpc_notify_review');
-if ( time() >= (int)$optionReview && $optionReview !== '0' ) {
+if ( is_admin() && time() >= (int)$optionReview && $optionReview !== '0') {
     add_action('admin_notices', 'bbpc_notify_give_review');
     wp_enqueue_script( 'bbpc-notify-review' );
 }
@@ -20,9 +20,9 @@ function bbpc_notify_give_review() {
             <?php _e('We will be forever grateful. Thank you in advance.', 'bbp-core'); ?>
         </p>
         <p>
-            <a href="javascript:;" data="rateNow" class="button button-primary" style="margin-right: 5px"><?php _e('Rate now', 'bbp-core')?></a>
-            <a href="javascript:;" data="later" class="button" style="margin-right: 5px"><?php _e('Later', 'bbp-core')?></a>
-            <a href="javascript:;" data="alreadyDid" class="button"><?php _e('Already did', 'bbp-core')?></a>
+            <a href="javascript:void(0)" data="rateNow" class="button button-primary" style="margin-right: 5px"><?php _e('Rate now', 'bbp-core')?></a>
+            <a href="javascript:void(0)" data="later" class="button" style="margin-right: 5px"><?php _e('Later', 'bbp-core')?></a>
+            <a href="javascript:void(0)" data="alreadyDid" class="button"><?php _e('Already did', 'bbp-core')?></a>
         </p>
     </div>
     <?php
