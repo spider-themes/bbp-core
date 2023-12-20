@@ -84,7 +84,14 @@ function bbpc_ajax_forum() {
                     <div class="post-info">
                         <div class="author">
                             <img src="<?php echo BBPC_ASSETS ?>/img/forum_tab/user-circle-alt.svg" alt="<?php esc_attr_e( 'User circle icon', 'bbpc-core' ); ?>">
-							<?php echo get_the_author_meta( 'display_name', $author_id ) ?>
+							<?php 
+                            echo bbp_get_topic_author_link( 
+                                array( 
+                                    'post_id' 	=> $topic_id, 
+                                    'type' 		=> 'name' 
+                                )
+                            );
+                            ?>
                         </div>
 
                         <div class="post-time">

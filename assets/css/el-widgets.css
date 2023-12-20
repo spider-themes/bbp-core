@@ -1334,6 +1334,8 @@ body:not(.bbpc-search-overlay) #bbpc-search-result.ajax-search {
   font-weight: 400;
   color: var(--black_800);
   letter-spacing: normal;
+  margin-bottom: 8px;
+  display: inline-block;
 }
 .forum-with-topics .topic-table .topic-contents .user .user-info .date {
   font-size: 13px;
@@ -1354,7 +1356,6 @@ body:not(.bbpc-search-overlay) #bbpc-search-result.ajax-search {
 .forum-with-topics .topic-table .topic-contents h3 a {
   color: #171D24 !important;
   font-size: 16px;
-  line-height: 24px;
 }
 .forum-with-topics .topic-table .topic-contents h3 a:hover {
   text-decoration: none;
@@ -1611,6 +1612,9 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   margin-right: 5px;
   height: 15px;
   width: 15px;
+}
+.single-forum-post-widget .post-info > div a {
+  color: #545454;
 }
 .single-forum-post-widget .post-tags {
   display: flex;

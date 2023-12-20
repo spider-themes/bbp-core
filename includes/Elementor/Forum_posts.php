@@ -98,7 +98,15 @@ class Forum_posts extends Widget_Base {
                 <div class="community-post wow fadeInUp" data-wow-delay="0.5s">
                     <div class="post-content">
                         <div class="author-avatar">
-							<?php echo get_avatar( get_the_author_meta( 'ID' ), 40 ) ?>
+							<?php 
+							echo bbp_get_topic_author_link( 
+								array( 
+									'post_id' 	=> get_the_ID(), 
+									'size' 		=> 40, 
+									'type' 		=> 'avatar' 
+								)
+							);
+							?>
                         </div>
                         <div class="entry-content">
                             <h3 class="post-title">

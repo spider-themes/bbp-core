@@ -260,7 +260,14 @@ class Forum_Ajax extends Widget_Base {
                             <div class="post-info">
                                 <div class="author">
                                     <img src="<?php echo BBPC_IMG ?>/forum_tab/user-circle-alt.svg" alt="<?php esc_attr_e( 'User circle alt icon', 'bbpc-core' ); ?>">
-									<?php echo get_the_author_meta( 'display_name', $author_id ) ?>
+									<?php 
+									echo bbp_get_topic_author_link( 
+										array( 
+											'post_id' 	=> $topic_id, 
+											'type' 		=> 'name' 
+										)
+									);
+									?>
                                 </div>
 
                                 <div class="post-time">

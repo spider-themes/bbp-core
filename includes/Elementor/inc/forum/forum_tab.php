@@ -71,7 +71,14 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
                     <div class="post-info">
                         <div class="author">
                             <img src="<?php echo BBPC_IMG ?>/forum_tab/user-circle-alt.svg" alt="<?php esc_attr_e( 'User circle', 'bbp-core' ); ?>">
-                            <?php echo get_the_author_meta( 'display_name', $author_id ) ?>
+                            <?php 
+                            echo bbp_get_topic_author_link( 
+                                array( 
+                                    'post_id' 	=> $topic_id, 
+                                    'type' 		=> 'name' 
+                                )
+                            );
+                            ?>
                         </div>
 
                         <div class="post-time">
