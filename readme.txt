@@ -107,7 +107,8 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 Fixed: Code validation issues fixed in the asking-for-review.php file
 Fixed: Create Topic as anonymous issue solved
 Fixed: Resolved elementor free & pro widgets conflict
-Tweaked: 'BBPC Forum Tabs' and ''BBPC Search' Elementor widgets design improved 
+Tweaked: 'BBPC Forum Tabs' and ''BBPC Search' Elementor widgets design improved
+Updated: Freemius SDK updated to v2.6.2
 
 = v1.2.1 (28 October 2023) =
 New: Brand Color change option added in the Settings page
