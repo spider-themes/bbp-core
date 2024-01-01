@@ -6,7 +6,7 @@ Description:       Expand bbPress powered forums with useful features like - pri
 Author:            spider-themes
 Author URI:        https://profiles.wordpress.org/spiderdevs/
 Text Domain:       bbp-core
-Version:           1.2.1
+Version:           1.2.2
 Requires at least: 5.0
 Tested up to:      6.2
 Requires PHP:      7.4

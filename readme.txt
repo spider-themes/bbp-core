@@ -1,6 +1,6 @@
 === BBP Core - Expand bbPress powered forums with useful features ===
 Contributors: spiderdevs, mdjwel, delweratjk
-Tags: bbpress, signature, quote, tags, toolbar, views, bbcode, forums, forum, topic, reply
+Tags: bbPress, Forum Enhancements, Community, Forum Plugin, User Engagement, Forum Moderation, Voting System, Private Replies, Attachments, Solved Topics,
 Requires at least: 5.0
 Tested up to: 6.3
 Requires PHP: 7.4
@@ -13,6 +13,9 @@ BBP Core expands many useful features for your forums.
 == Description ==
 
 BBP Core powers your forum with useful features. For example - solved topics, private replies, forum statistics etc.
+
+### Video Overview (Showcased free and premium features)
+[youtube https://youtu.be/l2rlT_Qwd60?si=gjBh1VJupitL0Rh8]
 
 ## 🔗 USEFUL LINKS ##
 - [Get the Pro Version](https://spider-themes.net/bbp-core/pricing)
@@ -99,6 +102,12 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.2.2 (01 January 2024) =
+Fixed: Code validation issues fixed in the asking-for-review.php file
+Fixed: Create Topic as anonymous issue solved
+Fixed: Resolved elementor free & pro widgets conflict
+Tweaked: 'BBPC Forum Tabs' and ''BBPC Search' Elementor widgets design improved 
 
 = v1.2.1 (28 October 2023) =
 New: Brand Color change option added in the Settings page

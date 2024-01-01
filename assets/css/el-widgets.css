@@ -1091,6 +1091,7 @@ ul.list-unstyled {
   padding: 4px 12px;
   border-radius: 15px;
   font-weight: 400;
+  text-decoration: none !important;
 }
 
 .bbpc_search_form_wrapper {
@@ -1156,9 +1157,6 @@ ul.list-unstyled {
   max-width: 100%;
   height: auto;
   max-height: 80%;
-}
-.bbpc_search_form_wrapper .search-results-tab {
-  margin-bottom: 2.2rem;
 }
 .bbpc_search_form_wrapper .search-result-item {
   padding: 10px 15px;
@@ -1574,7 +1572,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   color: var(--bbpc_brand_color);
 }
 .single-forum-post-widget .post-title {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .single-forum-post-widget .post-title h6 {
   margin-bottom: 0;
@@ -1599,6 +1597,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
 .single-forum-post-widget .post-info {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 5px;
 }
 .single-forum-post-widget .post-info > div {
   margin-right: 15px;
@@ -1660,7 +1659,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
 }
 .single-forum-post-widget .post-reach {
   border-left: 1px solid #e6e6e6;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 .single-forum-post-widget .post-reach > div {
   font-size: 12px;

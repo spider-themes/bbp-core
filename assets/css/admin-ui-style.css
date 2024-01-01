@@ -1108,7 +1108,10 @@ a.child-delete {
 
 .notification-dropdown {
   width: 340px;
-  border-radius: 2px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  box-shadow: 3px 2px 7px 1px rgba(0, 0, 0, 0.08);
 }
 .notification-dropdown::before {
   content: "";
@@ -1204,7 +1207,7 @@ a.child-delete {
   box-sizing: border-box;
   line-height: unset;
   box-shadow: 0 1px 1px rgba(11, 80, 115, 0.3), 0 1px 5px rgba(60, 64, 67, 0.1);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 25px;
 }
 .easydocs-search-form input#bbpc-search:hover {
@@ -1467,7 +1470,7 @@ a.child-delete {
 }
 
 .notify-column {
-  max-height: 18.75rem;
+  max-height: 25rem;
   overflow-y: auto;
   scrollbar-width: thin;
   /* Notification updated css */

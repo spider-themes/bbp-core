@@ -233,6 +233,7 @@ ul.list-unstyled {
         padding: 4px 12px;
         border-radius: 15px;
         font-weight: 400;
+        text-decoration: none !important;
       }
     }
   }
@@ -300,9 +301,6 @@ ul.list-unstyled {
         max-height: 80%;
       }
     }
-  }
-  .search-results-tab {
-    margin-bottom: 2.2rem;
   }
   .search-result-item {
     padding: 10px 15px;
