@@ -59,7 +59,7 @@
 
         freeCategoryIndex && categories.add({
             name: "bbp-core-pro",
-            title: "BBP Core Pro",
+            title: "BBP Core",
             defaultActive: !1,
             items: proWidgets
         }, {
