@@ -76,6 +76,9 @@ final class BBP_Core {
 
 		register_activation_hook( __FILE__, [ $this, 'activate' ] );
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
+			
+		// Added Documentation links to plugin row meta
+		add_filter('plugin_row_meta',[ $this,  'bbpc_row_meta' ], 10, 2);
 	}
 	
 	/**
@@ -206,8 +209,24 @@ final class BBP_Core {
 		if ( $opt['is_attachment'] ?? true ) {
 			new features\bbp_attachments();
 		}
-
 	}
+
+	/**
+	 * Documentation links to plugin row meta
+	 */
+	public function bbpc_row_meta($links, $file) {
+		// Check if this is your plugin
+		if (plugin_basename(__FILE__) === $file) {
+			// Add your custom links
+			$plugin_links = array(
+				'<a href="https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin/" target="_blank">Documentation</a>'
+			);		
+			// Merge the custom links with the existing links
+			$links = array_merge($links, $plugin_links);
+		}
+		return $links;
+	}
+	// end
 	
 }
 
