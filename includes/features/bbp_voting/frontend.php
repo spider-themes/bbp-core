@@ -81,12 +81,12 @@ function bbp_voting_buttons( $post_obj = false ) {
 				case $topic_post_type:
 					$forum_id      = bbp_get_topic_forum_id( $post_id );
 					$post_setting  = get_post_meta( $forum_id, 'bbp_voting_forum_enable_topics', true );
-					$broad_disable = $opt['is_voting_disabled_topics'] ?? false;
+					$broad_disable = $opt['is_voting_disabled_topics'] ?? 0;
 					break;
 				case $reply_post_type:
 					$forum_id      = bbp_get_reply_forum_id( $post_id );
 					$post_setting  = get_post_meta( $forum_id, 'bbp_voting_forum_enable_replies', true );
-					$broad_disable = $opt['is_voting_disabled_replies'] ?? false;
+					$broad_disable = $opt['is_voting_disabled_replies'] ?? 0;
 					break;
 			}
 			// Filter Hook: 'bbp_voting_allowed_on_forum'
@@ -101,7 +101,7 @@ function bbp_voting_buttons( $post_obj = false ) {
 			}
 		} else {
 			// Use broad disable settings
-			if ( $broad_disable === true ) {
+			if ( $broad_disable === '0' ) {
 				return;
 			}
 		}
@@ -147,7 +147,7 @@ function bbp_voting_buttons( $post_obj = false ) {
 		}
 		// Show labels?
 		// Disable down votes?
-		$disable_down        = $opt['is_down_votes_disabled'] ?? false;
+		$disable_down        = $opt['is_down_votes_disabled'] ?? 0;
 		$vote_number_display = $opt['vote_numbers_display'] ?? 'hover';
 
 		// How to display vote numbers?
@@ -180,7 +180,7 @@ function bbp_voting_buttons( $post_obj = false ) {
 			// $html .= '<div class="score">'. $score. '</div>';
 			// $html .= '<div class="score" style="background-color: rgb('. floor((1 - $score) * 255). ', '.floor($score * 255).', 0); width:'.floor($score * 100).'%;"></div>';
 			// Down vote
-			if ( ! $disable_down ) {
+			if ( $disable_down === '1' ) {
 				$html .= '<form name="amp-form' . $post_id . '" method="post" action-xhr="' . $post_url . '" target="_top" on="submit-success: AMP.setState({\'votedown' . $post_id . '\': ' . ( $downs - 1 ) . '})">
                 <input type="hidden" name="action" value="bbpress_post_vote_link_clicked">
                 <input type="hidden" name="post_id" value="' . $post_id . '" />
@@ -196,12 +196,12 @@ function bbp_voting_buttons( $post_obj = false ) {
 			// Display current vote count for post
 			$html .= '<div class="score">' . $score . '</div>';
 			// Down vote
-			if ( ! $disable_down ) {
+			if ( $disable_down === '1' ) {
 				$html .= '<a class="vote down ' . $display_vote_nums . '" data-votes="' . ( $downs ? $downs : '' ) . '" onclick="bbpress_post_vote_link_clicked(' . $post_id . ', -1); return false;">Down</a>';
 			}
 		}
 		// adds the words 'not helpful' in red below the arrow
-		if ( ! $disable_down && $is_label ) {
+		if ( $disable_down === '1' && $is_label ) {
 			$downvote_label = ! empty( $opt['downvote_label'] ) ? $opt['downvote_label'] : '';
 			$html          .= '<div class="bbp-voting-label not-helpful">' . $downvote_label . '</div>';
 		}
@@ -234,12 +234,12 @@ function sort_bbpress_posts_by_votes( $args = [] ) {
 		case 'bbp_has_topics_query':
 			$this_post_type = $forum_post_type;
 			$post_setting   = get_post_meta( $forum_id, 'sort_bbpress_topics_by_votes_on_forum', true );
-			$broad_enable   = $opt['is_sort_topic_by_votes'] ?? false;
+			$broad_enable   = $opt['is_sort_topic_by_votes'] ?? 0;
 			break;
 		case 'bbp_has_replies_query':
 			$this_post_type = $topic_post_type;
 			$post_setting   = get_post_meta( $forum_id, 'sort_bbpress_replies_by_votes_on_forum', true );
-			$broad_enable   = $opt['is_sort_reply_by_votes'] ?? false;
+			$broad_enable   = $opt['is_sort_reply_by_votes'] ?? 0;
 			break;
 		default:
 			return $args;
@@ -262,7 +262,7 @@ function sort_bbpress_posts_by_votes( $args = [] ) {
 			}
 		} else {
 			// Use broad disable settings
-			if ( $broad_enable === false ) {
+			if ( $broad_enable === '1' ) {
 				return $args;
 			}
 		}

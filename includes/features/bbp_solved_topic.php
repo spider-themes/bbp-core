@@ -289,6 +289,12 @@ class bbp_solved_topic {
 	 * @return bool
 	 */
 	public function has_best_answer( $topic_id = 0 ) {
+		
+		// if bbpress is not active, return the classes
+
+		if ( ! function_exists( 'bbp_get_topic_id' ) ) {
+			return false;
+		}
 
 		$retval = false;
 
@@ -384,6 +390,12 @@ class bbp_solved_topic {
 	 * @return bool
 	 */
 	public function reply_post_class( $classes ) {
+
+		// if bbpress is not active, return the classes
+		if ( ! function_exists( 'bbp_get_reply_id' ) ) {
+			return $classes;
+		}
+
 		$reply_id = bbp_get_reply_id();
 
 		// Only apply the class to replies.

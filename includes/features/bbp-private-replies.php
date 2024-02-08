@@ -171,6 +171,11 @@ class BBP_Private_Replies {
 	 */
 	public function hide_reply( $content = '', $reply_id = 0 ) {
 
+		// if bbPress isn't active, bail
+		if ( ! function_exists( 'bbp_get_reply_id' ) ) {
+			return $content;
+		}
+		
 		if ( empty( $reply_id ) ) {
 			$reply_id = bbp_get_reply_id( $reply_id );
 		}
@@ -305,6 +310,12 @@ class BBP_Private_Replies {
 	 * @return bool
 	 */
 	public function reply_post_class( $classes ) {
+
+		// if bbPress isn't active, bail
+		if ( ! function_exists( 'bbp_get_reply_id' ) ) {
+			return $classes;
+		}
+
 		$reply_id = bbp_get_reply_id();
 
 		// only apply the class to replies

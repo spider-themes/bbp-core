@@ -71,14 +71,14 @@ CSF::createSection(
 
             [
                 'type'    => 'subheading',
-                'content' => __( 'Disable Voting', 'bbp-core' ),
+                'content' => __( 'Voting Buttons', 'bbp-core' ),
             ],
 
             [
                 'id'       => 'is_voting_disabled_topics',
                 'type'     => 'switcher',
                 'default'  => 0,
-                'title'    => __( 'Disable Voting on Topics', 'bbp-core' ),
+                'title'    => __( 'Voting on Topics', 'bbp-core' ),
                 'subtitle' => __( 'You can override this at the forum level', 'bbp-core' ),
             ],
 
@@ -86,7 +86,7 @@ CSF::createSection(
                 'id'       => 'is_voting_disabled_replies',
                 'type'     => 'switcher',
                 'default'  => 0,
-                'title'    => __( 'Disable Voting on Replies', 'bbp-core' ),
+                'title'    => __( 'Voting on Replies', 'bbp-core' ),
                 'subtitle' => __( 'You can override this at the forum level', 'bbp-core' ),
             ],
 
@@ -94,7 +94,7 @@ CSF::createSection(
                 'id'       => 'is_down_votes_disabled',
                 'type'     => 'switcher',
                 'default'  => 0,
-                'title'    => __( 'Disable Down Votes', 'bbp-core' ),
+                'title'    => __( 'Down Votes', 'bbp-core' ),
                 'subtitle' => __( 'Only Allow Up Votes', 'bbp-core' ),
             ],
 
