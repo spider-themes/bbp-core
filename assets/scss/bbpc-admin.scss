@@ -269,3 +269,21 @@ body {
     }
   }
 }
+
+#get_docs_archive, #get_docs_single, #get_docs_slug {
+  text-decoration: none;
+  width: 220px;
+  background: #050505;
+  display: block;
+  color: rgba(255, 255, 255, 0.7019607843);
+  text-transform: uppercase;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px black;
+  float: left;
+  margin: 0 20px 0 0;
+}

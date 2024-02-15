@@ -263,7 +263,7 @@ class GDATTFront {
 			$content .= '<div class="bbp-attachments">';
 			$content .= '<h6>' . __( 'Attachments', 'bbp-core' ) . ':</h6>';
 
-			$_download = ' download';
+			$_download 	= ' download';			
 
 			if ( ! is_user_logged_in() && BBPCATTCore::instance()->is_hidden_from_visitors() ) {
 				$content .= sprintf( __( "You must be <a href='%s'>logged in</a> to view attached files.", 'bbp-core' ), wp_login_url( get_permalink() ) );
@@ -317,6 +317,12 @@ class GDATTFront {
 					$a_title = $filename;
 					$caption = false;
 
+					$is_lighbox = '';
+					if ( bbpc_is_premium() ) {
+						$is_lighbox = $opt['image_link_type'] == 'lightbox' ? ' bbpc-lightbox' : '';
+						$_download 	= $opt['image_link_type'] == 'lightbox' ? '' : $_download;
+					}
+
 					$img = false;
 					if ( ( $opt['attachment_image_x'] ?? false ) && ( $opt['attachment_image_y'] ?? false ) ) {
 						$html = wp_get_attachment_image( $attachment->ID, 'bbpc-attachment-thumb' );
@@ -338,20 +344,21 @@ class GDATTFront {
 					}
 
 					if ( $img ) {
+						
 						if ( $caption ) {
 							$item .= '<div style="width: ' . bbpc_bba_o( 'attachment_image_x' ) . 'px" class="wp-caption">';
 						}
 
-						$item .= '<a class="' . $class_a . '" href="' . $file_url . '" title="' . $a_title . '">' . $html . '</a>';
+						$item .= '<a class="' . $class_a . $is_lighbox . '" href="' . $file_url . '" title="' . $a_title .'" '.  $_download .'>' . $html . '</a>';
 
 						if ( $caption ) {
-							$a_title = '<a href="' . $file_url . '"' . $_download . '>' . $a_title . '</a>';
+							$a_title = '<a class="' . $is_lighbox . '" href="' . $file_url . '"' . $_download . '>' . $a_title . '</a>';
 
 							$item .= '<p class="wp-caption-text">' . $a_title . '<br/>' . $actions . '</p></div>';
 						}
 					} else {
 						$item .= '<span role="presentation" class="' . $class_li . '"></span> ';
-						$item .= '<div class="d4p-bbp-att-wrapper"><a class="' . $class_a . '"' . $rel_a . $_download . ' href="' . $file_url . '" title="' . $a_title . '">' . $html . '</a>' . $actions . '</div>';
+						$item .= '<div class="d4p-bbp-att-wrapper"><a class="' . $class_a . $is_lighbox . '"' . $rel_a . $_download . ' href="' . $file_url . '" title="' . $a_title . '">' . $html . '</a>' . $actions . '</div>';
 					}
 
 					$item .= '</li>';

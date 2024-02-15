@@ -5,6 +5,7 @@
 		$prefix,
 		[
 			'title'  => __( 'Topics', 'bbp-core' ),
+			'id'     => 'topics_fields',
 			'fields' => [
 				[
 					'id'       => 'is_solved_topics',

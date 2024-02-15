@@ -112,8 +112,20 @@ CSF::createSection(
 				'title'   => __( 'With Caption', 'bbp-core' ),
 				'default' => true,
 			],
-
-            // Thumbnail
+			
+			[
+				'id'      => 'image_link_type',
+				'type'    => 'select',
+				'title'   => __( 'Image Link Type', 'bbp-core' ),
+				'options' => [
+					'download'   => __( 'Download', 'bbp-core' ),
+					'lightbox'   => __( 'Lightbox', 'bbp-core' ),
+				],
+				'default' => 'download',
+				'class'   => 'st-pro-notice',
+				'chosen'  => true
+			],
+			
 			[
 				'type'    => 'subheading',
 				'content' => __( 'Image thumbnails size', 'bbp-core' ),

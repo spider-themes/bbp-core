@@ -2,3 +2,44 @@
 * BBP Core plugin main css file
 */
 
+.bbpc-attachment-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    width: 100%;
+    margin: auto;
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.bbpc-attachment-lightbox-inner {
+    position: relative;
+    max-width: 85%;
+    display: flex;
+    align-items: center;
+}
+
+.bbpc-attachment-lightbox > .bbpc-attachment-lightbox-inner > span {
+    color: white;
+    font-size: 23px;
+    line-height: 22px;
+    background: red;
+    display: block;
+    height: 28px;
+    border-radius: 19px;
+    width: 28px;
+    text-align: center;
+    top: -15px;
+    right: -15px;
+    bottom: 100%;
+    z-index: 9999999999;
+    position: absolute;
+    cursor: pointer;
+}

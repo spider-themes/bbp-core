@@ -1,0 +1,44 @@
+<?php
+
+// Select docs page
+$args = array(
+	'post_type'      => 'topic',
+	'posts_per_page' => 1,
+	'orderby'        => 'menu_order',
+	'order'          => 'desc'
+);
+
+$topic_url    = '';
+ 
+foreach ( get_posts( $args ) as $post ) {
+	$topic_url = get_permalink( $post->ID );
+}
+
+$archive_url = admin_url('customize.php?url=') . site_url( '/' ) . get_option( '_bbp_root_slug' ) . '?autofocus[panel]=docs-page&autofocus[section]=docs-archive-page';
+$single_url  = admin_url( 'customize.php?url=' ) . $topic_url . '?autofocus[panel]=bbp-core-settings&autofocus[section]=topics_fields';
+
+CSF::createSection( $prefix, array(
+	'id'     => 'design_fields',
+	'title'  => esc_html__( 'Customizer', 'eazydocs' ),
+	'fields' => [
+
+		array(
+			'id'         => 'customizer_visibility',
+			'type'       => 'switcher',
+			'title'      => esc_html__( 'Options Visibility on Customizer', 'eazydocs' ),
+			'text_on'    => esc_html__( 'Enabled', 'eazydocs' ),
+			'text_off'   => esc_html__( 'Disabled', 'eazydocs' ),
+			'text_width' => 100
+		),
+
+		array(
+			'type'       => 'content',
+			'content'    => sprintf( '<a href="'.$archive_url.'" target="_blank" id="get_docs_archive">' . esc_html__( 'Forum', 'eazydocs' )
+			                         . '</a> <a href="' . $single_url . '" target="_blank" id="get_docs_single">' . esc_html__( 'Topic', 'eazydocs' )
+			                         . '</a>' ),
+			'dependency' => array(
+				array( 'customizer_visibility', '==', true ),
+			),
+		)
+	]
+) );

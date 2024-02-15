@@ -147,3 +147,11 @@ function bbpc_forum_title(){
     $forum_title    = get_the_title( $forum_id );
     return $forum_title;
 }
+
+/**
+ * Customizer section hide from customizer
+ */
+add_action( 'customize_register', function( $wp_customize ) {
+    // Unset the section you want to hide
+    $wp_customize->remove_section( 'design_fields' );
+}, 20 );
