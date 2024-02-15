@@ -8,14 +8,13 @@ $args = array(
 	'order'          => 'desc'
 );
 
-$topic_url    = '';
- 
+$topic_permalink    = '';
 foreach ( get_posts( $args ) as $post ) {
-	$topic_url = get_permalink( $post->ID );
+	$topic_permalink = get_permalink( $post->ID );
 }
 
-$archive_url = admin_url('customize.php?url=') . site_url( '/' ) . get_option( '_bbp_root_slug' ) . '?autofocus[panel]=docs-page&autofocus[section]=docs-archive-page';
-$single_url  = admin_url( 'customize.php?url=' ) . $topic_url . '?autofocus[panel]=bbp-core-settings&autofocus[section]=topics_fields';
+$forum_url 	= admin_url('customize.php?url=') . site_url( '/' ) . get_option( '_bbp_root_slug' ) . '?autofocus[panel]=bbp-core-settings&autofocus[section]=forum-archive-page';
+$topic_url  = admin_url( 'customize.php?url=' ) . $topic_permalink . '?autofocus[panel]=bbp-core-settings&autofocus[section]=topics_fields';
 
 CSF::createSection( $prefix, array(
 	'id'     => 'design_fields',
@@ -33,9 +32,7 @@ CSF::createSection( $prefix, array(
 
 		array(
 			'type'       => 'content',
-			'content'    => sprintf( '<a href="'.$archive_url.'" target="_blank" id="get_docs_archive">' . esc_html__( 'Forum', 'eazydocs' )
-			                         . '</a> <a href="' . $single_url . '" target="_blank" id="get_docs_single">' . esc_html__( 'Topic', 'eazydocs' )
-			                         . '</a>' ),
+			'content'    => sprintf( '<a href="'.$forum_url.'" target="_blank" id="bbpc_forum_option_link">' . esc_html__( 'Forum', 'eazydocs' ) . '</a> <a href="' . $topic_url . '" target="_blank" id="bbpc_topic_option_link">' . esc_html__( 'Topic', 'eazydocs' ) . '</a>' ),
 			'dependency' => array(
 				array( 'customizer_visibility', '==', true ),
 			),
