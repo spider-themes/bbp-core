@@ -1,9 +1,14 @@
 <?php
 $optionReview = get_option('bbpc_notify_review');
-if ( is_admin() && time() >= (int)$optionReview && $optionReview !== '0') {
+if ( is_admin() && time() >= (int) $optionReview && $optionReview !== '0') {
     add_action('admin_notices', 'bbpc_notify_give_review');
+    add_action('admin_enqueue_scripts', 'bbpc_notify_enqueue_script'); // Hook to admin_enqueue_scripts
+}
+
+function bbpc_notify_enqueue_script() {
     wp_enqueue_script( 'bbpc-notify-review' );
 }
+
 add_action('wp_ajax_bbpc_notify_save_review', 'bbpc_notify_save_review');
 
 /**
