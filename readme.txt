@@ -1,18 +1,18 @@
 === BBP Core - Expand bbPress powered forums with useful features ===
 Contributors: spiderdevs, mdjwel, delweratjk
-Tags: bbPress, Forum Enhancements, Community, Forum Plugin, User Engagement, Forum Moderation, Voting System, Private Replies, Attachments, Solved Topics,
+Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.4.3
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-BBP Core expands many useful features for your forums.
+BBP Core expands many useful features for the bbPress forums.
 
 == Description ==
 
-BBP Core powers your forum with useful features. For example - solved topics, private replies, forum statistics etc.
+BBP Core empowers bbPress forum with useful features. For example - Unified Forum Builder UI, Solved topics, Voting, Private replies, Forum statistics etc.
 
 ### Video Overview (Showcased free and premium features)
 [youtube https://youtu.be/l2rlT_Qwd60?si=gjBh1VJupitL0Rh8]
@@ -102,6 +102,17 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.2.3 (25 March 2024) =
+Fixed: Resolved elementor free & pro widgets conflict. Free and pro widgets appearing at the same time on the editor.
+Fixed: Fixed fatal error while bbpress is not activated
+Fixed: Admin script loading issue (attached the scripts with the correct hook)
+New: Customizer option added for the brand color
+Tweaked: Forum Builder UI improved in the Admin Dashboard
+Tweaked: Voting settings option improved in the settings page
+Tweaked: Compatibility with the latest BBP Core Pro plugin
+Tweaked: Redirection stop after activating the plugin
+Tweaked: Plugin's Documentation link added in plugins page (beside the plugin name)
 
 = v1.2.2 (01 January 2024) =
 Fixed: Code validation issues fixed in the asking-for-review.php file

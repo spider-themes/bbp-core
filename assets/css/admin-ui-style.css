@@ -897,7 +897,7 @@ a.child-delete {
   border-bottom: 1px solid #edeae9;
 }
 
-.easydocs-btn {
+.ezd-btn {
   --btn-fs: var(--fs-16);
   --btn-ff: var(--ff-roboto);
   --btn-py: 0.5rem;
@@ -922,166 +922,166 @@ a.child-delete {
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
 }
-.easydocs-btn-sm {
+.ezd-btn-sm {
   --btn-py: 0.3125rem;
 }
-.easydocs-btn-lg {
+.ezd-btn-lg {
   --btn-py: 0.625rem;
 }
-.easydocs-btn-xl {
+.ezd-btn-xl {
   --btn-py: 0.75rem;
 }
-.easydocs-btn-none {
+.ezd-btn-none {
   --btn-radius: 0;
 }
-.easydocs-btn-round {
+.ezd-btn-round {
   --btn-radius: 0.375rem;
 }
-.easydocs-btn-rounded {
+.ezd-btn-rounded {
   --btn-radius: 1.875rem;
 }
-.easydocs-btn-round-full {
+.ezd-btn-round-full {
   --btn-radius: 50%;
 }
-.easydocs-btn-disabled {
+.ezd-btn-disabled {
   pointer-events: none;
   opacity: 0.65;
 }
-.easydocs-btn-black-light {
+.ezd-btn-black-light {
   --btn-bg: rgba(13, 14, 43, 0.1);
   --btn-clr: #0D0E2B;
   --btn-bc: transparent;
 }
-.easydocs-btn-black-light:hover {
+.ezd-btn-black-light:hover {
   --btn-clr: #0D0E2B;
   --btn-bg: rgba(13, 14, 43, 0.1);
   --btn-bc: #0D0E2B;
 }
-.easydocs-btn-black-light:focus {
+.ezd-btn-black-light:focus {
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
 }
-.easydocs-btn-green-light {
+.ezd-btn-green-light {
   --btn-bg: rgba(45, 178, 45, 0.1);
   --btn-clr: #2DB22D;
   --btn-bc: transparent;
 }
-.easydocs-btn-green-light:hover {
+.ezd-btn-green-light:hover {
   --btn-clr: #2DB22D;
   --btn-bg: rgba(45, 178, 45, 0.1);
   --btn-bc: #2DB22D;
 }
-.easydocs-btn-green-light:focus {
+.ezd-btn-green-light:focus {
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
 }
-.easydocs-btn-blue-light {
+.ezd-btn-blue-light {
   --btn-bg: rgba(2, 117, 216, 0.1);
   --btn-clr: #0275D8;
   --btn-bc: transparent;
 }
-.easydocs-btn-blue-light:hover {
+.ezd-btn-blue-light:hover {
   --btn-clr: #0275D8;
   --btn-bg: rgba(2, 117, 216, 0.1);
   --btn-bc: #0275D8;
 }
-.easydocs-btn-blue-light:focus {
+.ezd-btn-blue-light:focus {
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
 }
-.easydocs-btn-orange-light {
+.ezd-btn-orange-light {
   --btn-bg: rgba(204, 128, 51, 0.1);
   --btn-clr: #CC8033;
   --btn-bc: transparent;
 }
-.easydocs-btn-orange-light:hover {
+.ezd-btn-orange-light:hover {
   --btn-clr: #CC8033;
   --btn-bg: rgba(204, 128, 51, 0.1);
   --btn-bc: #CC8033;
 }
-.easydocs-btn-orange-light:focus {
+.ezd-btn-orange-light:focus {
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
 }
-.easydocs-btn-gray-light {
+.ezd-btn-gray-light {
   --btn-bg: rgba(66, 66, 66, 0.1);
   --btn-clr: #424242;
   --btn-bc: transparent;
 }
-.easydocs-btn-gray-light:hover {
+.ezd-btn-gray-light:hover {
   --btn-clr: #424242;
   --btn-bg: rgba(66, 66, 66, 0.1);
   --btn-bc: #424242;
 }
-.easydocs-btn-gray-light:focus {
+.ezd-btn-gray-light:focus {
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
 }
-.easydocs-btn-blue {
+.ezd-btn-blue {
   --btn-bg: var(--clr-blue);
   --btn-clr: var(--clr-white);
   --btn-bc: var(--clr-blue);
 }
-.easydocs-btn-blue:hover {
+.ezd-btn-blue:hover {
   --btn-clr: var(--clr-blue);
   --btn-bg: transparent;
   --btn-bc: var(--clr-blue);
 }
-.easydocs-btn-blue:focus {
+.ezd-btn-blue:focus {
   outline: 0;
   box-shadow: 0 0 0 0.4rem rgba(65, 65, 230, 0.5);
 }
-.easydocs-btn-outline-blue {
+.ezd-btn-outline-blue {
   --btn-clr: #4141E6;
   --btn-bc: #4141E6;
 }
-.easydocs-btn-outline-blue:hover {
+.ezd-btn-outline-blue:hover {
   --btn-clr: var(--clr-white);
   --btn-bg: #4141E6;
   --btn-bc: #4141E6;
 }
-.easydocs-btn-outline-blue:focus {
+.ezd-btn-outline-blue:focus {
   outline: 0;
   box-shadow: 0 0 0 0.4rem rgba(65, 65, 230, 0.5);
 }
-.easydocs-btn-white {
+.ezd-btn-white {
   --btn-bg: var(--clr-white);
   --btn-clr: var(--clr-white);
   --btn-bc: var(--clr-white);
 }
-.easydocs-btn-white:hover {
+.ezd-btn-white:hover {
   --btn-clr: var(--clr-white);
   --btn-bg: transparent;
   --btn-bc: var(--clr-white);
 }
-.easydocs-btn-white:focus {
+.ezd-btn-white:focus {
   outline: 0;
   box-shadow: 0 0 0 0.4rem rgba(255, 255, 255, 0.5);
 }
-.easydocs-btn-outline-white {
+.ezd-btn-outline-white {
   --btn-clr: var(--clr-white);
   --btn-bc: var(--clr-white);
 }
-.easydocs-btn-outline-white:hover {
+.ezd-btn-outline-white:hover {
   --btn-clr: var(--clr-black);
   --btn-bg: var(--clr-white);
   --btn-bc: var(--clr-white);
 }
-.easydocs-btn-outline-white:focus {
+.ezd-btn-outline-white:focus {
   outline: 0;
   box-shadow: 0 0 0 0.4rem rgba(var(--clr-white), 0.5);
 }
-.easydocs-btn-gray {
+.ezd-btn-gray {
   --btn-bg: rgba(37, 39, 51, 0.1);
   --btn-clr: var(--clr-dark);
   --btn-bc: transparent;
 }
-.easydocs-btn-gray:hover {
+.ezd-btn-gray:hover {
   --btn-clr: var(--clr-white);
   --btn-bg: var(--clr-blue);
   --btn-bc: transparent;
 }
-.easydocs-btn-gray:focus {
+.ezd-btn-gray:focus {
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
 }
@@ -2028,6 +2028,9 @@ body.bbpc-forum-ui {
   .container {
     max-width: 1170px;
   }
+}
+#wpcontent {
+  height: 100vh;
 }
 
 /*# sourceMappingURL=admin-ui-style.css.map */
