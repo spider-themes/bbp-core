@@ -9,7 +9,7 @@ CSF::createSection(
                 'id'      => 'is_votes',
                 'type'    => 'switcher',
                 'default' => 1,
-                'title'   => __( 'Enable BBP Voting Fetures?', 'bbp-core' ),
+                'title'   => __( 'Enable BBP Voting Features?', 'bbp-core' ),
             ],
 
             [
