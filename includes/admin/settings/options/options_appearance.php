@@ -11,11 +11,9 @@ CSF::createSection(
                 'id'          => 'bbpc_brand_color',
                 'type'        => 'color',
                 'title'       => esc_html__( 'Frontend Brand Color', 'bbp-core' ),
-                'default'     => '#078669',
                 'output'      => ':root',
-                'output_mode' => '--bbpc_brand_color',
+                'output_mode' => '--bbpc_brand_color_opt',
             ]
-    
         ],
     ]
 );
