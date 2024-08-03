@@ -132,7 +132,7 @@
             }
   
             &:hover {
-              color: $brand_color;
+              color: var(--bbpc_brand_color);
             }
           }
         }

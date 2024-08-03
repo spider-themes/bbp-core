@@ -22,7 +22,7 @@ Table of Content:
   --rob: "Roboto", sans-serif;
   --great: "Great Vibes", cursive;
   --bg_gradient: linear-gradient( 45deg, #F5FDFF, #FEEFEC );
-  --bbpc_brand_color: #078669;
+  --brand_color: var(--bbpc_brand_color_opt, #078669);
   --h_title: #1d2746;
   --p_color: #6b707f;
   --bs-white: #fff;
@@ -1440,7 +1440,7 @@ body:not(.bbpc-search-overlay) #bbpc-search-result.ajax-search {
 }
 .forum-meta .button a {
   color: #ffffff;
-  background: var(--bbpc_brand_color);
+  background: var(--brand_color);
   padding: 8px 14px;
   font-size: 14px !important;
   border-radius: 3px;
