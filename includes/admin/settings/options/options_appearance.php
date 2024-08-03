@@ -5,15 +5,15 @@
 CSF::createSection(
     $prefix,
     [
-        'title'  => __( 'Appearance d', 'bbp-core' ),
+        'title'  => __( 'Appearance', 'bbp-core' ),
         'fields' => [
             [ 
                 'id'          => 'bbpc_brand_color',
                 'type'        => 'color',
                 'title'       => esc_html__( 'Frontend Brand Color', 'bbp-core' ),
-                //'default'     => '#078669',
+                'default'     => '#078669',
                 'output'      => ':root',
-                'output_mode' => '--brand_color',
+                'output_mode' => '--bbpc_brand_color',
             ]
     
         ],

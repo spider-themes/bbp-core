@@ -69,13 +69,13 @@
           color: #1d2746;
 
           &:hover {
-            color: var(--bbpc_brand_color);
+            color: $brand_color;
             text-decoration: none;
           }
         }
 
         &:hover {
-          color: var(--bbpc_brand_color);
+          color: $brand_color;
         }
       }
 
