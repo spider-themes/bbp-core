@@ -4,7 +4,7 @@ Plugin Name:       BBP Core
 Plugin URI:        https://spider-themes.net/bbp-core
 Description:       Expand bbPress powered forums with useful features like - private reply, solved topics ...
 Author:            spider-themes
-Author URI:        https://profiles.wordpress.org/spiderdevs/
+Author URI:        https://spider-themes.net/bbp-core
 Text Domain:       bbp-core
 Version:           1.2.3
 Requires at least: 5.0
