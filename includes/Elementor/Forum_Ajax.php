@@ -72,6 +72,19 @@ class Forum_Ajax extends Widget_Base {
 			]
 		);
 
+		// button show hide switcher
+		$this->add_control(
+			'filter_btns',
+			[
+				'label'        => esc_html__( 'Tab Filter', 'bbp-core' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Show', 'bbp-core' ),
+				'label_off'    => esc_html__( 'Hide', 'bbp-core' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+			]
+		);
+
 		$this->end_controls_section();
 
 		/**
@@ -198,7 +211,8 @@ class Forum_Ajax extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings 		= $this->get_settings();
+		$filter_btns 	= $settings['filter_btns'] ?? true;
 
 		$topics = new WP_Query( array(
 			'post_type'      => 'topic',
@@ -208,38 +222,45 @@ class Forum_Ajax extends Widget_Base {
 		?>
 
         <div class="forum-post-widget" data_id="<?php echo esc_attr( $this->get_id() ); ?>">
-            <div class="post-filter-widget mb-20 wow fadeInUp">
-                <div class="single-filter-item">
-					<a href="#" id="all_filt" data-forum="all" class="data-active">
-						<i class="icon_grid-2x2"></i><?php _e( 'All', 'bbp-core' ) ?>
-					</a>
-                </div>
-				<div class="single-filter-item">
-					<a href="#" id="populer_filt" data-forum="popular">
-						<i class="icon_easel"></i><?php _e( 'Popular', 'bbp-core' ) ?>
-					</a>
-                </div>
-				<div class="single-filter-item">
-					<a href="#" id="featured_filt" data-forum="featured">
-						<i class="icon_ribbon_alt"></i><?php _e( 'Featured', 'bbp-core' ) ?>
-					</a>
-                </div>
-				<div class="single-filter-item">
-					<a href="#" id="recent_filt" data-forum="recent">
-						<i class="icon_clock_alt"></i><?php _e( 'Recent', 'bbp-core' ) ?>
-					</a>
-                </div>
-				<div class="single-filter-item">
-					<a href="#" id="unsolved_filt" data-forum="unsolved">
-						<i class="icon_close_alt2"></i><?php _e( 'Unsolved', 'bbp-core' ) ?>
-					</a>
-                </div>
-				<div class="single-filter-item">
-					<a href="#" id="solved_filt" data-forum="solved">
-						<i class="icon_check_alt2"></i><?php _e( 'Solved', 'bbp-core' ) ?>
-					</a>
-                </div>
-            </div>
+            
+			<?php 
+			if ( $filter_btns == true ) :
+				?>
+				<div class="post-filter-widget mb-20 wow fadeInUp">
+					<div class="single-filter-item">
+						<a href="#" id="all_filt" data-forum="all" class="data-active">
+							<i class="icon_grid-2x2"></i><?php _e( 'All', 'bbp-core' ) ?>
+						</a>
+					</div>
+					<div class="single-filter-item">
+						<a href="#" id="populer_filt" data-forum="popular">
+							<i class="icon_easel"></i><?php _e( 'Popular', 'bbp-core' ) ?>
+						</a>
+					</div>
+					<div class="single-filter-item">
+						<a href="#" id="featured_filt" data-forum="featured">
+							<i class="icon_ribbon_alt"></i><?php _e( 'Featured', 'bbp-core' ) ?>
+						</a>
+					</div>
+					<div class="single-filter-item">
+						<a href="#" id="recent_filt" data-forum="recent">
+							<i class="icon_clock_alt"></i><?php _e( 'Recent', 'bbp-core' ) ?>
+						</a>
+					</div>
+					<div class="single-filter-item">
+						<a href="#" id="unsolved_filt" data-forum="unsolved">
+							<i class="icon_close_alt2"></i><?php _e( 'Unsolved', 'bbp-core' ) ?>
+						</a>
+					</div>
+					<div class="single-filter-item">
+						<a href="#" id="solved_filt" data-forum="solved">
+							<i class="icon_check_alt2"></i><?php _e( 'Solved', 'bbp-core' ) ?>
+						</a>
+					</div>
+				</div>
+				<?php 
+			endif;
+			?>
 
             <div id="aj-post-filter-widget">
 				<?php

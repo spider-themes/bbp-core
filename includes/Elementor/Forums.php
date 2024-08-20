@@ -180,7 +180,7 @@ class Forums extends Widget_Base {
 				 
 				<svg fill="#000000" width="16px" height="16px" viewBox="0 0 24 24" id="minus" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color icon_minus"> <line id="primary" x1="19" y1="12" x2="5" y2="12" style="fill: none;  stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line> </svg>
 				
-				<svg fill="#000000" width="16px" height="16px" viewBox="0 0 24 24" id="plus" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color icon_plus"><path id="primary" d="M5,12H19M12,5V19" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
+				<svg fill="#000000" width="16px" height="16px" viewBox="0 0 24 24" id="plus" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color icon_plus"><path id="secondary" d="M5,12H19M12,5V19" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
             </a>
 
             <div class="collapse-wrap" id="more-category" data_id="<?php echo esc_attr( $this->get_id() );?>">
