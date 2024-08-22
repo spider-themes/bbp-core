@@ -2,9 +2,9 @@
 Contributors: spiderdevs, mdjwel, delweratjk
 Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
-Tested up to: 6.4.3
+Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.2.4 (23 August 2024) =
+Fixed: Brand color change issue
+Updated: Freemius SDK updated to 2.7.4
 
 = v1.2.3 (25 March 2024) =
 Fixed: Resolved elementor free & pro widgets conflict. Free and pro widgets appearing at the same time on the editor.
