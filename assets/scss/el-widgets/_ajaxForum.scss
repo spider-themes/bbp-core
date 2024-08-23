@@ -302,3 +302,11 @@ body{
     }
   } 
 }
+
+#aj-post-filter-widget{
+  svg {
+    circle.bbpc-preloader{
+        stroke: var(--bbpc_brand_color) !important;
+    }
+  }
+}

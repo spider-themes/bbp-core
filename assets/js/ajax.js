@@ -28,7 +28,7 @@
             $('.forum-post-widget[data_id="'+data_id+'"] #aj-post-filter-widget').html(
               '<?xml version="1.0" encoding="utf-8"?>\n' +
               '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">\n' +
-              '<circle cx="50" cy="50" r="18" stroke-width="2" stroke="#11a683" stroke-dasharray="28.274333882308138 28.274333882308138" fill="none" stroke-linecap="round">\n' +
+              '<circle class="bbpc-preloader" cx="50" cy="50" r="18" stroke-width="2" stroke="#11a683" stroke-dasharray="28.274333882308138 28.274333882308138" fill="none" stroke-linecap="round">\n' +
               '  <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>\n' +
               '</circle>\n' +
               '</svg>',
