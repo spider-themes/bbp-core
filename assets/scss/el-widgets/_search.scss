@@ -3,23 +3,6 @@
   margin-left: auto;
   margin-right: auto;
 
-  #ama-search-result {
-    display: none;
-    position: absolute;
-    width: 100%;
-    background: #fff;
-    border: 1px solid rgb(230, 238, 239);
-    border-radius: 4px;
-    box-shadow: 0 3px 4px 0 rgb(4 73 89 / 6%);
-    margin-top: 25px !important;
-    padding: 20px 25px;
-    font-size: 14px;
-    font-weight: 400;
-    transition: all 0.4s;
-    top: 45px;
-    z-index: 99;
-  }
-
   .header_search_keyword {
     text-align: left;
     display: flex;

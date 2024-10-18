@@ -886,22 +886,6 @@ body.body_dark .forum-post-widget .post-filter-widget .single-filter-item svg, b
   margin-left: auto;
   margin-right: auto;
 }
-.ama-search-widget #ama-search-result {
-  display: none;
-  position: absolute;
-  width: 100%;
-  background: #fff;
-  border: 1px solid #e6eeef;
-  border-radius: 4px;
-  box-shadow: 0 3px 4px 0 rgba(4, 73, 89, 0.06);
-  margin-top: 25px !important;
-  padding: 20px 25px;
-  font-size: 14px;
-  font-weight: 400;
-  transition: all 0.4s;
-  top: 45px;
-  z-index: 99;
-}
 .ama-search-widget .header_search_keyword {
   text-align: left;
   display: flex;
