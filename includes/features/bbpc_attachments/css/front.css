@@ -106,6 +106,15 @@
 #bbpress-forums .bbp-attachments ol li a img {
   display: block;
 }
+#bbpress-forums .bbp-attachments ol.with-icons.d4p-bba-thumbnails {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+#bbpress-forums .bbp-attachments ol.with-icons.d4p-bba-thumbnails .bbp-atthumb {
+  border: none !important;
+}
 #bbpress-forums .bbp-attachments ol.with-icons li .bbp-atticon {
   background: transparent url(gfx/icons.png) no-repeat;
   display: block;

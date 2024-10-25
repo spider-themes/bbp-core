@@ -16,6 +16,7 @@ if ( class_exists( 'CSF' ) ) {
 			'menu_slug'       => 'bbp-core-settings',
 			'menu_type'       => 'submenu',
 			'menu_parent'     => 'bbp-core',
+			'show_bar_menu'   => false,
 
 			// Footer.
 			'footer_text'     => '',

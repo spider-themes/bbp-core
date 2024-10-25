@@ -143,6 +143,16 @@
             }
         }
 
+        ol.with-icons.d4p-bba-thumbnails {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            .bbp-atthumb {
+                border: none !important;
+            }
+        }
+
         ol {
             &.with-icons {
                 li {
