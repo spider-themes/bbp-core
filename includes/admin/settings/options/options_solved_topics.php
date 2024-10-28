@@ -45,6 +45,48 @@
 					'dependency' => [ 'anonymous_topic', '==', 'true', ],
 					'class'   => 'st-pro-notice',
 				],
+				
+				[
+					'type'		=> 'subheading',
+					'title'		=> __( 'Reactions', 'bbp-core' ),
+				],
+
+				[
+					'id'       	 => 'agree_disagree_voting',
+					'type'     	 => 'switcher',
+					'title'    	 => __( 'Enable / Disable', 'bbp-core' ),	
+					'subtitle'   => __( 'To enable or disable the agree/disagree reactions.', 'bbp-core' ),
+					'class'   	 => 'st-pro-notice bbpc-geo-roles-opt',
+					'default' 	 => true,
+				],
+				
+				[
+					'id'       	 => 'reaction_display_condition',
+					'type'     	 => 'select',
+					'title'    	 => __( 'Display Condition', 'bbp-core' ),
+					'subtitle'   => __( 'Select the condition to display the reaction buttons.', 'bbp-core' ),
+					'options'    => [
+						'always' 		=> __( 'Always', 'bbp-core' ),
+						'has_replies' 	=> __( 'Has Replies', 'bbp-core' ),
+					],
+					'default' 	 => 'always',
+					'dependency' => [ 'agree_disagree_voting', '==', 'true', ],
+					'class'   	 => 'st-pro-notice bbpc-geo-roles-opt',
+				],
+
+				[
+					'id'       	 => 'reaction_display_condition_count',
+					'type'     	 => 'text',
+					'title'    	 => __( 'Display Condition Count', 'bbp-core' ),
+					'subtitle'   => __( 'Number of replies to display the reaction buttons.', 'bbp-core' ),
+					'default' 	 => 5,
+					'dependency' => [ 
+						['reaction_display_condition', '==', 'has_replies'], 
+						['agree_disagree_voting', '==', 'true'],
+					],
+					'class'   	 => 'st-pro-notice bbpc-geo-roles-opt',
+				],
+				
 				[
 					'type'		=> 'subheading',
 					'title'		=> __( 'Same Topic Voting', 'bbp-core' ),
@@ -53,14 +95,14 @@
 					'id'       	 => 'same_topic_voting',
 					'type'     	 => 'switcher',
 					'title'    	 => __( 'Enable / Disable', 'bbp-core' ),	
-					'class'   => 'st-pro-notice',
+					'class'   	 => 'st-pro-notice',
 				],
 				array(
 					'id'            => 'same_topic_settings',
 					'type'          => 'tabbed',
-					'title'     => __( 'Settings', 'bbp-core' ),
-					'subtitle'  => __( 'Customize voting button text and color for single topic.', 'bbp-core' ),
-					'dependency' => [ 'same_topic_voting', '==', 'true', ],
+					'title'     	=> __( 'Settings', 'bbp-core' ),
+					'subtitle'  	=> __( 'Customize voting button text and color for single topic.', 'bbp-core' ),
+					'dependency' 	=> [ 'same_topic_voting', '==', 'true', ],
 					'tabs'          => array(
 					  array(
 						'title'     => __( 'Button', 'bbp-core' ),

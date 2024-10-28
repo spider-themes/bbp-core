@@ -41,6 +41,8 @@ if ( class_exists( 'CSF' ) ) {
 	include BBPC_SETTINGS_PATH . 'options_notification.php';
 	include BBPC_SETTINGS_PATH . 'options_appearance.php';
 
+	// Additoinal fields
+	do_action('bbpc_additoinal_csf_fields', $prefix);
 	
 	if ( ! class_exists( 'bbPress' ) ) {
 		return;

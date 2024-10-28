@@ -1,8 +1,22 @@
 <?php
 $optionReview = get_option('bbpc_notify_review');
 if ( is_admin() && time() >= (int) $optionReview && $optionReview !== '0') {
-    add_action('admin_notices', 'bbpc_notify_give_review');
     add_action('admin_enqueue_scripts', 'bbpc_notify_enqueue_script'); // Hook to admin_enqueue_scripts
+    
+    $bbpc_installed = get_option('bbpc_installed');
+    // Check if timestamp exists
+    if ( $bbpc_installed ) {
+        // Add 7days to the timestamp
+        $show_notice = $bbpc_installed + (7 * 24 * 60 * 60);
+        
+        // Get the current time
+        $current_time = current_time('timestamp');
+
+        // Compare current time with timestamp + 7 days
+        if ($current_time >= $show_notice) {
+            add_action('admin_notices', 'bbpc_notify_give_review');
+        }
+    }
 }
 
 function bbpc_notify_enqueue_script() {

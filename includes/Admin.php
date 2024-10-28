@@ -21,10 +21,14 @@ class Admin {
 		}
 
 		// if has no pro plan.
-		if ( empty( bc_fs()->is_plan( 'pro' ) ) ) {
+		if ( bbpc_is_premium() !== true ) {
 			$classes .= ' bbpc-no-pro';
 		}
 
+		if ( class_exists( 'BBPC_GEO_ROLES' ) ) {
+			$classes .= ' bbpc-geo-roles';
+		}
+		
 		return $classes;
 	}
 }

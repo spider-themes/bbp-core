@@ -71,8 +71,7 @@ function bbp_voting_select_accepted_answer(post_id) {
     });
 }
 
-
-(function($) {
+;(function($) {
     // Fix for BuddyBoss theme grabbing reply excerpt text including vote buttons and score
     $( document ).on(
         'click',
@@ -87,4 +86,94 @@ function bbp_voting_select_accepted_answer(post_id) {
             }, 0);
         }
     );
+    
+    $(document).ready(function(){
+
+        // Agree/Disagree button AJAX 
+        if ($('.bbpc-agree-button, .bbpc-disagree-button').length) {
+            $('.bbpc-agree-button, .bbpc-disagree-button').on('click', function() { 
+
+                var dataLogin = $(this).attr('data-login');
+                if (dataLogin) {
+                    window.location.href = dataLogin;
+                    return;
+                }
+
+                var topicID = $(this).data('topic');
+                var isAgreeButton = $(this).hasClass('bbpc-agree-button');
+                var action = isAgreeButton ? 'bbpc_agree' : 'bbpc_disagree';
+
+                var dataType = $(this).attr('data-type');
+
+                // Determine if the button is already active (meaning a toggle click)
+                var isActive = $(this).hasClass('active');
+
+                $.ajax({
+                    url: bbpc_localize_script.ajaxurl,
+                    type: 'POST',
+                    data: {
+                        action: action,
+                        topic_id: topicID,
+                        nonce: bbpc_localize_script.nonce
+                    },
+                    beforeSend: function() {                        
+                        if ( dataType === 'like' ) {
+                            $('.bbpc-agree-button').append('<span class="bbpc-preloader"></span>');
+                        } else {
+                            $('.bbpc-disagree-button').append('<span class="bbpc-preloader"></span>');
+                        }
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            
+                            var agreeCount = response.data.agree_count;
+                            if (agreeCount === null || agreeCount === undefined || agreeCount === '') {
+                                $('#bbpc-agree-count-' + topicID).text(0);
+                            } else {
+                                $('#bbpc-agree-count-' + topicID).text(agreeCount);
+                            }
+
+                            if ( dataType === 'like' ) {
+                                $('.bbpc-agree-button span.bbpc-preloader').remove();
+                            } else {
+                                $('.bbpc-disagree-button span.bbpc-preloader').remove();
+                            }
+
+                            var disagreeCount = response.data.disagree_count;
+                            if (disagreeCount === null || disagreeCount === undefined || disagreeCount === '') {
+                                $('#bbpc-disagree-count-' + topicID).text(0);
+                            } else {
+                                $('#bbpc-disagree-count-' + topicID).text(disagreeCount);
+                            }
+                            
+                            // Toggle active classes
+                            if (isAgreeButton) {
+                                if (isActive) {
+                                    // Unvoting: Remove the active class if it was previously active
+                                    $('.bbpc-agree-button').removeClass('active');
+                                } else {
+                                    // Voting: Add active class to agree and remove from disagree
+                                    $('.bbpc-agree-button').addClass('active');
+                                    $('.bbpc-disagree-button').removeClass('active');
+                                }
+                            } else {
+                                if (isActive) {
+                                    // Unvoting: Remove the active class if it was previously active
+                                    $('.bbpc-disagree-button').removeClass('active');
+                                } else {
+                                    // Voting: Add active class to disagree and remove from agree
+                                    $('.bbpc-disagree-button').addClass('active');
+                                    $('.bbpc-agree-button').removeClass('active');
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        }
+        
+        $('.bbpc-footer-actions:empty').remove();
+        
+    });
+
 })(jQuery);

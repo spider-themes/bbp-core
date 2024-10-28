@@ -53,11 +53,13 @@ class Assets {
 
 		$dynamic_css = ":root { --bbpc_brand_color: " . bbpc_get_opt('bbpc_brand_color') . "; }";
 		wp_add_inline_style( 'bbpc-frontend-global', $dynamic_css );
+		wp_register_script( 'bbpc-voting', BBPC_ASSETS . 'js/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );		
+		wp_register_style( 'bbpc', BBPC_ASSETS . 'css/bbpc.css' );
 		
 		if ( class_exists( 'bbPress' ) && bbpc_forum_assets() == true ) {
-			wp_enqueue_style( 'bbpc', BBPC_ASSETS . 'css/bbpc.css' );
+			wp_enqueue_style( 'bbpc' );
 			wp_enqueue_style( 'bbpc-voting', BBPC_ASSETS . 'css/bbpc-voting.css' );
-			wp_enqueue_script( 'bbpc-voting', BBPC_ASSETS . 'js/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );
+			wp_enqueue_script( 'bbpc-voting' );
 		}
 	}
 }

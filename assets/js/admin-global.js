@@ -3,6 +3,7 @@
     $(document).ready(function() {
 
         $('body.bbpc-no-pro .st-pro-notice ul li:last-child label input').attr('disabled', true);
+        $('body.bbpc-no-pro.bbpc-geo-roles .bbpc-geo-roles-opt').removeClass('st-pro-notice');
         // BBP Core pro notice.
         function bbpc_pro_notice() {
             if ( $('body').hasClass('bbpc-no-pro') ) {
