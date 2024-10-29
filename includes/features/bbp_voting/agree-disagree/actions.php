@@ -189,7 +189,7 @@ function bbpc_display_bbpc_geo_votings( $atts ) {
             echo '</div>';
         }
     } else {
-        echo "<h2 class='bbpc-no-voting-wrap'> You don't have votes! </h2>";
+        echo "<div class='bbpc-no-voting-wrap'> You don't have votes! </div>";
     }
     
     wp_enqueue_style( 'bbpc' );

@@ -203,11 +203,12 @@ final class BBP_Core {
 		}
 		
 		if ( bbpc_is_premium() || class_exists('BBPC_GEO_ROLES') ) {
-			if ( $opt['agree_disagree_voting'] ) {
-				require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/init.php';
-				require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/actions.php';
+			$reactions = $opt['agree_disagree_voting'] ?? '';
+			if ( ! empty ( $reactions ) ) {
+			  require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/init.php';
+			  require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/actions.php';
 			}
-		}
+		  }
 
 		if ( $opt['is_votes'] ?? true ) {
 			new features\bbp_voting();

@@ -32,14 +32,16 @@ function bbpc_geo_voting_content(){
 add_action( 'bbp_template_before_user_wrapper', function(){
     $bbpc_voting = $_GET['bbpc-voting'] ?? '';
     if ( $bbpc_voting == true ) {        
-        if ( get_current_user_id() != bbp_get_displayed_user_field( 'ID' ) ) {
+        if ( get_current_user_id() != bbp_get_displayed_user_field( 'ID' ) ) {      
+			wp_enqueue_style( 'bbpc' );
             ?>
             <script>
                 ;(function($){
                     $(document).ready(function(){
-                    $('#bbp-user-navigation ul li').removeClass('current');
-                    $('.bbp-user-votings-wrap').addClass('current');
-                        $('#bbp-user-body').html("<h2 class='bbpc-no-voting-wrap'> You must logged in to view your votes! </h2>");
+                        $('#bbp-user-navigation ul li').removeClass('current');
+                        $('.bbp-user-votings-wrap').addClass('current');
+                        $('#bbp-user-body').html("<div class='bbpc-no-voting-wrap'> You must logged in to view your votes! </div>");
+                        $('.bbpc-no-voting-wrap:not(:last-child)').remove();
                     });
                 })(jQuery);
             </script>
@@ -55,6 +57,7 @@ add_action( 'bbp_template_before_user_wrapper', function(){
                         $('#bbp-user-navigation ul li').removeClass('current');
                         $('.bbp-user-votings-wrap').addClass('current');
                         $('#bbp-user-body').html(<?php echo $voting_content; ?>);
+                        $('.bbpc-no-voting-wrap:not(:last-child)').remove();
                     });
                 })(jQuery);
             </script>
