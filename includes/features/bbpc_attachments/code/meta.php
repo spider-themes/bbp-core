@@ -49,7 +49,7 @@ class GDATTAdminMeta {
 			BBPCATTCore::instance()->o['delete_attachments']  = bbpc_sanitize_basic( $_POST['delete_attachments'] );
 
 			update_option( 'bbp-core', BBPCATTCore::instance()->o );
-			wp_redirect( add_query_arg( 'settings-updated', 'true' ) );
+			wp_redirect( esc_url_raw( add_query_arg( 'settings-updated', 'true' ) ) );
 			exit();
 		}
 
@@ -65,7 +65,7 @@ class GDATTAdminMeta {
 			BBPCATTCore::instance()->o['delete_visible_to_author']     = false; //TODO: Customize in pro version
 
 			update_option( 'bbp-core', BBPCATTCore::instance()->o );
-			wp_redirect( add_query_arg( 'settings-updated', 'true' ) );
+			wp_redirect( esc_url_raw( add_query_arg( 'settings-updated', 'true' ) ) );
 			exit();
 		}
 	}

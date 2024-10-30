@@ -295,11 +295,11 @@ class GDATTFront {
 					}
 
 					if ( $allow == 'delete' || $allow == 'both' ) {
-						$actions[] = '<a class="d4p-bba-action-delete" href="' . add_query_arg( 'd4pbbaction', 'delete', $url ) . '">' . __( 'delete', 'bbp-core' ) . '</a>';
+						$actions[] = '<a class="d4p-bba-action-delete" href="' . esc_url( add_query_arg( 'd4pbbaction', 'delete', $url ) ) . '">' . __( 'delete', 'bbp-core' ) . '</a>';
 					}
-
+					
 					if ( $allow == 'detach' || $allow == 'both' ) {
-						$actions[] = '<a class="d4p-bba-action-detach" href="' . add_query_arg( 'd4pbbaction', 'detach', $url ) . '">' . __( 'detach', 'bbp-core' ) . '</a>';
+						$actions[] = '<a class="d4p-bba-action-detach" href="' . esc_url( add_query_arg( 'd4pbbaction', 'detach', $url ) ) . '">' . __( 'detach', 'bbp-core' ) . '</a>';
 					}
 
 					if ( count( $actions ) > 0 ) {

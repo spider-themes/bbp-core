@@ -122,6 +122,6 @@ if ( ! function_exists( 'bbpc_url_campaign_tracking' ) ) {
 			$url = add_query_arg( 'utm_source', $source, $url );
 		}
 
-		return $url;
+		return esc_url( $url );
 	}
 }

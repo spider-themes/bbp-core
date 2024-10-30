@@ -4,18 +4,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! function_exists( 'bbp_voting_get_plugin_install_link' ) ) {
-	function bbp_voting_get_plugin_install_link( $plugin, $action = 'install-plugin' ) {
-		return wp_nonce_url(
-			add_query_arg(
-				[
-					'action' => $action,
-					'plugin' => $plugin,
-				],
-				admin_url( 'update.php' )
-			),
-			$action . '_' . $plugin
-		);
-	}
+    function bbp_voting_get_plugin_install_link( $plugin, $action = 'install-plugin' ) {
+        return esc_url(
+            wp_nonce_url(
+                add_query_arg(
+                    [
+                        'action' => $action,
+                        'plugin' => $plugin,
+                    ],
+                    admin_url( 'update.php' )
+                ),
+                $action . '_' . $plugin
+            )
+        );
+    }
 }
 
 

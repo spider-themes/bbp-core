@@ -57,7 +57,7 @@ class Assets {
         }	
 
 		wp_localize_script( 'jquery', 'bbp_core_local_object', [
-                'ajaxurl' 			 => $ajax_url,
+                'ajaxurl' 			 => esc_url( $ajax_url ),
 				'create_forum_title' => esc_html__( 'Enter Forum Title', 'bbp-core' ),
 				'create_topic_title' => esc_html__( 'Enter Topic Title', 'bbp-core' ),
 				'forum_delete_title' => esc_html__( 'Are you sure to delete?', 'bbp-core' ),
