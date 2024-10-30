@@ -4,7 +4,7 @@ Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
 Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,12 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.2.5 (30 October 2024) =
+New: Added a hook to insert option in Settings
+Tweaked: Anonymous profile picture gap with title (in the sidebar widget)
+Tweaked: Attachment thumbnail design improved
+Updated: Freemius SDK updated to 2.9.0
 
 = v1.2.4 (23 August 2024) =
 Fixed: Brand color change issue
