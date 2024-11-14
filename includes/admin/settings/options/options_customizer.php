@@ -32,7 +32,7 @@ CSF::createSection( $prefix, array(
 
 		array(
 			'type'       => 'content',
-			'content'    => sprintf( '<a href="'.$forum_url.'" target="_blank" id="bbpc_forum_option_link">' . esc_html__( 'Forum', 'eazydocs' ) . '</a> <a href="' . $topic_url . '" target="_blank" id="bbpc_topic_option_link">' . esc_html__( 'Topic', 'eazydocs' ) . '</a>' ),
+			'content'    => '<a href="' . esc_url( $forum_url ) . '" target="_blank" id="bbpc_forum_option_link">' . esc_html__( 'Forum', 'eazydocs' ) . '</a> '.'<a href="' . esc_url( $topic_url ) . '" target="_blank" id="bbpc_topic_option_link">' . esc_html__( 'Topic', 'eazydocs' ) . '</a>',
 			'dependency' => array(
 				array( 'customizer_visibility', '==', true ),
 			),
