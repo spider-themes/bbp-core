@@ -19,9 +19,14 @@
     --btn-px: 1rem;
     --btn-fs: var(--fs-12);
     font-weight: 500;
-    display: flex;
-    align-items: center;
     gap: 6px;
+    display: flex;
+    border: 1px solid var(--clr-blue);
+    align-items: center;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: var(--clr-blue);
 
     span.dashicons {
       font-size: 14px;
@@ -30,6 +35,10 @@
 
     @include hover {
       --btn-icon: var(--clr-white);
+      background: var(--clr-blue);
+    }
+    &:focus{
+      box-shadow: 0 0 0 0.4rem rgba(65, 65, 230, 0.5);
     }
   }
 }

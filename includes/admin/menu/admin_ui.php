@@ -2,7 +2,6 @@
 if ( ! class_exists( 'bbPress' ) ) {
 	return;
 }
-
 $parent_forums = [];
 $fcount        = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
@@ -18,23 +17,18 @@ $bbpc_opt      = get_option( 'bbp_core_settings' );
 			<div class="easydocs-sidebar-menu">
 				<div class="tab-container">
 					<?php
-					$forum_query = new WP_Query(
-						[
-							'post_type'      => bbp_get_forum_post_type(),
-							'posts_per_page' => -1,
-							'post_parent'    => 0,
-							'orderby'        => 'menu_order',
-							'order'          => 'ASC',
-							'post_status'    => 'publish',
-						]
-					);
-
+					$forum_query = new WP_Query( [
+						'post_type'      => bbp_get_forum_post_type(),
+						'posts_per_page' => -1,
+						'post_parent'    => 0,
+						'orderby'        => 'menu_order',
+						'order'          => 'ASC',
+						'post_status'    => 'publish',
+					] );
 					$count = $forum_query->found_posts;
-
 					// Left Sidebar Forums.
 					include __DIR__ . '/admin_ui/forums.php';
 					?>
-
 					<div class="easydocs-tab-content">
 						<?php
 						$ids       = 0;
@@ -64,17 +58,13 @@ $bbpc_opt      = get_option( 'bbp_core_settings' );
 								$count_unsolved = 0;
 								$count_trash    = 0;
 
-								while ( $children->have_posts() ) :
-									$children->the_post();
+								while ( $children->have_posts() ) : $children->the_post();
 									$topic_id = get_the_ID();
-
-									$replies = get_children(
-										[
-											'post_parent' => $topic_id,
-											'post_type'   => bbp_get_reply_post_type(),
-											'post_status' => [ 'publish', 'draft', 'pending' ],
-										]
-									);
+									$replies = get_children( [
+										'post_parent' => $topic_id,
+										'post_type'   => bbp_get_reply_post_type(),
+										'post_status' => [ 'publish', 'draft', 'pending' ],
+									] );
 
 									// Count open/closed topics.
 									if ( bbp_is_topic_closed( $topic_id ) ) {
@@ -100,70 +90,68 @@ $bbpc_opt      = get_option( 'bbp_core_settings' );
 									} else {
 										$count_unsolved++;
 									}
+								endwhile; 
+								wp_reset_postdata();
 
-								endwhile; wp_reset_postdata();
-
-							$trash_topic = new WP_Query(
-								[
+								$trash_topic = new WP_Query( [
 									'post_parent'    => $item,
 									'post_type'      => bbp_get_topic_post_type(),
 									'posts_per_page' => -1,
 									'post_status'    => [ 'trash' ],
-								]
-							);
-							
-							while ( $trash_topic->have_posts() ) :
-								$trash_topic->the_post();
-								$trash_topic_id 	= get_the_ID();
-								// Count trash.
-								if ( bbp_is_topic_trash( $trash_topic_id ) ) {
-									$count_trash++;
-								}
-							endwhile; wp_reset_postdata();
-							?>
-							<div class="easydocs-tab <?php echo esc_attr( $active ); ?>" id="tab-<?php echo esc_attr( $item ); ?>">
+								] );
+								
+								while ( $trash_topic->have_posts() ) :
+									$trash_topic->the_post();
+									$trash_topic_id = get_the_ID();
+									// Count trash.
+									if ( bbp_is_topic_trash( $trash_topic_id ) ) {
+										$count_trash++;
+									}
+								endwhile;
+								wp_reset_postdata();
+								?>
+								<div class="easydocs-tab <?php echo esc_attr( $active ); ?>" id="tab-<?php echo esc_attr( $item ); ?>">
 
-								<!-- Tab filters. -->
-								<?php include __DIR__ . '/admin_ui/tab_filters.php'; ?>
+									<!-- Tab filters. -->
+									<?php include __DIR__ . '/admin_ui/tab_filters.php'; ?>
 
-								<!-- Children topics. -->
-								<?php include __DIR__ . '/admin_ui/topics.php'; ?>
+									<!-- Children topics. -->
+									<?php include __DIR__ . '/admin_ui/topics.php'; ?>
 
-								<a class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="<?php echo admin_url( 'admin.php' ); ?>/Create_Topic.php?bbp_parentID=<?php echo $item; ?>&is_bbp_section=">
-									<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
-								</a>
-							</div>
+									<a class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="javascript:void(0)" bbp_forum_id="<?php echo esc_attr( $item ); ?>">
+										<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
+									</a>
+								</div>
 								<?php
-							endforeach;
-						endif;
-						?>
+								endforeach;
+							endif;
+							?>
+						</div>
 					</div>
 				</div>
+			</main>
+			<?php
+		else :
+			?>
+			<div class="eazydocs-no-content">
+				<img src="<?php echo BBPC_IMG; ?>/icon/folder-open.png" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
+				<p class="big-p"> <?php esc_html_e( 'No forum has been found . Perhaps', 'bbp-core' ); ?> </p>
+				<p> <br>
+					<a href="javascript:void(0)" type="button" id="bbpc-forum" class="button button-primary ezd-btn btn-lg">
+						<?php esc_html_e( 'Create Forum', 'bbp-core' ); ?>
+					</a>
+				</p>
 			</div>
-		</main>
-		<?php
-	else :
+			<?php
+		endif;
 		?>
-		<div class="eazydocs-no-content">
-			<img src="<?php echo BBPC_IMG; ?>/icon/folder-open.png" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
-			<p class="big-p"> <?php esc_html_e( 'No forum has been found . Perhaps', 'bbp-core' ); ?> </p>
-			<p> <br>
-				<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?bbp_parent_title=" target="_blank" type="button" id="bbpc-forum" class="button button-primary ezd-btn btn-lg">
-					<?php esc_html_e( 'Create Forum', 'bbp-core' ); ?>
-				</a>
-			</p>
-		</div>
-		<?php
-	endif; //TODO: Fix open topics not being selected issue.
-	?>
-</div>
+	</div>
 </div>
 
 <script>
 	(function ($) {
 		$(document).ready(function () {
 			let docContainer = document.querySelectorAll('.easydocs-tab');
-
 			var config = {
 				controls: {
 					scope: 'local',
@@ -175,11 +163,9 @@ $bbpc_opt      = get_option( 'bbp_core_settings' );
 					filter: '<?php echo esc_js( $bbpc_opt['default_filter'] ?? '.open-topics' ); ?>'
 				}
 			};
-
 			for (let i = 0; i < docContainer.length; i++) {
 			var mixer1 = mixitup(docContainer[i], config);
 		}
 	});
 })(jQuery);
 </script>
-

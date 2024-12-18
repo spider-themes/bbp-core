@@ -261,7 +261,9 @@ if ( ! class_exists( 'CSF_Setup' ) ) {
 		 */
 		public static function set_locale() {
 			// Get the current plugin directory path.
-			load_plugin_textdomain( 'bbp-core', false, 'eazydocs/languages' );
+			add_action('init', function(){
+				load_plugin_textdomain( 'bbp-core', false, 'eazydocs/languages' );
+			});
 		}
 
 		// Create options

@@ -1,45 +1,49 @@
 <?php
-namespace Admin;
+// AJAX handler to create a topic
+add_action( 'wp_ajax_bbp_create_topic', 'bbp_create_topic' );
+function bbp_create_topic() {
+	
+	// Check the nonce
+	check_ajax_referer( 'bbpc-admin-nonce', 'bbpc_nonce' );
 
-class Create_Topic {
-	/**
-	 * Create_Forum constructor.
-	 */
-	public function __construct() {
-		add_action( 'admin_init', [ $this, 'bbp_create_topic' ] );
+	if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( 'Unauthorized request.' );
+    }
+
+	$bbp_topic_title = isset( $_POST['bbp_topic_title'] ) ? sanitize_text_field( $_POST['bbp_topic_title'] ) : '';
+    if ( empty( $bbp_topic_title ) ) {
+        wp_send_json_error( 'Topic title cannot be empty.' );
+    }
+
+	$forum_id 	 	= ! empty ( $_POST['forum_id'] ) ? absint( $_POST['forum_id'] ) : 0;	
+	$topic_author 	= bbp_get_current_user_id();
+
+	$parent_item = get_children( [
+		'post_parent' => $forum_id,
+		'post_type'   => 'topic'
+	] );
+
+	$add   = 2;
+	$order = count( $parent_item );
+	$order = $order + $add;
+
+	// Create topic object
+	$topic_data = apply_filters( 'bbp_new_topic_pre_insert', array(
+		'post_author'  => $topic_author,
+		'post_title'   => $bbp_topic_title,
+		'post_parent'  => $forum_id,
+		'post_content' => '',
+		'post_type'	   => bbp_get_topic_post_type(),
+		'post_status'  => 'publish',
+		'menu_order'   => $order
+	) );		
+	
+	$topic_id = wp_insert_post( $topic_data, true );
+
+	if ( is_wp_error( $topic_id ) ) {
+		wp_send_json_error( 'Failed to create the topic.' );
 	}
-
-    /**
-     * Create parent Doc post
-     */
-    public function bbp_create_topic() {
-
-	    if ( isset ( $_GET['is_bbp_section'] ) && ! empty ( $_GET['is_bbp_section'] ) ) {
-
-			$parentID      = ! empty ( $_GET['bbp_parentID'] ) ? absint( $_GET['bbp_parentID'] ) : 0;
-			$section_title = ! empty ( $_GET['is_bbp_section'] ) ? sanitize_text_field( $_GET['is_bbp_section'] ) : '';
-			$parent_item   = get_children( array(
-				'post_parent' => $parentID,
-				'post_type'   => 'topic'
-			) );
-
-			$add   = 2;
-			$order = count( $parent_item );
-			$order = $order + $add;
-
-			// Create post object
-			$post = array(
-				'post_title'   => $section_title,
-				'post_parent'  => $parentID,
-				'post_content' => '',
-				'post_type'    => 'topic',
-				'post_status'  => 'publish',
-				'menu_order'   => $order
-			);
-			wp_insert_post( $post, $wp_error = '' );
-			wp_safe_redirect( admin_url('admin.php?page=bbp-core') );
-		}  
-		
-    }	
-} 
-new Create_Topic();
+	
+	do_action( 'bbp_new_topic', $topic_id, $forum_id, '', $topic_author );
+	wp_send_json_success( 'Topic created successfully.' );
+}

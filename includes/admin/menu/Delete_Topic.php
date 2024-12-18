@@ -1,50 +1,41 @@
 <?php
-namespace admin\menu;
+// AJAX handler to delete a topic
+add_action( 'wp_ajax_bbp_delete_topic', 'delete_topic' );
+function delete_topic() {
 
-/**
- * Class Delete_Post
- * @package BBP-core\Admin\Menu
- */
-class Delete_Topic {
+		// Check the nonce
+	check_ajax_referer( 'bbpc-admin-nonce', 'bbpc_nonce' );
 
-	/**
-	 * Create_Post constructor.
-	 */
-	public function __construct() {
-		add_action( 'admin_init', [ $this, 'delete_topic' ] );
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( 'Unauthorized request.' );
+    }
+	
+	$topic_id = ! empty ( $_POST['topic_id'] ) ? absint( $_POST['topic_id'] ) : 0;	
+    if ( empty( $topic_id ) ) {
+        wp_send_json_error( 'Topic ID cannot be empty.' );
+    }
+	
+	$replies = get_children( [
+		'post_parent' 	=> $topic_id,
+		'post_type'   	=> 'reply',
+		'orderby'     	=> 'menu_order',
+		'order'       	=> 'asc',
+	] );
+
+	$reply_ids = '';
+	if ( is_array( $replies ) ) :
+		foreach ( $replies as $reply ) :
+			$reply_ids .= $reply->ID . ',';
+		endforeach;
+	endif;
+
+	$topic_posts		= $topic_id . ',' . $reply_ids;
+	$topic_posts		= explode( ',', $topic_posts );
+	$topic_posts_int	= array_map( 'intval', $topic_posts );
+	foreach ( $topic_posts_int as $delete_topic ) {
+		wp_trash_post( $delete_topic, true ); 
 	}
-
-	/**
-	 * Delete Parent Doc
-	 */
-	public function delete_topic() {
- 
-		if ( ! empty ( $_GET['topic_ID'] ) ) {
-			$topic_id 				= $_GET['topic_ID'] ?? '';
-			$topics	= get_children(
-				[
-					'post_parent' 	=> $_GET['topic_ID'],
-					'post_type'   	=> 'reply',
-					'orderby'     	=> 'menu_order',
-					'order'       	=> 'asc',
-				]
-			);
-
-			$forum_topics 			= '';
-			if ( is_array( $topics ) ) :
-				foreach ( $topics as $topic ) :
-					$forum_topics 	.= $topic->ID . ',';
-				endforeach;
-			endif;
-
-			$topics_id              = $topic_id . ',' . $forum_topics;
-			$topic_ids              = explode( ',', $topics_id );
-			$topic_id_int           = array_map( 'intval', $topic_ids );
-			foreach ( $topic_id_int as $delete_topic ) {
-				wp_trash_post( $delete_topic, true ); 
-			}
-			wp_safe_redirect(admin_url( 'admin.php?page=bbp-core' ));
-		}
-	}
+	
+	wp_send_json_success( 'Topic Deleted successfully.' );
+	wp_die();
 }
-new Delete_Topic();

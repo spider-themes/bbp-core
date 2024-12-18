@@ -49,7 +49,7 @@
 					<?php
 					if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
 						?>
-					<a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Forum.php?forum_ID=<?php echo get_the_ID(); ?>" class="link forum-delete" title="<?php esc_attr_e( 'Move this forum to the Trash', 'bbp-core' ); ?>">
+					<a href="javascript:void(0);" bbp_forum_id="<?php echo get_the_ID(); ?>" class="link forum-delete" title="<?php esc_attr_e( 'Move this forum to the Trash', 'bbp-core' ); ?>">
 						<span class="dashicons dashicons-trash"></span>
 					</a>
 					<?php endif; ?>

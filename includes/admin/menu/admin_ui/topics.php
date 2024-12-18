@@ -95,7 +95,7 @@
 
 						<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
                             <li class="delete">
-                                <a href="<?php echo admin_url( 'admin.php' ); ?>/menu/Delete_Topic.php?topic_ID=<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Move this topic to the Trash', 'bbp-core' ); ?>">
+                                <a href="javascript:void(0)" bbp_topic_ID="<?php the_ID(); ?>" class="section-delete" title="<?php esc_attr_e( 'Move this topic to the Trash', 'bbp-core' ); ?>">
                                     <span class="dashicons dashicons-trash"></span>
                                 </a>
                             </li>

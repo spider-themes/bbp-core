@@ -7,7 +7,7 @@
 						<?php esc_html_e( 'Forums', 'bbp-core' ); ?>
 					</a>
 				</div>
-				<a href="<?php echo admin_url( 'admin.php' ); ?>/Create_Forum.php?bbp_parent_title=" target="_blank" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
+				<a href="javascript:void(0)" type="button" id="bbpc-forum" class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round">
 					<span class="dashicons dashicons-plus-alt2"></span>
 					<?php esc_html_e( 'Add Forum', 'bbp-core' ); ?>
 				</a>

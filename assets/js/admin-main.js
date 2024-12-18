@@ -166,42 +166,116 @@
         e('.easydocs-notification .header-notify-icon').removeClass('active');
     });
 
-    // ADD PARENT FORUM
+    // CREATE FORUM
     function create_forum() {
       $(document).on('click', '#bbpc-forum', function (e) {
-        e.preventDefault();
-        let href = $(this).attr('href');
+        e.preventDefault();    
         Swal.fire({
           title: bbp_core_local_object.create_forum_title,
           input: 'text',
           showCancelButton: true,
           inputAttributes: {
-            name: 'bbp_parent_title',
+            name: 'bbp_forum_title',
           },
         }).then((result) => {
           if (result.value) {
-            document.location.href = href + result.value;
+            $.ajax({
+              url: bbp_core_local_object.ajaxurl,
+              type: 'POST',
+              data: {
+                action: 'bbp_create_forum',
+                bbp_forum_title: result.value, 
+                bbpc_nonce: bbp_core_local_object.nonce
+              },
+              beforeSend: function () {
+                Swal.fire({
+                  title: 'Creating Forum...',
+                  icon: 'question',
+                  allowOutsideClick: false,
+                  showConfirmButton: true,
+                  didOpen: () => {
+                    Swal.showLoading();
+                  },
+                });
+              },
+              success: function (response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                  Swal.fire({
+                    title: 'Error!',
+                    text: response.data,
+                    icon: 'error',
+                  });
+                }
+              },
+              error: function () {
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'Something went wrong. Please try again.',
+                  icon: 'error',
+                });
+              },
+            });
           }
         });
       });
-    }
+    }    
     create_forum();
-
-    // SECTION DOC
+    
+    // CREATE TOPIC
     function create_topic() {
       $(document).on('click', '#bbpc-topic', function (e) {
         e.preventDefault();
-        let href = $(this).attr('href');
+        let forumID = $(this).attr('bbp_forum_id');
         Swal.fire({
           title: bbp_core_local_object.create_topic_title,
           input: 'text',
           showCancelButton: true,
           inputAttributes: {
-            name: 'section',
+            name: 'bbp_topic_title',
           },
         }).then((result) => {
           if (result.value) {
-            document.location.href = href + result.value;
+            $.ajax({
+              url: bbp_core_local_object.ajaxurl,
+              type: 'POST',
+              data: {
+                action: 'bbp_create_topic',
+                bbp_topic_title: result.value,
+                forum_id: forumID, 
+                bbpc_nonce: bbp_core_local_object.nonce
+              },
+              beforeSend: function () {
+                Swal.fire({
+                  title: 'Creating Topic...',
+                  icon: 'question',
+                  allowOutsideClick: false,
+                  showConfirmButton: true,
+                  didOpen: () => {
+                    Swal.showLoading();
+                  },
+                });
+              },
+              success: function (response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                  Swal.fire({
+                    title: 'Error!',
+                    text: response.data,
+                    icon: 'error',
+                  });
+                }
+              },
+              error: function () {
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'Something went wrong. Please try again.',
+                  icon: 'error',
+                });
+              },
+            });
           }
         });
       });
@@ -211,8 +285,8 @@
     // DELETE FORUM
     function delete_forum() {
       $('.forum-delete').on('click', function (e) {
-        e.preventDefault();
-        let href = $(this).attr('href');
+        e.preventDefault();        
+        var forumID = $(this).attr('bbp_forum_id');   
         Swal.fire({
           title: bbp_core_local_object.forum_delete_title,
           text: bbp_core_local_object.forum_delete_desc,
@@ -220,21 +294,61 @@
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes',
+          confirmButtonText: 'Yes'
         }).then((result) => {
           if (result.value) {
-            document.location.href = href;
+            $.ajax({
+              url: bbp_core_local_object.ajaxurl,
+              type: 'POST',
+              data: {
+                action: 'bbp_delete_forum',
+                forum_id: forumID, 
+                bbpc_nonce: bbp_core_local_object.nonce
+              },
+              beforeSend: function () {
+                Swal.fire({
+                  title: 'Deleting Forum...',
+                  icon: 'question',
+                  allowOutsideClick: false,
+                  showConfirmButton: false,
+                  didOpen: () => {
+                    Swal.showLoading();
+                  },
+                });
+              },
+              success: function (response) {
+                console.log(response);
+                if (response.success) {
+                  location.reload();
+                } else {
+                  console.log(response)
+                  Swal.fire({
+                    title: 'Error!',
+                    text: response.data || 'Unexpected error occurred.',
+                    icon: 'error',
+                  });
+                }
+              },
+              error: function () {
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'Something went wrong. Please try again.',
+                  icon: 'error',
+                });
+              },
+            });
           }
         });
       });
-    }
+    }    
     delete_forum();
+    
 
     // DELETE TOPIC
     function delete_topic() {
       $('.section-delete').on('click', function (e) {
         e.preventDefault();
-        let href = $(this).attr('href');
+        var topicID = $(this).attr('bbp_topic_id'); 
         Swal.fire({
           title: bbp_core_local_object.forum_delete_title,
           text: bbp_core_local_object.topic_delete_desc,
@@ -245,7 +359,46 @@
           confirmButtonText: 'Yes',
         }).then((result) => {
           if (result.value) {
-            document.location.href = href;
+            $.ajax({
+              url: bbp_core_local_object.ajaxurl,
+              type: 'POST',
+              data: {
+                action: 'bbp_delete_topic',
+                topic_id: topicID, 
+                bbpc_nonce: bbp_core_local_object.nonce
+              },
+              beforeSend: function () {
+                Swal.fire({
+                  title: 'Deleting Topic...',
+                  icon: 'question',
+                  allowOutsideClick: false,
+                  showConfirmButton: false,
+                  didOpen: () => {
+                    Swal.showLoading();
+                  },
+                });
+              },
+              success: function (response) {
+                console.log(response); 
+                if (response.success) {
+                  location.reload();
+                } else {
+                  console.log(response)
+                  Swal.fire({
+                    title: 'Error!',
+                    text: response.data || 'Unexpected error occurred.',
+                    icon: 'error',
+                  });
+                }
+              },
+              error: function () {
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'Something went wrong. Please try again.',
+                  icon: 'error',
+                });
+              },
+            });
           }
         });
       });

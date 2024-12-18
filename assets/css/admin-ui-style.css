@@ -237,10 +237,9 @@ button {
   html:focus-within {
     scroll-behavior: auto;
   }
-
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -318,7 +317,7 @@ h1 {
 }
 @media screen and (min-width: 20rem) {
   h1 {
-    font-size: calc(2rem + 1.75 * ((100vw - 20rem) / 55));
+    font-size: calc(2rem + 1.75 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -332,7 +331,7 @@ h2 {
 }
 @media screen and (min-width: 20rem) {
   h2 {
-    font-size: calc(2rem + 1 * ((100vw - 20rem) / 55));
+    font-size: calc(2rem + 1 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -346,7 +345,7 @@ h3 {
 }
 @media screen and (min-width: 20rem) {
   h3 {
-    font-size: calc(1.375rem + 0.125 * ((100vw - 20rem) / 55));
+    font-size: calc(1.375rem + 0.125 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -360,7 +359,7 @@ h4 {
 }
 @media screen and (min-width: 20rem) {
   h4 {
-    font-size: calc(1rem + 0.125 * ((100vw - 20rem) / 55));
+    font-size: calc(1rem + 0.125 * (100vw - 20rem) / 55);
   }
 }
 @media screen and (min-width: 75rem) {
@@ -1136,7 +1135,7 @@ a.child-delete {
 }
 .notification-head.no-notification-text {
   padding: 20px 12px;
-  background: #bebebe26;
+  background: rgba(190, 190, 190, 0.1490196078);
   display: block;
   text-align: center;
 }
@@ -1268,9 +1267,14 @@ a.child-delete {
   --btn-px: 1rem;
   --btn-fs: var(--fs-12);
   font-weight: 500;
-  display: flex;
-  align-items: center;
   gap: 6px;
+  display: flex;
+  border: 1px solid var(--clr-blue);
+  align-items: center;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: var(--clr-blue);
 }
 .navbar-left .easydocs-btn span.dashicons {
   font-size: 14px;
@@ -1278,6 +1282,10 @@ a.child-delete {
 }
 .navbar-left .easydocs-btn:hover {
   --btn-icon: var(--clr-white);
+  background: var(--clr-blue);
+}
+.navbar-left .easydocs-btn:focus {
+  box-shadow: 0 0 0 0.4rem rgba(65, 65, 230, 0.5);
 }
 
 .easydocs-logo-area a {
@@ -1504,7 +1512,7 @@ a.child-delete {
   width: -webkit-fill-available;
 }
 .notify-column ul li a .notify-content-wrap .notify-content-header {
-  color: #525960;
+  color: hsl(210, 8%, 35%);
   font-size: 12px;
 }
 .notify-column ul li a .notify-content-wrap .notify-content-header .noti-type {
@@ -1512,14 +1520,14 @@ a.child-delete {
   font-weight: 500;
 }
 .notify-column ul li a .notify-content-wrap .notify-content-summary p {
-  color: #0074cc;
+  color: hsl(206, 100%, 40%);
   font-size: 13px;
 }
 .notify-column ul li a:focus {
   box-shadow: none;
 }
 .notify-column ul li:hover {
-  background: #e3e6e8;
+  background: hsl(210, 8%, 90%);
 }
 .notify-column ul li:last-child {
   border-bottom: none;
@@ -1632,7 +1640,7 @@ a.child-delete {
   background-color: rgba(212, 23, 23, 0.3);
 }
 .bbpc-trash-filter svg {
-  fill: #d41717;
+  fill: rgb(212, 23, 23);
 }
 .bbpc-trash-filter a {
   justify-content: center;
@@ -1641,7 +1649,7 @@ a.child-delete {
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #d41717;
+  color: rgb(212, 23, 23);
   text-decoration: none;
 }
 
