@@ -120,7 +120,7 @@ final class BBP_Core {
 		//Register Pro Widgets
 		$theme = wp_get_theme();
 
-		if ( $theme != 'Ama' || ! bbpc_is_premium() ) {
+		if ( $theme->get( 'Name' ) != 'Ama' || ! bbpc_is_premium() ) {
 			require_once __DIR__ . '/includes/admin/Pro_Widget_Map.php';
 			require_once __DIR__ . '/includes/admin/Pro_Widget_Service.php';
 		}

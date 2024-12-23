@@ -15,7 +15,7 @@ class BBP_Widgets {
 	    add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'register_elementor_editor_assets' ] );
 
         // Register Elementor Preview Editor Scripts
-        $currentTheme = wp_get_theme() == 'Ama' ? true : false;
+        $currentTheme = wp_get_theme()->get( 'Name' )  == 'Ama' ? true : false;
         $returnType   = bbpc_is_premium() == true ? true : $currentTheme;
         if ( $returnType != 1 ) {
             add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_scripts']);
