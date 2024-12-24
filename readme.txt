@@ -4,7 +4,7 @@ Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
 Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,13 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.2.7 (24 December 2024) =
+Fixed: sprintf php error
+Fixed: Resolved the issue with inserting forums and topics on the Nginx server
+Fixed: Theme name check to resolve translation loading error
+Tweaked: Improved 'Add Forum' button design
+Updated: Freemius SDK updated to 2.10.1
 
 = v1.2.6 (31 October 2024) =
 Fixed: Security issues resolved
