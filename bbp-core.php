@@ -25,7 +25,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
 			// Include Freemius SDK.
 			require_once dirname( __FILE__ ) . '/includes/fs/start.php';
 
-			$bc_fs = fs_dynamic_init( array(
+			$bc_fs = fs_dynamic_init( [
 				'id'              => '10864',
 				'slug'            => 'bbp-core',
 				'type'            => 'plugin',
@@ -34,17 +34,17 @@ if ( ! function_exists( 'bc_fs' ) ) {
 				'is_premium_only' => false,
 				'has_addons'      => false,
 				'has_paid_plans'  => true,
-				'trial'           => array(
+				'trial'           => [
 					'days'               => 14,
 					'is_require_payment' => true,
-				),
-				'menu'            => array(
+				],
+				'menu'            => [
 					'slug'       => 'bbp-core',
 					'contact'    => false,
 					'support'    => false,
 					'first-path' => 'admin.php?page=bbp-core',
-				),
-			) );
+				],
+			] );
 		}
 
 		return $bc_fs;
@@ -79,6 +79,23 @@ final class BBP_Core {
 			
 		// Added Documentation links to plugin row meta
 		add_filter('plugin_row_meta',[ $this,  'bbpc_row_meta' ], 10, 2);
+
+		/**
+		 * Removes admin notices on the BBP Core Forum builder page.
+		 *
+		 * @return void
+		 */
+		add_action( 'admin_head', function () {
+			// Get the current screen
+			$screen = get_current_screen();
+
+			// Check if the current screen is for your plugin page
+			if ( isset( $_GET['page'] ) && in_array( $_GET['page'], [ 'bbp-core' ] ) ) {
+				// Remove admin notices
+				remove_all_actions( 'admin_notices' );
+				remove_all_actions( 'all_admin_notices' );
+			}
+		});
 	}
 	
 	/**
