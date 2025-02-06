@@ -37,8 +37,11 @@ class Forum_Tab extends Widget_Base {
 	}
 
 
-	protected function register_controls() {
-		// --- Forum Filter Options
+	protected function register_controls(): void
+    {
+
+
+		//======================= Forum Filter Options ==================
 		$this->start_controls_section(
 			'forum_filter', [
 				'label' => __( 'Forum Filter Options', 'bbp-core' ),
@@ -46,8 +49,7 @@ class Forum_Tab extends Widget_Base {
 		);
 
 		$this->add_control(
-			'forum_tab_title',
-			[
+			'forum_tab_title', [
 				'label'       => __( 'Forum Tab Title', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
 				'default'     => __( 'Show Forums', 'bbp-core' ),
@@ -75,19 +77,27 @@ class Forum_Tab extends Widget_Base {
 			]
 		);
 
+        //==== View More Button
+        $this->add_control(
+            'more_txt', [
+                'label'       => esc_html__( 'View More Button', 'bbp-core' ),
+                'type'        => Controls_Manager::HEADING,
+                'separator'   => 'before',
+            ]
+        );
+
 		$this->add_control(
 			'more_txt', [
-				'label'       => esc_html__( 'More button text', 'bbp-core' ),
+				'label'       => esc_html__( 'Button Label', 'bbp-core' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'separator'   => 'before',
-				'default'     => 'Show more'
+				'default'     => esc_html__('View More', 'bbp-core'),
 			]
 		);
 
 		$this->add_control(
-			'more_url',
-			[
+			'more_url', [
 				'label'       => esc_html__( 'More button link', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::URL,
 				'placeholder' => __( 'https://your-link.com', 'bbp-core' ),
@@ -99,10 +109,10 @@ class Forum_Tab extends Widget_Base {
 			]
 		);
 
+		$this->end_controls_section(); // End Forum Filter Options
 
-		$this->end_controls_section();
 
-		//-------- Topic Filter Options
+		//======================== Topic Filter Options =========================//
 		$this->start_controls_section(
 			'topic_filter', [
 				'label' => __( 'Topic Filter Options', 'bbp-core' ),
@@ -110,8 +120,7 @@ class Forum_Tab extends Widget_Base {
 		);
 
 		$this->add_control(
-			'topics_tab_title',
-			[
+			'topics_tab_title', [
 				'label'       => __( 'Topics Tab Title', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
 				'default'     => __( 'Show Topics', 'bbp-core' ),
@@ -162,7 +171,8 @@ class Forum_Tab extends Widget_Base {
 			]
 		);
 
-		$this->end_controls_section();
+		$this->end_controls_section(); //End Topic Filter Options
+
 
 		$this->start_controls_section(
 			'forum_tab_style', [
@@ -170,6 +180,7 @@ class Forum_Tab extends Widget_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
+
 
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
@@ -192,6 +203,7 @@ class Forum_Tab extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
 
 		$this->start_controls_section(
 			'forum_tab_button', [

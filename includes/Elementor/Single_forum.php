@@ -1,5 +1,4 @@
 <?php
-
 namespace admin\Elementor;
 
 use Elementor\Controls_Manager;
@@ -212,25 +211,23 @@ class Single_forum extends Widget_Base
         $this->end_controls_section();
     }
 
-    protected function render ()
+    protected function render (): void
     {
         $settings = $this->get_settings();
-        $forum_id = $settings[ 'forum_id' ] ? $settings[ 'forum_id' ] : '';
+        $forum_id = !empty($settings[ 'forum_id' ]) ? $settings[ 'forum_id' ] : '';
         $cover_image = $settings[ 'cover_image' ];
         $post_thumbnail_url = !empty($cover_image[ 'url' ]) ? $cover_image[ 'url' ] : get_the_post_thumbnail_url($forum_id);
 
         $topics = new WP_Query(array(
             'post_type' => bbp_get_topic_post_type(),
-            'order' => $settings[ 'order' ] ? $settings[ 'order' ] : 'DESC',
-            'posts_per_page' => $settings[ 'ppp' ] ? $settings[ 'ppp' ] : 3,
+            'order' => !empty($settings['order']) ? $settings['order'] : 'DESC',
+            'posts_per_page' => !empty($settings['ppp']) ? $settings['ppp'] : 3,
             'post_parent' => $forum_id,
         ));
-        // echo $settings['style'];
 
         if ($forum_id) {
             include "inc/single-forum/single-forum-{$settings['style']}.php";
-        } else {
-            ?>
+        } else { ?>
             <div class="alert alert-warning" role="alert">
                 <?php _e('Please select a forum.', 'bbp-core'); ?>
             </div>

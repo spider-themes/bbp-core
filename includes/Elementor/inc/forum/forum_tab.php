@@ -70,7 +70,8 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
                     </div>
                     <div class="post-info">
                         <div class="author">
-                            <img src="<?php echo BBPC_IMG ?>/forum_tab/user-circle-alt.svg" alt="<?php esc_attr_e( 'User circle', 'bbp-core' ); ?>">
+                            <img src="<?php echo BBPC_IMG . '/forum_tab/user-circle-alt.svg' ?>" alt="<?php esc_attr_e( 'User circle', 'bbp-core' );
+                            ?>">
                             <?php 
                             echo bbp_get_topic_author_link( 
                                 array( 
@@ -82,8 +83,9 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
                         </div>
 
                         <div class="post-time">
-                            <img src="<?php echo BBPC_IMG ?>/forum_tab/time-outline.svg" alt="<?php esc_attr_e( 'Time outline', 'bbp-core' ); ?>">
-                            <?php echo bbp_forum_last_active_time( get_the_ID() ); ?>
+                            <img src="<?php echo BBPC_IMG . '/forum_tab/time-outline.svg'?>" alt="<?php esc_attr_e( 'Time outline', 'bbp-core' );
+                            ?>">
+                            <?php bbp_forum_last_active_time( get_the_ID() ); ?>
                         </div>
 
                         <div class="post-category">
@@ -105,12 +107,12 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
                 </div>
                 <div class="post-reach">
                     <div class="post-view">
-                        <img src="<?php echo BBPC_IMG ?>/forum_tab/eye-outline.svg" alt="<?php esc_attr_e( 'View icon', 'bbp-core' ); ?>">
+                        <img src="<?php echo BBPC_IMG . '/forum_tab/eye-outline.svg' ?>" alt="<?php esc_attr_e( 'View icon', 'bbp-core' ); ?>">
                         <?php bbp_topic_view_count( $topic_id );
                         _e( ' Views', 'bbp-core' ); ?>
                     </div>
                     <div class="post-like">
-                        <img src="<?php echo BBPC_IMG ?>/forum_tab/thumbs-up-outline.svg" alt="<?php esc_attr_e( 'Like icon', 'bbp-core' ); ?>">
+                        <img src="<?php echo BBPC_IMG . '/forum_tab/thumbs-up-outline.svg' ?>" alt="<?php esc_attr_e( 'Like icon', 'bbp-core' ); ?>">
                         <?php
                         if ( $vote_count ) {
                             echo $vote_count;
@@ -120,10 +122,11 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
                         _e( ' Likes', 'bbp-core' ); ?>
                     </div>
                     <div class="post-comment">
-                        <img src="<?php echo BBPC_IMG ?>/forum_tab/chatbubbles-outline.svg" alt="<?php esc_attr_e( 'Comment icon', 'bbp-core' ); ?>">
+                        <img src="<?php echo BBPC_IMG . '/forum_tab/chatbubbles-outline.svg' ?>" alt="<?php esc_attr_e( 'Comment icon', 'bbp-core' ); ?>">
                         <?php
-                        echo bbp_topic_reply_count( $topic_id );
-                        _e( ' Replies', 'bbp-core' ) ?>
+                        bbp_topic_reply_count( $topic_id );
+                        esc_html_e( ' Replies', 'bbp-core' )
+                        ?>
                     </div>
                 </div>
             </div>
