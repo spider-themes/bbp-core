@@ -79,10 +79,21 @@ class Forum_Tab extends Widget_Base {
 
         //==== View More Button
         $this->add_control(
-            'more_txt', [
+            'more_txt_heading', [
                 'label'       => esc_html__( 'View More Button', 'bbp-core' ),
                 'type'        => Controls_Manager::HEADING,
                 'separator'   => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'is_forum_tab_btn', [
+                'label' => esc_html__( 'Button (Show/Hide)', 'bbp-core' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'bbp-core' ),
+                'label_off' => esc_html__( 'Hide', 'bbp-core' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
             ]
         );
 
@@ -91,23 +102,27 @@ class Forum_Tab extends Widget_Base {
 				'label'       => esc_html__( 'Button Label', 'bbp-core' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
-				'separator'   => 'before',
 				'default'     => esc_html__('View More', 'bbp-core'),
+                'condition'   => [
+                    'is_forum_tab_btn' => 'yes'
+                ]
 			]
 		);
 
 		$this->add_control(
 			'more_url', [
-				'label'       => esc_html__( 'More button link', 'bbp-core' ),
+				'label'       => esc_html__( 'Button URL', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'bbp-core' ),
 				'default'     => [
 					'url'         => get_post_type_archive_link( 'forum' ),
 					'is_external' => true,
 					'nofollow'    => true,
 				],
+                'condition'   => [
+                    'is_forum_tab_btn' => 'yes'
+                ]
 			]
-		);
+		); //End View More Button
 
 		$this->end_controls_section(); // End Forum Filter Options
 
@@ -149,31 +164,58 @@ class Forum_Tab extends Widget_Base {
 			]
 		);
 
+        //==== View More Button
+        $this->add_control(
+            'more_txt2_heading', [
+                'label'       => esc_html__( 'View More Button', 'bbp-core' ),
+                'type'        => Controls_Manager::HEADING,
+                'separator'   => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'is_topic_tab_btn', [
+                'label' => esc_html__( 'Button (Show/Hide)', 'bbp-core' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'bbp-core' ),
+                'label_off' => esc_html__( 'Hide', 'bbp-core' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+
 		$this->add_control(
 			'more_txt2', [
-				'label'       => esc_html__( 'More button text', 'bbp-core' ),
+				'label'       => esc_html__( 'Button Label', 'bbp-core' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
-				'default'     => 'Show more'
+				'default'     => esc_html__('View More', 'bbp-core'),
+                'condition'   => [
+                    'is_topic_tab_btn' => 'yes'
+                ]
 			]
 		);
 
 		$this->add_control(
 			'more_url2', [
-				'label'       => esc_html__( 'More button link', 'bbp-core' ),
+				'label'       => esc_html__( 'Button URL', 'bbp-core' ),
 				'type'        => \Elementor\Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'bbp-core' ),
 				'default'     => [
 					'url'         => get_post_type_archive_link( 'topic' ),
 					'is_external' => true,
 					'nofollow'    => true,
 				],
+                'condition'   => [
+                    'is_topic_tab_btn' => 'yes'
+                ]
 			]
 		);
 
 		$this->end_controls_section(); //End Topic Filter Options
 
 
+        //===================== Forum Tab Title ======================//
 		$this->start_controls_section(
 			'forum_tab_style', [
 				'label' => __( 'Forum Tab Title', 'bbp-core' ),

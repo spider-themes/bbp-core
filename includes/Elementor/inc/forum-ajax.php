@@ -10,61 +10,83 @@ function bbpc_ajax_forum() {
 	// received values from front end forum
 	$data_forum = sanitize_text_field( $_POST['data_forum'] );
 
-	$q = array(
+	$args = array(
 		'post_type'      => 'topic',
 		'posts_per_page' => 9,
 	);
 
 	if ( 'solved' === $data_forum ) {
-		$meta_query = [
-			'meta_query' => array(
-				array(
-					'key'   => '_bbp_topic_is_solved',
-					'value' => true,
-				),
-			),
-		];
-		$q 	= array_merge( $q, $meta_query );
-
+        $args['meta_query'] = array(
+            array(
+                'key'   => '_bbp_topic_is_solved',
+                'value' => true,
+            ),
+        );
 	} elseif ( 'unsolved' === $data_forum ) {
-		$meta_query = [
-			'meta_query' => array(
-				array(
-					'key'     => '_bbp_topic_is_solved',
-					'compare' => 'NOT EXISTS',
-				),
-			),
-		];
-
-		$q = array_merge( $q, $meta_query );
-
+        $args['meta_query'] = array(
+            array(
+                'key'     => '_bbp_topic_is_solved',
+                'compare' => 'NOT EXISTS',
+            ),
+        );
 	} elseif ( 'recent' === $data_forum ) {
-		$query = [
-			'order' => 'DESC',
-		];
-
-		$q = array_merge( $q, $query );
-
+        $args['order'] = 'DESC';
 	} elseif ( 'popular' === $data_forum ) {
-		$query = [
-			'meta_key' => '_btv_view_count',
-			'orderby'  => 'meta_value_num',
-			'order'    => 'DESC'
-		];
-
-		$q = array_merge( $q, $query );
-
+        $args['meta_query'] = array(
+            'relation' => 'OR',
+            array(
+                'key'   => '_btv_view_count',
+                'value'   => 0,
+                'compare' => '>',
+                'type'    => 'NUMERIC',
+            ),
+            array(
+                'key'     => '_bbp_reply_count',
+                'value'   => 0,
+                'compare' => '>',
+                'type'    => 'NUMERIC',
+            ),
+            array(
+                'key'     => 'bbpv-votes',
+                'value'   => 0,
+                'compare' => '>',
+                'type'    => 'NUMERIC',
+            ),
+        );
+        $args['orderby'] = array(
+            'meta_value_num' => 'DESC',
+            'comment_count'  => 'DESC',
+        );
 	} elseif ( 'featured' === $data_forum ) {
-		$query = array(
-			'show_stickies' => true,
-			'post__in' => bbp_get_super_stickies()
-		);
 
-		$q = array_merge( $q, $query );
+        $super_stickies = bbp_get_super_stickies(); // Get global super sticky topics
+
+        // Get sticky topics from all forums
+        $stickies = [];
+        $forums = get_posts([
+            'post_type'      => 'forum',
+            'posts_per_page' => -1,
+            'fields'         => 'ids',
+        ]);
+
+        foreach ($forums as $forum_id) {
+            $stickies = array_merge($stickies, bbp_get_stickies($forum_id));
+        }
+
+        // Merge both sticky types
+        $sticky_topics = array_merge($super_stickies, $stickies);
+        $sticky_topics = array_unique($sticky_topics);
+
+        if ( !empty($sticky_topics) ) {
+            $args['post__in'] = $sticky_topics;
+        } else {
+            wp_send_json_error(__('No featured (sticky) topics found', 'bbp-core'));
+        }
+
 	}
 
 	// WP_Query arguments
-	$forum_topics = new WP_Query( $q );
+	$forum_topics = new WP_Query( $args );
 
 	if ( $forum_topics->have_posts() ) {
 		$i = 0;
@@ -83,7 +105,7 @@ function bbpc_ajax_forum() {
                     </div>
                     <div class="post-info">
                         <div class="author">
-                            <img src="<?php echo BBPC_ASSETS ?>/img/forum_tab/user-circle-alt.svg" alt="<?php esc_attr_e( 'User circle icon', 'bbpc-core' ); ?>">
+                            <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/user-circle-alt.svg' ?>" alt="<?php esc_attr_e( 'User circle icon', 'bbpc-core' ); ?>">
 							<?php 
                             echo bbp_get_topic_author_link( 
                                 array( 
@@ -95,8 +117,8 @@ function bbpc_ajax_forum() {
                         </div>
 
                         <div class="post-time">
-                            <img src="<?php echo BBPC_ASSETS ?>/img/forum_tab/time-outline.svg" alt="<?php esc_attr_e( 'Time outline icon', 'bbpc-core' ); ?>">
-							<?php echo bbp_forum_last_active_time( get_the_ID() ); ?>
+                            <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/time-outline.svg' ?>" alt="<?php esc_attr_e( 'Time outline icon', 'bbpc-core' ); ?>">
+							<?php bbp_forum_last_active_time( get_the_ID() ); ?>
                         </div>
                     </div>
 
@@ -109,17 +131,17 @@ function bbpc_ajax_forum() {
                 </div>
                 <div class="post-reach">
                     <div class="post-view">
-                        <img src="<?php echo BBPC_ASSETS ?>/img/forum_tab/eye-outline.svg" alt="<?php esc_attr_e( 'Eye outline icon', 'bbpc-core' ); ?>">
+                        <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/eye-outline.svg' ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbpc-core'); ?>">
 						
-						<?php 
-						bbp_topic_view_count( $topic_id );
-						echo '&nbsp;';
-						_e( 'Views', 'bbp-core' );
-						?>
+						<?php
+                        bbp_topic_view_count( $topic_id );
+                        echo '&nbsp;';
+                        esc_html_e( 'Views dddddd', 'bbp-core' );
+                        ?>
 
                     </div>
                     <div class="post-like">
-                        <img src="<?php echo BBPC_ASSETS ?>/img/forum_tab/thumbs-up-outline.svg" alt="<?php esc_attr_e( 'Thumbs up icon', 'bbpc-core' ); ?>">
+                        <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/thumbs-up-outline.svg' ?>" alt="<?php esc_attr_e( 'Thumbs up icon', 'bbpc-core'); ?>">
 						
 						<?php 
 						if ( $vote_count ) {
@@ -133,10 +155,10 @@ function bbpc_ajax_forum() {
 						?>
                     </div>
                     <div class="post-comment">
-                        <img src="<?php echo BBPC_ASSETS ?>/img/forum_tab/chatbubbles-outline.svg" alt="<?php esc_attr_e( 'Chatbubbles outline icon', 'bbpc-core' ); ?>">
+                        <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/chatbubbles-outline.svg' ?>" alt="<?php esc_attr_e( 'Chatbubbles outline icon', 'bbpc-core' ); ?>">
 						
 						<?php 
-						echo bbp_topic_reply_count( $topic_id );
+						bbp_topic_reply_count( $topic_id );
 						echo '&nbsp;';
 						_e( 'Replies', 'bbp-core' );
 						?>
@@ -148,7 +170,7 @@ function bbpc_ajax_forum() {
 		endwhile;
 		unset( $i );
 	} else {
-		echo 'no posts found';
+		esc_html_e('no posts found', 'bbp-core');
 	}
 
 	wp_reset_postdata();

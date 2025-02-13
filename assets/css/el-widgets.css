@@ -1812,7 +1812,6 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
 
 /*------- Forum Tab widget tags --------*/
 .single-forum-post-widget .post-tags a {
-  font-family: inherit;
   font-weight: 400;
   line-height: 14px;
   font-size: 12px;
@@ -1821,6 +1820,10 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   margin: 12px 10px 0 0;
   border-radius: 3px;
   color: #fff;
+  text-decoration: none;
+}
+.single-forum-post-widget .post-tags a:hover {
+  background: #4766d5;
 }
 
 .tab-content {
@@ -1858,7 +1861,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   cursor: pointer;
   position: relative;
   display: inline-block;
-  height: 20px;
+  height: 24px;
   width: 20px;
   margin-right: 3px;
 }
@@ -1868,7 +1871,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   margin-left: 0;
   background-size: contain;
   top: 2px;
-  left: 0%;
+  left: 0;
 }
 .dbl-arrow-upper .arrow-cont .second {
   margin-top: 5px;
