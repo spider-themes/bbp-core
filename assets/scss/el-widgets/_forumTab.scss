@@ -388,7 +388,7 @@
       bottom: 0;
       margin-left: 0;
       background-size: contain;
-      top: 2px;
+      top: 8px;
       left: 0;
     }
 
@@ -412,5 +412,28 @@
         animation-timing-function: linear;
       }
     }
+  }
+}
+
+
+@keyframes bounceAlphaUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1)
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateY(10px) scale(.9)
+  }
+
+  26% {
+    opacity: 0;
+    transform: translateY(-10px) scale(.9)
+  }
+
+  55% {
+    opacity: 1;
+    transform: translateY(0) scale(1)
   }
 }
