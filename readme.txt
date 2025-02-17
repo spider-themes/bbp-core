@@ -2,9 +2,9 @@
 Contributors: spiderdevs, mdjwel, delweratjk
 Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
-Tested up to: 6.6.1
+Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,12 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.2.8 (17 February 2025) =
+Fixed: Resolved some issue of the "BBPC single forum & Forum Tabs" Elementor widget
+Fixed: Image size of forum tab widget
+Tweaked: Improved "View More Button" of the "Forum Tabs" widget
+Updated: Freemius SDK updated to 2.11.0
 
 = v1.2.7 (24 December 2024) =
 Fixed: sprintf php error
