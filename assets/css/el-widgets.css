@@ -1713,6 +1713,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
 }
 .community-topic-widget-box img {
   margin-right: 24px;
+  max-width: 48px;
 }
 .community-topic-widget-box h5 {
   font-size: 18px;
