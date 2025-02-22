@@ -18,13 +18,13 @@
     <domain name="freemius">
         <project name="freemius">
             <source>
-                <directory>includes/fs</directory>
+                <directory>vendor/fs</directory>
             </source>
             <target>
-                <directory>includes/fs/languages</directory>
+                <directory>vendor/fs/languages</directory>
             </target>
             <template>
-                <file>includes/fs/languages/freemius.pot</file>
+                <file>vendor/fs/languages/freemius.pot</file>
             </template>
         </project>
     </domain>
