@@ -23,7 +23,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
 
 		if ( ! isset( $bc_fs ) ) {
 			// Include Freemius SDK.
-			require_once dirname( __FILE__ ) . '/includes/fs/start.php';
+			require_once dirname( __FILE__ ) . '/vendor/fs/start.php';
 
 			$bc_fs = fs_dynamic_init( [
 				'id'              => '10864',
