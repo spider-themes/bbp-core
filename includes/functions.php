@@ -19,6 +19,32 @@ function bbpc_get_opt( $option, $default = '' ) {
 }
 
 /**
+ * Check if a plugin has been installed for specific number of days
+ *
+ * @param string $plugin_path The plugin path (e.g. 'woocommerce/woocommerce.php')
+ * @param int    $days        Number of days to check against
+ * @return bool  True if plugin is installed for specified days, false otherwise
+ */
+function bbpc_is_plugin_installed_for_days( $days, $plugin_slug='eazydocs' ) {
+	// Get the installation timestamp of the plugin
+	$installed_time = get_option( $plugin_slug . '_installed' );
+
+	// Ensure it's a valid timestamp
+	if ( ! is_numeric( $installed_time ) || $installed_time <= 0 ) {
+		return false;
+	}
+
+	// Convert days to seconds
+	$required_time = (int) $days * DAY_IN_SECONDS;
+
+	// Get the current UTC time
+	$current_time = time();
+
+	// Check if the plugin has been installed for the required duration
+	return ( $current_time - $installed_time ) >= $required_time;
+}
+
+/**
  * Check If the Page is Forum page
  */
 function bbpc_is_forum_page() {
@@ -58,6 +84,12 @@ function bbpc_admin_pages($admin) {
 	}
 }
 
+/**
+ * BBP Forum Assets
+ * Checks if the current page is a single forum or a single topic.
+ *
+ * @return bool True if the current page is a single forum or topic, false otherwise.
+ */
 function bbpc_forum_assets(){
 	if ( bbp_is_single_forum() ||  bbp_is_single_topic() ) {
 		return true;
