@@ -103,6 +103,11 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 
 == Changelog ==
 
+= v1.2.9 (24 February 2025) =
+New: Loco.xml configuration file added for multiple text domains mapping in Loco translate plugin
+New: Offer notice added for our valuable customers (not for fresher)
+Fixed: Deprecated issue, Increment on non-alphanumeric string is deprecated in /bbp-core/includes/admin/menu/admin_ui/forums.php on line 8
+
 = v1.2.8 (17 February 2025) =
 Fixed: Resolved some issue of the "BBPC single forum & Forum Tabs" Elementor widget
 Fixed: Image size of forum tab widget
