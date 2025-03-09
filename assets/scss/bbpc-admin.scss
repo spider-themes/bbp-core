@@ -15,6 +15,24 @@
   width: calc(70% - 25px);
 }
 
+/** === Codestar Fontawesome replaced with Dashicons === **/
+.csf-field .chosen-container-single .chosen-single div b:before,
+.csf-nav ul li .csf-arrow:after {
+  content: "\f347";
+  font-family: dashicons;
+  font-size: 12px;
+}
+
+.csf-field .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:before {
+  content: "\f335" !important;
+  font-family: dashicons;
+}
+
+.csf-field .chosen-container-active.chosen-with-drop .chosen-single div b:before {
+  content: "\f343";
+  font-family: dashicons;
+}
+
 body {
   &.bbpc-no-pro {
     .st-pro-notice{

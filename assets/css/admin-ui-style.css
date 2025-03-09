@@ -1940,6 +1940,7 @@ body.bbpc-forum-ui {
   transition: all 0.3s;
   border-radius: 15px;
   padding: 5px 25px;
+  cursor: pointer;
 }
 .single-item-filter .easydocs-btn:hover {
   background-color: rgba(0, 0, 0, 0.1);

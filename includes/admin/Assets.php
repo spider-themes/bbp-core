@@ -14,7 +14,6 @@ class Assets {
 	}
 	
 	public function admin_scripts() {
-		
 		wp_register_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );		
 		wp_register_style( 'sweetalert', BBPC_ASSETS . '/css/sweetalert.css' );
 		
@@ -46,6 +45,11 @@ class Assets {
             wp_enqueue_style( 'sweetalert' );
 			wp_enqueue_script( 'sweetalert' );
 			wp_enqueue_script( 'bbpc-admin-global', BBPC_ASSETS . 'js/admin-global.js', BBPC_VERSION );
+		}
+
+		if ( bbpc_admin_pages('settings') ) {
+			wp_deregister_style('csf-fa5');
+			wp_deregister_style('csf-fa5-v4-shims');
 		}
         
         // Localize the script with new data
