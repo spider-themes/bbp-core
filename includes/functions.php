@@ -187,21 +187,3 @@ add_action( 'customize_register', function( $wp_customize ) {
     // Unset the section you want to hide
     $wp_customize->remove_section( 'design_fields' );
 }, 20 );
-
-
-
-
-add_action('wp_head', function(){
-	if ( is_singular( 'forum' ) ){
-		$id = get_the_ID();
-		
-		
-		$topics = get_children( [
-			'post_parent' => $id,
-			'post_type'   => 'topic'
-		] );
-
-	 
-
-	}
-});

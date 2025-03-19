@@ -24,7 +24,7 @@ class Assets {
 			wp_enqueue_style( 'bbpc-admin' );
 			wp_enqueue_style( 'normalize', BBPC_ASSETS . 'css/normalize.css' );
 			wp_enqueue_style( 'nice-select', BBPC_ASSETS . 'css/nice-select.css' );
-			wp_enqueue_style( 'jquery-ui', BBPC_ASSETS . 'css/admin-ui-style.css' );
+			wp_enqueue_style( 'bbpc-admin-ui', BBPC_ASSETS . 'css/admin-ui-style.css' );
 			wp_enqueue_style( 'sweetalert' );
 
 			// Scripts.
