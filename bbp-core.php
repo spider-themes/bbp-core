@@ -42,7 +42,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
 					'slug'       => 'bbp-core',
 					'contact'    => false,
 					'support'    => false,
-					'first-path' => 'admin.php?page=',
+					'first-path' => 'admin.php?page=bbp-core',
 				],
 			] );
 		}
