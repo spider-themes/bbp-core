@@ -4,6 +4,7 @@ CSF::createSection(
     $prefix,
     [
         'title'  => __( 'Voting', 'bbp-core' ),
+		'icon'   => 'dashicons dashicons-thumbs-up',
         'fields' => [
             [
                 'id'      => 'is_votes',

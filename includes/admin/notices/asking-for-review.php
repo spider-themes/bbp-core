@@ -13,7 +13,7 @@ if ( is_admin() && time() >= (int) $optionReview && $optionReview !== '0') {
         $current_time = current_time('timestamp');
 
         // Compare current time with timestamp + 7 days
-        if ($current_time >= $show_notice) {
+        if ( $current_time >= $show_notice ) {
             add_action('admin_notices', 'bbpc_notify_give_review');
         }
     }
@@ -62,7 +62,7 @@ function bbpc_notify_save_review() {
 
         if ( $field == 'later' ) {
             update_option('bbpc_notify_review', time() + 3*60*60*24); //After 3 days show
-        } else if ($field == 'alreadyDid') {
+        } else if ( $field == 'alreadyDid' ) {
             update_option('bbpc_notify_review', 0);
         }
         wp_send_json_success();

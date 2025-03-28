@@ -73,8 +73,8 @@ class GDATTFront {
 
 	public function register_scripts_and_styles() {
 		//TODO: Fix the constant for version
-		wp_register_style( 'bbpc-attachments', BBPCATTACHMENT_URL . 'css/front.min.css', [], BBPC_VERSION );
-		wp_register_script( 'bbpc-attachments', BBPCATTACHMENT_URL . 'js/front.min.js', [ 'jquery' ], BBPC_VERSION, true );
+		wp_register_style( 'bbpc-attachments', BBPCATTACHMENT_URL . 'css/front.css', [], BBPC_VERSION );
+		wp_register_script( 'bbpc-attachments', BBPCATTACHMENT_URL . 'js/front.js', [ 'jquery' ], BBPC_VERSION, true );
 	}
 
 	public function include_scripts_and_styles() {

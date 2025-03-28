@@ -1,8 +1,21 @@
 .bbp-attachments ol.with-icons {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   list-style: none;
   padding: 0;
+}
+.bbp-attachments ol.with-icons li:hover {
+  transition: all 0.3s;
+}
+.bbp-attachments ol.with-icons li:hover img {
+  border-color: var(--black_100);
+}
+.bbp-attachments ol.with-icons a {
+  text-decoration: none;
+}
+.bbp-attachments ol.with-icons a img {
+  border-radius: 10px;
+  border: solid 1px var(--black_50);
 }
 
 .bbp-attachments,
@@ -76,6 +89,11 @@
 #bbpress-forums .bbp-attachments ol li {
   line-height: 20px;
   margin: 0 0 8px !important;
+}
+#bbpress-forums .bbp-attachments ol li span.d4p-bba-actions {
+  color: #f90000;
+  margin-top: 10px;
+  display: block;
 }
 #bbpress-forums .bbp-attachments ol li a {
   text-decoration: none;

@@ -4,6 +4,7 @@ CSF::createSection(
 	[
 		'id'     => 'bbpc_mini_profile',
 		'title'  => __( 'Mini Profile', 'bbp-core' ),
+		'icon'   => 'dashicons dashicons-admin-users',
 		'fields' => [
 			[
 				'type'    => 'subheading',

@@ -4,6 +4,7 @@ CSF::createSection(
 	$prefix,
 	[
 		'title'  => __( 'Attachments', 'bbp-core' ),
+		'icon'   => 'dashicons dashicons-media-default',
 		'fields' => [
 			[
 				'id'      => 'is_attachment',

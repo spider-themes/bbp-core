@@ -3,7 +3,8 @@
 	CSF::createSection(
 		$prefix,
 		[
-			'title'  => __( 'Replies', 'bbp-core' ),
+			'title'  => __( 'Topic Replies', 'bbp-core' ),
+			'icon'   => 'dashicons dashicons-format-chat',
 			'fields' => [
 				[
 					'id'       => 'is_private_replies',

@@ -30,23 +30,22 @@ if ( class_exists( 'CSF' ) ) {
 	// Widgets Settings.
 	define( 'BBPC_SETTINGS_PATH', plugin_dir_path( __FILE__ ) );
 
+	include BBPC_SETTINGS_PATH . 'options_general.php';
 	include BBPC_SETTINGS_PATH . 'options_admin_ui.php';
-	include BBPC_SETTINGS_PATH . 'options_solved_topics.php';
-	include BBPC_SETTINGS_PATH . 'options_private_replies.php';
+	include BBPC_SETTINGS_PATH . 'options_appearance.php';
+	include BBPC_SETTINGS_PATH . 'options_topics.php';
+	include BBPC_SETTINGS_PATH . 'options_replies.php';
 	include BBPC_SETTINGS_PATH . 'options_voting.php';
-	include BBPC_SETTINGS_PATH . 'options_customizer.php';
 	include BBPC_SETTINGS_PATH . 'options_attachments.php';
 	include BBPC_SETTINGS_PATH . 'options_mini_profile.php';
-	include BBPC_SETTINGS_PATH . 'options_shortcode.php';
 	include BBPC_SETTINGS_PATH . 'options_notification.php';
-	include BBPC_SETTINGS_PATH . 'options_appearance.php';
+	include BBPC_SETTINGS_PATH . 'options_shortcode.php';
 
-	// Additoinal fields
+	// Additional fields
 	do_action('bbpc_additoinal_csf_fields', $prefix);
 	
 	if ( ! class_exists( 'bbPress' ) ) {
 		return;
 	}
-	
 }
 

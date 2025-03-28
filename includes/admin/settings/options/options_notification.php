@@ -6,6 +6,7 @@ CSF::createSection(
 	[
 		'id'     => 'bbpc_notification_opt',
 		'title'  => __( 'Notification', 'bbp-core' ),
+		'icon'   => 'dashicons dashicons-megaphone',
 		'fields' => [
 			[
 				'type'    => 'subheading',

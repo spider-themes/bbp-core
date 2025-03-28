@@ -4,6 +4,7 @@ CSF::createSection(
     $prefix,
     [
         'title'  => __( 'Shortcodes', 'bbp-core' ),
+		'icon'   => 'dashicons dashicons-editor-code',
         'fields' => [
             [
                 'id'         => 'bbpc_shortcode',

@@ -4,8 +4,9 @@
 	CSF::createSection(
 		$prefix,
 		[
-			'title'  => __( 'Topics', 'bbp-core' ),
+			'title'  => __( 'Forum Topics', 'bbp-core' ),
 			'id'     => 'topics_fields',
+			'icon'   => 'dashicons dashicons-menu-alt3',
 			'fields' => [
 				[
 					'id'       => 'is_solved_topics',
