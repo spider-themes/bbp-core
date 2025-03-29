@@ -32,7 +32,6 @@ if ( class_exists( 'CSF' ) ) {
 
 	include BBPC_SETTINGS_PATH . 'options_general.php';
 	include BBPC_SETTINGS_PATH . 'options_admin_ui.php';
-	include BBPC_SETTINGS_PATH . 'options_appearance.php';
 	include BBPC_SETTINGS_PATH . 'options_topics.php';
 	include BBPC_SETTINGS_PATH . 'options_replies.php';
 	include BBPC_SETTINGS_PATH . 'options_voting.php';
