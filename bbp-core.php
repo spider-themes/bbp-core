@@ -132,7 +132,7 @@ final class BBP_Core {
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		require_once __DIR__ . '/includes/Frontend/Assets.php';
 
-		require_once __DIR__ . '/includes/admin/widgets/forum-info/widgets.php';
+		require_once __DIR__ . '/widgets/widgets.php';
 		require_once __DIR__ . '/includes/Elementor/inc/forum-ajax.php';
 
 		// Core installer notice

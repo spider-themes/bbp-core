@@ -39,6 +39,8 @@ BBP Core empowers bbPress forum with useful features. For example - Unified Foru
 
 - **Media Attachments:**  Enables users to attach files to their replies, which can be downloaded by other users. The attachments are displayed in a separate section below the Topic and Reply content. This enhances the forum's functionality, allowing for the seamless sharing of relevant files and media within discussions.
 
+- **Current Forum Info widget:** Displays the current forum's information, including the number of Topics, Replies, Last post by, and Last activity, as well as the Subscribe forum button. This widget provides users with a quick overview of the forum's activity and content, encouraging them to explore further.
+
 - **Elementor Integrated:** BBP Core comes with a set of Elementor widgets that can be used to display forums, topics, and replies on any page of your website. The widgets are highly customizable, allowing you to configure their appearance and functionality to suit your needs.
 
 ### PRO Features ###
