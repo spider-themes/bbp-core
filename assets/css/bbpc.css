@@ -59,15 +59,18 @@
     line-height: 10px !important;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-  }
-  .bbpc-agree-disagree-buttons button.active:hover {  
-    background: #f0f8ff; 
+}
+
+.bbpc-agree-disagree-buttons button.active:hover {
+    background: #f0f8ff;
     border-color: #cee1ef;
-  }
-  .bbpc-agree-disagree-buttons button.active {
-    background: var(--bbpc_brand_color); 
-  }
-  .bbpc-agree-disagree-buttons span.bbpc-reactions-btn-counter {
+}
+
+.bbpc-agree-disagree-buttons button.active {
+    background: var(--bbpc_brand_color);
+}
+
+.bbpc-agree-disagree-buttons span.bbpc-reactions-btn-counter {
     font-size: 16px;
     background: #ffffff;
     border: 1px solid #c0cad2;
@@ -83,16 +86,16 @@
     text-align: center;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-  }
-  
-  /* Voting layout css */
-  .bbpc-voting-liked-wrap{
+}
+
+/* Voting layout css */
+.bbpc-voting-liked-wrap {
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 10px;
-  }
-  
-  .bbpc-voting-liked-wrap .bbpc-voting-liked a {
+}
+
+.bbpc-voting-liked-wrap .bbpc-voting-liked a {
     color: #333;
     font-weight: 600;
     text-decoration: none;
@@ -103,61 +106,63 @@
     background: #f0f8ff;
     border: #cee1ef 1px solid !important;
     box-sizing: border-box;
-  }
-  span.bbpc-agree-disagree-counter-wrap {
+}
+
+span.bbpc-agree-disagree-counter-wrap {
     margin: 18px 0 5px;
     display: block;
-  }
-  span.bbpc-agree-disagree-counter-wrap .fa-thumbs-up {
+}
+
+span.bbpc-agree-disagree-counter-wrap .fa-thumbs-up {
     color: green;
     font-size: 20px;
-  }
-  span.bbpc-agree-disagree-counter-wrap .fa-thumbs-down {
+}
+
+span.bbpc-agree-disagree-counter-wrap .fa-thumbs-down {
     color: red;
     font-size: 20px;
-  }
-  
-  .bbpc-voting-liked::after,
-  .bbpc-voting-liked-wrap::after{
+}
+
+.bbpc-voting-liked::after,
+.bbpc-voting-liked-wrap::after {
     content: '';
     display: block;
     clear: both;
-  }
-  
-  .bbpc-voting-liked-wrap.single-topic-wrap{
+}
+
+.bbpc-voting-liked-wrap.single-topic-wrap {
     grid-template-columns: auto;
-  }
-  
-  #bbp-user-body .bbpc-no-voting-wrap:not(:last-child){
+}
+
+#bbp-user-body .bbpc-no-voting-wrap:not(:last-child) {
     display: none;
-  }
-  
-  .bbpc-no-voting-wrap {
+}
+
+.bbpc-no-voting-wrap {
     background: #f1f1f1;
     padding: 10px 15px;
     font-weight: 500 !important;
     font-size: 16px !important;
-  }
-  
-  .bbpc-footer-actions {
-    display: grid;
-    align-items: center;
-    vertical-align: middle;
-    grid-template-columns: auto auto;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-  }
-  
-  @media screen and (max-width: 768px) {    
+}
+
+.bbpc-footer-actions {
+    padding-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media screen and (max-width: 768px) {
     .bbpc-footer-actions,
-    .bbpc-voting-liked-wrap{
+    .bbpc-voting-liked-wrap {
         grid-template-columns: auto;
         grid-gap: 5px;
         justify-content: end;
         position: unset;
         display: flow-root;
     }
+
     .bbpc-agree-disagree-buttons {
         display: grid;
         grid-template-columns: auto auto;
@@ -165,60 +170,53 @@
     }
 }
 
-.bbpc-agree-disagree-buttons.absolute,
-.bbpc-same-topic-voting-wrap.absolute {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
-
 .bbpc-agree-disagree-buttons button {
-  position: relative;
+    position: relative;
 }
 
 .bbpc-agree-disagree-buttons button .bbpc-preloader::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.8;
-  z-index: 9999;
-  background: aliceblue;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 9999;
+    background: aliceblue;
 }
 
 .bbpc-agree-disagree-buttons button .bbpc-preloader::after {
-  content: "";
-  position: absolute;
-  top: 20px;
-  left: 32px;
-  transform: translate(-50%, -50%);
-  border: 5px solid #969696;
-  border-top: 5px solid #bc002b;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: geo_spin 1s linear infinite;
-  z-index: 10000;
-  right: 0px;
-  margin: auto;
-  text-align: center;
-  background: #ffffff;
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 32px;
+    transform: translate(-50%, -50%);
+    border: 5px solid #969696;
+    border-top: 5px solid #bc002b;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: geo_spin 1s linear infinite;
+    z-index: 10000;
+    right: 0px;
+    margin: auto;
+    text-align: center;
+    background: #ffffff;
 }
 
 @keyframes geo_spin {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 .bbpc-voting-heading {
-  font-size: 20px;
-  display: block;
-  margin: 0 0 15px;
-  font-weight: 500;
+    font-size: 20px;
+    display: block;
+    margin: 0 0 15px;
+    font-weight: 500;
 }

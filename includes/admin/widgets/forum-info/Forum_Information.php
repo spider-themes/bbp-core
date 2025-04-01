@@ -30,10 +30,6 @@ class Forum_Information extends WP_Widget {
         $show_subscribe         = $instance['show_subscribe'] ?? false;
  
         echo $args['before_widget'];
-
-        if ( $title ) {
-            echo $args['before_title'] . $title . $args['after_title'];
-        }
         
         if(  is_bbpress() && is_singular( 'forum' ) ) :
             $forum_id               = bbp_get_forum_id();
@@ -43,10 +39,15 @@ class Forum_Information extends WP_Widget {
             $last_active_user_id    = bbp_get_forum_last_active_id( $forum_id );
             $last_active_user       = get_post_field( 'post_author', $last_active_user_id );
 
+	        if ( $title ) {
+		        echo $args['before_title'] . $title . $args['after_title'];
+	        }
+
             $subscribe_link         = '';
             if ( is_user_logged_in() ) {
                 $subscribe_link     = bbp_get_forum_subscription_link();
             }
+
             if ( $show_topics_count == 'on' || $show_replies_count == 'on' || $show_last_post_user == 'on' || $show_last_activity == 'on' || $show_subscribe == 'on') :
                 ?>
                 <div class="bbpc-widget-forum-info">
@@ -94,7 +95,7 @@ class Forum_Information extends WP_Widget {
                                 <tr class="show_last_post_user">
                                     <th>
                                         <?php 
-                                        if( $show_icons == 'on' ) :
+                                        if ( $show_icons == 'on' ) :
                                             ?>
                                             <img src="<?php echo BBPC_IMG ?>/avatar.svg" alt="<?php esc_attr_e( 'BBP Core Pro avatar icon', 'bbp-core' ); ?>">
                                             <?php 

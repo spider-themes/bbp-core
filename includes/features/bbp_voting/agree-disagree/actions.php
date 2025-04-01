@@ -235,7 +235,7 @@ add_action( 'bbp_theme_after_topic_content', function() {
 
         // Begin outputting the agree/disagree buttons
         ?>
-        <div class="<?php if ( $has_same_topic == false ) { echo 'absolute'; } ?> bbpc-agree-disagree-buttons">
+        <div class="bbpc-agree-disagree-buttons">
         <?php
 
         // Fetch the current user ID and topic ID
