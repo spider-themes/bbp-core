@@ -33,41 +33,47 @@
             });
 
             // Keyup in search input
+            let debounceTimer;
             $('#searchInput').keyup(function () {
                 $('.not-found-text').css('display', 'none');
+
+                clearTimeout(debounceTimer); // Clear the previous timer
+
                 var searchInput = $(this).val();
-                var ajax_url = bbpc_localize_script.ajaxurl;
+                var ajax_url    = bbpc_localize_script.ajaxurl;
 
-                if (searchInput != '') {
-                    $.ajax({
-                        url: ajax_url,
-                        method: 'POST',
-                        data: {
-                            action: 'bbpc_search_data_fetch',
-                            keyword: searchInput
-                        },
-                        beforeSend: function () {
-                            $('.spinner').css('display', 'block');
-                        },
-                        success: function (data) {
-                            $('#bbpc-search-result').html(data).addClass('ajax-search');
-                            $('.spinner').css('display', 'none');
+                debounceTimer = setTimeout(function () {
+                    if (searchInput != '') {
+                        $.ajax({
+                            url: ajax_url,
+                            method: 'POST',
+                            data: {
+                                action: 'bbpc_search_data_fetch',
+                                keyword: searchInput
+                            },
+                            beforeSend: function () {
+                                $('.spinner').css('display', 'block');
+                            },
+                            success: function (data) {
+                                $('#bbpc-search-result').html(data).addClass('ajax-search');
+                                $('.spinner').css('display', 'none');
 
-                            var no_result = $('.tab-item.active.all-active').attr('data-noresult');
-                            if (no_result) {
-                                no_result = no_result.replace("-", " ");
-                                no_result = no_result.replace("-", " ");
-                                $('#bbpc-search-result').html('<h5 class="bbpc-not-found-text">' + no_result + '</h5>');
-                                $('.bbpc-not-found-text').css('display', 'block');
+                                var no_result = $('.tab-item.active.all-active').attr('data-noresult');
+                                if (no_result) {
+                                    no_result = no_result.replace("-", " ");
+                                    no_result = no_result.replace("-", " ");
+                                    $('#bbpc-search-result').html('<h5 class="bbpc-not-found-text">' + no_result + '</h5>');
+                                    $('.bbpc-not-found-text').css('display', 'block');
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                // Handle the error
                             }
-                        },
-                        error: function (xhr, status, error) {
-                            // Handle the error
-                        }
-                    });
-                }
+                        });
+                    }
+                }, 1000); // 1 seconds debounce
             });
-
+            
             // Keywords
             $('.bbpc-search-keyword ul li a').on('click', function (e) {
                 e.preventDefault();
