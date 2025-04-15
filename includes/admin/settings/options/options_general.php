@@ -33,17 +33,18 @@ CSF::createSection(
 			[
 				'id'         => 'customizer_visibility',
 				'type'       => 'switcher',
-				'title'      => esc_html__( 'Options Visibility on Customizer', 'eazydocs' ),
-				'text_on'    => esc_html__( 'Enabled', 'eazydocs' ),
-				'text_off'   => esc_html__( 'Disabled', 'eazydocs' ),
+				'title'      => esc_html__( 'Options Visibility on Customizer', 'bbp-core' ),
+				'text_on'    => esc_html__( 'Enabled', 'bbp-core' ),
+				'text_off'   => esc_html__( 'Disabled', 'bbp-core' ),
 				'text_width' => 100
 			],
 
 			[
 				'type'       => 'content',
-				'content'    => '<a href="' . esc_url( $forum_url ) . '" target="_blank" id="bbpc_forum_option_link">' . esc_html__( 'Forum', 'eazydocs' )
+				'title'      => esc_html__( 'Customizer Options', 'bbp-core' ),
+				'content'    => '<a href="' . esc_url( $forum_url ) . '" target="_blank" id="bbpc_forum_option_link">' . esc_html__( 'Forum', 'bbp-core' )
 				                . '</a> ' . '<a href="' . esc_url( $topic_url ) . '" target="_blank" id="bbpc_topic_option_link">' . esc_html__( 'Topic',
-						'eazydocs' ) . '</a>',
+						'bbp-core' ) . '</a>',
 				'dependency' => [
 					[ 'customizer_visibility', '==', true ],
 				],

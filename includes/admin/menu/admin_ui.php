@@ -2,6 +2,7 @@
 if ( ! class_exists( 'bbPress' ) ) {
 	return;
 }
+
 $parent_forums = [];
 $fcount        = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
@@ -74,7 +75,7 @@ $bbpc_opt      = get_option( 'bbp_core_settings' );
 									}
 
 									// Count spam( hidden ) topics.
-									if ( bbp_is_topic_spam( $topic_id ) ) {
+									if ( bbp_is_topic_spam( $topic_id ) || bbp_is_topic_pending( $topic_id ) ) {
 										$count_hidden++;
 									}
 

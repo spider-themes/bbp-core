@@ -246,6 +246,14 @@
 
   .left-content {
     display: flex;
+    align-items: center;
+
+    .topic-status {
+      width: 30px;
+      height: 20px;
+      text-align: left;
+      margin-right: 5px;
+    }
   }
 
   .right-content {

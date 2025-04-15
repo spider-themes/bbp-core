@@ -8,7 +8,7 @@
 			$i ++;
 			$parent_forums[] = get_the_ID();
 			$current_post    = get_the_ID();
-			$is_active       = $i == 1 ? 'is-active tab-active' : '';
+			$is_active       = $i == 1 ? 'is-active' : '';
 			$count_children  = get_children(
 				[
 					'post_parent' => $current_post,

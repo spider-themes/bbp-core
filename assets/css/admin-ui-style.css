@@ -766,6 +766,13 @@ label {
 }
 .accordion-title .left-content {
   display: flex;
+  align-items: center;
+}
+.accordion-title .left-content .topic-status {
+  width: 30px;
+  height: 20px;
+  text-align: left;
+  margin-right: 5px;
 }
 .accordion-title .right-content {
   display: flex;
@@ -1639,6 +1646,9 @@ a.child-delete {
 .bbpc-trash-filter:hover {
   background-color: rgba(212, 23, 23, 0.3);
 }
+.bbpc-trash-filter:hover a {
+  color: #c10000;
+}
 .bbpc-trash-filter svg {
   fill: rgb(212, 23, 23);
 }
@@ -1948,6 +1958,9 @@ body.bbpc-forum-ui {
 .single-item-filter .easydocs-btn.is-active {
   background-color: rgba(0, 0, 0, 0.8);
   color: #f1f1f1;
+}
+.single-item-filter .easydocs-btn.is-active img {
+  filter: brightness(0) invert(1);
 }
 .single-item-filter .easydocs-btn.easydocs-btn-black-light {
   --btn-icon: #0D0E2B;

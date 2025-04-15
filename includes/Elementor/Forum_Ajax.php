@@ -1,5 +1,4 @@
 <?php
-
 namespace admin\Elementor;
 
 use Elementor\Controls_Manager;
@@ -12,43 +11,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Forum_Ajax extends Widget_Base {
-	public function get_name(): string
-    {
+	public function get_name(): string {
 		return 'ama_ajax_forum';
 	}
 
-	public function get_title(): string
-    {
+	public function get_title(): string {
 		return esc_html__( 'BBPC Ajax Forums', 'bbp-core' );
 	}
 
-	public function get_icon(): string
-    {
+	public function get_icon(): string {
 		return 'bbpc_icon_ama_ajax_forum';
 	}
 
-	public function get_keywords(): array
-    {
+	public function get_keywords(): array {
 		return [ 'forum', 'ajax' ];
 	}
 
-	public function get_categories(): array
-    {
+	public function get_categories(): array {
 		return [ 'bbp-core' ];
 	}
 
-	public function get_style_depends(): array
-    {
+	public function get_style_depends(): array {
 		return [ 'bbpc-el-widgets' ];
 	}
-	
-	public function get_script_depends(): array
-    {
+
+	public function get_script_depends(): array {
 		return [ 'bbpc-ajax' ];
 	}
 
-	protected function register_controls(): void
-    {
+	protected function register_controls(): void {
 		//========================== Filter Options =====================//
 		$this->start_controls_section(
 			'filter_sec', [
@@ -105,8 +96,8 @@ class Forum_Ajax extends Widget_Base {
 		$this->add_control(
 			'forum_heading',
 			[
-				'label' => esc_html__( 'Forum Title', 'bbp-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'label'     => esc_html__( 'Forum Title', 'bbp-core' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
@@ -146,8 +137,8 @@ class Forum_Ajax extends Widget_Base {
 		$this->add_control(
 			'forum_meta',
 			[
-				'label' => esc_html__( 'Forum Meta', 'bbp-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'label'     => esc_html__( 'Forum Meta', 'bbp-core' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
@@ -163,7 +154,7 @@ class Forum_Ajax extends Widget_Base {
 			]
 		);
 
-		
+
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
@@ -176,8 +167,8 @@ class Forum_Ajax extends Widget_Base {
 		$this->add_control(
 			'parent_forum',
 			[
-				'label' => esc_html__( 'Parent Forum', 'bbp-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
+				'label'     => esc_html__( 'Parent Forum', 'bbp-core' ),
+				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
@@ -216,8 +207,8 @@ class Forum_Ajax extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings 		= $this->get_settings();
-		$filter_btns 	= $settings['filter_btns'] ?? true;
+		$settings    = $this->get_settings();
+		$filter_btns = $settings['filter_btns'] ?? true;
 
 		$topics = new WP_Query( array(
 			'post_type'      => 'topic',
@@ -227,43 +218,43 @@ class Forum_Ajax extends Widget_Base {
 		?>
 
         <div class="forum-post-widget" data_id="<?php echo esc_attr( $this->get_id() ); ?>">
-            
-			<?php 
-			if ($filter_btns) :
+
+			<?php
+			if ( $filter_btns ) :
 				?>
-				<div class="post-filter-widget mb-20 wow fadeInUp">
-					<div class="single-filter-item">
-						<a href="#" id="all_filt" data-forum="all" class="data-active">
-							<i class="icon_grid-2x2"></i><?php esc_html_e( 'All', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="populer_filt" data-forum="popular">
-							<i class="icon_easel"></i><?php esc_html_e( 'Popular', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="featured_filt" data-forum="featured">
-							<i class="icon_ribbon_alt"></i><?php esc_html_e( 'Featured', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="recent_filt" data-forum="recent">
-							<i class="icon_clock_alt"></i><?php esc_html_e( 'Recent', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="unsolved_filt" data-forum="unsolved">
-							<i class="icon_close_alt2"></i><?php esc_html_e( 'Unsolved', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="solved_filt" data-forum="solved">
-							<i class="icon_check_alt2"></i><?php esc_html_e( 'Solved', 'bbp-core' ) ?>
-						</a>
-					</div>
-				</div>
-				<?php 
+                <div class="post-filter-widget mb-20 wow fadeInUp">
+                    <div class="single-filter-item">
+                        <a href="#" id="all_filt" data-forum="all" class="data-active">
+                            <i class="icon_grid-2x2"></i><?php esc_html_e( 'All', 'bbp-core' ) ?>
+                        </a>
+                    </div>
+                    <div class="single-filter-item">
+                        <a href="#" id="populer_filt" data-forum="popular">
+                            <i class="icon_easel"></i><?php esc_html_e( 'Popular', 'bbp-core' ) ?>
+                        </a>
+                    </div>
+                    <div class="single-filter-item">
+                        <a href="#" id="featured_filt" data-forum="featured">
+                            <i class="icon_ribbon_alt"></i><?php esc_html_e( 'Featured', 'bbp-core' ) ?>
+                        </a>
+                    </div>
+                    <div class="single-filter-item">
+                        <a href="#" id="recent_filt" data-forum="recent">
+                            <i class="icon_clock_alt"></i><?php esc_html_e( 'Recent', 'bbp-core' ) ?>
+                        </a>
+                    </div>
+                    <div class="single-filter-item">
+                        <a href="#" id="unsolved_filt" data-forum="unsolved">
+                            <i class="icon_close_alt2"></i><?php esc_html_e( 'Unsolved', 'bbp-core' ) ?>
+                        </a>
+                    </div>
+                    <div class="single-filter-item">
+                        <a href="#" id="solved_filt" data-forum="solved">
+                            <i class="icon_check_alt2"></i><?php esc_html_e( 'Solved', 'bbp-core' ) ?>
+                        </a>
+                    </div>
+                </div>
+			<?php
 			endif;
 			?>
 
@@ -284,19 +275,20 @@ class Forum_Ajax extends Widget_Base {
                             <div class="post-info">
                                 <div class="author">
                                     <img src="<?php echo BBPC_IMG . '/forum_tab/user-circle-alt.svg' ?>" alt="<?php esc_attr_e( 'User circle alt icon',
-                                        'bbpc-core' ); ?>">
-									<?php 
-									echo bbp_get_topic_author_link( 
-										array( 
-											'post_id' 	=> $topic_id, 
-											'type' 		=> 'name' 
+										'bbpc-core' ); ?>">
+									<?php
+									echo bbp_get_topic_author_link(
+										array(
+											'post_id' => $topic_id,
+											'type'    => 'name'
 										)
 									);
 									?>
                                 </div>
 
                                 <div class="post-time">
-                                    <img src="<?php echo BBPC_IMG . '/forum_tab/time-outline.svg' ?>" alt="<?php esc_attr_e( 'Time outline icon', 'bbpc-core' ); ?>">
+                                    <img src="<?php echo BBPC_IMG . '/forum_tab/time-outline.svg' ?>"
+                                         alt="<?php esc_attr_e( 'Time outline icon', 'bbpc-core' ); ?>">
 									<?php bbp_forum_last_active_time( get_the_ID() ); ?>
                                 </div>
                             </div>
@@ -311,30 +303,32 @@ class Forum_Ajax extends Widget_Base {
                         <div class="post-reach">
                             <div class="post-view">
                                 <img src="<?php echo BBPC_IMG . '/forum_tab/eye-outline.svg' ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbpc-core' ); ?>">
-								
-								<?php 
+
+								<?php
 								bbp_topic_view_count( $topic_id );
 								echo '&nbsp;';
 								esc_html_e( 'Views', 'bbp-core' );
 								?>
                             </div>
                             <div class="post-like">
-                                <img src="<?php echo BBPC_IMG . '/forum_tab/thumbs-up-outline.svg' ?>" alt="<?php esc_attr_e( 'Thumbs-up outline icon', 'bbpc-core' ); ?>">
+                                <img src="<?php echo BBPC_IMG . '/forum_tab/thumbs-up-outline.svg' ?>"
+                                     alt="<?php esc_attr_e( 'Thumbs-up outline icon', 'bbpc-core' ); ?>">
 
-								<?php 
+								<?php
 								if ( $vote_count ) {
 									echo $vote_count;
 								} else {
 									echo "0";
 								}
-								
+
 								echo '&nbsp;';
 								esc_html_e( 'Likes', 'bbp-core' );
 								?>
                             </div>
                             <div class="post-comment">
-                                <img src="<?php echo BBPC_IMG . '/forum_tab/chatbubbles-outline.svg' ?>" alt="<?php esc_attr_e( 'Chat bubbles icon', 'bbpc-core' ); ?>">
-								<?php 
+                                <img src="<?php echo BBPC_IMG . '/forum_tab/chatbubbles-outline.svg' ?>"
+                                     alt="<?php esc_attr_e( 'Chat bubbles icon', 'bbpc-core' ); ?>">
+								<?php
 								bbp_topic_reply_count( $topic_id );
 								echo '&nbsp;';
 								esc_html_e( 'Replies', 'bbp-core' );

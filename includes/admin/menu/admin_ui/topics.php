@@ -17,7 +17,7 @@
 		$no_reply    = 0 == $replies->found_posts ? 'no-reply' : '';
 		$is_solved   = isset($GLOBALS['bbp_solved_topic']) && $GLOBALS['bbp_solved_topic']->is_solved( $current_topic_id ) ? ' solved' : ' unsolved';
 		$is_open     = bbp_is_topic_closed( $current_topic_id ) ? ' closed-topics' : ' open-topics';
-		$is_hidden   = bbp_is_topic_spam( $current_topic_id ) ? ' hidden-topics' : '';
+		$is_hidden   = bbp_is_topic_spam( $current_topic_id ) || bbp_is_topic_pending( $current_topic_id ) ? ' hidden-topics' : '';
 		$approve_btn = '';
 
 		if ( bbp_is_topic_spam( $current_topic_id ) ) {
@@ -33,15 +33,34 @@
 				<?php
 				$edit_link = 'javascript:void( 0 )';
 				$target    = '_self';
+                $topic_status = bbp_get_topic_status( $current_topic_id );
 				if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
 					$edit_link = get_edit_post_link( $current_topic_id );
 					$target    = '_blank';
 				}
 				?>
                 <div class="left-content">
+                    <span class="topic-status">
+                        <?php
+                        // Return the Topic status icon Open, Close, Hidden (spam & pending) and which topic has No reply, is Resolved, is Unresolved.
+                        if ( bbp_is_topic_closed( $current_topic_id ) ) {
+                            echo '<span class="dashicons dashicons-dismiss" title="'.esc_attr__('Closed Topic.', 'bbp-core').'"></span>';
+                        } elseif ( bbp_is_topic_spam( $current_topic_id ) || bbp_is_topic_pending( $current_topic_id ) ) {
+                            $hidden_status = bbp_is_topic_spam( $current_topic_id ) ? 'Spam' : 'Pending';
+                            echo '<span class="dashicons dashicons-hidden" title="'.$hidden_status.esc_attr__(' Topic', 'bbp-core').'"></span>';
+                        } elseif ( $topic_status == 'no-reply' ) {
+                            echo '<span class="dashicons dashicons-backup" title="'.esc_attr__('No reply Topic.', 'bbp-core').'"></span>';
+                        } elseif ( $topic_status == 'resolved' ) {
+                            echo '<span class="dashicons dashicons-yes-alt" title="'.esc_attr__('Resolved Topic', 'bbp-core').'"></span>';
+                        } elseif ( bbp_is_topic_open( $current_topic_id ) ) {
+	                        ?> <img src="<?php echo BBPC_IMG ?>/icon/open.svg" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>" title="<?php echo esc_attr__( 'Open Topic', 'bbp-core' ) ?>"> <?php
+                        } else {
+                            echo '<span class="dashicons dashicons-info-outline"></span>';
+                        }
+                        ?>
+                    </span>
                     <h4>
                         <a href="<?php echo esc_attr( $edit_link ); ?>" target="<?php echo esc_attr( $target ); ?>">
-
 							<?php the_title(); ?>
                         </a>
 						<?php

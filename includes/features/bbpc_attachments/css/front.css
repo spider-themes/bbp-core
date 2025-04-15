@@ -3,6 +3,18 @@
   gap: 15px;
   list-style: none;
   padding: 0;
+  margin-bottom: 0;
+}
+.bbp-attachments ol.with-icons li .wp-caption {
+  margin-bottom: 0;
+}
+.bbp-attachments ol.with-icons li .wp-caption .wp-caption-text .d4p-bba-actions {
+  color: #f90000;
+  margin-top: 10px;
+  display: block;
+}
+.bbp-attachments ol.with-icons li .wp-caption .wp-caption-text .d4p-bba-actions:hover a {
+  color: #f90000;
 }
 .bbp-attachments ol.with-icons li:hover {
   transition: all 0.3s;
@@ -16,6 +28,7 @@
 .bbp-attachments ol.with-icons a img {
   border-radius: 10px;
   border: solid 1px var(--black_50);
+  padding: 6px;
 }
 
 .bbp-attachments,

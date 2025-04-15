@@ -72,35 +72,34 @@
 
   // Sidebar Tabs [COOKIE]
   $(document).on('click', '.tab-menu .easydocs-navitem', function () {
-    let target = $(this).attr('data-rel');
-    $('.tab-menu .easydocs-navitem').removeClass('is-active');
-    $(this).addClass('is-active');
-    $('#' + target)
-      .fadeIn('slow')
-      .siblings('.easydocs-tab')
-      .hide();
+    const target = $(this).attr('data-rel');
+    const $siblings = $(this).siblings();
 
-    let is_active_tab = $('.tab-menu .easydocs-navitem').hasClass('is-active');
-    if ( is_active_tab === true ) {
-      let active_tab_id = $('.easydocs-navitem.is-active').attr('data-rel');
-      createCookie('eazydocs_doc_current_tab', active_tab_id, 999);
+    if (!$(this).hasClass('is-active')) {
+      $siblings.removeClass('is-active');
+      $(this).addClass('is-active');
+
+      $('#' + target)
+        .fadeIn('slow')
+        .siblings('.easydocs-tab')
+        .hide();
+
+      createCookie('eazydocs_doc_current_tab', target, 999);
     }
-
-    return true;
   });
 
-  // Remain the last active doc tab
+  // Restore last active tab
   function keep_last_active_doc_tab() {
-    let doc_last_current_tab = readCookie('eazydocs_doc_current_tab');
-    if ( doc_last_current_tab != '' ) {
-      // Tab item
-      $('.tab-menu .easydocs-navitem').removeClass('is-active');
-      $(
-        '.tab-menu .easydocs-navitem[data-rel=' + doc_last_current_tab + ']'
-      ).addClass('is-active');
-      // Tab content
-      $('.easydocs-tab-content .easydocs-tab').removeClass('tab-active');
-      $('#' + doc_last_current_tab).addClass('tab-active');
+    const lastTab = readCookie('eazydocs_doc_current_tab');
+    if (lastTab) {
+      const $tab = $(`.tab-menu .easydocs-navitem[data-rel="${lastTab}"]`);
+      if (!$tab.hasClass('is-active')) {
+        $tab.siblings().removeClass('is-active');
+        $tab.addClass('is-active');
+
+        $('.easydocs-tab-content .easydocs-tab').removeClass('tab-active');
+        $(`#${lastTab}`).addClass('tab-active');
+      }
     }
   }
   keep_last_active_doc_tab();

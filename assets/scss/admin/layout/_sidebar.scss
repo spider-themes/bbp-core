@@ -217,6 +217,10 @@
     &.is-active {
       background-color: rgba(#000, 0.8);
       color: #f1f1f1;
+
+      img {
+        filter: brightness(0) invert(1);
+      }
     }
 
     &.easydocs-btn-black-light {

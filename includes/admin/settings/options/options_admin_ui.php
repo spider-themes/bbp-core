@@ -26,7 +26,7 @@ $default_filter_options = [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'tras
 CSF::createSection(
 	$prefix,
 	[
-		'title'  => esc_html__( 'Admin UI', 'bbp-core' ),
+		'title'  => esc_html__( 'Forum Builder', 'bbp-core' ),
 		'icon'   => 'dashicons dashicons-dashboard',
 		'fields' => [
 			[

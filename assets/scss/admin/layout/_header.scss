@@ -445,6 +445,10 @@
 
   &:hover {
     background-color: rgba(212, 23, 23, 0.3);
+
+    a {
+      color: #c10000;
+    }
   }
 
   svg {
