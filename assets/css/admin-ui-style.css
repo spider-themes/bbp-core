@@ -630,8 +630,7 @@ label {
 .accordion-title {
   position: relative;
   background: #fff;
-  padding: 13px 30px 13px 35px;
-  display: block;
+  padding: 13px 30px 13px 30px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1951,6 +1950,7 @@ body.bbpc-forum-ui {
   border-radius: 15px;
   padding: 5px 25px;
   cursor: pointer;
+  margin: 0;
 }
 .single-item-filter .easydocs-btn:hover {
   background-color: rgba(0, 0, 0, 0.1);

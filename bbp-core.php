@@ -57,8 +57,8 @@ if ( ! function_exists( 'bc_fs' ) ) {
 	do_action( 'bc_fs_loaded' );
 }
 
-require_once __DIR__ . '/autoloader.php';
 
+require_once __DIR__ . '/autoloader.php';
 
 /**
  * Plugin's heart
@@ -70,15 +70,15 @@ final class BBP_Core {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		
+
 		$this->define_constants();
 		$this->core_includes();
 
 		register_activation_hook( __FILE__, [ $this, 'activate' ] );
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
-			
+
 		// Added Documentation links to plugin row meta
-		add_filter('plugin_row_meta',[ $this,  'bbpc_row_meta' ], 10, 2);
+		add_filter( 'plugin_row_meta', [ $this, 'bbpc_row_meta' ], 10, 2 );
 
 		/**
 		 * Removes admin notices on the BBP Core Forum builder page.
@@ -96,13 +96,13 @@ final class BBP_Core {
 				remove_all_actions( 'all_admin_notices' );
 
 				// Re-add a specific notice
-				if ( !bbpc_is_premium() && bbpc_is_plugin_installed_for_days(12) ) {
-					add_action('admin_notices', 'bbpc_offer_notice');
+				if ( ! bbpc_is_premium() && bbpc_is_plugin_installed_for_days( 12 ) ) {
+					add_action( 'admin_notices', 'bbpc_offer_notice' );
 				}
 			}
-		});
+		} );
 	}
-	
+
 	/**
 	 * Define Plugin Constants.
 	 *
@@ -145,14 +145,10 @@ final class BBP_Core {
 			require_once __DIR__ . '/includes/admin/Pro_Widget_Map.php';
 			require_once __DIR__ . '/includes/admin/Pro_Widget_Service.php';
 		}
-		
+
 		// Hooks
 		require BBPC_DIR . 'includes/hooks/actions.php';
 		require BBPC_DIR . 'includes/hooks/image_sizes.php';
-
-		// Load CSF
-		require BBPC_DIR . 'includes/admin/settings/csf/classes/setup.class.php';
-		require BBPC_DIR . 'includes/admin/settings/options/settings.php';
 	}
 
 	/**
@@ -194,17 +190,21 @@ final class BBP_Core {
 		if ( is_admin() ) {
 			new Admin();
 			new admin\Assets();
-		}elseif ( ! is_admin() ) {
+		} elseif ( ! is_admin() ) {
 			new Frontend\Assets();
 		}
-		
+
 		// If bbPress is not active, don't load assets and widgets.
 		if ( ! class_exists( 'bbPress' ) ) {
 			return;
 		}
-		new admin\Elementor\BBP_Widgets();
-	}
 
+		new admin\Elementor\BBP_Widgets();
+
+		// Load CSF
+		require BBPC_DIR . 'vendor/csf/classes/setup.class.php';
+		require BBPC_DIR . 'includes/admin/options/settings.php';
+	}
 
 	/**
 	 * Load different features.
@@ -222,14 +222,14 @@ final class BBP_Core {
 		if ( $opt['is_private_replies'] ?? true ) {
 			require BBPC_FEAT_PATH . 'bbp-private-replies.php';
 		}
-		
-		if ( bbpc_is_premium() || class_exists('BBPC_GEO_ROLES') ) {
+
+		if ( bbpc_is_premium() || class_exists( 'BBPC_GEO_ROLES' ) ) {
 			$reactions = $opt['agree_disagree_voting'] ?? '';
 			if ( ! empty ( $reactions ) ) {
-			  require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/init.php';
-			  require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/actions.php';
+				require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/init.php';
+				require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/actions.php';
 			}
-		  }
+		}
 
 		if ( $opt['is_votes'] ?? true ) {
 			new features\bbp_voting();
@@ -243,20 +243,21 @@ final class BBP_Core {
 	/**
 	 * Documentation links to plugin row meta
 	 */
-	public function bbpc_row_meta($links, $file) {
+	public function bbpc_row_meta( $links, $file ) {
 		// Check if this is your plugin
-		if (plugin_basename(__FILE__) === $file) {
+		if ( plugin_basename( __FILE__ ) === $file ) {
 			// Add your custom links
 			$plugin_links = array(
 				'<a href="https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin/" target="_blank">Documentation</a>'
-			);		
+			);
 			// Merge the custom links with the existing links
-			$links = array_merge($links, $plugin_links);
+			$links = array_merge( $links, $plugin_links );
 		}
+
 		return $links;
 	}
 	// end
-	
+
 }
 
 /**
