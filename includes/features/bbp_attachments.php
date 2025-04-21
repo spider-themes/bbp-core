@@ -3,7 +3,7 @@ namespace features;
 
 class bbp_attachments {
 	public function __construct() {
-		$this->inclue_attachment_files();
+		add_action( 'after_setup_theme', [ $this, 'inclue_attachment_files'], 20 );
 	}
 
 	public function inclue_attachment_files() {
