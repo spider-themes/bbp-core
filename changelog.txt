@@ -1,5 +1,46 @@
 == Changelog ==
 
+= v1.3.0 (22 April 2025) =
+Fixed: Fixed BBP Core conflict with Dukan and Job Manager plugins
+Tweaked: The "Forums" page has been renamed to Forum Builder for better clarity and usability
+Tweaked: Refreshed the topic open icon within the Forum Builder for a more intuitive visual cue
+Tweaked: Each topic now displays a corresponding status icon, making it easier to identify topic types at a glance
+Tweaked: The first forum item now opens by default, providing a more user-friendly initial view
+Tweaked: Delay on search input keypress
+Tweaked: Current Forum Info widget (show all information by default, moved widgets folder to the plugin root folder)
+Tweaked: BBPC Forum Information widget title will show on the Forum page only.
+Tweaked: Settings page improved (reorganized the settings options, added icons to the settings tab)
+Tweaked: Topic details page improved (reply button, favorite button and attachment design improved )
+Tweaked: Forum builder UX improved
+Tweaked: Dashicons used instead of fontawesome icon to optimize performance in the dashboard
+
+= v1.2.9 (24 February 2025) =
+New: Loco.xml configuration file added for multiple text domains mapping in Loco translate plugin
+New: Offer notice added for our valuable customers (not for fresher)
+Fixed: Deprecated issue, Increment on non-alphanumeric string is deprecated in /bbp-core/includes/admin/menu/admin_ui/forums.php on line 8
+
+= v1.2.8 (17 February 2025) =
+Fixed: Resolved some issue of the "BBPC single forum & Forum Tabs" Elementor widget
+Fixed: Image size of forum tab widget
+Tweaked: Improved "View More Button" of the "Forum Tabs" widget
+Updated: Freemius SDK updated to 2.11.0
+
+= v1.2.7 (24 December 2024) =
+Fixed: sprintf php error
+Fixed: Resolved the issue with inserting forums and topics on the Nginx server
+Fixed: Theme name check to resolve translation loading error
+Tweaked: Improved 'Add Forum' button design
+Updated: Freemius SDK updated to 2.10.1
+
+= v1.2.6 (31 October 2024) =
+Fixed: Security issues resolved
+
+= v1.2.5 (30 October 2024) =
+New: Added a hook to insert option in Settings
+Tweaked: Anonymous profile picture gap with title (in the sidebar widget)
+Tweaked: Attachment thumbnail design improved
+Updated: Freemius SDK updated to 2.9.0
+
 = v1.2.4 (23 August 2024) =
 Fixed: Brand color change issue
 Updated: Freemius SDK updated to 2.7.4

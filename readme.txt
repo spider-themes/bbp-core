@@ -2,9 +2,9 @@
 Contributors: spiderdevs, mdjwel, delweratjk
 Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
-Tested up to: 6.7.1
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.8
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,20 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= v1.3.0 (22 April 2025) =
+Fixed: Fixed BBP Core conflict with Dukan and Job Manager plugins
+Tweaked: The "Forums" page has been renamed to Forum Builder for better clarity and usability
+Tweaked: Refreshed the topic open icon within the Forum Builder for a more intuitive visual cue
+Tweaked: Each topic now displays a corresponding status icon, making it easier to identify topic types at a glance
+Tweaked: The first forum item now opens by default, providing a more user-friendly initial view
+Tweaked: Delay on search input keypress
+Tweaked: Current Forum Info widget (show all information by default, moved widgets folder to the plugin root folder)
+Tweaked: BBPC Forum Information widget title will show on the Forum page only
+Tweaked: Settings page improved (reorganized the settings options, added icons to the settings tab)
+Tweaked: Topic details page improved (reply button, favorite button and attachment design improved )
+Tweaked: Forum builder UX improved
+Tweaked: Dashicons used instead of fontawesome icon to optimize performance in the dashboard
 
 = v1.2.9 (24 February 2025) =
 New: Loco.xml configuration file added for multiple text domains mapping in Loco translate plugin
