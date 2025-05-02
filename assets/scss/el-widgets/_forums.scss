@@ -59,14 +59,14 @@
         font-size: 20px;
         line-height: 26px;
         font-weight: 500;
-        color: #1d2746;
+        color: var(--black_800);
         margin-bottom: 5px;
         transition: all 0.3s ease-in-out;
         letter-spacing: normal;
         margin-top: 10px;
 
         a {
-          color: #1d2746;
+          color: var(--black_800);
 
           &:hover {
             color: $brand_color;
@@ -247,7 +247,7 @@ body {
 .widget_display_topics li{
   padding-left: 30px;
 }
-.widget_display_topics li, 
+.widget_display_topics li,
 .widget_display_replies li {
   position: relative;
   margin-bottom: 10px;
@@ -266,7 +266,7 @@ body {
 
 .widget_display_topics li a,
 .widget_display_replies li a {
-  color: #1d2746;
+  color: var(--black_800);
   .bbp-author-avatar{
     img{
       border-radius: 50px;
@@ -288,9 +288,6 @@ body {
 .bbp-logged-in .avatar {
   float: left;
   margin: 0 15px 0 0;
-  -webkit-border-radius: 99%;
-  -moz-border-radius: 99%;
-  -ms-border-radius: 99%;
   border-radius: 99%;
 }
 
@@ -342,7 +339,7 @@ ul.bbp-topics-widget.newness img {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.18s ease-in-out;
   background: #fff;
   border: 1px solid #d0d8dc;
-  color: #1d2746;
+  color: var(--black_800);
   height: 26px;
   font-size: 12px;
   line-height: 26px;
@@ -350,8 +347,8 @@ ul.bbp-topics-widget.newness img {
 
 .comment-content .bbp-topic-reply-link:hover {
   background: #fff;
-  border: 1px solid #1d2746;
-  color: #1d2746;
+  border: 1px solid var(--black_800);
+  color: var(--black_800);
 }
 
 .page-numbers {

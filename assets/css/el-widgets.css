@@ -362,14 +362,14 @@ Table of Content:
   font-size: 20px;
   line-height: 26px;
   font-weight: 500;
-  color: #1d2746;
+  color: var(--black_800);
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
   letter-spacing: normal;
   margin-top: 10px;
 }
 .communities-boxes .com-box .com-box-content .title a {
-  color: #1d2746;
+  color: var(--black_800);
 }
 .communities-boxes .com-box .com-box-content .title a:hover {
   color: var(--bbpc_brand_color);
@@ -515,7 +515,7 @@ body.body_dark .community-area .nav-tabs .nav-item button.active {
 
 .widget_display_topics li a,
 .widget_display_replies li a {
-  color: #1d2746;
+  color: var(--black_800);
 }
 .widget_display_topics li a .bbp-author-avatar img,
 .widget_display_replies li a .bbp-author-avatar img {
@@ -534,9 +534,6 @@ body.body_dark .community-area .nav-tabs .nav-item button.active {
 .bbp-logged-in .avatar {
   float: left;
   margin: 0 15px 0 0;
-  -webkit-border-radius: 99%;
-  -moz-border-radius: 99%;
-  -ms-border-radius: 99%;
   border-radius: 99%;
 }
 
@@ -588,7 +585,7 @@ ul.bbp-topics-widget.newness img {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.18s ease-in-out;
   background: #fff;
   border: 1px solid #d0d8dc;
-  color: #1d2746;
+  color: var(--black_800);
   height: 26px;
   font-size: 12px;
   line-height: 26px;
@@ -596,8 +593,8 @@ ul.bbp-topics-widget.newness img {
 
 .comment-content .bbp-topic-reply-link:hover {
   background: #fff;
-  border: 1px solid #1d2746;
-  color: #1d2746;
+  border: 1px solid var(--black_800);
+  color: var(--black_800);
 }
 
 .page-numbers {
@@ -674,7 +671,7 @@ ul.bbp-topics-widget.newness img {
   margin-bottom: 20px;
 }
 .forum-post-widget .post-filter-widget .single-filter-item {
-  margin-right: 40px;
+  margin-right: 30px;
   display: flex;
   align-items: center;
 }
@@ -683,6 +680,7 @@ ul.bbp-topics-widget.newness img {
 }
 .forum-post-widget .post-filter-widget .single-filter-item i {
   margin-right: 5px;
+  font-size: 12px;
 }
 @media (max-width: 1200px) and (min-width: 992px) {
   .forum-post-widget .post-filter-widget .single-filter-item {
