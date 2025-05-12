@@ -49,13 +49,13 @@
 				
 				[
 					'type'		=> 'subheading',
-					'title'		=> __( 'Reactions', 'bbp-core' ),
+					'title'		=> __( 'Reaction', 'bbp-core' ),
 				],
 
 				[
 					'id'       	 => 'agree_disagree_voting',
 					'type'     	 => 'switcher',
-					'title'    	 => __( 'Enable / Disable', 'bbp-core' ),	
+					'title'    	 => __( 'Agree/Disagree', 'bbp-core' ),
 					'subtitle'   => __( 'To enable or disable the agree/disagree reactions.', 'bbp-core' ),
 					'class'   	 => 'st-pro-notice bbpc-geo-roles-opt',
 					'default' 	 => true,

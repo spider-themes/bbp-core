@@ -1666,6 +1666,9 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
 .community-area .nav-tabs {
   border-bottom: 1px solid #e6e6e6;
 }
+.community-area .nav-tabs .nav-item:hover button {
+  color: var(--bbpc_brand_color);
+}
 .community-area .nav-tabs .nav-item button {
   background-color: transparent;
   font-size: 16px;
@@ -1758,6 +1761,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+  margin-top: 40px;
 }
 .bbpc-community-topic-widget-main-wrapper .bbpc-community-topic-widget-wrapper {
   display: contents;
@@ -1825,9 +1829,6 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   background: #4766d5;
 }
 
-.tab-content {
-  margin-top: 30px;
-}
 .tab-content .tab {
   display: none;
 }
