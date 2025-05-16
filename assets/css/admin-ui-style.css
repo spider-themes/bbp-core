@@ -1752,7 +1752,7 @@ body.bbpc-forum-ui {
   background: -webkit-linear-gradient(to right, #000000 0%, #0a1852 100%);
   background: linear-gradient(to right, #000000 0%, #0a1852 100%);
   flex: 0 0 auto;
-  width: 28%;
+  width: auto;
 }
 .tab-menu.short {
   height: 100vh;
@@ -1796,6 +1796,12 @@ body.bbpc-forum-ui {
   .easydocs-navitem {
     padding: 13px 25px 13px 20px;
   }
+}
+.easydocs-navitem .link-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 110px;
 }
 .easydocs-navitem.is-active {
   border-left-color: #72aee6;

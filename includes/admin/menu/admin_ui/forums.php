@@ -34,7 +34,7 @@
 						<?php echo count( $count_children ) > 0 ? count( $count_children ) : ''; ?>
 					</span>
                 </div>
-                <div class="link">
+                <div class="link-wrapper link">
 					<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
                         <a href="<?php echo get_edit_post_link( get_the_ID() ); ?>" class="link edit" target="_blank"
                            title="<?php esc_attr_e( 'Edit this forum.', 'bbp-core' ); ?>">

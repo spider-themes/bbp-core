@@ -12,7 +12,7 @@
   background: -webkit-linear-gradient(to right, #000000 0%, #0a1852 100%);
   background: linear-gradient(to right, #000000 0%, #0a1852 100%);
   flex: 0 0 auto;
-  width: 28%;
+  width: auto;
 
   &.short {
     height: 100vh
@@ -53,6 +53,13 @@
   border-left: 5px solid transparent;
   @media (max-width: 1680px) {
     padding: 13px 25px 13px 20px;
+  }
+
+  .link-wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: end;
+    width:110px;
   }
 
   &.is-active {
