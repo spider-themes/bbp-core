@@ -1766,7 +1766,7 @@ body.bbpc-forum-ui {
   position: absolute;
   top: 0;
   left: 0;
-  width: 60px;
+  width: 80px;
   height: 100%;
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
@@ -1784,7 +1784,7 @@ body.bbpc-forum-ui {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 30px 12px 12px;
+  padding: 12px 30px 12px 15px;
   margin-bottom: 5px;
   cursor: pointer;
   -webkit-transition: 0.3s ease-out;
@@ -1804,7 +1804,7 @@ body.bbpc-forum-ui {
   width: 110px;
 }
 .easydocs-navitem.is-active {
-  border-left-color: #72aee6;
+  border-left-color: #b88eff;
   background: rgba(159, 162, 180, 0.2);
   --title-opacity: 1;
   --total-page-opacity: 1;
@@ -1829,7 +1829,7 @@ body.bbpc-forum-ui {
 .easydocs-navitem .title {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 20px;
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
   text-decoration: none;
@@ -1838,15 +1838,19 @@ body.bbpc-forum-ui {
   color: var(--clr-white);
   opacity: var(--title-opacity, 0.7);
 }
-.easydocs-navitem .title img {
-  border-radius: 7px;
-  padding: 5px;
-  height: auto;
+.easydocs-navitem .title .featured-image {
   background: #fff;
-  width: 30px;
+  width: 40px;
+  padding: 5px;
+  border-radius: 7px;
 }
-.easydocs-navitem .title span.dashicons {
+.easydocs-navitem .title .featured-image img {
+  width: 100%;
+  height: auto;
+}
+.easydocs-navitem .title .featured-image span.dashicons {
   width: 32px;
+  color: #000;
 }
 .easydocs-navitem .title span.easydocs-forums-title {
   padding-left: 20px;
@@ -1857,6 +1861,8 @@ body.bbpc-forum-ui {
   opacity: var(--total-page-opacity, 0.5);
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
+  position: absolute;
+  right: 30px;
 }
 .easydocs-navitem:hover {
   background: rgba(159, 162, 180, 0.2);

@@ -21,12 +21,16 @@
 			?>
             <li class="easydocs-navitem <?php echo esc_attr( $is_active ); ?>" data-rel="tab-<?php the_ID(); ?>" data-id="<?php the_ID(); ?>">
                 <div class="title">
-					<?php
-					if ( get_the_post_thumbnail( $current_post ) ) :
-						echo get_the_post_thumbnail( $current_post, 'bbpc_32x32' );
-					else : ?>
-                        <span class="dashicons dashicons-buddicons-forums"></span>
-					<?php endif; ?>
+                    <div class="featured-image">
+	                    <?php
+	                    if ( get_the_post_thumbnail( $current_post ) ) :
+		                    echo get_the_post_thumbnail( $current_post, 'bbpc_32x32' );
+	                    else :
+		                    ?>
+                            <span class="dashicons dashicons-buddicons-forums"></span>
+	                    <?php endif; ?>
+                    </div>
+
                     <span class="easydocs-forums-title"><?php the_title(); ?></span>
                 </div>
                 <div class="total-page">

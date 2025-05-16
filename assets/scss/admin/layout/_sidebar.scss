@@ -26,7 +26,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 60px;
+    width: 80px;
     height: 100%;
     @include property;
     background: rgb(143 143 143 / 30%);
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 30px 12px 12px;
+  padding: 12px 30px 12px 15px;
   margin-bottom: 5px;
   cursor: pointer;
   @include property;
@@ -55,15 +55,15 @@
     padding: 13px 25px 13px 20px;
   }
 
-  .link-wrapper{
-    display:flex;
+  .link-wrapper {
+    display: flex;
     align-items: center;
     justify-content: end;
-    width:110px;
+    width: 110px;
   }
 
   &.is-active {
-    border-left-color: #72aee6;
+    border-left-color: #b88eff;
     background: rgba(#9FA2B4, 0.2);
     --title-opacity: 1;
     --total-page-opacity: 1;
@@ -83,7 +83,7 @@
   .title {
     display: flex;
     align-items: center;
-    gap: rem(10px);
+    gap: 20px;
     @include property;
     text-decoration: none;
     font-size: var(--fs-16);
@@ -91,15 +91,20 @@
     color: var(--clr-white);
     opacity: var(--title-opacity, 0.7);
 
-    img {
-      border-radius: 7px;
-      padding: 5px;
-      height: auto;
+    .featured-image {
       background: #fff;
-      width: 30px;
-    }
-    span.dashicons {
-      width: 32px;
+      width: 40px;
+      padding: 5px;
+      border-radius: 7px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      span.dashicons {
+        width: 32px;
+        color: #000;
+      }
     }
 
     span.easydocs-forums-title {
@@ -112,6 +117,8 @@
     color: var(--clr-white);
     opacity: var(--total-page-opacity, 0.5);
     @include property;
+    position: absolute;
+    right: 30px;
   }
 
   &:hover {
