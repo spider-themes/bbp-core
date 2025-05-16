@@ -1278,7 +1278,7 @@ a.child-delete {
   border: 1px solid var(--clr-blue);
   align-items: center;
   text-decoration: none;
-  padding: 5px 10px;
+  padding: 8px 15px;
   border-radius: 6px;
   color: var(--clr-blue);
 }
@@ -1841,8 +1841,12 @@ body.bbpc-forum-ui {
 .easydocs-navitem .title .featured-image {
   background: #fff;
   width: 40px;
+  height: 40px;
   padding: 5px;
   border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .easydocs-navitem .title .featured-image img {
   width: 100%;
@@ -1907,8 +1911,8 @@ body.bbpc-forum-ui {
 }
 
 .easydocs-tab-content {
-  flex: 0 0 auto;
-  width: 72%;
+  flex: 1;
+  width: auto;
   padding: 0 40px 40px 40px;
 }
 @media (max-width: 1680px) {
