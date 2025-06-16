@@ -1,5 +1,13 @@
 == Changelog ==
 
+= v1.3.1 (16 June 2025) =
+Fixed: Deprecation warning by wrapping attachment files in hook
+Fixed: Tab CSS was conflicting with other plugins and themes
+Tweaked: Improved compatibility with Docy Dark mode
+Tweaked: Updated sidebar to flexible width
+Tweaked: Featured image size adjusted in the Forum builder
+Updated: Freemius SDK updated to 2.12.0
+
 = v1.3.0 (22 April 2025) =
 Fixed: Fixed BBP Core conflict with Dukan and Job Manager plugins
 Tweaked: The "Forums" page has been renamed to Forum Builder for better clarity and usability
