@@ -6,7 +6,7 @@ use WP_Widget;
 // Newsletter
 class Forum_Information extends WP_Widget {
 	public function __construct() {
-		parent::__construct( 'bbpc_forum_info', esc_html__( 'BBPC Current Forum Info', 'bbp-core' ), array(
+		parent::__construct( 'bbpc_forum_info', esc_html__( '(BBPC) Current Forum Info', 'bbp-core' ), array(
 			'description' => esc_html__( "Displays the current forum's information, including the number of topics, replies, Last post by, and Last activity, as well as the Subscribe button", 'bbp-core' ),
 			'classname'   => 'bbpc_forum_information'
 		) );

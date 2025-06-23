@@ -372,7 +372,7 @@ class bbp_solved_topic {
 		}
 
 		if ( $this->is_solved( $topic_id ) ) {
-			$resolved = '<span class="accepted-ans-mark"><i class="icon_check_alt"></i> ' . esc_html__( 'Resolved', 'ama-core' ) . '</span>';
+			$resolved = '<span class="accepted-ans-mark badge"><i class="icon_check_alt"></i> ' . esc_html__( 'Resolved', 'ama-core' ) . '</span>';
 		}
 
 		$content = $content . $open . $resolved . $has_best_answer . $close;

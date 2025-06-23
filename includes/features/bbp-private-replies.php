@@ -205,7 +205,7 @@ class BBP_Private_Replies {
 			if ( ! $can_view ) {
 				$content = '<div class="alert alert-danger">' . esc_html__( 'This reply has been marked as private.', 'ama-core' ) . '</div>';
 			} else {
-				$content = '<div class="alert alert-info">' . esc_html__( 'This is a private reply.', 'ama-core' ) . '</div>' . $content;
+				$content = '<div class="alert alert-warning">' . esc_html__( 'This is a private reply.', 'ama-core' ) . '</div>' . $content;
 			}
 		}
 
