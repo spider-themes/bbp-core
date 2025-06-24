@@ -24,7 +24,7 @@ class BBPCATTCore {
 		define( 'BBPCATTACHMENT_URL', $this->plugin_url );
 		define( 'BBPCATTACHMENTS_PATH', $this->plugin_path );
 
-		add_action( 'after_setup_theme', [ $this, 'load' ], 5 );
+		add_action( 'after_setup_theme', [ $this, 'load' ], 999 );
 		add_action( 'before_delete_post', [ $this, 'topic_attachment_deletion' ]);
 		add_action( 'before_delete_post', [ $this, 'reply_attachment_deletion' ]);
 	}
