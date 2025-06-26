@@ -6,7 +6,6 @@ if ( ! class_exists( 'bbPress' ) ) {
 $parent_forums = [];
 $fcount        = wp_count_posts( bbp_get_forum_post_type() );
 $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
-$bbpc_opt      = get_option( 'bbp_core_settings' );
 ?>
 <div class="wrap">
 <div class="body-dark">
@@ -161,7 +160,7 @@ $bbpc_opt      = get_option( 'bbp_core_settings' );
 					enable: false,
 				},
 				load: {
-					filter: '<?php echo esc_js( $bbpc_opt['default_filter'] ?? '.open-topics' ); ?>'
+					filter: '<?php echo esc_js( bbpc_get_opt( 'default_filter', '.open-topics' ) ); ?>'
 				}
 			};
 			for (let i = 0; i < docContainer.length; i++) {

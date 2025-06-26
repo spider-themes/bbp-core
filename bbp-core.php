@@ -217,30 +217,28 @@ final class BBP_Core {
 	 * @return void
 	 */
 	public function load_features() {
-		$opt = get_option( 'bbp_core_settings' );
 		define( 'BBPC_FEAT_PATH', plugin_dir_path( __FILE__ ) . 'includes/features/' );
 
-		if ( $opt['is_solved_topics'] ?? true ) {
+		if ( bbpc_get_opt( 'is_solved_topics', true ) ) {
 			require BBPC_FEAT_PATH . 'bbp_solved_topic.php';
 		}
 
-		if ( $opt['is_private_replies'] ?? true ) {
+		if ( bbpc_get_opt( 'is_private_replies', true ) ) {
 			require BBPC_FEAT_PATH . 'bbp-private-replies.php';
 		}
 
 		if ( bbpc_is_premium() || class_exists( 'BBPC_GEO_ROLES' ) ) {
-			$reactions = $opt['agree_disagree_voting'] ?? '';
-			if ( ! empty ( $reactions ) ) {
+			if ( bbpc_get_opt( 'agree_disagree_voting' ) ) {
 				require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/init.php';
 				require BBPC_FEAT_PATH . 'bbp_voting/agree-disagree/actions.php';
 			}
 		}
 
-		if ( $opt['is_votes'] ?? true ) {
+		if ( bbpc_get_opt( 'is_votes', true ) ) {
 			new features\bbp_voting();
 		}
 
-		if ( $opt['is_attachment'] ?? true ) {
+		if ( bbpc_get_opt( 'is_attachment', true ) ) {
 			new features\bbp_attachments();
 		}
 	}

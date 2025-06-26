@@ -257,8 +257,6 @@ class GDATTFront {
 		$post      = get_post( $id );
 		$author_id = $post->post_author;
 
-		$opt = get_option( 'bbp_core_settings' );
-
 		if ( ! empty( $attachments ) ) {
 			$content .= '<div class="bbp-attachments">';
 			$content .= '<h6>' . __( 'Attachments', 'bbp-core' ) . ':</h6>';
@@ -319,12 +317,12 @@ class GDATTFront {
 
 					$is_lighbox = '';
 					if ( bbpc_is_premium() ) {
-						$is_lighbox = $opt['image_link_type'] == 'lightbox' ? ' bbpc-lightbox' : '';
-						$_download 	= $opt['image_link_type'] == 'lightbox' ? '' : $_download;
+						$is_lighbox = bbpc_get_opt( 'image_link_type' ) == 'lightbox' ? ' bbpc-lightbox' : '';
+						$_download 	= bbpc_get_opt( 'image_link_type' ) == 'lightbox' ? '' : $_download;
 					}
 
 					$img = false;
-					if ( ( $opt['attachment_image_x'] ?? false ) && ( $opt['attachment_image_y'] ?? false ) ) {
+					if ( bbpc_get_opt( 'attachment_image_x', false ) && bbpc_get_opt( 'attachment_image_y', false ) ) {
 						$html = wp_get_attachment_image( $attachment->ID, 'bbpc-attachment-thumb' );
 
 						if ( $html != '' ) {

@@ -201,16 +201,14 @@ add_shortcode('bbpc_geo_votings', 'bbpc_display_bbpc_geo_votings');
 
 // Add Agree/Disagree buttons content
 add_action( 'bbp_theme_after_topic_content', function() {
-    // Retrieve bbPress Core settings
-    $opt                        = get_option( 'bbp_core_settings' );
     
     // Set default values if options are not set
-    $reaction_condition         = $opt['reaction_display_condition'] ?? 'always';
+    $reaction_condition         = bbpc_get_opt( 'reaction_display_condition', 'always' );
     $topic_conditional_count    = 0;
 
     // Check if the reaction condition is based on reply count
     if ( $reaction_condition === 'has_replies' ) {
-        $topic_conditional_count = absint( $opt['reaction_display_condition_count'] ?? 0 );
+        $topic_conditional_count = absint( bbpc_get_opt( 'reaction_display_condition_count', 0 ) );
     }
 
     // Check if topic meets the reply count condition for showing reactions
