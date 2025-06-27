@@ -18,38 +18,38 @@ function bbpc_offer_notice() {
             <div class="bbpc-col">
                 <span class="dashicons dashicons-megaphone"></span>
                 <div class="bbpc-col-text">
-                    <p><strong> Upgrade to Bbp Core Pro </strong></p>
-                    <p> Massive discount </p>
+                    <p><strong><?php esc_html_e('Upgrade to Bbp Core Pro', 'bbp-core'); ?></strong></p>
+                    <p><?php esc_html_e('Massive discount', 'bbp-core'); ?></p>
                 </div>
             </div>
             <div class="bbpc-col">
                 <img src="<?php echo BBPC_IMG ?>/icon/coupon.svg"
                      alt="<?php echo esc_attr_x( 'Coupon', 'coupon', 'bbp-core' ); ?>" class="coupon-icon">
                 <div class="bbpc-col-text">
-                    <p><strong> Up to 40% Off </strong></p>
-                    <p> This is limited time offer! </p>
+                    <p><strong><?php esc_html_e('Up to 40% Off', 'bbp-core'); ?></strong></p>
+                    <p><?php esc_html_e('This is limited time offer!', 'bbp-core'); ?></p>
                 </div>
             </div>
             <div class="bbpc-col">
                 <img src="<?php echo BBPC_IMG ?>/icon/cursor-hand.svg"
                      alt="<?php echo esc_attr_x( 'Coupon', 'coupon', 'bbp-core' ); ?>" class="coupon-icon">
                 <div class="bbpc-col-text">
-                    <p><strong> Grab the deal </strong></p>
-                    <p> Before it expires! </p>
+                    <p><strong><?php esc_html_e('Grab the deal', 'bbp-core'); ?></strong></p>
+                    <p><?php esc_html_e('Before it expires!', 'bbp-core'); ?></p>
                 </div>
             </div>
             <div class="bbpc-col">
                 <div class="bbpc-col-box">
-                    <label for="coupon">Coupon Code:</label>
+                    <label for="coupon"><?php esc_html_e('Coupon Code:', 'bbp-core'); ?></label>
                     <div class="coupon-container">
                         <input type="text" value="DASH40" id="coupon" class="coupon" readonly>
-                        <span class="copy-message">Coupon copied.</span>
-                        <button class="copy-btn">Copy</button>
+                        <span class="copy-message"><?php esc_html_e('Coupon copied.', 'bbp-core'); ?></span>
+                        <button class="copy-btn"><?php esc_html_e('Copy', 'bbp-core'); ?></button>
                     </div>
                 </div>
             </div>
             <div class="bbpc-col">
-                <a href="https://spider-themes.net/bbp-core/pricing/" class="buy-btn" target="_blank"> Claim Discount </a>
+                <a href="https://spider-themes.net/bbp-core/pricing/" class="buy-btn" target="_blank"><?php esc_html_e('Claim Discount', 'bbp-core'); ?></a>
             </div>
         </div>
     </div>
@@ -106,9 +106,9 @@ function bbpc_dismiss_offer_notice() {
 		$user_id = get_current_user_id();
 		update_user_meta( $user_id, 'bbpc_offer_dismissed', '1' );
 
-		wp_send_json_success( array( 'message' => 'Notice dismissed for this user.' ) );
+		wp_send_json_success( array( 'message' => esc_html__('Notice dismissed for this user.', 'bbp-core') ) );
 	} else {
-		wp_send_json_error( array( 'message' => 'User not logged in.' ) );
+		wp_send_json_error( array( 'message' => esc_html__('User not logged in.', 'bbp-core') ) );
 	}
 
 	wp_die();

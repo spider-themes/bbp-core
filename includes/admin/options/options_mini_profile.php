@@ -3,40 +3,40 @@ CSF::createSection(
 	$prefix,
 	[
 		'id'     => 'bbpc_mini_profile',
-		'title'  => __( 'Mini Profile', 'bbp-core' ),
+		'title'  => esc_html__( 'Mini Profile', 'bbp-core' ),
 		'icon'   => 'dashicons dashicons-admin-users',
 		'fields' => [
 			[
 				'type'    => 'subheading',
-				'content' => __( 'Mini Profile', 'bbp-core' ),
+				'content' => esc_html__( 'Mini Profile', 'bbp-core' ),
 			],
 			
 			[
 				'id'      => 'bbpc_mini_profile',
 				'type'    => 'switcher',
 				'default' => false,
-				'title'   => __( 'Show / Hide', 'bbp-core' ),
+				'title'   => esc_html__( 'Show / Hide', 'bbp-core' ),
                 'class'   => 'st-pro-notice'
 			],
 			
 			[
 				'type'       => 'subheading',
-				'content'    => __( 'Avatar', 'bbp-core' ),
+				'content'    => esc_html__( 'Avatar', 'bbp-core' ),
 				'dependency' => [ 'bbpc_mini_profile', '==', true, ],
 			],
 
 			[
 				'id'         => 'bbpc_profile_location',
 				'type'       => 'fieldset',
-				'title'      => __( 'Select Location', 'bbp-core' ),
-				'subtitle'   => __( 'Select the menu location to display the mini profile.', 'bbp-core' ),
+				'title'      => esc_html__( 'Select Location', 'bbp-core' ),
+				'subtitle'   => esc_html__( 'Select the menu location to display the mini profile.', 'bbp-core' ),
 				'dependency' => [ 'bbpc_mini_profile', '==', true, ],
                 'class'      => 'st-pro-notice',
 				'fields'     => [
 					[
 						'id' 		 => 'location_option',
 						'type'       => 'select',
-						'title'		 => __( 'Menu Location', 'bbp-core' ),
+						'title'		 => esc_html__( 'Menu Location', 'bbp-core' ),
 						'options'    => 'bbpc_get_registered_nav_menus',
 						'after'		 => __( 'To insert the mini profile into this location.', 'bbp-core' )						 
 					],
@@ -44,8 +44,8 @@ CSF::createSection(
 					[
 						'id' 		 => 'location_selector',
 						'type'       => 'text',
-						'title'		 => __( '<b>Or</b> Selector', 'bbp-core' ),
-						'after'		 => __( 'To insert end of this selector. Ex: <code>.parent_selector</code>', 'bbp-core' )
+						'title'		 => esc_html__( '<b>Or</b> Selector', 'bbp-core' ),
+						'after'		 => esc_html__( 'To insert end of this selector. Ex: <code>.parent_selector</code>', 'bbp-core' )
 					]
 				]
 			],
@@ -53,9 +53,9 @@ CSF::createSection(
 			[
 				'id'               => 'bbpc_profile_user_pos',
 				'type'             => 'slider',
-				'title'            => __( 'Gap', 'bbp-core' ),
+				'title'            => esc_html__( 'Gap', 'bbp-core' ),
 				'dependency'       => [ 'bbpc_mini_profile', '==', true, ],
-				'subtitle'         => __( 'Set the gap between the menu and the Mini Profile\'s avatar image. The gap will be applied to Left side of the Avatar image.', 'bbp-core' ),
+				'subtitle'         => esc_html__( 'Set the gap between the menu and the Mini Profile\'s avatar image. The gap will be applied to Left side of the Avatar image.', 'bbp-core' ),
 				'unit'             => 'px',
 				'output'           => '.bbpc-mini-profile',
 				'output_mode'      => 'margin-left',
@@ -66,14 +66,14 @@ CSF::createSection(
 
 			[
 				'type'       	   => 'subheading',
-				'content'    	   => __( 'Dropdown Profile Box', 'bbp-core' ),
+				'content'    	   => esc_html__( 'Dropdown Profile Box', 'bbp-core' ),
 				'dependency' 	   => [ 'bbpc_mini_profile', '==', true, ],
 			],
 
 			[
 				'id'               => 'bbpc-mini-profile-width',
 				'type'             => 'dimensions',
-				'title'            => __( 'Width', 'bbp-core'),
+				'title'            => esc_html__( 'Width', 'bbp-core'),
 				'height'           => false,
 				'units'            => array( 'px' ),
 				'output'           => '.bbpc-mini-profile-wrapper',
@@ -86,8 +86,8 @@ CSF::createSection(
 			[
 				'id'               => 'bbpc_profile_data_pos',
 				'type'             => 'slider',
-				'title'            => __( 'Gap', 'bbp-core' ),
-				'subtitle'         => __( 'Set the gap between the Avatar image and the Mini Profile\'s dropdwon box. This option is helpful to adjust the menu height with the Mini Profile\'s dropdwon box', 'bbp-core' ),
+				'title'            => esc_html__( 'Gap', 'bbp-core' ),
+				'subtitle'         => esc_html__( 'Set the gap between the Avatar image and the Mini Profile\'s dropdwon box. This option is helpful to adjust the menu height with the Mini Profile\'s dropdwon box', 'bbp-core' ),
 				'dependency'       => [ 'bbpc_mini_profile', '==', true, ],
 				'unit'             => 'px',
 				'output'           => '.bbpc-mini-profile-wrapper',
@@ -112,7 +112,7 @@ CSF::createSection(
 			[
 				'id'               => 'bbpc-mini-profile-border-radius',
 				'type'             => 'spacing',
-				'title'            => 'Border Radius',
+				'title'            => esc_html__( 'Border Radius', 'bbp-core' ),
 				'output'           => '.bbpc-mini-profile-wrapper',
 				'output_mode'      => 'border-radius',
 				'units'            => array( 'px' ),
@@ -123,7 +123,7 @@ CSF::createSection(
 			
 			[
 				'type'       => 'subheading',
-				'content'    => __( 'Color Management', 'bbp-core' ),
+				'content'    => esc_html__( 'Color Management', 'bbp-core' ),
 				'dependency' => [ 'bbpc_mini_profile', '==', true, ],
 			],
 			
@@ -131,13 +131,13 @@ CSF::createSection(
 				'id'         => 'bbpc-mini-profile-top',
 				'type'       => 'fieldset',
 				'dependency' => [ 'bbpc_mini_profile', '==', true, ],
-				'title'      => __( 'Content', 'bbp-core' ),
-				'subtitle'   => __( 'Change the color of the information at the top of the mini profile.', 'bbp-core' ),
+				'title'      => esc_html__( 'Content', 'bbp-core' ),
+				'subtitle'   => esc_html__( 'Change the color of the information at the top of the mini profile.', 'bbp-core' ),
 				'fields'     => array(
 					[
 						'id'               => 'bbpc-mini-profile-author',
 						'type'             => 'link_color',
-						'title'            => 'Author name',
+						'title'            => esc_html__( 'Author name', 'bbp-core' ),
 						'default'          => array(
 							'color' => '#5088f7',
 							'hover' => '#2067f4',
@@ -151,7 +151,7 @@ CSF::createSection(
 					[
 						'id'               => 'bbpc-mini-profile-author-role',
 						'type'             => 'color',
-						'title'            => 'Author Role',
+						'title'            => esc_html__( 'Author Role', 'bbp-core' ),
 						'output'           => '.bbpc-mini-profile-head p',
 						'output_mode'      => 'color',
 						'output_important' => true,
@@ -161,7 +161,7 @@ CSF::createSection(
 					[
 						'id'               => 'bbpc-mini-profile-info-color',
 						'type'             => 'color',
-						'title'            => 'Summery',
+						'title'            => esc_html__( 'Summery', 'bbp-core' ),
 						'output'           => '.bbpc-mini-middle p span',
 						'output_mode'      => 'color',
 						'output_important' => true,

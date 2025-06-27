@@ -1,24 +1,24 @@
 <?php
 // Create a section.
 $filter_options = [
-	'open'     => 'Open',
-	'closed'   => 'Closed',
-	'hidden'   => 'Hidden',
-	'no_reply' => 'No Reply',
-	'solved'   => 'Solved',
-	'unsolved' => 'Unsolved',
-	'all'      => 'All Topics',
-	'trash'    => 'Trash',
+	'open'     => esc_html__( 'Open', 'bbp-core' ),
+	'closed'   => esc_html__( 'Closed', 'bbp-core' ),
+	'hidden'   => esc_html__( 'Hidden', 'bbp-core' ),
+	'no_reply' => esc_html__( 'No Reply', 'bbp-core' ),
+	'solved'   => esc_html__( 'Solved', 'bbp-core' ),
+	'unsolved' => esc_html__( 'Unsolved', 'bbp-core' ),
+	'all'      => esc_html__( 'All Topics', 'bbp-core' ),
+	'trash'    => esc_html__( 'Trash', 'bbp-core' ),
 ];
 
 $default_options = [
-	'.open-topics'   => 'Open',
-	'.closed-topics' => 'Closed',
-	'.hidden-topics' => 'Hidden',
-	'.no-reply'      => 'No Reply',
-	'.solved'        => 'Solved',
-	'.unsolved'      => 'Unsolved',
-	'all'            => 'All Topics'
+	'.open-topics'   => esc_html__( 'Open', 'bbp-core' ),
+	'.closed-topics' => esc_html__( 'Closed', 'bbp-core' ),
+	'.hidden-topics' => esc_html__( 'Hidden', 'bbp-core' ),
+	'.no-reply'      => esc_html__( 'No Reply', 'bbp-core' ),
+	'.solved'        => esc_html__( 'Solved', 'bbp-core' ),
+	'.unsolved'      => esc_html__( 'Unsolved', 'bbp-core' ),
+	'all'            => esc_html__( 'All Topics', 'bbp-core' )
 ];
 
 $default_filter_options = [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash' ];
@@ -45,7 +45,7 @@ CSF::createSection(
 				'id'          => 'default_filter',
 				'type'        => 'select',
 				'title'       => esc_html__( 'Choose default filter', 'bbp-core' ),
-				'placeholder' => 'Select an option',
+				'placeholder' => esc_html__( 'Select an option', 'bbp-core' ),
 				'options'     => $default_options,
 				'default'     => '.open-topics',
 			],

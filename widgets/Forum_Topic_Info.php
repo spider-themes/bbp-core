@@ -43,13 +43,13 @@ class Forum_Topic_Info extends WP_Widget {
 		}
 
 		echo '<ul>';
-		echo '<li><strong>' . __( 'Forum:', 'bbp-core' ) . '</strong> <a href="' . $forum_url . '">' . $forum_title . '</a></li>';
-		echo '<li><strong>' . __( 'Topic:', 'bbp-core' ) . '</strong> ' . $topic->post_title . '</li>';
-		echo '<li><strong>' . __( 'Author:', 'bbp-core' ) . '</strong> ' . get_the_author_meta( 'display_name', $topic->post_author ) . '</li>';
-		echo '<li><strong>' . __( 'Date:', 'bbp-core' ) . '</strong> ' . get_the_date( '', $topic->ID ) . '</li>';
-		echo '<li><strong>' . __( 'Status:', 'bbp-core' ) . '</strong> ' . $status . '</li>';
-		echo '<li><strong>' . __( 'Replies:', 'bbp-core' ) . '</strong> ' . $replies . '</li>';
-		echo '<li><strong>' . __( 'Voices:', 'bbp-core' ) . '</strong> ' . $voices . '</li>';
+		echo '<li><strong>' . esc_html__( 'Forum:', 'bbp-core' ) . '</strong> <a href="' . esc_url($forum_url) . '">' . esc_html($forum_title) . '</a></li>';
+		echo '<li><strong>' . esc_html__( 'Topic:', 'bbp-core' ) . '</strong> ' . esc_html($topic->post_title) . '</li>';
+		echo '<li><strong>' . esc_html__( 'Author:', 'bbp-core' ) . '</strong> ' . esc_html(get_the_author_meta( 'display_name', $topic->post_author )) . '</li>';
+		echo '<li><strong>' . esc_html__( 'Date:', 'bbp-core' ) . '</strong> ' . esc_html(get_the_date( '', $topic->ID )) . '</li>';
+		echo '<li><strong>' . esc_html__( 'Status:', 'bbp-core' ) . '</strong> ' . esc_html($status) . '</li>';
+		echo '<li><strong>' . esc_html__( 'Replies:', 'bbp-core' ) . '</strong> ' . esc_html($replies) . '</li>';
+		echo '<li><strong>' . esc_html__( 'Voices:', 'bbp-core' ) . '</strong> ' . esc_html($voices) . '</li>';
 		echo '</ul>';
 
 		echo $args['after_widget'];

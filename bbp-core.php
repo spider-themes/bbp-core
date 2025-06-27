@@ -115,7 +115,7 @@ final class BBP_Core {
 		define( 'BBPC_DIR', __DIR__ . '/' );
 		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
 		define( 'BBPC_ASSETS', BBPC_URL . 'assets/' );
-		define( 'BBPC_FRONT_ASS', BBPC_URL . 'assets/' );
+		define( 'BBPC_FRONT_ASS', BBPC_URL . 'assets/frontend/' );
 		define( 'BBPC_ADMIN_ASS', BBPC_ASSETS . 'admin/' );
 		define( 'BBPC_IMG', BBPC_ASSETS . 'img/' );
 		define( 'BBPC_VEND', BBPC_ASSETS . 'vendors/' );
@@ -205,7 +205,7 @@ final class BBP_Core {
 
 		new admin\Elementor\BBP_Widgets();
 	}
-	
+
 	/**
 	 * Include CSF files include
 	 */
@@ -254,7 +254,7 @@ final class BBP_Core {
 		if ( plugin_basename( __FILE__ ) === $file ) {
 			// Add your custom links
 			$plugin_links = array(
-				'<a href="https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin/" target="_blank">Documentation</a>'
+				'<a href="https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin/" target="_blank">' . esc_html__('Documentation', 'bbp-core') . '</a>'
 			);
 			// Merge the custom links with the existing links
 			$links = array_merge( $links, $plugin_links );

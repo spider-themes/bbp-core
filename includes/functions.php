@@ -72,7 +72,7 @@ function bbpc_is_premium() {
  */
 function bbpc_admin_pages($admin) {
 	$current_url 	= ! empty( $_GET['page'] ) ? admin_url( 'admin.php?page=' ) . sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
-	
+
 	if ( $admin == 'admin' ){
 		if ( $current_url == admin_url('admin.php?page=bbp-core') ) {
 			return true;
@@ -169,7 +169,6 @@ function bbp_topic_view_count( $topic_id = 0 ) {
 	return $view_count;
 }
 
-
 /**
  * Get forum title
  * @return string
@@ -187,3 +186,17 @@ add_action( 'customize_register', function( $wp_customize ) {
     // Unset the section you want to hide
     $wp_customize->remove_section( 'design_fields' );
 }, 20 );
+
+/**
+ * Get all the registered menus
+ */
+function bbpc_get_registered_nav_menus() {
+	$menus          = get_registered_nav_menus();
+	$menu_locations = [];
+	$empty          = [ '' => esc_html__('Select Menu Location', 'bbp-core') ];
+	foreach ( $menus as $location => $description ) {
+		$menu_locations[ $location ] = $description;
+	}
+
+	return $empty + $menu_locations;
+}

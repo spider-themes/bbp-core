@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-06-26 18:37+0600\n"
+"POT-Creation-Date: 2025-06-27 19:30+0600\n"
 "PO-Revision-Date: 2025-06-26 14:59+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,6 +16,10 @@ msgstr ""
 "esc_html_x;_n_noop;_n;_x;_ex;_nx;esc_attr_x;_nx_noop;__ngettext_noop\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: assets\n"
+
+#: bbp-core.php:257
+msgid "Documentation"
+msgstr ""
 
 #: includes/Elementor/BBP_Widgets.php:68 includes/admin/Menu.php:17
 #: includes/admin/menu/statistics.php:8
@@ -120,11 +124,15 @@ msgstr ""
 
 #: includes/Elementor/Forum_Ajax.php:248
 #: includes/admin/menu/admin_ui/tab_filters.php:67
+#: includes/admin/options/options_admin_ui.php:9
+#: includes/admin/options/options_admin_ui.php:20
 msgid "Unsolved"
 msgstr ""
 
 #: includes/Elementor/Forum_Ajax.php:253
 #: includes/admin/menu/admin_ui/tab_filters.php:59
+#: includes/admin/options/options_admin_ui.php:8
+#: includes/admin/options/options_admin_ui.php:19
 msgid "Solved"
 msgstr ""
 
@@ -411,6 +419,7 @@ msgstr ""
 
 #: includes/Elementor/Search.php:272 includes/Elementor/Search.php:324
 #: includes/Elementor/Search.php:536
+#: includes/admin/options/options_mini_profile.php:115
 msgid "Border Radius"
 msgstr ""
 
@@ -639,25 +648,25 @@ msgstr ""
 msgid "No posts found."
 msgstr ""
 
-#: includes/admin/Assets.php:65
+#: includes/admin/Assets.php:64
 msgid "Enter Forum Title"
 msgstr ""
 
-#: includes/admin/Assets.php:66
+#: includes/admin/Assets.php:65
 msgid "Enter Topic Title"
 msgstr ""
 
-#: includes/admin/Assets.php:67
+#: includes/admin/Assets.php:66
 msgid "Are you sure to delete?"
 msgstr ""
 
-#: includes/admin/Assets.php:68
+#: includes/admin/Assets.php:67
 msgid ""
 "This forum will be deleted with all the topics and you won't be able to "
 "revert!"
 msgstr ""
 
-#: includes/admin/Assets.php:69
+#: includes/admin/Assets.php:68
 msgid "This topic will be deleted and you won't be able to revert!"
 msgstr ""
 
@@ -732,6 +741,8 @@ msgid "Pro Icon"
 msgstr ""
 
 #: includes/admin/menu/admin_ui/tab_filters.php:19
+#: includes/admin/options/options_admin_ui.php:10
+#: includes/admin/options/options_admin_ui.php:21
 msgid "All Topics"
 msgstr ""
 
@@ -741,10 +752,14 @@ msgid "Open icon"
 msgstr ""
 
 #: includes/admin/menu/admin_ui/tab_filters.php:27
+#: includes/admin/options/options_admin_ui.php:4
+#: includes/admin/options/options_admin_ui.php:15
 msgid "Open"
 msgstr ""
 
 #: includes/admin/menu/admin_ui/tab_filters.php:35
+#: includes/admin/options/options_admin_ui.php:5
+#: includes/admin/options/options_admin_ui.php:16
 msgid "Closed"
 msgstr ""
 
@@ -753,10 +768,14 @@ msgid "Spam & Pending Topics"
 msgstr ""
 
 #: includes/admin/menu/admin_ui/tab_filters.php:43
+#: includes/admin/options/options_admin_ui.php:6
+#: includes/admin/options/options_admin_ui.php:17
 msgid "Hidden"
 msgstr ""
 
 #: includes/admin/menu/admin_ui/tab_filters.php:51
+#: includes/admin/options/options_admin_ui.php:7
+#: includes/admin/options/options_admin_ui.php:18
 msgid "No Reply"
 msgstr ""
 
@@ -861,6 +880,14 @@ msgstr ""
 msgid "Already did"
 msgstr ""
 
+#: includes/admin/notices/asking-for-review.php:59
+msgid "Wrong nonce validate!"
+msgstr ""
+
+#: includes/admin/notices/asking-for-review.php:70
+msgid "Update fail!"
+msgstr ""
+
 #: includes/admin/notices/bbPress-required.php:14
 msgid "Activate Now!"
 msgstr ""
@@ -885,8 +912,60 @@ msgstr ""
 msgid "You don't have permission to install the plugins"
 msgstr ""
 
+#: includes/admin/notices/offer.php:21
+msgid "Upgrade to Bbp Core Pro"
+msgstr ""
+
+#: includes/admin/notices/offer.php:22
+msgid "Massive discount"
+msgstr ""
+
 #: includes/admin/notices/offer.php:27 includes/admin/notices/offer.php:35
 msgid "Coupon"
+msgstr ""
+
+#: includes/admin/notices/offer.php:29
+msgid "Up to 40% Off"
+msgstr ""
+
+#: includes/admin/notices/offer.php:30
+msgid "This is limited time offer!"
+msgstr ""
+
+#: includes/admin/notices/offer.php:37
+msgid "Grab the deal"
+msgstr ""
+
+#: includes/admin/notices/offer.php:38
+msgid "Before it expires!"
+msgstr ""
+
+#: includes/admin/notices/offer.php:43
+msgid "Coupon Code:"
+msgstr ""
+
+#: includes/admin/notices/offer.php:46
+msgid "Coupon copied."
+msgstr ""
+
+#: includes/admin/notices/offer.php:47
+msgid "Copy"
+msgstr ""
+
+#: includes/admin/notices/offer.php:52
+msgid "Claim Discount"
+msgstr ""
+
+#: includes/admin/notices/offer.php:109
+msgid "Notice dismissed for this user."
+msgstr ""
+
+#: includes/admin/notices/offer.php:111
+msgid "User not logged in."
+msgstr ""
+
+#: includes/admin/options/options_admin_ui.php:11
+msgid "Trash"
 msgstr ""
 
 #: includes/admin/options/options_admin_ui.php:36
@@ -905,6 +984,11 @@ msgstr ""
 
 #: includes/admin/options/options_admin_ui.php:47
 msgid "Choose default filter"
+msgstr ""
+
+#: includes/admin/options/options_admin_ui.php:48
+#: includes/admin/options/options_voting.php:55
+msgid "Select an option"
 msgstr ""
 
 #: includes/admin/options/options_admin_ui.php:56
@@ -944,6 +1028,26 @@ msgstr ""
 
 #: includes/admin/options/options_attachments.php:52
 msgid "Users who can upload attachments."
+msgstr ""
+
+#: includes/admin/options/options_attachments.php:54
+msgid "Keymaster"
+msgstr ""
+
+#: includes/admin/options/options_attachments.php:55
+msgid "Moderator"
+msgstr ""
+
+#: includes/admin/options/options_attachments.php:56
+msgid "Participant"
+msgstr ""
+
+#: includes/admin/options/options_attachments.php:57
+msgid "Spectator"
+msgstr ""
+
+#: includes/admin/options/options_attachments.php:58
+msgid "Blocked"
 msgstr ""
 
 #: includes/admin/options/options_attachments.php:65
@@ -1129,6 +1233,18 @@ msgstr ""
 
 #: includes/admin/options/options_mini_profile.php:135
 msgid "Change the color of the information at the top of the mini profile."
+msgstr ""
+
+#: includes/admin/options/options_mini_profile.php:140
+msgid "Author name"
+msgstr ""
+
+#: includes/admin/options/options_mini_profile.php:154
+msgid "Author Role"
+msgstr ""
+
+#: includes/admin/options/options_mini_profile.php:164
+msgid "Summery"
 msgstr ""
 
 #: includes/admin/options/options_mini_profile.php:187
@@ -1395,10 +1511,6 @@ msgstr ""
 
 #: includes/admin/options/options_voting.php:53
 msgid "Choose how to display the number of up votes and down votes"
-msgstr ""
-
-#: includes/admin/options/options_voting.php:55
-msgid "Select an option"
 msgstr ""
 
 #: includes/admin/options/options_voting.php:58
@@ -1772,6 +1884,10 @@ msgstr ""
 
 #: includes/features/bbpc_attachments/forms/uploader.php:19
 msgid "Add another file"
+msgstr ""
+
+#: includes/functions.php:196
+msgid "Select Menu Location"
 msgstr ""
 
 #: vendor/csf/classes/admin-options.class.php:169
@@ -2464,11 +2580,11 @@ msgstr ""
 msgid "Voices:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:67 widgets/forum-info/admin-options.php:5
+#: widgets/Forum_Topic_Info.php:66 widgets/forum-info/admin-options.php:5
 msgid "Title:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:71
+#: widgets/Forum_Topic_Info.php:70
 msgid "Topic ID:"
 msgstr ""
 
@@ -2498,8 +2614,12 @@ msgstr ""
 msgid "Last activity"
 msgstr ""
 
-#: widgets/forum-info/Forum_Information.php:144
+#: widgets/forum-info/Forum_Information.php:143
 msgid "Actions"
+msgstr ""
+
+#: widgets/forum-info/Forum_Information.php:151
+msgid "Login to subscribe"
 msgstr ""
 
 #: widgets/forum-info/admin-options.php:2
