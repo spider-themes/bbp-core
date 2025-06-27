@@ -23,7 +23,7 @@
 					<li class="easydocs-settings">
 						<div class="header-notify-icon bbpc-settings-icon">
 							<a href="<?php echo admin_url( 'admin.php?page=bbp-core-settings' ); ?>">
-								<img src="<?php echo BBPC_IMG; ?>/admin/admin-settings.svg" alt="<?php esc_html_e( 'Settings Icon', 'bbp-core' ); ?>">
+								<img src="<?php echo BBPC_IMG; ?>admin/admin-settings.svg" alt="<?php esc_html_e( 'Settings Icon', 'bbp-core' ); ?>">
 							</a>
 						</div>
 					</li>
@@ -48,8 +48,8 @@
 						?>
 						<li class="easydocs-notification bbp-core-pro-notification" title="<?php esc_attr_e( 'Notifications', 'bbp-core' ); ?>">
 							<div class="header-notify-icon">
-								<img class="notify-icon" src="<?php echo BBPC_IMG; ?>/admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'bbp-core' ); ?>">
-								<img class="settings-pro-icon" src="<?php echo BBPC_IMG; ?>/admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'bbp-core' ); ?>">
+								<img class="notify-icon" src="<?php echo BBPC_IMG; ?>admin/notification.svg" alt="<?php esc_html_e( 'Notify Icon', 'bbp-core' ); ?>">
+								<img class="settings-pro-icon" src="<?php echo BBPC_IMG; ?>admin/pro-icon.png" alt="<?php esc_html_e( 'Pro Icon', 'bbp-core' ); ?>">
 							</div>
 						</li>
 					<?php

@@ -23,7 +23,7 @@ $are_all_available = empty(array_diff($expected_items, $filter_set)) ? 'all-avai
 
 		<?php if ( in_array( 'open', $filter_set, true ) ) : ?>
             <li class="easydocs-btn" cookie-id="open-<?php echo esc_attr( $item ); ?>" data-filter=".open-topics">
-                <img src="<?php echo BBPC_IMG ?>/icon/open.svg" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>">
+                <img src="<?php echo BBPC_IMG ?>icon/open.svg" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>">
 				<?php esc_html_e( 'Open', 'bbp-core' ); ?>
                 <span class="filter-count-badge"> (<?php echo esc_html( $count_open ); ?>) </span>
             </li>

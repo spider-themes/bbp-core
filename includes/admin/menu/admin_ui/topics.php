@@ -49,7 +49,7 @@
                             $hidden_status = bbp_is_topic_spam( $current_topic_id ) ? 'Spam' : 'Pending';
                             echo '<span class="dashicons dashicons-hidden" title="'.$hidden_status.esc_attr__('Status: Topic', 'bbp-core').'"></span>';
                         } elseif ( bbp_is_topic_open( $current_topic_id ) ) {
-	                        ?> <img src="<?php echo BBPC_IMG ?>/icon/open.svg" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>" title="<?php echo esc_attr__( 'Open Topic', 'bbp-core' ) ?>"> <?php
+	                        ?> <img src="<?php echo BBPC_IMG ?>icon/open.svg" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>" title="<?php echo esc_attr__( 'Open Topic', 'bbp-core' ) ?>"> <?php
                         } else {
                             echo '<span class="dashicons dashicons-info-outline"></span>';
                         }

@@ -20,14 +20,14 @@ class Assets {
 	*/
 	public function bbpc_elementor_script(){
 		// Elementor widgets scripts
-		wp_enqueue_style( 'bbpc-el-widgets', BBPC_ASSETS . 'css/el-widgets.css' );		
-		wp_enqueue_style( 'elegant-icon', BBPC_ASSETS . 'vendors/elegant-icon/style.css' );		
-		wp_register_script( 'bbpc_js',  BBPC_ASSETS . 'js/forumTab.js', ['jquery'], true, true );
-		wp_register_script( 'bbpc-frontend-js', BBPC_ASSETS . 'frontend/js/frontend.js', array('jquery'), BBPC_VERSION, true );
-		wp_register_script( 'bbpc-ajax', BBPC_ASSETS . 'js/ajax.js', array('jquery'), BBPC_VERSION, true );
+		wp_enqueue_style( 'bbpc-el-widgets', BBPC_FRONT_ASS . 'css/el-widgets.css' );
+		wp_enqueue_style( 'elegant-icon', BBPC_VEND . 'elegant-icon/style.css' );
+		wp_register_script( 'bbpc_js',  BBPC_FRONT_ASS . 'js/forumTab.js', ['jquery'], true, true );
+		wp_register_script( 'bbpc-frontend-js', BBPC_FRONT_ASS . 'js/frontend.js', array('jquery'), BBPC_VERSION, true );
+		wp_register_script( 'bbpc-ajax', BBPC_FRONT_ASS . 'js/ajax.js', array('jquery'), BBPC_VERSION, true );
 
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'bbpc-rtl', BBPC_ASSETS . 'css/bbpc-main-rtl.css' );
+			wp_enqueue_style( 'bbpc-rtl', BBPC_FRONT_ASS . 'css/bbpc-main-rtl.css' );
 		}
 	}
 	
@@ -39,7 +39,7 @@ class Assets {
 		if ( ! class_exists( 'bbPress' ) ) {
 			return;
 		}
-		wp_register_style( 'bbpc-frontend-global', BBPC_ASSETS . 'frontend/css/frontend.css', array(), BBPC_VERSION );
+
 		wp_register_script( 'bbpc-wp-widget', BBPC_ASSETS . 'frontend/js/wp-widgets.js', array('jquery'), BBPC_VERSION, true );	
 		
 		// localize script
@@ -52,13 +52,14 @@ class Assets {
 		) );
 
 		$dynamic_css = ":root { --bbpc_brand_color: " . bbpc_get_opt('bbpc_brand_color') . "; }";
-		wp_add_inline_style( 'bbpc-frontend-global', $dynamic_css );
-		wp_register_script( 'bbpc-voting', BBPC_ASSETS . 'js/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );		
-		wp_register_style( 'bbpc', BBPC_ASSETS . 'css/bbpc.css' );
+		wp_add_inline_style( 'bbpc_localize_script', $dynamic_css );
+
+		wp_register_script( 'bbpc-voting', BBPC_FRONT_ASS . 'voting/bbpc-voting.js', [ 'jquery' ], BBPC_VERSION );
+		wp_register_style( 'bbpc', BBPC_FRONT_ASS . 'css/bbpc.css' );
 		
-		if ( class_exists( 'bbPress' ) && bbpc_forum_assets() == true ) {
+		if ( class_exists( 'bbPress' ) && bbpc_forum_and_topic_page() ) {
 			wp_enqueue_style( 'bbpc' );
-			wp_enqueue_style( 'bbpc-voting', BBPC_ASSETS . 'css/bbpc-voting.css' );
+			wp_enqueue_style( 'bbpc-voting', BBPC_FRONT_ASS . 'voting/bbpc-voting.css' );
 			wp_enqueue_script( 'bbpc-voting' );
 		}
 	}

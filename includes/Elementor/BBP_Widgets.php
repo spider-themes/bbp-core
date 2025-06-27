@@ -71,6 +71,6 @@ class BBP_Widgets {
     }
     
 	function register_elementor_editor_assets() {
-		wp_enqueue_style( 'bbpc-el-editor', BBPC_ASSETS . 'css/elementor-editor.css' );
+		wp_enqueue_style( 'bbpc-el-editor', BBPC_ADMIN_ASS . 'css/elementor-editor.css' );
 	}
 }

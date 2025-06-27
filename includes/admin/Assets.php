@@ -14,29 +14,28 @@ class Assets {
 	}
 	
 	public function admin_scripts() {
-		wp_register_style( 'bbpc-admin', BBPC_ASSETS . 'css/bbpc-admin.css' );		
-		wp_register_style( 'sweetalert', BBPC_ASSETS . '/css/sweetalert.css' );
-		
-		wp_register_script( 'sweetalert', BBPC_ASSETS . 'js/sweetalert.min.js', [ 'jquery' ], '1.0', true );
+		wp_register_style( 'bbpc-admin', BBPC_ASSETS . 'admin/css/bbpc-admin.css' );
+
+		wp_register_style( 'sweetalert', BBPC_VEND . 'sweetalert/sweetalert.css' );
+		wp_register_script( 'sweetalert', BBPC_VEND. 'sweetalert/sweetalert.min.js', [ 'jquery' ], '1.0', true );
+
         wp_register_script( 'bbpc-notify-review', BBPC_ASSETS . 'admin/js/review.js', array( 'jquery' ), BBPC_VERSION, true );
 		
 		if ( bbpc_admin_pages('admin') ) {
 			wp_enqueue_style( 'bbpc-admin' );
-			wp_enqueue_style( 'normalize', BBPC_ASSETS . 'css/normalize.css' );
-			wp_enqueue_style( 'nice-select', BBPC_ASSETS . 'css/nice-select.css' );
-			wp_enqueue_style( 'bbpc-admin-ui', BBPC_ASSETS . 'css/admin-ui-style.css' );
+			wp_enqueue_style( 'nice-select', BBPC_VEND . 'nice-select/nice-select.css' );
+			wp_enqueue_style( 'bbpc-admin-ui', BBPC_ADMIN_ASS . 'css/admin-ui-style.css' );
 			wp_enqueue_style( 'sweetalert' );
 
 			// Scripts.
-			wp_enqueue_script( 'modernizr', BBPC_ASSETS . 'js/modernizr-3.11.2.min.js', [ 'jquery' ], '3.11.2', true );
-			wp_enqueue_script( 'jquery-ui', BBPC_ASSETS . 'js/jquery-ui.js', [ 'jquery' ], '1.12.1', true );
-			wp_enqueue_script( 'mixitup', BBPC_ASSETS . 'js/mixitup.min.js', [ 'jquery' ], '3.3.1', true );
-			wp_enqueue_script( 'mixitup-multifilter', BBPC_ASSETS . 'js/mixitup-multifilter.js', [ 'jquery' ], '3.3.1', true );
-			wp_enqueue_script( 'jquery-nice-select', BBPC_ASSETS . 'js/jquery.nice-select.min.js', [ 'jquery' ], '1.0', true );
-			wp_enqueue_script( 'tabby-polyfills', BBPC_ASSETS . 'js/tabby.polyfills.min.js', [ 'jquery' ], '1.0', true );
-			wp_enqueue_script( 'sortable', BBPC_ASSETS . 'js/Sortable.min.js', [ 'jquery' ], '1.0', true );
-			wp_enqueue_script( 'accordion', BBPC_ASSETS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
-			wp_enqueue_script( 'bbpc-admin-main', BBPC_ASSETS . 'js/admin-main.js', [ 'jquery' ], '1.0', true );
+			wp_enqueue_script( 'jquery-ui', BBPC_ADMIN_ASS . 'js/jquery-ui.js', [ 'jquery' ], '1.12.1', true );
+			wp_enqueue_script( 'mixitup', BBPC_VEND . 'mixitup/mixitup.min.js', [ 'jquery' ], '3.3.1', true );
+			wp_enqueue_script( 'mixitup-multifilter', BBPC_VEND . 'mixitup/mixitup-multifilter.js', [ 'jquery' ], '3.3.1', true );
+			wp_enqueue_script( 'jquery-nice-select', BBPC_VEND . 'nice-select/jquery.nice-select.min.js', [ 'jquery' ], '1.0', true );
+			wp_enqueue_script( 'tabby-polyfills', BBPC_ADMIN_ASS . 'js/tabby.polyfills.min.js', [ 'jquery' ], '1.0', true );
+			wp_enqueue_script( 'sortable', BBPC_ADMIN_ASS . 'js/Sortable.min.js', [ 'jquery' ], '1.0', true );
+			wp_enqueue_script( 'accordion', BBPC_ADMIN_ASS . 'js/accordion.min.js', [ 'jquery' ], '1.0', true );
+			wp_enqueue_script( 'bbpc-admin-main', BBPC_ADMIN_ASS . 'js/admin-main.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'sweetalert' );
 		}
 
@@ -44,7 +43,7 @@ class Assets {
             wp_enqueue_style( 'bbpc-admin' );
             wp_enqueue_style( 'sweetalert' );
 			wp_enqueue_script( 'sweetalert' );
-			wp_enqueue_script( 'bbpc-admin-global', BBPC_ASSETS . 'js/admin-global.js', BBPC_VERSION );
+			wp_enqueue_script( 'bbpc-admin-global', BBPC_ADMIN_ASS . 'js/admin-global.js', BBPC_VERSION );
 		}
 
 		if ( bbpc_admin_pages('settings') ) {

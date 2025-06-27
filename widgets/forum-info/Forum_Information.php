@@ -130,7 +130,6 @@ class Forum_Information extends WP_Widget {
                             endif;
                             
                             if ( $show_subscribe == 'on' ) :
-                                wp_enqueue_style( 'bbpc-frontend-global' );
                                 wp_enqueue_script( 'bbpc-wp-widget' );
                                 ?>
                                 <tr class="show_subscribe">

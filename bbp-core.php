@@ -115,7 +115,10 @@ final class BBP_Core {
 		define( 'BBPC_DIR', __DIR__ . '/' );
 		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
 		define( 'BBPC_ASSETS', BBPC_URL . 'assets/' );
+		define( 'BBPC_FRONT_ASS', BBPC_URL . 'assets/' );
+		define( 'BBPC_ADMIN_ASS', BBPC_ASSETS . 'admin/' );
 		define( 'BBPC_IMG', BBPC_ASSETS . 'img/' );
+		define( 'BBPC_VEND', BBPC_ASSETS . 'vendors/' );
 	}
 
 	/**

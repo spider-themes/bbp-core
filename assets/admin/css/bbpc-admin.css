@@ -15,6 +15,11 @@
   width: calc(70% - 25px);
 }
 
+.csf-nav.csf-nav-normal.csf-nav-options ul li a {
+  display: flex;
+  align-items: baseline;
+}
+
 /** === Codestar Fontawesome replaced with Dashicons === **/
 .csf-field .chosen-container-single .chosen-single div b:before,
 .csf-nav ul li .csf-arrow:after {

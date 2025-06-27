@@ -90,7 +90,7 @@ function bbpc_admin_pages($admin) {
  *
  * @return bool True if the current page is a single forum or topic, false otherwise.
  */
-function bbpc_forum_assets(){
+function bbpc_forum_and_topic_page(){
 	if ( bbp_is_single_forum() ||  bbp_is_single_topic() ) {
 		return true;
 	}
