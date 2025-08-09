@@ -21,17 +21,19 @@ Table of Content:
 :root {
   --rob: "Roboto", sans-serif;
   --great: "Great Vibes", cursive;
-  --bg_gradient: linear-gradient( 45deg, #F5FDFF, #FEEFEC );
+  --bg_gradient: linear-gradient(45deg, #F5FDFF, #FEEFEC);
   --bbpc_brand_color: var(--bbpc_brand_color_opt);
   --h_title: #1d2746;
   --p_color: #6b707f;
   --bs-white: #fff;
   --black_25: #f9f9f9;
-  --black_50: #ebebeb;
+  --black_50: #f2f2f2;
+  --black_75: #eeeeee;
+  --black_90: #e0e6f0;
   --black_100: #d6d9dc;
   --black_150: #c8ccd0;
   --black_200: #bbc0c4;
-  --black_300: #7d848d;
+  --black_300: #9fa6ad;
   --black_350: #9199a1;
   --black_400: #848d95;
   --black_500: #6a737c;
@@ -42,7 +44,6 @@ Table of Content:
   --black_900: #0c0d0e;
   --bbpc_color: #078669;
   --baseColor2: #4a6ee0;
-  --hover3: #c6e7f7;
 }
 
 /*font Variables*/
