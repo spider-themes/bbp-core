@@ -17,15 +17,15 @@
 
 			$( document ).on(
 				"click",
-				".d4p-attachment-addfile",
+				".bbpc-attachment-addfile",
 				function(e){
 					e.preventDefault();
 
-					var now = $( ".bbp-attachments-form input[type=file]" ).length,
+					var now = $( ".bbpc_attachments input[type=file]" ).length,
 					max     = parseInt( bbpcAttachmentsInit.max_files );
 
 					if (now < max) {
-						$( this ).before( '<input type="file" size="40" name="bbpc_attachment[]"><br/>' );
+							$( this ).before( '<input type="file" size="40" name="bbpc_attachment[]">' );
 					}
 
 					if (now + 1 >= max) {

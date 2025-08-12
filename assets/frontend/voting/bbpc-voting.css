@@ -1,196 +1,221 @@
 .bbp-voting {
-  margin: 5px 0;
-  padding-right: 10px;
-  min-width: 60px;
-  left: 25px;
+    margin: 5px 0;
+    padding-right: 10px;
+    min-width: 60px;
+    left: 25px;
 }
 
 .bbp-voting.bbp-voting-float {
-  float: left;
+    float: left;
 }
 
 .bbp-voting .score {
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-  color: var(--black_400, #848d95);
-  padding: 7px;
-  line-height: normal;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--black_400, #848d95);
+    padding: 7px;
+    line-height: normal;
 }
 
 .bbp-voting a.vote {
-  display: block !important;
-  position: relative;
-  overflow: visible;
-  text-indent: -9999em;
-  width: 0;
-  height: 0;
-  margin: 3px auto;
-  border: 12px solid transparent !important;
-  border-left-width: 12px !important;
-  border-right-width: 12px !important;
-  cursor: pointer;
+    display: block !important;
+    position: relative;
+    overflow: visible;
+    text-indent: -9999em;
+    width: 0;
+    height: 0;
+    margin: 3px auto;
+    border: 12px solid transparent !important;
+    border-left-width: 12px !important;
+    border-right-width: 12px !important;
+    cursor: pointer;
 }
 
 .bbp-voting a.vote.up {
-  border-bottom: 12px solid var(--black_400, #848d95) !important;
-  border-top: none !important;
+    border-bottom: 12px solid var(--black_400, #848d95) !important;
+    border-top: none !important;
+}
+
+/** Outline button **/
+.bbpc-attachment-addfile {
+    width: 200px;
+    text-align: center;
+    padding: 6px 12px;
+    border: 2px solid var(--bbpc_brand_color);
+    color: var(--bbpc_brand_color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 200ms ease, color 200ms ease;
+    margin-top: 10px;
+    &:hover {
+        background-color: var(--bbpc_brand_color);
+        color: white;
+        text-decoration: none !important;
+    }
 }
 
 .bbp-voting a.vote.up:hover {
-  border-bottom: 14px solid var(--bbpc_brand_color, #0073aa) !important;
+    border-bottom: 14px solid var(--bbpc_brand_color, #0073aa) !important;
 }
 
 .bbp-voting a.vote.down {
-  border-top: 12px solid var(--black_400, #848d95) !important;
-  border-bottom: none !important;
+    border-top: 12px solid var(--black_400, #848d95) !important;
+    border-bottom: none !important;
 }
 
 .bbp-voting a.vote.down:hover {
-  border-top: 14px solid var(--bbpc_brand_color, #0073aa) !important;
+    border-top: 14px solid var(--bbpc_brand_color, #0073aa) !important;
 }
 
 .bbp-voting a.vote:not(.num-hide)::after {
-  content: attr(data-votes);
-  display: block;
-  position: absolute;
-  top: -10px;
-  margin-left: 17px;
-  text-indent: 0;
-  text-align: left;
-  color: #aaa;
-  opacity: 0;
-  transition: opacity 500ms ease;
-  width: max-content;
+    content: attr(data-votes);
+    display: block;
+    position: absolute;
+    top: -10px;
+    margin-left: 17px;
+    text-indent: 0;
+    text-align: left;
+    color: #aaa;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    width: max-content;
 }
 
 .bbp-voting a.vote.num-hover:hover::after {
-  opacity: 1;
-  transition: opacity 200ms ease;
+    opacity: 1;
+    transition: opacity 200ms ease;
 }
 
 .bbp-voting a.vote.num-always-show::after {
-  opacity: 1;
+    opacity: 1;
+}
+
+.bbpc_attachments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .bbp-voting .bbp-voting-label {
-  font-size: 0.9em;
-  padding: 5px 0;
-  text-align: center;
+    font-size: 12px;
+    padding: 5px 0;
+    text-align: center;
 }
 
 .bbp-voting .bbp-voting-label.helpful {
-  color: #1e851e;
+    color: #1e851e;
 }
 
 .bbp-voting .bbp-voting-label.not-helpful {
-  color: #992121;
+    color: #992121;
 }
 
 .bbp-voting.voted-up:not(.admin-bypass) a.vote.up {
-  border-bottom-color: green !important;
+    border-bottom-color: green !important;
 }
 
 .bbp-voting.voted-down:not(.admin-bypass) a.vote.down {
-  border-top-color: #a11717 !important;
+    border-top-color: #a11717 !important;
 }
 
 .bbp-voting.view-only:not(.admin-bypass) a.vote {
-  cursor: not-allowed !important;
+    cursor: not-allowed !important;
 }
 
 .bbp-voting .upvote-amp {
-  color: transparent;
-  text-shadow: 0 0 0 green;
+    color: transparent;
+    text-shadow: 0 0 0 green;
 }
 
 .bbp-voting .downvote-amp {
-  color: transparent;
-  text-shadow: 0 0 0 #a11717;
+    color: transparent;
+    text-shadow: 0 0 0 #a11717;
 }
 
 /* Theme Overrides */
 .wp-theme-docy .main-post .bbp-voting {
-  left: 25px;
+    left: 25px;
 }
 
 .wp-theme-docy .bbp-private-reply .bbp-voting {
-  left: 50px;
+    left: 50px;
 }
 
 @media (max-width: 450px) {
-  .bbp-private-reply .bbp-voting {
-    margin-top: 45px;
-  }
+    .bbp-private-reply .bbp-voting {
+        margin-top: 45px;
+    }
 }
 
 ul.bbp-topics .bbp-voting {
-  float: left;
+    float: left;
 }
 
 .bbp-voting-avatars {
-  display: inline-block;
-  padding: 15px 0 0 15px;
+    display: inline-block;
+    padding: 15px 0 0 15px;
 }
 
 .bbp-voting-avatars .bbp-voting-avatar {
-  display: inline-block;
-  margin: -15px 0 0 -15px;
+    display: inline-block;
+    margin: -15px 0 0 -15px;
 }
 
 .bbp-voting-avatars .bbp-voting-avatar img {
-  border-radius: 100px;
-  border: 3px solid black !important;
-  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 100px;
+    border: 3px solid black !important;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2) !important;
 }
 
 .bbp-voting-avatars .bbp-voting-avatar.up img {
-  border-color: green !important;
+    border-color: green !important;
 }
 
 .bbp-voting-avatars .bbp-voting-avatar.down img {
-  border-color: #a11717 !important;
+    border-color: #a11717 !important;
 }
 
 .bbp-voting-jump-to-answer {
-  display: table;
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #ddefdd;
+    display: table;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ddefdd;
 }
 
 .bbp-voting-jump-to-answer a {
-  font-size: 1.25em;
+    font-size: 1.25em;
 }
 
 .bbp-voting-accepted-checkmark {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 .bbp-voting-accepted-checkmark > path {
-  fill: green;
+    fill: green;
 }
 
 #bbpress-forums div.bbp-reply-content a.bbp-voting-accept-answer-button {
-  display: inline-block;
-  background-color: green;
-  padding: 6px 12px;
-  color: white;
-  text-decoration: none;
+    display: inline-block;
+    background-color: green;
+    padding: 6px 12px;
+    color: white;
+    text-decoration: none;
 }
 
 #bbpress-forums div.bbp-reply-content a.bbp-voting-accept-answer-button:hover {
-  background-color: #005700;
+    background-color: #005700;
 }
 
 .bbp-voting-sort {
-  display: block;
-  clear: both;
-  margin: 0.75em 0;
+    display: block;
+    clear: both;
+    margin: 0.75em 0;
 }
 
 /* After User Avatar */
 .forum-post-author + .bbp-voting {
-  position: absolute;
-  padding-top: 45px;
+    position: absolute;
+    padding-top: 45px;
 }
