@@ -4,7 +4,7 @@ Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,17 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= 1.3.2 (13 August 2025) =
+Fixed: Resolved attachment field visibility issue
+Tweaked: Forum Tabs widget design improved
+Tweaked: Added the function "bbpc_get_opt()" for CSF settings where it was missing
+Tweaked: Assets folder re-structured (admin CSS and JS files kept in a separate folder "admin")
+Tweaked: Removed some unnecessary assets (normalize.js, fontawesome.css etc)
+Tweaked: Made the non translatable strings to translatable
+Tweaked: Function prefix added which functions don't have prefix to avoid conflict with other plugins and themes
+Enhanced: Compatibility improved with the Docy theme dark mode
+Updated: Freemius SDK updated to 2.12.1
 
 = 1.3.1 (16 June 2025) =
 Fixed: Deprecation warning by wrapping attachment files in hook
