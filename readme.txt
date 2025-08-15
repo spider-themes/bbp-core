@@ -8,7 +8,7 @@ Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-BBP Core expands many useful features for the bbPress forums.
+BBP Core enhances bbPress forums with unified builder, private replies, voting, solved topics, attachments, and comprehensive Elementor integration.
 
 == Description ==
 
