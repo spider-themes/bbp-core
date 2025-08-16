@@ -105,7 +105,7 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 
 == Changelog ==
 
-= 1.3.2 (13 August 2025) =
+= 1.3.2 (15 August 2025) =
 Fixed: Resolved attachment field visibility issue
 Tweaked: Forum Tabs widget design improved
 Tweaked: Added the function "bbpc_get_opt()" for CSF settings where it was missing
@@ -148,12 +148,5 @@ Fixed: Resolved some issue of the "BBPC single forum & Forum Tabs" Elementor wid
 Fixed: Image size of forum tab widget
 Tweaked: Improved "View More Button" of the "Forum Tabs" widget
 Updated: Freemius SDK updated to 2.11.0
-
-= 1.2.7 (24 December 2024) =
-Fixed: sprintf php error
-Fixed: Resolved the issue with inserting forums and topics on the Nginx server
-Fixed: Theme name check to resolve translation loading error
-Tweaked: Improved 'Add Forum' button design
-Updated: Freemius SDK updated to 2.10.1
 
 [See changelog for all versions](https://spider-themes.net/bbp-core/changelog).
