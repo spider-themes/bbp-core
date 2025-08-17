@@ -4,6 +4,7 @@
   list-style: none;
   padding: 0;
   margin-bottom: 0;
+  flex-wrap: wrap;
 }
 .bbp-attachments ol.with-icons li .wp-caption {
   margin-bottom: 0;

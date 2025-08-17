@@ -85,20 +85,21 @@
     border-bottom-right-radius: 0;
 }
 
-.bbpc-agree-disagree-buttons button.active:hover {
+.bbpc-agree-disagree-buttons button.active:hover:not(.active) {
     background: #f0f8ff;
     border-color: #cee1ef;
 }
 
 .bbpc-agree-disagree-buttons button.active {
     background: var(--bbpc_brand_color);
+    color: #fff;
 }
 
 .bbpc-agree-disagree-buttons span.bbpc-reactions-btn-counter {
     font-size: 16px;
     background: #ffffff;
     border: 1px solid #c0cad2;
-    padding: 0px 15px;
+    padding: 0 15px;
     margin-right: 10px;
     color: #333;
     font-weight: 600;
