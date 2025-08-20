@@ -93,7 +93,7 @@
     const lastTab = readCookie('eazydocs_doc_current_tab');
     if (lastTab) {
       const $tab = $(`.tab-menu .easydocs-navitem[data-rel="${lastTab}"]`);
-      if (!$tab.hasClass('is-active')) {
+      if ($tab.length && !$tab.hasClass('is-active')) {
         $tab.siblings().removeClass('is-active');
         $tab.addClass('is-active');
 
