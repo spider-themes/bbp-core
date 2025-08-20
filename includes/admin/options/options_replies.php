@@ -12,6 +12,7 @@
 					'default'  => 1,
 					'title'    => __( 'BBPC Insert Media', 'bbp-core' ),
 					'subtitle' => __( 'Enable/Disable the custom image insert button with upload & URL modal for bbPress editors.', 'bbp-core' ),
+					'class'   	 => 'st-pro-notice'
 				],
 				[
 					'id'       => 'is_private_replies',
