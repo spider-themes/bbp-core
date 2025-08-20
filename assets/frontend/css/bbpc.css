@@ -1,4 +1,5 @@
 :root {
+    --bbpc_brand_color: var(--bbpc_brand_color_opt,#0866ff);
     --border_on_white: #e6edf0;
     --border_on_highlight: #e6edf0;
     --body_bg: #fff;

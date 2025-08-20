@@ -2,8 +2,7 @@
   --rob: "Roboto", sans-serif;
   --great: "Great Vibes", cursive;
   --bg_gradient: linear-gradient(45deg, #F5FDFF, #FEEFEC);
-
-  --bbpc_brand_color: var(--bbpc_brand_color_opt);
+  --bbpc_brand_color: var(--bbpc_brand_color_opt,#0866ff);
   --h_title: #1d2746;
   --p_color: #6b707f;
   --bs-white: #fff;

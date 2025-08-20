@@ -7,6 +7,13 @@
 			'icon'   => 'dashicons dashicons-format-chat',
 			'fields' => [
 				[
+					'id'       => 'is_bbpc_insert_media',
+					'type'     => 'switcher',
+					'default'  => 1,
+					'title'    => __( 'BBPC Insert Media', 'bbp-core' ),
+					'subtitle' => __( 'Enable/Disable the custom image insert button with upload & URL modal for bbPress editors.', 'bbp-core' ),
+				],
+				[
 					'id'       => 'is_private_replies',
 					'type'     => 'switcher',
 					'default'  => 1,
