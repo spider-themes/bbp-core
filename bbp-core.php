@@ -180,6 +180,15 @@ final class BBP_Core {
 		}
 
 		update_option( 'bbpc_version', BBPC_VERSION );
+		// Ensure default option for bbp_core_settings
+		$defaults = array(
+			'is_bbpc_insert_media' => true,
+		);
+
+		$current = get_option( 'bbp_core_settings', array() );
+		$updated = wp_parse_args( $current, $defaults );
+
+		update_option( 'bbp_core_settings', $updated );
 	}
 
 	/**
