@@ -4,7 +4,7 @@ Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +64,7 @@ BBP Core empowers bbPress forum with useful features. For example - Unified Foru
 
 - **10. Advanced Voting Features:** Options to restrict voting for non-logged-in users, prevent new votes on closed topics, disallow self-voting, allow unlimited voting for administrators, and sort topics and replies based on their voting scores.
 
+- **11. External Image Insert Button:** Easily insert images with a single click or by using a URL.
 
 == Frequently Asked Questions ==
 
@@ -105,6 +106,12 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 
 == Changelog ==
 
+= 1.3.3 (23 August 2025) =
+FIxed: Forum builder tab content active issue fixed
+Fixed: Fixed brand_color variable
+Tweaked: Active reaction design improved
+Tweaked: Attachment preview design
+
 = 1.3.2 (15 August 2025) =
 Fixed: Resolved attachment field visibility issue
 Tweaked: Forum Tabs widget design improved
@@ -142,11 +149,5 @@ Tweaked: Dashicons used instead of fontawesome icon to optimize performance in t
 New: Loco.xml configuration file added for multiple text domains mapping in Loco translate plugin
 New: Offer notice added for our valuable customers (not for fresher)
 Fixed: Deprecated issue, Increment on non-alphanumeric string is deprecated in /bbp-core/includes/admin/menu/admin_ui/forums.php on line 8
-
-= 1.2.8 (17 February 2025) =
-Fixed: Resolved some issue of the "BBPC single forum & Forum Tabs" Elementor widget
-Fixed: Image size of forum tab widget
-Tweaked: Improved "View More Button" of the "Forum Tabs" widget
-Updated: Freemius SDK updated to 2.11.0
 
 [See changelog for all versions](https://spider-themes.net/bbp-core/changelog).

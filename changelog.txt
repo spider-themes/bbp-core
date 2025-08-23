@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.3.3 (23 August 2025) =
+FIxed: Forum builder tab content active issue fixed
+Fixed: Fixed brand_color variable
+Tweaked: Active reaction design improved
+Tweaked: Attachment preview design
+
 = 1.3.2 (15 August 2025) =
 Fixed: Resolved attachment field visibility issue
 Tweaked: Forum Tabs widget design improved
