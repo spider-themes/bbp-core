@@ -13,6 +13,27 @@
 					'title'    => __( 'BBPC Insert Media', 'bbp-core' ),
 					'subtitle' => __( 'Enable/Disable the custom image insert button with upload & URL modal for bbPress editors.', 'bbp-core' ),
 					'class'   	 => 'st-pro-notice'
+				],				
+				[
+					'id'       => 'is_auto_approval_replies',
+					'type'     => 'switcher',
+					'default'  => true,
+					'title'    => __( 'Auto Approval', 'bbp-core' ),
+					'subtitle' => __( 'Enable/ Disable Auto Approval feature.', 'bbp-core' ),
+					'class'    => 'st-pro-notice'
+				],
+				[
+					'id'         => 'is_attachment_replies',
+					'type'       => 'button_set',
+					'title'    	 => __( 'Replies with Attachments', 'bbp-core' ),
+					'subtitle' 	 => __( 'Approve or Unapprove if attachment is added with the reply', 'bbp-core' ),
+					'class'    	 => 'st-pro-notice',
+					'options'    => array(
+						'1'   	 => 'Approve',
+						'0' 	 => 'Unapprove',
+					),
+					'default'    => '1',
+					'dependency' => [ 'is_auto_approval_replies', '==', 'true', ],
 				],
 				[
 					'id'       => 'is_private_replies',
