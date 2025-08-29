@@ -44,10 +44,11 @@
     .child-right-content {
       align-items: center;
 
-      .progress-text {
-        font-size: var(--fs-12);
+      .progress-text a {
+        font-size: 14px;
         color: var(--clr-text-light);
         margin-right: var(--gutter-30);
+        text-decoration: none;
       }
     }
 
@@ -90,7 +91,7 @@
 .accordion-title {
   position: relative;
   background: #fff;
-  padding: 13px 30px 13px 30px;
+  padding: 15px 30px 15px 30px;
   cursor: pointer;
   @media (max-width: 1440px) {
     padding: 12px 20px 12px 34px;
@@ -253,16 +254,25 @@
       text-align: left;
       margin-right: 5px;
     }
+
+    .bbpc-author-name {
+      font-size: 14px;
+      color: var(--clr-text-light);
+      a {
+        text-decoration: none;
+      }
+    }
   }
 
   .right-content {
     display: flex;
     align-items: center;
 
-    .progress-text {
-      font-size: var(--fs-12);
+    .progress-text a {
+      font-size: 14px;
       color: var(--clr-text-light);
       margin-left: var(--gutter-30);
+      text-decoration: none;
     }
   }
 }

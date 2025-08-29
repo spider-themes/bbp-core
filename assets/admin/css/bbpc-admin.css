@@ -216,11 +216,17 @@ body.bbpc-no-pro .st-pro-notice .csf-fieldset, body.bbpc-no-pro .st-pro-notice .
 }
 
 .bbpc-approve-btn {
-  margin-left: 7px;
+  margin-left: 10px;
   margin-right: 3px;
   border: 1px solid #2DB22D;
   color: #2DB22D;
   border-radius: 50%;
+  text-decoration: none;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .bbpc-approve-btn:hover {
   border: 1px solid #07a207;

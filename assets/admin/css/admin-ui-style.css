@@ -603,10 +603,11 @@ label {
 .easydocs-accordion-item.child-one .child-right-content {
   align-items: center;
 }
-.easydocs-accordion-item.child-one .child-right-content .progress-text {
-  font-size: var(--fs-12);
+.easydocs-accordion-item.child-one .child-right-content .progress-text a {
+  font-size: 14px;
   color: var(--clr-text-light);
   margin-right: var(--gutter-30);
+  text-decoration: none;
 }
 .easydocs-accordion-item.child-one .accordion-title::before {
   transform: translateY(-50%);
@@ -630,7 +631,7 @@ label {
 .accordion-title {
   position: relative;
   background: #fff;
-  padding: 13px 30px 13px 30px;
+  padding: 15px 30px 15px 30px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -773,14 +774,22 @@ label {
   text-align: left;
   margin-right: 5px;
 }
+.accordion-title .left-content .bbpc-author-name {
+  font-size: 14px;
+  color: var(--clr-text-light);
+}
+.accordion-title .left-content .bbpc-author-name a {
+  text-decoration: none;
+}
 .accordion-title .right-content {
   display: flex;
   align-items: center;
 }
-.accordion-title .right-content .progress-text {
-  font-size: var(--fs-12);
+.accordion-title .right-content .progress-text a {
+  font-size: 14px;
   color: var(--clr-text-light);
   margin-left: var(--gutter-30);
+  text-decoration: none;
 }
 
 .easydocs-accordion-body {
@@ -1258,6 +1267,7 @@ a.child-delete {
 .easydocs-header-area {
   padding-top: 40px;
   padding-bottom: 50px;
+  padding-right: 40px;
 }
 .easydocs-header-area .easydocs-row {
   margin-left: 0;
@@ -1804,7 +1814,7 @@ body.bbpc-forum-ui {
   width: 110px;
 }
 .easydocs-navitem.is-active {
-  border-left-color: #b88eff;
+  border-left-color: #ffffff;
   background: rgba(159, 162, 180, 0.2);
   --title-opacity: 1;
   --total-page-opacity: 1;
@@ -1839,7 +1849,6 @@ body.bbpc-forum-ui {
   opacity: var(--title-opacity, 0.7);
 }
 .easydocs-navitem .title .featured-image {
-  background: #fff;
   width: 40px;
   height: 40px;
   padding: 5px;
@@ -1847,6 +1856,7 @@ body.bbpc-forum-ui {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.5803921569);
 }
 .easydocs-navitem .title .featured-image img {
   width: 100%;
