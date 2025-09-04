@@ -414,3 +414,16 @@ a.child-delete {
     border-bottom: 1px solid #edeae9;
   }
 }
+.bbpc-admin-pagination{
+  margin-bottom: 15px;
+  button {
+    border: 1px solid;
+    min-width: 35px;
+    border-radius: 4px;
+    background: rgb(0 0 0 / 80%);
+    color: white;
+    &:hover, &.mixitup-control-active{
+      background: var(--clr-blue);
+    }
+  }
+}

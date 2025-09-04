@@ -118,6 +118,16 @@ $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 									<!-- Children topics. -->
 									<?php include __DIR__ . '/admin_ui/topics.php'; ?>
 
+									<?php
+									if ( $children->post_count > 2 ) :
+										?>
+										<div class="controls bbpc-admin-pagination">
+											<div class="mixitup-control mixitup-page-list"></div>
+										</div>
+										<?php
+									endif;
+									?>
+
 									<a class="easydocs-btn easydocs-btn-outline-blue easydocs-btn-sm easydocs-btn-round button button-info section-doc" id="bbpc-topic" target="_blank" name="submit" href="javascript:void(0)" bbp_forum_id="<?php echo esc_attr( $item ); ?>">
 										<?php esc_html_e( 'Add Topic', 'bbp-core' ); ?>
 									</a>
@@ -161,6 +171,9 @@ $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 				},
 				load: {
 					filter: '<?php echo esc_js( bbpc_get_opt( 'default_filter', '.open-topics' ) ); ?>'
+				},
+				pagination: {
+					limit: 10,
 				}
 			};
 			for (let i = 0; i < docContainer.length; i++) {

@@ -31,6 +31,7 @@ class Assets {
 			wp_enqueue_script( 'jquery-ui', BBPC_ADMIN_ASS . 'js/jquery-ui.js', [ 'jquery' ], '1.12.1', true );
 			wp_enqueue_script( 'mixitup', BBPC_VEND . 'mixitup/mixitup.min.js', [ 'jquery' ], '3.3.1', true );
 			wp_enqueue_script( 'mixitup-multifilter', BBPC_VEND . 'mixitup/mixitup-multifilter.js', [ 'jquery' ], '3.3.1', true );
+			wp_enqueue_script( 'mixitup-pagination', BBPC_VEND . 'mixitup/mixitup-pagination.min.js', [ 'jquery' ], '3.3.2', true );
 			wp_enqueue_script( 'jquery-nice-select', BBPC_VEND . 'nice-select/jquery.nice-select.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'tabby-polyfills', BBPC_ADMIN_ASS . 'js/tabby.polyfills.min.js', [ 'jquery' ], '1.0', true );
 			wp_enqueue_script( 'sortable', BBPC_ADMIN_ASS . 'js/Sortable.min.js', [ 'jquery' ], '1.0', true );
