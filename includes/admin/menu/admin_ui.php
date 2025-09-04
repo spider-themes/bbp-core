@@ -119,7 +119,7 @@ $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 									<?php include __DIR__ . '/admin_ui/topics.php'; ?>
 
 									<?php
-									if ( $children->post_count > 2 ) :
+									if ( $children->post_count > 10 ) :
 										?>
 										<div class="controls bbpc-admin-pagination">
 											<div class="mixitup-control mixitup-page-list"></div>
