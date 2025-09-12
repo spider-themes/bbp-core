@@ -34,6 +34,7 @@ if ( ! function_exists( 'bc_fs' ) ) {
 				'is_premium_only' => false,
 				'has_addons'      => false,
 				'has_paid_plans'  => true,
+				'wp_org_gatekeeper'   => 'OA7#BoRiBNqdf52FvzEf!!074aRLPs8fspif$7K1#4u4Csys1fQlCecVcUTOs2mcpeVHi#C2j9d09fOTvbC0HloPT7fFee5WdS3G',
 				'trial'           => [
 					'days'               => 14,
 					'is_require_payment' => true,
@@ -44,14 +45,18 @@ if ( ! function_exists( 'bc_fs' ) ) {
 					'support'    => false,
 					'first-path' => 'admin.php?page=bbp-core',
 				],
+				'parallel_activation' => array(
+					'enabled'                  => true,
+					'premium_version_basename' => 'bbp-core-pro/bbp-core.php',
+				),
 			] );
 		}
 
 		return $bc_fs;
 	}
 
-	// Init Freemius.
-	bc_fs()->add_filter( 'deactivate_on_activation', '__return_false' );
+	// Add filter to hide the Freemius badge from the plugin page.
+	bc_fs()->add_filter( 'hide_freemius_powered_by', '__return_true' );
 
 	// Signal that SDK was initiated.
 	do_action( 'bc_fs_loaded' );

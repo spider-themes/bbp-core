@@ -49,7 +49,7 @@ class Forum_Information extends WP_Widget {
 
             if ( $show_topics_count == 'on' || $show_replies_count == 'on' || $show_last_post_user == 'on' || $show_last_activity == 'on' || $show_subscribe == 'on') :
                 ?>
-                <div class="bbpc-widget-forum-info">
+                <div class="bbpc-widget-forum-info bs-sm">
                     <table>
                         <tbody>
                             <?php 
