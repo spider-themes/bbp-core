@@ -1,16 +1,14 @@
 <?php
-
 // Define the expected items
-$expected_items = [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash' ];
+$expected_items = [ 'open', 'closed', 'hidden', 'no_reply', 'all', 'trash', 'solved', 'unsolved' ];
 
-// Get the $filter_set, with a default value if it's not set
-$filter_set = bbpc_get_opt('filter_buttons') ?? [];
+// Get the $filter_set, ensure it's always an array
+$filter_set = bbpc_get_opt( 'filter_buttons' );
+$filter_set = is_array( $filter_set ) ? $filter_set : $expected_items;
 
-// Check if all expected items are in the $filter_set
-$are_all_available = empty(array_diff($expected_items, $filter_set)) ? 'all-available' : '';
-
+// Check if all expected items are available
+$are_all_available = empty( array_diff( $expected_items, $filter_set ) ) ? 'all-available' : '';
 ?>
-
 <div class="easydocs-filter-container">
 	<ul class="single-item-filter <?php echo esc_attr($are_all_available) ?>">
 		<?php if ( in_array( 'all', $filter_set, true ) ) : ?>
