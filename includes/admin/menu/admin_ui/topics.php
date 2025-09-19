@@ -47,9 +47,9 @@
                             echo '<span class="dashicons dashicons-dismiss" title="'.esc_attr__('Status: Closed.', 'bbp-core').'"></span>';
                         } elseif ( bbp_is_topic_spam( $current_topic_id ) || bbp_is_topic_pending( $current_topic_id ) ) {
                             $hidden_status = bbp_is_topic_spam( $current_topic_id ) ? 'Spam ' : 'Pending ';
-                            echo '<span class="dashicons dashicons-hidden" title="'.$hidden_status.esc_attr__('Status: Topic', 'bbp-core').'"></span>';
+                            echo '<span class="dashicons dashicons-hidden" title="' . esc_attr( $hidden_status . __( 'Status: Topic', 'bbp-core' ) ) . '"></span>';
                         } elseif ( bbp_is_topic_open( $current_topic_id ) ) {
-	                        ?> <img src="<?php echo BBPC_IMG ?>icon/open.svg" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>" title="<?php echo esc_attr__( 'Open Topic', 'bbp-core' ) ?>"> <?php
+	                        ?> <img src="<?php echo esc_url( BBPC_IMG . 'icon/open.svg' ); ?>" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>" title="<?php echo esc_attr__( 'Open Topic', 'bbp-core' ) ?>"> <?php
                         } else {
                             echo '<span class="dashicons dashicons-info-outline"></span>';
                         }
@@ -64,10 +64,13 @@
                     <span class="bbpc-author-name">
                         <?php
                         esc_html_e( '&nbsp; By: ', 'bbp-core' );
-                        echo bbp_get_topic_author_link(
-                            array(
-                                'post_id' => get_the_ID(),
-                                'type'    => 'name',
+
+                        echo wp_kses_post(
+                            bbp_get_topic_author_link(
+                                array(
+                                    'post_id' => get_the_ID(),
+                                    'type'    => 'name',
+                                )
                             )
                         );
                         ?>
@@ -102,23 +105,38 @@
                     $pending_replies_count = count( $pending_replies );
                     $reply_count           = $replies->found_posts - $pending_replies_count;
                     ?>
-                    <div title="<?php echo esc_attr( $reply_count ) . __( ' Published replies', 'bbp-core' ); ?>">
+                    <div 
+                    title="<?php echo esc_attr( sprintf(
+                        /* translators: %d: Number of published replies */
+                        __( '%d Published replies', 'bbp-core' ),
+                        $reply_count
+                    ) ); ?>">
+
                         <span class="bbpc-reply-count bbpc-published-replies">
                             <?php echo esc_html( $reply_count ); ?>
                         </span>
                     </div>
 
-                    <?php if ( $pending_replies_count > 0 ) : ?>
-                        <div click-target='<?php echo esc_attr( $current_topic_id ); ?>' title="<?php echo esc_attr( $pending_replies_count ) . __( ' Pending replies', 'bbp-core' ); ?>">
+                    <?php 
+                    if ( $pending_replies_count > 0 ) : 
+                        ?>
+                        <div click-target='<?php echo esc_attr( $current_topic_id ); ?>' 
+                        title="<?php echo esc_attr( sprintf(
+                            /* translators: %d: Number of Pending replies */
+                            __( '%d Pending replies', 'bbp-core' ),
+                            $pending_replies_count
+                        ) ); ?>">
                             <span class="bbpc-reply-count bbpc-pending-replies">
                                 <?php echo esc_html( $pending_replies_count ); ?>
                             </span>
                         </div>
-                    <?php endif; ?>
+                        <?php 
+                    endif; 
+                    ?>
 
                     <ul class="actions">
                         <li>
-                            <a href="<?php echo get_permalink( $current_topic_id ); ?>" target="_blank" title="<?php esc_attr_e( 'View this reply in new tab', 'bbp() - core' ); ?>">
+                            <a href="<?php echo esc_url( get_permalink( $current_topic_id ) ); ?>" target="_blank" title="<?php esc_attr_e( 'View this reply in new tab', 'bbp-core' ); ?>">
                                 <span class="dashicons dashicons-external"></span>
                             </a>
                         </li>

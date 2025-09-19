@@ -264,6 +264,7 @@ class GDATTFront {
 			$_download 	= ' download';			
 
 			if ( ! is_user_logged_in() && BBPCATTCore::instance()->is_hidden_from_visitors() ) {
+				/* translators: %s: Login URL */
 				$content .= sprintf( __( "You must be <a href='%s'>logged in</a> to view attached files.", 'bbp-core' ), wp_login_url( get_permalink() ) );
 			} else {
 				$listing    = '<ol';
@@ -402,7 +403,7 @@ class GDATTFront {
 
 				foreach ( $errors as $error ) {
 					$content .= '<li class="' . $class_li . '"><span role="presentation" class="' . $class_li . '"></span> ';
-					$content .= '<div class="d4p-bbp-att-wrapper"><strong>' . esc_html( $error['file'] ) . '</strong>: ' . __( $error['message'], 'bbp-core' ) . '</div></li>';
+					$content .= '<div class="d4p-bbp-att-wrapper"><strong>' . esc_html( $error['file'] ) . '</strong>: ' . esc_html( $error['message'] ) . '</div></li>';
 				}
 
 				$content .= '</ol></div>';

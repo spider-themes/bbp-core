@@ -144,7 +144,7 @@ $forum_count   = (int) ( $fcount->publish + $fcount->hidden + $fcount->spam );
 		else :
 			?>
 			<div class="eazydocs-no-content">
-				<img src="<?php echo BBPC_IMG; ?>/icon/folder-open.png" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
+				<img src="<?php echo esc_url( BBPC_IMG . 'icon/folder-open.png' ); ?>" alt="<?php esc_attr_e( 'Folder Open', 'bbp-core' ); ?>">
 				<p class="big-p"> <?php esc_html_e( 'No forum has been found . Perhaps', 'bbp-core' ); ?> </p>
 				<p> <br>
 					<a href="javascript:void(0)" type="button" id="bbpc-forum" class="button button-primary ezd-btn btn-lg">

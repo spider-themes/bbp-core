@@ -20,7 +20,7 @@ if ( ( bbpc_is_user_admin() || bbpc_is_user_moderator() ) ) {
 		echo '<h4>' . __( 'Upload Errors', 'bbp-core' ) . ':</h4>';
 		echo '<ul style="list-style: decimal outside; margin-left: 1.5em;">';
 		foreach ( $errors as $error ) {
-			echo '<li><strong>' . esc_html( $error['file'] ) . '</strong>:<br/>' . __( $error['message'], 'bbp-core' ) . '</li>';
+			echo '<li><strong>' . esc_html( $error['file'] ) . '</strong>:<br/>' . esc_html( $error['message'] ) . '</li>';
 		}
 		echo '</ul>';
 	}

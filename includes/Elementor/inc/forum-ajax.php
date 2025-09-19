@@ -105,33 +105,33 @@ function bbpc_ajax_forum() {
                     </div>
                     <div class="post-info">
                         <div class="author">
-                            <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/user-circle-alt.svg' ?>" alt="<?php esc_attr_e( 'User circle icon', 'bbpc-core' ); ?>">
+                            <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/user-circle-alt.svg' ); ?>" alt="<?php esc_attr_e( 'User circle icon', 'bbp-core' ); ?>">
 							<?php 
-                            echo bbp_get_topic_author_link( 
+                            echo wp_kses_post( bbp_get_topic_author_link( 
                                 array( 
                                     'post_id' 	=> $topic_id, 
                                     'type' 		=> 'name' 
                                 )
-                            );
+                            ) );
                             ?>
                         </div>
 
                         <div class="post-time">
-                            <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/time-outline.svg' ?>" alt="<?php esc_attr_e( 'Time outline icon', 'bbpc-core' ); ?>">
+                            <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/time-outline.svg' ); ?>" alt="<?php esc_attr_e( 'Time outline icon', 'bbp-core' ); ?>">
 							<?php bbp_forum_last_active_time( get_the_ID() ); ?>
                         </div>
                     </div>
 
                     <div class="post-category">
-                        <a href="<?php echo get_the_permalink( $forum_id ) ?>">
+                        <a href="<?php echo esc_url( get_the_permalink( $forum_id ) ) ?>">
 							<?php echo get_the_post_thumbnail( $forum_id ); ?>
-							<?php echo get_the_title( $forum_id ) ?>
+							<?php echo esc_html( get_the_title( $forum_id ) ); ?>
                         </a>
                     </div>
                 </div>
                 <div class="post-reach">
                     <div class="post-view">
-                        <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/eye-outline.svg' ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbpc-core'); ?>">
+                        <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/eye-outline.svg' ); ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbp-core'); ?>">
 						
 						<?php
                         bbp_topic_view_count( $topic_id );
@@ -141,26 +141,26 @@ function bbpc_ajax_forum() {
 
                     </div>
                     <div class="post-like">
-                        <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/thumbs-up-outline.svg' ?>" alt="<?php esc_attr_e( 'Thumbs up icon', 'bbpc-core'); ?>">
+                        <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/thumbs-up-outline.svg' ); ?>" alt="<?php esc_attr_e( 'Thumbs up icon', 'bbp-core'); ?>">
 						
 						<?php 
 						if ( $vote_count ) {
-							echo $vote_count;
+							echo esc_html( $vote_count );
 						} else {
 							echo "0";
 						}
 
 						echo '&nbsp;';
-						_e( 'Likes', 'bbp-core' ); 
+						esc_html_e( 'Likes', 'bbp-core' ); 
 						?>
                     </div>
                     <div class="post-comment">
-                        <img src="<?php echo BBPC_ASSETS . '/img/forum_tab/chatbubbles-outline.svg' ?>" alt="<?php esc_attr_e( 'Chatbubbles outline icon', 'bbpc-core' ); ?>">
+                        <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/chatbubbles-outline.svg' ); ?>" alt="<?php esc_attr_e( 'Chatbubbles outline icon', 'bbp-core' ); ?>">
 						
 						<?php 
 						bbp_topic_reply_count( $topic_id );
 						echo '&nbsp;';
-						_e( 'Replies', 'bbp-core' );
+						esc_html_e( 'Replies', 'bbp-core' );
 						?>
                     </div>
                 </div>

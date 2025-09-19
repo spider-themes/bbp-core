@@ -62,8 +62,8 @@ function bbpc_search_data_fetch() {
 			echo '<h2 class="bbpc-search-title">' . esc_html__( 'Forums', 'bbp-core' ) . '</h2>';
 			while ( $forum->have_posts() ) : $forum->the_post();
 				?>
-				<div class="search-result-item forum" onclick="document.location='<?php echo get_the_permalink(get_the_ID()); ?>'">					
-					<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
+				<div class="search-result-item forum" onclick="document.location='<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>'">					
+					<a href="<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>">
 						<?php the_title(); ?>
 					</a>
 				</div>
@@ -82,8 +82,8 @@ function bbpc_search_data_fetch() {
 			echo '<h2 class="bbpc-search-title">' . esc_html__( 'Topics', 'bbp-core' ) . '</h2>';
 			while ( $topics->have_posts() ) : $topics->the_post();
 				?>
-				<div class="search-result-item forum" onclick="document.location='<?php echo get_the_permalink(get_the_ID()); ?>'">					
-					<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
+				<div class="search-result-item forum" onclick="document.location='<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>'">					
+					<a href="<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>">
 						<?php the_title(); ?>
 					</a>
 				</div>
@@ -121,8 +121,8 @@ function bbpc_search_data_forum() {
 			echo '<h2 class="bbpc-search-title">' . esc_html__( 'Forums', 'bbp-core' ) . '</h2>';
 			while ( $forum->have_posts() ) : $forum->the_post();
 				?>
-				<div class="search-result-item forum" onclick="document.location='<?php echo get_the_permalink(get_the_ID()); ?>'">					
-					<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
+				<div class="search-result-item forum" onclick="document.location='<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>'">					
+					<a href="<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>">
 						<?php the_title(); ?>
 					</a>
 				</div>
@@ -141,8 +141,8 @@ function bbpc_search_data_forum() {
 			echo '<h2 class="bbpc-search-title">' . esc_html__( 'Topics', 'bbp-core' ) . '</h2>';
 			while ( $topics->have_posts() ) : $topics->the_post();
 				?>
-				<div class="search-result-item forum" onclick="document.location='<?php echo get_the_permalink(get_the_ID()); ?>'">					
-					<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
+				<div class="search-result-item forum" onclick="document.location='<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>'">					
+					<a href="<?php echo esc_url( get_the_permalink(get_the_ID()) ); ?>">
 						<?php the_title(); ?>
 					</a>
 				</div>

@@ -55,15 +55,15 @@ class bbp_solved_topic {
 		if ( ( current_user_can( $this->capability ) ) || ( $topic_author == get_current_user_id() ) ) {
 			if ( isset( $_GET['unsolve_topic'] ) ) {
 				$this->unsolve_topic( bbp_get_topic_id() );
-				$links['solved'] = '<a href="' . bbp_get_topic_permalink() . '?solve_topic">' . esc_html__( 'Mark as solved', 'ama-core' ) . '</a>';
+				$links['solved'] = '<a href="' . bbp_get_topic_permalink() . '?solve_topic">' . esc_html__( 'Mark as solved', 'bbp-core' ) . '</a>';
 			} elseif ( isset( $_GET['solve_topic'] ) ) {
 				$this->solve_topic( bbp_get_topic_id() );
-				$links['unsolved'] = '<a href="' . bbp_get_topic_permalink() . '?unsolve_topic">' . esc_html__( 'Mark as unsolved', 'ama-core' ) . '</a>';
+				$links['unsolved'] = '<a href="' . bbp_get_topic_permalink() . '?unsolve_topic">' . esc_html__( 'Mark as unsolved', 'bbp-core' ) . '</a>';
 			} else {
 				if ( $this->is_solved( bbp_get_topic_id() ) ) {
-					$links['unsolved'] = '<a href="' . bbp_get_topic_permalink() . '?unsolve_topic">' . esc_html__( 'Mark as unsolved', 'ama-core' ) . '</a>';
+					$links['unsolved'] = '<a href="' . bbp_get_topic_permalink() . '?unsolve_topic">' . esc_html__( 'Mark as unsolved', 'bbp-core' ) . '</a>';
 				} else {
-					$links['solved'] = '<a href="' . bbp_get_topic_permalink() . '?solve_topic">' . esc_html__( 'Mark as solved', 'ama-core' ) . '</a>';
+					$links['solved'] = '<a href="' . bbp_get_topic_permalink() . '?solve_topic">' . esc_html__( 'Mark as solved', 'bbp-core' ) . '</a>';
 				}
 			}
 		}
@@ -77,7 +77,7 @@ class bbp_solved_topic {
 			$redirect = remove_query_arg( [ 'solve_topic' ] );
 			wp_safe_redirect( $redirect );
 		} else {
-			wp_die( esc_html__( 'You do not have the permission to do that!', 'ama-core' ) );
+			wp_die( esc_html__( 'You do not have the permission to do that!', 'bbp-core' ) );
 		}
 
 	}
@@ -89,7 +89,7 @@ class bbp_solved_topic {
 			$redirect = remove_query_arg( [ 'unsolve_topic' ] );
 			wp_safe_redirect( $redirect );
 		} else {
-			wp_die( esc_html__( 'You do not have the permission to do that!', 'ama-core' ) );
+			wp_die( esc_html__( 'You do not have the permission to do that!', 'bbp-core' ) );
 		}
 	}
 
@@ -134,7 +134,7 @@ class bbp_solved_topic {
 				?>
 				<p>
 					<input name="bbp_best_answer" id="bbp_best_answer" type="checkbox"<?php checked( '1', $is_best_answer ); ?> value="1" tabindex="<?php bbp_tab_index(); ?>" />
-					<label for="bbp_best_answer"><?php esc_html_e( 'Set this reply as Best Answer.', 'ama-core' ); ?></label>
+					<label for="bbp_best_answer"><?php esc_html_e( 'Set this reply as Best Answer.', 'bbp-core' ); ?></label>
 				</p>
 				<?php
 			}
@@ -154,7 +154,7 @@ class bbp_solved_topic {
 			?>
 			<p>
 				<input name="bbp_solved_topic" id="bbp_solved_topic" type="checkbox"<?php checked( '1', $this->is_solved( bbp_get_topic_id() ) ); ?> value="1" tabindex="<?php bbp_tab_index(); ?>" />
-				<label for="bbp_solved_topic"><?php esc_html_e( 'Set this post as solved.', 'ama-core' ); ?></label>
+				<label for="bbp_solved_topic"><?php esc_html_e( 'Set this post as solved.', 'bbp-core' ); ?></label>
 			</p>
 			<?php
 		}
@@ -339,7 +339,7 @@ class bbp_solved_topic {
 		$topic_id = bbp_get_topic_id();
 
 		if ( $this->is_best_answer( $reply_id ) ) {
-			$content = '<div class="solved-topic-bar" id="best-answer"><span class="badge"><i class="icon_check"></i> ' . esc_html__( 'Best Answer', 'ama-core' ) . '</span></div>' . $content;
+			$content = '<div class="solved-topic-bar" id="best-answer"><span class="badge"><i class="icon_check"></i> ' . esc_html__( 'Best Answer', 'bbp-core' ) . '</span></div>' . $content;
 		}
 
 		return $content;
@@ -372,7 +372,7 @@ class bbp_solved_topic {
 		}
 
 		if ( $this->is_solved( $topic_id ) ) {
-			$resolved = '<span class="accepted-ans-mark badge"><i class="icon_check_alt"></i> ' . esc_html__( 'Resolved', 'ama-core' ) . '</span>';
+			$resolved = '<span class="accepted-ans-mark badge"><i class="icon_check_alt"></i> ' . esc_html__( 'Resolved', 'bbp-core' ) . '</span>';
 		}
 
 		$content = $content . $open . $resolved . $has_best_answer . $close;

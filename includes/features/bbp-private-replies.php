@@ -85,11 +85,11 @@ class BBP_Private_Replies {
 
 			<?php if ( bbp_is_reply_edit() && ( get_the_author_meta( 'ID' ) != bbp_get_current_user_id() ) ) : ?>
 
-				<label for="bbp_private_reply"><?php esc_html_e( "Set author's post as private.", 'ama-core' ); ?></label>
+				<label for="bbp_private_reply"><?php esc_html_e( "Set author's post as private.", 'bbp-core' ); ?></label>
 
 			<?php else : ?>
 
-				<label for="bbp_private_reply"><?php esc_html_e( 'Set as private reply', 'ama-core' ); ?></label>
+				<label for="bbp_private_reply"><?php esc_html_e( 'Set as private reply', 'bbp-core' ); ?></label>
 
 			<?php endif; ?>
 
@@ -203,9 +203,9 @@ class BBP_Private_Replies {
 			}
 
 			if ( ! $can_view ) {
-				$content = '<div class="alert alert-danger">' . esc_html__( 'This reply has been marked as private.', 'ama-core' ) . '</div>';
+				$content = '<div class="alert alert-danger">' . esc_html__( 'This reply has been marked as private.', 'bbp-core' ) . '</div>';
 			} else {
-				$content = '<div class="alert alert-warning">' . esc_html__( 'This is a private reply.', 'ama-core' ) . '</div>' . $content;
+				$content = '<div class="alert alert-warning">' . esc_html__( 'This is a private reply.', 'bbp-core' ) . '</div>' . $content;
 			}
 		}
 

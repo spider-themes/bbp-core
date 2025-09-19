@@ -17,7 +17,7 @@ class Pro_Widget_Service {
             'bbpc_active_modules' => [
                 [
                     'name' => 'ama_ajax_forum',
-                    'label' => esc_html__('BBPC Ajax Forums', 'bbp-core-pro'),
+                    'label' => esc_html__('BBPC Ajax Forums', 'bbp-core'),
                     'type' => 'checkbox',
                     'default' => 'off',
                     'widget_type' => 'pro',
@@ -26,7 +26,7 @@ class Pro_Widget_Service {
                 ],
                 [
                     'name' => 'ama_forum_posts',
-                    'label' => esc_html__('BBPC Forum Topics', 'bbp-core-pro'),
+                    'label' => esc_html__('BBPC Forum Topics', 'bbp-core'),
                     'type' => 'checkbox',
                     'default' => 'off',
                     'widget_type' => 'pro',
@@ -35,7 +35,7 @@ class Pro_Widget_Service {
                 ],
                 [
                     'name' => 'ama_forum_tab',
-                    'label' => esc_html__('BBPC Forum Tabs', 'bbp-core-pro'),
+                    'label' => esc_html__('BBPC Forum Tabs', 'bbp-core'),
                     'type' => 'checkbox',
                     'default' => 'off',
                     'widget_type' => 'pro',
@@ -44,7 +44,7 @@ class Pro_Widget_Service {
                 ],
                 [
                     'name' => 'ama_forums',
-                    'label' => esc_html__('BBPC Forums', 'bbp-core-pro'),
+                    'label' => esc_html__('BBPC Forums', 'bbp-core'),
                     'type' => 'checkbox',
                     'default' => 'off',
                     'widget_type' => 'pro',
@@ -53,7 +53,7 @@ class Pro_Widget_Service {
                 ],
                 [
                     'name' => 'ama_search',
-                    'label' => esc_html__('BBPC Search', 'bbp-core-pro'),
+                    'label' => esc_html__('BBPC Search', 'bbp-core'),
                     'type' => 'checkbox',
                     'default' => 'off',
                     'widget_type' => 'pro',
@@ -62,7 +62,7 @@ class Pro_Widget_Service {
                 ],
                 [
                     'name' => 'ama_single_forum',
-                    'label' => esc_html__('BBPC Single Forum', 'bbp-core-pro'),
+                    'label' => esc_html__('BBPC Single Forum', 'bbp-core'),
                     'type' => 'checkbox',
                     'default' => 'off',
                     'widget_type' => 'pro',

@@ -12,7 +12,7 @@ if ( class_exists( 'CSF' ) ) {
 			'framework_class' => 'bbp-core-settings',
 			'theme'           => 'dark',
 
-			'menu_title'      => __( 'BBPC Settings', 'bbp-core-pro' ),
+			'menu_title'      => __( 'BBPC Settings', 'bbp-core' ),
 			'menu_slug'       => 'bbp-core-settings',
 			'menu_type'       => 'submenu',
 			'menu_parent'     => 'bbp-core',

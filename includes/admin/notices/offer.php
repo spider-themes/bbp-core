@@ -23,7 +23,7 @@ function bbpc_offer_notice() {
                 </div>
             </div>
             <div class="bbpc-col">
-                <img src="<?php echo BBPC_IMG ?>/icon/coupon.svg"
+                <img src="<?php echo esc_url( BBPC_IMG . 'icon/coupon.svg' ); ?>"
                      alt="<?php echo esc_attr_x( 'Coupon', 'coupon', 'bbp-core' ); ?>" class="coupon-icon">
                 <div class="bbpc-col-text">
                     <p><strong><?php esc_html_e('Up to 40% Off', 'bbp-core'); ?></strong></p>
@@ -31,7 +31,7 @@ function bbpc_offer_notice() {
                 </div>
             </div>
             <div class="bbpc-col">
-                <img src="<?php echo BBPC_IMG ?>/icon/cursor-hand.svg"
+                <img src="<?php echo esc_url( BBPC_IMG . 'icon/cursor-hand.svg' ); ?>"
                      alt="<?php echo esc_attr_x( 'Coupon', 'coupon', 'bbp-core' ); ?>" class="coupon-icon">
                 <div class="bbpc-col-text">
                     <p><strong><?php esc_html_e('Grab the deal', 'bbp-core'); ?></strong></p>
@@ -77,13 +77,13 @@ function bbpc_offer_notice() {
                 offerWrap.style.display = 'none';
 
                 // Make an AJAX request to save the dismissal for the logged-in user
-                fetch('<?php echo admin_url( 'admin-ajax.php' ); ?>', {
+                fetch('<?php echo esc_url_raw( admin_url( 'admin-ajax.php' ) ); ?>', {
                     method: 'POST',
                     credentials: 'same-origin',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     },
-                    body: 'action=bbpc_dismiss_offer_notice&nonce=<?php echo wp_create_nonce( "bbpc-dismiss-notice" ); ?>'
+                    body: 'action=bbpc_dismiss_offer_notice&nonce=<?php echo esc_js( wp_create_nonce( 'bbpc-dismiss-notice' ) ); ?>'
                 }).then(response => response.json()).then(data => {
                     if (!data.success) {
                         console.error('Error dismissing the notice:', data.message);
@@ -91,6 +91,7 @@ function bbpc_offer_notice() {
                 }).catch(err => {
                     console.error('Error dismissing the offer:', err);
                 });
+
             });
         });
     </script>

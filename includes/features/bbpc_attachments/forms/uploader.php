@@ -4,6 +4,7 @@
 		<p>
             <?php
             $size = $file_size < 1024 ? $file_size . ' KB' : floor( $file_size / 1024 ) . ' MB';
+            /* translators: %s: Allowed file upload size */
             printf( __( 'Maximum file size allowed is %s.', 'bbp-core' ), $size );
             ?>
         </p>

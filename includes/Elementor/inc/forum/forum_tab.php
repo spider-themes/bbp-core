@@ -23,7 +23,7 @@ $topics_tab_title = ! empty ( $settings['topics_tab_title'] ) ? $settings['topic
             while ( $forums->have_posts() ) : $forums->the_post();
                 $item_id   = get_the_ID();
                 $author_id = get_post_field( 'post_author', $item_id );
-                ?>
+                ?> 
                 <div class="col-md-6 col-lg-4 bbpc-community-topic-widget-wrapper">
                     <div class="community-topic-widget-box">
                         <?php the_post_thumbnail( 'full' ); ?>

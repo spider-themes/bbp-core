@@ -24,7 +24,7 @@ function bbpc_resolved_topics( $content = '', $topic_id = 0 ) {
 		}
 
 		if ( $obj->is_solved( $topic_id ) ) {
-			$resolved = '<span class="accepted-ans-mark badge"><i class="icon_check_alt"></i> ' . esc_html__( 'Resolved', 'ama-core' ) . '</span>';
+			$resolved = '<span class="accepted-ans-mark badge"><i class="icon_check_alt"></i> ' . esc_html__( 'Resolved', 'bbp-core' ) . '</span>';
 		}
 
 		$content = $content . $open . $resolved . $has_best_answer . $close;

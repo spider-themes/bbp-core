@@ -12,8 +12,17 @@ add_action('bbp_template_after_user_details_menu_items', function() {
     <ul>
         <li class="bbp-user-votings-wrap">
             <span>
-                <a href="<?php bbp_user_profile_url(); ?>?bbpc-voting=true" title="<?php printf( esc_attr__( "%s's Votings", 'bbp-core-pro' ), bbp_get_displayed_user_field( 'display_name' ) ); ?>">
-                    <?php esc_html_e( 'Reactions', 'bbp-core-pro' ); ?>
+                <a href="<?php echo esc_url( bbp_user_profile_url() . '?bbpc-voting=true' ); ?>"
+                title="<?php
+                   
+                    echo esc_attr(
+                        sprintf(  /* translators: %s: Display name of the user */
+                            __( "%s's Votings", 'bbp-core' ),
+                            bbp_get_displayed_user_field( 'display_name' )
+                        )
+                    );
+                ?>">
+                    <?php esc_html_e( 'Reactions', 'bbp-core' ); ?>
                 </a>
             </span>
         </li>

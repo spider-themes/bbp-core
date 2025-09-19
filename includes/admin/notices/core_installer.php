@@ -43,39 +43,38 @@ if ( ! class_exists( 'BBPCore_Install_Core' ) ) :
 		public function activation_notice() {
 			?>
 			<script>
-                jQuery(document).ready( function($) {
-                    $('#bbp-core-install-core').on('click', function (e) {
-                        var self = $(this);
-                        e.preventDefault();
-                        self.addClass('install-now updating-message');
-                        self.text('<?php echo esc_js( 'Installing...' ); ?>');
+				jQuery(document).ready(function ($) {
+					$('#bbp-core-install-core').on('click', function (e) {
+						var self = $(this);
+						e.preventDefault();
+						self.addClass('install-now updating-message');
+						self.text('<?php echo esc_js( __( 'Installing...', 'bbp-core' ) ); ?>');
 
-                        $.ajax({
-                            url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-                            type: 'post',
-                            data: {
-                                action: 'BBPCore_Install_Core_installer',
-                                _wpnonce: '<?php echo wp_create_nonce('BBPCore_Install_Core_installer'); ?>',
-                            },
-                            success: function(response) {
-                                self.text('<?php echo esc_js( 'Installed' ); ?>');
-                                window.location.href = '<?php echo admin_url( 'admin.php?page=bbp-core' ); ?>';
-                            },
-                            error: function(error) {
-                                self.removeClass('install-now updating-message');
-                                alert( error );
-                            },
-                            complete: function() {
-                                self.attr('disabled', 'disabled');
-                                self.removeClass('install-now updating-message');
-                            }
-                        });
-                    });
-                } );
+						$.ajax({
+							url: '<?php echo esc_url_raw( admin_url( 'admin-ajax.php' ) ); ?>',
+							type: 'post',
+							data: {
+								action: 'BBPCore_Install_Core_installer',
+								_wpnonce: '<?php echo esc_js( wp_create_nonce( 'BBPCore_Install_Core_installer' ) ); ?>',
+							},
+							success: function (response) {
+								self.text('<?php echo esc_js( __( 'Installed', 'bbp-core' ) ); ?>');
+								window.location.href = '<?php echo esc_url_raw( admin_url( 'admin.php?page=bbp-core' ) ); ?>';
+							},
+							error: function (error) {
+								self.removeClass('install-now updating-message');
+								alert(error);
+							},
+							complete: function () {
+								self.attr('disabled', 'disabled');
+								self.removeClass('install-now updating-message');
+							}
+						});
+					});
+				});
 			</script>
 			<?php
 		}
-
 
 		/**
 		 * Fail if plugin installtion/activation fails
@@ -98,7 +97,7 @@ if ( ! class_exists( 'BBPCore_Install_Core' ) ) :
 		public function install_bbpcore_core() {
 			check_ajax_referer( 'BBPCore_Install_Core_installer' );
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_send_json_error( __( 'You don\'t have permission to install the plugins' ) );
+				wp_send_json_error( __( 'You don\'t have permission to install the plugins', 'bbp-core' ) );
 			}
 			$is_installed = isset( $_POST['installed'] ) ? $_POST['installed'] : false;
 			$nx_status = $this->install_plugin( 'bbpress', 'bbpress.php' );

@@ -21,7 +21,7 @@ $are_all_available = empty( array_diff( $expected_items, $filter_set ) ) ? 'all-
 
 		<?php if ( in_array( 'open', $filter_set, true ) ) : ?>
             <li class="easydocs-btn" cookie-id="open-<?php echo esc_attr( $item ); ?>" data-filter=".open-topics">
-                <img src="<?php echo BBPC_IMG ?>icon/open.svg" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>">
+                <img src="<?php echo esc_url( BBPC_IMG . 'icon/open.svg' ); ?>" alt="<?php esc_attr_e( 'Open icon', 'bbp-core' ) ?>">
 				<?php esc_html_e( 'Open', 'bbp-core' ); ?>
                 <span class="filter-count-badge"> (<?php echo esc_html( $count_open ); ?>) </span>
             </li>
@@ -71,8 +71,8 @@ $are_all_available = empty( array_diff( $expected_items, $filter_set ) ) ? 'all-
 
     <?php if ( in_array( 'trash', $filter_set, true ) ) : ?>
 		<div class="easydocs-btn-sm bbpc-trash-filter">
-			<a href="<?php echo admin_url( 'edit.php?post_status=trash&post_type=topic' ); ?>">
-                <img src="<?php echo BBPC_IMG ?>/icon/trash.svg" alt="<?php esc_attr_e( 'Trash icons', 'bbp-core') ?>">
+			<a href="<?php echo esc_url( admin_url( 'edit.php?post_status=trash&post_type=topic' ) ); ?>">
+                <img src="<?php echo esc_url( BBPC_IMG . 'icon/trash.svg' ); ?>" alt="<?php esc_attr_e( 'Trash icons', 'bbp-core') ?>">
 				<?php esc_html_e( 'Trashed', 'bbp-core' ); ?>
 				<span class="filter-count-badge"> (<?php echo esc_html( $count_trash ); ?>) </span>
 			</a>

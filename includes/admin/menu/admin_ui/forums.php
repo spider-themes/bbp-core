@@ -39,12 +39,13 @@
 					</span>
                 </div>
                 <div class="link-wrapper link">
-					<?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
-                        <a href="<?php echo get_edit_post_link( get_the_ID() ); ?>" class="link edit" target="_blank"
+					<?php 
+					if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
+                        <a href="<?php echo esc_url( get_edit_post_link( get_the_ID() ) ); ?>" class="link edit" target="_blank"
                            title="<?php esc_attr_e( 'Edit this forum.', 'bbp-core' ); ?>">
                             <span class="dashicons dashicons-edit"></span>
                         </a>
-					<?php
+						<?php
 					endif;
 					?>
 
@@ -55,7 +56,7 @@
 					<?php
 					if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) :
 						?>
-                        <a href="javascript:void(0);" bbp_forum_id="<?php echo get_the_ID(); ?>" class="link forum-delete"
+                        <a href="javascript:void(0);" bbp_forum_id="<?php echo esc_attr( get_the_ID() ); ?>" class="link forum-delete"
                            title="<?php esc_attr_e( 'Move this forum to the Trash', 'bbp-core' ); ?>">
                             <span class="dashicons dashicons-trash"></span>
                         </a>

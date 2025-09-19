@@ -97,13 +97,13 @@ class Forum_posts extends Widget_Base {
                     <div class="post-content">
                         <div class="author-avatar">
 							<?php 
-							echo bbp_get_topic_author_link( 
+							echo wp_kses_post( bbp_get_topic_author_link( 
 								array( 
 									'post_id' 	=> get_the_ID(), 
 									'size' 		=> 40, 
 									'type' 		=> 'avatar' 
 								)
-							);
+							) );
 							?>
                         </div>
                         <div class="entry-content">
@@ -113,7 +113,7 @@ class Forum_posts extends Widget_Base {
 
 							<?php 
 							esc_html_e( 'Last active: ', 'bbp-core' );
-							echo bbp_get_forum_last_active_time( get_the_ID() );
+							echo esc_html( bbp_get_forum_last_active_time( get_the_ID() ) );
 							?>
 
                         </div>

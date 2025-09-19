@@ -267,42 +267,42 @@ class Forum_Ajax extends Widget_Base {
 					$vote_count = get_post_meta( $topic_id, "bbpv-votes", true );
 					$forum_id   = bbp_get_topic_forum_id();
 					?>
-                    <div class="single-forum-post-widget wow fadeInUp" data-wow-delay="<?php echo $delay ?>s">
+                    <div class="single-forum-post-widget wow fadeInUp" data-wow-delay="<?php echo esc_attr( $delay ); ?>s">
                         <div class="post-content">
                             <div class="post-title">
                                 <h6><a href="<?php the_permalink(); ?>"> <?php the_title() ?> </a></h6>
                             </div>
                             <div class="post-info">
                                 <div class="author">
-                                    <img src="<?php echo BBPC_IMG . '/forum_tab/user-circle-alt.svg' ?>" alt="<?php esc_attr_e( 'User circle alt icon',
-										'bbpc-core' ); ?>">
+                                    <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/user-circle-alt.svg' ); ?>" alt="<?php esc_attr_e( 'User circle alt icon',
+										'bbp-core' ); ?>">
 									<?php
-									echo bbp_get_topic_author_link(
+									echo wp_kses_post( bbp_get_topic_author_link(
 										array(
 											'post_id' => $topic_id,
 											'type'    => 'name'
 										)
-									);
+									) );
 									?>
                                 </div>
 
                                 <div class="post-time">
-                                    <img src="<?php echo BBPC_IMG . '/forum_tab/time-outline.svg' ?>"
-                                         alt="<?php esc_attr_e( 'Time outline icon', 'bbpc-core' ); ?>">
+                                    <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/time-outline.svg' ); ?>"
+                                         alt="<?php esc_attr_e( 'Time outline icon', 'bbp-core' ); ?>">
 									<?php bbp_forum_last_active_time( get_the_ID() ); ?>
                                 </div>
                             </div>
 
                             <div class="post-category">
-                                <a href="<?php echo get_the_permalink( $forum_id ) ?>">
+                                <a href="<?php echo esc_url( get_the_permalink( $forum_id ) ); ?>">
 									<?php echo get_the_post_thumbnail( $forum_id ); ?>
-									<?php echo bbp_get_topic_forum_title(); ?>
+									<?php echo esc_html( bbp_get_topic_forum_title() ); ?>
                                 </a>
                             </div>
                         </div>
                         <div class="post-reach">
                             <div class="post-view">
-                                <img src="<?php echo BBPC_IMG . '/forum_tab/eye-outline.svg' ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbpc-core' ); ?>">
+                                <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/eye-outline.svg' ); ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbp-core' ); ?>">
 
 								<?php
 								bbp_topic_view_count( $topic_id );
@@ -311,12 +311,12 @@ class Forum_Ajax extends Widget_Base {
 								?>
                             </div>
                             <div class="post-like">
-                                <img src="<?php echo BBPC_IMG . '/forum_tab/thumbs-up-outline.svg' ?>"
-                                     alt="<?php esc_attr_e( 'Thumbs-up outline icon', 'bbpc-core' ); ?>">
+                                <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/thumbs-up-outline.svg' ); ?>"
+                                     alt="<?php esc_attr_e( 'Thumbs-up outline icon', 'bbp-core' ); ?>">
 
 								<?php
 								if ( $vote_count ) {
-									echo $vote_count;
+									echo esc_html( $vote_count );
 								} else {
 									echo "0";
 								}
@@ -326,8 +326,8 @@ class Forum_Ajax extends Widget_Base {
 								?>
                             </div>
                             <div class="post-comment">
-                                <img src="<?php echo BBPC_IMG . '/forum_tab/chatbubbles-outline.svg' ?>"
-                                     alt="<?php esc_attr_e( 'Chat bubbles icon', 'bbpc-core' ); ?>">
+                                <img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/chatbubbles-outline.svg' ); ?>"
+                                     alt="<?php esc_attr_e( 'Chat bubbles icon', 'bbp-core' ); ?>">
 								<?php
 								bbp_topic_reply_count( $topic_id );
 								echo '&nbsp;';
