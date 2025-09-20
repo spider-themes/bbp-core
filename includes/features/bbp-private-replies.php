@@ -80,7 +80,6 @@ class BBP_Private_Replies {
 
 		?>
 		<p>
-
 			<input name="bbp_private_reply" id="bbp_private_reply" type="checkbox"<?php checked( '1', $this->is_private( bbp_get_reply_id() ) ); ?> value="1" tabindex="<?php bbp_tab_index(); ?>" />
 
 			<?php if ( bbp_is_reply_edit() && ( get_the_author_meta( 'ID' ) != bbp_get_current_user_id() ) ) : ?>
@@ -259,18 +258,17 @@ class BBP_Private_Replies {
 		$reply_author_name = bbp_get_reply_author_display_name( $reply_id );
 
 		// Strip tags from text and setup mail data
-		$topic_title   = strip_tags( bbp_get_topic_title( $topic_id ) );
-		$reply_content = strip_tags( bbp_get_reply_content( $reply_id ) );
+		$topic_title   = wp_strip_all_tags( bbp_get_topic_title( $topic_id ) );
+		$reply_content = wp_strip_all_tags( bbp_get_reply_content( $reply_id ) );
 		$reply_url     = bbp_get_reply_url( $reply_id );
 		$blog_name     = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
-
-		$subject = apply_filters( 'bbp_subscription_mail_title', '[' . $blog_name . '] ' . $topic_title, $reply_id, $topic_id );
+		$subject 	   = apply_filters( 'bbp_subscription_mail_title', '[' . $blog_name . '] ' . $topic_title, $reply_id, $topic_id );
 
 		// Array to hold BCC's
-		$headers = [];
+		$headers 	   = [];
 
 		// Setup the From header
-		$headers[] = 'From: ' . get_bloginfo( 'name' ) . ' <' . $this->get_no_reply() . '>';
+		$headers[] 	   = 'From: ' . get_bloginfo( 'name' ) . ' <' . $this->get_no_reply() . '>';
 
 		// Get topic subscribers and bail if empty
 		$user_ids = bbp_get_topic_subscribers( $topic_id, true );

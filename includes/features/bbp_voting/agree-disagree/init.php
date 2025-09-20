@@ -65,7 +65,9 @@ add_action( 'bbp_template_before_user_wrapper', function(){
                     $(document).ready(function(){
                         $('#bbp-user-navigation ul li').removeClass('current');
                         $('.bbp-user-votings-wrap').addClass('current');
-                        $('#bbp-user-body').html(<?php echo $voting_content; ?>);
+                        $('#bbp-user-body').html(
+                            <?php echo wp_json_encode( $voting_content ); ?>
+                        );
                         $('.bbpc-no-voting-wrap:not(:last-child)').remove();
                     });
                 })(jQuery);

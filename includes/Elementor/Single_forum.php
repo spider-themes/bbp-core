@@ -229,7 +229,7 @@ class Single_forum extends Widget_Base
             include "inc/single-forum/single-forum-{$settings['style']}.php";
         } else { ?>
             <div class="alert alert-warning" role="alert">
-                <?php _e('Please select a forum.', 'bbp-core'); ?>
+                <?php esc_html_e('Please select a forum.', 'bbp-core'); ?>
             </div>
             <?php
         }

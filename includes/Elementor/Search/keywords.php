@@ -5,7 +5,7 @@ if ( $settings['is_keywords'] == 'yes' && !empty($settings['keywords']) ) :
 	?>
 	<div class="bbpc-search-keyword <?php echo esc_attr( $keywords_align ); ?>">
 	<?php if ( !empty($settings['keywords_label']) ) : ?>
-			<span class="bbpc-search-keywords-label"> <?php echo $settings['keywords_label'] ?> </span>
+			<span class="bbpc-search-keywords-label"> <?php echo esc_html( $settings['keywords_label'] ) ?> </span>
 		<?php endif;
 		
 		if ( !empty($settings['keywords']) ) : ?>

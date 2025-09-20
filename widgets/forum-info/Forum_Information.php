@@ -28,7 +28,7 @@ class Forum_Information extends WP_Widget {
         $show_last_activity     = $instance['show_last_activity'] ?? false;
         $show_subscribe         = $instance['show_subscribe'] ?? false;
 
-        echo $args['before_widget'];
+        echo wp_kses_post( $args['before_widget'] );
 
         if(  is_bbpress() && is_singular( 'forum' ) ) :
             $forum_id               = bbp_get_forum_id();
@@ -39,13 +39,8 @@ class Forum_Information extends WP_Widget {
             $last_active_user       = get_post_field( 'post_author', $last_active_user_id );
 
 	        if ( $title ) {
-		        echo $args['before_title'] . $title . $args['after_title'];
+		        echo wp_kses_post( $args['before_title'] . $title . $args['after_title'] );
 	        }
-
-            $subscribe_link         = '';
-            if ( is_user_logged_in() ) {
-                $subscribe_link     = bbp_get_forum_subscription_link();
-            }
 
             if ( $show_topics_count == 'on' || $show_replies_count == 'on' || $show_last_post_user == 'on' || $show_last_activity == 'on' || $show_subscribe == 'on') :
                 ?>
@@ -96,15 +91,15 @@ class Forum_Information extends WP_Widget {
                                         <?php 
                                         if ( $show_icons == 'on' ) :
                                             ?>
-                                            <img src="<?php echo BBPC_IMG ?>/avatar.svg" alt="<?php esc_attr_e( 'BBP Core Pro avatar icon', 'bbp-core' ); ?>">
+                                            <img src="<?php echo esc_url( BBPC_IMG . 'avatar.svg' ) ?>" alt="<?php esc_attr_e( 'BBP Core Pro avatar icon', 'bbp-core' ); ?>">
                                             <?php 
                                         endif;
                                         esc_html_e( 'Last post by', 'bbp-core' );
                                         ?>    
                                 </th>
                                     <td>
-                                        <a href="<?php echo get_author_posts_url( $last_active_user ); ?>">
-                                            <?php echo esc_html($last_active_user = get_the_author_meta( 'user_nicename', $last_active_user )); ?>
+                                        <a href="<?php echo esc_url( get_author_posts_url( $last_active_user ) ); ?>">
+                                            <?php echo esc_html( get_the_author_meta( 'user_nicename', $last_active_user ) ); ?>
                                         </a>
                                     </td>
                                 </tr>
@@ -124,7 +119,7 @@ class Forum_Information extends WP_Widget {
                                         esc_html_e( 'Last activity', 'bbp-core' );
                                         ?>
                                     </th>
-                                    <td> <?php echo esc_html($last_active); ?> </td>
+                                    <td> <?php echo esc_html( $last_active ); ?> </td>
                                 </tr>
                                 <?php 
                             endif;
@@ -146,9 +141,9 @@ class Forum_Information extends WP_Widget {
                                     <td>
                                         <?php 
                                         if( is_user_logged_in() ){
-                                            echo bbp_get_forum_subscription_link();
+                                            echo wp_kses_post( bbp_get_forum_subscription_link() );
                                         } else {
-                                            echo $subscribe_link = '<a href="'. wp_login_url(get_permalink()) .'">'. esc_html__('Login to subscribe', 'bbp-core') .'</a>';
+                                            echo wp_kses_post( '<a href="'. wp_login_url(get_permalink()) .'">'. esc_html__('Login to subscribe', 'bbp-core') .'</a>' );
                                         }
                                         ?>
                                     </td>
@@ -163,7 +158,7 @@ class Forum_Information extends WP_Widget {
             endif;
         endif;
 
-		echo $args['after_widget'];
+		echo wp_kses_post( $args['after_widget'] );
 	}
 
 	public function form( $instance ) {
@@ -178,14 +173,14 @@ class Forum_Information extends WP_Widget {
 	}
 
     public function update($new_instance, $old_instance){
-        $instance          = array();
-        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
-        $instance['show_icons'] = (!empty($new_instance['show_icons'])) ? strip_tags($new_instance['show_icons']) : '';
-        $instance['show_topics_count'] = (!empty($new_instance['show_topics_count'])) ? strip_tags($new_instance['show_topics_count']) : '';
-        $instance['show_replies_count'] = (!empty($new_instance['show_replies_count'])) ? strip_tags($new_instance['show_replies_count']) : '';
-        $instance['show_last_post_user'] = (!empty($new_instance['show_last_post_user'])) ? strip_tags($new_instance['show_last_post_user']) : '';
-        $instance['show_last_activity'] = (!empty($new_instance['show_last_activity'])) ? strip_tags($new_instance['show_last_activity']) : '';
-        $instance['show_subscribe'] = (!empty($new_instance['show_subscribe'])) ? strip_tags($new_instance['show_subscribe']) : '';
+        $instance                        = array();
+        $instance['title']               = (!empty($new_instance['title'])) ? wp_strip_all_tags($new_instance['title']) : '';
+        $instance['show_icons']          = (!empty($new_instance['show_icons'])) ? wp_strip_all_tags($new_instance['show_icons']) : '';
+        $instance['show_topics_count']   = (!empty($new_instance['show_topics_count'])) ? wp_strip_all_tags($new_instance['show_topics_count']) : '';
+        $instance['show_replies_count']  = (!empty($new_instance['show_replies_count'])) ? wp_strip_all_tags($new_instance['show_replies_count']) : '';
+        $instance['show_last_post_user'] = (!empty($new_instance['show_last_post_user'])) ? wp_strip_all_tags($new_instance['show_last_post_user']) : '';
+        $instance['show_last_activity']  = (!empty($new_instance['show_last_activity'])) ? wp_strip_all_tags($new_instance['show_last_activity']) : '';
+        $instance['show_subscribe']      = (!empty($new_instance['show_subscribe'])) ? wp_strip_all_tags($new_instance['show_subscribe']) : '';
 
         return $instance;
     }

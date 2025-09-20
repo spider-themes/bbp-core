@@ -245,8 +245,9 @@ class GDATTFront {
 		$count    = bbpc_topic_attachments_count( $topic_id, true );
 
 		if ( $count > 0 ) {
-			echo '<span class="bbp-attachments-count" title="' . $count . ' ' . _n( 'attachment', 'attachments', $count, 'bbp-core' ) . '"></span>';
+			echo '<span class="bbp-attachments-count" title="' . esc_attr( $count . ' ' . _n( 'attachment', 'attachments', $count, 'bbp-core' ) ) . '"></span>';
 		}
+
 	}
 
 	public function embed_attachments( $content, $id ) {

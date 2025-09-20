@@ -146,11 +146,11 @@ function bbpc_display_bbpc_geo_votings( $atts ) {
                 $agree_count = get_post_meta($agree_voting_id, '_bbpc_agree_count', true) ?: 0;
                 ?>
                 <div class="bbpc-voting-liked">
-                    <a href="<?php echo get_the_permalink($agree_voting_id); ?>"><?php echo get_the_title($agree_voting_id); ?>
+                    <a href="<?php echo esc_url( get_the_permalink($agree_voting_id) ); ?>"><?php echo esc_html( get_the_title($agree_voting_id) ); ?>
                     
                     <span class="bbpc-agree-disagree-counter-wrap">                    
                         <span id="bbpc-agree-count-<?php echo esc_attr($agree_voting_id); ?>">
-                            <img src="<?php echo BBPC_IMG . '/icon/thumbs-up.svg'; ?>" />
+                            <img src="<?php echo esc_url( BBPC_IMG . 'icon/thumbs-up.svg' ); ?>" />
                             <?php echo esc_html( $agree_count );?>
                         </span>
                     </span>
@@ -171,12 +171,12 @@ function bbpc_display_bbpc_geo_votings( $atts ) {
                 ?>
 
                 <div class="bbpc-voting-liked">
-                    <a href="<?php echo get_the_permalink($disagree_voting_id); ?>"><?php echo get_the_title($disagree_voting_id); ?>
+                    <a href="<?php echo esc_url( get_the_permalink($disagree_voting_id) ); ?>"><?php echo esc_html( get_the_title($disagree_voting_id) ); ?>
                     
                     <span class="bbpc-agree-disagree-counter-wrap"> 
                         
                         <span id="bbpc-disagree-count-<?php echo esc_attr($disagree_voting_id); ?>">
-                        <img src="<?php echo BBPC_IMG . '/icon/thumbs-down.svg'; ?>" />
+                        <img src="<?php echo esc_url( BBPC_IMG . 'icon/thumbs-down.svg' ); ?>" />
                             <?php echo esc_html( $disagree_count );?>
                         </span>
                     </span>
@@ -256,11 +256,11 @@ add_action( 'bbp_theme_after_topic_content', function() {
         $disagree_active_class = ( $user_vote === 'disagree' ) ? 'active' : '';
 
         // Output Agree button
-        echo '<button ' . $login_url . ' class="bbpc-agree-button ' . esc_attr( $agree_active_class ) . '" data-type="like" data-topic="' . esc_attr( $topic_id ) . '">Agree</button>';
+        echo '<button ' . wp_kses_post( $login_url ) . ' class="bbpc-agree-button ' . esc_attr( $agree_active_class ) . '" data-type="like" data-topic="' . esc_attr( $topic_id ) . '">Agree</button>';
         echo '<span class="bbpc-reactions-btn-counter" id="bbpc-agree-count-' . esc_attr( $topic_id ) . '">' . esc_html( $agree_count ) . '</span>';
 
         // Output Disagree button
-        echo '<button ' . $login_url . ' class="bbpc-disagree-button ' . esc_attr( $disagree_active_class ) . '" data-type="dislike" data-topic="' . esc_attr( $topic_id ) . '">Disagree</button>';
+        echo '<button ' . wp_kses_post( $login_url ) . ' class="bbpc-disagree-button ' . esc_attr( $disagree_active_class ) . '" data-type="dislike" data-topic="' . esc_attr( $topic_id ) . '">Disagree</button>';
         echo '<span class="bbpc-reactions-btn-counter" id="bbpc-disagree-count-' . esc_attr( $topic_id ) . '">' . esc_html( $disagree_count ) . '</span>';
 
         echo '</div>'; // Close agree-disagree-buttons div

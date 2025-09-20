@@ -1,27 +1,27 @@
 <div class="forum-with-topics">
     <div class="thumb-area position-relative">
-        <div class="forum-thumbnail" style="background:linear-gradient(rgba(28, 38, 56, 0.5),rgba(28, 38, 56, 0.5)), url('<?php echo $post_thumbnail_url ?>') left top / cover no-repeat">
+        <div class="forum-thumbnail" style="background:linear-gradient(rgba(28, 38, 56, 0.5),rgba(28, 38, 56, 0.5)), url('<?php echo esc_url( $post_thumbnail_url ) ?>') left top / cover no-repeat">
             <div class="forum-info">
                 <div class="title-area align-items-center">
                     <h5 class="title"><?php bbp_core_limit_letter( get_the_title( $forum_id ), 25 ); ?></h5>
-                    <p class="subtitle"> <?php echo wp_trim_words( get_the_content( null, false, $forum_id ), $settings['word_length']  ) ?> </p>
+                    <p class="subtitle"> <?php echo wp_kses_post( wp_trim_words( get_the_content( null, false, $forum_id ), $settings['word_length']  ) ) ?> </p>
                 </div>
                 <ul class="forum-meta d-flex">
-                    <li class="topics" data-toggle="tooltip" data-placement="top" title="<?php _e( 'Topics', 'bbp-core' ) ?>">
+                    <li class="topics" data-toggle="tooltip" data-placement="top" title="<?php esc_html_e( 'Topics', 'bbp-core' ) ?>">
                         <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.5967 7.11193C12.2898 6.35844 12.6544 5.47865 12.6544 4.55108C12.6544 3.30259 11.9915 2.14047 10.7879 1.27881C9.63603 0.454165 8.11322 0 6.5 0C4.88679 0 3.364 0.454165 2.21207 1.27881C1.0085 2.14047 0.34565 3.30259 0.34565 4.55108C0.34565 5.79957 1.0085 6.96169 2.21207 7.82335C3.36397 8.648 4.88679 9.10216 6.5 9.10216C7.31538 9.10216 8.1031 8.98799 8.84589 8.76247C10.2705 9.82445 12.0207 9.99111 12.0983 9.99799C12.1134 9.99935 12.1285 10 12.1435 10C12.3297 10 12.5027 9.89829 12.5926 9.73252C12.6897 9.5534 12.6711 9.3337 12.5452 9.17345C12.5393 9.16589 11.9816 8.44551 11.5967 7.11193ZM4.95879 4.61522C4.97115 4.89114 4.71512 5.12613 4.44788 5.12613C4.16146 5.12613 3.94937 4.89203 3.93697 4.61522C3.92461 4.33929 4.18064 4.10431 4.44788 4.10431C4.7343 4.10431 4.94639 4.33841 4.95879 4.61522ZM6.50003 4.10431C6.78645 4.10431 6.99855 4.33841 7.01094 4.61522C7.02331 4.89114 6.76727 5.12613 6.50003 5.12613C6.21362 5.12613 6.00152 4.89203 5.98912 4.61522C5.97676 4.33929 6.23279 4.10431 6.50003 4.10431ZM8.55219 5.12613C8.26577 5.12613 8.05368 4.89203 8.04128 4.61522C8.02891 4.33929 8.28495 4.10431 8.55219 4.10431C8.8386 4.10431 9.0507 4.33841 9.0631 4.61522C9.07546 4.89111 8.81943 5.12613 8.55219 5.12613Z" fill="white"/>
                         </svg>
-						<?php echo bbp_get_forum_topic_count( $forum_id ); ?>
+						<?php echo esc_html( bbp_get_forum_topic_count( $forum_id ) ); ?>
                     </li>
-                    <li class="replies" data-toggle="tooltip" data-placement="top" title="<?php _e( 'Replies', 'bbp-core' ) ?>">
+                    <li class="replies" data-toggle="tooltip" data-placement="top" title="<?php esc_html_e( 'Replies', 'bbp-core' ) ?>">
                         <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M3.78417 6.93775C3.78417 5.57261 4.48475 4.31923 5.75682 3.40851C6.89559 2.59326 8.38712 2.14429 9.95667 2.14429C9.97481 2.14429 9.99286 2.14464 10.011 2.14479C9.79744 1.9044 9.54628 1.67984 9.25929 1.47506C8.26554 0.765986 6.95181 0.375488 5.56012 0.375488C4.16843 0.375488 2.85473 0.765986 1.86098 1.47503C0.822289 2.21615 0.250238 3.21588 0.250238 4.29005C0.250238 5.08807 0.56474 5.84481 1.16281 6.49294C0.833305 7.62758 0.348852 8.25981 0.344516 8.26537C0.235971 8.4031 0.219682 8.59218 0.303119 8.74643C0.380346 8.88922 0.529291 8.97685 0.689545 8.97685C0.702406 8.97685 0.715385 8.97626 0.728363 8.97512C0.795336 8.9692 2.3058 8.82585 3.535 7.91211C3.66731 7.95216 3.80134 7.9879 3.93678 8.0198C3.83621 7.67041 3.78417 7.30824 3.78417 6.93775Z" fill="white"/>
                             <path d="M14.3408 9.14045C14.9369 8.49234 15.2505 7.7356 15.2505 6.93776C15.2505 5.86388 14.6803 4.8643 13.6451 4.12315C12.6543 3.41385 11.3445 3.0232 9.95687 3.0232C8.56928 3.0232 7.25947 3.41385 6.26865 4.12315C5.23342 4.8643 4.66327 5.86388 4.66327 6.93776C4.66327 8.01164 5.23342 9.01122 6.26865 9.75237C7.25945 10.4617 8.56928 10.8523 9.95687 10.8523C10.6582 10.8523 11.3358 10.7541 11.9747 10.5601C13.2 11.4736 14.7054 11.6169 14.7722 11.6229C14.7852 11.624 14.7982 11.6246 14.8111 11.6246C14.9712 11.6246 15.1201 11.5371 15.1973 11.3945C15.2809 11.2404 15.2648 11.0515 15.1566 10.9136C15.1515 10.9071 14.6718 10.2875 14.3408 9.14045ZM8.63121 6.99293C8.64185 7.23026 8.42162 7.43238 8.19176 7.43238C7.9454 7.43238 7.76297 7.23102 7.75231 6.99293C7.74167 6.75559 7.9619 6.55347 8.19176 6.55347C8.43812 6.55347 8.62055 6.75483 8.63121 6.99293ZM9.9569 6.55347C10.2033 6.55347 10.3857 6.75483 10.3963 6.99293C10.407 7.23026 10.1868 7.43238 9.9569 7.43238C9.71054 7.43238 9.52811 7.23102 9.51744 6.99293C9.50681 6.75559 9.72703 6.55347 9.9569 6.55347ZM11.722 7.43238C11.4757 7.43238 11.2932 7.23102 11.2826 6.99293C11.2719 6.75559 11.4922 6.55347 11.722 6.55347C11.9684 6.55347 12.1508 6.75483 12.1615 6.99293C12.1721 7.23023 11.9519 7.43238 11.722 7.43238Z" fill="white"/>
                         </svg>
-						<?php echo bbp_get_forum_reply_count( $forum_id ); ?>
+						<?php echo esc_html( bbp_get_forum_reply_count( $forum_id ) ); ?>
                     </li>
                     <li class="button">
-                        <a href="<?php the_permalink( $forum_id ); ?>"><?php echo $settings['read_more'] ?></a>
+                        <a href="<?php the_permalink( $forum_id ); ?>"><?php echo esc_html( $settings['read_more'] ); ?></a>
                     </li>
                 </ul>
             </div>
@@ -43,10 +43,10 @@
                     <path d="M3.11842 9.85122H12.1183C12.3255 9.85122 12.4932 9.68335 12.4932 9.47622C12.4932 9.26919 12.3254 9.10132 12.1183 9.10132H3.11842C2.91119 9.10132 2.74332 9.26919 2.74332 9.47622C2.74332 9.68335 2.91119 9.85122 3.11842 9.85122Z"
                           fill="#535A60"/>
                 </svg>
-				<?php _e( 'Topic', 'bbp-core' ); ?>
+				<?php esc_html_e( 'Topic', 'bbp-core' ); ?>
             </div>
             <div class="voice icon-text" data-toggle="tooltip" data-placement="top"
-                 title="<?php _e( 'Voice', 'bbp-core' ) ?>">
+                 title="<?php esc_html_e( 'Voice', 'bbp-core' ) ?>">
                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.99996 0.782593C6.65737 0.782593 5.56518 1.87476 5.56518 3.21738C5.56518 4.56001 6.65734 5.65218 7.99996 5.65218C9.34259 5.65218 10.4347 4.55998 10.4347 3.21738C10.4347 1.87479 9.34259 0.782593 7.99996 0.782593ZM7.99996 4.9565C7.04137 4.9565 6.26085 4.17598 6.26085 3.21738C6.26085 2.25879 7.04137 1.47827 7.99996 1.47827C8.95856 1.47827 9.73907 2.25879 9.73907 3.21738C9.73907 4.17598 8.95859 4.9565 7.99996 4.9565Z"
                           fill="#535A60"/>
@@ -63,7 +63,7 @@
                 </svg>
             </div>
             <div class="replies icon-text" data-toggle="tooltip" data-placement="top"
-                 title="<?php _e( 'Replies', 'bbp-core' ) ?>">
+                 title="<?php esc_html_e( 'Replies', 'bbp-core' ) ?>">
                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.8999 5.35958C12.0565 3.59948 9.57635 3.35946 8.6663 3.33612V1.00264C8.6663 0.81929 8.51629 0.669281 8.33294 0.669281C8.25628 0.669281 8.17959 0.695939 8.11959 0.745942L2.45264 5.41289C2.30929 5.52956 2.28929 5.73957 2.40598 5.88292C2.41933 5.89958 2.43598 5.91292 2.45264 5.92958L8.11962 10.5965C8.26297 10.7132 8.47298 10.6932 8.58964 10.5498C8.63965 10.4898 8.6663 10.4165 8.6663 10.3365V7.91635C9.59636 7.66299 13.1632 7.01964 15.3733 11.1599C15.43 11.2699 15.5433 11.3365 15.6667 11.3365C15.7734 11.3365 15.8767 11.2865 15.9434 11.1899C15.9834 11.1332 16 11.0632 16 10.9932C15.9968 8.58307 15.29 6.68965 13.8999 5.35958ZM10.1297 7.07967C9.01967 7.07967 8.23962 7.34635 8.21962 7.35635C8.08627 7.40301 7.99961 7.5297 7.99961 7.66971V9.62982L3.18934 5.6696L7.99961 1.70937V3.66948C7.99961 3.75949 8.03627 3.84615 8.10296 3.9095C8.16962 3.97284 8.25631 4.00616 8.34963 4.00285C8.37963 4.00285 11.4065 3.89284 13.4466 5.84629C14.45 6.80635 15.0567 8.10642 15.26 9.72651C13.6466 7.55301 11.5998 7.07967 10.1297 7.07967Z"
                           fill="#535A60"/>
@@ -72,7 +72,7 @@
                 </svg>
             </div>
             <div class="freshness icon-text" data-toggle="tooltip" data-placement="top"
-                 title="<?php _e( 'Freshness', 'bbp-core' ) ?>">
+                 title="<?php esc_html_e( 'Freshness', 'bbp-core' ) ?>">
                 <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.99902 3.99999L7.99756 7.49805C7.99756 7.63087 8.05029 7.75782 8.14406 7.85156L10.6465 10.3535L11.3535 9.64648L8.99755 7.291L8.999 3.99999H7.99902Z"
                           fill="#73797E"/>
@@ -90,9 +90,9 @@
                 <div class="topic-contents">
                     <div class="title">
                         <h3> <a href="<?php the_permalink(); ?>"> <?php the_title(); ?> </a> </h3>
-                        <p><?php echo bbp_core_limit_letter( get_the_content(), 40 ); ?></p>
+                        <p><?php echo wp_kses_post( bbp_core_limit_letter( get_the_content(), 40 ) ); ?></p>
                     </div>
-                    <div class="voice"><?php echo bbp_get_topic_voice_count( $topic_id ); ?></div>
+                    <div class="voice"><?php echo esc_html( bbp_get_topic_voice_count( $topic_id ) ); ?></div>
                     <div class="topics"><?php bbp_topic_reply_count( $topic_id ); ?></div>
                     <div class="user">
                         <div class="user-data d-flex">
@@ -123,7 +123,7 @@
 		else:
 			?>
             <div class="topic-contents">
-                <p class="mb-0"> <?php _e( 'No posts found.', 'bbp-core' ); ?> </p>
+                <p class="mb-0"> <?php esc_html_e( 'No posts found.', 'bbp-core' ); ?> </p>
             </div>
             <?php 
         endif;

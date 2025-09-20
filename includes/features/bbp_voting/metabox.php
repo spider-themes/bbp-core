@@ -20,73 +20,82 @@ function bbp_voting_metaboxes() {
 function bbp_voting_forum_metabox() {
 	$post_id = get_the_ID();
 	$options = [
-		''      => 'Default',
-		'true'  => 'Enable',
-		'false' => 'Disable',
+		''      => __( 'Default', 'bbp-core' ),
+		'true'  => __( 'Enable', 'bbp-core' ),
+		'false' => __( 'Disable', 'bbp-core' ),
 	];
 	?>
 	<p class="description">
-		Enable or disable voting on topics or replies, only for this forum.
+		<?php esc_html_e( 'Enable or disable voting on topics or replies, only for this forum.', 'bbp-core' ); ?>
 	</p>
+
 	<p>
-		<strong class="label">Voting on Topics:</strong>
-		<select type="checkbox" name="bbp_voting_forum_enable_topics" value="true" id="bbp_voting_forum_enable_topics" class="bbp_dropdown">
+		<strong class="label"><?php esc_html_e( 'Voting on Topics:', 'bbp-core' ); ?></strong>
+		<select name="bbp_voting_forum_enable_topics" id="bbp_voting_forum_enable_topics" class="bbp_dropdown">
 			<?php
 			$selected = get_post_meta( $post_id, 'bbp_voting_forum_enable_topics', true );
 			foreach ( $options as $value => $label ) {
-				echo '<option value="' . $value . '" ';
-				if ( $selected == $value ) {
-					echo 'selected';
-				}
-				echo '>' . $label . '</option>';
+				printf(
+					'<option value="%s" %s>%s</option>',
+					esc_attr( $value ),
+					selected( $selected, $value, false ),
+					esc_html( $label )
+				);
 			}
 			?>
 		</select>
 	</p>
+
 	<p>
-		<strong class="label">Voting on Replies:</strong>
-		<select type="checkbox" name="bbp_voting_forum_enable_replies" value="true" id="bbp_voting_forum_enable_replies" class="bbp_dropdown">
+		<strong class="label"><?php esc_html_e( 'Voting on Replies:', 'bbp-core' ); ?></strong>
+		<select name="bbp_voting_forum_enable_replies" id="bbp_voting_forum_enable_replies" class="bbp_dropdown">
 			<?php
 			$selected = get_post_meta( $post_id, 'bbp_voting_forum_enable_replies', true );
 			foreach ( $options as $value => $label ) {
-				echo '<option value="' . $value . '" ';
-				if ( $selected == $value ) {
-					echo 'selected';
-				}
-				echo '>' . $label . '</option>';
+				printf(
+					'<option value="%s" %s>%s</option>',
+					esc_attr( $value ),
+					selected( $selected, $value, false ),
+					esc_html( $label )
+				);
 			}
 			?>
 		</select>
 	</p>
+
 	<p class="description">
-		Enable or disable sorting based on votes on topics or replies, only for this forum.
+		<?php esc_html_e( 'Enable or disable sorting based on votes on topics or replies, only for this forum.', 'bbp-core' ); ?>
 	</p>
+
 	<p>
-		<strong class="label">Sort Topics by Votes:</strong>
-		<select type="checkbox" name="sort_bbpress_topics_by_votes_on_forum" value="true" id="sort_bbpress_topics_by_votes_on_forum" class="bbp_dropdown">
+		<strong class="label"><?php esc_html_e( 'Sort Topics by Votes:', 'bbp-core' ); ?></strong>
+		<select name="sort_bbpress_topics_by_votes_on_forum" id="sort_bbpress_topics_by_votes_on_forum" class="bbp_dropdown">
 			<?php
 			$selected = get_post_meta( $post_id, 'sort_bbpress_topics_by_votes_on_forum', true );
 			foreach ( $options as $value => $label ) {
-				echo '<option value="' . $value . '" ';
-				if ( $selected == $value ) {
-					echo 'selected';
-				}
-				echo '>' . $label . '</option>';
+				printf(
+					'<option value="%s" %s>%s</option>',
+					esc_attr( $value ),
+					selected( $selected, $value, false ),
+					esc_html( $label )
+				);
 			}
 			?>
 		</select>
 	</p>
+
 	<p>
-		<strong class="label">Sort Replies by Votes:</strong>
-		<select type="checkbox" name="sort_bbpress_replies_by_votes_on_forum" value="true" id="sort_bbpress_replies_by_votes_on_forum" class="bbp_dropdown">
+		<strong class="label"><?php esc_html_e( 'Sort Replies by Votes:', 'bbp-core' ); ?></strong>
+		<select name="sort_bbpress_replies_by_votes_on_forum" id="sort_bbpress_replies_by_votes_on_forum" class="bbp_dropdown">
 			<?php
 			$selected = get_post_meta( $post_id, 'sort_bbpress_replies_by_votes_on_forum', true );
 			foreach ( $options as $value => $label ) {
-				echo '<option value="' . $value . '" ';
-				if ( $selected == $value ) {
-					echo 'selected';
-				}
-				echo '>' . $label . '</option>';
+				printf(
+					'<option value="%s" %s>%s</option>',
+					esc_attr( $value ),
+					selected( $selected, $value, false ),
+					esc_html( $label )
+				);
 			}
 			?>
 		</select>

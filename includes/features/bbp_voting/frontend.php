@@ -222,7 +222,7 @@ function bbp_voting_buttons( $post_obj = false ) {
 	// Close the voting container
 	$html .= '</div><span style="display:none;">::</span>';
 
-	echo $html;
+	echo wp_kses_post( $html );
 }
 
 

@@ -584,7 +584,7 @@ class Search extends Widget_Base {
 
                     <!-- WPML Language Code -->
 					<?php if ( defined( 'ICL_LANGUAGE_CODE' ) ) : ?>
-                        <input type="hidden" name="lang" value="<?php echo( ICL_LANGUAGE_CODE ); ?>"/>
+                        <input type="hidden" name="lang" value="<?php echo esc_attr( ICL_LANGUAGE_CODE ); ?>"/>
 					<?php endif; ?>
 
                     <input type="hidden" id="hidden_post_type" name="post_type" value="docs"/>

@@ -1,7 +1,9 @@
 <?php if ( $settings['is_keywords'] == 'yes' && ! empty( $settings['keywords'] ) ) : ?>
     <div class="header_search_keyword search-white mt-3">
 		<?php if ( ! empty( $settings['keywords_label'] ) ) : ?>
-            <span class="header-search-form__keywords-label search_keyword_label"> <?php echo $settings['keywords_label'] ?> </span>
+            <span class="header-search-form__keywords-label search_keyword_label"> 
+                <?php echo esc_html( $settings['keywords_label'] ) ?> 
+            </span>
 		<?php endif; ?>
 		<?php if ( ! empty( $settings['keywords'] ) ) : ?>
             <ul class="list-unstyled">

@@ -36,44 +36,42 @@ if ( ! function_exists( 'bbp_voting_get_plugin_activate_link' ) ) {
 
 if ( ! function_exists( 'bbp_voting_field' ) ) {
 	function bbp_voting_field( $key, $name, $label = '', $description = '', $type = 'bool', $pro = false ) {
-		$name_and_id = 'name="' . $key . '" id="' . $key . '"';
+		$name_and_id = 'name="' . esc_attr( $key ) . '" id="' . esc_attr( $key ) . '"';
 		$teaser      = defined( 'BBPVOTINGPRO' ) ? false : $pro;
 		$attributes  = $teaser ? 'disabled' : $name_and_id;
 		?>
 		<tr valign="top">
 			<th scope="row">
-				<?php echo $name; ?>:
+				<?php echo esc_html( $name ); ?>:
 				<?php if ( $pro ) { ?>
-					<a href="https://wpforthewin.com/product/bbpress-voting-pro/" target="_blank"><span class="bbp-voting-pro-badge bbp-voting-pro-green">Pro</span></a>
+					<a href="<?php echo esc_url( 'https://wpforthewin.com/product/bbpress-voting-pro/' ); ?>" target="_blank" rel="noopener noreferrer">
+						<span class="bbp-voting-pro-badge bbp-voting-pro-green">Pro</span>
+					</a>
 				<?php } ?>
 			</th>
 			<td>
-				<?php if ( $type == 'bool' ) { ?>
-					<input type="checkbox" <?php echo $attributes; ?> value="true" 
-					<?php
-					if ( get_option( $key ) == 'true' ) {
-						echo 'checked';}
-					?>
-					 />
+				<?php if ( $type === 'bool' ) { ?>
+					<input type="checkbox" <?php echo wp_kses_post( $attributes ); ?> value="true"
+						<?php checked( get_option( $key ), 'true' ); ?> />
 				<?php } elseif ( is_array( $type ) ) { ?>
-					<select <?php echo $attributes; ?>>
+					<select <?php echo wp_kses_post( $attributes ); ?>>
 						<?php foreach ( $type as $option ) { ?>
-							<option value="<?php echo $option; ?>"
-							<?php
-							if ( get_option( $key ) == $option ) {
-								echo ' selected';}
-							?>
-							><?php echo ucwords( str_replace( '-', ' ', $option ) ); ?></option>
+							<option value="<?php echo esc_attr( $option ); ?>" <?php selected( get_option( $key ), $option ); ?>>
+								<?php echo esc_html( ucwords( str_replace( '-', ' ', $option ) ) ); ?>
+							</option>
 						<?php } ?>
 					</select>
 				<?php } else { ?>
-					<input type="<?php echo $type; ?>" <?php echo $attributes; ?> value="<?php echo get_option( $key ); ?>" data-lpignore="true" />
+					<input type="<?php echo esc_attr( $type ); ?>" <?php echo wp_kses_post( $attributes ); ?> 
+						value="<?php echo esc_attr( get_option( $key ) ); ?>" data-lpignore="true" />
 				<?php } ?>
+
 				<?php if ( ! empty( $label ) ) { ?>
-					<label for="<?php echo $key; ?>"><?php echo $label; ?></label>
+					<label for="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $label ); ?></label>
 				<?php } ?>
+
 				<?php if ( ! empty( $description ) ) { ?>
-					<p class="description"><?php echo $description; ?></p>
+					<p class="description"><?php echo wp_kses_post( $description ); ?></p>
 				<?php } ?>
 			</td>
 		</tr>
