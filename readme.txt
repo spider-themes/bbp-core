@@ -4,7 +4,7 @@ Tags: bbPress, Community, Forum, Private Replies, Attachments
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,10 @@ BBP Core empowers bbPress forum with useful features. For example - Unified Foru
 
 - **11. External Image Insert Button:** Easily insert images with a single click or by using a URL.
 
+- **12. EAuto Approval:** Automatically approve topic replies instantly with this feature. Save time by enabling seamless conversation flow without needing manual approval for every single reply.
+
+- **13. Replies with A2ttachments:** Control reply moderation with attachments. Choose to approve or unapprove replies containing files, ensuring content safety while keeping discussions organized and secure.
+
 == Frequently Asked Questions ==
 
 = Does BBP Core work with any theme? =
@@ -105,6 +109,13 @@ You can install the BBP Core from your WordPress Dashboard or manually upload it
 2. BBP Core Settings
 
 == Changelog ==
+
+= 1.4.0 (23 September 2025) =
+New: Author and Topic Refresh added in the Forum builder
+New: Pagination added for forum builder
+Fixed: Security issues
+Tweaked: Forum Builder design improved
+Updated: Freemius SDK updated to 2.12.2
 
 = 1.3.3 (23 August 2025) =
 FIxed: Forum builder tab content active issue fixed

@@ -1,4 +1,10 @@
 == Changelog ==
+= 1.4.0 (23 September 2025) =
+New: Author and Topic Refresh added in the Forum builder
+New: Pagination added for forum builder
+Fixed: Security issues
+Tweaked: Forum Builder design improved
+Updated: Freemius SDK updated to 2.12.2
 
 = 1.3.3 (23 August 2025) =
 FIxed: Forum builder tab content active issue fixed
