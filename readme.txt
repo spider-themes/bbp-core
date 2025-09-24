@@ -66,9 +66,9 @@ BBP Core empowers bbPress forum with useful features. For example - Unified Foru
 
 - **11. External Image Insert Button:** Easily insert images with a single click or by using a URL.
 
-- **12. EAuto Approval:** Automatically approve topic replies instantly with this feature. Save time by enabling seamless conversation flow without needing manual approval for every single reply.
+- **12. Auto Approval:** Automatically approve topic replies instantly with this feature. Save time by enabling seamless conversation flow without needing manual approval for every single reply.
 
-- **13. Replies with A2ttachments:** Control reply moderation with attachments. Choose to approve or unapprove replies containing files, ensuring content safety while keeping discussions organized and secure.
+- **13. Replies with Attachments:** Control reply moderation with attachments. Choose to approve or unapprove replies containing files, ensuring content safety while keeping discussions organized and secure.
 
 == Frequently Asked Questions ==
 
