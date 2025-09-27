@@ -94,7 +94,7 @@ function bbpc_search_data_fetch() {
 		echo '</div>';		
 	endif;
 
-	echo '<h5 class="not-found-text">Not Found Result!</h5>';
+	echo '<h5 class="not-found-text">' . esc_html__( 'Not Found Result!', 'bbp-core' ) . '</h5>';
 	echo '</div>';
 	die();
 }

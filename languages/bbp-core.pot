@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-06-27 19:30+0600\n"
+"POT-Creation-Date: 2025-09-24 20:31+0600\n"
 "PO-Revision-Date: 2025-06-26 14:59+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,13 +17,13 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: assets\n"
 
-#: bbp-core.php:257
+#: bbp-core.php:270
 msgid "Documentation"
 msgstr ""
 
 #: includes/Elementor/BBP_Widgets.php:68 includes/admin/Menu.php:17
 #: includes/admin/menu/statistics.php:8
-#: includes/admin/notices/bbPress-required.php:20
+#: includes/admin/notices/bbPress-required.php:30
 msgid "BBP Core"
 msgstr ""
 
@@ -123,14 +123,14 @@ msgid "Recent"
 msgstr ""
 
 #: includes/Elementor/Forum_Ajax.php:248
-#: includes/admin/menu/admin_ui/tab_filters.php:67
+#: includes/admin/menu/admin_ui/tab_filters.php:65
 #: includes/admin/options/options_admin_ui.php:9
 #: includes/admin/options/options_admin_ui.php:20
 msgid "Unsolved"
 msgstr ""
 
 #: includes/Elementor/Forum_Ajax.php:253
-#: includes/admin/menu/admin_ui/tab_filters.php:59
+#: includes/admin/menu/admin_ui/tab_filters.php:57
 #: includes/admin/options/options_admin_ui.php:8
 #: includes/admin/options/options_admin_ui.php:19
 msgid "Solved"
@@ -172,8 +172,8 @@ msgstr ""
 #: includes/Elementor/inc/single-forum/single-forum-1.php:16
 #: includes/Elementor/inc/single-forum/single-forum-1.php:66
 #: includes/Elementor/inc/single-forum/single-forum-2.php:14
-#: includes/admin/menu/admin_ui/header.php:38
-#: widgets/forum-info/Forum_Information.php:84
+#: includes/admin/menu/admin_ui/header.php:45
+#: widgets/forum-info/Forum_Information.php:79
 msgid "Replies"
 msgstr ""
 
@@ -524,8 +524,8 @@ msgstr ""
 #: includes/Elementor/Single_forum.php:110
 #: includes/Elementor/inc/single-forum/single-forum-1.php:10
 #: includes/Elementor/inc/single-forum/single-forum-2.php:8
-#: includes/admin/menu/admin_ui/header.php:37 includes/ajax_actions.php:82
-#: includes/ajax_actions.php:141 widgets/forum-info/Forum_Information.php:66
+#: includes/admin/menu/admin_ui/header.php:42 includes/ajax_actions.php:82
+#: includes/ajax_actions.php:141 widgets/forum-info/Forum_Information.php:61
 msgid "Topics"
 msgstr ""
 
@@ -648,25 +648,25 @@ msgstr ""
 msgid "No posts found."
 msgstr ""
 
-#: includes/admin/Assets.php:64
+#: includes/admin/Assets.php:65
 msgid "Enter Forum Title"
 msgstr ""
 
-#: includes/admin/Assets.php:65
+#: includes/admin/Assets.php:66
 msgid "Enter Topic Title"
 msgstr ""
 
-#: includes/admin/Assets.php:66
+#: includes/admin/Assets.php:67
 msgid "Are you sure to delete?"
 msgstr ""
 
-#: includes/admin/Assets.php:67
+#: includes/admin/Assets.php:68
 msgid ""
 "This forum will be deleted with all the topics and you won't be able to "
 "revert!"
 msgstr ""
 
-#: includes/admin/Assets.php:68
+#: includes/admin/Assets.php:69
 msgid "This topic will be deleted and you won't be able to revert!"
 msgstr ""
 
@@ -678,36 +678,36 @@ msgstr ""
 msgid "See it in Action"
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:122
+#: includes/admin/menu/admin_ui.php:132
 msgid "Add Topic"
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:137
+#: includes/admin/menu/admin_ui.php:147
 msgid "Folder Open"
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:138
+#: includes/admin/menu/admin_ui.php:148
 msgid "No forum has been found . Perhaps"
 msgstr ""
 
-#: includes/admin/menu/admin_ui.php:141
+#: includes/admin/menu/admin_ui.php:151
 msgid "Create Forum"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/forums.php:44
+#: includes/admin/menu/admin_ui/forums.php:45
 msgid "Edit this forum."
 msgstr ""
 
-#: includes/admin/menu/admin_ui/forums.php:52
+#: includes/admin/menu/admin_ui/forums.php:53
 msgid "View this forum in new tab"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/forums.php:59
+#: includes/admin/menu/admin_ui/forums.php:60
 msgid "Move this forum to the Trash"
 msgstr ""
 
 #: includes/admin/menu/admin_ui/header.php:7
-#: includes/admin/menu/admin_ui/header.php:36 includes/ajax_actions.php:62
+#: includes/admin/menu/admin_ui/header.php:39 includes/ajax_actions.php:62
 #: includes/ajax_actions.php:121
 msgid "Forums"
 msgstr ""
@@ -724,71 +724,71 @@ msgstr ""
 msgid "Settings Icon"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:35
+#: includes/admin/menu/admin_ui/header.php:36
 msgid "Choose classic UI"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:49
+#: includes/admin/menu/admin_ui/header.php:57
 msgid "Notifications"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:51
+#: includes/admin/menu/admin_ui/header.php:59
 msgid "Notify Icon"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/header.php:52
+#: includes/admin/menu/admin_ui/header.php:60
 msgid "Pro Icon"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:19
+#: includes/admin/menu/admin_ui/tab_filters.php:17
 #: includes/admin/options/options_admin_ui.php:10
 #: includes/admin/options/options_admin_ui.php:21
 msgid "All Topics"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:26
+#: includes/admin/menu/admin_ui/tab_filters.php:24
 #: includes/admin/menu/admin_ui/topics.php:52
 msgid "Open icon"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:27
+#: includes/admin/menu/admin_ui/tab_filters.php:25
 #: includes/admin/options/options_admin_ui.php:4
 #: includes/admin/options/options_admin_ui.php:15
 msgid "Open"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:35
+#: includes/admin/menu/admin_ui/tab_filters.php:33
 #: includes/admin/options/options_admin_ui.php:5
 #: includes/admin/options/options_admin_ui.php:16
 msgid "Closed"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:41
+#: includes/admin/menu/admin_ui/tab_filters.php:39
 msgid "Spam & Pending Topics"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:43
+#: includes/admin/menu/admin_ui/tab_filters.php:41
 #: includes/admin/options/options_admin_ui.php:6
 #: includes/admin/options/options_admin_ui.php:17
 msgid "Hidden"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:51
+#: includes/admin/menu/admin_ui/tab_filters.php:49
 #: includes/admin/options/options_admin_ui.php:7
 #: includes/admin/options/options_admin_ui.php:18
 msgid "No Reply"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:77
+#: includes/admin/menu/admin_ui/tab_filters.php:75
 msgid "Trash icons"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/tab_filters.php:78
+#: includes/admin/menu/admin_ui/tab_filters.php:76
 msgid "Trashed"
 msgstr ""
 
 #: includes/admin/menu/admin_ui/topics.php:25
-#: includes/admin/menu/admin_ui/topics.php:138
+#: includes/admin/menu/admin_ui/topics.php:178
 msgid "Approve this topic"
 msgstr ""
 
@@ -804,19 +804,25 @@ msgstr ""
 msgid "Open Topic"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/topics.php:91
-msgid " Published replies"
+#: includes/admin/menu/admin_ui/topics.php:66
+msgid "&nbsp; By: "
 msgstr ""
 
-#: includes/admin/menu/admin_ui/topics.php:97
-msgid " Pending replies"
+#: includes/admin/menu/admin_ui/topics.php:111
+#, php-format
+msgid "%d Published replies"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/topics.php:106
+#: includes/admin/menu/admin_ui/topics.php:126
+#, php-format
+msgid "%d Pending replies"
+msgstr ""
+
+#: includes/admin/menu/admin_ui/topics.php:139
 msgid "View this reply in new tab"
 msgstr ""
 
-#: includes/admin/menu/admin_ui/topics.php:113
+#: includes/admin/menu/admin_ui/topics.php:146
 msgid "Move this topic to the Trash"
 msgstr ""
 
@@ -888,28 +894,44 @@ msgstr ""
 msgid "Update fail!"
 msgstr ""
 
-#: includes/admin/notices/bbPress-required.php:14
+#: includes/admin/notices/bbPress-required.php:22
 msgid "Activate Now!"
 msgstr ""
 
-#: includes/admin/notices/bbPress-required.php:14
+#: includes/admin/notices/bbPress-required.php:23
 msgid "Install Now!"
 msgstr ""
 
-#: includes/admin/notices/bbPress-required.php:20
+#: includes/admin/notices/bbPress-required.php:31
 msgid "requires"
 msgstr ""
 
-#: includes/admin/notices/bbPress-required.php:20
+#: includes/admin/notices/bbPress-required.php:32
 msgid "bbPress"
 msgstr ""
 
-#: includes/admin/notices/bbPress-required.php:20
-msgid " plugin to be installed. Please get the plugin now!"
+#: includes/admin/notices/bbPress-required.php:33
+msgid "plugin to be installed and active. Please install or activate it now!"
 msgstr ""
 
-#: includes/admin/notices/core_installer.php:101
-msgid "You don't have permission to install the plugins"
+#: includes/admin/notices/bbPress-required.php:50
+msgid "Installing..."
+msgstr ""
+
+#: includes/admin/notices/bbPress-required.php:61
+msgid "Installed"
+msgstr ""
+
+#: includes/admin/notices/bbPress-required.php:64
+msgid "Something went wrong."
+msgstr ""
+
+#: includes/admin/notices/bbPress-required.php:65
+msgid "Failed"
+msgstr ""
+
+#: includes/admin/notices/bbPress-required.php:95
+msgid "You don't have permission to install plugins."
 msgstr ""
 
 #: includes/admin/notices/offer.php:21
@@ -956,11 +978,11 @@ msgstr ""
 msgid "Claim Discount"
 msgstr ""
 
-#: includes/admin/notices/offer.php:109
+#: includes/admin/notices/offer.php:110
 msgid "Notice dismissed for this user."
 msgstr ""
 
-#: includes/admin/notices/offer.php:111
+#: includes/admin/notices/offer.php:112
 msgid "User not logged in."
 msgstr ""
 
@@ -996,7 +1018,7 @@ msgid "Filters to show on admin page."
 msgstr ""
 
 #: includes/admin/options/options_attachments.php:6
-#: includes/features/bbpc_attachments/code/front.php:262
+#: includes/features/bbpc_attachments/code/front.php:263
 #: includes/features/bbpc_attachments/code/meta.php:106
 #: includes/features/bbpc_attachments/forms/uploader.php:16
 msgid "Attachments"
@@ -1319,27 +1341,55 @@ msgid "Topic Replies"
 msgstr ""
 
 #: includes/admin/options/options_replies.php:13
-msgid "Private Replies"
+msgid "BBPC Insert Media"
 msgstr ""
 
 #: includes/admin/options/options_replies.php:14
+msgid ""
+"Enable/Disable the custom image insert button with upload & URL modal for "
+"bbPress editors."
+msgstr ""
+
+#: includes/admin/options/options_replies.php:21
+#: includes/admin/options/options_topics.php:22
+msgid "Auto Approval"
+msgstr ""
+
+#: includes/admin/options/options_replies.php:22
+#: includes/admin/options/options_topics.php:23
+msgid "Enable/ Disable Auto Approval feature."
+msgstr ""
+
+#: includes/admin/options/options_replies.php:28
+msgid "Replies with Attachments"
+msgstr ""
+
+#: includes/admin/options/options_replies.php:29
+msgid "Approve or Unapprove if attachment is added with the reply"
+msgstr ""
+
+#: includes/admin/options/options_replies.php:42
+msgid "Private Replies"
+msgstr ""
+
+#: includes/admin/options/options_replies.php:43
 msgid "Enable/ Disable Private Replies feature."
 msgstr ""
 
-#: includes/admin/options/options_replies.php:19
+#: includes/admin/options/options_replies.php:48
 msgid "Anonymous Reply"
 msgstr ""
 
-#: includes/admin/options/options_replies.php:20
+#: includes/admin/options/options_replies.php:49
 msgid "Allow anonymous to reply a topic."
 msgstr ""
 
-#: includes/admin/options/options_replies.php:26
+#: includes/admin/options/options_replies.php:55
 #: includes/admin/options/options_topics.php:44
 msgid "Anonymous Label"
 msgstr ""
 
-#: includes/admin/options/options_replies.php:27
+#: includes/admin/options/options_replies.php:56
 #: includes/admin/options/options_topics.php:45
 msgid "Post Anonymously"
 msgstr ""
@@ -1366,14 +1416,6 @@ msgstr ""
 
 #: includes/admin/options/options_topics.php:16
 msgid "Enable/ Disable Solved Topics feature."
-msgstr ""
-
-#: includes/admin/options/options_topics.php:22
-msgid "Auto Approval"
-msgstr ""
-
-#: includes/admin/options/options_topics.php:23
-msgid "Enable/ Disable Auto Approval feature."
 msgstr ""
 
 #: includes/admin/options/options_topics.php:29
@@ -1621,19 +1663,19 @@ msgstr ""
 msgid "BBPC Settings"
 msgstr ""
 
-#: includes/features/bbp-private-replies.php:88
+#: includes/features/bbp-private-replies.php:87
 msgid "Set author's post as private."
 msgstr ""
 
-#: includes/features/bbp-private-replies.php:92
+#: includes/features/bbp-private-replies.php:91
 msgid "Set as private reply"
 msgstr ""
 
-#: includes/features/bbp-private-replies.php:206
+#: includes/features/bbp-private-replies.php:205
 msgid "This reply has been marked as private."
 msgstr ""
 
-#: includes/features/bbp-private-replies.php:208
+#: includes/features/bbp-private-replies.php:207
 msgid "This is a private reply."
 msgstr ""
 
@@ -1668,13 +1710,59 @@ msgstr ""
 msgid "Resolved"
 msgstr ""
 
-#: includes/features/bbp_voting/agree-disagree/init.php:15
+#: includes/features/bbp_voting/agree-disagree/init.php:20
 #, php-format
 msgid "%s's Votings"
 msgstr ""
 
-#: includes/features/bbp_voting/agree-disagree/init.php:16
+#: includes/features/bbp_voting/agree-disagree/init.php:25
 msgid "Reactions"
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:23
+#: vendor/csf/fields/typography/typography.php:119
+#: vendor/csf/fields/typography/typography.php:132
+#: vendor/csf/fields/typography/typography.php:145
+#: vendor/csf/fields/typography/typography.php:160
+#: vendor/csf/fields/typography/typography.php:176
+#: vendor/csf/fields/typography/typography.php:189
+#: vendor/csf/fields/typography/typography.php:203
+#: vendor/csf/fields/typography/typography.php:221
+msgid "Default"
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:24
+msgid "Enable"
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:25
+msgid "Disable"
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:29
+msgid "Enable or disable voting on topics or replies, only for this forum."
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:33
+msgid "Voting on Topics:"
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:50
+msgid "Voting on Replies:"
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:67
+msgid ""
+"Enable or disable sorting based on votes on topics or replies, only for this "
+"forum."
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:71
+msgid "Sort Topics by Votes:"
+msgstr ""
+
+#: includes/features/bbp_voting/metabox.php:88
+msgid "Sort Replies by Votes:"
 msgstr ""
 
 #: includes/features/bbpc_attachments/code/admin.php:40
@@ -1798,21 +1886,21 @@ msgstr ""
 msgid "attachment"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:267
+#: includes/features/bbpc_attachments/code/front.php:269
 #, php-format
 msgid "You must be <a href='%s'>logged in</a> to view attached files."
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:296
+#: includes/features/bbpc_attachments/code/front.php:298
 msgid "delete"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:300
+#: includes/features/bbpc_attachments/code/front.php:302
 msgid "detach"
 msgstr ""
 
-#: includes/features/bbpc_attachments/code/front.php:393
-#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:20
+#: includes/features/bbpc_attachments/code/front.php:395
+#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:34
 msgid "Upload Errors"
 msgstr ""
 
@@ -1825,11 +1913,11 @@ msgstr ""
 msgid "Attachments List"
 msgstr ""
 
-#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:4
+#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:5
 msgid "No attachments here."
 msgstr ""
 
-#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:11
+#: includes/features/bbpc_attachments/forms/attachments/meta_files.php:23
 msgid "edit"
 msgstr ""
 
@@ -1877,13 +1965,13 @@ msgstr ""
 msgid "Upload Attachments"
 msgstr ""
 
-#: includes/features/bbpc_attachments/forms/uploader.php:9
+#: includes/features/bbpc_attachments/forms/uploader.php:8
 #, php-format
 msgid "Maximum file size allowed is %s."
 msgstr ""
 
-#: includes/features/bbpc_attachments/forms/uploader.php:19
-msgid "Add another file"
+#: includes/features/bbpc_attachments/forms/uploader.php:21
+msgid "+ Add another file"
 msgstr ""
 
 #: includes/functions.php:196
@@ -2392,17 +2480,6 @@ msgstr ""
 msgid "Backup Font Family"
 msgstr ""
 
-#: vendor/csf/fields/typography/typography.php:119
-#: vendor/csf/fields/typography/typography.php:132
-#: vendor/csf/fields/typography/typography.php:145
-#: vendor/csf/fields/typography/typography.php:160
-#: vendor/csf/fields/typography/typography.php:176
-#: vendor/csf/fields/typography/typography.php:189
-#: vendor/csf/fields/typography/typography.php:203
-#: vendor/csf/fields/typography/typography.php:221
-msgid "Default"
-msgstr ""
-
 #: vendor/csf/fields/typography/typography.php:130
 msgid "Font Style"
 msgstr ""
@@ -2544,6 +2621,10 @@ msgstr ""
 msgid "Please enter a valid URL."
 msgstr ""
 
+#: vendor/fs/assets/js/pricing/freemius-pricing.js:2
+msgid "display"
+msgstr ""
+
 #: widgets/Forum_Topic_Info.php:11
 msgid "(BBPC) Forum Topic Info"
 msgstr ""
@@ -2552,39 +2633,39 @@ msgstr ""
 msgid "Displays information about a bbPress forum topic"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:46
+#: widgets/Forum_Topic_Info.php:45
 msgid "Forum:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:47
+#: widgets/Forum_Topic_Info.php:46
 msgid "Topic:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:48
+#: widgets/Forum_Topic_Info.php:47
 msgid "Author:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:49
+#: widgets/Forum_Topic_Info.php:48
 msgid "Date:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:50
+#: widgets/Forum_Topic_Info.php:49
 msgid "Status:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:51
+#: widgets/Forum_Topic_Info.php:50
 msgid "Replies:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:52
+#: widgets/Forum_Topic_Info.php:51
 msgid "Voices:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:66 widgets/forum-info/admin-options.php:5
+#: widgets/Forum_Topic_Info.php:65 widgets/forum-info/admin-options.php:5
 msgid "Title:"
 msgstr ""
 
-#: widgets/Forum_Topic_Info.php:70
+#: widgets/Forum_Topic_Info.php:71
 msgid "Topic ID:"
 msgstr ""
 
@@ -2602,23 +2683,23 @@ msgstr ""
 msgid "Forum Informations"
 msgstr ""
 
-#: widgets/forum-info/Forum_Information.php:99
+#: widgets/forum-info/Forum_Information.php:94
 msgid "BBP Core Pro avatar icon"
 msgstr ""
 
-#: widgets/forum-info/Forum_Information.php:102
+#: widgets/forum-info/Forum_Information.php:97
 msgid "Last post by"
 msgstr ""
 
-#: widgets/forum-info/Forum_Information.php:124
+#: widgets/forum-info/Forum_Information.php:119
 msgid "Last activity"
 msgstr ""
 
-#: widgets/forum-info/Forum_Information.php:143
+#: widgets/forum-info/Forum_Information.php:138
 msgid "Actions"
 msgstr ""
 
-#: widgets/forum-info/Forum_Information.php:151
+#: widgets/forum-info/Forum_Information.php:146
 msgid "Login to subscribe"
 msgstr ""
 
@@ -2630,30 +2711,30 @@ msgstr ""
 msgid "Information to show"
 msgstr ""
 
-#: widgets/forum-info/admin-options.php:15
+#: widgets/forum-info/admin-options.php:16
 msgid "Show Topics Count"
 msgstr ""
 
-#: widgets/forum-info/admin-options.php:18
+#: widgets/forum-info/admin-options.php:21
 msgid "Show replies count"
 msgstr ""
 
-#: widgets/forum-info/admin-options.php:21
+#: widgets/forum-info/admin-options.php:26
 msgid "Show Icons"
 msgstr ""
 
-#: widgets/forum-info/admin-options.php:25
+#: widgets/forum-info/admin-options.php:32
 msgid "Show last post user"
 msgstr ""
 
-#: widgets/forum-info/admin-options.php:28
+#: widgets/forum-info/admin-options.php:37
 msgid "Show last activity"
 msgstr ""
 
-#: widgets/forum-info/admin-options.php:32
+#: widgets/forum-info/admin-options.php:42
 msgid "Actions to show"
 msgstr ""
 
-#: widgets/forum-info/admin-options.php:35
+#: widgets/forum-info/admin-options.php:46
 msgid "Show subscribe button"
 msgstr ""

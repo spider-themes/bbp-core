@@ -130,7 +130,7 @@ function bbp_core_limit_letter( $string, $limit_length, $suffix = '...' ) {
 	if ( strlen( $string ) > $limit_length ) {
 		echo esc_html ( strip_shortcodes( substr( $string, 0, $limit_length ) . $suffix ) );
 	} else {
-		echo esc_html( strip_shortcodes( esc_html( $string ) ) );
+		echo esc_html( esc_html( $string ) );
 	}
 }
 

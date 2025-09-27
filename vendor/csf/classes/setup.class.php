@@ -342,7 +342,7 @@ if ( ! class_exists( 'CSF_Setup' ) ) {
 		public static function include_plugin_file( $file, $load = true ) {
 
 			$path     = '';
-			$file     = ltrim( $file, '/' );
+			$file     = ltrim( (string) $file, '/' );
 			$override = apply_filters( 'csf_override', 'csf-override' );
 
 			if ( file_exists( get_parent_theme_file_path( $override . '/' . $file ) ) ) {
@@ -389,7 +389,7 @@ if ( ! class_exists( 'CSF_Setup' ) ) {
 
 		// Set url constant
 		public static function include_plugin_url( $file ) {
-			return esc_url( self::$url ) . '/' . ltrim( $file, '/' );
+			return esc_url( self::$url ) . '/' . ltrim( (string) $file, '/' );
 		}
 
 		// Include files

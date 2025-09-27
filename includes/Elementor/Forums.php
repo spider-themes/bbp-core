@@ -92,7 +92,7 @@ class Forums extends Widget_Base {
 				'label'       => esc_html__( 'Read More Text', 'bbp-core' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
-				'default'     => 'More Communities'
+				'default'     => esc_html__( 'More Communities', 'bbp-core' ),
 			]
 		);
 

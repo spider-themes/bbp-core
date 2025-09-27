@@ -61,11 +61,15 @@ class Forum_Topic_Info extends WP_Widget {
 		// Widget admin form
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'bbp-core' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+                <?php esc_html_e( 'Title:', 'bbp-core' ); ?>
+            </label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'topic_id' ) ); ?>"><?php esc_html_e( 'Topic ID:', 'bbp-core' ); ?></label>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'topic_id' ) ); ?>">
+            <?php esc_html_e( 'Topic ID:', 'bbp-core' ); ?>
+        </label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'topic_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'topic_id' ) ); ?>" type="text" value="<?php echo esc_attr( $topic_id ); ?>" />
 		</p>
 		<?php

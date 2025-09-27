@@ -24,7 +24,7 @@
                     <div class="featured-image">
 	                    <?php
 	                    if ( get_the_post_thumbnail( $current_post ) ) :
-		                    echo get_the_post_thumbnail( $current_post, 'bbpc_32x32' );
+		                    echo get_the_post_thumbnail( $current_post, 'bbpc_32x32', array( 'alt' => get_the_title( $current_post ) ) );
 	                    else :
 		                    ?>
                             <span class="dashicons dashicons-buddicons-forums"></span>
