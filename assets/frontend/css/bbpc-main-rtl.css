@@ -40,7 +40,7 @@
   border-left: none;
   padding-left: 0;
   padding-right: 15px;
-  border-right: 1px solid #e6e6e6;
+  border-right: 1px solid var(--black_50);
 }
 
 .single-forum-post-widget .post-info .author {

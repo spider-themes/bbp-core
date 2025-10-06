@@ -23,7 +23,7 @@
   .post-filter-widget {
     box-shadow: 0 1.6px 3.5px 0 #334d7226, 0 0.5px 1px 0 #334d721a;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: var(--bs-white);
     padding: 16.5px 30px;
     display: flex;
     flex-wrap: wrap;
@@ -101,7 +101,7 @@
 .single-forum-post-widget {
   box-shadow: 0 1.6px 3.5px 0 #334d7226, 0 0.5px 1px 0 #334d721a;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: var(--bs-white);
   transition: all 0.3s ease-out;
   padding: 22px 35px 18px 30px;
   display: flex;
@@ -232,7 +232,7 @@
   }
 
   .post-reach {
-    border-left: 1px solid #e6e6e6;
+    border-left: 1px solid var(--black_50);
     padding-left: 10px;
 
     > div {

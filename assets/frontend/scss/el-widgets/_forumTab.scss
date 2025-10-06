@@ -1,7 +1,7 @@
 .single-forum-post-widget {
   box-shadow: 0 1.6px 3.5px 0 #334d7226, 0 0.5px 1px 0 #334d721a;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: var(--bs-white);
   transition: all 0.3s ease-out;
   padding: 22px 35px 18px 30px;
   display: flex;
@@ -135,7 +135,7 @@
   }
 
   .post-reach {
-    border-left: 1px solid #e6e6e6;
+    border-left: 1px solid var(--black_50);
     padding-left: 15px;
 
     > div {
@@ -160,7 +160,7 @@
 
 .community-area {
   .nav-tabs {
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid var(--black_50);
 
     .nav-item {
       &:hover button {
@@ -211,7 +211,7 @@
   display: flex;
   padding: 40px;
   transition: all 0.3s ease-out;
-  background-color: #fff;
+  background-color: var(--bs-white);
 
   &:hover {
     box-shadow: 0 20px 45px 0 #334d7226;
@@ -227,7 +227,7 @@
     font-weight: 500;
     line-height: 21px;
     color: #171d24;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     margin-top: 0;
     text-transform: capitalize;
 
@@ -255,7 +255,7 @@
     }
 
     &.vr-line {
-      color: #bbc0c4;
+      color: var(--black_75);
     }
   }
 }
@@ -306,7 +306,7 @@
     line-height: 48px;
     padding: 0 40px;
     text-align: center;
-    background-color: #fff;
+    background-color: var(--bs-white);
     margin-top: 50px;
 
     &:hover {
