@@ -78,5 +78,7 @@ function bbpc_get_forum_id() {
 }
 
 function bbpc_bba_o( $name ) {
-	return BBPCATTCore::instance()->o[ $name ];
+	$opts = BBPCATTCore::instance()->o;
+	// Return the option value if present, otherwise null.
+	return isset( $opts[ $name ] ) ? $opts[ $name ] : null;
 }
