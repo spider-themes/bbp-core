@@ -18,10 +18,10 @@ BBP Core empowers bbPress forum with useful features. For example - Unified Foru
 [youtube https://youtu.be/l2rlT_Qwd60?si=gjBh1VJupitL0Rh8]
 
 ## 🔗 USEFUL LINKS ##
-- [Get the Pro Version](https://spider-themes.net/bbp-core/pricing)
-- [Demo (built with bbPress and BBP Core)](https://wordpress-plugins.spider-themes.net/bbp-core-pro/)
+- [Get the Pro Version](https://bbp-core.spider-themes.net/pricing)
+- [Demo (built with bbPress and BBP Core)](https://wordpress-plugins.bbp-core.spider-themes.net-pro/)
 - [Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin)
-- [Explore More](https://spider-themes.net/bbp-core)
+- [Explore More](https://bbp-core.spider-themes.net)
 
 ### Reasons to Choose BBP Core ###
 
@@ -161,4 +161,4 @@ New: Loco.xml configuration file added for multiple text domains mapping in Loco
 New: Offer notice added for our valuable customers (not for fresher)
 Fixed: Deprecated issue, Increment on non-alphanumeric string is deprecated in /bbp-core/includes/admin/menu/admin_ui/forums.php on line 8
 
-[See changelog for all versions](https://spider-themes.net/bbp-core/changelog).
+[See changelog for all versions](https://bbp-core.spider-themes.net/changelog).

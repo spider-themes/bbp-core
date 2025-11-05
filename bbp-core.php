@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name:       BBP Core
-Plugin URI:        https://spider-themes.net/bbp-core
+Plugin URI:        https://bbp-core.spider-themes.net
 Description:       Expand bbPress powered forums with useful features like - private reply, solved topics ...
 Author:            spider-themes
-Author URI:        https://spider-themes.net/bbp-core
+Author URI:        https://bbp-core.spider-themes.net
 Text Domain:       bbp-core
 Version:           1.4.0
 Requires at least: 5.0
