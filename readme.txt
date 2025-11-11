@@ -1,4 +1,4 @@
-=== BBP Core - Advanced bbPress Forum Management Plugin with Voting, Private Replies & Elementor Integration ===
+=== BBP Core - Advanced bbPress Forum Management with Voting, Private Replies & Elementor ===
 Contributors: spiderdevs, mdjwel, delweratjk
 Tags: bbPress, forum, community, forum plugin, voting
 Requires at least: 5.0
@@ -7,8 +7,9 @@ Requires PHP: 7.4
 Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://bbp-core.spider-themes.net/pricing
 
-Transform your bbPress forums with BBP Core's powerful forum builder, voting system, private replies, and Elementor widgets. Create engaging community spaces without coding.
+Transform bbPress forums with voting, private replies, and Elementor widgets. Create engaging communities without coding.
 
 == Description ==
 
@@ -190,6 +191,14 @@ Visit our [Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordp
 - 🐛 [Report Issues & Suggest Features](https://github.com/spider-themes/bbp-core/issues)
 - 🌐 [Visit Official Website](https://bbp-core.spider-themes.net)
 - 📧 Contact: support@bbp-core.spider-themes.net
+
+== Upgrade Notice ==
+
+= 1.4.0 =
+Important update with new Forum Builder features, pagination support, and security enhancements. Recommended for all users.
+
+= 1.3.2 =
+Critical security and compatibility fixes. Update recommended for improved stability and theme compatibility.
 
 == Changelog ==
 
