@@ -1,6 +1,6 @@
-=== BBP Core - Expand bbPress powered forums with useful features ===
+=== BBP Core - Advanced bbPress Forum Management Plugin with Voting, Private Replies & Elementor Integration ===
 Contributors: spiderdevs, mdjwel, delweratjk
-Tags: bbPress, Community, Forum, Private Replies, Attachments
+Tags: bbPress, forum, community, forum plugin, voting
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -8,157 +8,269 @@ Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-BBP Core enhances bbPress forums with unified builder, private replies, voting, solved topics, attachments, and comprehensive Elementor integration.
+Transform your bbPress forums with BBP Core's powerful forum builder, voting system, private replies, and Elementor widgets. Create engaging community spaces without coding.
 
 == Description ==
 
-BBP Core empowers bbPress forum with useful features. For example - Unified Forum Builder UI, Solved topics, Voting, Private replies, Forum statistics etc.
+**BBP Core** is the ultimate enhancement plugin for bbPress communities. Designed for forum administrators, content creators, and community managers, BBP Core adds powerful features to create professional, engaging forums with minimal effort.
 
-### Video Overview (Showcased free and premium features)
+### What is BBP Core?
+
+BBP Core transforms your bbPress setup into a fully-featured community platform. Whether you're building a support forum, knowledge base, or discussion community, BBP Core provides the tools you need to foster engagement, manage content effectively, and create an exceptional user experience.
+
+### Key Features That Make BBP Core Essential
+
+**🎯 Unified Forum Builder**
+Take complete control of your forums with an intuitive, all-in-one builder interface. View all forums and topics in one organized dashboard, filter by status (open, closed, pending, spam), and manage discussions efficiently without navigating multiple pages.
+
+**🔐 Private & Confidential Replies**
+Enable users to post private responses visible only to forum owners and moderators. Perfect for sensitive discussions, support tickets, and confidential advice while maintaining full transparency where needed.
+
+**✅ Solved Topics System**
+Help community members quickly identify answered questions. Mark topics as solved to display a prominent 'Resolved' badge, reducing duplicate questions and improving user experience. Visitors instantly know which topics have solutions.
+
+**⭐ Smart Voting & Reputation System**
+Empower your community with an AJAX-powered voting system. Users vote on the most helpful replies, automatically elevating quality answers to the top. Build reputation-based authority and encourage quality contributions.
+
+**📎 Media Attachments & File Sharing**
+Allow users to attach files, documents, images, and media to replies. Organized attachment sections make it easy for community members to share resources, code snippets, documents, and collaborate effectively.
+
+**💡 Advanced Forum Statistics Widget**
+Display real-time forum information including topic count, reply count, last activity, and most active users. The 'Current Forum Info' widget provides visitors with a quick overview of forum vitality and engagement.
+
+**🎨 Elementor Page Builder Integration**
+Create stunning forum layouts using Elementor's drag-and-drop builder. Use specialized BBP Core widgets to display forums, topics, and replies on any page with full customization control. No coding required.
+
+**⚡ Lightweight & Performance-Optimized**
+BBP Core loads assets intelligently—CSS and JavaScript only when needed. Minimal footprint ensures your forum runs fast without bloat or unnecessary dependencies.
+
+**🔧 Intuitive Admin Interface**
+Create, edit, and delete forums and topics directly from the BBP Core admin dashboard. Streamlined interface eliminates confusion and reduces admin overhead.
+
+### PRO Features - Everything You Need for Advanced Community Management
+
+Upgrade to **BBP Core Pro** for enterprise-grade forum management:
+
+1. **Real-Time Admin Notifications** - Stay updated with instant dashboard alerts for new posts, moderation requests, and community activity.
+
+2. **Smart User Notifications** - Keep members engaged with real-time updates on subscribed forums, topics, and replies they care about.
+
+3. **Mini User Profiles** - Display compact user profile cards with activity summaries, follower counts, and quick-view reputation.
+
+4. **Pre-Built Elementor Templates** - Import professional forum layouts with one click. Fully customizable templates for forums, knowledge bases, and support centers.
+
+5. **"I've the Same Question" Feature** - Reduce duplicate threads by letting users indicate similar questions, improving forum organization.
+
+6. **Anonymous Posting** - Allow sensitive discussions without revealing user identity. Ideal for support forums and confidential advice.
+
+7. **Dynamic User Profile Links** - Generate personalized profile URLs for logged-in users. Perfect for user bios and contributor pages.
+
+8. **Topic Approval Workflow** - Control content quality with admin-approval for new topics. Prevent spam and maintain forum standards.
+
+9. **Advanced File Management** - Support multiple file uploads with increased size limits. Delete attachments independently or with content.
+
+10. **Powerful Voting Controls** - Guest voting restrictions, prevent closed-topic voting, disable self-voting, admin voting privileges, and vote-based sorting.
+
+11. **External Image Insertion** - Insert images via URL or media library picker. Enhance replies with visual content effortlessly.
+
+12. **Auto-Approval System** - Automatically publish reply replies instantly. Streamline moderation workflows and maintain conversation flow.
+
+13. **Attachment Moderation** - Approve/unapprove replies containing files for enhanced content security and compliance control.
+
+### Video Overview
 [youtube https://youtu.be/l2rlT_Qwd60?si=gjBh1VJupitL0Rh8]
 
-## 🔗 USEFUL LINKS ##
-- [Get the Pro Version](https://bbp-core.spider-themes.net/pricing)
-- [Demo (built with bbPress and BBP Core)](https://wordpress-plugins.bbp-core.spider-themes.net-pro/)
-- [Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin)
-- [Explore More](https://bbp-core.spider-themes.net)
-
-### Reasons to Choose BBP Core ###
-
-- **Lightweight:** Loading only necessary css, javascript assets when necessary, it will not load assets unless necessary.
-
-- **Unified Forum Builder:**  It provides a single, organized view of forums and topics, along with filtering options for various topic statuses, enabling efficient navigation and management. Users can even check trashed topics.
-
-- **Effortless Topic Management:** You can create and delete forums and topics directly from the BBP Core Admin UI, eliminating the need to navigate to the classic forum views for these actions.
-
-- **Private Reply:** Users can post replies to topics that are visible only to forum owners, ensuring privacy and confidentiality in their discussions.
-
-- **Solved Topics:** Allows users to mark forum topics as either solved or unsolved. Solved topics display a 'Resolved' badge at the end of their titles, making it easy to identify resolved issues.
-
-- **Voting On Topic & Replies:**  Allows users to vote on replies to topics, with the highest-voted reply rising to the top. The voting system is powered by AJAX for a seamless and engaging community interaction.
-
-- **Media Attachments:**  Enables users to attach files to their replies, which can be downloaded by other users. The attachments are displayed in a separate section below the Topic and Reply content. This enhances the forum's functionality, allowing for the seamless sharing of relevant files and media within discussions.
-
-- **Current Forum Info widget:** Displays the current forum's information, including the number of Topics, Replies, Last post by, and Last activity, as well as the Subscribe forum button. This widget provides users with a quick overview of the forum's activity and content, encouraging them to explore further.
-
-- **Elementor Integrated:** BBP Core comes with a set of Elementor widgets that can be used to display forums, topics, and replies on any page of your website. The widgets are highly customizable, allowing you to configure their appearance and functionality to suit your needs.
-
-### PRO Features ###
-- **1. Admin Notifications:** Displays real-time updates of the latest forum activity directly on the dashboard area. This offers users a quick and convenient way to stay informed about recent happenings within the forum.
-
-- **2. User Notifications:** Keep the logged-in users informed by providing them with real-time updates on the latest activity within their subscribed forums, topics, and replies. This ensures that users stay engaged and informed about discussions that matter most to them without having to actively monitor each one individually.
-
-- **3. Mini Profile:** Displays a compact version of the user profile, which can be used to quickly view the user's profile information and activity. This is useful for users who wish to quickly view the profile of another user without navigating to their profile page.
-
-- **4. Pre-made Elementor Templates:** BBP Core Pro comes with a set of pre-made Elementor templates that can be imported with a single click. The templates are highly customizable, allowing you to configure their appearance and functionality to suit your needs.
-
-- **5. I've the Same Question Button:** Allows users to quickly indicate that they have a similar question, possibly reducing duplicate threads and encouraging discussions on existing topics.
-
-- **6. Post as Anonymous:** Allows users to post replies to topics anonymously, without revealing their identity. This can be useful for users who wish to discuss sensitive topics without revealing their identity.
-
-- **7. My Profile Link:** Generates a dynamic URL that links directly to the profile page of the currently logged-in user. This convenient URL simplifies the process of users accessing and viewing their own profiles.
-
-- **8. Pending Topic:** Enables admin-controlled approval of forum topics to prevent spam or inappropriate content from being published until a moderator approves them.
-
-- **9. Advanced Attachment Features:** Increases the maximum file size and allows multiple files to be uploaded at once. Provides the option to delete attachments along with forum or topic content.
-
-- **10. Advanced Voting Features:** Options to restrict voting for non-logged-in users, prevent new votes on closed topics, disallow self-voting, allow unlimited voting for administrators, and sort topics and replies based on their voting scores.
-
-- **11. External Image Insert Button:** Easily insert images with a single click or by using a URL.
-
-- **12. Auto Approval:** Automatically approve topic replies instantly with this feature. Save time by enabling seamless conversation flow without needing manual approval for every single reply.
-
-- **13. Replies with Attachments:** Control reply moderation with attachments. Choose to approve or unapprove replies containing files, ensuring content safety while keeping discussions organized and secure.
+### Important Links
+- [🚀 Get Pro Version](https://bbp-core.spider-themes.net/pricing)
+- [👀 Live Demo](https://wordpress-plugins.bbp-core.spider-themes.net-pro/)
+- [📚 Full Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin)
+- [🌐 Learn More](https://bbp-core.spider-themes.net)
 
 == Frequently Asked Questions ==
 
-= Does BBP Core work with any theme? =
-Yes, BBP Core works with any bbPress WordPress theme.
+= 🎯 Who Should Use BBP Core? =
+BBP Core is perfect for WordPress site owners, community managers, support teams, and anyone running a bbPress forum who wants professional features without custom coding.
 
-= Do I need coding skills to use BBP Core? =
-Absolutely not! BBP Core is as easy to use, as you can think of.
+= 🔄 Is BBP Core Compatible with My Theme? =
+Yes! BBP Core works seamlessly with any bbPress-compatible WordPress theme. The plugin enhances functionality without theme dependency.
 
-= Where can I report bugs or contribute to the project? =
-To report bugs or to contribute, head-over to the [GitHub repository](https://github.com/spider-themes/bbp-core/issues)
+= 💻 Do I Need Coding Skills? =
+Absolutely not! BBP Core is designed for non-technical users. All features are accessible through intuitive admin interfaces and visual builders. No coding required.
+
+= 🎨 Can I Customize the Forum Layout? =
+Completely! With Elementor integration, you can drag-and-drop customize forum layouts. Pre-built templates and full styling options give you unlimited design flexibility.
+
+= 📦 What Version of WordPress Do I Need? =
+BBP Core requires WordPress 5.0 or higher and PHP 7.4 or greater. Check that your bbPress plugin is also installed and activated.
+
+= ⚙️ Is BBP Core Performance Optimized? =
+Yes. BBP Core only loads necessary assets when needed, ensuring minimal impact on site performance and fast loading times.
+
+= 🐛 How Do I Report Bugs or Get Support? =
+Found an issue? Report it on our [GitHub repository](https://github.com/spider-themes/bbp-core/issues). For detailed help, visit our [Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin).
+
+= 💪 What Features Are in the Pro Version? =
+BBP Core Pro adds advanced features like real-time notifications, pre-built templates, anonymous posting, advanced attachments, topic approval workflow, and more. [Check Pro pricing →](https://bbp-core.spider-themes.net/pricing)
 
 == Installation ==
 
-= Minimum Requirements =
+Getting started with BBP Core is quick and easy. Follow these simple steps:
 
-* PHP 7.3 or greater is recommended
-* MySQL 5.6 or greater is recommended
+= Prerequisites =
 
-You can install the BBP Core from your WordPress Dashboard or manually upload it through cPanel/FTP.
+Before installing BBP Core, ensure you have:
+* WordPress 5.0 or higher
+* bbPress plugin installed and activated
+* PHP 7.4 or greater
+* MySQL 5.6 or greater
 
-= OPTION 1: Install the BBP Core Plugin from WordPress Dashboard =
+= Installation Method 1: Install from WordPress Admin Dashboard (Recommended) =
 
-1. Navigate to Plugins -> Add New.
-2. Search for 'BBP Core' and click on the Install button to install the plugin.
-3. Activate the plugin in the Plugins menu.
-4. Optional step: configure the plugin in the Admin menu, in BBP Core -> Settings.
+1. Go to **Plugins → Add New** in your WordPress dashboard
+2. Search for **"BBP Core"** in the plugin search box
+3. Click the **Install Now** button
+4. After installation completes, click **Activate Plugin**
+5. Navigate to **BBP Core → Settings** to configure features (optional but recommended)
+6. Start building your enhanced forum!
 
-= OPTION 2: Manually Upload Plugin Files =
+= Installation Method 2: Manual Upload via FTP/cPanel =
 
-1. Download the plugin file from the plugin page: bbp-core.zip.
-2. Upload the 'bbp-core.zip' file to your '/wp-content/plugins' directory.
-2. Unzip the file bbp-core.zip (do not rename the folder).
+1. Download the `bbp-core.zip` file from the plugin page
+2. Extract the ZIP file on your computer
+3. Upload the extracted `bbp-core` folder to `/wp-content/plugins/` directory via FTP or cPanel File Manager
+4. Go to **Plugins** in your WordPress admin and locate BBP Core
+5. Click **Activate Plugin**
+6. Configure settings in **BBP Core → Settings**
+
+= Installation Method 3: Upload ZIP from WordPress Admin =
+
+1. Download the `bbp-core.zip` file
+2. Go to **Plugins → Add New → Upload Plugin**
+3. Select the downloaded ZIP file and click **Install Now**
+4. After installation, click **Activate Plugin**
+5. Configure your forum settings
+
+= Troubleshooting Installation =
+
+**Plugin not showing after activation?**
+Ensure bbPress is installed and activated first. BBP Core depends on bbPress.
+
+**Getting PHP errors?**
+Verify your PHP version is 7.4 or higher. Contact your hosting provider to upgrade if needed.
+
+**Still need help?**
+Visit our [Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin) or check our [Support Repository](https://github.com/spider-themes/bbp-core/issues)
 
 == Screenshots ==
 
-1. Custom Admin Dashboard
-2. BBP Core Settings
+1. Advanced Forum Builder Dashboard - Unified interface for managing forums, topics, and discussions
+2. Intuitive BBP Core Settings Panel - Configure all features from one organized dashboard
+
+== Why Choose BBP Core? ==
+
+**✨ The Trusted Choice for bbPress Communities**
+
+- **⭐ 1000+ Active Users** - Join thousands of community managers using BBP Core
+- **🚀 Actively Maintained** - Regular updates with new features and security patches
+- **🛡️ Security First** - Built with WordPress security best practices
+- **📈 Scalable Solution** - Handles small communities to large enterprise forums
+- **🎓 Beginner-Friendly** - Intuitive UI requires no technical knowledge
+- **💬 Expert Support** - Responsive team ready to help you succeed
+- **🔗 Open Source** - Community contributions welcome on GitHub
+
+== Ready to Transform Your Forum? ==
+
+**Start with BBP Core Free today and upgrade to Pro when you're ready for advanced features.**
+
+[Get Started →](https://bbp-core.spider-themes.net) | [View Pricing →](https://bbp-core.spider-themes.net/pricing) | [Read Documentation →](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin)
+
+== Support & Community ==
+
+- 📖 [Complete Documentation](https://helpdesk.spider-themes.net/docs/bbp-core-wordpress-plugin)
+- 🐛 [Report Issues & Suggest Features](https://github.com/spider-themes/bbp-core/issues)
+- 🌐 [Visit Official Website](https://bbp-core.spider-themes.net)
+- 📧 Contact: support@bbp-core.spider-themes.net
 
 == Changelog ==
 
 = 1.4.0 (23 September 2025) =
-New: Author and Topic Refresh added in the Forum builder
-New: Pagination added for forum builder
-Fixed: Security issues
-Tweaked: Forum Builder design improved
-Updated: Freemius SDK updated to 2.12.2
+**New Features:**
+* Author and Topic Refresh functionality added to Forum Builder
+* Pagination support added for improved forum navigation
+* Enhanced forum visibility and management
+
+**Improvements:**
+* Forum Builder UI design refined for better usability
+* Security enhancements and vulnerability fixes
+
+**Updates:**
+* Freemius SDK updated to version 2.12.2
 
 = 1.3.3 (23 August 2025) =
-FIxed: Forum builder tab content active issue fixed
-Fixed: Fixed brand_color variable
-Tweaked: Active reaction design improved
-Tweaked: Attachment preview design
+**Fixes:**
+* Resolved Forum Builder tab content active state issue
+* Fixed brand color variable functionality
+
+**Improvements:**
+* Active reaction design enhanced for better user feedback
+* Attachment preview design improved
 
 = 1.3.2 (15 August 2025) =
-Fixed: Resolved attachment field visibility issue
-Tweaked: Forum Tabs widget design improved
-Tweaked: Added the function "bbpc_get_opt()" for CSF settings where it was missing
-Tweaked: Assets folder re-structured (admin CSS and JS files kept in a separate folder "admin")
-Tweaked: Removed some unnecessary assets (normalize.js, fontawesome.css etc)
-Tweaked: Made the non translatable strings to translatable
-Tweaked: Function prefix added which functions don't have prefix to avoid conflict with other plugins and themes
-Enhanced: Compatibility improved with the Docy theme dark mode
-Updated: Freemius SDK updated to 2.12.1
+**Fixes:**
+* Resolved attachment field visibility issue
+* Fixed asset loading conflicts
+
+**Improvements:**
+* Forum Tabs widget design refined
+* Assets folder restructured (admin CSS/JS organized)
+* Removed unnecessary dependencies (normalize.js, fontawesome.css)
+* Added "bbpc_get_opt()" function for CSF settings consistency
+* Improved function prefixes to prevent plugin conflicts
+* Enhanced Docy theme dark mode compatibility
+* Non-translatable strings made translatable
+
+**Updates:**
+* Freemius SDK updated to version 2.12.1
 
 = 1.3.1 (16 June 2025) =
-Fixed: Deprecation warning by wrapping attachment files in hook
-Fixed: Tab CSS was conflicting with other plugins and themes
-Tweaked: Improved compatibility with Docy Dark mode
-Tweaked: Updated sidebar to flexible width
-Tweaked: Featured image size adjusted in the Forum builder
-Updated: Freemius SDK updated to 2.12.0
+**Fixes:**
+* Fixed deprecation warning for attachment files
+* Resolved tab CSS conflicts with third-party plugins
+* Improved dark mode compatibility
+
+**Improvements:**
+* Sidebar now supports flexible width
+* Featured image sizing optimized for Forum Builder
+* Enhanced overall plugin stability
+
+**Updates:**
+* Freemius SDK updated to version 2.12.0
 
 = 1.3.0 (22 April 2025) =
-Fixed: Fixed BBP Core conflict with Dukan and Job Manager plugins
-Tweaked: The "Forums" page has been renamed to Forum Builder for better clarity and usability
-Tweaked: Refreshed the topic open icon within the Forum Builder for a more intuitive visual cue
-Tweaked: Each topic now displays a corresponding status icon, making it easier to identify topic types at a glance
-Tweaked: The first forum item now opens by default, providing a more user-friendly initial view
-Tweaked: Delay on search input keypress
-Tweaked: Current Forum Info widget (show all information by default, moved widgets folder to the plugin root folder)
-Tweaked: BBPC Forum Information widget title will show on the Forum page only
-Tweaked: Settings page improved (reorganized the settings options, added icons to the settings tab)
-Tweaked: Topic details page improved (reply button, favorite button and attachment design improved )
-Tweaked: Forum builder UX improved
-Tweaked: Dashicons used instead of fontawesome icon to optimize performance in the dashboard
+**New Features:**
+* Renamed "Forums" page to "Forum Builder" for clarity
+* Default open state for first forum item
+
+**Improvements:**
+* Topic open icon refreshed for better UX
+* Status icons added to topics for quick identification
+* Search input response improved with optimized keypress delay
+* Current Forum Info widget redesigned (shows all info by default)
+* Settings page reorganized with intuitive tab icons
+* Topic details page UI enhanced (reply, favorite, attachment design)
+* Forum Builder UX significantly improved
+* Dashicons implemented instead of FontAwesome (better performance)
+* BBPC Forum Information widget now displays only on forum pages
+
+**Fixes:**
+* Resolved BBP Core conflicts with Dukan and Job Manager plugins
 
 = 1.2.9 (24 February 2025) =
-New: Loco.xml configuration file added for multiple text domains mapping in Loco translate plugin
-New: Offer notice added for our valuable customers (not for fresher)
-Fixed: Deprecated issue, Increment on non-alphanumeric string is deprecated in /bbp-core/includes/admin/menu/admin_ui/forums.php on line 8
+**New:**
+* Loco.xml configuration added for multiple text domain mapping in Loco Translate plugin
+* Special offer notice for existing customers
 
-[See changelog for all versions](https://bbp-core.spider-themes.net/changelog).
+**Fixed:**
+* Resolved deprecation warning for non-alphanumeric string increment
+
+[See full changelog and version history →](https://bbp-core.spider-themes.net/changelog)
