@@ -4,7 +4,7 @@ Tags: bbPress, forum, community, forum plugin, voting
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://bbp-core.spider-themes.net/pricing
@@ -201,6 +201,20 @@ Important update with new Forum Builder features, pagination support, and securi
 Critical security and compatibility fixes. Update recommended for improved stability and theme compatibility.
 
 == Changelog ==
+
+= 1.4.1 (23 September 2025) =
+**Fixes:**
+* FResolved issue with required plugin (bbPress) installer not functioning properly
+* is_attachment_icon error to prevent display inconsistencies
+
+**Enhanced:**
+* Compatibility with Docy Dark Mode for seamless appearance across themes
+
+**Improved:**
+* Made previously untranslatable strings fully translatable, ensuring better localization support
+
+**Updates:**
+* Freemius SDK updated to version 2.13.0
 
 = 1.4.0 (23 September 2025) =
 **New Features:**

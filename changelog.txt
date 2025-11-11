@@ -1,4 +1,11 @@
 == Changelog ==
+= 1.4.1 (11 November 2025) =
+Fixed: Resolved issue with required plugin (bbPress) installer not functioning properly
+Fixed: is_attachment_icon error to prevent display inconsistencies
+Enhanced: Compatibility with Docy Dark Mode for seamless appearance across themes
+Improved: Made previously untranslatable strings fully translatable, ensuring better localization support
+Updated: Freemius SDK updated to 2.13.0
+
 = 1.4.0 (23 September 2025) =
 New: Author and Topic Refresh added in the Forum builder
 New: Pagination added for forum builder
