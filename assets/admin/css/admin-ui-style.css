@@ -633,6 +633,9 @@ label {
   background: #fff;
   padding: 15px 30px 15px 30px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 @media (max-width: 1440px) {
   .accordion-title {
@@ -690,11 +693,6 @@ label {
 .accordion-title:hover ul.actions li {
   margin: 0;
   line-height: normal;
-}
-.accordion-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .accordion-title h4 {
   font-size: var(--fs-14);
@@ -1160,17 +1158,15 @@ a.child-delete {
 .notification-head {
   padding: 9px 12px;
   background: #f9f9f9;
+  -webkit-box-shadow: 0 1px 0 0 #edeef2;
+  -moz-box-shadow: 0 1px 0 0 #edeef2;
+  box-shadow: 0 1px 0 0 #edeef2;
 }
 .notification-head.no-notification-text {
   padding: 20px 12px;
   background: rgba(190, 190, 190, 0.1490196078);
   display: block;
   text-align: center;
-}
-.notification-head {
-  -webkit-box-shadow: 0 1px 0 0 #edeef2;
-  -moz-box-shadow: 0 1px 0 0 #edeef2;
-  box-shadow: 0 1px 0 0 #edeef2;
 }
 .notification-head .header-text {
   color: var(--clr-dark);
@@ -1516,6 +1512,7 @@ a.child-delete {
   max-height: 25rem;
   overflow-y: auto;
   scrollbar-width: thin;
+  /* Notification updated css */
 }
 .notify-column::-webkit-scrollbar-track {
   background-color: var(--clr-text-light);
@@ -1526,9 +1523,6 @@ a.child-delete {
 }
 .notify-column::-webkit-scrollbar-thumb {
   background-color: var(--clr-text);
-}
-.notify-column {
-  /* Notification updated css */
 }
 .notify-column ul li {
   border-bottom: 1px solid #f1f2f3;
@@ -2091,6 +2085,18 @@ body.bbpc-forum-ui {
 .single-grid-container .is-active {
   background: rgba(37, 39, 51, 0.05);
   --grid-icon: var(--clr-blue);
+}
+
+.bbpc-notice {
+  background: #ffffbe;
+}
+.bbpc-notice .red-bg {
+  background: #ff3131 !important;
+  border-color: #ff3131 !important;
+}
+.bbpc-notice .red-bg:hover {
+  background: #dc3232 !important;
+  border-color: #dc3232 !important;
 }
 
 @media screen and (min-width: 1200px) {

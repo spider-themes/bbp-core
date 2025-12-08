@@ -1,0 +1,12 @@
+
+.bbpc-notice{
+  background: #ffffbe;    
+  .red-bg {
+    background: #ff3131 !important;
+    border-color: #ff3131 !important;
+    &:hover {
+      background: #dc3232 !important;
+      border-color: #dc3232 !important;
+    }
+  }
+}
