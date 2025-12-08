@@ -698,23 +698,19 @@ ul.bbp-topics-widget.newness img {
 .forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked {
   display: none;
 }
-.forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked ~ label {
-  color: var(--bbpc_brand_color);
-}
 .forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked ~ label .main-img {
   display: none;
 }
 .forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked ~ label .hover-img {
   display: block;
 }
+.forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked ~ label {
+  color: var(--bbpc_brand_color);
+}
 .forum-post-widget .post-filter-widget .single-filter-item label {
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  color: #6a737c;
 }
 .forum-post-widget .post-filter-widget .single-filter-item label img {
   margin-right: 8.5px;
@@ -725,6 +721,12 @@ ul.bbp-topics-widget.newness img {
 }
 .forum-post-widget .post-filter-widget .single-filter-item label .hover-img {
   display: none;
+}
+.forum-post-widget .post-filter-widget .single-filter-item label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6a737c;
 }
 
 .single-forum-post-widget {
@@ -774,16 +776,18 @@ ul.bbp-topics-widget.newness img {
 }
 .single-forum-post-widget .post-info > div {
   margin-right: 15px;
-  color: var(--black_600);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
 }
 .single-forum-post-widget .post-info > div img {
   margin-right: 5px;
   height: 15px;
   width: 15px;
   margin-top: 0px;
+}
+.single-forum-post-widget .post-info > div {
+  color: var(--black_600);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
 }
 .single-forum-post-widget .post-info .post-category a {
   color: #4a6ee0;
@@ -1590,15 +1594,17 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
 .single-forum-post-widget .post-info > div {
   margin-right: 15px;
   display: flex;
-  color: var(--black_600);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
 }
 .single-forum-post-widget .post-info > div img {
   margin-right: 5px;
   height: 15px;
   width: 15px;
+}
+.single-forum-post-widget .post-info > div {
+  color: var(--black_600);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
 }
 .single-forum-post-widget .post-info > div a {
   color: #545454;

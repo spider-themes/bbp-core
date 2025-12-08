@@ -21,8 +21,8 @@
 		$approve_btn = '';
 
 		if ( bbp_is_topic_spam( $current_topic_id ) ) {
-			$url         = admin_url( 'admin.php' ) . '/Approve_Topic.php?bbpc_approve_topic_id=' . $current_topic_id;
-			$approve_btn = sprintf( '<a class="bbpc-approve-btn" href=%1$s><span class="dashicons dashicons-yes" title="%2$s"></span></a>', $url, __( 'Approve this topic', 'bbp-core' ) );
+			$url         = wp_nonce_url( admin_url( 'admin.php?bbpc_approve_topic_id=' . $current_topic_id ), 'bbpc_approve_topic_' . $current_topic_id );
+			$approve_btn = sprintf( '<a class="bbpc-approve-btn" href="%1$s"><span class="dashicons dashicons-yes" title="%2$s"></span></a>', esc_url( $url ), esc_attr__( 'Approve this Topic', 'bbp-core' ) );
 		}
 
 		$filter_class = $no_reply . $is_solved . $is_open . $is_hidden;
@@ -174,8 +174,8 @@
 								?>
 								<?php
 								if ( bbp_is_reply_pending( $p_reply ) ) {
-									$url         = admin_url( 'admin.php' ) . '/Approve_Topic.php?bbpc_approve_reply_id=' . $p_reply;
-									$approve_btn = sprintf( '<a class="bbpc-approve-btn" href=%1$s><span class="dashicons dashicons-yes" title="%2$s"></span></a>', $url, __( 'Approve this topic', 'bbp-core' ) );
+									$url         = wp_nonce_url( admin_url( 'admin.php?bbpc_approve_reply_id=' . $p_reply ), 'bbpc_approve_reply_' . $p_reply );
+									$approve_btn = sprintf( '<a class="bbpc-approve-btn" href="%1$s"><span class="dashicons dashicons-yes" title="%2$s"></span></a>', esc_url( $url ), esc_attr__( 'Approve This Reply', 'bbp-core' ) );
 								}
 
 								$allowed_html = [
