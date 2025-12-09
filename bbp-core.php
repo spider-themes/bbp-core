@@ -81,7 +81,6 @@ final class BBP_Core {
 		register_activation_hook( __FILE__, [ $this, 'activate' ] );
 		add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
 		add_action( 'after_setup_theme', [ $this, 'load_csf_files' ], 20 );
-		add_action( 'plugins_loaded', [ $this, 'load_bbpress_files' ], 25 );
 
 		// Added Documentation links to plugin row meta
 		add_filter( 'plugin_row_meta', [ $this, 'bbpc_row_meta' ], 10, 2 );
@@ -158,15 +157,6 @@ final class BBP_Core {
 		// Hooks
 		require BBPC_DIR . 'includes/hooks/actions.php';
 		require BBPC_DIR . 'includes/hooks/image_sizes.php';
-	}
-
-	/**
-	 * Load bbPress files
-	 */
-	public function load_bbpress_files() {
-		if ( ! class_exists( 'bbPress' ) ) {
-			require BBPC_DIR . 'vendor/bbpress/bbpress.php';
-		}
 	}
 
 	/**
