@@ -1,0 +1,1 @@
+{"version":3,"file":"forum-ajax/style-index.css","mappings":";;;AAEQ;EACI;AADZ,C","sources":["webpack://bbp-core-blocks/./src/forum-ajax/style.scss"],"sourcesContent":[".wp-block-bbp-core-forum-ajax {\r\n    &.forum-post-widget {\r\n        a {\r\n            text-decoration: none;\r\n        }\r\n    }\r\n}"],"names":[],"ignoreList":[],"sourceRoot":""}

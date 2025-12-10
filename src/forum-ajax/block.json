@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "title": "BBPC Ajax Forums",
     "category": "bbp-core",
-    "icon": "bbpc_icon_ama_ajax_forum",
+    "icon": "admin-generic",
     "description": "Displays a list of bbPress topics with filtering options.",
     "attributes": {
         "ppp2": {

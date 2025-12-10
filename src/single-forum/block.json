@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "title": "BBPC Single Forum",
     "category": "bbp-core",
-    "icon": "bbpc_icon_ama_single_forum",
+    "icon": "format-quote",
     "description": "Displays a single forum with two style variations.",
     "attributes": {
         "forum_id": {

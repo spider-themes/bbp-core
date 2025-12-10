@@ -1,1 +1,495 @@
-(()=>{"use strict";var e,o={475:(e,o,l)=>{const r=window.wp.blocks,n=window.wp.i18n,b=window.wp.blockEditor,t=window.wp.components,a=window.wp.serverSideRender;var c=l.n(a);const _=window.ReactJSXRuntime,s=JSON.parse('{"UU":"bbp-core/search"}');(0,r.registerBlockType)(s.UU,{edit:function({attributes:e,setAttributes:o}){const l=(0,b.useBlockProps)(),{placeholder:r,submit_btn_type:a,submit_btn_text:s,submit_btn_align:i,is_keywords:p,keywords_label:u,keywords_align:d,color_text:g,color_placeholder:h,input_bg_color:v,color_icon:w,search_bg:C,color_keywords_label:y,bbpc_color_keywords:k,bbpc_color_keywords_bg:x,bbpc_color_keywords_hover:f,bbpc_color_keywords_bg_hover:m}=e;return(0,_.jsxs)("div",{...l,children:[(0,_.jsxs)(b.InspectorControls,{children:[(0,_.jsxs)(t.PanelBody,{title:(0,n.__)("Form","bbp-core"),children:[(0,_.jsx)(t.TextControl,{label:(0,n.__)("Placeholder","bbp-core"),value:r,onChange:e=>o({placeholder:e})}),(0,_.jsx)(t.SelectControl,{label:(0,n.__)("Search Type","bbp-core"),value:a,options:[{label:"Icon",value:"icon"},{label:"Text",value:"text"}],onChange:e=>o({submit_btn_type:e})}),"text"===a&&(0,_.jsx)(t.TextControl,{label:(0,n.__)("Submit Button Text","bbp-core"),value:s,onChange:e=>o({submit_btn_text:e})}),(0,_.jsx)(t.SelectControl,{label:(0,n.__)("Submit Alignment","bbp-core"),value:i,options:[{label:"Left",value:"left"},{label:"Right",value:"right"}],onChange:e=>o({submit_btn_align:e})}),(0,_.jsx)(t.ToggleControl,{label:(0,n.__)("Keywords","bbp-core"),checked:p,onChange:e=>o({is_keywords:e})}),p&&(0,_.jsxs)(_.Fragment,{children:[(0,_.jsx)(t.TextControl,{label:(0,n.__)("Keywords Label","bbp-core"),value:u,onChange:e=>o({keywords_label:e})}),(0,_.jsx)(t.SelectControl,{label:(0,n.__)("Keywords Alignment","bbp-core"),value:d,options:[{label:"Left",value:"left"},{label:"Center",value:"center"},{label:"Right",value:"right"}],onChange:e=>o({keywords_align:e})})]})]}),(0,_.jsx)(b.PanelColorSettings,{title:(0,n.__)("Form Colors","bbp-core"),initialOpen:!1,colorSettings:[{value:g,onChange:e=>o({color_text:e}),label:(0,n.__)("Text Color","bbp-core")},{value:h,onChange:e=>o({color_placeholder:e}),label:(0,n.__)("Placeholder Color","bbp-core")},{value:v,onChange:e=>o({input_bg_color:e}),label:(0,n.__)("Input Background Color","bbp-core")},{value:w,onChange:e=>o({color_icon:e}),label:(0,n.__)("Button Color","bbp-core")},{value:C,onChange:e=>o({search_bg:e}),label:(0,n.__)("Button Background","bbp-core")}]}),(0,_.jsx)(b.PanelColorSettings,{title:(0,n.__)("Keywords Colors","bbp-core"),initialOpen:!1,colorSettings:[{value:y,onChange:e=>o({color_keywords_label:e}),label:(0,n.__)("Label Color","bbp-core")},{value:k,onChange:e=>o({bbpc_color_keywords:e}),label:(0,n.__)("Keyword Color","bbp-core")},{value:x,onChange:e=>o({bbpc_color_keywords_bg:e}),label:(0,n.__)("Keyword Background","bbp-core")},{value:f,onChange:e=>o({bbpc_color_keywords_hover:e}),label:(0,n.__)("Keyword Hover Color","bbp-core")},{value:m,onChange:e=>o({bbpc_color_keywords_bg_hover:e}),label:(0,n.__)("Keyword Background Hover","bbp-core")}]})]}),(0,_.jsx)(c(),{block:"bbp-core/search",attributes:e})]})},save:function(){return null}})}},l={};function r(e){var n=l[e];if(void 0!==n)return n.exports;var b=l[e]={exports:{}};return o[e](b,b.exports,r),b.exports}r.m=o,e=[],r.O=(o,l,n,b)=>{if(!l){var t=1/0;for(s=0;s<e.length;s++){for(var[l,n,b]=e[s],a=!0,c=0;c<l.length;c++)(!1&b||t>=b)&&Object.keys(r.O).every(e=>r.O[e](l[c]))?l.splice(c--,1):(a=!1,b<t&&(t=b));if(a){e.splice(s--,1);var _=n();void 0!==_&&(o=_)}}return o}b=b||0;for(var s=e.length;s>0&&e[s-1][2]>b;s--)e[s]=e[s-1];e[s]=[l,n,b]},r.n=e=>{var o=e&&e.__esModule?()=>e.default:()=>e;return r.d(o,{a:o}),o},r.d=(e,o)=>{for(var l in o)r.o(o,l)&&!r.o(e,l)&&Object.defineProperty(e,l,{enumerable:!0,get:o[l]})},r.o=(e,o)=>Object.prototype.hasOwnProperty.call(e,o),(()=>{var e={842:0,326:0};r.O.j=o=>0===e[o];var o=(o,l)=>{var n,b,[t,a,c]=l,_=0;if(t.some(o=>0!==e[o])){for(n in a)r.o(a,n)&&(r.m[n]=a[n]);if(c)var s=c(r)}for(o&&o(l);_<t.length;_++)b=t[_],r.o(e,b)&&e[b]&&e[b][0](),e[b]=0;return r.O(s)},l=globalThis.webpackChunkbbp_core_blocks=globalThis.webpackChunkbbp_core_blocks||[];l.forEach(o.bind(null,0)),l.push=o.bind(null,l.push.bind(l))})();var n=r.O(void 0,[326],()=>r(475));n=r.O(n)})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/search/block.json":
+/*!*******************************!*\
+  !*** ./src/search/block.json ***!
+  \*******************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"bbp-core/search","version":"0.1.0","title":"BBPC Search","category":"bbp-core","icon":"search","description":"Displays a search form with optional keywords.","attributes":{"placeholder":{"type":"string","default":"Search for Topics...."},"submit_btn_type":{"type":"string","default":"icon"},"submit_btn_icon":{"type":"object","default":{"value":"fas fa-search","library":"solid"}},"submit_btn_text":{"type":"string","default":"Search"},"submit_btn_align":{"type":"string","default":"left"},"is_keywords":{"type":"boolean","default":true},"keywords_label":{"type":"string","default":"Popular:"},"keywords_align":{"type":"string","default":"center"},"keywords":{"type":"array","default":[{"title":"Keyword #1"},{"title":"Keyword #2"}]},"color_text":{"type":"string"},"color_placeholder":{"type":"string"},"input_bg_color":{"type":"string"},"color_icon":{"type":"string"},"search_bg":{"type":"string"},"color_keywords_label":{"type":"string"},"bbpc_color_keywords":{"type":"string"},"bbpc_color_keywords_bg":{"type":"string"},"bbpc_color_keywords_hover":{"type":"string"},"bbpc_color_keywords_bg_hover":{"type":"string"}},"supports":{"html":false,"typography":{"fontSize":true}},"textdomain":"bbp-core","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+
+/***/ }),
+
+/***/ "./src/search/edit.js":
+/*!****************************!*\
+  !*** ./src/search/edit.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+function Edit({
+  attributes,
+  setAttributes
+}) {
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+  const {
+    placeholder,
+    submit_btn_type,
+    submit_btn_text,
+    submit_btn_align,
+    is_keywords,
+    keywords_label,
+    keywords_align,
+    color_text,
+    color_placeholder,
+    input_bg_color,
+    color_icon,
+    search_bg,
+    color_keywords_label,
+    bbpc_color_keywords,
+    bbpc_color_keywords_bg,
+    bbpc_color_keywords_hover,
+    bbpc_color_keywords_bg_hover
+  } = attributes;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    ...blockProps,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Form', 'bbp-core'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Placeholder', 'bbp-core'),
+          value: placeholder,
+          onChange: value => setAttributes({
+            placeholder: value
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Search Type', 'bbp-core'),
+          value: submit_btn_type,
+          options: [{
+            label: 'Icon',
+            value: 'icon'
+          }, {
+            label: 'Text',
+            value: 'text'
+          }],
+          onChange: value => setAttributes({
+            submit_btn_type: value
+          })
+        }), submit_btn_type === 'text' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Submit Button Text', 'bbp-core'),
+          value: submit_btn_text,
+          onChange: value => setAttributes({
+            submit_btn_text: value
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Submit Alignment', 'bbp-core'),
+          value: submit_btn_align,
+          options: [{
+            label: 'Left',
+            value: 'left'
+          }, {
+            label: 'Right',
+            value: 'right'
+          }],
+          onChange: value => setAttributes({
+            submit_btn_align: value
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keywords', 'bbp-core'),
+          checked: is_keywords,
+          onChange: value => setAttributes({
+            is_keywords: value
+          })
+        }), is_keywords && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keywords Label', 'bbp-core'),
+            value: keywords_label,
+            onChange: value => setAttributes({
+              keywords_label: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keywords Alignment', 'bbp-core'),
+            value: keywords_align,
+            options: [{
+              label: 'Left',
+              value: 'left'
+            }, {
+              label: 'Center',
+              value: 'center'
+            }, {
+              label: 'Right',
+              value: 'right'
+            }],
+            onChange: value => setAttributes({
+              keywords_align: value
+            })
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Form Colors', 'bbp-core'),
+        initialOpen: false,
+        colorSettings: [{
+          value: color_text,
+          onChange: value => setAttributes({
+            color_text: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Text Color', 'bbp-core')
+        }, {
+          value: color_placeholder,
+          onChange: value => setAttributes({
+            color_placeholder: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Placeholder Color', 'bbp-core')
+        }, {
+          value: input_bg_color,
+          onChange: value => setAttributes({
+            input_bg_color: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Input Background Color', 'bbp-core')
+        }, {
+          value: color_icon,
+          onChange: value => setAttributes({
+            color_icon: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Button Color', 'bbp-core')
+        }, {
+          value: search_bg,
+          onChange: value => setAttributes({
+            search_bg: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Button Background', 'bbp-core')
+        }]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keywords Colors', 'bbp-core'),
+        initialOpen: false,
+        colorSettings: [{
+          value: color_keywords_label,
+          onChange: value => setAttributes({
+            color_keywords_label: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Label Color', 'bbp-core')
+        }, {
+          value: bbpc_color_keywords,
+          onChange: value => setAttributes({
+            bbpc_color_keywords: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keyword Color', 'bbp-core')
+        }, {
+          value: bbpc_color_keywords_bg,
+          onChange: value => setAttributes({
+            bbpc_color_keywords_bg: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keyword Background', 'bbp-core')
+        }, {
+          value: bbpc_color_keywords_hover,
+          onChange: value => setAttributes({
+            bbpc_color_keywords_hover: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keyword Hover Color', 'bbp-core')
+        }, {
+          value: bbpc_color_keywords_bg_hover,
+          onChange: value => setAttributes({
+            bbpc_color_keywords_bg_hover: value
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Keyword Background Hover', 'bbp-core')
+        }]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default()), {
+      block: "bbp-core/search",
+      attributes: attributes
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/search/index.js":
+/*!*****************************!*\
+  !*** ./src/search/index.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/search/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/search/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/search/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/search/block.json");
+
+
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/search/save.js":
+/*!****************************!*\
+  !*** ./src/search/save.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/search/style.scss":
+/*!*******************************!*\
+  !*** ./src/search/style.scss ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "@wordpress/server-side-render":
+/*!******************************************!*\
+  !*** external ["wp","serverSideRender"] ***!
+  \******************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["serverSideRender"];
+
+/***/ }),
+
+/***/ "react/jsx-runtime":
+/*!**********************************!*\
+  !*** external "ReactJSXRuntime" ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["ReactJSXRuntime"];
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"search/index": 0,
+/******/ 			"search/style-index": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkbbp_core_blocks"] = globalThis["webpackChunkbbp_core_blocks"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["search/style-index"], () => (__webpack_require__("./src/search/index.js")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=index.js.map

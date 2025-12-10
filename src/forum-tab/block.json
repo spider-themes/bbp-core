@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "title": "BBPC Forum Tabs",
     "category": "bbp-core",
-    "icon": "bbpc_icon_ama_forum_tab",
+    "icon": "index-card",
     "description": "Displays forums and topics in tabs.",
     "attributes": {
         "forum_tab_title": {

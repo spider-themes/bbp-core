@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "title": "BBPC Forum Topics",
     "category": "bbp-core",
-    "icon": "bbpc_icon_ama_forum_posts",
+    "icon": "welcome-write-blog",
     "description": "Displays a list of bbPress topics.",
     "attributes": {
         "ppp": {
