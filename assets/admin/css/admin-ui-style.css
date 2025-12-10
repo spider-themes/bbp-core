@@ -2093,6 +2093,18 @@ body.bbpc-forum-ui {
   --grid-icon: var(--clr-blue);
 }
 
+.bbpc-notice {
+  background: #ffffbe;
+}
+.bbpc-notice .red-bg {
+  background: #ff3131 !important;
+  border-color: #ff3131 !important;
+}
+.bbpc-notice .red-bg:hover {
+  background: #dc3232 !important;
+  border-color: #dc3232 !important;
+}
+
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;

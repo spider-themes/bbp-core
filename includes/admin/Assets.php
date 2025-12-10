@@ -14,6 +14,7 @@ class Assets {
 	}
 	
 	public function admin_scripts() {
+		wp_enqueue_style( 'bbpc-admin-notice', BBPC_ASSETS . 'admin/css/admin/admin-noticies.css' );
 		wp_register_style( 'bbpc-admin', BBPC_ASSETS . 'admin/css/bbpc-admin.css' );
 
 		wp_register_style( 'sweetalert', BBPC_VEND . 'sweetalert/sweetalert.css' );

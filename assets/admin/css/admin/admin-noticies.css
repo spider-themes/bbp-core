@@ -1,0 +1,13 @@
+.bbpc-notice {
+  background: #ffffbe;
+}
+.bbpc-notice .red-bg {
+  background: #ff3131 !important;
+  border-color: #ff3131 !important;
+}
+.bbpc-notice .red-bg:hover {
+  background: #dc3232 !important;
+  border-color: #dc3232 !important;
+}
+
+/*# sourceMappingURL=admin-noticies.css.map */

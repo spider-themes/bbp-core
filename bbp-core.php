@@ -157,6 +157,11 @@ final class BBP_Core {
 		// Hooks
 		require BBPC_DIR . 'includes/hooks/actions.php';
 		require BBPC_DIR . 'includes/hooks/image_sizes.php';
+		
+		// Load bbPress if not loaded
+		if ( ! class_exists( 'bbPress' ) ) {
+			require BBPC_DIR . 'vendor/bbpress/bbpress.php';
+		}
 	}
 
 	/**
