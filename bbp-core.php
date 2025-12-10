@@ -142,6 +142,8 @@ final class BBP_Core {
 		require_once __DIR__ . '/includes/Frontend/Assets.php';
 
 		require_once __DIR__ . '/widgets/widgets.php';
+		require_once __DIR__ . '/includes/Blocks/Register.php';
+		new \admin\Blocks\Register();
 		require_once __DIR__ . '/includes/Elementor/inc/forum-ajax.php';
 
 		// Core installer notice

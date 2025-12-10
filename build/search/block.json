@@ -1,0 +1,100 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bbp-core/search",
+  "version": "0.1.0",
+  "title": "BBPC Search",
+  "category": "bbp-core",
+  "icon": {
+    "src": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"6\"/><path d=\"M21 21l-4.35-4.35\"/></svg>"
+  },
+  "description": "Displays a search form with optional keywords.",
+  "attributes": {
+    "placeholder": {
+      "type": "string",
+      "default": "Search for Topics...."
+    },
+    "submit_btn_type": {
+      "type": "string",
+      "default": "icon"
+    },
+    "submit_btn_icon": {
+      "type": "object",
+      "default": {
+        "value": "fas fa-search",
+        "library": "solid"
+      }
+    },
+    "submit_btn_text": {
+      "type": "string",
+      "default": "Search"
+    },
+    "submit_btn_align": {
+      "type": "string",
+      "default": "left"
+    },
+    "is_keywords": {
+      "type": "boolean",
+      "default": true
+    },
+    "keywords_label": {
+      "type": "string",
+      "default": "Popular:"
+    },
+    "keywords_align": {
+      "type": "string",
+      "default": "center"
+    },
+    "keywords": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Keyword #1"
+        },
+        {
+          "title": "Keyword #2"
+        }
+      ]
+    },
+    "color_text": {
+      "type": "string"
+    },
+    "color_placeholder": {
+      "type": "string"
+    },
+    "input_bg_color": {
+      "type": "string"
+    },
+    "color_icon": {
+      "type": "string"
+    },
+    "search_bg": {
+      "type": "string"
+    },
+    "color_keywords_label": {
+      "type": "string"
+    },
+    "bbpc_color_keywords": {
+      "type": "string"
+    },
+    "bbpc_color_keywords_bg": {
+      "type": "string"
+    },
+    "bbpc_color_keywords_hover": {
+      "type": "string"
+    },
+    "bbpc_color_keywords_bg_hover": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "typography": {
+      "fontSize": true
+    }
+  },
+  "textdomain": "bbp-core",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

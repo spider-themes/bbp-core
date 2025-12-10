@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bbp-core/forums",
+  "version": "0.1.0",
+  "title": "BBPC Forums",
+  "category": "bbp-core",
+  "icon": {
+    "src": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15a2 2 0 0 1-2 2H8l-5 3V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/></svg>"
+  },
+  "description": "Displays a list of bbPress forums with a 'load more' option.",
+  "attributes": {
+    "ppp": {
+      "type": "number",
+      "default": 5
+    },
+    "ppp2": {
+      "type": "number",
+      "default": 10
+    },
+    "order": {
+      "type": "string",
+      "default": "ASC"
+    },
+    "more_txt": {
+      "type": "string",
+      "default": "More Communities"
+    },
+    "more_text_color": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "typography": {
+      "fontSize": true
+    }
+  },
+  "textdomain": "bbp-core",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

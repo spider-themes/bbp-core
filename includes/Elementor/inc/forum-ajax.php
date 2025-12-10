@@ -29,9 +29,38 @@ function bbpc_ajax_forum() {
                 'compare' => 'NOT EXISTS',
             ),
         );
-	} elseif ( 'recent' === $data_forum ) {
+    } elseif ( 'recent' === $data_forum ) {
         $args['order'] = 'DESC';
-	} elseif ( 'popular' === $data_forum ) {
+    } elseif ( 'loved' === $data_forum ) {
+        // Topics with positive vote counts (most loved)
+        $args['meta_query'] = array(
+            array(
+                'key'     => 'bbpv-votes',
+                'value'   => 0,
+                'compare' => '>',
+                'type'    => 'NUMERIC',
+            ),
+        );
+        $args['orderby'] = array(
+            'meta_value_num' => 'DESC',
+            'comment_count'  => 'DESC',
+        );
+    } elseif ( 'unloved' === $data_forum ) {
+        // Topics without positive votes (no votes or zero)
+        $args['meta_query'] = array(
+            'relation' => 'OR',
+            array(
+                'key'     => 'bbpv-votes',
+                'compare' => 'NOT EXISTS',
+            ),
+            array(
+                'key'     => 'bbpv-votes',
+                'value'   => 0,
+                'compare' => '=',
+                'type'    => 'NUMERIC',
+            ),
+        );
+    } elseif ( 'popular' === $data_forum ) {
         $args['meta_query'] = array(
             'relation' => 'OR',
             array(

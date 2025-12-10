@@ -243,16 +243,16 @@ class Forum_Ajax extends Widget_Base {
                             <i class="icon_clock_alt"></i><?php esc_html_e( 'Recent', 'bbp-core' ) ?>
                         </a>
                     </div>
-                    <div class="single-filter-item">
-                        <a href="#" id="unsolved_filt" data-forum="unsolved">
-                            <i class="icon_close_alt2"></i><?php esc_html_e( 'Unsolved', 'bbp-core' ) ?>
-                        </a>
-                    </div>
-                    <div class="single-filter-item">
-                        <a href="#" id="solved_filt" data-forum="solved">
-                            <i class="icon_check_alt2"></i><?php esc_html_e( 'Solved', 'bbp-core' ) ?>
-                        </a>
-                    </div>
+					<div class="single-filter-item">
+						<a href="#" id="unloved_filt" data-forum="unloved">
+							<i class="icon_close_alt2"></i><?php esc_html_e( 'Unloved', 'bbp-core' ) ?>
+						</a>
+					</div>
+					<div class="single-filter-item">
+						<a href="#" id="loved_filt" data-forum="loved">
+							<i class="icon_check_alt2"></i><?php esc_html_e( 'Loved', 'bbp-core' ) ?>
+						</a>
+					</div>
                 </div>
 			<?php
 			endif;

@@ -11,7 +11,9 @@
       $('.single-filter-item a').on('click', function (e) {
         e.preventDefault();
 
-        var data_id     = $(this).parent().parent().parent().attr('data_id');        
+        // Prefer the custom data_id attribute on the closest widget, fall back to the element id
+        var $widget = $(this).closest('.forum-post-widget');
+        var data_id = $widget.attr('data_id') || $widget.attr('id');
         let forum_value = $(this).attr('data-forum');
       
         $('.forum-post-widget[data_id='+data_id+'] .single-filter-item a').removeClass('data-active');

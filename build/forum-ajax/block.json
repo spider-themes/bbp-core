@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bbp-core/forum-ajax",
+  "version": "0.1.0",
+  "title": "BBPC Ajax Forums",
+  "category": "bbp-core",
+  "icon": {
+    "src": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15a2 2 0 0 1-2 2H8l-5 3V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/></svg>"
+  },
+  "description": "Displays a list of bbPress topics with filtering options.",
+  "attributes": {
+    "ppp2": {
+      "type": "number",
+      "default": 9
+    },
+    "order": {
+      "type": "string",
+      "default": "ASC"
+    },
+    "filter_btns": {
+      "type": "boolean",
+      "default": true
+    },
+    "forum_title_color": {
+      "type": "string"
+    },
+    "forum_title_hover_color": {
+      "type": "string"
+    },
+    "forum_meta_color": {
+      "type": "string"
+    },
+    "parent_forum_color": {
+      "type": "string"
+    },
+    "parent_forum_color_hover": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true,
+      "__experimentalFontStyle": true,
+      "__experimentalTextTransform": true,
+      "__experimentalTextDecoration": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true
+      }
+    }
+  },
+  "textdomain": "bbp-core",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

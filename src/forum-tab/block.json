@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "bbp-core/forum-tab",
+    "version": "0.1.0",
+    "title": "BBPC Forum Tabs",
+    "category": "bbp-core",
+    "icon": {
+        "src": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15a2 2 0 0 1-2 2H8l-5 3V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/></svg>"
+    },
+    "description": "Displays forums and topics in tabs.",
+    "attributes": {
+        "forum_tab_title": {
+            "type": "string",
+            "default": "Show Forums"
+        },
+        "ppp": {
+            "type": "number",
+            "default": 9
+        },
+        "order": {
+            "type": "string",
+            "default": "ASC"
+        },
+        "is_forum_tab_btn": {
+            "type": "boolean",
+            "default": true
+        },
+        "more_txt": {
+            "type": "string",
+            "default": "View More"
+        },
+        "more_url": {
+            "type": "string",
+            "default": ""
+        },
+        "topics_tab_title": {
+            "type": "string",
+            "default": "Show Topics"
+        },
+        "ppp2": {
+            "type": "number",
+            "default": 6
+        },
+        "order2": {
+            "type": "string",
+            "default": "ASC"
+        },
+        "is_topic_tab_btn": {
+            "type": "boolean",
+            "default": true
+        },
+        "more_txt2": {
+            "type": "string",
+            "default": "View More"
+        },
+        "more_url2": {
+            "type": "string",
+            "default": ""
+        },
+        "forum_tab_title_color": {
+            "type": "string"
+        }
+    },
+    "supports": {
+        "html": false,
+        "typography": {
+            "fontSize": true
+        }
+    },
+    "textdomain": "bbp-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}
