@@ -112,12 +112,14 @@
         // Overlay behavior
         $("#searchInput").on('focus', function () {
             $('body').addClass('bbpc-search-overlay');
-            $('form.bbpc_search_form_wrapper').css('z-index', '999');
+            // Ensure the form is positioned so z-index takes effect
+            $('form.bbpc_search_form_wrapper').css({ 'position': 'relative', 'z-index': '999' });
         });
 
         $(".bbpc-search-overlay").on('click', function () {
             $('body').removeClass('bbpc-search-overlay');
-            $('form.bbpc_search_form_wrapper').css('z-index', 'unset');
+            // Revert the temporary positioning and z-index
+            $('form.bbpc_search_form_wrapper').css({ 'z-index': '', 'position': '' });
         });
     });
 })(jQuery);
