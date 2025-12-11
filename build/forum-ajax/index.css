@@ -1,0 +1,328 @@
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/forum-ajax/editor.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --rob: "Roboto", sans-serif;
+  --great: "Great Vibes", cursive;
+  --bg_gradient: linear-gradient(45deg, #F5FDFF, #FEEFEC);
+  --bbpc_brand_color: var(--bbpc_brand_color_opt,#0866ff);
+  --h_title: #1d2746;
+  --p_color: #6b707f;
+  --bs-white: #fff;
+  --black_25: #f9f9f9;
+  --black_50: #f2f2f2;
+  --black_75: #eeeeee;
+  --black_90: #e0e6f0;
+  --black_100: #d6d9dc;
+  --black_150: #c8ccd0;
+  --black_200: #bbc0c4;
+  --black_300: #9fa6ad;
+  --black_350: #9199a1;
+  --black_400: #848d95;
+  --black_500: #6a737c;
+  --black_600: #535a60;
+  --black_700: #3c4146;
+  --black_750: #2f3337;
+  --black_800: #242729;
+  --black_900: #0c0d0e;
+  --bbpc_color: #078669;
+  --baseColor2: #4a6ee0;
+  --bs_white: #fff;
+}
+
+/*font Variables*/
+
+/**=== Functions ===**/
+
+.col-md-offset-right-1,
+.col-lg-offset-right-1 {
+  margin-right: 8.33333333%;
+}
+
+/*=========== Forum Post Widget css ==========*/
+
+.forum-post-widget .widget-header h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+  color: #000;
+}
+
+.forum-post-widget .widget-header .action_btn {
+  padding-bottom: 8px;
+  padding-top: 8px;
+  box-shadow: none;
+}
+
+.forum-post-widget .widget-header .action_btn:hover {
+  box-shadow: 0 20px 30px 0 rgba(17, 166, 131, 0.24);
+}
+
+.forum-post-widget .post-filter-widget {
+  box-shadow: 0 1.6px 3.5px 0 rgba(51, 77, 114, 0.1490196078), 0 0.5px 1px 0 rgba(51, 77, 114, 0.1019607843);
+  border-radius: 10px;
+  background-color: var(--bs-white);
+  padding: 16.5px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item {
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item a.data-active {
+  color: var(--bbpc_brand_color);
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item i {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {
+  .forum-post-widget .post-filter-widget .single-filter-item {
+    margin-right: 20px;
+  }
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item:last-child {
+  margin-right: 0;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item input[type=radio] {
+  display: none;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked {
+  display: none;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked ~ label .main-img {
+  display: none;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked ~ label .hover-img {
+  display: block;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item input[type=radio]:checked ~ label {
+  color: var(--bbpc_brand_color);
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item label img {
+  margin-right: 8.5px;
+  margin-bottom: 1px;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item label .main-img {
+  display: block;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item label .hover-img {
+  display: none;
+}
+
+.forum-post-widget .post-filter-widget .single-filter-item label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6a737c;
+}
+
+.single-forum-post-widget {
+  box-shadow: 0 1.6px 3.5px 0 rgba(51, 77, 114, 0.1490196078), 0 0.5px 1px 0 rgba(51, 77, 114, 0.1019607843);
+  border-radius: 10px;
+  background-color: var(--bs-white);
+  transition: all 0.3s ease-out;
+  padding: 22px 35px 18px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.single-forum-post-widget:first-child {
+  margin-top: 0;
+}
+
+.single-forum-post-widget:hover {
+  box-shadow: 0 20px 45px 0 rgba(51, 77, 114, 0.1490196078);
+  transform: translateX(2px);
+}
+
+.single-forum-post-widget:hover .post-title h6 a {
+  color: var(--bbpc_brand_color);
+}
+
+.single-forum-post-widget .post-title {
+  margin-bottom: 10px;
+}
+
+.single-forum-post-widget .post-title h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.single-forum-post-widget .post-title h6 a {
+  color: #171d24;
+  font-size: 18px;
+}
+
+.single-forum-post-widget .post-title i {
+  font-size: 15px;
+  color: #2ed83f;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.single-forum-post-widget .post-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-forum-post-widget .post-info > div {
+  margin-right: 15px;
+}
+
+.single-forum-post-widget .post-info > div img {
+  margin-right: 5px;
+  height: 15px;
+  width: 15px;
+  margin-top: 0px;
+}
+
+.single-forum-post-widget .post-info > div {
+  color: var(--black_600);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.single-forum-post-widget .post-info .post-category a {
+  color: #4a6ee0;
+}
+
+.single-forum-post-widget .post-tags {
+  display: flex;
+}
+
+.single-forum-post-widget .post-tags .single-tag {
+  padding: 3px 9.5px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #fff;
+  margin: 12px 10px 0 0;
+}
+
+.single-forum-post-widget .post-tags .single-tag:last-child {
+  margin-right: 0;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-jq {
+  background-color: #f7ab40;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-php {
+  background-color: #7543e0;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-wp {
+  background-color: #6078ce;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-js {
+  background-color: #ff7245;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-dvlp {
+  background-color: #48a6ea;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-ecmrc {
+  background-color: #333333;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-foram {
+  background-color: var(--bbpc_brand_color);
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-hlp {
+  background-color: #2c53df;
+}
+
+.single-forum-post-widget .post-tags .single-tag.tag-sprt {
+  background-color: #0cc72a;
+}
+
+.single-forum-post-widget .post-reach {
+  border-left: 1px solid var(--black_50);
+  padding-left: 10px;
+}
+
+.single-forum-post-widget .post-reach > div {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #848d95;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.single-forum-post-widget .post-reach > div:first-child {
+  margin-top: 0;
+}
+
+.single-forum-post-widget .post-reach > div img {
+  margin-right: 5px;
+}
+
+.single-forum-post-widget .post-category img {
+  width: 20px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.single-filter-item a {
+  color: var(--black_600);
+}
+
+.single-filter-item a:hover {
+  text-decoration: none;
+}
+
+.single-forum-post-widget .post-content .post-category a {
+  font-size: 14px;
+  color: var(--black_600);
+  gap: 5px;
+}
+
+.single-forum-post-widget .post-content .post-category a:hover {
+  color: var(--bbpc_brand_color);
+  text-decoration: none;
+}
+
+body.body_dark .forum-post-widget .post-filter-widget .single-filter-item svg, body.body_dark .forum-post-widget .post-filter-widget .single-filter-item path {
+  fill: darkgrey;
+}
+
+#aj-post-filter-widget svg circle.bbpc-preloader {
+  stroke: var(--bbpc_brand_color) !important;
+}
+
+/*# sourceMappingURL=index.css.map*/

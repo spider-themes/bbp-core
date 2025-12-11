@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
-
+import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
     const blockProps = useBlockProps();
     const {
@@ -10,7 +10,9 @@ export default function Edit({ attributes, setAttributes }) {
         ppp2,
         order,
         more_txt,
-        more_text_color
+        more_text_color,
+        title_color,
+        content_color
     } = attributes;
 
     return (
@@ -46,11 +48,23 @@ export default function Edit({ attributes, setAttributes }) {
                         onChange={(value) => setAttributes({ more_txt: value })}
                     />
                 </PanelBody>
+            </InspectorControls>
 
+            <InspectorControls group="styles">
                 <PanelColorSettings
                     title={__('Colors', 'bbp-core')}
                     initialOpen={false}
                     colorSettings={[
+                        {
+                            value: title_color,
+                            onChange: (value) => setAttributes({ title_color: value }),
+                            label: __('Title Color', 'bbp-core'),
+                        },
+                        {
+                            value: content_color,
+                            onChange: (value) => setAttributes({ content_color: value }),
+                            label: __('Content Color', 'bbp-core'),
+                        },
                         {
                             value: more_text_color,
                             onChange: (value) => setAttributes({ more_text_color: value }),

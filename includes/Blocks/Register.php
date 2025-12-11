@@ -59,6 +59,33 @@ class Register {
 		$parent_forum_color       = isset( $attributes['parent_forum_color'] ) ? $attributes['parent_forum_color'] : '';
 		$parent_forum_color_hover = isset( $attributes['parent_forum_color_hover'] ) ? $attributes['parent_forum_color_hover'] : '';
 
+		// Sanitize color values (allow hex and rgba formats)
+		$sanitize_css_color = function( $color ) {
+			$color = trim( (string) $color );
+			if ( empty( $color ) ) {
+				return '';
+			}
+
+			// Allow hex colors like #fff or #ffffff
+			if ( preg_match( '/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/', $color ) ) {
+				return $color;
+			}
+
+			// Allow rgb() or rgba() formats
+			if ( preg_match( '/^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+(?:\s*,\s*(0|1|0?\.\d+))?\s*\)$/', $color ) ) {
+				return $color;
+			}
+
+			// Fallback: empty (reject any other values)
+			return '';
+		};
+
+		$forum_title_color        = $sanitize_css_color( $forum_title_color );
+		$forum_title_hover_color  = $sanitize_css_color( $forum_title_hover_color );
+		$forum_meta_color         = $sanitize_css_color( $forum_meta_color );
+		$parent_forum_color       = $sanitize_css_color( $parent_forum_color );
+		$parent_forum_color_hover = $sanitize_css_color( $parent_forum_color_hover );
+
 		$unique_id = uniqid( 'bbpc-forum-' );
 
 		// Enqueue styles/scripts
@@ -236,8 +263,15 @@ class Register {
 	}
 
 	public function render_forum_posts( $attributes, $content ) {
-		$ppp   = isset( $attributes['ppp'] ) ? $attributes['ppp'] : 5;
-		$order = isset( $attributes['order'] ) ? $attributes['order'] : 'ASC';
+		$ppp       = isset( $attributes['ppp'] ) ? $attributes['ppp'] : 5;
+		$order     = isset( $attributes['order'] ) ? $attributes['order'] : 'ASC';
+		$show_meta = isset( $attributes['show_meta'] ) ? $attributes['show_meta'] : true;
+		
+		$title_color = isset( $attributes['title_color'] ) ? $attributes['title_color'] : '';
+		$meta_color  = isset( $attributes['meta_color'] ) ? $attributes['meta_color'] : '';
+		$bg_color    = isset( $attributes['bg_color'] ) ? $attributes['bg_color'] : '';
+
+		$unique_id = uniqid( 'bbpc-forum-posts-' );
 
 		$forum_posts = new WP_Query( array(
 			'post_type'      => 'topic',
@@ -247,10 +281,23 @@ class Register {
 
 		$wrapper_attributes = get_block_wrapper_attributes( [
 			'class' => 'community-posts-wrapper',
+			'id'    => $unique_id,
 		] );
 
 		ob_start();
 		?>
+		<style>
+			<?php if ( $title_color ) : ?>
+				#<?php echo esc_attr( $unique_id ); ?> .community-post .post-content .post-title a { color: <?php echo esc_attr( $title_color ); ?>; }
+			<?php endif; ?>
+			<?php if ( $meta_color ) : ?>
+				#<?php echo esc_attr( $unique_id ); ?> .community-post .post-content .entry-content,
+				#<?php echo esc_attr( $unique_id ); ?> .community-post .post-meta-wrapper .post-meta-info li a { color: <?php echo esc_attr( $meta_color ); ?>; }
+			<?php endif; ?>
+			<?php if ( $bg_color ) : ?>
+				#<?php echo esc_attr( $unique_id ); ?> .community-post { background-color: <?php echo esc_attr( $bg_color ); ?>; }
+			<?php endif; ?>
+		</style>
 		<div <?php echo $wrapper_attributes; ?>>
 			<?php
 			while ( $forum_posts->have_posts() ) : $forum_posts->the_post();
@@ -282,6 +329,7 @@ class Register {
 
 						</div>
 					</div>
+					<?php if ( $show_meta ) : ?>
 					<div class="post-meta-wrapper">
 						<ul class="post-meta-info">
 							<li>
@@ -297,6 +345,7 @@ class Register {
 							</li>
 						</ul>
 					</div>
+					<?php endif; ?>
 				</div>
 				<?php
 			endwhile;
@@ -507,11 +556,53 @@ class Register {
 		
 			</div>
 		</section>
-		<?php if( ! empty( $attributes['forum_tab_title_color'] ) ): ?>
-		<style>
-			#forumTab-<?php echo esc_attr( $this_get_id ); ?> .nav-tabs .nav-item button {
-				color: <?php echo esc_attr( $attributes['forum_tab_title_color'] ); ?>;
+		<?php
+		// Sanitize color values (allow hex and rgba formats)
+		$sanitize_css_color = function( $color ) {
+			$color = trim( (string) $color );
+			if ( empty( $color ) ) {
+				return '';
 			}
+
+			// Allow hex colors like #fff or #ffffff
+			if ( preg_match( '/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/', $color ) ) {
+				return $color;
+			}
+
+			// Allow rgb() or rgba() formats
+			if ( preg_match( '/^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+(?:\s*,\s*(0|1|0?\.\d+))?\s*\)$/', $color ) ) {
+				return $color;
+			}
+
+			// Fallback: empty (reject any other values)
+			return '';
+		};
+
+		$forum_tab_title_color    = isset( $attributes['forum_tab_title_color'] ) ? $sanitize_css_color( $attributes['forum_tab_title_color'] ) : '';
+		$topics_tab_title_color   = isset( $attributes['topics_tab_title_color'] ) ? $sanitize_css_color( $attributes['topics_tab_title_color'] ) : '';
+		$forum_tab_content_color  = isset( $attributes['forum_tab_content_color'] ) ? $sanitize_css_color( $attributes['forum_tab_content_color'] ) : '';
+		$topics_tab_content_color = isset( $attributes['topics_tab_content_color'] ) ? $sanitize_css_color( $attributes['topics_tab_content_color'] ) : '';
+
+		if ( $forum_tab_title_color || $topics_tab_title_color || $forum_tab_content_color || $topics_tab_content_color ) :
+		?>
+		<style>
+			<?php if ( $forum_tab_title_color ) : ?>
+			#forumTab-<?php echo esc_attr( $this_get_id ); ?> .nav-tabs .nav-item:first-child button { color: <?php echo esc_attr( $forum_tab_title_color ); ?>; }
+			<?php endif; ?>
+
+			<?php if ( $topics_tab_title_color ) : ?>
+			#forumTab-<?php echo esc_attr( $this_get_id ); ?> .nav-tabs .nav-item:nth-child(2) button { color: <?php echo esc_attr( $topics_tab_title_color ); ?>; }
+			<?php endif; ?>
+
+			<?php if ( $forum_tab_content_color ) : ?>
+			#forum-<?php echo esc_attr( $this_get_id ); ?> .community-topic-widget-box .box-content,
+			#forum-<?php echo esc_attr( $this_get_id ); ?> .community-topic-widget-box .box-content a { color: <?php echo esc_attr( $forum_tab_content_color ); ?>; }
+			<?php endif; ?>
+
+			<?php if ( $topics_tab_content_color ) : ?>
+			#topics-<?php echo esc_attr( $this_get_id ); ?> .single-forum-post-widget .post-content,
+			#topics-<?php echo esc_attr( $this_get_id ); ?> .single-forum-post-widget .post-content a { color: <?php echo esc_attr( $topics_tab_content_color ); ?>; }
+			<?php endif; ?>
 		</style>
 		<?php endif; ?>
 		<?php
@@ -603,8 +694,9 @@ class Register {
 			</div>
 		</div>
 		<!-- /.more-communities -->
-		<?php if( ! empty( $attributes['more_text_color'] ) ): ?>
+		<?php if( ! empty( $attributes['more_text_color'] ) || ! empty( $attributes['title_color'] ) || ! empty( $attributes['content_color'] ) ): ?>
 		<style>
+			<?php if( ! empty( $attributes['more_text_color'] ) ): ?>
 			#<?php echo esc_attr( $unique_id ); ?> .collapse-btn-wrap {
 				color: <?php echo esc_attr( $attributes['more_text_color'] ); ?>;
 			}
@@ -614,6 +706,19 @@ class Register {
 			#<?php echo esc_attr( $unique_id ); ?> .more-communities .collapse-btn-wrap svg line {
 				stroke: <?php echo esc_attr( $attributes['more_text_color'] ); ?>;
 			}
+			<?php endif; ?>
+
+			<?php if( ! empty( $attributes['title_color'] ) ): ?>
+			#<?php echo esc_attr( $unique_id ); ?> .com-box-content .title a {
+				color: <?php echo esc_attr( $attributes['title_color'] ); ?>;
+			}
+			<?php endif; ?>
+
+			<?php if( ! empty( $attributes['content_color'] ) ): ?>
+			#<?php echo esc_attr( $unique_id ); ?> .com-box-content .total-post {
+				color: <?php echo esc_attr( $attributes['content_color'] ); ?>;
+			}
+			<?php endif; ?>
 		</style>
 		<?php endif; ?>
 		<?php

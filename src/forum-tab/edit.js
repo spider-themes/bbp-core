@@ -2,6 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl, ToggleControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
     const blockProps = useBlockProps();
@@ -18,7 +19,10 @@ export default function Edit({ attributes, setAttributes }) {
         is_topic_tab_btn,
         more_txt2,
         more_url2,
-        forum_tab_title_color
+        forum_tab_title_color,
+        topics_tab_title_color,
+        forum_tab_content_color,
+        topics_tab_content_color
     } = attributes;
 
     return (
@@ -107,7 +111,9 @@ export default function Edit({ attributes, setAttributes }) {
                         </>
                     )}
                 </PanelBody>
+            </InspectorControls>
 
+            <InspectorControls group="styles">
                 <PanelColorSettings
                     title={__('Colors', 'bbp-core')}
                     initialOpen={false}
@@ -115,12 +121,26 @@ export default function Edit({ attributes, setAttributes }) {
                         {
                             value: forum_tab_title_color,
                             onChange: (value) => setAttributes({ forum_tab_title_color: value }),
-                            label: __('Tab Label Color', 'bbp-core'),
+                            label: __('Forums Tab Label Color', 'bbp-core'),
+                        },
+                        {
+                            value: topics_tab_title_color,
+                            onChange: (value) => setAttributes({ topics_tab_title_color: value }),
+                            label: __('Topics Tab Label Color', 'bbp-core'),
+                        },
+                        {
+                            value: forum_tab_content_color,
+                            onChange: (value) => setAttributes({ forum_tab_content_color: value }),
+                            label: __('Forums Content Color', 'bbp-core'),
+                        },
+                        {
+                            value: topics_tab_content_color,
+                            onChange: (value) => setAttributes({ topics_tab_content_color: value }),
+                            label: __('Topics Content Color', 'bbp-core'),
                         },
                     ]}
                 />
             </InspectorControls>
-
             <ServerSideRender
                 block="bbp-core/forum-tab"
                 attributes={attributes}

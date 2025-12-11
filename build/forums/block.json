@@ -26,6 +26,12 @@
     },
     "more_text_color": {
       "type": "string"
+    },
+    "title_color": {
+      "type": "string"
+    },
+    "content_color": {
+      "type": "string"
     }
   },
   "supports": {
@@ -36,6 +42,8 @@
   },
   "textdomain": "bbp-core",
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
+  "editorStyle": [
+    "file:./index.css"
+  ],
   "style": "file:./style-index.css"
 }

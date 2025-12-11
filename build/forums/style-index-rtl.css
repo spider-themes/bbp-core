@@ -6,5 +6,5 @@
 }
 
 .blog_single_item .more-communities a {
-  text-decoration: none;
+  text-decoration: none !important;
 }

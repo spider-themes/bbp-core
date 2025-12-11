@@ -2,6 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl, ToggleControl, RadioControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
+import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
     const blockProps = useBlockProps();
@@ -85,6 +86,9 @@ export default function Edit({ attributes, setAttributes }) {
                     )}
                 </PanelBody>
 
+            </InspectorControls>
+
+            <InspectorControls group="styles">
                 <PanelColorSettings
                     title={__('Form Colors', 'bbp-core')}
                     initialOpen={false}

@@ -16,5 +16,8 @@
 .community-area .show-more-btn {
   text-decoration: none;
 }
+.single-forum-post-widget .author a:hover {
+  text-decoration-thickness: 0;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

@@ -3,6 +3,7 @@ import { useBlockProps, InspectorControls, MediaUpload, MediaUploadCheck, PanelC
 import { PanelBody, SelectControl, TextControl, Button, Spinner } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import { useSelect } from '@wordpress/data';
+import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
     const blockProps = useBlockProps();

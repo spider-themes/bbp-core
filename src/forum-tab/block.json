@@ -59,11 +59,27 @@
         "forum_tab_title_color": {
             "type": "string"
         }
+        ,
+        "topics_tab_title_color": {
+            "type": "string"
+        },
+        "forum_tab_content_color": {
+            "type": "string"
+        },
+        "topics_tab_content_color": {
+            "type": "string"
+        }
     },
     "supports": {
         "html": false,
         "typography": {
             "fontSize": true
+        }
+        ,
+        "color": {
+            "text": true,
+            "background": true,
+            "gradients": false
         }
     },
     "textdomain": "bbp-core",
