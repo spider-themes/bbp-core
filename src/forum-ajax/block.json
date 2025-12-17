@@ -3,7 +3,7 @@
     "apiVersion": 3,
     "name": "bbp-core/forum-ajax",
     "version": "0.1.0",
-    "title": "BBPC Ajax Forums",
+    "title": "BBPC Forums with Ajax Filters",
     "category": "bbp-core",
     "icon": "admin-generic",
     "description": "Displays a list of bbPress topics with filtering options.",

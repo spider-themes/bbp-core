@@ -8,7 +8,7 @@
   \*******************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"bbp-core/forums","version":"0.1.0","title":"BBPC Forums","category":"bbp-core","icon":"networking","description":"Displays a list of bbPress forums with a \'load more\' option.","attributes":{"ppp":{"type":"number","default":5},"ppp2":{"type":"number","default":10},"order":{"type":"string","default":"ASC"},"more_txt":{"type":"string","default":"More Communities"},"more_text_color":{"type":"string"},"title_color":{"type":"string"},"content_color":{"type":"string"}},"supports":{"html":false,"typography":{"fontSize":true}},"textdomain":"bbp-core","editorScript":"file:./index.js","editorStyle":["file:./index.css"],"style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"bbp-core/forums","version":"0.1.0","title":"BBPC Forums Grid","category":"bbp-core","icon":"networking","description":"Displays a list of bbPress forums with a \'load more\' option.","attributes":{"ppp":{"type":"number","default":5},"ppp2":{"type":"number","default":10},"order":{"type":"string","default":"ASC"},"more_txt":{"type":"string","default":"More Communities"},"more_text_color":{"type":"string"},"title_color":{"type":"string"},"content_color":{"type":"string"}},"supports":{"html":false,"typography":{"fontSize":true}},"textdomain":"bbp-core","editorScript":"file:./index.js","editorStyle":["file:./index.css"],"style":"file:./style-index.css"}');
 
 /***/ }),
 

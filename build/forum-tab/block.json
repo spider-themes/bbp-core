@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "bbp-core/forum-tab",
   "version": "0.1.0",
-  "title": "BBPC Forum Tabs",
+  "title": "BBPC Forum & Topics Tabs",
   "category": "bbp-core",
   "icon": "index-card",
   "description": "Displays forums and topics in tabs.",

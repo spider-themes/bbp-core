@@ -3,7 +3,7 @@
     "apiVersion": 3,
     "name": "bbp-core/forums",
     "version": "0.1.0",
-    "title": "BBPC Forums",
+    "title": "BBPC Forums Grid",
     "category": "bbp-core",
     "icon": "networking",
     "description": "Displays a list of bbPress forums with a 'load more' option.",
