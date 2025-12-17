@@ -360,6 +360,11 @@ Table of Content:
   width: 100px;
   margin: 0 auto 20px;
 }
+.communities-boxes .com-box .icon-container img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
 .communities-boxes .com-box .com-box-content .title {
   font-size: 20px;
   line-height: 26px;
@@ -761,7 +766,7 @@ ul.bbp-topics-widget.newness img {
   font-weight: 500;
 }
 .single-forum-post-widget .post-title h6 a {
-  color: #171d24;
+  color: var(--black_800);
   font-size: 18px;
 }
 .single-forum-post-widget .post-title i {
@@ -1574,7 +1579,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   text-transform: capitalize;
 }
 .single-forum-post-widget .post-title h6 a {
-  color: #171d24;
+  color: var(--black_800);
   font-size: 18px;
 }
 .single-forum-post-widget .post-title h6 a:hover {
@@ -1607,7 +1612,7 @@ body.body_dark .forum-with-topics .forum-card .card-body:not(.card-title) {
   line-height: 16px;
 }
 .single-forum-post-widget .post-info > div a {
-  color: #545454;
+  color: var(--black_600);
 }
 .single-forum-post-widget .post-tags {
   display: flex;

@@ -110,6 +110,13 @@
   margin: 0 auto 20px;
 }
 
+.communities-boxes .com-box .icon-container img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .communities-boxes .com-box .com-box-content .title {
   font-size: 20px;
   line-height: 26px;
