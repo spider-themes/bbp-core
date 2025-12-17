@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, MediaUpload, MediaUploadCheck, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl, Button, Spinner } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
-import { useSelect } from '@wordpress/data';
+import { useState, useEffect } from '@wordpress/element';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
@@ -19,14 +19,55 @@ export default function Edit({ attributes, setAttributes }) {
         excerpt_color
     } = attributes;
 
+    const [forums, setForums] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     // Fetch forums for the select control
-    const forums = useSelect((select) => {
-        return select('core').getEntityRecords('postType', 'forum', { per_page: -1 });
+    useEffect(() => {
+        setIsLoading(true);
+        
+        // Get AJAX URL from WordPress global or localized data
+        let ajaxUrl = '/wp-admin/admin-ajax.php';
+        
+        if (typeof window.ajaxurl !== 'undefined') {
+            ajaxUrl = window.ajaxurl;
+        } else if (typeof window.bbpc_editor_config !== 'undefined' && window.bbpc_editor_config.ajaxurl) {
+            ajaxUrl = window.bbpc_editor_config.ajaxurl;
+        }
+        
+        // Use FormData for AJAX request
+        const formData = new FormData();
+        formData.append('action', 'bbpc_get_forums');
+        
+        fetch(ajaxUrl, {
+            method: 'POST',
+            body: formData
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch forums');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                if (data.success && Array.isArray(data.data)) {
+                    setForums(data.data);
+                } else {
+                    console.warn('Invalid forum data received:', data);
+                    setForums([]);
+                }
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.warn('Error fetching forums:', error);
+                setForums([]);
+                setIsLoading(false);
+            });
     }, []);
 
-    const forumOptions = forums ? forums.map((forum) => ({
-        label: forum.title.rendered,
-        value: forum.id,
+    const forumOptions = forums && forums.length > 0 ? forums.map((forum) => ({
+        label: forum.title || 'Untitled',
+        value: forum.id.toString(),
     })) : [];
 
     // Add a default option
@@ -36,13 +77,13 @@ export default function Edit({ attributes, setAttributes }) {
         <div {...blockProps}>
             <InspectorControls>
                 <PanelBody title={__('Preset Skins', 'bbp-core')}>
+                    {isLoading && <Spinner />}
                     <SelectControl
                         label={__('Select Forum', 'bbp-core')}
                         value={forum_id}
                         options={forumOptions}
                         onChange={(value) => setAttributes({ forum_id: value })}
                     />
-                    {!forums && <Spinner />}
                     <SelectControl
                         label={__('Forums Style', 'bbp-core')}
                         value={style}

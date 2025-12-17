@@ -7,6 +7,7 @@ class Register {
 	public function __construct() {
 		add_action( 'init', [ $this, 'blocks_init' ] );
 		add_filter( 'block_categories_all', [ $this, 'register_block_category' ], 10, 2 );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
 	}
 
 	public function register_block_category( $categories, $post ) {
@@ -19,6 +20,16 @@ class Register {
 				],
 			]
 		);
+	}
+
+	/**
+	 * Enqueue assets for the Gutenberg block editor
+	 * This ensures the AJAX URL is available for block scripts
+	 */
+	public function enqueue_editor_assets() {
+		wp_localize_script( 'wp-edit-post', 'bbpc_editor_config', [
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		] );
 	}
 
 	public function blocks_init() {
@@ -610,6 +621,12 @@ class Register {
 	}
 
 	public function render_forums( $attributes, $content ) {
+		if ( ! wp_script_is( 'bbpc-ajax', 'registered' ) ) {
+			wp_register_script( 'bbpc-ajax', BBPC_FRONT_ASS . 'js/ajax.js', array( 'jquery' ), BBPC_VERSION, true );
+		}
+
+		wp_enqueue_script( 'bbpc-ajax' );
+
 		$ppp = ! empty( $attributes['ppp'] ) ? $attributes['ppp'] : 5;
 		$ppp2 = ! empty( $attributes['ppp2'] ) ? $attributes['ppp2'] : 10;
 		$order = ! empty( $attributes['order'] ) ? $attributes['order'] : 'ASC';

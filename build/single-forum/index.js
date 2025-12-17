@@ -30,8 +30,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/single-forum/editor.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
@@ -58,16 +58,49 @@ function Edit({
     title_color,
     excerpt_color
   } = attributes;
+  const [forums, setForums] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
+  const [isLoading, setIsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
 
   // Fetch forums for the select control
-  const forums = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
-    return select('core').getEntityRecords('postType', 'forum', {
-      per_page: -1
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+    setIsLoading(true);
+
+    // Get AJAX URL from WordPress global or localized data
+    let ajaxUrl = '/wp-admin/admin-ajax.php';
+    if (typeof window.ajaxurl !== 'undefined') {
+      ajaxUrl = window.ajaxurl;
+    } else if (typeof window.bbpc_editor_config !== 'undefined' && window.bbpc_editor_config.ajaxurl) {
+      ajaxUrl = window.bbpc_editor_config.ajaxurl;
+    }
+
+    // Use FormData for AJAX request
+    const formData = new FormData();
+    formData.append('action', 'bbpc_get_forums');
+    fetch(ajaxUrl, {
+      method: 'POST',
+      body: formData
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch forums');
+      }
+      return response.json();
+    }).then(data => {
+      if (data.success && Array.isArray(data.data)) {
+        setForums(data.data);
+      } else {
+        console.warn('Invalid forum data received:', data);
+        setForums([]);
+      }
+      setIsLoading(false);
+    }).catch(error => {
+      console.warn('Error fetching forums:', error);
+      setForums([]);
+      setIsLoading(false);
     });
   }, []);
-  const forumOptions = forums ? forums.map(forum => ({
-    label: forum.title.rendered,
-    value: forum.id
+  const forumOptions = forums && forums.length > 0 ? forums.map(forum => ({
+    label: forum.title || 'Untitled',
+    value: forum.id.toString()
   })) : [];
 
   // Add a default option
@@ -80,14 +113,14 @@ function Edit({
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Preset Skins', 'bbp-core'),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+        children: [isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Forum', 'bbp-core'),
           value: forum_id,
           options: forumOptions,
           onChange: value => setAttributes({
             forum_id: value
           })
-        }), !forums && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Forums Style', 'bbp-core'),
           value: style,
           options: [{
@@ -297,13 +330,13 @@ module.exports = window["wp"]["components"];
 
 /***/ }),
 
-/***/ "@wordpress/data":
-/*!******************************!*\
-  !*** external ["wp","data"] ***!
-  \******************************/
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
 /***/ ((module) => {
 
-module.exports = window["wp"]["data"];
+module.exports = window["wp"]["element"];
 
 /***/ }),
 

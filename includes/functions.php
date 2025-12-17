@@ -200,3 +200,16 @@ function bbpc_get_registered_nav_menus() {
 
 	return $empty + $menu_locations;
 }
+
+/**
+ * Enable REST API for bbPress forum post type
+ * This allows the forum post type to be accessed via the WordPress REST API
+ * which is required for the Gutenberg block to fetch forum data
+ */
+function bbpc_enable_forum_rest_api() {
+	$post_type_obj = get_post_type_object( 'forum' );
+	if ( $post_type_obj ) {
+		$post_type_obj->show_in_rest = true;
+	}
+}
+add_action( 'init', 'bbpc_enable_forum_rest_api', 20 );

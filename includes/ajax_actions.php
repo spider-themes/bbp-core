@@ -154,3 +154,34 @@ function bbpc_search_data_forum() {
 	endif;
 	die();
 }
+
+/**
+ * AJAX handler to fetch forums for Gutenberg block editor
+ * Used by the Single Forum block to populate the forum selector dropdown
+ */
+add_action( 'wp_ajax_bbpc_get_forums', 'bbpc_get_forums_ajax' );
+add_action( 'wp_ajax_nopriv_bbpc_get_forums', 'bbpc_get_forums_ajax' );
+function bbpc_get_forums_ajax() {
+	// Get all forums
+	$forums = new WP_Query( array(
+		'post_type'      => 'forum',
+		'posts_per_page' => -1,
+		'orderby'        => 'title',
+		'order'          => 'ASC',
+	) );
+
+	$forum_list = array();
+
+	if ( $forums->have_posts() ) {
+		while ( $forums->have_posts() ) {
+			$forums->the_post();
+			$forum_list[] = array(
+				'id'    => get_the_ID(),
+				'title' => get_the_title(),
+			);
+		}
+		wp_reset_postdata();
+	}
+
+	wp_send_json_success( $forum_list );
+}
