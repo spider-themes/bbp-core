@@ -624,8 +624,12 @@ class Register {
 		if ( ! wp_script_is( 'bbpc-ajax', 'registered' ) ) {
 			wp_register_script( 'bbpc-ajax', BBPC_FRONT_ASS . 'js/ajax.js', array( 'jquery' ), BBPC_VERSION, true );
 		}
+		if ( ! wp_style_is( 'bbpc-el-widgets', 'registered' ) ) {
+			wp_register_style( 'bbpc-el-widgets', BBPC_FRONT_ASS . 'css/el-widgets.css');
+		}
 
 		wp_enqueue_script( 'bbpc-ajax' );
+		wp_enqueue_style( 'bbpc-el-widgets' );
 
 		$ppp = ! empty( $attributes['ppp'] ) ? $attributes['ppp'] : 5;
 		$ppp2 = ! empty( $attributes['ppp2'] ) ? $attributes['ppp2'] : 10;
