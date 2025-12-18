@@ -85,6 +85,12 @@ final class BBP_Core {
 		// Added Documentation links to plugin row meta
 		add_filter( 'plugin_row_meta', [ $this, 'bbpc_row_meta' ], 10, 2 );
 
+		// Add this plugin’s templates to the bbPress template stack
+		add_filter( 'bbp_template_stack', [ $this, 'template_path' ], 20 );
+
+		// Allow themes or other plugins to override templates
+		add_filter( 'bbp_get_template_locations', [ $this, 'extend_template_locations' ], 10, 2 );
+
 		/**
 		 * Removes admin notices on the BBP Core Forum builder page.
 		 *
@@ -117,6 +123,7 @@ final class BBP_Core {
 		define( 'BBPC_VERSION', self::VERSION );
 		define( 'BBPC_FILE', __FILE__ );
 		define( 'BBPC_DIR', __DIR__ . '/' );
+		define( 'BBPC_PATH', BBPC_DIR );
 		define( 'BBPC_URL', plugins_url( '/', __FILE__ ) );
 		define( 'BBPC_ASSETS', BBPC_URL . 'assets/' );
 		define( 'BBPC_FRONT_ASS', BBPC_URL . 'assets/frontend/' );
@@ -282,8 +289,18 @@ final class BBP_Core {
 
 		return $links;
 	}
+	
+	// Add this plugin’s templates to the bbPress template stack 
+	public function template_path() {
+		return trailingslashit( BBPC_PATH . 'templates' );
+	}
+	
+	// Allow themes or other plugins to override templates
+	public function extend_template_locations( $locations, $templates ) {
+		array_unshift( $locations, 'bbp-core' );
+		return $locations;
+	}
 	// end
-
 }
 
 /**
