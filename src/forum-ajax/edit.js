@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, ToggleControl, TextControl } from '@wordpress/components';
+import { PanelBody, SelectControl, ToggleControl, TextControl, Button } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 import './editor.scss';
 
@@ -16,6 +16,35 @@ export default function Edit({ attributes, setAttributes }) {
         parent_forum_color,
         parent_forum_color_hover
     } = attributes;
+
+    const isProActive = window.bbpc_upsell_config?.is_pro_active === '1' || window.bbpc_upsell_config?.is_pro_active === true;
+    const upsellImageUrl = window.bbpc_upsell_config?.upsell_image_url;
+    const upgradeUrl = window.bbpc_upsell_config?.upgrade_url;
+
+    if (!isProActive) {
+        return (
+            <div {...blockProps}>
+                <div className="bbpc-upsell-wrapper" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px', background: '#f5f5f5', border: '1px dashed #ccc' }}>
+                    {upsellImageUrl ? (
+                        <img src={upsellImageUrl} alt="Pro Feature" style={{ maxWidth: '100%', height: 'auto', display: 'block' }} />
+                    ) : (
+                        <p>{__('Image not found', 'bbp-core')}</p>
+                    )}
+
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 10 }}>
+                        <Button
+                            variant="primary"
+                            href={upgradeUrl}
+                            target="_blank"
+                            className="bbpc-upgrade-btn"
+                        >
+                            {__('Upgrade to Pro', 'bbp-core')}
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div {...blockProps}>

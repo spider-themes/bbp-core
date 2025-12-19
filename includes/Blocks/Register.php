@@ -27,15 +27,19 @@ class Register {
 	 * This ensures the AJAX URL is available for block scripts
 	 */
 	public function enqueue_editor_assets() {
+		$is_pro_active = class_exists( 'BBPCorePro' );
 		wp_localize_script( 'wp-edit-post', 'bbpc_editor_config', [
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'ajaxurl'          => admin_url( 'admin-ajax.php' ),
+		] );
+		wp_localize_script( 'wp-edit-post', 'bbpc_upsell_config', [
+			'is_pro_active'    => $is_pro_active,
+			'upsell_image_url' => defined( 'BBPC_IMG' ) ? BBPC_IMG . 'upsell-forum-ajax.png' : '',
+			'upgrade_url'      => admin_url( 'admin.php?page=bbp-core-pricing' ),
 		] );
 	}
 
 	public function blocks_init() {
-		register_block_type( __DIR__ . '/../../build/forum-ajax', [
-			'render_callback' => [ $this, 'render_forum_ajax' ],
-		] );
+
 
 		register_block_type( __DIR__ . '/../../build/forum-posts', [
 			'render_callback' => [ $this, 'render_forum_posts' ],
@@ -56,222 +60,13 @@ class Register {
 		register_block_type( __DIR__ . '/../../build/single-forum', [
 			'render_callback' => [ $this, 'render_single_forum' ],
 		] );
-	}
-
-	public function render_forum_ajax( $attributes, $content ) {
-		$ppp2        = isset( $attributes['ppp2'] ) ? $attributes['ppp2'] : 9;
-		$order       = isset( $attributes['order'] ) ? $attributes['order'] : 'ASC';
-		$filter_btns = isset( $attributes['filter_btns'] ) ? $attributes['filter_btns'] : true;
-
-		// Styling attributes
-		$forum_title_color        = isset( $attributes['forum_title_color'] ) ? $attributes['forum_title_color'] : '';
-		$forum_title_hover_color  = isset( $attributes['forum_title_hover_color'] ) ? $attributes['forum_title_hover_color'] : '';
-		$forum_meta_color         = isset( $attributes['forum_meta_color'] ) ? $attributes['forum_meta_color'] : '';
-		$parent_forum_color       = isset( $attributes['parent_forum_color'] ) ? $attributes['parent_forum_color'] : '';
-		$parent_forum_color_hover = isset( $attributes['parent_forum_color_hover'] ) ? $attributes['parent_forum_color_hover'] : '';
-
-		// Sanitize color values (allow hex and rgba formats)
-		$sanitize_css_color = function( $color ) {
-			$color = trim( (string) $color );
-			if ( empty( $color ) ) {
-				return '';
-			}
-
-			// Allow hex colors like #fff or #ffffff
-			if ( preg_match( '/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/', $color ) ) {
-				return $color;
-			}
-
-			// Allow rgb() or rgba() formats
-			if ( preg_match( '/^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+(?:\s*,\s*(0|1|0?\.\d+))?\s*\)$/', $color ) ) {
-				return $color;
-			}
-
-			// Fallback: empty (reject any other values)
-			return '';
-		};
-
-		$forum_title_color        = $sanitize_css_color( $forum_title_color );
-		$forum_title_hover_color  = $sanitize_css_color( $forum_title_hover_color );
-		$forum_meta_color         = $sanitize_css_color( $forum_meta_color );
-		$parent_forum_color       = $sanitize_css_color( $parent_forum_color );
-		$parent_forum_color_hover = $sanitize_css_color( $parent_forum_color_hover );
-
-		$unique_id = uniqid( 'bbpc-forum-' );
-
-		// Enqueue styles/scripts
-		if ( ! wp_style_is( 'bbpc-el-widgets', 'registered' ) ) {
-			wp_register_style( 'bbpc-el-widgets', BBPC_FRONT_ASS . 'css/el-widgets.css' );
-		}
-		if ( ! wp_style_is( 'elegant-icon', 'registered' ) ) {
-			wp_register_style( 'elegant-icon', BBPC_VEND . 'elegant-icon/style.css' );
-		}
-		if ( ! wp_script_is( 'bbpc-ajax', 'registered' ) ) {
-			wp_register_script( 'bbpc-ajax', BBPC_FRONT_ASS . 'js/ajax.js', array( 'jquery' ), BBPC_VERSION, true );
-		}
-
-		wp_enqueue_style( 'bbpc-el-widgets' );
-		wp_enqueue_style( 'elegant-icon' );
-		wp_enqueue_script( 'bbpc-ajax' );
 		
-		// Inline Styles
-		$style = "<style>";
-		if ( $forum_title_color ) {
-			$style .= "#{$unique_id} .single-forum-post-widget .post-title a { color: {$forum_title_color}; }";
-		}
-		if ( $forum_title_hover_color ) {
-			$style .= "#{$unique_id} .single-forum-post-widget .post-title a:hover { color: {$forum_title_hover_color}; }";
-		}
-		if ( $forum_meta_color ) {
-			$style .= "#{$unique_id} .single-forum-post-widget .post-info .author, #{$unique_id} .single-forum-post-widget .post-info .post-time { color: {$forum_meta_color}; }";
-		}
-		if ( $parent_forum_color ) {
-			$style .= "#{$unique_id} .post-content .post-category a { color: {$parent_forum_color}; }";
-		}
-		if ( $parent_forum_color_hover ) {
-			$style .= "#{$unique_id} .post-content .post-category a:hover { color: {$parent_forum_color_hover}; }";
-		}
-		$style .= "</style>";
-
-
-		$topics = new WP_Query( array(
-			'post_type'      => 'topic',
-			'posts_per_page' => $ppp2,
-			'order'          => $order,
-		) );
-
-		$wrapper_attributes = get_block_wrapper_attributes( [
-			'class' => 'forum-post-widget',
-			'id'    => $unique_id,
+		register_block_type( __DIR__ . '/../../build/forum-ajax', [
+			'render_callback' => [ $this, 'render_forum_ajax' ],
 		] );
-
-		ob_start();
-		echo $style;
-		?>
-
-		<div <?php echo $wrapper_attributes; ?> data_id="<?php echo esc_attr( $unique_id ); ?>">
-
-			<?php if ( $filter_btns ) : ?>
-				<div class="post-filter-widget mb-20">
-					<div class="single-filter-item">
-						<a href="#" id="all_filt" data-forum="all" class="data-active">
-							<i class="icon_grid-2x2"></i><?php esc_html_e( 'All', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="populer_filt" data-forum="popular">
-							<i class="icon_easel"></i><?php esc_html_e( 'Popular', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="featured_filt" data-forum="featured">
-							<i class="icon_ribbon_alt"></i><?php esc_html_e( 'Featured', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="recent_filt" data-forum="recent">
-							<i class="icon_clock_alt"></i><?php esc_html_e( 'Recent', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="unloved_filt" data-forum="unloved">
-							<i class="icon_close_alt2"></i><?php esc_html_e( 'Unloved', 'bbp-core' ) ?>
-						</a>
-					</div>
-					<div class="single-filter-item">
-						<a href="#" id="loved_filt" data-forum="loved">
-							<i class="icon_check_alt2"></i><?php esc_html_e( 'Loved', 'bbp-core' ) ?>
-						</a>
-					</div>
-				</div>
-			<?php endif; ?>
-
-			<div id="aj-post-filter-widget">
-				<?php
-				$i = 0;
-				while ( $topics->have_posts() ) : $topics->the_post();
-					$topic_id   = $topics->posts[ $i ]->ID;
-					$vote_count = get_post_meta( $topic_id, "bbpv-votes", true );
-					$forum_id   = bbp_get_topic_forum_id();
-					?>
-					<div class="single-forum-post-widget">
-						<div class="post-content">
-							<div class="post-title">
-								<h6><a href="<?php the_permalink(); ?>"> <?php the_title() ?> </a></h6>
-							</div>
-							<div class="post-info">
-								<div class="author">
-									<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/user-circle-alt.svg' ); ?>" alt="<?php esc_attr_e( 'User circle alt icon', 'bbp-core' ); ?>">
-									<?php
-									echo wp_kses_post( bbp_get_topic_author_link(
-										array(
-											'post_id' => $topic_id,
-											'type'    => 'name'
-										)
-									) );
-									?>
-								</div>
-
-								<div class="post-time">
-									<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/time-outline.svg' ); ?>"
-									     alt="<?php esc_attr_e( 'Time outline icon', 'bbp-core' ); ?>">
-									<?php bbp_forum_last_active_time( get_the_ID() ); ?>
-								</div>
-							</div>
-
-							<div class="post-category">
-								<a href="<?php echo esc_url( get_the_permalink( $forum_id ) ); ?>">
-									<?php echo get_the_post_thumbnail( $forum_id ); ?>
-									<?php echo esc_html( bbp_get_topic_forum_title() ); ?>
-								</a>
-							</div>
-						</div>
-						<div class="post-reach">
-							<div class="post-view">
-								<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/eye-outline.svg' ); ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbp-core' ); ?>">
-
-								<?php
-								bbp_topic_view_count( $topic_id );
-								echo '&nbsp;';
-								esc_html_e( 'Views', 'bbp-core' );
-								?>
-							</div>
-							<div class="post-like">
-								<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/thumbs-up-outline.svg' ); ?>"
-								     alt="<?php esc_attr_e( 'Thumbs-up outline icon', 'bbp-core' ); ?>">
-
-								<?php
-								if ( $vote_count ) {
-									echo esc_html( $vote_count );
-								} else {
-									echo "0";
-								}
-
-								echo '&nbsp;';
-								esc_html_e( 'Likes', 'bbp-core' );
-								?>
-							</div>
-							<div class="post-comment">
-								<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/chatbubbles-outline.svg' ); ?>"
-								     alt="<?php esc_attr_e( 'Chat bubbles icon', 'bbp-core' ); ?>">
-								<?php
-								bbp_topic_reply_count( $topic_id );
-								echo '&nbsp;';
-								esc_html_e( 'Replies', 'bbp-core' );
-								?>
-							</div>
-						</div>
-					</div>
-					<?php
-					$i ++;
-				endwhile;
-				wp_reset_postdata();
-				?>
-			</div>
-		</div>
-		<?php
-		return ob_get_clean();
 	}
+
+
 
 	public function render_forum_posts( $attributes, $content ) {
 		$ppp       = isset( $attributes['ppp'] ) ? $attributes['ppp'] : 5;
@@ -926,5 +721,260 @@ class Register {
 		<?php
 
 		return ob_get_clean();
+	}
+
+
+	public function render_forum_ajax( $attributes, $content ) {
+		try {
+			if ( ! wp_style_is( 'bbpc-el-widgets', 'registered' ) ) {
+				if ( defined( 'BBPC_FRONT_ASS' ) ) {
+					wp_register_style( 'bbpc-el-widgets', BBPC_FRONT_ASS . 'css/el-widgets.css' );
+				}
+			}
+
+			wp_enqueue_style( 'bbpc-el-widgets' );
+
+			$ppp2        = isset( $attributes['ppp2'] ) ? $attributes['ppp2'] : 9;
+			$order       = isset( $attributes['order'] ) ? $attributes['order'] : 'ASC';
+			$filter_btns = isset( $attributes['filter_btns'] ) ? $attributes['filter_btns'] : true;
+
+			// Styling attributes
+			$forum_title_color        = isset( $attributes['forum_title_color'] ) ? $attributes['forum_title_color'] : '';
+			$forum_title_hover_color  = isset( $attributes['forum_title_hover_color'] ) ? $attributes['forum_title_hover_color'] : '';
+			$forum_meta_color         = isset( $attributes['forum_meta_color'] ) ? $attributes['forum_meta_color'] : '';
+			$parent_forum_color       = isset( $attributes['parent_forum_color'] ) ? $attributes['parent_forum_color'] : '';
+			$parent_forum_color_hover = isset( $attributes['parent_forum_color_hover'] ) ? $attributes['parent_forum_color_hover'] : '';
+
+			// Sanitize color values (allow hex and rgba formats)
+			$sanitize_css_color = function( $color ) {
+				$color = trim( (string) $color );
+				if ( empty( $color ) ) {
+					return '';
+				}
+				if ( preg_match( '/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/', $color ) ) {
+					return $color;
+				}
+				if ( preg_match( '/^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+(?:\s*,\s*(0|1|0?\.\d+))?\s*\)$/', $color ) ) {
+					return $color;
+				}
+				return '';
+			};
+
+			$forum_title_color        = $sanitize_css_color( $forum_title_color );
+			$forum_title_hover_color  = $sanitize_css_color( $forum_title_hover_color );
+			$forum_meta_color         = $sanitize_css_color( $forum_meta_color );
+			$parent_forum_color       = $sanitize_css_color( $parent_forum_color );
+			$parent_forum_color_hover = $sanitize_css_color( $parent_forum_color_hover );
+
+			$unique_id = uniqid( 'bbpc-forum-' );
+
+			// Check constants
+			if ( ! defined( 'BBPC_VEND' ) || ! defined( 'BBPC_FRONT_ASS' ) || ! defined( 'BBPC_VERSION' ) ) {
+				return 'Constants missing';
+			} else {
+				// Enqueue styles/scripts
+				if ( ! wp_style_is( 'elegant-icon', 'registered' ) ) {
+					wp_register_style( 'elegant-icon', BBPC_VEND . '/elegant-icon/style.css' );
+				}
+				if ( ! wp_script_is( 'bbpc-ajax', 'registered' ) ) {
+					// Use Free path
+					wp_register_script( 'bbpc-ajax', BBPC_FRONT_ASS . 'js/ajax.js', array( 'jquery' ), BBPC_VERSION, true );
+				}
+
+				wp_enqueue_style( 'elegant-icon' );
+				wp_enqueue_script( 'bbpc-ajax' );
+			}
+			
+			// Inline Styles
+			$style = "<style>";
+			if ( $forum_title_color ) {
+				$style .= "#{$unique_id} .single-forum-post-widget .post-title a { color: {$forum_title_color}; }";
+			}
+			if ( $forum_title_hover_color ) {
+				$style .= "#{$unique_id} .single-forum-post-widget .post-title a:hover { color: {$forum_title_hover_color}; }";
+			}
+			if ( $forum_meta_color ) {
+				$style .= "#{$unique_id} .single-forum-post-widget .post-info .author, #{$unique_id} .single-forum-post-widget .post-info .post-time { color: {$forum_meta_color}; }";
+			}
+			if ( $parent_forum_color ) {
+				$style .= "#{$unique_id} .post-content .post-category a { color: {$parent_forum_color}; }";
+			}
+			if ( $parent_forum_color_hover ) {
+				$style .= "#{$unique_id} .post-content .post-category a:hover { color: {$parent_forum_color_hover}; }";
+			}
+			$style .= "</style>";
+
+			$topics = new WP_Query( array(
+				'post_type'      => 'topic',
+				'posts_per_page' => $ppp2,
+				'order'          => $order,
+			) );
+
+			$wrapper_attributes = get_block_wrapper_attributes( [
+				'class' => 'forum-post-widget',
+				'id'    => $unique_id,
+			] );
+
+			ob_start();
+			echo $style;
+			?>
+
+			<div <?php echo $wrapper_attributes; ?> data_id="<?php echo esc_attr( $unique_id ); ?>">
+
+				<?php if ( $filter_btns ) : ?>
+					<div class="post-filter-widget mb-20">
+						<div class="single-filter-item">
+							<a href="#" id="all_filt" data-forum="all" class="data-active">
+								<i class="icon_grid-2x2"></i><?php esc_html_e( 'All', 'bbp-core' ) ?>
+							</a>
+						</div>
+						<div class="single-filter-item">
+							<a href="#" id="populer_filt" data-forum="popular">
+								<i class="icon_easel"></i><?php esc_html_e( 'Popular', 'bbp-core' ) ?>
+							</a>
+						</div>
+						<div class="single-filter-item">
+							<a href="#" id="featured_filt" data-forum="featured">
+								<i class="icon_ribbon_alt"></i><?php esc_html_e( 'Featured', 'bbp-core' ) ?>
+							</a>
+						</div>
+						<div class="single-filter-item">
+							<a href="#" id="recent_filt" data-forum="recent">
+								<i class="icon_clock_alt"></i><?php esc_html_e( 'Recent', 'bbp-core' ) ?>
+							</a>
+						</div>
+						<div class="single-filter-item">
+							<a href="#" id="unloved_filt" data-forum="unloved">
+								<i class="icon_close_alt2"></i><?php esc_html_e( 'Unloved', 'bbp-core' ) ?>
+							</a>
+						</div>
+						<div class="single-filter-item">
+							<a href="#" id="loved_filt" data-forum="loved">
+								<i class="icon_check_alt2"></i><?php esc_html_e( 'Loved', 'bbp-core' ) ?>
+							</a>
+						</div>
+					</div>
+				<?php endif; ?>
+
+				<div id="aj-post-filter-widget">
+					<?php
+					$i = 0;
+					while ( $topics->have_posts() ) : $topics->the_post();
+						$topic_id   = $topics->posts[ $i ]->ID;
+						$vote_count = get_post_meta( $topic_id, "bbpv-votes", true );
+						
+						// Safe get forum ID
+						$forum_id = function_exists('bbp_get_topic_forum_id') ? bbp_get_topic_forum_id() : 0;
+						// Safe get forum title
+						$forum_title = '';
+						if ( function_exists('bbp_get_topic_forum_title') ) {
+							$forum_title = bbp_get_topic_forum_title();
+						} elseif ( function_exists('bbp_get_forum_title') ) {
+							$forum_title = bbp_get_forum_title( $forum_id );
+						}
+						?>
+						<div class="single-forum-post-widget">
+							<div class="post-content">
+								<div class="post-title">
+									<h6><a href="<?php the_permalink(); ?>"> <?php the_title() ?> </a></h6>
+								</div>
+								<div class="post-info">
+									<div class="author">
+										<?php if ( defined('BBPC_IMG') ): ?>
+										<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/user-circle-alt.svg' ); ?>" alt="<?php esc_attr_e( 'User circle alt icon', 'bbp-core' ); ?>">
+										<?php endif; ?>
+										<?php
+										if ( function_exists('bbp_get_topic_author_link') ) {
+											echo wp_kses_post( bbp_get_topic_author_link(
+												array(
+													'post_id' => $topic_id,
+													'type'    => 'name'
+												)
+											) );
+										}
+										?>
+									</div>
+
+									<div class="post-time">
+										<?php if ( defined('BBPC_IMG') ): ?>
+										<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/time-outline.svg' ); ?>"
+											alt="<?php esc_attr_e( 'Time outline icon', 'bbp-core' ); ?>">
+										<?php endif; ?>
+										<?php 
+											// Use topic last active time, fallback to forum last active time, checking existence
+											if ( function_exists('bbp_topic_last_active_time') ) {
+												bbp_topic_last_active_time( get_the_ID() );
+											} elseif ( function_exists('bbp_forum_last_active_time') ) {
+												bbp_forum_last_active_time( get_the_ID() );
+											}
+										?>
+									</div>
+								</div>
+
+								<div class="post-category">
+									<a href="<?php echo esc_url( get_the_permalink( $forum_id ) ); ?>">
+										<?php echo get_the_post_thumbnail( $forum_id ); ?>
+										<?php echo esc_html( $forum_title ); ?>
+									</a>
+								</div>
+							</div>
+							<div class="post-reach">
+								<div class="post-view">
+									<?php if ( defined('BBPC_IMG') ): ?>
+									<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/eye-outline.svg' ); ?>" alt="<?php esc_attr_e( 'Eye outline icon', 'bbp-core' ); ?>">
+									<?php endif; ?>
+
+									<?php
+									if ( function_exists('bbp_topic_view_count') ) {
+										bbp_topic_view_count( $topic_id );
+									}
+									echo '&nbsp;';
+									esc_html_e( 'Views', 'bbp-core' );
+									?>
+								</div>
+								<div class="post-like">
+									<?php if ( defined('BBPC_IMG') ): ?>
+									<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/thumbs-up-outline.svg' ); ?>"
+										alt="<?php esc_attr_e( 'Thumbs-up outline icon', 'bbp-core' ); ?>">
+									<?php endif; ?>
+
+									<?php
+									if ( $vote_count ) {
+										echo esc_html( $vote_count );
+									} else {
+										echo "0";
+									}
+
+									echo '&nbsp;';
+									esc_html_e( 'Likes', 'bbp-core' );
+									?>
+								</div>
+								<div class="post-comment">
+									<?php if ( defined('BBPC_IMG') ): ?>
+									<img src="<?php echo esc_url( BBPC_IMG . 'forum_tab/chatbubbles-outline.svg' ); ?>"
+										alt="<?php esc_attr_e( 'Chat bubbles icon', 'bbp-core' ); ?>">
+									<?php endif; ?>
+									<?php
+									if ( function_exists('bbp_topic_reply_count') ) {
+										bbp_topic_reply_count( $topic_id );
+									}
+									echo '&nbsp;';
+									esc_html_e( 'Replies', 'bbp-core' );
+									?>
+								</div>
+							</div>
+						</div>
+						<?php
+						$i ++;
+					endwhile;
+					wp_reset_postdata();
+					?>
+				</div>
+			</div>
+			<?php
+			return ob_get_clean();
+		} catch ( \Throwable $e ) {
+			return '<div>Error rendering block: ' . esc_html( $e->getMessage() ) . '</div>';
+		}
 	}
 }

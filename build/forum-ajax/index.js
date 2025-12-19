@@ -54,6 +54,52 @@ function Edit({
     parent_forum_color,
     parent_forum_color_hover
   } = attributes;
+  const isProActive = window.bbpc_upsell_config?.is_pro_active === '1' || window.bbpc_upsell_config?.is_pro_active === true;
+  const upsellImageUrl = window.bbpc_upsell_config?.upsell_image_url;
+  const upgradeUrl = window.bbpc_upsell_config?.upgrade_url;
+  if (!isProActive) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      ...blockProps,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "bbpc-upsell-wrapper",
+        style: {
+          position: 'relative',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '300px',
+          background: '#f5f5f5',
+          border: '1px dashed #ccc'
+        },
+        children: [upsellImageUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+          src: upsellImageUrl,
+          alt: "Pro Feature",
+          style: {
+            maxWidth: '100%',
+            height: 'auto',
+            display: 'block'
+          }
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Image not found', 'bbp-core')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 10
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+            variant: "primary",
+            href: upgradeUrl,
+            target: "_blank",
+            className: "bbpc-upgrade-btn",
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Upgrade to Pro', 'bbp-core')
+          })
+        })]
+      })
+    });
+  }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     ...blockProps,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
