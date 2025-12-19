@@ -725,6 +725,74 @@ class Register {
 
 
 	public function render_forum_ajax( $attributes, $content ) {
+		// Upsell logic for frontend when Pro is not active
+		if ( ! class_exists( 'BBPCorePro' ) ) {
+			$upsell_img = defined( 'BBPC_IMG' ) ? BBPC_IMG . 'upsell-forum-ajax.png' : '';
+			$upgrade_url = admin_url( 'admin.php?page=bbp-core-pricing' );
+			
+			ob_start();
+			?>
+			<style>
+				.bbpc-upsell-container {
+					position: relative;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					min-height: 300px;
+					background: #f5f5f5;
+					border: 1px dashed #ccc;
+					overflow: hidden;
+					border-radius: 8px;
+					margin: 20px 0;
+				}
+				.bbpc-upsell-container img {
+					max-width: 100%;
+					height: auto;
+					display: block;
+					opacity: 0.5;
+				}
+				.bbpc-upsell-btn-wrapper {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					z-index: 10;
+				}
+				.bbpc-upgrade-btn-frontend {
+					background: linear-gradient(90deg, #172473 0%, #0fa2d0 100%) !important;
+					border: none !important;
+					color: #fff !important;
+					padding: 24px 30px !important;
+					font-size: 18px !important;
+					font-weight: 500 !important;
+					border-radius: 4px !important;
+					text-decoration: none !important;
+					box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+					transition: all 0.3s ease !important;
+					display: inline-block !important;
+					line-height: 1 !important;
+				}
+				.bbpc-upgrade-btn-frontend:hover {
+					transform: translate(-2px, -2px);
+					box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
+					color: #fff !important;
+					background: linear-gradient(80deg, #0fa2d0 0%, #172473 100%) !important;
+				}
+			</style>
+			<div class="bbpc-upsell-container">
+				<?php if ( $upsell_img ) : ?>
+					<img src="<?php echo esc_url( $upsell_img ); ?>" alt="<?php esc_attr_e( 'Upgrade to Pro', 'bbp-core' ); ?>">
+				<?php endif; ?>
+				<div class="bbpc-upsell-btn-wrapper">
+					<a href="<?php echo esc_url( $upgrade_url ); ?>" class="bbpc-upgrade-btn-frontend">
+						<?php esc_html_e( 'Upgrade to Pro', 'bbp-core' ); ?>
+					</a>
+				</div>
+			</div>
+			<?php
+			return ob_get_clean();
+		}
+
 		try {
 			if ( ! wp_style_is( 'bbpc-el-widgets', 'registered' ) ) {
 				if ( defined( 'BBPC_FRONT_ASS' ) ) {
