@@ -69,6 +69,17 @@ class Register {
 
 
 	public function render_forum_posts( $attributes, $content ) {
+		if ( ! wp_style_is( 'bbpc-el-widgets', 'registered' ) ) {
+			if ( defined( 'BBPC_FRONT_ASS' ) ) {
+				wp_register_style( 'bbpc-el-widgets', BBPC_FRONT_ASS . 'css/el-widgets.css' );
+			}
+		}
+		if ( ! wp_style_is( 'elegant-icon', 'registered' ) ) {
+			wp_register_style( 'elegant-icon', BBPC_VEND . 'elegant-icon/style.css' );
+		}
+		wp_enqueue_style( 'bbpc-el-widgets' );
+		wp_enqueue_style( 'elegant-icon' );
+
 		$ppp       = isset( $attributes['ppp'] ) ? $attributes['ppp'] : 5;
 		$order     = isset( $attributes['order'] ) ? $attributes['order'] : 'ASC';
 		$show_meta = isset( $attributes['show_meta'] ) ? $attributes['show_meta'] : true;
@@ -557,11 +568,20 @@ class Register {
 		$cross_position = $submit_btn_align == 'right' ? 'left' : 'right';
 
 		// Include dependencies
+		if ( ! wp_style_is( 'bbpc-el-widgets', 'registered' ) ) {
+			wp_register_style( 'bbpc-el-widgets', BBPC_FRONT_ASS . 'css/el-widgets.css' );
+		}
+		wp_enqueue_style( 'bbpc-el-widgets' );
+
 		wp_enqueue_script( 'bbpc-frontend-js', BBPC_FRONT_ASS . 'js/frontend.js', array( 'jquery' ), BBPC_VERSION, true );
+
+		$wrapper_attributes = get_block_wrapper_attributes( [
+			'id'    => $unique_id,
+		] );
 
 		ob_start();
 		?>
-		<div id="<?php echo esc_attr( $unique_id ); ?>">
+		<div <?php echo $wrapper_attributes; ?>>
 			<div class="bbpc-search-overlay"></div>
 			
 			<form action="<?php echo esc_url( home_url( '/' ) ) ?>" role="search" method="get" class="bbpc_search_form_wrapper">
@@ -605,18 +625,36 @@ class Register {
 				<div id="datafetch"></div>
 				
 				<?php if ( $is_keywords ) : ?>
-					<div class="bbpc-search-keyword">
-						<div class="bbpc-keywords-wrapper" style="text-align: <?php echo esc_attr( $keywords_align ); ?>">
-							<?php if ( ! empty( $keywords_label ) ) : ?>
-								<span class="bbpc-search-keywords-label"><?php echo esc_html( $keywords_label ); ?></span>
-							<?php endif; ?>
-							<ul>
-								<?php foreach ( $keywords as $keyword ) : ?>
-									<li><a href="<?php echo esc_url( home_url( '/?s=' . $keyword['title'] . '&post_type=topic' ) ); ?>"> <?php echo esc_html( $keyword['title'] ); ?> </a></li>
-								<?php endforeach; ?>
-							</ul>
+					<?php if ( class_exists( 'BBPCorePro' ) ) : ?>
+						<div class="bbpc-search-keyword">
+							<div class="bbpc-keywords-wrapper" style="text-align: <?php echo esc_attr( $keywords_align ); ?>">
+								<?php if ( ! empty( $keywords_label ) ) : ?>
+									<span class="bbpc-search-keywords-label"><?php echo esc_html( $keywords_label ); ?></span>
+								<?php endif; ?>
+								<ul>
+									<?php foreach ( $keywords as $keyword ) : ?>
+										<li><a href="<?php echo esc_url( home_url( '/?s=' . $keyword['title'] . '&post_type=topic' ) ); ?>"> <?php echo esc_html( $keyword['title'] ); ?> </a></li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
 						</div>
-					</div>
+					<?php else : ?>
+						<?php 
+						// Show only in Editor (via ServerSideRender or admin page)
+						if ( ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_admin() ) :
+							$upsell_img = BBPC_FRONT_ASS . 'img/upsell-search-keywords.png';
+							$upgrade_url = admin_url( 'admin.php?page=bbp-core-pricing' );
+							?>
+							<div class="bbpc-search-keyword-upsell">
+								<img src="<?php echo esc_url( $upsell_img ); ?>" alt="<?php esc_attr_e( 'Upgrade to Pro', 'bbp-core' ); ?>">
+								<div class="upsell-btn-wrapper bbpc-upgrade-btn">
+									<a href="<?php echo esc_url( $upgrade_url ); ?>" target="_blank" rel="noopener noreferrer">
+										<?php esc_html_e( 'Upgrade to Pro', 'bbp-core' ); ?>
+                                    </a>
+								</div>
+							</div>
+						<?php endif; ?>
+					<?php endif; ?>
 				<?php endif; ?>
 			</form>
 		</div>
@@ -687,6 +725,11 @@ class Register {
 		));
 
 		$unique_id = uniqid('bbpc-single-forum-');
+
+		if ( ! wp_style_is( 'bbpc-el-widgets', 'registered' ) ) {
+			wp_register_style( 'bbpc-el-widgets', BBPC_FRONT_ASS . 'css/el-widgets.css' );
+		}
+		wp_enqueue_style( 'bbpc-el-widgets' );
 		
 		ob_start();
 		
@@ -762,7 +805,7 @@ class Register {
 					background: linear-gradient(90deg, #172473 0%, #0fa2d0 100%) !important;
 					border: none !important;
 					color: #fff !important;
-					padding: 24px 30px !important;
+					padding: 15px 20px !important;
 					font-size: 18px !important;
 					font-weight: 500 !important;
 					border-radius: 4px !important;

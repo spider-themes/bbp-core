@@ -2,31 +2,33 @@
 @import './../../assets/frontend/scss/el-widgets/variables';
 @import './../../assets/frontend/scss/el-widgets/ajaxForum';
 
-.bbpc-upgrade-btn {
-    background: linear-gradient(90deg, #172473 0%, #0fa2d0 100%) !important;
-    border: none !important;
-    color: #fff !important;
-    padding: 24px 30px !important;
-    font-size: 16px !important;
-    font-weight: 500;
-    border-radius: 4px !important;
-    text-decoration: none !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+.bbpc-upsell-wrapper {
+    img {
+        opacity: 0.5;
+    }
 
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
+    .bbpc-upgrade-btn {
+        background: linear-gradient(90deg, #172473 0%, #0fa2d0 100%) !important;
+        border: none !important;
         color: #fff !important;
-        background: linear-gradient(80deg, #0fa2d0 0%, #172473 100%) !important;
-    }
-
-    &:active {
-        transform: translateY(0);
+        padding: 24px 30px !important;
+        font-size: 16px !important;
+        font-weight: 500;
+        border-radius: 4px !important;
+        text-decoration: none !important;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
-    }
-}
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 
-.bbpc-upsell-wrapper img {
-    opacity: 0.5;
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
+            color: #fff !important;
+            background: linear-gradient(80deg, #0fa2d0 0%, #172473 100%) !important;
+        }
+
+        &:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+        }
+    }
 }

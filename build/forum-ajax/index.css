@@ -325,7 +325,11 @@ body.body_dark .forum-post-widget .post-filter-widget .single-filter-item svg, b
   stroke: var(--bbpc_brand_color) !important;
 }
 
-.bbpc-upgrade-btn {
+.bbpc-upsell-wrapper img {
+  opacity: 0.5;
+}
+
+.bbpc-upsell-wrapper .bbpc-upgrade-btn {
   background: linear-gradient(90deg, #172473 0%, #0fa2d0 100%) !important;
   border: none !important;
   color: #fff !important;
@@ -338,20 +342,16 @@ body.body_dark .forum-post-widget .post-filter-widget .single-filter-item svg, b
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-.bbpc-upgrade-btn:hover {
+.bbpc-upsell-wrapper .bbpc-upgrade-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
   color: #fff !important;
   background: linear-gradient(80deg, #0fa2d0 0%, #172473 100%) !important;
 }
 
-.bbpc-upgrade-btn:active {
+.bbpc-upsell-wrapper .bbpc-upgrade-btn:active {
   transform: translateY(0);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
-}
-
-.bbpc-upsell-wrapper img {
-  opacity: 0.5;
 }
 
 /*# sourceMappingURL=index.css.map*/

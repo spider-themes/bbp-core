@@ -8,7 +8,7 @@
   \*************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"bbp-core/single-forum","version":"0.1.0","title":"BBPC Single Forum","category":"bbp-core","icon":"admin-post","description":"Displays a single forum with two style variations.","attributes":{"forum_id":{"type":"string","default":""},"style":{"type":"string","default":"1"},"cover_image":{"type":"object"},"ppp":{"type":"number","default":3},"order":{"type":"string","default":"ASC"},"word_length":{"type":"number","default":12},"read_more":{"type":"string","default":"View All"},"title_color":{"type":"string"},"excerpt_color":{"type":"string"}},"supports":{"html":false,"typography":{"fontSize":true}},"textdomain":"bbp-core","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"bbp-core/single-forum","version":"0.1.0","title":"BBPC Single Forum","category":"bbp-core","icon":"admin-post","description":"Displays a single forum with two style variations.","attributes":{"forum_id":{"type":"string","default":""},"style":{"type":"string","default":"1"},"cover_image":{"type":"object"},"ppp":{"type":"number","default":3},"order":{"type":"string","default":"ASC"},"word_length":{"type":"number","default":12},"read_more":{"type":"string","default":"View All"},"title_color":{"type":"string"},"excerpt_color":{"type":"string"}},"supports":{"html":false,"typography":{"fontSize":true}},"textdomain":"bbp-core","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./index.css"}');
 
 /***/ }),
 
