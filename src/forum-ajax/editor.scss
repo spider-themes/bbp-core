@@ -32,3 +32,18 @@
         }
     }
 }
+
+.single-forum-post-widget {
+    .post-category {
+        a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: center;
+
+            img {
+                width: 15px;
+            }
+        }
+    }
+}

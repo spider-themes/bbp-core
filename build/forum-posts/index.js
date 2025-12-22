@@ -8,7 +8,7 @@
   \************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"bbp-core/forum-posts","version":"0.1.0","title":"BBPC Forum Topics","category":"bbp-core","icon":"welcome-write-blog","description":"Displays a list of bbPress topics.","attributes":{"ppp":{"type":"number","default":5},"order":{"type":"string","default":"ASC"},"show_meta":{"type":"boolean","default":true},"title_color":{"type":"string"},"meta_color":{"type":"string"},"bg_color":{"type":"string"}},"supports":{"html":false},"textdomain":"bbp-core","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"bbp-core/forum-posts","version":"0.1.0","title":"BBPC Forum Topics","category":"bbp-core","icon":"welcome-write-blog","description":"Displays a list of bbPress topics.","attributes":{"ppp":{"type":"number","default":5},"order":{"type":"string","default":"ASC"},"show_meta":{"type":"boolean","default":true},"title_color":{"type":"string"},"meta_color":{"type":"string"},"bg_color":{"type":"string"}},"supports":{"html":false},"textdomain":"bbp-core","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ }),
 

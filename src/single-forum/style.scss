@@ -1,1 +1,12 @@
-// Frontend styles
+.topic-contents {
+  h3,
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.user-info {
+  h3 {
+    padding-top: 0 !important;
+  }
+}

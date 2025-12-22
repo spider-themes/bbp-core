@@ -354,4 +354,15 @@ body.body_dark .forum-post-widget .post-filter-widget .single-filter-item svg, b
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
+.single-forum-post-widget .post-category a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.single-forum-post-widget .post-category a img {
+  width: 15px;
+}
+
 /*# sourceMappingURL=index.css.map*/

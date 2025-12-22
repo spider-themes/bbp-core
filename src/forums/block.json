@@ -46,6 +46,6 @@
         "file:./index.css"
     ],
     "style": [
-        "file:./index.css"
+        "file:./style-index.css"
     ]
 }

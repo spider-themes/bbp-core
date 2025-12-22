@@ -5,6 +5,6 @@
   text-decoration: none;
 }
 
-.blog_single_item .more-communities a {
+.more-communities .collapse-btn-wrap {
   text-decoration: none !important;
 }
